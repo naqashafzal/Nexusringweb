@@ -9,17 +9,9 @@ import { MotionValue } from "framer-motion";
 // UI COMPONENTS: Ultra Minimal Info Pops anchored exactly on parts
 // ----------------------------------------------------
 
-const InfoPop = ({ labelRef, text }: { labelRef: any, text: string }) => (
-  // Positioned EXACTLY at the [0,0,0] origin of the mesh so it stays perfectly synced without swinging during rotation
-  <Html position={[0, 0, 0]} center zIndexRange={[100, 0]}>
-    <div ref={labelRef} className="flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none drop-shadow-2xl">
-      {/* Sleek, premium centered pill */}
-      <div className="text-[10px] font-bold font-sans tracking-[0.15em] text-white/90 uppercase whitespace-nowrap bg-[#0a0a0a]/80 px-4 py-2 rounded-full backdrop-blur-md border border-[#222]">
-        {text}
-      </div>
-    </div>
-  </Html>
-);
+// ----------------------------------------------------
+// UI COMPONENTS REMOVED AS REQUESTED
+// ----------------------------------------------------
 
 // Generates a seamless procedural noise texture for the "powder coated" bump map effect
 const generateNoiseTexture = () => {
@@ -59,14 +51,6 @@ function Model(props: any) {
   const totemRef = useRef<THREE.Mesh>(null);
   const lidGroupRef = useRef<THREE.Group>(null);
   const baseRef = useRef<THREE.Mesh>(null);
-
-  // Info Pop Refs
-  const totemLabelRef = useRef<HTMLDivElement>(null);
-  const lidLabelRef = useRef<HTMLDivElement>(null);
-  const ringLabelRef = useRef<HTMLDivElement>(null);
-  const espLabelRef = useRef<HTMLDivElement>(null);
-  const baseLabelRef = useRef<HTMLDivElement>(null);
-  const sensorLabelRef = useRef<HTMLDivElement>(null);
 
   // ----------------------------------------------------
   // PREMIUM MATERIALS (Studio realistic)
@@ -139,12 +123,6 @@ function Model(props: any) {
     if (totemRef.current) totemRef.current.position.z = THREE.MathUtils.lerp(0, 10, offset);
     if (lidGroupRef.current) lidGroupRef.current.position.y = THREE.MathUtils.lerp(2.208, 2.208 + 8, offset);
     if (baseRef.current) baseRef.current.position.z = THREE.MathUtils.lerp(0, -6, offset);
-
-    // Fade in info pops early
-    const opacity = THREE.MathUtils.smoothstep(offset, 0.05, 0.2);
-    [totemLabelRef, lidLabelRef, ringLabelRef, espLabelRef, baseLabelRef, sensorLabelRef].forEach(ref => {
-      if (ref.current) ref.current.style.opacity = opacity.toString();
-    });
   });
 
   return (
@@ -153,9 +131,7 @@ function Model(props: any) {
       <group>
         {/* Lid */}
         <group ref={lidGroupRef} name="Cloner" position={[0, 2.208, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <mesh name="lid" geometry={nodes.lid.geometry} material={darkMetalMaterial} position={[0, 0, -2.208]}>
-            <InfoPop labelRef={lidLabelRef} text="Dock Cover" />
-          </mesh>
+          <mesh name="lid" geometry={nodes.lid.geometry} material={darkMetalMaterial} position={[0, 0, -2.208]} />
 
           {/* Restored embedded 3D Text Meshes with highly visible silver metal */}
           <mesh name="Text_0" geometry={nodes.Text_0.geometry} material={textMaterial} position={[-0.161, 4.8, 0]} rotation={[Math.PI / 2, 0, 0]} />
@@ -167,27 +143,19 @@ function Model(props: any) {
         {/* Main Body Group */}
         <group name="Untitledstep" rotation={[-Math.PI / 2, 0, 0]}>
           
-          <mesh ref={baseRef} name="base" geometry={nodes.base.geometry} material={darkMetalMaterial}>
-            <InfoPop labelRef={baseLabelRef} text="Aluminum Chassis" />
-          </mesh>
+          <mesh ref={baseRef} name="base" geometry={nodes.base.geometry} material={darkMetalMaterial} />
 
-          <mesh ref={totemRef} name="totem" geometry={nodes.totem.geometry} material={darkMetalMaterial}>
-            <InfoPop labelRef={totemLabelRef} text="Modular Totem" />
-          </mesh>
+          <mesh ref={totemRef} name="totem" geometry={nodes.totem.geometry} material={darkMetalMaterial} />
 
           <mesh name="Esp32-C3_mini_v1" geometry={nodes['Esp32-C3_mini_v1'].geometry} material={pcbHighlightMaterial} position={[-5.644, 5.681, 0.426]}>
             <pointLight distance={8} intensity={1} color="#00ff88" />
-            <InfoPop labelRef={espLabelRef} text="Processing Unit" />
           </mesh>
 
-          <mesh name="LED_Ring_WS2812_5V_-_likeNeopixel_v1" geometry={nodes['LED_Ring_WS2812_5V_-_likeNeopixel_v1'].geometry} material={glowMaterial} position={[0.008, 0.006, 1.854]}>
-            <InfoPop labelRef={ringLabelRef} text="Visual Feedback" />
-          </mesh>
+          <mesh name="LED_Ring_WS2812_5V_-_likeNeopixel_v1" geometry={nodes['LED_Ring_WS2812_5V_-_likeNeopixel_v1'].geometry} material={glowMaterial} position={[0.008, 0.006, 1.854]} />
+          
           <mesh name="Body8(7)" geometry={nodes['Body8(7)'].geometry} material={subtleGlowMaterial} position={[0, 0, 2.053]} />
 
-          <mesh name="Hall_Sensor_v1_v1(1)" geometry={nodes['Hall_Sensor_v1_v1(1)'].geometry} material={matteComponentMaterial} position={[8.052, -0.832, 0.9]}>
-            <InfoPop labelRef={sensorLabelRef} text="Sensor Array" />
-          </mesh>
+          <mesh name="Hall_Sensor_v1_v1(1)" geometry={nodes['Hall_Sensor_v1_v1(1)'].geometry} material={matteComponentMaterial} position={[8.052, -0.832, 0.9]} />
           <mesh name="Hall_Sensor_v1_v1(2)" geometry={nodes['Hall_Sensor_v1_v1(2)'].geometry} material={matteComponentMaterial} position={[0.832, 8.052, 0.9]} />
           <mesh name="Hall_Sensor_v1_v1(3)" geometry={nodes['Hall_Sensor_v1_v1(3)'].geometry} material={matteComponentMaterial} position={[-8.052, 0.832, 0.9]} />
           <mesh name="Hall_Sensor_v1_v1(4)" geometry={nodes['Hall_Sensor_v1_v1(4)'].geometry} material={matteComponentMaterial} position={[-0.832, -8.052, 0.9]} />

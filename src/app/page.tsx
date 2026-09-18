@@ -34,17 +34,17 @@ const MODES_DATA = [
 ];
 
 export default function Home() {
-  // Global scroll for fading the hero text quickly
-  const { scrollYProgress: globalScroll } = useScroll();
-  const heroOpacity = useTransform(globalScroll, [0, 0.05], [1, 0]);
-  const heroY = useTransform(globalScroll, [0, 0.05], [0, -50]);
-
-  // Specific scroll tracker for the explosion animation
+  // Specific scroll tracker for the explosion animation (covers 250vh of scrolling)
   const heroRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress: explosionProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end end"]
   });
+
+  // Keep the Hero text completely visible while the user scrolls and the model explodes.
+  // It only fades out at the very end (80% to 100% of the explosion scroll depth).
+  const heroOpacity = useTransform(explosionProgress, [0.8, 1], [1, 0]);
+  const heroY = useTransform(explosionProgress, [0.8, 1], [0, -50]);
 
   const [activeTab, setActiveTab] = useState(0);
   const [activeMode, setActiveMode] = useState(0);
