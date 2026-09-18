@@ -209,7 +209,7 @@ export default function ExplodedRingCanvas({ scrollProgress }: { scrollProgress?
           <Model scale={0.75 * zoom} scrollProgress={scrollProgress} />
         </group>
 
-        <EffectComposer disableNormalPass>
+        <EffectComposer>
           {/* Gentle, cinematic bloom with smoothing */}
           <Bloom luminanceThreshold={1.0} luminanceSmoothing={0.9} intensity={1.0} opacity={0.5} />
         </EffectComposer>
