@@ -1,6 +1,6 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Html, Environment, ContactShadows, PresentationControls } from "@react-three/drei";
+import { useGLTF, Html, Environment, ContactShadows, OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { MotionValue } from "framer-motion";
@@ -9,21 +9,46 @@ import { MotionValue } from "framer-motion";
 // UI COMPONENTS: Ultra Minimal Info Pops anchored exactly on parts
 // ----------------------------------------------------
 
-const InfoPop = ({ labelRef, text, offset = [0, 0, 0] }: { labelRef: any, text: string, offset?: [number, number, number] }) => (
-  // Positioned EXACTLY at the [0,0,0] origin of the mesh it's attached to, with optional manual offset to prevent clipping
-  <Html position={offset} center zIndexRange={[100, 0]}>
-    <div ref={labelRef} className="flex items-center gap-0 opacity-0 transition-opacity duration-500 pointer-events-none drop-shadow-xl">
-      {/* Ultra-minimalist precision dot */}
-      <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-      {/* Fine connecting line */}
-      <div className="w-6 h-[1px] bg-white/40"></div>
-      {/* Sharp, clean typography with no background bubble */}
-      <div className="text-[10px] font-semibold font-sans tracking-[0.2em] text-white uppercase whitespace-nowrap pl-2">
+const InfoPop = ({ labelRef, text }: { labelRef: any, text: string }) => (
+  // Positioned EXACTLY at the [0,0,0] origin of the mesh so it stays perfectly synced without swinging during rotation
+  <Html position={[0, 0, 0]} center zIndexRange={[100, 0]}>
+    <div ref={labelRef} className="flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none drop-shadow-2xl">
+      {/* Sleek, premium centered pill */}
+      <div className="text-[10px] font-bold font-sans tracking-[0.15em] text-white/90 uppercase whitespace-nowrap bg-[#0a0a0a]/80 px-4 py-2 rounded-full backdrop-blur-md border border-[#222]">
         {text}
       </div>
     </div>
   </Html>
 );
+
+// Generates a seamless procedural noise texture for the "powder coated" bump map effect
+const generateNoiseTexture = () => {
+  if (typeof document === 'undefined') return null;
+  const size = 512;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const context = canvas.getContext('2d');
+  if (!context) return null;
+  
+  const imgData = context.createImageData(size, size);
+  for (let i = 0; i < imgData.data.length; i += 4) {
+    // Generate fine noise
+    const val = Math.floor(Math.random() * 255);
+    imgData.data[i] = val;
+    imgData.data[i + 1] = val;
+    imgData.data[i + 2] = val;
+    imgData.data[i + 3] = 255;
+  }
+  context.putImageData(imgData, 0, 0);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  // Repeat the texture so the "pebbles" are extremely tiny
+  texture.repeat.set(10, 10); 
+  return texture;
+};
 
 function Model(props: any) {
   const { nodes } = useGLTF("/models/nexus_ring.glb") as any;
@@ -47,13 +72,18 @@ function Model(props: any) {
   // PREMIUM MATERIALS (Studio realistic)
   // ----------------------------------------------------
   
-  // Photorealistic matte black metallic (high metalness, but rough surface to avoid mirror look)
+  // Generate the noise texture once
+  const noiseTexture = useMemo(() => generateNoiseTexture(), []);
+
+  // Photorealistic powder-coated matte black metallic (shiny)
   const darkMetalMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#121212', 
-    roughness: 0.55,
-    metalness: 0.85,
-    envMapIntensity: 1.2,
-  }), []);
+    color: '#0d0d0d', 
+    roughness: 0.35, // Lower roughness = much shinier!
+    metalness: 0.8,  // Highly metallic
+    envMapIntensity: 1.5,
+    bumpMap: noiseTexture || undefined,
+    bumpScale: 0.002, // Keep the pebble subtle
+  }), [noiseTexture]);
 
   // Crisp, matte laser-etched text (no glare)
   const textMaterial = useMemo(() => new THREE.MeshStandardMaterial({
@@ -96,12 +126,12 @@ function Model(props: any) {
 
   useFrame((state, delta) => {
     // Read the scroll progress from framer-motion (0 to 1)
-    // Map it completely 1:1 with the page scroll so it fully animates top to bottom
     const offset = scrollProgress ? scrollProgress.get() : 0;
     
-    // Only auto-rotate if the user is NOT actively scrolling (velocity is near 0)
-    const scrollVelocity = scrollProgress ? Math.abs(scrollProgress.getVelocity()) : 0;
-    if (mainGroupRef.current && scrollVelocity < 0.05) {
+    // Only auto-rotate if the model is fully assembled (0) or fully exploded (1).
+    // If the user is currently scrolling through the explosion, pause rotation.
+    const isExploding = offset > 0.001 && offset < 0.999;
+    if (mainGroupRef.current && !isExploding) {
       mainGroupRef.current.rotation.y += delta * 0.1;
     }
     
@@ -124,8 +154,7 @@ function Model(props: any) {
         {/* Lid */}
         <group ref={lidGroupRef} name="Cloner" position={[0, 2.208, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <mesh name="lid" geometry={nodes.lid.geometry} material={darkMetalMaterial} position={[0, 0, -2.208]}>
-            {/* Offset slightly up in local Z so it sits on top of the lid */}
-            <InfoPop labelRef={lidLabelRef} text="Dock Cover" offset={[0, 0, 2.5]} />
+            <InfoPop labelRef={lidLabelRef} text="Dock Cover" />
           </mesh>
 
           {/* Restored embedded 3D Text Meshes with highly visible silver metal */}
@@ -139,25 +168,25 @@ function Model(props: any) {
         <group name="Untitledstep" rotation={[-Math.PI / 2, 0, 0]}>
           
           <mesh ref={baseRef} name="base" geometry={nodes.base.geometry} material={darkMetalMaterial}>
-            <InfoPop labelRef={baseLabelRef} text="Aluminum Chassis" offset={[0, -5, 0]} />
+            <InfoPop labelRef={baseLabelRef} text="Aluminum Chassis" />
           </mesh>
 
           <mesh ref={totemRef} name="totem" geometry={nodes.totem.geometry} material={darkMetalMaterial}>
-            <InfoPop labelRef={totemLabelRef} text="Modular Totem" offset={[0, 0, 2.5]} />
+            <InfoPop labelRef={totemLabelRef} text="Modular Totem" />
           </mesh>
 
           <mesh name="Esp32-C3_mini_v1" geometry={nodes['Esp32-C3_mini_v1'].geometry} material={pcbHighlightMaterial} position={[-5.644, 5.681, 0.426]}>
             <pointLight distance={8} intensity={1} color="#00ff88" />
-            <InfoPop labelRef={espLabelRef} text="Processing Unit" offset={[0, 0, 1.5]} />
+            <InfoPop labelRef={espLabelRef} text="Processing Unit" />
           </mesh>
 
           <mesh name="LED_Ring_WS2812_5V_-_likeNeopixel_v1" geometry={nodes['LED_Ring_WS2812_5V_-_likeNeopixel_v1'].geometry} material={glowMaterial} position={[0.008, 0.006, 1.854]}>
-            <InfoPop labelRef={ringLabelRef} text="Visual Feedback" offset={[0, 0, 0.5]} />
+            <InfoPop labelRef={ringLabelRef} text="Visual Feedback" />
           </mesh>
           <mesh name="Body8(7)" geometry={nodes['Body8(7)'].geometry} material={subtleGlowMaterial} position={[0, 0, 2.053]} />
 
           <mesh name="Hall_Sensor_v1_v1(1)" geometry={nodes['Hall_Sensor_v1_v1(1)'].geometry} material={matteComponentMaterial} position={[8.052, -0.832, 0.9]}>
-            <InfoPop labelRef={sensorLabelRef} text="Sensor Array" offset={[2, 0, 0]} />
+            <InfoPop labelRef={sensorLabelRef} text="Sensor Array" />
           </mesh>
           <mesh name="Hall_Sensor_v1_v1(2)" geometry={nodes['Hall_Sensor_v1_v1(2)'].geometry} material={matteComponentMaterial} position={[0.832, 8.052, 0.9]} />
           <mesh name="Hall_Sensor_v1_v1(3)" geometry={nodes['Hall_Sensor_v1_v1(3)'].geometry} material={matteComponentMaterial} position={[-8.052, 0.832, 0.9]} />
@@ -173,9 +202,27 @@ function Model(props: any) {
 useGLTF.preload("/models/nexus_ring.glb");
 
 export default function ExplodedRingCanvas({ scrollProgress }: { scrollProgress?: MotionValue<number> }) {
+  const [zoom, setZoom] = useState(1);
+
   return (
-    <div className="w-full h-full bg-transparent cursor-grab active:cursor-grabbing">
-      {/* Raised Y from 8 to 14, reduced Z from 20 to 18 for a more top-down perspective */}
+    <div className="w-full h-full bg-transparent relative">
+      
+      {/* Zoom UI Overlay */}
+      <div className="absolute bottom-12 right-12 z-[100] flex gap-2 pointer-events-auto">
+        <button 
+          onClick={() => setZoom(z => Math.max(0.5, z - 0.2))}
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-colors"
+        >
+          -
+        </button>
+        <button 
+          onClick={() => setZoom(z => Math.min(2.5, z + 0.2))}
+          className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-colors"
+        >
+          +
+        </button>
+      </div>
+
       <Canvas camera={{ position: [0, 14, 18], fov: 45 }} className="pointer-events-auto">
         {/* Photorealistic Lighting Setup */}
         <ambientLight intensity={0.5} />
@@ -186,16 +233,13 @@ export default function ExplodedRingCanvas({ scrollProgress }: { scrollProgress?
         {/* HDRI Environment mapping is the secret to photorealism */}
         <Environment preset="city" environmentIntensity={0.8} />
         
-        {/* Interactive controls allowing user to rotate the model freely */}
-        <PresentationControls 
-          config={{ mass: 2, tension: 500 }} 
-          snap={{ mass: 4, tension: 1500 }} 
-          rotation={[0, 0, 0]} 
-          polar={[-Math.PI / 4, Math.PI / 4]} 
-          azimuth={[-Math.PI / 3, Math.PI / 3]}
-        >
-          <Model scale={0.75} scrollProgress={scrollProgress} />
-        </PresentationControls>
+        {/* Full navigation controls: allow free rotation and panning without snapback */}
+        <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} enableDamping dampingFactor={0.05} />
+
+        {/* Shifted +3 on the X axis to move the model further right on the screen */}
+        <group position={[3, 0, 0]}>
+          <Model scale={0.75 * zoom} scrollProgress={scrollProgress} />
+        </group>
 
         <EffectComposer disableNormalPass>
           {/* Gentle, cinematic bloom with smoothing */}
