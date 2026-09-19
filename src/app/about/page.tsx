@@ -102,7 +102,7 @@ const VALUES = [
   {
     num: "04",
     title: "Zero Planned Obsolescence",
-    desc: "Buttonless KY-003 Hall-effect sensors mean zero mechanical contacts, zero wear, and infinite cycle lifespan. Engineered out of billet 6061-T6 aluminum to last a lifetime.",
+    desc: "Buttonless KY-003 Hall-effect sensors mean zero mechanical contacts, zero wear, and infinite cycle lifespan. Engineered with precision 3D-printed aerospace-grade polymer and carbon-fiber composite housing to last a lifetime.",
     accent: "#FF9F1C",
     icon: HardDrive,
   },
@@ -119,14 +119,34 @@ const MILESTONES = [
 
 export default function AboutPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactEmail || !contactMessage) return;
-    setFormSubmitted(true);
+    if (!contactEmail || !contactMessage || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact_inquiry",
+          name: contactName,
+          email: contactEmail,
+          message: contactMessage,
+          source: "/about",
+        }),
+      });
+    } catch (err) {
+      console.error("Error sending contact message to notify API:", err);
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }
   };
 
   return (
@@ -425,9 +445,19 @@ export default function AboutPage() {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
               >
-                Send Direct Message to Founders <Send size={16} />
+                {isSubmitting ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-[#001a0a] border-t-transparent rounded-full animate-spin" />
+                    <span>Transmitting Message...</span>
+                  </>
+                ) : (
+                  <>
+                    Send Direct Message to Founders <Send size={16} />
+                  </>
+                )}
               </button>
             </form>
           )}

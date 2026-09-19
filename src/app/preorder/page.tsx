@@ -80,16 +80,39 @@ export default function PreorderPage() {
   const [selectedFinish, setSelectedFinish] = useState(0);
   const [selectedTier, setSelectedTier] = useState(2); // Adopter default
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [accessCode, setAccessCode] = useState("");
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const finish = FINISHES[selectedFinish];
   const tier = TIERS[selectedTier];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setShowComingSoon(true);
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "preorder_reservation",
+          email,
+          tier: tier.name,
+          finish: finish.name,
+          price: tier.price,
+          source: "/preorder",
+        }),
+      });
+    } catch (err) {
+      console.error("Error sending preorder reservation to notify API:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setShowComingSoon(true);
+    }
   };
 
   return (
@@ -239,9 +262,19 @@ export default function PreorderPage() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                   >
-                    Lock In Reservation ({tier.price}) <ChevronRight size={16} />
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-[#001a0a] border-t-transparent rounded-full animate-spin" />
+                        <span>Reserving Slot...</span>
+                      </>
+                    ) : (
+                      <>
+                        Lock In Reservation ({tier.price}) <ChevronRight size={16} />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -270,6 +303,8 @@ export default function PreorderPage() {
         isOpen={showComingSoon}
         onClose={() => setShowComingSoon(false)}
         tierName={`${tier.name} (${finish.name})`}
+        initialEmail={email}
+        initialSubmitted={submitted}
       />
     </main>
   );

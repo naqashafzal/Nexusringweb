@@ -8,20 +8,51 @@ interface ComingSoonModalProps {
   isOpen: boolean;
   onClose: () => void;
   tierName?: string;
+  initialEmail?: string;
+  initialSubmitted?: boolean;
 }
 
 export default function ComingSoonModal({
   isOpen,
   onClose,
   tierName,
+  initialEmail = "",
+  initialSubmitted = false,
 }: ComingSoonModalProps) {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState(initialEmail);
+  const [submitted, setSubmitted] = useState(initialSubmitted);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Sync initialEmail/initialSubmitted when modal opens
+  React.useEffect(() => {
+    if (isOpen) {
+      if (initialEmail) setEmail(initialEmail);
+      if (initialSubmitted) setSubmitted(true);
+    }
+  }, [isOpen, initialEmail, initialSubmitted]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "waitlist",
+          email,
+          tier: tierName || "Priority Waitlist",
+          source: typeof window !== "undefined" ? window.location.pathname : "/modal",
+        }),
+      });
+    } catch (err) {
+      console.error("Error submitting waitlist email:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   const handleClose = () => {
@@ -111,9 +142,19 @@ export default function ComingSoonModal({
                     />
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-xl bg-[#00FF9D] hover:bg-[#00ffaa] text-[#030508] font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0"
+                      disabled={isSubmitting}
+                      className="px-6 py-3.5 rounded-xl bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 text-[#030508] font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Notify Me <ArrowRight size={16} />
+                      {isSubmitting ? (
+                        <>
+                          <span className="w-4 h-4 border-2 border-[#030508] border-t-transparent rounded-full animate-spin" />
+                          <span>Reserving...</span>
+                        </>
+                      ) : (
+                        <>
+                          Notify Me <ArrowRight size={16} />
+                        </>
+                      )}
                     </button>
                   </div>
                   <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#64748B]">
