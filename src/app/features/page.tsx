@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   Cpu,
   Fingerprint,
@@ -134,6 +135,7 @@ Write-Host "[NEXUS] Network Restrictions Lifted. 15-Minute Recharge Initiated." 
 export default function FeaturesPage() {
   const [activeTab, setActiveTab] = useState(0);
   const [copiedCode, setCopiedCode] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   // Scroll Progress tracking for 3D Exploded Model Disassembly
   const explodedSectionRef = useRef<HTMLDivElement>(null);
@@ -186,12 +188,12 @@ export default function FeaturesPage() {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link
-              href="/preorder"
-              className="px-8 py-4 rounded-xl bg-[#00FF9D] text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2"
+            <button
+              onClick={() => setShowComingSoon(true)}
+              className="px-8 py-4 rounded-xl bg-[#00FF9D] text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2 cursor-pointer"
             >
               Reserve Batch 01 <ChevronRight size={16} />
-            </Link>
+            </button>
             <a
               href="#3d-exploded-view"
               className="px-8 py-4 rounded-xl border border-[#151D2A] bg-[#070A10] text-white hover:bg-[#151D2A] font-mono text-xs tracking-wider transition-all flex items-center gap-2"
@@ -788,6 +790,7 @@ export default function FeaturesPage() {
         </AnimatePresence>
       </section>
 
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </main>
   );
 }

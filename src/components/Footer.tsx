@@ -19,7 +19,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-2 pt-2">
             <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">
-              Batch 01 Pre-order Live
+              Batch 01 Launching Soon
             </span>
           </div>
         </div>
@@ -28,10 +28,10 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Discipline Engine</h4>
           <Link href="/features" className="text-xs hover:text-[#00FF9D] transition-colors">Flow State Modes & Matrix</Link>
-          <Link href="/campaign" className="text-xs hover:text-[#00FF9D] transition-colors">Crowdfunding Campaign (452%)</Link>
-          <Link href="/hardware" className="text-xs hover:text-[#00FF9D] transition-colors">6061-T6 Hardware Architecture</Link>
+          <Link href="/campaign" className="text-xs hover:text-[#00FF9D] transition-colors">Crowdfunding Campaign</Link>
+          <Link href="/hardware" className="text-xs hover:text-[#00FF9D] transition-colors">V1 Hardware Architecture</Link>
           <Link href="/software" className="text-xs hover:text-[#00FF9D] transition-colors">Software & Kernel Daemon</Link>
-          <Link href="/preorder" className="text-xs hover:text-[#00FF9D] transition-colors">Reserve Batch 01 ($129)</Link>
+          <Link href="/preorder" className="text-xs hover:text-[#00FF9D] transition-colors">Priority Waitlist Queue</Link>
         </div>
 
         {/* Vision & Resources Column */}

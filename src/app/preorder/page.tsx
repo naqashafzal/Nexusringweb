@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   CheckCircle2,
   Sparkles,
@@ -81,16 +82,14 @@ export default function PreorderPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [accessCode, setAccessCode] = useState("");
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const finish = FINISHES[selectedFinish];
   const tier = TIERS[selectedTier];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    const randomHash = "NX-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-    setAccessCode(randomHash);
-    setSubmitted(true);
+    setShowComingSoon(true);
   };
 
   return (
@@ -105,7 +104,7 @@ export default function PreorderPage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Protect Your Potential · Batch 01 Queue Open (384 / 500 Reserved)
+            Protect Your Potential · Batch 01 Priority Queue
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -266,6 +265,12 @@ export default function PreorderPage() {
 
         </div>
       </section>
+
+      <ComingSoonModal
+        isOpen={showComingSoon}
+        onClose={() => setShowComingSoon(false)}
+        tierName={`${tier.name} (${finish.name})`}
+      />
     </main>
   );
 }

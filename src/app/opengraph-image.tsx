@@ -139,7 +139,7 @@ export default async function Image() {
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Chassis
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>6061-T6 CNC</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>V1 3D-Printed</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
@@ -151,7 +151,7 @@ export default async function Image() {
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Status
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#B026FF", margin: 0 }}>452% Funded</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#B026FF", margin: 0 }}>Launching Soon</p>
             </div>
           </div>
           <span style={{ fontSize: "18px", color: "#64748B", letterSpacing: "1px" }}>nexusring.tech</span>

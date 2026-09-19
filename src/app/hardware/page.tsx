@@ -24,17 +24,17 @@ const TEARDOWN_COMPONENTS = [
   {
     id: "shell",
     num: "01",
-    name: "Aerospace CNC Shell",
-    tagline: "Precision machined from a single block of 6061-T6 aluminum alloy.",
+    name: "Precision 3D-Printed V1 Shell",
+    tagline: "High-density engineered matte composite with tuned snap-fit internal cavities.",
     accent: "#00FF9D",
     specs: [
-      { label: "Material", val: "6061-T6 Billet Aluminum" },
-      { label: "Tolerance", val: "±0.02mm CNC Micro" },
-      { label: "Finish", val: "Bead-Blasted Anodized Matte" },
-      { label: "Weight", val: "185g Heavy Solid Feel" },
+      { label: "Material", val: "Engineered Matte PLA-CF" },
+      { label: "Tolerance", val: "±0.1mm Micro Snap-Fit" },
+      { label: "Profiles", val: "Bambu Lab & Prusa 3MF" },
+      { label: "Finish", val: "Smooth Matte Texture" },
     ],
     details:
-      "Crafted using 5-axis CNC milling routines to guarantee ultra-tight tolerances. The surface is hand-polished before receiving a 15-micron hard-anodized protective layer for zero wear.",
+      "Engineered specifically for maker-first 3D printing with zero messy adhesives or visible fasteners. Custom internal channels lock the Hall-effect sensor array and magnets into sub-millimeter spatial alignment. (CNC aluminum available as Pro stretch tier).",
   },
   {
     id: "sensors",
@@ -108,24 +108,24 @@ export default function HardwarePage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            High-Performance Workspace Artifact · 6061-T6 Spec
+            High-Performance Workspace Artifact · V1 3D-Printed Spec
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            MACHINED TO<br />
+            ENGINEERED TO<br />
             <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               PERFECTION.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Machined from a single solid block of aerospace 6061-T6 aluminum to create an unyielding physical barrier between you and distractions.
+            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Engineered with sub-millimeter 3D-printing snap-fit tolerances and ceramic magnetic damping to create an unyielding physical barrier between you and distractions.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-[#151D2A]">
             {[
-              { val: "6061-T6", label: "Aerospace Billet", accent: "#00FF9D" },
-              { val: "±0.02mm", label: "CNC Precision", accent: "#00E5FF" },
+              { val: "Matte PLA-CF", label: "V1 Chassis", accent: "#00FF9D" },
+              { val: "±0.1mm", label: "Snap Precision", accent: "#00E5FF" },
               { val: "4.2N", label: "Snap Resonance", accent: "#B026FF" },
               { val: "1000Hz", label: "Hall Polling Rate", accent: "#FF9F1C" },
             ].map((st) => (

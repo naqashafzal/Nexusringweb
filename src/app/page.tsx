@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import Link from "next/link";
 import ExplodedRingCanvas from "@/components/ExplodedRingCanvas";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   Fingerprint,
   Zap,
@@ -76,6 +77,7 @@ const FAQ_ITEMS = [
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -128,12 +130,12 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/campaign"
-                  className="relative group px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_40px_rgba(0,255,157,0.45)] hover:shadow-[0_0_65px_rgba(0,255,157,0.75)] hover:scale-[1.02]"
+                <button
+                  onClick={() => setShowComingSoon(true)}
+                  className="relative group px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_40px_rgba(0,255,157,0.45)] hover:shadow-[0_0_65px_rgba(0,255,157,0.75)] hover:scale-[1.02] cursor-pointer"
                 >
                   Pre-Order Artifact — $129
-                </Link>
+                </button>
                 <Link
                   href="/research"
                   className="px-8 py-4 rounded-xl font-medium text-sm text-[#94A3B8] hover:text-white border border-[#151D2A] hover:border-[#00FF9D]/40 bg-[#070A10]/90 backdrop-blur-md transition-all duration-300"
@@ -147,7 +149,7 @@ export default function Home() {
                   { label: "Magnetic Slots", val: "4 Positions" },
                   { label: "Kernel Hook", val: "<24ms Latency" },
                   { label: "AI Guardian", val: "100% Air-Gapped" },
-                  { label: "Crowdfunded", val: "452% Target" },
+                  { label: "Campaign", val: "Launching Soon" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-xs font-mono text-[#00FF9D] font-semibold">
@@ -677,7 +679,7 @@ export default function Home() {
                   </div>
                   <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
                     <dt className="text-[#64748B] uppercase">Campaign Status</dt>
-                    <dd className="text-[#00FF9D] font-semibold mt-1">452% Funded ($45k+)</dd>
+                    <dd className="text-[#00FF9D] font-semibold mt-1">Launching Soon (Waitlist Open)</dd>
                   </div>
                 </dl>
               </div>
@@ -757,7 +759,7 @@ export default function Home() {
         </div>
         <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12">
           <p className="text-[10px] font-mono tracking-[0.3em] text-[#00FF9D] uppercase mb-5">
-            Crowdfunding Now Live · 452% Funded
+            Crowdfunding Launching Soon · Batch 01 Priority Access
           </p>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter mb-6 leading-[0.9] text-white">
             Ready to feel<br />
@@ -773,20 +775,22 @@ export default function Home() {
             </span>
           </h2>
           <p className="text-[#94A3B8] text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
-            Join the backers who refuse to surrender their attention to digital distractions. Protect your potential and lock in your habits today.
+            Join the creators and engineers who refuse to surrender their attention to digital distractions. Protect your potential and lock in your habits today.
           </p>
-          <Link
-            href="/campaign"
-            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-base tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-colors duration-200 hover:shadow-[0_0_65px_rgba(0,255,157,0.6),0_0_120px_rgba(0,255,157,0.2)]"
+          <button
+            onClick={() => setShowComingSoon(true)}
+            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-base tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-colors duration-200 hover:shadow-[0_0_65px_rgba(0,255,157,0.6),0_0_120px_rgba(0,255,157,0.2)] cursor-pointer"
           >
             Back This Project <ChevronRight size={18} />
             <span className="absolute inset-0 rounded-2xl animate-ping opacity-[0.1] bg-[#00FF9D]" />
-          </Link>
+          </button>
           <p className="text-[#64748B] text-xs mt-6 font-mono tracking-widest">
-            $45,000 raised · 28 days left
+            Batch 01 Priority Queue Open · Join Waitlist
           </p>
         </Reveal>
       </section>
+
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </main>
   );
 }
