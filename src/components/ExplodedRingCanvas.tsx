@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls } from "@react-three/drei";
+import { useGLTF, Environment, OrbitControls, ContactShadows } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { MotionValue } from "framer-motion";
