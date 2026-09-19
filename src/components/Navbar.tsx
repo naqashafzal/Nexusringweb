@@ -1,19 +1,54 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex items-center justify-between mix-blend-difference pointer-events-none">
-      <Link href="/" className="flex items-center gap-2 pointer-events-auto">
-        <div className="w-4 h-4 bg-white rounded-full"></div>
-        <span className="font-semibold tracking-tighter text-sm text-white">NEXUS</span>
-      </Link>
-      <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide pointer-events-auto">
-        <Link href="/" className="text-white hover:opacity-50 transition-opacity">Overview</Link>
-        <Link href="/hardware" className="text-white hover:opacity-50 transition-opacity">Hardware</Link>
-        <Link href="/software" className="text-white hover:opacity-50 transition-opacity">Software</Link>
-        <Link href="/preorder" className="text-white hover:opacity-50 transition-opacity">Pre-order</Link>
-      </nav>
-    </header>
+    <>
+      <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-8 py-6 flex items-center justify-between mix-blend-difference pointer-events-none">
+        <Link href="/" className="flex items-center gap-2 pointer-events-auto" onClick={() => setIsOpen(false)}>
+          <div className="w-4 h-4 bg-white rounded-full"></div>
+          <span className="font-semibold tracking-tighter text-sm text-white">NEXUS</span>
+        </Link>
+        
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide pointer-events-auto">
+          <Link href="/" className="text-white hover:opacity-50 transition-opacity">Overview</Link>
+          <Link href="/hardware" className="text-white hover:opacity-50 transition-opacity">Hardware</Link>
+          <Link href="/software" className="text-white hover:opacity-50 transition-opacity">Software</Link>
+          <Link href="/preorder" className="text-white hover:opacity-50 transition-opacity">Pre-order</Link>
+        </nav>
+
+        {/* Mobile Hamburger */}
+        <button 
+          className="md:hidden text-white pointer-events-auto mix-blend-difference"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[90] bg-[#030303]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+          >
+            <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Overview</Link>
+            <Link href="/hardware" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Hardware</Link>
+            <Link href="/software" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Software</Link>
+            <Link href="/preorder" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white text-emerald-400">Pre-order</Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

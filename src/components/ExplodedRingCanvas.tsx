@@ -1,6 +1,6 @@
-import React, { useRef, useMemo, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Html, Environment, ContactShadows, OrbitControls } from "@react-three/drei";
+import React, { useRef, useMemo, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF, Environment, OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { MotionValue } from "framer-motion";
@@ -171,6 +171,14 @@ useGLTF.preload("/models/nexus_ring.glb");
 
 export default function ExplodedRingCanvas({ scrollProgress }: { scrollProgress?: MotionValue<number> }) {
   const [zoom, setZoom] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check immediately on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <div className="w-full h-full bg-transparent relative">
@@ -204,9 +212,9 @@ export default function ExplodedRingCanvas({ scrollProgress }: { scrollProgress?
         {/* Full navigation controls: allow free rotation and panning without snapback */}
         <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} enableDamping dampingFactor={0.05} />
 
-        {/* Shifted +3 on the X axis to move the model further right on the screen */}
-        <group position={[3, 0, 0]}>
-          <Model scale={0.75 * zoom} scrollProgress={scrollProgress} />
+        {/* Responsive Positioning: Center and lower on mobile, shift right on desktop */}
+        <group position={isMobile ? [0, -3, 0] : [3, 0, 0]}>
+          <Model scale={(isMobile ? 0.5 : 0.75) * zoom} scrollProgress={scrollProgress} />
         </group>
 
         <EffectComposer>
