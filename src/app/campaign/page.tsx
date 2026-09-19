@@ -268,18 +268,18 @@ export default function CampaignPage() {
             className="lg:col-span-7 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Sparkles size={14} /> Batch 01 Crowdfunding · 180% Funded
+              <Sparkles size={14} /> The Discipline Engine · 183% Funded Worldwide
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-              FRACTURE THE LOOP.<br />
+              FORCE YOUR FOCUS.<br />
               <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                ANCHOR YOUR MIND.
+                ENGINEER SUCCESS.
               </span>
             </h1>
 
             <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed">
-              The sci-fi hardware focus artifact designed to destroy digital friction. Back the project today to secure your physical anchor and lock in Early Adopter launch pricing.
+              The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
             </p>
 
             {/* Funding Progress Bar Box */}

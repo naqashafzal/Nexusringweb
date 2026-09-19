@@ -147,7 +147,7 @@ export default function AboutPage() {
           className="text-center max-w-4xl mx-auto space-y-6 relative z-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-            <Building2 size={14} /> Nexus Desktop Art Inc. · Founded 2025
+            <Building2 size={14} /> Success & Discipline Engine · Nexus Desktop Art Inc.
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -158,7 +158,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            We are an elite team of hardware engineers, cognitive scientists, and open-source developers building physical anchors for deep work in a hyper-distracted digital world.
+            The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
           </p>
 
           {/* Stats Bar */}

@@ -105,18 +105,18 @@ export default function PreorderPage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Batch 01 Queue Open · 384 / 500 Reserved
+            Protect Your Potential · Batch 01 Queue Open (384 / 500 Reserved)
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             RESERVE YOUR<br />
             <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              BATCH 01 ARTIFACT.
+              DISCIPLINE ENGINE.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Batch 01 is strictly limited to 500 units worldwide. Reserve your hardware controller now to lock in Early Adopter pricing.
+            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical discipline engine now to protect your time and focus.
           </p>
         </div>
       </section>

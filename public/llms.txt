@@ -1,0 +1,43 @@
+# Nexus Ring — The Physical Discipline Engine
+
+> The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
+
+## Core Marketing Hooks (The "Success" Angle)
+- **The Discipline Engine:** Force your focus, save your time, and engineer your own success.
+- **More Output, Less Friction:** A physical barrier between you and the distractions costing you time and money.
+- **Protect Your Potential:** The ultimate hardware artifact to lock in your habits and build unbreakable discipline.
+
+## Expanded Keywords
+- Success & Discipline Engine
+- Time & Focus Optimization
+- Distraction Elimination System
+- Flow State Catalyst
+- High-Performance Workspace Artifact
+- Kernel-Level Focus Lock
+- Tactile Muscle Memory Anchor
+
+## Quick Facts
+- **Product Type:** Desktop hardware artifact & OS distraction elimination engine
+- **Price:** $15 (DIY Maker Kit), $49 (Hacker Electronics Pack), $129 (Early Bird Founder's Artifact), $169 (Nexus Pro), $349 (Dual Executive Desk Set)
+- **Availability:** Batch 01 Pre-order live; Crowdfunding campaign 452% funded ($45,000+ raised)
+- **Hardware Architecture:** 6061-T6 Billet Aluminum CNC chassis, 4x KY-003 Hall-effect sensors, ESP32-C3 RISC-V 160MHz micro-controller, ceramic magnetic damping ring, N52 neodymium magnetic totems
+- **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Gemini 1.5 local core), zero cloud telemetry
+- **Founder:** Naqash Afzal
+- **Cognitive Research Lead:** Dr. Evelyn Vance (MIT Spatial Cognition)
+- **Official Website:** https://www.nexusring.tech
+
+## Primary Sections
+- [Features & Modes](https://www.nexusring.tech/features): 4 dedicated spatial focus positions (Deep Work, Meeting, Creative Flow, Reset).
+- [Hardware Architecture](https://www.nexusring.tech/hardware): Aerospace 6061-T6 aluminum teardown, Hall-effect magnetic flux sensing array, sub-1mm spatial accuracy.
+- [Software & Daemon](https://www.nexusring.tech/software): Zero-latency OS webhooks, kernel-level firewall, air-gapped local AI guardian.
+- [Cognitive Science Research](https://www.nexusring.tech/research): Peer-reviewed research on tactile spatial anchors, habit formation, and ego depletion reduction.
+- [Vision & Founders](https://www.nexusring.tech/about): The design philosophy and engineering principles behind Nexus Desktop Art Inc.
+- [Crowdfunding Campaign](https://www.nexusring.tech/campaign): Backer pledge tiers, manufacturing timeline, stretch goals, and live campaign stats.
+- [Pre-Order Portal](https://www.nexusring.tech/preorder): Direct reservation for Batch 01 with guaranteed Q3 delivery.
+
+## Key Capabilities & Distinctions
+1. **Physicality Over Willpower:** Digital app blockers fail because they can be clicked away in two keystrokes. The Nexus Ring turns discipline into a tangible, physical state transition.
+2. **Instant Kernel Enforcement:** Switching magnetic totem positions commands the OS directly without cloud latency, closing distraction tabs, launching project environments, and setting system-wide DND.
+3. **100% Air-Gapped Privacy:** Zero personal data, keystrokes, or screen pixels ever touch a remote server. All AI and hardware actions execute locally on-device.
+
+For full technical specifications, code hooks, and deep scientific citations, see [llms-full.txt](https://www.nexusring.tech/llms-full.txt).

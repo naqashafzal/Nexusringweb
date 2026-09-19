@@ -170,18 +170,18 @@ export default function FeaturesPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Alien Tech Ecosystem · Complete Specification
+            Flow State Catalyst · Distraction Elimination System
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
             ENGINEERING PURE<br />
             <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              FOCUS.
+              DISCIPLINE.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Discover the hardware and software architecture that transforms physical intent into digital reality.
+            The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
           </p>
 
           {/* Call to Action Buttons */}

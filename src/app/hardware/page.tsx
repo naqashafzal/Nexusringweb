@@ -108,7 +108,7 @@ export default function HardwarePage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Aerospace Engineering Spec
+            High-Performance Workspace Artifact · 6061-T6 Spec
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -119,7 +119,7 @@ export default function HardwarePage() {
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Every Nexus Ring is precision CNC-machined from a single block of aerospace-grade 6061-T6 aluminum. Heavy, cold, and solid—engineered to be the physical anchor of your desktop.
+            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Machined from a single solid block of aerospace 6061-T6 aluminum to create an unyielding physical barrier between you and distractions.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-[#151D2A]">
