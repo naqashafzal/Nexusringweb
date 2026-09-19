@@ -19,8 +19,12 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide pointer-events-auto">
           <Link href="/" className="text-white hover:opacity-50 transition-opacity">Overview</Link>
+          <Link href="/features" className="text-white hover:opacity-50 transition-opacity">Features</Link>
           <Link href="/hardware" className="text-white hover:opacity-50 transition-opacity">Hardware</Link>
           <Link href="/software" className="text-white hover:opacity-50 transition-opacity">Software</Link>
+          <Link href="/research" className="text-white hover:opacity-50 transition-opacity">Research</Link>
+          <Link href="/about" className="text-white hover:opacity-50 transition-opacity">Vision</Link>
+          <Link href="/campaign" className="text-emerald-400 hover:opacity-50 transition-opacity">Campaign</Link>
           <Link href="/preorder" className="text-white hover:opacity-50 transition-opacity">Pre-order</Link>
         </nav>
 
@@ -40,12 +44,16 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-[#030303]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-[90] bg-[#030508]/95 backdrop-blur-xl border-b border-[#151D2A] flex flex-col items-center justify-center gap-8"
           >
             <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Overview</Link>
+            <Link href="/features" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Features</Link>
             <Link href="/hardware" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Hardware</Link>
             <Link href="/software" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Software</Link>
-            <Link href="/preorder" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white text-emerald-400">Pre-order</Link>
+            <Link href="/research" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Research</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Vision</Link>
+            <Link href="/campaign" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-emerald-400">Campaign</Link>
+            <Link href="/preorder" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Pre-order</Link>
           </motion.div>
         )}
       </AnimatePresence>

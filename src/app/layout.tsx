@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
@@ -31,17 +33,22 @@ export const metadata: Metadata = {
     title: "Nexus Ring | Anchor Your Mind.",
     description: "A high-end, interactive tech-art piece designed to fracture the loop of digital distraction.",
   },
-  themeColor: "#000000",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#030508",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#030508] text-[#F8FAFC] selection:bg-emerald-500/30 selection:text-emerald-400">
+        <Navbar />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>

@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors - Vantablack Premium Palette */
+  --color-vantablack: #030508;
+  --color-obsidian: #030508;
+  --color-matte: #070A10;
+  --color-slate: #151D2A;
+  --color-emerald: #00FF9D;
+  --color-electric: #00E5FF;
+  --color-amber: #FF9F1C;
+  --color-purple: #B026FF;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Custom Glow Shadows */
+  --shadow-glow-emerald: 0 0 25px rgba(0, 255, 157, 0.45), 0 0 50px rgba(0, 255, 157, 0.15);
+  --shadow-glow-electric: 0 0 25px rgba(0, 229, 255, 0.45), 0 0 50px rgba(0, 229, 255, 0.15);
+  --shadow-glow-amber: 0 0 25px rgba(255, 159, 28, 0.45), 0 0 50px rgba(255, 159, 28, 0.15);
+  --shadow-glow-purple: 0 0 25px rgba(176, 38, 255, 0.45), 0 0 50px rgba(176, 38, 255, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #030508;
+  --foreground: #F8FAFC;
 }
 
 body {
-  background: var(--background);
+  background-color: #030508;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  /* Vantablack Dot-matrix schematic pattern */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Headings use the display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Utility Classes */
+@layer utilities {
+  .glass-panel {
+    background-color: rgba(7, 10, 16, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #151D2A;
+  }
+
+  .text-gradient-neon {
+    background: linear-gradient(120deg, var(--color-emerald), var(--color-electric), var(--color-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
 }
