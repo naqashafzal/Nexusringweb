@@ -92,3 +92,8 @@ Never. Nexus Ring is built on a 100% air-gapped local-first philosophy. The kern
 
 ### Who created the Nexus Ring?
 Nexus Ring was created and founded by Naqash Afzal (Founder & Chief Hardware Architect), pioneering physical discipline engines that merge embedded firmware, Hall-effect magnetic tracking, and distraction-free workspace artifacts.
+- GitHub: https://github.com/naqashafzal
+- Google Developer: https://g.dev/naqashafzal
+- MakerWorld: https://makerworld.com/en/@naqash
+- LinkedIn: https://www.linkedin.com/in/naqashafzal/
+- Freelancer: https://www.freelancer.com/u/naqashafzal

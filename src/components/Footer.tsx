@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Research & AI</h4>
           <Link href="/research" className="text-xs hover:text-[#00FF9D] transition-colors">Cognitive Science Whitepaper</Link>
-          <Link href="/about" className="text-xs hover:text-[#00FF9D] transition-colors">Vision & Founders</Link>
+          <Link href="/about" className="text-xs hover:text-[#00FF9D] transition-colors">Vision & Founder</Link>
           <a href="/llms.txt" target="_blank" rel="noopener noreferrer" className="text-xs text-[#00FF9D] hover:underline flex items-center gap-1">
             <span>AI Knowledge Base (llms.txt)</span>
             <span className="text-[9px] font-mono bg-[#00FF9D]/15 px-1 rounded">GEO</span>

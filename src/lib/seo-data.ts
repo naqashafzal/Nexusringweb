@@ -34,10 +34,20 @@ export const SITE_CONFIG = {
   founder: {
     name: "Naqash Afzal",
     jobTitle: "Founder & Chief Hardware Architect",
+    sameAs: [
+      "https://github.com/naqashafzal",
+      "https://g.dev/naqashafzal",
+      "https://makerworld.com/en/@naqash",
+      "https://www.linkedin.com/in/naqashafzal/",
+      "https://www.freelancer.com/u/naqashafzal",
+    ],
   },
   social: {
-    twitter: "https://x.com/nexusring",
     github: "https://github.com/naqashafzal",
+    googleDeveloper: "https://g.dev/naqashafzal",
+    makerworld: "https://makerworld.com/en/@naqash",
+    linkedin: "https://www.linkedin.com/in/naqashafzal/",
+    freelancer: "https://www.freelancer.com/u/naqashafzal",
   },
 };
 
@@ -72,8 +82,15 @@ export function getStructuredData() {
       "@type": "Person",
       name: SITE_CONFIG.founder.name,
       jobTitle: SITE_CONFIG.founder.jobTitle,
+      sameAs: SITE_CONFIG.founder.sameAs,
     },
-    sameAs: [SITE_CONFIG.social.twitter, SITE_CONFIG.social.github],
+    sameAs: [
+      SITE_CONFIG.social.github,
+      SITE_CONFIG.social.googleDeveloper,
+      SITE_CONFIG.social.makerworld,
+      SITE_CONFIG.social.linkedin,
+      SITE_CONFIG.social.freelancer,
+    ],
   };
 
   const productSchema = {

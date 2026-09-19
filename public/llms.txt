@@ -23,6 +23,11 @@
 - **Hardware Architecture:** Precision 3D-Printed V1 chassis (engineered matte composite / PLA-CF with official 3MF profiles for Bambu Lab & Prusa), 4x KY-003 Hall-effect sensors, ESP32-C3 RISC-V 160MHz micro-controller, ceramic magnetic damping ring, N52 neodymium magnetic totems (CNC aluminum in stretch/future tiers)
 - **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Gemini 1.5 local core), zero cloud telemetry
 - **Founder & Chief Hardware Architect:** Naqash Afzal
+  - GitHub: https://github.com/naqashafzal
+  - Google Developer: https://g.dev/naqashafzal
+  - MakerWorld: https://makerworld.com/en/@naqash
+  - LinkedIn: https://www.linkedin.com/in/naqashafzal/
+  - Freelancer: https://www.freelancer.com/u/naqashafzal
 - **Official Website:** https://www.nexusring.tech
 
 ## Primary Sections

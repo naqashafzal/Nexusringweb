@@ -32,6 +32,7 @@ import {
   ExternalLink,
   Send,
   MessageSquare,
+  Briefcase,
 } from "lucide-react";
 
 // ─── FOUNDER & ARCHITECT DATA ─────────────────────────────────────
@@ -44,9 +45,13 @@ const TEAM = [
     location: "Remote / Global",
     accent: "#00FF9D",
     badge: "FOUNDER & ARCHITECT",
-    github: "https://github.com",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
+    links: [
+      { name: "GitHub", url: "https://github.com/naqashafzal", icon: Code2 },
+      { name: "Google Developer", url: "https://g.dev/naqashafzal", icon: Globe },
+      { name: "MakerWorld", url: "https://makerworld.com/en/@naqash", icon: Layers },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/naqashafzal/", icon: ExternalLink },
+      { name: "Freelancer", url: "https://www.freelancer.com/u/naqashafzal", icon: Briefcase },
+    ],
     skills: ["Embedded C/C++", "FreeRTOS", "3D CAD & Prototyping", "RISC-V Architecture", "Kernel Daemons"],
   },
 ];
@@ -289,18 +294,34 @@ export default function AboutPage() {
                 ))}
               </div>
 
-              {/* Social Links */}
-              <div className="flex items-center gap-4 pt-2 font-mono text-xs text-[#64748b]">
-                <a href={member.github} target="_blank" rel="noreferrer" className="hover:text-[#00FF9D] transition-colors" title="Repository">
-                  <Code2 size={18} />
-                </a>
-                <a href={member.twitter} target="_blank" rel="noreferrer" className="hover:text-[#00FF9D] transition-colors" title="Website">
-                  <Globe size={18} />
-                </a>
-                <a href={member.linkedin} target="_blank" rel="noreferrer" className="hover:text-[#00FF9D] transition-colors" title="External Link">
-                  <ExternalLink size={18} />
-                </a>
-                <span className="ml-auto text-[11px] flex items-center gap-1.5 text-[#94a3b8]">
+              {/* Verified Developer & Hardware Portfolios */}
+              <div className="pt-4 border-t border-[#151D2A] space-y-3">
+                <span className="text-[10px] font-mono text-[#64748b] uppercase tracking-widest block">
+                  Verified Engineering & Hardware Profiles
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {member.links.map((link) => {
+                    const IconComp = link.icon;
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#151D2A] bg-[#030508] hover:border-[#00FF9D]/60 hover:bg-[#00FF9D]/10 hover:text-white text-[#94a3b8] text-xs font-mono transition-all group"
+                      >
+                        <IconComp size={14} className="text-[#00FF9D] group-hover:scale-110 transition-transform" />
+                        <span>{link.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Location & Entity Footer */}
+              <div className="flex items-center justify-between pt-2 border-t border-[#151D2A]/60 font-mono text-xs text-[#64748b]">
+                <span className="text-[10px] text-[#64748b]">Nexus Desktop Art Inc.</span>
+                <span className="text-[11px] flex items-center gap-1.5 text-[#94a3b8]">
                   <MapPin size={13} className="text-[#00FF9D]" /> {member.location}
                 </span>
               </div>
