@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Cognitive Science & Research | Time & Focus Optimization",
   description:
-    "Whitepaper and cognitive research on ego depletion mitigation, spatial muscle memory triggers, and tactile intervention in digital addiction. Led by Dr. Evelyn Vance (MIT).",
+    "Whitepaper and cognitive research on ego depletion mitigation, spatial muscle memory triggers, and tactile intervention in digital distraction.",
   keywords: [
     "Time & Focus Optimization",
     "Cognitive Psychology Research",

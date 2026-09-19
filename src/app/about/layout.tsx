@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vision & Founders | The Discipline Engine",
+  title: "Vision & Founder | The Discipline Engine",
   description:
-    "Meet the team behind Nexus Desktop Art Inc. Founded by Naqash Afzal and Dr. Evelyn Vance with a single obsession: engineering physical artifacts that accelerate human potential and discipline.",
+    "Meet the visionary behind Nexus Desktop Art Inc. Founded by Naqash Afzal with a single obsession: engineering physical artifacts that accelerate human potential and discipline.",
   keywords: [
     "Success & Discipline Engine",
-    "Nexus Ring Founders",
+    "Nexus Ring Founder",
     "Naqash Afzal",
-    "Dr. Evelyn Vance",
     "High-Performance Workspace Artifact",
     "Nexus Desktop Art Inc",
   ],

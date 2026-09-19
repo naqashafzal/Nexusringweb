@@ -91,4 +91,4 @@ Success in knowledge work, engineering, and leadership is directly bounded by th
 Never. Nexus Ring is built on a 100% air-gapped local-first philosophy. The kernel daemons and local AI guardian run entirely on your CPU/GPU. Zero bytes of screen capture, browser history, or keystrokes are uploaded.
 
 ### Who created the Nexus Ring?
-Nexus Ring was founded by Naqash Afzal (Chief Hardware Architect) in collaboration with Dr. Evelyn Vance (Chief Cognitive Scientist, MIT Spatial Cognition research background).
+Nexus Ring was created and founded by Naqash Afzal (Founder & Chief Hardware Architect), pioneering physical discipline engines that merge embedded firmware, Hall-effect magnetic tracking, and distraction-free workspace artifacts.
