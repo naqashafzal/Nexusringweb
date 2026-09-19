@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useScroll, motion, useTransform, AnimatePresence } from "framer-motion";
 import ExplodedRingCanvas from "@/components/ExplodedRingCanvas";
+import Navbar from "@/components/Navbar";
 import { Hexagon, Lock, Fingerprint, Zap, Play } from "lucide-react";
 
 const TRIPLE_LOOP_DATA = [
@@ -53,18 +54,7 @@ export default function Home() {
     <main className="bg-[#030303] text-white font-sans selection:bg-white selection:text-black">
       
       {/* Navbar - Ultra Minimal */}
-      <header className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex items-center justify-between mix-blend-difference pointer-events-none">
-        <div className="flex items-center gap-2 pointer-events-auto">
-          <div className="w-4 h-4 bg-white rounded-full"></div>
-          <span className="font-semibold tracking-tighter text-sm">NEXUS</span>
-        </div>
-        <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide pointer-events-auto">
-          <a href="#" className="text-white hover:opacity-50 transition-opacity">Overview</a>
-          <a href="#" className="text-white hover:opacity-50 transition-opacity">Hardware</a>
-          <a href="#" className="text-white hover:opacity-50 transition-opacity">Software</a>
-          <a href="#" className="text-white hover:opacity-50 transition-opacity">Pre-order</a>
-        </nav>
-      </header>
+      <Navbar />
 
       {/* 3D Canvas Background */}
       <div className="fixed inset-0 z-0 pointer-events-auto">
