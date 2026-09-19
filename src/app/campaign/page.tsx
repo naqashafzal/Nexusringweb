@@ -64,12 +64,12 @@ const TIERS = [
     id: "adopter",
     name: "The Early Adopter Artifact",
     price: "$129",
-    desc: "Fully assembled, plug-and-play aerospace aluminum focus ring dock.",
+    desc: "Fully assembled, plug-and-play precision 3D-printed V1 focus ring dock.",
     badge: "MOST POPULAR",
     badgeColor: "#00FF9D",
     popular: true,
     includes: [
-      "Fully Assembled Nexus Dock (Matte Anodized Aluminum)",
+      "Fully Assembled Nexus V1 Dock (Engineered Matte 3D Print)",
       "4x Modular Bio-Hex Magnetic Totems",
       "Braided Sci-Fi USB-C Cable (1.8m)",
       "Full Local AI Guardian Software License",
@@ -240,7 +240,7 @@ export default function CampaignPage() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00FF9D] animate-pulse shadow-[0_0_10px_rgba(0,255,157,0.8)]" />
             <span className="text-xs font-mono tracking-widest text-white uppercase font-bold">
-              KICKSTARTER CAMPAIGN LIVE
+              CROWDFUNDING CAMPAIGN LIVE
             </span>
           </div>
 
@@ -268,7 +268,7 @@ export default function CampaignPage() {
             className="lg:col-span-7 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Sparkles size={14} /> The Discipline Engine · 183% Funded Worldwide
+              <Sparkles size={14} /> The Discipline Engine · Official Crowdfunding Campaign
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -292,7 +292,7 @@ export default function CampaignPage() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-display font-bold text-[#00FF9D]">183% FUNDED</p>
+                  <p className="text-2xl font-display font-bold text-[#00FF9D]">CAMPAIGN ACTIVE</p>
                   <p className="text-xs font-mono text-[#64748b] uppercase tracking-widest mt-1">
                     418 BACKERS WORLDWIDE
                   </p>

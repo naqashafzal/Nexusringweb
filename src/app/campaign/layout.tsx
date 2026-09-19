@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Crowdfunding Campaign | Back the Discipline Engine",
   description:
-    "Join over 450 early backers in funding the Nexus Ring. 452% funded with over $45,000 raised. Pledge tiers from $15 DIY Maker kit to $129 Founder's Artifact.",
+    "Join early backers in bringing the Nexus Ring to life. Pledge tiers from $15 DIY Maker kit with official 3MF print profiles to the fully assembled V1 3D-printed artifact.",
   keywords: [
     "Success & Discipline Engine",
-    "Nexus Ring Kickstarter",
+    "Nexus Ring MakeWorld",
     "Crowdfunding Campaign",
-    "Founder's Artifact",
+    "3D Printed Focus Tool",
     "High-Performance Workspace Artifact",
     "Pre-Order Nexus Ring",
   ],
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Crowdfunding Campaign | Back the Discipline Engine",
     description:
-      "452% funded. Protect your potential and back the physical discipline engine built for deep work.",
+      "Protect your potential and back the physical discipline engine built for deep work.",
     url: "https://www.nexusring.tech/campaign",
   },
 };

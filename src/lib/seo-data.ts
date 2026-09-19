@@ -88,7 +88,7 @@ export function getStructuredData() {
       name: "Nexus",
     },
     category: "Electronics > Hardware > Productivity Tools",
-    material: "6061-T6 Billet Aerospace Aluminum, N52 Neodymium, ESP32-C3 RISC-V",
+    material: "Precision 3D-Printed V1 (Engineered Matte Composite / PLA-CF), N52 Neodymium, ESP32-C3 RISC-V",
     offers: [
       {
         "@type": "Offer",

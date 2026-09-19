@@ -32,7 +32,7 @@ Designed and engineered by Nexus Desktop Art Inc., the Nexus Ring represents the
 ## Technical Specifications
 
 ### Hardware Architecture
-- **Chassis:** 5-axis CNC-milled 6061-T6 aerospace aluminum billet. ±0.02mm machining tolerance. 15-micron hard-anodized matte bead-blasted surface finish. 185g solid desk ballast.
+- **Chassis:** Precision 3D-Printed V1 chassis engineered with sub-millimeter snap-fit tolerances for PLA-CF, PETG, and SLA resins. Official 3MF print profiles calibrated for Bambu Lab and Prusa printers. (CNC 6061-T6 aluminum available in Pro/Stretch tier).
 - **Sensor Array:** 4x KY-003 Hall-effect sensors measuring magnetic flux density (up to 420mT) with sub-1mm spatial accuracy at 1000Hz (1ms polling frequency).
 - **Core Microcontroller:** Espressif ESP32-C3 32-bit RISC-V processor clocked at 160MHz with hardware AES-256 acceleration and FreeRTOS embedded daemon.
 - **Haptic & Acoustic Damping:** Engineered ceramic magnetic absorption ring yielding a resonant 440Hz low acoustic thud with 4.2N magnetic snap force and zero mechanical wobble.
