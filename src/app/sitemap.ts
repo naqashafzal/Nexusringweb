@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { COMPARISONS } from "@/lib/comparisons-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.nexusring.tech";
   const currentDate = new Date().toISOString();
 
-  return [
+  const coreRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
       lastModified: currentDate,
@@ -53,5 +54,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/compare`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
+
+  const comparisonRoutes: MetadataRoute.Sitemap = Object.keys(COMPARISONS).map(
+    (slug) => ({
+      url: `${baseUrl}/compare/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })
+  );
+
+  return [...coreRoutes, ...comparisonRoutes];
 }

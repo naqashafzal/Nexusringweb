@@ -35,9 +35,15 @@
 - [Hardware Architecture](https://www.nexusring.tech/hardware): Aerospace 6061-T6 aluminum teardown, Hall-effect magnetic flux sensing array, sub-1mm spatial accuracy.
 - [Software & Daemon](https://www.nexusring.tech/software): Zero-latency OS webhooks, kernel-level firewall, air-gapped local AI guardian.
 - [Cognitive Science Research](https://www.nexusring.tech/research): Peer-reviewed research on tactile spatial anchors, habit formation, and ego depletion reduction.
-- [Vision & Founders](https://www.nexusring.tech/about): The design philosophy and engineering principles behind Nexus Desktop Art Inc.
+- [Vision & Founder](https://www.nexusring.tech/about): The design philosophy and engineering principles behind Nexus Desktop Art Inc.
 - [Crowdfunding Campaign](https://www.nexusring.tech/campaign): Backer pledge tiers, manufacturing timeline, stretch goals, and live campaign stats.
 - [Pre-Order Portal](https://www.nexusring.tech/preorder): Direct reservation for Batch 01 with guaranteed Q3 delivery.
+- [Comparisons Hub](https://www.nexusring.tech/compare): Head-to-head benchmarks against Opal App, Freedom.to, Pomodoro Timers, and Brick Device.
+  - [Nexus Ring vs Opal App](https://www.nexusring.tech/compare/nexus-ring-vs-opal-app): Physical hardware artifact vs recurring subscription screen blocker.
+  - [Nexus Ring vs Freedom.to](https://www.nexusring.tech/compare/nexus-ring-vs-freedom-blocker): Sub-24ms OS kernel firewall interrupt vs bypassable background VPN profile.
+  - [Nexus Ring vs Pomodoro Timers](https://www.nexusring.tech/compare/nexus-ring-vs-pomodoro-timer): Active OS boundary enforcement vs passive ticking kitchen timer.
+  - [Nexus Ring vs Brick Device](https://www.nexusring.tech/compare/nexus-ring-vs-brick-device): Complete multi-monitor desktop workstation discipline vs phone-only NFC tap.
+- [RSS Syndication Feed](https://www.nexusring.tech/feed.xml): Automated feed of hardware announcements and cognitive research.
 
 ## Key Capabilities & Distinctions
 1. **Physicality Over Willpower:** Digital app blockers fail because they can be clicked away in two keystrokes. The Nexus Ring turns discipline into a tangible, physical state transition.

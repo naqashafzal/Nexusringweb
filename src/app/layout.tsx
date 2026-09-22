@@ -86,6 +86,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Nexus Ring RSS Feed" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

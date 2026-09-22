@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="relative z-[100] w-full pt-20 pb-12 border-t border-[#151D2A] bg-[#030508] flex flex-col items-center justify-center pointer-events-auto text-[#94a3b8] shadow-2xl">
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 relative z-10 pointer-events-auto">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12 relative z-10 pointer-events-auto">
         
         {/* Brand Column */}
         <div className="flex flex-col gap-4">
@@ -34,6 +34,16 @@ export default function Footer() {
           <Link href="/preorder" className="text-xs hover:text-[#00FF9D] transition-colors">Priority Waitlist Queue</Link>
         </div>
 
+        {/* Comparisons Column */}
+        <div className="flex flex-col gap-3">
+          <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Comparisons</h4>
+          <Link href="/compare" className="text-xs hover:text-[#00FF9D] transition-colors font-medium text-white">Compare Hub & Matrix</Link>
+          <Link href="/compare/nexus-ring-vs-opal-app" className="text-xs hover:text-[#00FF9D] transition-colors">Nexus Ring vs. Opal App</Link>
+          <Link href="/compare/nexus-ring-vs-freedom-blocker" className="text-xs hover:text-[#00FF9D] transition-colors">Nexus Ring vs. Freedom.to</Link>
+          <Link href="/compare/nexus-ring-vs-pomodoro-timer" className="text-xs hover:text-[#00FF9D] transition-colors">Nexus Ring vs. Pomodoro</Link>
+          <Link href="/compare/nexus-ring-vs-brick-device" className="text-xs hover:text-[#00FF9D] transition-colors">Nexus Ring vs. Brick</Link>
+        </div>
+
         {/* Vision & Resources Column */}
         <div className="flex flex-col gap-3">
           <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Research & AI</h4>
@@ -43,10 +53,12 @@ export default function Footer() {
             <span>AI Knowledge Base (llms.txt)</span>
             <span className="text-[9px] font-mono bg-[#00FF9D]/15 px-1 rounded">GEO</span>
           </a>
+          <a href="/feed.xml" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-[#00FF9D] transition-colors">
+            RSS Syndication Feed
+          </a>
           <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-[#00FF9D] transition-colors">
             XML Sitemap
           </a>
-          <Link href="/campaign#faq" className="text-xs hover:text-[#00FF9D] transition-colors">Campaign FAQ</Link>
         </div>
 
         {/* Legal Column */}
