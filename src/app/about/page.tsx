@@ -49,6 +49,7 @@ const TEAM = [
       { name: "GitHub", url: "https://github.com/naqashafzal", icon: Code2 },
       { name: "Google Developer", url: "https://g.dev/naqashafzal", icon: Globe },
       { name: "MakerWorld", url: "https://makerworld.com/en/@naqash", icon: Layers },
+      { name: "Discord Community", url: "https://discord.gg/Q3tTGhH4k", icon: MessageSquare },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/naqashafzal/", icon: ExternalLink },
       { name: "Freelancer", url: "https://www.freelancer.com/u/naqashafzal", icon: Briefcase },
     ],

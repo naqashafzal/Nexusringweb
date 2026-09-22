@@ -48,6 +48,7 @@ export const SITE_CONFIG = {
     makerworld: "https://makerworld.com/en/@naqash",
     linkedin: "https://www.linkedin.com/in/naqashafzal/",
     freelancer: "https://www.freelancer.com/u/naqashafzal",
+    discord: "https://discord.gg/Q3tTGhH4k",
   },
 };
 
@@ -90,6 +91,7 @@ export function getStructuredData() {
       SITE_CONFIG.social.makerworld,
       SITE_CONFIG.social.linkedin,
       SITE_CONFIG.social.freelancer,
+      SITE_CONFIG.social.discord,
     ],
   };
 
