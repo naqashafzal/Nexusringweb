@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import DiscordIcon from "@/components/DiscordIcon";
 import {
   Play,
   Check,
@@ -253,9 +254,21 @@ export default function CampaignPage() {
             <span className="text-[#64748b]">• {activeBacker.tier}</span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-[#00FF9D]">
-            <Clock size={14} />
-            <span>28 DAYS REMAINING</span>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://discord.gg/N82CpZtGu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-mono text-[#5865F2] hover:text-white transition-colors"
+            >
+              <DiscordIcon className="w-3.5 h-3.5" />
+              <span>JOIN DISCORD</span>
+            </a>
+            <span className="text-[#151D2A]">|</span>
+            <div className="flex items-center gap-1.5 text-xs font-mono text-[#00FF9D]">
+              <Clock size={14} />
+              <span>28 DAYS REMAINING</span>
+            </div>
           </div>
         </div>
 
@@ -325,12 +338,23 @@ export default function CampaignPage() {
               </div>
             </div>
 
-            <a
-              href="#pledge-tiers"
-              className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
-            >
-              Back This Project Now <ChevronRight size={18} />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="#pledge-tiers"
+                className="flex-1 py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+              >
+                Back This Project Now <ChevronRight size={18} />
+              </a>
+              <a
+                href="https://discord.gg/N82CpZtGu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-4 px-6 rounded-xl font-bold text-sm tracking-wide text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_25px_rgba(88,101,242,0.4)] flex items-center justify-center gap-2"
+              >
+                <DiscordIcon className="w-4 h-4" />
+                <span>Join Discord</span>
+              </a>
+            </div>
           </motion.div>
 
           {/* Right Video / Interactive Visual Teaser (5 cols) */}

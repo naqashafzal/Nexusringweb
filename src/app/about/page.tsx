@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import DiscordIcon from "@/components/DiscordIcon";
 import {
   Cpu,
   Fingerprint,
@@ -146,8 +147,19 @@ export default function AboutPage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center max-w-4xl mx-auto space-y-6 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-            <Building2 size={14} /> Nexus Desktop Art Inc. · Founded 2025
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
+              <Building2 size={14} /> Nexus Desktop Art Inc. · Founded 2025
+            </div>
+            <a
+              href="https://discord.gg/N82CpZtGu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#5865F2]/50 bg-[#5865F2]/10 text-white text-[11px] font-mono font-bold tracking-widest uppercase hover:bg-[#5865F2] transition-colors"
+            >
+              <DiscordIcon className="w-3.5 h-3.5 text-[#5865F2]" />
+              <span>Join Discord</span>
+            </a>
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -362,8 +374,19 @@ export default function AboutPage() {
               Get in Touch with the Founders
             </h2>
             <p className="text-[#94a3b8] text-sm font-light">
-              Have questions about custom SDK webhooks, enterprise licensing, or press inquiries? Send a direct message to our engineering leads.
+              Have questions about custom SDK webhooks, enterprise licensing, or press inquiries? Send a direct message to our engineering leads or chat live on our Discord server.
             </p>
+            <div className="pt-2">
+              <a
+                href="https://discord.gg/N82CpZtGu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-mono text-xs font-bold shadow-[0_0_20px_rgba(88,101,242,0.4)] transition-all"
+              >
+                <DiscordIcon className="w-4 h-4" />
+                <span>Join Official Discord Server</span>
+              </a>
+            </div>
           </div>
 
           {formSubmitted ? (

@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import ExplodedRingCanvas from "@/components/ExplodedRingCanvas";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
+import DiscordIcon from "@/components/DiscordIcon";
 import { Fingerprint, Zap, Lock, ChevronRight, Rotate3D } from "lucide-react";
 
 // ─── Reveal helper ────────────────────────────────────────────────
@@ -73,6 +74,15 @@ export default function Home() {
                 >
                   Pre-Order Artifact — $129
                 </Link>
+                <a
+                  href="https://discord.gg/N82CpZtGu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_25px_rgba(88,101,242,0.4)] hover:shadow-[0_0_40px_rgba(88,101,242,0.7)] hover:scale-[1.02]"
+                >
+                  <DiscordIcon className="w-4 h-4" />
+                  <span>Join Discord</span>
+                </a>
                 <Link
                   href="/research"
                   className="px-8 py-4 rounded-xl font-medium text-sm text-[#94A3B8] hover:text-white border border-[#151D2A] hover:border-[#00FF9D]/40 bg-[#070A10]/90 backdrop-blur-md transition-all duration-300"
@@ -371,13 +381,24 @@ export default function Home() {
           <p className="text-[#94A3B8] text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
             Join the backers who refuse to surrender their attention to digital distractions. Limited Founder's Artifact tier available now.
           </p>
-          <Link
-            href="/campaign"
-            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-base tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-colors duration-200 hover:shadow-[0_0_65px_rgba(0,255,157,0.6),0_0_120px_rgba(0,255,157,0.2)]"
-          >
-            Back This Project <ChevronRight size={18} />
-            <span className="absolute inset-0 rounded-2xl animate-ping opacity-[0.1] bg-[#00FF9D]" />
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/campaign"
+              className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-base tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-colors duration-200 hover:shadow-[0_0_65px_rgba(0,255,157,0.6),0_0_120px_rgba(0,255,157,0.2)]"
+            >
+              Back This Project <ChevronRight size={18} />
+              <span className="absolute inset-0 rounded-2xl animate-ping opacity-[0.1] bg-[#00FF9D]" />
+            </Link>
+            <a
+              href="https://discord.gg/N82CpZtGu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-5 rounded-2xl font-bold text-base tracking-wide text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_35px_rgba(88,101,242,0.4)] hover:shadow-[0_0_60px_rgba(88,101,242,0.7)]"
+            >
+              <DiscordIcon className="w-5 h-5" />
+              <span>Join Our Discord</span>
+            </a>
+          </div>
           <p className="text-[#64748B] text-xs mt-6 font-mono tracking-widest">$45,000 raised · 28 days left</p>
         </Reveal>
       </section>
