@@ -42,7 +42,7 @@ Designed and engineered by Nexus Desktop Art Inc., the Nexus Ring represents the
 - **Kernel Daemon:** Native background daemons for Windows (PowerShell / registry hooks), macOS (launchd / pfctl packet filter / AppleScript), and Linux (systemd / iptables).
 - **Latency:** Sub-24ms hardware interrupt to OS action response time.
 - **Network Security:** Operates locally. Capable of air-gapped operation via USB HID or local Wi-Fi/BLE websocket.
-- **AI Guardian:** Local quantized Gemini 1.5 vision and context model running completely on-device. Zero keystrokes, screenshots, or metadata are ever transmitted to any cloud server.
+- **AI Guardian:** Local quantized custom AI vision and context model running completely on-device. Zero keystrokes, screenshots, or metadata are ever transmitted to any cloud server.
 
 ---
 

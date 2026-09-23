@@ -148,7 +148,7 @@ export default function ResearchPage() {
               To provide intelligent context awareness, the Nexus software utilizes a quantized vision-language model. Sending desktop screenshots to external cloud servers is a non-negotiable privacy violation.
             </p>
             <p>
-              The Nexus Guardian runs an optimized 4-bit quantization of <strong className="text-white font-semibold">Gemini 1.5</strong> directly on your machine's GPU or NPU. Zero screen pixels or keystrokes leave your machine.
+              The Nexus Guardian runs an optimized 4-bit quantization of <strong className="text-white font-semibold">Local AI</strong> directly on your machine's GPU or NPU. Zero screen pixels or keystrokes leave your machine.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

@@ -21,7 +21,7 @@
 - **Price:** $15 (DIY Maker Kit), $49 (Hacker Electronics Pack), $129 (Early Bird Founder's Artifact), $169 (Nexus Pro), $349 (Dual Executive Desk Set)
 - **Availability:** Batch 01 Pre-order live; Official Crowdfunding Campaign Active
 - **Hardware Architecture:** Precision 3D-Printed V1 chassis (engineered matte composite / PLA-CF with official 3MF profiles for Bambu Lab & Prusa), 4x KY-003 Hall-effect sensors, ESP32-C3 RISC-V 160MHz micro-controller, ceramic magnetic damping ring, N52 neodymium magnetic totems (CNC aluminum in stretch/future tiers)
-- **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Gemini 1.5 local core), zero cloud telemetry
+- **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Custom Local AI Agent core), zero cloud telemetry
 - **Founder & Chief Hardware Architect:** Naqash Afzal
   - GitHub: https://github.com/naqashafzal
   - Google Developer: https://g.dev/naqashafzal

@@ -610,7 +610,7 @@ export default function FeaturesPage() {
         </motion.div>
       </section>
 
-      {/* ════════════════ 5. THE AI GUARDIAN (GEMINI 1.5) ═════════════ */}
+      {/* ════════════════ 5. THE AI GUARDIAN (LOCAL AI) ═════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -622,7 +622,7 @@ export default function FeaturesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#B026FF]/30 bg-[#B026FF]/10 text-[#B026FF] text-[10px] font-mono tracking-widest uppercase">
-                <Eye size={14} /> Local NPU Vision Model · Gemini 1.5 Quantized
+                <Eye size={14} /> Local NPU Vision Model · Local AI Quantized
               </div>
 
               <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
@@ -630,7 +630,7 @@ export default function FeaturesPage() {
               </h2>
 
               <p className="text-[#94a3b8] text-base leading-relaxed font-light">
-                The Nexus Guardian runs an optimized 4-bit quantized <strong className="text-white font-semibold">Gemini 1.5</strong> vision model locally in your GPU/NPU VRAM. Every 10 seconds during focus sessions, the Guardian scans active window titles.
+                The Nexus Guardian runs an optimized 4-bit quantized <strong className="text-white font-semibold">Local AI</strong> vision model locally in your GPU/NPU VRAM. Every 10 seconds during focus sessions, the Guardian scans active window titles.
               </p>
 
               <div className="p-5 rounded-2xl border border-[#151D2A] bg-[#030508] space-y-3">
@@ -668,7 +668,7 @@ export default function FeaturesPage() {
 
               <div className="text-center font-mono text-xs space-y-1">
                 <p className="text-white font-bold">LOCAL VRAM INFERENCE</p>
-                <p className="text-[#64748b] text-[10px]">gemini-1.5-flash-q4.bin</p>
+                <p className="text-[#64748b] text-[10px]">local-ai-vision-q4.bin</p>
                 <p className="text-[#00FF9D] text-[10px] pt-2">0 BYTES TRANSMITTED TO CLOUD</p>
               </div>
             </div>

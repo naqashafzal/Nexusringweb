@@ -537,7 +537,7 @@ export default function Home() {
                     </span>
                   </div>
                   <h3 className="text-2xl font-display font-bold text-white">
-                    Local AI Guardian (Air-Gapped Gemini 1.5)
+                    Local AI Guardian (Air-Gapped Local Model)
                   </h3>
                   <p className="text-[#94A3B8] text-sm leading-relaxed font-light">
                     An on-device model inspects app context in real time. Zero screen pixels or keystrokes ever leave your machine. 100% private enforcement.

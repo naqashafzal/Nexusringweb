@@ -197,7 +197,7 @@ const FAQS = [
   },
   {
     q: "Is the Local AI Guardian truly 100% private?",
-    a: "Absolutely. The 4-bit quantized Gemini 1.5 vision model executes inside your machine's VRAM or NPU. Zero screen images or telemetry data are uploaded to cloud servers.",
+    a: "Absolutely. The 4-bit quantized local AI vision model executes inside your machine's VRAM or NPU. Zero screen images or telemetry data are uploaded to cloud servers.",
   },
   {
     q: "What happens if the stretch goal for the Micro-OLED display is met?",
@@ -397,7 +397,7 @@ export default function CampaignPage() {
               <Play size={48} className="text-[#00FF9D] animate-bounce mb-4" />
               <h3 className="text-2xl font-display font-bold text-white mb-2">Nexus Ring Launch Film Demo</h3>
               <p className="text-xs font-mono text-[#94a3b8] max-w-md">
-                Demonstrating 4.2N magnetic snap resonance, ESP32-C3 local daemon interrupts, and local Gemini 1.5 focus guardian.
+                Demonstrating 4.2N magnetic snap resonance, ESP32-C3 local daemon interrupts, and local AI focus guardian.
               </p>
               <button
                 onClick={() => setVideoModal(false)}

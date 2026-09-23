@@ -60,12 +60,12 @@ case "$MODE" in
     open -a "Zoom"
     ;;
 esac`,
-  python: `# Nexus Local AI Guardian Loop (Gemini 1.5 Quantized)
+  python: `# Nexus Local AI Guardian Loop (Local AI Quantized)
 import asyncio
 from nexus_core import RingDaemon, LocalVisionModel
 
 daemon = RingDaemon(port=8420)
-model = LocalVisionModel.load_npu_quantized("gemini-1.5-flash-q4")
+model = LocalVisionModel.load_npu_quantized("local-ai-vision-q4")
 
 @daemon.on_totem_snap
 async def handle_snap(slot_id: int, mode_name: str):
@@ -134,7 +134,7 @@ export default function SoftwarePage() {
             {[
               { val: "0 Bytes", label: "Sent to Cloud", accent: "#00FF9D" },
               { val: "<24ms", label: "Kernel Webhook", accent: "#00E5FF" },
-              { val: "Gemini 1.5", label: "Quantized NPU", accent: "#B026FF" },
+              { val: "Local AI", label: "Quantized NPU", accent: "#B026FF" },
               { val: "Open SDK", label: "Custom Hooks", accent: "#FF9F1C" },
             ].map((st) => (
               <div key={st.label} className="p-3 rounded-xl border border-[#151D2A] bg-[#070A10]">
@@ -220,7 +220,7 @@ export default function SoftwarePage() {
               How the Local AI Guardian Works
             </h3>
             <p className="text-[#94a3b8] text-sm leading-relaxed font-light mt-2">
-              Unlike cloud-based AI tools that upload screen images, Nexus runs a quantized Gemini 1.5 model in local VRAM.
+              Unlike cloud-based AI tools that upload screen images, Nexus runs a quantized local AI model in local VRAM.
             </p>
           </div>
 

@@ -95,7 +95,7 @@ const VALUES = [
 const MILESTONES = [
   { year: "2025 Q1", title: "Nexus Labs Founded", note: "R&D initiated on Hall-effect magnetic spatial tracking." },
   { year: "2025 Q3", title: "ESP32-C3 Firmware v1.0", note: "Achieved sub-24ms local OS kernel webhook execution." },
-  { year: "2026 Q1", title: "Air-Gapped Gemini 1.5 AI", note: "Quantized 4-bit vision model for zero-cloud local focus monitoring." },
+  { year: "2026 Q1", title: "Air-Gapped Local AI Guardian", note: "Quantized 4-bit vision model for zero-cloud local focus monitoring." },
   { year: "2026 Q2", title: "Global Batch 01 Launch", note: "500-unit limited aerospace production launch worldwide." },
 ];
 
