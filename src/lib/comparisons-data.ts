@@ -33,7 +33,7 @@ export const COMPARISONS: Record<string, ComparisonItem> = {
     heroTitle: "NEXUS RING VS. OPAL APP",
     heroSubtitle:
       "Why cold physical hardware beats mobile app subscriptions when your career and focus are on the line.",
-    metaTitle: "Nexus Ring vs Opal: Physical Discipline Engine vs App Blocker",
+    metaTitle: "Nexus Ring vs Opal: Intelligent Gatekeeper vs App Blocker",
     metaDescription:
       "Comparing Nexus Ring and Opal App. Discover why physical spatial hardware permanently solves ego depletion and digital distractions where software app blockers fail.",
     targetPersona: "Knowledge workers, software engineers, and founders struggling with desktop context switching.",
@@ -114,7 +114,7 @@ export const COMPARISONS: Record<string, ComparisonItem> = {
       },
     ],
     verdict:
-      "If you only want basic screen time charts on your iPhone, Opal is a lightweight start. If you need unbreakable focus to ship complex software, close high-value deals, or protect your cognitive peak hours on your desktop workspace, Nexus Ring is the definitive physical discipline engine.",
+      "If you only want basic screen time charts on your iPhone, Opal is a lightweight start. If you need unbreakable focus to ship complex software, close high-value deals, or protect your cognitive peak hours on your desktop workspace, Nexus Ring is the definitive intelligent gatekeeper for your attention.",
   },
 
   "nexus-ring-vs-freedom-blocker": {

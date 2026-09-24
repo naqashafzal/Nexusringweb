@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Crowdfunding Campaign | Back the Discipline Engine",
     description:
-      "Protect your potential and back the physical discipline engine built for deep work.",
+      "Protect your potential and back the intelligent gatekeeper built for deep work.",
     url: "https://www.nexusring.tech/campaign",
   },
 };

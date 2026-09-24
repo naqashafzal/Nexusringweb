@@ -2,11 +2,11 @@
 
 import React, { useRef, useMemo, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls, ContactShadows } from "@react-three/drei";
+import { useGLTF, OrbitControls, ContactShadows } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { MotionValue } from "framer-motion";
-import { Layers, RotateCcw, Maximize2, Sliders } from "lucide-react";
+import { Layers } from "lucide-react";
 
 // Generates a seamless procedural noise texture for powder-coated matte finish
 const generateNoiseTexture = () => {
@@ -35,82 +35,61 @@ const generateNoiseTexture = () => {
   return texture;
 };
 
-function Model(props: any) {
-  const gltf = useGLTF("/models/nexus_ring.glb") as any;
-  const nodes = gltf?.nodes || {};
-  const scene = gltf?.scene;
-  const { scrollProgress, explodeFactor, disableExplode } = props;
+interface ModelProps {
+  scrollProgress?: MotionValue<number>;
+  explodeFactor?: number;
+  disableExplode?: boolean;
+  scale?: number;
+}
 
-  // Model Sub-component Refs for Exploded View Animations
+function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
+  const gltf = useGLTF("/models/nexus_ring.glb") as any;
   const mainGroupRef = useRef<THREE.Group>(null);
-  const totemRef = useRef<THREE.Mesh>(null);
-  const lidGroupRef = useRef<THREE.Group>(null);
-  const espRef = useRef<THREE.Mesh>(null);
-  const ledRingRef = useRef<THREE.Mesh>(null);
-  const glowBodyRef = useRef<THREE.Mesh>(null);
-  const hall1Ref = useRef<THREE.Mesh>(null);
-  const hall2Ref = useRef<THREE.Mesh>(null);
-  const hall3Ref = useRef<THREE.Mesh>(null);
-  const hall4Ref = useRef<THREE.Mesh>(null);
-  const textRef = useRef<THREE.Mesh>(null);
+  const partsRef = useRef<{
+    [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 };
+  }>({});
 
   const noiseTexture = useMemo(() => generateNoiseTexture(), []);
 
-  // Scene Traversal Backup for Fallback Explosion
-  const sceneMeshes = useMemo(() => {
-    if (!scene) return [];
-    const list: Array<{ mesh: THREE.Mesh; origPos: THREE.Vector3; index: number }> = [];
-    let idx = 0;
-    scene.traverse((child: any) => {
-      if (child.isMesh) {
-        list.push({
-          mesh: child,
-          origPos: child.position.clone(),
-          index: idx++,
-        });
-      }
-    });
-    return list;
-  }, [scene]);
-
-  // Materials
+  // Premium Curated Materials
   const matteAnodizedMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#10141d"),
-        roughness: 0.85,
-        metalness: 0.15,
+        color: new THREE.Color("#0c111a"),
+        roughness: 0.45,
+        metalness: 0.65,
         bumpMap: noiseTexture || undefined,
         bumpScale: 0.003,
       }),
     [noiseTexture]
   );
 
-  const darkMetalMaterial = useMemo(
+  const totemMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#181f2c"),
-        roughness: 0.4,
-        metalness: 0.8,
+        color: new THREE.Color("#182232"),
+        roughness: 0.25,
+        metalness: 0.85,
+        bumpMap: noiseTexture || undefined,
+        bumpScale: 0.002,
       }),
-    []
+    [noiseTexture]
   );
 
-  // Middle Glow Ring Material (Breathing subtle aura)
   const subtleGlowMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#001a0e"),
+        color: new THREE.Color("#002a18"),
         emissive: new THREE.Color("#00FF9D"),
         emissiveIntensity: 1.8,
-        roughness: 0.2,
-        metalness: 0.5,
-        toneMapped: false,
+        roughness: 0.15,
+        metalness: 0.3,
+        transparent: true,
+        opacity: 0.9,
       }),
     []
   );
 
-  // Small Middle Ring NeoPixel Material (High-intensity pulsing neon glow)
   const glowMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
@@ -126,8 +105,8 @@ function Model(props: any) {
   const pcbHighlightMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#0a2416"),
-        roughness: 0.3,
+        color: new THREE.Color("#071a10"),
+        roughness: 0.35,
         metalness: 0.6,
       }),
     []
@@ -136,9 +115,9 @@ function Model(props: any) {
   const matteComponentMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#0f172a"),
-        roughness: 0.7,
-        metalness: 0.3,
+        color: new THREE.Color("#111827"),
+        roughness: 0.6,
+        metalness: 0.35,
       }),
     []
   );
@@ -146,12 +125,65 @@ function Model(props: any) {
   const textMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#e2e8f0"),
-        roughness: 0.5,
-        metalness: 0.5,
+        color: new THREE.Color("#ffffff"),
+        emissive: new THREE.Color("#00FF9D"),
+        emissiveIntensity: 0.4,
+        roughness: 0.3,
+        metalness: 0.2,
       }),
     []
   );
+
+  // Clone scene so we can mutate positions cleanly per instance
+  const clonedScene = useMemo(() => {
+    if (!gltf?.scene) return null;
+    return gltf.scene.clone(true);
+  }, [gltf?.scene]);
+
+  // Setup parts mapping and assign materials
+  useEffect(() => {
+    if (!clonedScene) return;
+    const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
+
+    clonedScene.traverse((child: any) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+        parts[child.name] = {
+          mesh: child,
+          origPos: child.position.clone(),
+        };
+
+        // Assign curated materials
+        if (child.name === "base" || child.name === "lid") {
+          child.material = matteAnodizedMaterial;
+        } else if (child.name === "totem") {
+          child.material = totemMaterial;
+        } else if (child.name === "Body8(7)") {
+          child.material = subtleGlowMaterial;
+        } else if (child.name.includes("LED_Ring") || child.name.includes("Neopixel")) {
+          child.material = glowMaterial;
+        } else if (child.name.includes("Esp32")) {
+          child.material = pcbHighlightMaterial;
+        } else if (child.name.includes("Hall_Sensor")) {
+          child.material = matteComponentMaterial;
+        } else if (child.name.startsWith("Text")) {
+          child.material = textMaterial;
+        }
+      }
+    });
+
+    partsRef.current = parts;
+  }, [
+    clonedScene,
+    matteAnodizedMaterial,
+    totemMaterial,
+    subtleGlowMaterial,
+    glowMaterial,
+    pcbHighlightMaterial,
+    matteComponentMaterial,
+    textMaterial,
+  ]);
 
   // ─── Frame Loop: Animated Pulsing Glow + Exploded View Disassembly ───
   useFrame((state) => {
@@ -160,194 +192,89 @@ function Model(props: any) {
     // Determine explosion factor (0 = assembled, 1 = max exploded)
     let p = 0;
     if (disableExplode) {
-      p = 0; // Forced assembled state (No explosion)
+      p = 0;
     } else if (explodeFactor !== undefined) {
       p = explodeFactor;
     } else if (scrollProgress) {
       p = Math.max(scrollProgress.get(), 0);
     } else {
-      p = 0.8;
+      p = 0.85;
     }
 
     // Main Group Orientation & Continuous 360 Rotation + Gentle Floating
     if (mainGroupRef.current) {
-      mainGroupRef.current.rotation.x = 0.6 + Math.cos(time * 0.3) * 0.03;
+      mainGroupRef.current.rotation.x = 0.48 + Math.cos(time * 0.4) * 0.02;
       mainGroupRef.current.rotation.y = time * 0.35 + (scrollProgress ? scrollProgress.get() * Math.PI * 0.5 : 0);
-      mainGroupRef.current.position.y = Math.sin(time * 0.6) * 0.12;
+      mainGroupRef.current.position.y = Math.sin(time * 0.8) * 0.18;
     }
 
-    // High-Intensity Pulsing Animated Glow on Small Middle Ring
+    // High-Intensity Pulsing Animated Glow on NeoPixel ring
     if (glowMaterial) {
-      glowMaterial.emissiveIntensity = 2.8 + Math.sin(time * 4.5) * 1.8;
+      glowMaterial.emissiveIntensity = 3.0 + Math.sin(time * 4.5) * 1.5;
     }
 
     if (subtleGlowMaterial) {
-      subtleGlowMaterial.emissiveIntensity = 1.6 + Math.sin(time * 2.5) * 0.9 + p * 1.2;
+      subtleGlowMaterial.emissiveIntensity = 1.6 + Math.sin(time * 2.5) * 0.8 + p * 1.0;
     }
 
-    // 1. Totem lifts high in Z & Y axis
-    if (totemRef.current) {
-      totemRef.current.position.z = p * 12.5;
-      totemRef.current.position.y = p * 2.8;
+    const parts = partsRef.current;
+    if (!parts || Object.keys(parts).length === 0) return;
+
+    // 1. Totem lifts high in Y
+    if (parts["totem"]) {
+      parts["totem"].mesh.position.y = parts["totem"].origPos.y + p * 8.5;
     }
 
     // 2. Top Anodized Housing Lid lifts
-    if (lidGroupRef.current) {
-      lidGroupRef.current.position.z = p * 7.5;
+    if (parts["lid"]) {
+      parts["lid"].mesh.position.y = parts["lid"].origPos.y + p * 5.0;
     }
 
-    // 3. Middle Glow Ring & NeoPixel LED ring float mid-air
-    if (glowBodyRef.current) {
-      glowBodyRef.current.position.z = 2.053 + p * 4.8;
+    // 3. Laser Text Branding lifts with Lid
+    ["Text_0", "Text_1", "Text_2", "Text_3", "Text_01"].forEach((name) => {
+      if (parts[name]) {
+        parts[name].mesh.position.y = parts[name].origPos.y + p * 5.02;
+      }
+    });
+
+    // 4. Middle Glow Ring Diffuser & NeoPixel LED ring float mid-air
+    if (parts["Body8(7)"]) {
+      parts["Body8(7)"].mesh.position.y = parts["Body8(7)"].origPos.y + p * 3.4;
+    }
+    const ledKey = Object.keys(parts).find((k) => k.includes("LED_Ring") || k.includes("Neopixel"));
+    if (ledKey && parts[ledKey]) {
+      parts[ledKey].mesh.position.y = parts[ledKey].origPos.y + p * 2.5;
     }
 
-    if (ledRingRef.current) {
-      ledRingRef.current.position.z = 1.854 + p * 3.6;
+    // 5. ESP32-C3 Microcontroller PCB lifts & shifts outwards
+    const espKey = Object.keys(parts).find((k) => k.includes("Esp32"));
+    if (espKey && parts[espKey]) {
+      parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * 1.6;
+      parts[espKey].mesh.position.x = parts[espKey].origPos.x - p * 2.0;
     }
 
-    // 4. ESP32-C3 Microcontroller PCB lifts & shifts outwards
-    if (espRef.current) {
-      espRef.current.position.z = 0.426 + p * 3.2;
-      espRef.current.position.x = -5.644 - p * 3.5;
-    }
+    // 6. Hall Effect Sensors separate radially outward
+    const hallSensors = Object.keys(parts).filter((k) => k.includes("Hall_Sensor"));
+    hallSensors.forEach((name, idx) => {
+      const pObj = parts[name];
+      pObj.mesh.position.y = pObj.origPos.y + p * 1.2;
+      const radX = Math.sign(pObj.origPos.x || (idx % 2 === 0 ? 1 : -1));
+      const radZ = Math.sign(pObj.origPos.z || (idx < 2 ? 1 : -1));
+      pObj.mesh.position.x = pObj.origPos.x + p * radX * 1.8;
+      pObj.mesh.position.z = pObj.origPos.z + p * radZ * 1.8;
+    });
 
-    // 5. Hall Effect Sensors separate radially along Z & X/Y
-    if (hall1Ref.current) {
-      hall1Ref.current.position.z = 0.9 + p * 2.2;
-      hall1Ref.current.position.x = 8.052 + p * 2.5;
-    }
-    if (hall2Ref.current) {
-      hall2Ref.current.position.z = 0.9 + p * 2.2;
-      hall2Ref.current.position.y = 8.052 + p * 2.5;
-    }
-    if (hall3Ref.current) {
-      hall3Ref.current.position.z = 0.9 + p * 2.2;
-      hall3Ref.current.position.x = -8.052 - p * 2.5;
-    }
-    if (hall4Ref.current) {
-      hall4Ref.current.position.z = 0.9 + p * 2.2;
-      hall4Ref.current.position.y = -8.052 - p * 2.5;
-    }
-
-    // 6. Laser Text Branding lifts with Totem Lid
-    if (textRef.current) {
-      textRef.current.position.z = 2.206 + p * 7.8;
-    }
-
-    // Fallback Explosion for generic scene meshes
-    if (sceneMeshes.length > 0) {
-      sceneMeshes.forEach(({ mesh, origPos, index }) => {
-        const offsetDirection = (index % 2 === 0 ? 1 : -1) * (index + 1) * 1.5;
-        mesh.position.z = origPos.z + p * offsetDirection;
-      });
+    // 7. Base dock anchors firmly at original position
+    if (parts["base"]) {
+      parts["base"].mesh.position.copy(parts["base"].origPos);
     }
   });
 
-  const hasNamedNodes = nodes && nodes["Body1(1)"] && nodes["Body1(1)"].geometry;
+  if (!clonedScene) return null;
 
   return (
     <group ref={mainGroupRef} dispose={null}>
-      {hasNamedNodes ? (
-        <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <group rotation={[-Math.PI / 2, 0, 0]}>
-            {nodes["Body1(1)"]?.geometry && (
-              <mesh name="Body1(1)" geometry={nodes["Body1(1)"].geometry} material={matteAnodizedMaterial} />
-            )}
-
-            {nodes["Body7(1)"]?.geometry && (
-              <group ref={lidGroupRef}>
-                <mesh name="Body7(1)" geometry={nodes["Body7(1)"].geometry} material={matteAnodizedMaterial} />
-              </group>
-            )}
-
-            {nodes.totem?.geometry && (
-              <mesh ref={totemRef} name="totem" geometry={nodes.totem.geometry} material={darkMetalMaterial} />
-            )}
-
-            {nodes["Esp32-C3_mini_v1"]?.geometry && (
-              <mesh
-                ref={espRef}
-                name="Esp32-C3_mini_v1"
-                geometry={nodes["Esp32-C3_mini_v1"].geometry}
-                material={pcbHighlightMaterial}
-                position={[-5.644, 5.681, 0.426]}
-              >
-                <pointLight distance={8} intensity={1} color="#00ff88" />
-              </mesh>
-            )}
-
-            {nodes["LED_Ring_WS2812_5V_-_likeNeopixel_v1"]?.geometry && (
-              <mesh
-                ref={ledRingRef}
-                name="LED_Ring_WS2812_5V_-_likeNeopixel_v1"
-                geometry={nodes["LED_Ring_WS2812_5V_-_likeNeopixel_v1"].geometry}
-                material={glowMaterial}
-                position={[0.008, 0.006, 1.854]}
-              />
-            )}
-
-            {nodes["Body8(7)"]?.geometry && (
-              <mesh
-                ref={glowBodyRef}
-                name="Body8(7)"
-                geometry={nodes["Body8(7)"].geometry}
-                material={subtleGlowMaterial}
-                position={[0, 0, 2.053]}
-              />
-            )}
-
-            {nodes["Hall_Sensor_v1_v1(1)"]?.geometry && (
-              <mesh
-                ref={hall1Ref}
-                name="Hall_Sensor_v1_v1(1)"
-                geometry={nodes["Hall_Sensor_v1_v1(1)"].geometry}
-                material={matteComponentMaterial}
-                position={[8.052, -0.832, 0.9]}
-              />
-            )}
-            {nodes["Hall_Sensor_v1_v1(2)"]?.geometry && (
-              <mesh
-                ref={hall2Ref}
-                name="Hall_Sensor_v1_v1(2)"
-                geometry={nodes["Hall_Sensor_v1_v1(2)"].geometry}
-                material={matteComponentMaterial}
-                position={[0.832, 8.052, 0.9]}
-              />
-            )}
-            {nodes["Hall_Sensor_v1_v1(3)"]?.geometry && (
-              <mesh
-                ref={hall3Ref}
-                name="Hall_Sensor_v1_v1(3)"
-                geometry={nodes["Hall_Sensor_v1_v1(3)"].geometry}
-                material={matteComponentMaterial}
-                position={[-8.052, 0.832, 0.9]}
-              />
-            )}
-            {nodes["Hall_Sensor_v1_v1(4)"]?.geometry && (
-              <mesh
-                ref={hall4Ref}
-                name="Hall_Sensor_v1_v1(4)"
-                geometry={nodes["Hall_Sensor_v1_v1(4)"].geometry}
-                material={matteComponentMaterial}
-                position={[-0.832, -8.052, 0.9]}
-              />
-            )}
-
-            {nodes.Text_01?.geometry && (
-              <mesh
-                ref={textRef}
-                name="Text_01"
-                geometry={nodes.Text_01.geometry}
-                material={textMaterial}
-                position={[-0.18, -0.387, 2.206]}
-                rotation={[Math.PI / 2, 0, 0]}
-              />
-            )}
-          </group>
-        </group>
-      ) : scene ? (
-        <primitive object={scene} />
-      ) : null}
+      <primitive object={clonedScene} />
     </group>
   );
 }
@@ -366,7 +293,7 @@ export default function ExplodedRingCanvas({
   explodeFactor?: number;
 }) {
   const [zoom, setZoom] = useState(1);
-  const [explodeFactor, setExplodeFactor] = useState(0.85); // Default 85% Exploded State for interactive mode
+  const [explodeFactor, setExplodeFactor] = useState(0.85);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -376,10 +303,11 @@ export default function ExplodedRingCanvas({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Position and Scale tuned for desktop & mobile to fit comfortably on screen
-  const posX = centerPosition ? 0 : isMobile ? 0 : disableExplode ? 5.5 : 6.8;
-  const baseScale = disableExplode ? (isMobile ? 0.18 : 0.21) : (isMobile ? 0.22 : 0.27);
-  const posY = disableExplode ? (isMobile ? -0.5 : -0.2) : (isMobile ? -0.8 : -0.4);
+  // Position and Scale tuned for desktop & mobile
+  // Model native radius is ~9 units (diameter 18 units)
+  const posX = centerPosition ? 0 : isMobile ? 0 : disableExplode ? 4.6 : 5.8;
+  const posY = disableExplode ? (isMobile ? -0.6 : 0.2) : (isMobile ? -0.8 : -0.2);
+  const baseScale = disableExplode ? (isMobile ? 0.32 : 0.44) : (isMobile ? 0.28 : 0.38);
 
   return (
     <div className="w-full h-full bg-transparent relative pointer-events-auto">
@@ -479,15 +407,17 @@ export default function ExplodedRingCanvas({
       )}
 
       <Canvas
-        camera={{ position: [0, 18, 28], fov: 30 }}
+        camera={{ position: [0, 14, 26], fov: 32 }}
         className="pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={0.6} />
-          <directionalLight position={[5, 10, 5]} intensity={1.6} castShadow />
-          <directionalLight position={[-5, 5, -5]} intensity={0.4} color="#aaccff" />
-
-          <Environment preset="city" environmentIntensity={0.8} />
+          {/* Robust Self-Contained Studio Lighting (100% offline & instant) */}
+          <ambientLight intensity={1.6} color="#e0f2fe" />
+          <directionalLight position={[12, 18, 12]} intensity={3.0} color="#ffffff" />
+          <directionalLight position={[-12, 10, -8]} intensity={2.2} color="#00FF9D" />
+          <directionalLight position={[0, -8, 10]} intensity={1.0} color="#00E5FF" />
+          <pointLight position={[0, 6, 0]} intensity={2.5} color="#00FF9D" distance={15} />
+          <pointLight position={[-4, 2, 4]} intensity={1.8} color="#00E5FF" distance={12} />
 
           <OrbitControls
             enableZoom={false}
@@ -507,14 +437,14 @@ export default function ExplodedRingCanvas({
           </group>
 
           <EffectComposer>
-            <Bloom luminanceThreshold={1.0} luminanceSmoothing={0.9} intensity={1.4} opacity={0.6} />
+            <Bloom luminanceThreshold={0.8} luminanceSmoothing={0.9} intensity={1.2} />
           </EffectComposer>
 
           <ContactShadows
-            position={[posX, -2.5, 0]}
-            opacity={0.4}
-            scale={16}
-            blur={2}
+            position={[posX, posY - 2.2, 0]}
+            opacity={0.5}
+            scale={22}
+            blur={2.5}
             far={6}
             color="#000000"
           />

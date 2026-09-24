@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Comparisons & Alternatives | Physical Discipline Engine vs Software Blockers",
+  title: "Comparisons & Alternatives | Physical Anchor vs Software Blockers",
   description:
-    "See how the Nexus Ring physical discipline engine compares to digital app blockers (Opal, Freedom), passive Pomodoro timers, and NFC phone lockers.",
+    "See how the Nexus Ring intelligent gatekeeper compares to digital app blockers (Opal, Freedom), passive Pomodoro timers, and NFC phone lockers.",
   keywords: [
     "Nexus Ring Alternatives",
     "Nexus Ring vs Opal",

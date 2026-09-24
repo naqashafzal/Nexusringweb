@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Nexus Ring | The Physical Discipline Engine";
+export const alt = "Nexus Ring | Bridging the gap between physical intention and digital execution";
 export const size = {
   width: 1200,
   height: 630,
@@ -86,7 +86,7 @@ export default async function Image() {
               marginLeft: "12px",
             }}
           >
-            Physical Discipline Engine
+            Bridging the gap between physical intention & digital execution
           </span>
         </div>
 

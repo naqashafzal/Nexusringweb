@@ -41,7 +41,7 @@ export default function CompareDirectoryPage() {
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-tight text-white leading-[1.05] max-w-4xl mx-auto">
           WHY PHYSICAL DISCIPLINE{" "}
-          <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             OUTPERFORMS SOFTWARE.
           </span>
         </h1>

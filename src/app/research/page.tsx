@@ -29,13 +29,13 @@ export default function ResearchPage() {
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             THE SCIENCE OF<br />
-            <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               SPATIAL FOCUS.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            The Nexus Ring is a physical discipline engine built to accelerate your personal success. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
+            The Nexus Ring is an intelligent gatekeeper for your attention. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
           </p>
 
           <div className="pt-4">

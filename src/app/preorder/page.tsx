@@ -132,13 +132,13 @@ export default function PreorderPage() {
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             RESERVE YOUR<br />
-            <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               DISCIPLINE ENGINE.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical discipline engine now to protect your time and focus.
+            The ultimate hardware artifact to act as an intelligent gatekeeper for your attention. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical anchor for your mental state now to protect your time and focus.
           </p>
         </div>
       </section>

@@ -8,13 +8,13 @@ export const SITE_CONFIG = {
   name: "Nexus Ring",
   legalName: "Nexus Desktop Art Inc.",
   url: "https://www.nexusring.tech",
-  tagline: "The Physical Discipline Engine built to accelerate personal success.",
+  tagline: "Bridging the gap between physical intention and digital execution.",
   description:
-    "The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.",
+    "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring fuses custom 3D-printed hardware, local OS automation, and generative AI to act as a physical anchor for your mental state and an intelligent gatekeeper for your attention.",
   hooks: {
     disciplineEngine: "The Discipline Engine: Force your focus, save your time, and engineer your own success.",
-    moreOutput: "More Output, Less Friction: A physical barrier between you and the distractions costing you time and money.",
-    protectPotential: "Protect Your Potential: The ultimate hardware artifact to lock in your habits and build unbreakable discipline.",
+    moreOutput: "More Output, Less Friction: Changing your digital environment should be as deliberate and physical as closing an office door.",
+    protectPotential: "Protect Your Potential: The ultimate hardware artifact to act as an intelligent gatekeeper for your attention.",
   },
   keywords: [
     "Success & Discipline Engine",
@@ -99,7 +99,7 @@ export function getStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_CONFIG.url}/#product`,
-    name: "Nexus Ring — Physical Discipline Engine & Distraction Elimination System",
+    name: "Nexus Ring — Intelligent Gatekeeper & Distraction Elimination System",
     image: [`${SITE_CONFIG.url}/opengraph-image`],
     description: SITE_CONFIG.description,
     brand: {
@@ -150,15 +150,15 @@ export function getStructuredData() {
         name: "What is the Nexus Ring?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.",
+          text: "The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it eliminates the friction of getting into the zone by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.",
         },
       },
       {
         "@type": "Question",
-        name: "Why is a physical discipline engine better than software app blockers?",
+        name: "Why is a physical anchor better than software app blockers?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Software app blockers fail because they lack physical consequence and are trivial to bypass with two clicks when impulse strikes. The Nexus Ring creates a physical barrier between you and distractions, turning focus from a vulnerable willpower struggle into a tactile, mechanical state transition.",
+          text: "In a world overflowing with digital distractions, willpower is no longer enough to stay focused. Software app blockers fail because they lack physical consequence. The Nexus Ring bridges the gap between physical intention and digital execution—changing your environment becomes as deliberate and physical as closing an office door.",
         },
       },
       {

@@ -15,7 +15,7 @@ export default function Footer() {
             <span className="font-display font-bold tracking-tight text-base text-white group-hover:text-[#00FF9D] transition-colors">NEXUS RING</span>
           </Link>
           <p className="text-xs font-light mt-1 text-[#94a3b8] leading-relaxed max-w-[260px]">
-            The physical discipline engine built to accelerate your personal success. Force your focus, save your time, and protect your potential.
+            The intelligent gatekeeper built to bridge the gap between physical intention and digital execution. Force your focus, save your time, and protect your potential.
           </p>
           <div className="flex items-center gap-2 pt-2">
             <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">

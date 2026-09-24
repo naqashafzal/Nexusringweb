@@ -121,7 +121,7 @@ export default function SoftwarePage() {
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             A LOCAL GUARDIAN.<br />
-            <span style={{ background: "linear-gradient(120deg,#00E5FF 0%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               ZERO TELEMETRY.
             </span>
           </h1>

@@ -26,6 +26,7 @@ import {
   Flame,
   Globe,
   Award,
+  Bell,
 } from "lucide-react";
 
 // ─── PLEDGE TIERS DATA ────────────────────────────────────────────
@@ -59,7 +60,7 @@ const TIERS = [
       "16-LED NeoPixel RGB ring & N52 Neodymium Magnets",
       "All Digital Suite files (STLs, 3MF Profiles, Guides)",
     ],
-    delivery: "Estimated Shipping: May 2026",
+    delivery: "Estimated Shipping: May 2027",
   },
   {
     id: "adopter",
@@ -76,7 +77,7 @@ const TIERS = [
       "Full Local AI Guardian Software License",
       "Express Global Priority Shipping Included",
     ],
-    delivery: "Batch 01 Shipping: July 2026",
+    delivery: "Batch 01 Shipping: July 2027",
   },
   {
     id: "founder",
@@ -92,7 +93,7 @@ const TIERS = [
       "Lifetime VIP Software License + NPU Cloud Fallback",
       "1-on-1 Setup Call with Founders & Core Team",
     ],
-    delivery: "Priority Batch 01 Shipping: June 2026",
+    delivery: "Priority Batch 01 Shipping: June 2027",
   },
 ];
 
@@ -152,35 +153,35 @@ const LIVE_BACKERS = [
 const ROADMAP = [
   {
     phase: "PHASE 01",
-    date: "Q4 2025",
+    date: "Q4 2026",
     title: "R&D & ESP32-C3 PCB Validation",
     status: "Completed",
     desc: "Validated 4x Hall sensor magnetic tracking array and FreeRTOS local daemon websocket protocol.",
-    color: "#00FF9D",
+    color: "#FFFFFF",
   },
   {
     phase: "PHASE 02",
-    date: "Q1 2026",
+    date: "Q1 2027",
     title: "Crowdfunding & Batch 01 Booking",
     status: "Active Now",
     desc: "Reserving initial 500-unit Batch 01 queue worldwide with exclusive backer discounts.",
-    color: "#00E5FF",
+    color: "#E2E8F0",
   },
   {
     phase: "PHASE 03",
-    date: "Q2 2026",
+    date: "Q2 2027",
     title: "5-Axis CNC Tooling & PCB Assembly",
     status: "Scheduled",
     desc: "Machining aerospace billet shells and SMT assembly of customized ESP32-C3 boards.",
-    color: "#B026FF",
+    color: "#94A3B8",
   },
   {
     phase: "PHASE 04",
-    date: "Q3 2026",
+    date: "Q3 2027",
     title: "Express Shipping & Open SDK Release",
     status: "Scheduled",
     desc: "Global express courier delivery to backers and public GitHub release of open local webhooks.",
-    color: "#FF9F1C",
+    color: "#64748B",
   },
 ];
 
@@ -238,26 +239,22 @@ export default function CampaignPage() {
       {/* ════════════════ HERO CAMPAIGN SHOWCASE ═════════════════════ */}
       <section className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
         {/* Top Campaign Status HUD Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3 px-6 rounded-full border border-[#151D2A] bg-[#070A10]">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3 px-6 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00FF9D] animate-pulse shadow-[0_0_10px_rgba(0,255,157,0.8)]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-xs font-mono tracking-widest text-white uppercase font-bold">
-              CROWDFUNDING CAMPAIGN LIVE
+              CROWDFUNDING LAUNCHING SOON
             </span>
           </div>
 
-          {/* Animated Live Backer Ticker */}
           <div className="hidden md:flex items-center gap-2 text-xs font-mono text-[#94a3b8]">
-            <Globe size={14} className="text-[#00E5FF] animate-spin" style={{ animationDuration: "10s" }} />
-            <span>Latest Backer:</span>
-            <span className="text-white font-bold">{activeBacker.name}</span>
-            <span className="text-[#00FF9D]">({activeBacker.location})</span>
-            <span className="text-[#64748b]">• {activeBacker.tier}</span>
+            <Bell size={14} className="text-slate-400" />
+            <span>Waitlist is open &mdash; be the first to back</span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-[#00FF9D]">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
             <Clock size={14} />
-            <span>28 DAYS REMAINING</span>
+            <span>PRIORITY WAITLIST OPEN</span>
           </div>
         </div>
 
@@ -269,19 +266,19 @@ export default function CampaignPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Sparkles size={14} /> The Discipline Engine · Official Crowdfunding Campaign
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-slate-300 text-[11px] font-mono tracking-widest uppercase">
+              <Sparkles size={14} /> The Discipline Engine · Pre-Launch Campaign
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
               FORCE YOUR FOCUS.<br />
-              <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 ENGINEER SUCCESS.
               </span>
             </h1>
 
             <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed">
-              The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
+              The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it acts as a physical anchor for your mental state—protecting your time and focus so you can do your best work.
             </p>
 
             {/* Launch Status Box */}
@@ -314,7 +311,7 @@ export default function CampaignPage() {
                   <p className="text-[10px] uppercase">Early Access</p>
                 </div>
                 <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-[#00E5FF] font-bold">Q3 2026</p>
+                  <p className="text-white font-bold">Q3 2027</p>
                   <p className="text-[10px] uppercase">Delivery</p>
                 </div>
               </div>
@@ -325,9 +322,9 @@ export default function CampaignPage() {
                 setSelectedTierForModal("Batch 01 Early Adopter");
                 setShowComingSoon(true);
               }}
-              className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-4 rounded-full font-bold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
             >
-              Back This Project Now <ChevronRight size={18} />
+              Join Priority Waitlist <ChevronRight size={18} />
             </button>
           </motion.div>
 
