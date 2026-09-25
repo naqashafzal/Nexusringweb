@@ -3,10 +3,21 @@
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import ExplodedRingCanvas from "@/components/ExplodedRingCanvas";
+import dynamic from "next/dynamic";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
-import DiscordIcon from "@/components/DiscordIcon";
 import ComingSoonModal from "@/components/ComingSoonModal";
+
+const ExplodedRingCanvas = dynamic(
+  () => import("@/components/ExplodedRingCanvas"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-[#00FF9D]/50 animate-pulse">
+        INITIALIZING 3D DOCK...
+      </div>
+    ),
+  }
+);
 import {
   Fingerprint,
   Zap,
@@ -53,10 +64,10 @@ function Reveal({
 const FAQ_ITEMS = [
   {
     q: "What is the Nexus Ring and how does it accelerate personal success?",
-    a: "The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time. When you snap the magnetic totem into position, it physically transitions your operating system into deep work mode before your hand even leaves your desk.",
+    a: "The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time. When you snap the magnetic totem into position, it physically transitions your operating system into deep work mode before your hand even leaves your desk.",
   },
   {
-    q: "Why is a physical discipline engine more effective than software app blockers?",
+    q: "Why is a physical anchor more effective than software app blockers?",
     a: "Software app blockers run on the same screen where impulses happen. They are trivially bypassed with two clicks, creating guilt instead of lasting discipline. The Nexus Ring introduces a physical barrier between you and distractions: breaking focus requires consciously removing a solid 185g CNC aluminum totem, breaking automatic dopamine loops through physical tactile friction.",
   },
   {
@@ -91,9 +102,12 @@ export default function Home() {
   return (
     <main className="bg-[#030508] text-[#F8FAFC] font-sans overflow-x-hidden">
       {/* ════════════════ HERO (DUAL COLUMN SPLIT) ════════════════ */}
-      <div className="fixed inset-0 z-10 pointer-events-auto">
+      <motion.div
+        style={{ opacity: heroOpacity }}
+        className="fixed inset-0 z-10 pointer-events-auto"
+      >
         <ExplodedRingCanvas scrollProgress={heroScroll} disableExplode={true} />
-      </div>
+      </motion.div>
 
       <section
         ref={heroRef}
@@ -106,9 +120,9 @@ export default function Home() {
               style={{ opacity: heroOpacity, y: heroY }}
               className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl pointer-events-auto"
             >
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#00FF9D]/40 bg-[#00FF9D]/[0.08] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(0,255,157,0.2)]">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-                The Physical Discipline Engine
+                Intelligent Gatekeeper
               </span>
 
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
@@ -116,7 +130,7 @@ export default function Home() {
                 <span
                   style={{
                     background:
-                      "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)",
+                      "linear-gradient(120deg, #FFFFFF 0%, #94A3B8 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -127,34 +141,25 @@ export default function Home() {
               </h1>
 
               <p className="text-[#94A3B8] text-base md:text-lg font-light max-w-lg leading-relaxed">
-                The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
+                "To bridge the gap between physical intention and digital execution, transforming productivity from a software struggle into a tangible, tactile experience."
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => setShowComingSoon(true)}
-                  className="relative group px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_40px_rgba(0,255,157,0.45)] hover:shadow-[0_0_65px_rgba(0,255,157,0.75)] hover:scale-[1.02] cursor-pointer"
+                  className="relative px-8 py-4 rounded-full font-semibold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 cursor-pointer"
                 >
                   Pre-Order Artifact — $129
                 </button>
-                <a
-                  href="https://discord.gg/N82CpZtGu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_25px_rgba(88,101,242,0.4)] hover:shadow-[0_0_40px_rgba(88,101,242,0.7)] hover:scale-[1.02]"
-                >
-                  <DiscordIcon className="w-4 h-4" />
-                  <span>Join Discord</span>
-                </a>
                 <Link
                   href="/research"
-                  className="px-8 py-4 rounded-xl font-medium text-sm text-[#94A3B8] hover:text-white border border-[#151D2A] hover:border-[#00FF9D]/40 bg-[#070A10]/90 backdrop-blur-md transition-all duration-300"
+                  className="px-8 py-4 rounded-full font-medium text-sm text-slate-300 hover:text-white border border-white/10 bg-transparent hover:border-white/30 backdrop-blur-md transition-all duration-300"
                 >
                   Read Whitepaper →
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-[#151D2A]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 border-t border-white/5">
                 {[
                   { label: "Magnetic Slots", val: "4 Positions" },
                   { label: "Kernel Hook", val: "<24ms Latency" },
@@ -162,10 +167,10 @@ export default function Home() {
                   { label: "Campaign", val: "Launching Soon" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-xs font-mono text-[#00FF9D] font-semibold">
+                    <p className="text-xs font-mono text-white font-semibold">
                       {stat.val}
                     </p>
-                    <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-wider">
+                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mt-1">
                       {stat.label}
                     </p>
                   </div>
@@ -178,10 +183,10 @@ export default function Home() {
               style={{ opacity: heroOpacity }}
               className="hidden lg:flex lg:col-span-6 flex-col items-end justify-start h-full pt-4 pr-4 relative pointer-events-none"
             >
-              <div className="px-4 py-2 rounded-2xl border border-[#00FF9D]/30 bg-[#070A10]/90 backdrop-blur-md text-xs font-mono text-[#00FF9D] flex items-center gap-2 shadow-2xl pointer-events-auto cursor-grab active:cursor-grabbing">
+              <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-mono text-slate-300 flex items-center gap-2 pointer-events-auto cursor-grab active:cursor-grabbing">
                 <Rotate3D
                   size={16}
-                  className="animate-spin text-[#00FF9D]"
+                  className="animate-spin text-white"
                   style={{ animationDuration: "8s" }}
                 />
                 <span>Drag to Rotate 3D Artifact</span>
@@ -195,14 +200,14 @@ export default function Home() {
       <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
         <div className="max-w-[1300px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/30 bg-[#00FF9D]/10 rounded-full inline-block px-4 py-1.5 mb-4">
+            <span className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-4 py-1.5 mb-4 backdrop-blur-md">
               Success & Discipline Engine
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tight text-white mb-6">
               ENGINEERED FOR UNBREAKABLE DISCIPLINE.
             </h2>
             <p className="text-[#94A3B8] text-base md:text-lg font-light leading-relaxed">
-              Willpower is a depleting asset. In a modern environment engineered to steal your attention, relying on mental resistance is a losing game. The Nexus Ring turns discipline into an involuntary physical reality.
+              In a world overflowing with digital distractions, willpower is no longer enough to stay focused. The Nexus Ring was born from a simple realization: changing your digital environment should be as deliberate and physical as closing an office door.
             </p>
           </Reveal>
 
@@ -210,84 +215,81 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Hook 1: The Discipline Engine */}
             <Reveal delay={0.1}>
-              <div className="group relative h-full rounded-2xl border border-[#00FF9D]/30 bg-[#070A10] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-[#00FF9D]/70 hover:shadow-[0_0_50px_rgba(0,255,157,0.18)] hover:-translate-y-1">
-                <div className="absolute top-0 right-0 w-44 h-44 rounded-full bg-[#00FF9D]/[0.08] blur-[50px] pointer-events-none group-hover:bg-[#00FF9D]/[0.15] transition-all" />
+              <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1">
                 <div className="space-y-4 relative z-10">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-[#00FF9D]/40 bg-[#00FF9D]/10 text-[#00FF9D]">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 bg-white/5 text-white">
                     <Target size={24} />
                   </div>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#00FF9D] block">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 block">
                     Marketing Hook · 01
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white">
                     The Discipline Engine
                   </h3>
-                  <p className="text-sm font-semibold text-[#00FF9D] leading-snug">
+                  <p className="text-sm font-semibold text-slate-300 leading-snug">
                     Force your focus, save your time, and engineer your own success.
                   </p>
                   <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
                     Stop burning finite willpower trying to resist distraction tabs. By shifting intent into a mechanical gesture, you trigger an immediate cognitive barrier that protects your high-leverage hours.
                   </p>
                 </div>
-                <div className="pt-6 mt-6 border-t border-[#151D2A] relative z-10 flex items-center justify-between text-xs font-mono text-[#64748B]">
+                <div className="pt-6 mt-6 border-t border-white/10 relative z-10 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span>Pillar: Time & Focus Optimization</span>
-                  <CheckCircle2 size={16} className="text-[#00FF9D]" />
+                  <CheckCircle2 size={16} className="text-white" />
                 </div>
               </div>
             </Reveal>
 
             {/* Hook 2: More Output, Less Friction */}
             <Reveal delay={0.2}>
-              <div className="group relative h-full rounded-2xl border border-[#00E5FF]/30 bg-[#070A10] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-[#00E5FF]/70 hover:shadow-[0_0_50px_rgba(0,229,255,0.18)] hover:-translate-y-1">
-                <div className="absolute top-0 right-0 w-44 h-44 rounded-full bg-[#00E5FF]/[0.08] blur-[50px] pointer-events-none group-hover:bg-[#00E5FF]/[0.15] transition-all" />
+              <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1">
                 <div className="space-y-4 relative z-10">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-[#00E5FF]/40 bg-[#00E5FF]/10 text-[#00E5FF]">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 bg-white/5 text-white">
                     <TrendingUp size={24} />
                   </div>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#00E5FF] block">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 block">
                     Marketing Hook · 02
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white">
                     More Output, Less Friction
                   </h3>
-                  <p className="text-sm font-semibold text-[#00E5FF] leading-snug">
+                  <p className="text-sm font-semibold text-slate-300 leading-snug">
                     A physical barrier between you and the distractions costing you time and money.
                   </p>
                   <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
                     Every digital interruption costs up to 23 minutes of refocusing penalty. The Nexus Ring places a tangible physical object between impulse and action, eliminating distraction leaks and driving 2-3x output.
                   </p>
                 </div>
-                <div className="pt-6 mt-6 border-t border-[#151D2A] relative z-10 flex items-center justify-between text-xs font-mono text-[#64748B]">
+                <div className="pt-6 mt-6 border-t border-white/10 relative z-10 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span>Pillar: Distraction Elimination</span>
-                  <CheckCircle2 size={16} className="text-[#00E5FF]" />
+                  <CheckCircle2 size={16} className="text-white" />
                 </div>
               </div>
             </Reveal>
 
             {/* Hook 3: Protect Your Potential */}
             <Reveal delay={0.3}>
-              <div className="group relative h-full rounded-2xl border border-[#B026FF]/30 bg-[#070A10] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-[#B026FF]/70 hover:shadow-[0_0_50px_rgba(176,38,255,0.18)] hover:-translate-y-1">
-                <div className="absolute top-0 right-0 w-44 h-44 rounded-full bg-[#B026FF]/[0.08] blur-[50px] pointer-events-none group-hover:bg-[#B026FF]/[0.15] transition-all" />
+              <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1">
                 <div className="space-y-4 relative z-10">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-[#B026FF]/40 bg-[#B026FF]/10 text-[#B026FF]">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 bg-white/5 text-white">
                     <Shield size={24} />
                   </div>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#B026FF] block">
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 block">
                     Marketing Hook · 03
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white">
                     Protect Your Potential
                   </h3>
-                  <p className="text-sm font-semibold text-[#B026FF] leading-snug">
+                  <p className="text-sm font-semibold text-slate-300 leading-snug">
                     The ultimate hardware artifact to lock in your habits and build unbreakable discipline.
                   </p>
                   <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
                     Crafted from solid 6061-T6 aerospace aluminum with ceramic acoustic damping. An uncompromising executive desk artifact that anchors your spatial memory and protects your compounded lifetime potential.
                   </p>
                 </div>
-                <div className="pt-6 mt-6 border-t border-[#151D2A] relative z-10 flex items-center justify-between text-xs font-mono text-[#64748B]">
+                <div className="pt-6 mt-6 border-t border-white/10 relative z-10 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span>Pillar: Flow State Catalyst</span>
-                  <CheckCircle2 size={16} className="text-[#B026FF]" />
+                  <CheckCircle2 size={16} className="text-white" />
                 </div>
               </div>
             </Reveal>
@@ -299,7 +301,7 @@ export default function Home() {
       <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-20">
-            <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/25 bg-[#00FF9D]/10 rounded-full inline-block px-3.5 py-1 mb-4">
+            <p className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-3.5 py-1 mb-4 backdrop-blur-md">
               The Cognitive Friction Problem
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
@@ -312,9 +314,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8 items-stretch">
             <Reveal delay={0.1}>
-              <div className="h-full rounded-2xl border border-[#FF5F56]/30 bg-[#FF5F56]/[0.02] p-8 md:p-10 flex flex-col justify-between">
+              <div className="h-full rounded-2xl border border-white/10 bg-[#070A10] p-8 md:p-10 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-[#FF5F56] uppercase tracking-widest px-2.5 py-1 rounded bg-[#FF5F56]/10 border border-[#FF5F56]/20 inline-block mb-6">
+                  <span className="text-[10px] font-mono text-red-400 uppercase tracking-widest px-2.5 py-1 rounded bg-red-400/10 border border-red-400/20 inline-block mb-6">
                     The Old Way · Digital Blockers
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white mb-4">
@@ -328,7 +330,7 @@ export default function Home() {
                       "Purely digital — no spatial memory anchor",
                     ].map((i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-[#FF5F56] shrink-0 mt-0.5">✕</span>
+                        <span className="text-red-400 shrink-0 mt-0.5">✕</span>
                         <span>{i}</span>
                       </li>
                     ))}
@@ -338,9 +340,9 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="h-full rounded-2xl border border-[#00FF9D]/40 bg-[#00FF9D]/[0.05] p-8 md:p-10 flex flex-col justify-between shadow-[0_0_60px_rgba(0,255,157,0.12)]">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-[#00FF9D] uppercase tracking-widest px-2.5 py-1 rounded bg-[#00FF9D]/10 border border-[#00FF9D]/30 inline-block mb-6">
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest px-2.5 py-1 rounded bg-emerald-400/10 border border-emerald-400/20 inline-block mb-6">
                     The Nexus Ring Way · Tactile Hardware
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white mb-4">
@@ -354,7 +356,7 @@ export default function Home() {
                       "Kernel Ring-0 hook blocks distractions at system level",
                     ].map((i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-[#00FF9D] shrink-0 mt-0.5">✓</span>
+                        <span className="text-emerald-400 shrink-0 mt-0.5">✓</span>
                         <span>{i}</span>
                       </li>
                     ))}
@@ -386,29 +388,16 @@ export default function Home() {
             {/* ── Card 1: Tangible Intent (Spans 2 columns) ── */}
             <Reveal delay={0.0} className="lg:col-span-2">
               <div
-                className="group relative min-h-[360px] h-full rounded-2xl border border-[#151D2A] bg-[#070A10] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 cursor-default hover:-translate-y-1"
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "#00FF9D60";
-                  el.style.boxShadow = "0 0 60px #00FF9D18";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "";
-                  el.style.boxShadow = "";
-                }}
+                className="group relative min-h-[360px] h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1"
               >
-                <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-[#00FF9D]/[0.08] blur-[60px] group-hover:bg-[#00FF9D]/[0.15] transition-all duration-700 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00FF9D]/40 to-transparent" />
-
                 <div>
                   <div className="flex items-center justify-between mb-6 relative z-10">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#00FF9D]/40 bg-[#00FF9D]/[0.1]">
-                        <Fingerprint size={20} className="text-[#00FF9D]" />
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/5">
+                        <Fingerprint size={20} className="text-white" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono tracking-[0.15em] text-[#00FF9D] uppercase block">
+                        <span className="text-[10px] font-mono tracking-[0.15em] text-slate-300 uppercase block">
                           Layer 01 · Tactical Sensor
                         </span>
                         <span className="text-xs text-[#94A3B8] font-mono">
@@ -416,9 +405,9 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/10">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse" />
-                      <span className="text-[10px] font-mono text-[#00FF9D] tracking-wider uppercase">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[10px] font-mono text-emerald-400 tracking-wider uppercase">
                         Detecting
                       </span>
                     </div>
@@ -432,16 +421,16 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-[#151D2A] relative z-10 space-y-4">
+                <div className="mt-8 pt-6 border-t border-white/10 relative z-10 space-y-4">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-[#64748B]">MAG-SENSE RESPONSE:</span>
-                    <span className="text-[#00FF9D] font-bold">
+                    <span className="text-white font-bold">
                       12ms (Hardware Interrupt)
                     </span>
                   </div>
-                  <div className="w-full bg-[#151D2A] h-1.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-white/5 border border-white/10 h-1.5 rounded-full overflow-hidden">
                     <motion.div
-                      className="bg-gradient-to-r from-[#00FF9D] to-[#00E5FF] h-full rounded-full"
+                      className="bg-white h-full rounded-full"
                       initial={{ width: "0%" }}
                       whileInView={{ width: "94%" }}
                       viewport={{ once: true }}
@@ -470,28 +459,15 @@ export default function Home() {
             {/* ── Card 2: Zero-Touch Automation ── */}
             <Reveal delay={0.1} className="lg:col-start-3">
               <div
-                className="group relative min-h-[360px] h-full rounded-2xl border border-[#151D2A] bg-[#070A10] p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 cursor-default hover:-translate-y-1"
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "#00E5FF60";
-                  el.style.boxShadow = "0 0 60px #00E5FF18";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "";
-                  el.style.boxShadow = "";
-                }}
+                className="group relative min-h-[360px] h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1"
               >
-                <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-[#00E5FF]/[0.08] blur-[60px] group-hover:bg-[#00E5FF]/[0.15] transition-all duration-700 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00E5FF]/40 to-transparent" />
-
                 <div>
                   <div className="flex items-center gap-3 mb-6 relative z-10">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#00E5FF]/40 bg-[#00E5FF]/[0.1]">
-                      <Zap size={20} className="text-[#00E5FF]" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/5">
+                      <Zap size={20} className="text-white" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono tracking-[0.15em] text-[#00E5FF] uppercase block">
+                      <span className="text-[10px] font-mono tracking-[0.15em] text-slate-300 uppercase block">
                         Layer 02 · OS Daemon
                       </span>
                       <span className="text-xs text-[#94A3B8] font-mono">
@@ -508,11 +484,11 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-[#151D2A] relative z-10 flex items-center justify-between">
+                <div className="mt-8 pt-6 border-t border-white/10 relative z-10 flex items-center justify-between">
                   <span className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest">
                     Execution Engine
                   </span>
-                  <span className="text-[10px] font-mono text-[#00E5FF] bg-[#00E5FF]/10 border border-[#00E5FF]/30 px-3 py-1 rounded-full font-bold">
+                  <span className="text-[10px] font-mono text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full font-bold">
                     Kernel Ring-0
                   </span>
                 </div>
@@ -522,48 +498,35 @@ export default function Home() {
             {/* ── Card 3: Local AI Guardian ── */}
             <Reveal delay={0.2} className="lg:col-span-3">
               <div
-                className="group relative rounded-2xl border border-[#151D2A] bg-[#070A10] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between overflow-hidden transition-all duration-500 cursor-default hover:-translate-y-1"
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "#B026FF60";
-                  el.style.boxShadow = "0 0 60px #B026FF18";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "";
-                  el.style.boxShadow = "";
-                }}
+                className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col md:flex-row items-center justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1"
               >
-                <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-[#B026FF]/[0.08] blur-[60px] group-hover:bg-[#B026FF]/[0.15] transition-all duration-700 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#B026FF]/40 to-transparent" />
-
                 <div className="max-w-2xl space-y-3 mb-6 md:mb-0 relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-[#B026FF]/40 bg-[#B026FF]/[0.1]">
-                      <Lock size={20} className="text-[#B026FF]" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/5">
+                      <Lock size={20} className="text-white" />
                     </div>
-                    <span className="text-[10px] font-mono tracking-[0.15em] text-[#B026FF] uppercase">
+                    <span className="text-[10px] font-mono tracking-[0.15em] text-slate-300 uppercase">
                       Layer 03 · Local Vision Model
                     </span>
                   </div>
                   <h3 className="text-2xl font-display font-bold text-white">
-                    Local AI Guardian (Air-Gapped Gemini 1.5)
+                    Local AI Guardian (Air-Gapped Local Model)
                   </h3>
                   <p className="text-[#94A3B8] text-sm leading-relaxed font-light">
                     An on-device model inspects app context in real time. Zero screen pixels or keystrokes ever leave your machine. 100% private enforcement.
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 shrink-0 relative z-10 border-t md:border-t-0 md:border-l border-[#151D2A] pt-4 md:pt-0 md:pl-8">
+                <div className="flex items-center gap-4 shrink-0 relative z-10 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-8">
                   <div className="text-right">
-                    <p className="text-xs font-mono text-[#B026FF] font-bold">
+                    <p className="text-xs font-mono text-white font-bold">
                       100% AIR-GAPPED
                     </p>
                     <p className="text-[10px] font-mono text-[#64748B]">
                       Zero Telemetry
                     </p>
                   </div>
-                  <span className="text-xs font-mono text-[#B026FF] bg-[#B026FF]/10 border border-[#B026FF]/30 px-4 py-2 rounded-xl">
+                  <span className="text-xs font-mono text-slate-300 bg-white/5 border border-white/10 px-4 py-2 rounded-xl">
                     Local Core
                   </span>
                 </div>
@@ -574,19 +537,16 @@ export default function Home() {
           {/* Bottom stat strip */}
           <Reveal delay={0.25} className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { val: "<24ms", label: "Sensor Latency", accent: "#00FF9D" },
-              { val: "0 bytes", label: "Sent to Cloud", accent: "#00E5FF" },
-              { val: "4 slots", label: "Totem Positions", accent: "#B026FF" },
-              { val: "∞", label: "Open-Source Webhooks", accent: "#FF9F1C" },
+              { val: "<24ms", label: "Sensor Latency" },
+              { val: "0 bytes", label: "Sent to Cloud" },
+              { val: "4 slots", label: "Totem Positions" },
+              { val: "∞", label: "Open-Source Webhooks" },
             ].map((s) => (
               <div
                 key={s.label}
-                className="rounded-xl border border-[#151D2A] bg-[#070A10] px-5 py-4"
+                className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4"
               >
-                <p
-                  className="text-2xl font-display font-bold"
-                  style={{ color: s.accent }}
-                >
+                <p className="text-2xl font-display font-bold text-white">
                   {s.val}
                 </p>
                 <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mt-1">
@@ -651,10 +611,10 @@ export default function Home() {
               <div className="space-y-4">
                 <h3 className="text-white font-display font-semibold text-lg flex items-center gap-2">
                   <Cpu size={18} className="text-[#00FF9D]" />
-                  The Physical Discipline Engine Defined
+                  The Intelligent Gatekeeper Defined
                 </h3>
                 <p>
-                  The <strong className="text-white">Nexus Ring</strong> is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
+                  The <strong className="text-white">Nexus Ring</strong> is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
                 </p>
                 <p>
                   Unlike software blockers that live in browser tabs or mobile menus, the Nexus Ring operates as a physical desk totem machined from 6061-T6 aerospace aluminum. By grounding focus transitions in spatial reality, it establishes an immutable behavioral boundary between work and distraction.
@@ -706,7 +666,7 @@ export default function Home() {
       >
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <Reveal className="text-center mb-16">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/30 bg-[#00FF9D]/10 rounded-full inline-block px-4 py-1.5 mb-4">
+            <span className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-4 py-1.5 mb-4 backdrop-blur-md">
               Frequently Asked Questions
             </span>
             <h2
@@ -725,16 +685,16 @@ export default function Home() {
               const isOpen = openFaq === idx;
               return (
                 <Reveal key={item.q} delay={idx * 0.05}>
-                  <div className="rounded-2xl border border-[#151D2A] bg-[#070A10] transition-colors overflow-hidden">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition-colors overflow-hidden">
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left text-white font-medium text-base hover:text-[#00FF9D] transition-colors gap-4"
+                      className="w-full px-6 py-5 flex items-center justify-between text-left text-white font-medium text-base hover:text-slate-300 transition-colors gap-4"
                       aria-expanded={isOpen}
                     >
                       <span className="font-display">{item.q}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-[#00FF9D] shrink-0 transition-transform duration-300 ${
+                        className={`text-slate-400 shrink-0 transition-transform duration-300 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -748,7 +708,7 @@ export default function Home() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-6 pt-2 text-[#94A3B8] text-sm leading-relaxed border-t border-[#151D2A]/60">
+                          <div className="px-6 pb-6 pt-2 text-[#94A3B8] text-sm leading-relaxed border-t border-white/5">
                             {item.a}
                           </div>
                         </motion.div>
@@ -763,19 +723,19 @@ export default function Home() {
       </section>
 
       {/* ════════════════ FINAL CTA ═══════════════════════════════ */}
-      <section className="relative z-10 bg-[#030508] py-36 md:py-44 text-center overflow-hidden border-t border-[#151D2A]">
+      <section className="relative z-10 bg-[#030508] py-36 md:py-44 text-center overflow-hidden border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <div className="w-[600px] h-[600px] rounded-full bg-[#00FF9D]/[0.05] blur-[120px]" />
+          <div className="w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[120px]" />
         </div>
         <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12">
-          <p className="text-[10px] font-mono tracking-[0.3em] text-[#00FF9D] uppercase mb-5">
+          <p className="text-[10px] font-mono tracking-[0.3em] text-slate-400 uppercase mb-5">
             Crowdfunding Launching Soon · Batch 01 Priority Access
           </p>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter mb-6 leading-[0.9] text-white">
             Ready to feel<br />
             <span
               style={{
-                background: "linear-gradient(120deg,#00FF9D,#00E5FF)",
+                background: "linear-gradient(120deg, #FFFFFF, #94A3B8)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -787,24 +747,12 @@ export default function Home() {
           <p className="text-[#94A3B8] text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
             Join the creators and engineers who refuse to surrender their attention to digital distractions. Protect your potential and lock in your habits today.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => setShowComingSoon(true)}
-              className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-base tracking-wide text-[#030508] bg-[#00FF9D] hover:bg-[#00ffaa] transition-colors duration-200 hover:shadow-[0_0_65px_rgba(0,255,157,0.6),0_0_120px_rgba(0,255,157,0.2)] cursor-pointer"
-            >
-              Back This Project <ChevronRight size={18} />
-              <span className="absolute inset-0 rounded-2xl animate-ping opacity-[0.1] bg-[#00FF9D]" />
-            </button>
-            <a
-              href="https://discord.gg/N82CpZtGu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-5 rounded-2xl font-bold text-base tracking-wide text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_35px_rgba(88,101,242,0.4)] hover:shadow-[0_0_60px_rgba(88,101,242,0.7)]"
-            >
-              <DiscordIcon className="w-5 h-5" />
-              <span>Join Our Discord</span>
-            </a>
-          </div>
+          <button
+            onClick={() => setShowComingSoon(true)}
+            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-base tracking-wide text-black bg-white hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
+          >
+            Back This Project <ChevronRight size={18} />
+          </button>
           <p className="text-[#64748B] text-xs mt-6 font-mono tracking-widest">
             Batch 01 Priority Queue Open · Join Waitlist
           </p>

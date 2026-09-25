@@ -42,7 +42,7 @@ Designed and engineered by Nexus Desktop Art Inc., the Nexus Ring represents the
 - **Kernel Daemon:** Native background daemons for Windows (PowerShell / registry hooks), macOS (launchd / pfctl packet filter / AppleScript), and Linux (systemd / iptables).
 - **Latency:** Sub-24ms hardware interrupt to OS action response time.
 - **Network Security:** Operates locally. Capable of air-gapped operation via USB HID or local Wi-Fi/BLE websocket.
-- **AI Guardian:** Local quantized Gemini 1.5 vision and context model running completely on-device. Zero keystrokes, screenshots, or metadata are ever transmitted to any cloud server.
+- **AI Guardian:** Local quantized custom AI vision and context model running completely on-device. Zero keystrokes, screenshots, or metadata are ever transmitted to any cloud server.
 
 ---
 
@@ -97,3 +97,9 @@ Nexus Ring was created and founded by Naqash Afzal (Founder & Chief Hardware Arc
 - MakerWorld: https://makerworld.com/en/@naqash
 - LinkedIn: https://www.linkedin.com/in/naqashafzal/
 - Freelancer: https://www.freelancer.com/u/naqashafzal
+
+### How does the Nexus Ring compare to Opal, Freedom, and other app blockers?
+- **vs. Opal App:** Opal is a smartphone screen-time subscription ($99/yr) that runs on the same screen delivering notifications, easily bypassed during moments of ego depletion. Nexus Ring is a one-time physical hardware artifact ($129) controlling desktop OS kernels with tactile spatial permanence and zero recurring fees.
+- **vs. Freedom.to:** Freedom relies on local VPN tunnels and browser extensions that can be force-killed via Task Manager. Nexus Ring operates at the hardware layer via ESP32-C3 Hall-effect vector tracking and sub-24ms local kernel interrupts.
+- **vs. Pomodoro Timers:** Kitchen timers and Pomodoro apps passively count down minutes while you browse distractions. The Nexus Ring actively defends your OS boundaries, dropping firewalls and closing distraction sockets in Deep Work mode.
+- **vs. Brick Device:** Brick only locks smartphone apps via an NFC tap, leaving multi-monitor desktop workstations vulnerable. Nexus Ring manages full desktop workstation operating systems (Windows, macOS, Linux) with an air-gapped local AI guardian and open REST/WebSocket SDK.

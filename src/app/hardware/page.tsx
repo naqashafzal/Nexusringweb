@@ -113,7 +113,7 @@ export default function HardwarePage() {
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             ENGINEERED TO<br />
-            <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               PERFECTION.
             </span>
           </h1>

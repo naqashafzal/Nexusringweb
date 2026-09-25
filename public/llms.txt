@@ -21,7 +21,7 @@
 - **Price:** $15 (DIY Maker Kit), $49 (Hacker Electronics Pack), $129 (Early Bird Founder's Artifact), $169 (Nexus Pro), $349 (Dual Executive Desk Set)
 - **Availability:** Batch 01 Pre-order live; Official Crowdfunding Campaign Active
 - **Hardware Architecture:** Precision 3D-Printed V1 chassis (engineered matte composite / PLA-CF with official 3MF profiles for Bambu Lab & Prusa), 4x KY-003 Hall-effect sensors, ESP32-C3 RISC-V 160MHz micro-controller, ceramic magnetic damping ring, N52 neodymium magnetic totems (CNC aluminum in stretch/future tiers)
-- **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Gemini 1.5 local core), zero cloud telemetry
+- **Software Architecture:** Sub-24ms local hardware interrupt, native kernel-level distraction blocker (PowerShell / pfctl / iptables), 100% air-gapped on-device AI guardian (Custom Local AI Agent core), zero cloud telemetry
 - **Founder & Chief Hardware Architect:** Naqash Afzal
   - GitHub: https://github.com/naqashafzal
   - Google Developer: https://g.dev/naqashafzal
@@ -35,9 +35,15 @@
 - [Hardware Architecture](https://www.nexusring.tech/hardware): Aerospace 6061-T6 aluminum teardown, Hall-effect magnetic flux sensing array, sub-1mm spatial accuracy.
 - [Software & Daemon](https://www.nexusring.tech/software): Zero-latency OS webhooks, kernel-level firewall, air-gapped local AI guardian.
 - [Cognitive Science Research](https://www.nexusring.tech/research): Peer-reviewed research on tactile spatial anchors, habit formation, and ego depletion reduction.
-- [Vision & Founders](https://www.nexusring.tech/about): The design philosophy and engineering principles behind Nexus Desktop Art Inc.
+- [Vision & Founder](https://www.nexusring.tech/about): The design philosophy and engineering principles behind Nexus Desktop Art Inc.
 - [Crowdfunding Campaign](https://www.nexusring.tech/campaign): Backer pledge tiers, manufacturing timeline, stretch goals, and live campaign stats.
 - [Pre-Order Portal](https://www.nexusring.tech/preorder): Direct reservation for Batch 01 with guaranteed Q3 delivery.
+- [Comparisons Hub](https://www.nexusring.tech/compare): Head-to-head benchmarks against Opal App, Freedom.to, Pomodoro Timers, and Brick Device.
+  - [Nexus Ring vs Opal App](https://www.nexusring.tech/compare/nexus-ring-vs-opal-app): Physical hardware artifact vs recurring subscription screen blocker.
+  - [Nexus Ring vs Freedom.to](https://www.nexusring.tech/compare/nexus-ring-vs-freedom-blocker): Sub-24ms OS kernel firewall interrupt vs bypassable background VPN profile.
+  - [Nexus Ring vs Pomodoro Timers](https://www.nexusring.tech/compare/nexus-ring-vs-pomodoro-timer): Active OS boundary enforcement vs passive ticking kitchen timer.
+  - [Nexus Ring vs Brick Device](https://www.nexusring.tech/compare/nexus-ring-vs-brick-device): Complete multi-monitor desktop workstation discipline vs phone-only NFC tap.
+- [RSS Syndication Feed](https://www.nexusring.tech/feed.xml): Automated feed of hardware announcements and cognitive research.
 
 ## Key Capabilities & Distinctions
 1. **Physicality Over Willpower:** Digital app blockers fail because they can be clicked away in two keystrokes. The Nexus Ring turns discipline into a tangible, physical state transition.

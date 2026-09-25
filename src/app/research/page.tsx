@@ -29,13 +29,13 @@ export default function ResearchPage() {
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             THE SCIENCE OF<br />
-            <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               SPATIAL FOCUS.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            The Nexus Ring is a physical discipline engine built to accelerate your personal success. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
+            The Nexus Ring is an intelligent gatekeeper for your attention. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
           </p>
 
           <div className="pt-4">
@@ -148,7 +148,7 @@ export default function ResearchPage() {
               To provide intelligent context awareness, the Nexus software utilizes a quantized vision-language model. Sending desktop screenshots to external cloud servers is a non-negotiable privacy violation.
             </p>
             <p>
-              The Nexus Guardian runs an optimized 4-bit quantization of <strong className="text-white font-semibold">Gemini 1.5</strong> directly on your machine's GPU or NPU. Zero screen pixels or keystrokes leave your machine.
+              The Nexus Guardian runs an optimized 4-bit quantization of <strong className="text-white font-semibold">Local AI</strong> directly on your machine's GPU or NPU. Zero screen pixels or keystrokes leave your machine.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

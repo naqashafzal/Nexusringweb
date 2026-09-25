@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import DiscordIcon from "@/components/DiscordIcon";
 import {
   Cpu,
   Fingerprint,
@@ -50,6 +49,7 @@ const TEAM = [
       { name: "GitHub", url: "https://github.com/naqashafzal", icon: Code2 },
       { name: "Google Developer", url: "https://g.dev/naqashafzal", icon: Globe },
       { name: "MakerWorld", url: "https://makerworld.com/en/@naqash", icon: Layers },
+      { name: "Discord Community", url: "https://discord.gg/Q3tTGhH4k", icon: MessageSquare },
       { name: "LinkedIn", url: "https://www.linkedin.com/in/naqashafzal/", icon: ExternalLink },
       { name: "Freelancer", url: "https://www.freelancer.com/u/naqashafzal", icon: Briefcase },
     ],
@@ -62,41 +62,41 @@ const TEAM = [
 const VALUES = [
   {
     num: "01",
-    title: "100% Air-Gapped Privacy",
-    desc: "We believe screen pixels and keystrokes should never touch external cloud servers. Our local AI guardian executes 100% on your machine's VRAM/NPU with zero telemetry payload.",
+    title: "Tangible Intent",
+    desc: "We are moving away from clicking abstract buttons on a screen to relying on physical, spatial memory. Grabbing a beautifully crafted, sci-fi-inspired totem and feeling it magnetically snap into the dock triggers a psychological shift. The glowing LED feedback serves as a constant, ambient reminder of the current state of mind.",
     accent: "#00FF9D",
-    icon: ShieldCheck,
+    icon: Fingerprint,
   },
   {
     num: "02",
-    title: "Physical Over Digital Friction",
-    desc: "Willpower is a finite resource. Software app blockers fail because they rely on the same mouse-and-screen interface that delivers distractions. We replace digital friction with cold, tactile aerospace metal.",
+    title: "Ruthless Environment Control",
+    desc: "Your PC should adapt to you, not the other way around. The moment the totem connects, the Nexus Ring executes a zero-latency transformation of your operating system. It dynamically rewrites host files to block distracting websites, instantly terminates unauthorized background processes, and silences system notifications.",
     accent: "#00E5FF",
     icon: Zap,
   },
   {
     num: "03",
-    title: "Open Source Developer SDK",
-    desc: "No proprietary lock-in. Our FreeRTOS firmware, PowerShell/Zsh hook scripts, and 3MF Bambu Lab print profiles are completely open for developers to inspect, fork, and hack.",
+    title: "An AI-Powered Guardian",
+    desc: "The Nexus Ring is self-aware of your workspace. By integrating AI directly into the local enforcement loop, it actively reads the titles of your open windows and dynamically judges if they belong in your current workflow. It acts as a personalized productivity coach.",
     accent: "#B026FF",
-    icon: Code2,
+    icon: Cpu,
   },
   {
     num: "04",
-    title: "Zero Planned Obsolescence",
-    desc: "Buttonless KY-003 Hall-effect sensors mean zero mechanical contacts, zero wear, and infinite cycle lifespan. Engineered with precision 3D-printed aerospace-grade polymer and carbon-fiber composite housing to last a lifetime.",
+    title: "Functional Desk Art",
+    desc: "Productivity tools shouldn't look like boring office supplies. The Nexus Ring is designed to be a conversation piece—an \"alien artifact\" sitting on your desk. With an organic, bio-hex exoskeleton and a glowing translucent core, it is a piece of high-tech art that demands to be touched.",
     accent: "#FF9F1C",
-    icon: HardDrive,
+    icon: Sparkles,
   },
 ];
 
 // ─── COMPANY MILESTONES ───────────────────────────────────────────
 
 const MILESTONES = [
-  { year: "2025 Q1", title: "Nexus Labs Founded", note: "R&D initiated on Hall-effect magnetic spatial tracking." },
-  { year: "2025 Q3", title: "ESP32-C3 Firmware v1.0", note: "Achieved sub-24ms local OS kernel webhook execution." },
-  { year: "2026 Q1", title: "Air-Gapped Gemini 1.5 AI", note: "Quantized 4-bit vision model for zero-cloud local focus monitoring." },
-  { year: "2026 Q2", title: "Global Batch 01 Launch", note: "500-unit limited aerospace production launch worldwide." },
+  { year: "2026 Q1", title: "Nexus Labs Founded", note: "R&D initiated on Hall-effect magnetic spatial tracking." },
+  { year: "2026 Q3", title: "ESP32-C3 Firmware v1.0", note: "Achieved sub-24ms local OS kernel webhook execution." },
+  { year: "2027 Q1", title: "Air-Gapped Local AI Guardian", note: "Quantized 4-bit vision model for zero-cloud local focus monitoring." },
+  { year: "2027 Q2", title: "Global Batch 01 Launch", note: "500-unit limited aerospace production launch worldwide." },
 ];
 
 export default function AboutPage() {
@@ -148,30 +148,19 @@ export default function AboutPage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center max-w-4xl mx-auto space-y-6 relative z-10"
         >
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Building2 size={14} /> Success & Discipline Engine · Nexus Desktop Art Inc.
-            </div>
-            <a
-              href="https://discord.gg/N82CpZtGu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#5865F2]/50 bg-[#5865F2]/10 text-white text-[11px] font-mono font-bold tracking-widest uppercase hover:bg-[#5865F2] transition-colors"
-            >
-              <DiscordIcon className="w-3.5 h-3.5 text-[#5865F2]" />
-              <span>Join Discord</span>
-            </a>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
+            <Building2 size={14} /> The Vision of the Nexus Ring
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            ARCHITECTS OF<br />
-            <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              TACTILE INTENT.
+            PHYSICAL INTENT.<br />
+            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              DIGITAL EXECUTION.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
+            <span className="italic">"To bridge the gap between physical intention and digital execution, transforming productivity from a software struggle into a tangible, tactile experience."</span>
           </p>
 
           {/* Stats Bar */}
@@ -205,13 +194,13 @@ export default function AboutPage() {
                 Core Engineering Philosophy
               </span>
               <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
-                Why We Built The Nexus Ring
+                The Ultimate Goal
               </h2>
               <p className="text-[#94a3b8] text-sm md:text-base leading-relaxed font-light">
-                Modern operating systems are intentionally engineered by ad-tech giants to fracture human attention. Digital focus apps fail because launching an app requires using the mouse and screen—the exact same interface delivering notification triggers.
+                In a world overflowing with digital distractions, willpower is no longer enough to stay focused. The Nexus Ring was born from a simple realization: changing your digital environment should be as deliberate and physical as closing an office door.
               </p>
               <p className="text-[#cbd5e1] text-sm md:text-base leading-relaxed font-light border-l-2 border-[#00FF9D] pl-4">
-                The Nexus Ring breaks the digital loop. Picking up a precision-weighted 3D-printed totem and snapping it into the magnetic dock uses spatial muscle memory to bypass mental friction.
+                The Nexus Ring exists to give creators, developers, and designers their time back. It eliminates the friction of "getting into the zone" by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.
               </p>
             </div>
 
@@ -346,7 +335,7 @@ export default function AboutPage() {
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
           <p className="text-[10px] font-mono tracking-[0.25em] text-[#B026FF] uppercase border border-[#B026FF]/20 bg-[#B026FF]/5 rounded-full inline-block px-3 py-1 mb-4">
-            Company Pillars
+            The 4 Pillars of the Nexus Ring
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Our Guiding Engineering Principles
@@ -391,19 +380,8 @@ export default function AboutPage() {
               Get in Touch with the Founders
             </h2>
             <p className="text-[#94a3b8] text-sm font-light">
-              Have questions about custom SDK webhooks, enterprise licensing, or press inquiries? Send a direct message to our engineering leads or chat live on our Discord server.
+              Have questions about custom SDK webhooks, enterprise licensing, or press inquiries? Send a direct message to our engineering leads.
             </p>
-            <div className="pt-2">
-              <a
-                href="https://discord.gg/N82CpZtGu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-mono text-xs font-bold shadow-[0_0_20px_rgba(88,101,242,0.4)] transition-all"
-              >
-                <DiscordIcon className="w-4 h-4" />
-                <span>Join Official Discord Server</span>
-              </a>
-            </div>
           </div>
 
           {formSubmitted ? (

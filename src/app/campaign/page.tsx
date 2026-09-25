@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import DiscordIcon from "@/components/DiscordIcon";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   Play,
@@ -27,6 +26,7 @@ import {
   Flame,
   Globe,
   Award,
+  Bell,
 } from "lucide-react";
 
 // ─── PLEDGE TIERS DATA ────────────────────────────────────────────
@@ -60,7 +60,7 @@ const TIERS = [
       "16-LED NeoPixel RGB ring & N52 Neodymium Magnets",
       "All Digital Suite files (STLs, 3MF Profiles, Guides)",
     ],
-    delivery: "Estimated Shipping: May 2026",
+    delivery: "Estimated Shipping: May 2027",
   },
   {
     id: "adopter",
@@ -77,7 +77,7 @@ const TIERS = [
       "Full Local AI Guardian Software License",
       "Express Global Priority Shipping Included",
     ],
-    delivery: "Batch 01 Shipping: July 2026",
+    delivery: "Batch 01 Shipping: July 2027",
   },
   {
     id: "founder",
@@ -93,7 +93,7 @@ const TIERS = [
       "Lifetime VIP Software License + NPU Cloud Fallback",
       "1-on-1 Setup Call with Founders & Core Team",
     ],
-    delivery: "Priority Batch 01 Shipping: June 2026",
+    delivery: "Priority Batch 01 Shipping: June 2027",
   },
 ];
 
@@ -153,35 +153,35 @@ const LIVE_BACKERS = [
 const ROADMAP = [
   {
     phase: "PHASE 01",
-    date: "Q4 2025",
+    date: "Q4 2026",
     title: "R&D & ESP32-C3 PCB Validation",
     status: "Completed",
     desc: "Validated 4x Hall sensor magnetic tracking array and FreeRTOS local daemon websocket protocol.",
-    color: "#00FF9D",
+    color: "#FFFFFF",
   },
   {
     phase: "PHASE 02",
-    date: "Q1 2026",
+    date: "Q1 2027",
     title: "Crowdfunding & Batch 01 Booking",
     status: "Active Now",
     desc: "Reserving initial 500-unit Batch 01 queue worldwide with exclusive backer discounts.",
-    color: "#00E5FF",
+    color: "#E2E8F0",
   },
   {
     phase: "PHASE 03",
-    date: "Q2 2026",
+    date: "Q2 2027",
     title: "5-Axis CNC Tooling & PCB Assembly",
     status: "Scheduled",
     desc: "Machining aerospace billet shells and SMT assembly of customized ESP32-C3 boards.",
-    color: "#B026FF",
+    color: "#94A3B8",
   },
   {
     phase: "PHASE 04",
-    date: "Q3 2026",
+    date: "Q3 2027",
     title: "Express Shipping & Open SDK Release",
     status: "Scheduled",
     desc: "Global express courier delivery to backers and public GitHub release of open local webhooks.",
-    color: "#FF9F1C",
+    color: "#64748B",
   },
 ];
 
@@ -198,7 +198,7 @@ const FAQS = [
   },
   {
     q: "Is the Local AI Guardian truly 100% private?",
-    a: "Absolutely. The 4-bit quantized Gemini 1.5 vision model executes inside your machine's VRAM or NPU. Zero screen images or telemetry data are uploaded to cloud servers.",
+    a: "Absolutely. The 4-bit quantized local AI vision model executes inside your machine's VRAM or NPU. Zero screen images or telemetry data are uploaded to cloud servers.",
   },
   {
     q: "What happens if the stretch goal for the Micro-OLED display is met?",
@@ -239,38 +239,22 @@ export default function CampaignPage() {
       {/* ════════════════ HERO CAMPAIGN SHOWCASE ═════════════════════ */}
       <section className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
         {/* Top Campaign Status HUD Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3 px-6 rounded-full border border-[#151D2A] bg-[#070A10]">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3 px-6 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00FF9D] animate-pulse shadow-[0_0_10px_rgba(0,255,157,0.8)]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-xs font-mono tracking-widest text-white uppercase font-bold">
-              CROWDFUNDING CAMPAIGN LIVE
+              CROWDFUNDING LAUNCHING SOON
             </span>
           </div>
 
-          {/* Animated Live Backer Ticker */}
           <div className="hidden md:flex items-center gap-2 text-xs font-mono text-[#94a3b8]">
-            <Globe size={14} className="text-[#00E5FF] animate-spin" style={{ animationDuration: "10s" }} />
-            <span>Latest Backer:</span>
-            <span className="text-white font-bold">{activeBacker.name}</span>
-            <span className="text-[#00FF9D]">({activeBacker.location})</span>
-            <span className="text-[#64748b]">• {activeBacker.tier}</span>
+            <Bell size={14} className="text-slate-400" />
+            <span>Waitlist is open &mdash; be the first to back</span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <a
-              href="https://discord.gg/N82CpZtGu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-mono text-[#5865F2] hover:text-white transition-colors"
-            >
-              <DiscordIcon className="w-3.5 h-3.5" />
-              <span>JOIN DISCORD</span>
-            </a>
-            <span className="text-[#151D2A]">|</span>
-            <div className="flex items-center gap-1.5 text-xs font-mono text-[#00FF9D]">
-              <Clock size={14} />
-              <span>28 DAYS REMAINING</span>
-            </div>
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+            <Clock size={14} />
+            <span>PRIORITY WAITLIST OPEN</span>
           </div>
         </div>
 
@@ -282,19 +266,19 @@ export default function CampaignPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Sparkles size={14} /> The Discipline Engine · Official Crowdfunding Campaign
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-slate-300 text-[11px] font-mono tracking-widest uppercase">
+              <Sparkles size={14} /> The Discipline Engine · Pre-Launch Campaign
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
               FORCE YOUR FOCUS.<br />
-              <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 ENGINEER SUCCESS.
               </span>
             </h1>
 
             <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed">
-              The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
+              The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it acts as a physical anchor for your mental state—protecting your time and focus so you can do your best work.
             </p>
 
             {/* Launch Status Box */}
@@ -327,32 +311,21 @@ export default function CampaignPage() {
                   <p className="text-[10px] uppercase">Early Access</p>
                 </div>
                 <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-[#00E5FF] font-bold">Q3 2026</p>
+                  <p className="text-white font-bold">Q3 2027</p>
                   <p className="text-[10px] uppercase">Delivery</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => {
-                  setSelectedTierForModal("Batch 01 Early Adopter");
-                  setShowComingSoon(true);
-                }}
-                className="flex-1 py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer"
-              >
-                Back This Project Now <ChevronRight size={18} />
-              </button>
-              <a
-                href="https://discord.gg/N82CpZtGu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-4 px-6 rounded-xl font-bold text-sm tracking-wide text-white bg-[#5865F2] hover:bg-[#4752C4] border border-[#5865F2] transition-all duration-300 shadow-[0_0_25px_rgba(88,101,242,0.4)] flex items-center justify-center gap-2"
-              >
-                <DiscordIcon className="w-4 h-4" />
-                <span>Join Discord</span>
-              </a>
-            </div>
+            <button
+              onClick={() => {
+                setSelectedTierForModal("Batch 01 Early Adopter");
+                setShowComingSoon(true);
+              }}
+              className="w-full py-4 rounded-full font-bold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Join Priority Waitlist <ChevronRight size={18} />
+            </button>
           </motion.div>
 
           {/* Right Video / Interactive Visual Teaser (5 cols) */}
@@ -421,7 +394,7 @@ export default function CampaignPage() {
               <Play size={48} className="text-[#00FF9D] animate-bounce mb-4" />
               <h3 className="text-2xl font-display font-bold text-white mb-2">Nexus Ring Launch Film Demo</h3>
               <p className="text-xs font-mono text-[#94a3b8] max-w-md">
-                Demonstrating 4.2N magnetic snap resonance, ESP32-C3 local daemon interrupts, and local Gemini 1.5 focus guardian.
+                Demonstrating 4.2N magnetic snap resonance, ESP32-C3 local daemon interrupts, and local AI focus guardian.
               </p>
               <button
                 onClick={() => setVideoModal(false)}
@@ -652,6 +625,36 @@ export default function CampaignPage() {
         onClose={() => setShowComingSoon(false)}
         tierName={selectedTierForModal}
       />
+
+      {/* ════════════════ DISCORD BUILDER COMMUNITY BANNER ══════════════ */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
+        <div className="rounded-3xl border border-[#5865F2]/40 bg-gradient-to-r from-[#070A10] via-[#5865F2]/10 to-[#070A10] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_50px_rgba(88,101,242,0.15)]">
+          <div className="space-y-3 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/20 text-[#5865F2] text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-[#5865F2] animate-pulse" />
+              <span>COMMUNITY · BUILD LOGS · 24/7 SUPPORT</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
+              Join the Backer &amp; Developer Discord
+            </h3>
+            <p className="text-sm text-[#CBD5E1] font-light max-w-xl">
+              Connect directly with Founder Naqash Afzal, inspect daily 3MF 3D-printing updates, discuss custom FreeRTOS firmware hooks, and test early software releases.
+            </p>
+          </div>
+
+          <a
+            href="https://discord.gg/Q3tTGhH4k"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-2xl bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-sm font-mono tracking-wide transition-all shadow-[0_0_30px_rgba(88,101,242,0.4)] flex items-center gap-3 shrink-0"
+          >
+            <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+            </svg>
+            <span>Join Discord Server</span>
+          </a>
+        </div>
+      </section>
 
       {/* ════════════════ EXPANDED FAQ SECTION ════════════════════════ */}
       <section className="relative z-10 max-w-[800px] mx-auto px-6 md:px-12">
