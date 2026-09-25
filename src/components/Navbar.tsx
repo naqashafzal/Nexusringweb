@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DiscordIcon from '@/components/DiscordIcon';
+import ComingSoonModal from '@/components/ComingSoonModal';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   return (
     <>
@@ -26,7 +28,12 @@ export default function Navbar() {
           <Link href="/research" className="text-white hover:opacity-50 transition-opacity">Research</Link>
           <Link href="/about" className="text-white hover:opacity-50 transition-opacity">Vision</Link>
           <Link href="/campaign" className="text-emerald-400 hover:opacity-50 transition-opacity">Campaign</Link>
-          <Link href="/preorder" className="text-white hover:opacity-50 transition-opacity">Pre-order</Link>
+          <button
+            onClick={() => setShowComingSoon(true)}
+            className="text-white hover:text-[#00FF9D] transition-colors cursor-pointer"
+          >
+            Pre-order
+          </button>
           <a
             href="https://discord.gg/N82CpZtGu"
             target="_blank"
@@ -63,7 +70,15 @@ export default function Navbar() {
             <Link href="/research" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Research</Link>
             <Link href="/about" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Vision</Link>
             <Link href="/campaign" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-emerald-400">Campaign</Link>
-            <Link href="/preorder" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Pre-order</Link>
+            <button 
+              onClick={() => {
+                setIsOpen(false);
+                setShowComingSoon(true);
+              }} 
+              className="text-2xl font-medium tracking-tighter text-white hover:text-[#00FF9D] transition-colors"
+            >
+              Pre-order
+            </button>
             <a
               href="https://discord.gg/N82CpZtGu"
               target="_blank"
@@ -77,6 +92,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </>
   );
 }

@@ -33,46 +33,27 @@ import {
   ExternalLink,
   Send,
   MessageSquare,
+  Briefcase,
 } from "lucide-react";
 
-// ─── FOUNDERS & CORE TEAM DATA ────────────────────────────────────
+// ─── FOUNDER & ARCHITECT DATA ─────────────────────────────────────
 
 const TEAM = [
   {
     name: "Naqash Afzal",
     role: "Founder & Chief Hardware Architect",
-    bio: "Pioneer in ESP32 RISC-V embedded firmware, Hall-effect magnetic vector tracking, and 5-axis aerospace CNC billet engineering. Obsessed with building zero-latency physical interfaces that eliminate digital friction.",
-    location: "San Francisco / Remote",
+    bio: "Pioneer in ESP32 RISC-V embedded firmware, Hall-effect magnetic vector tracking, and high-precision rapid physical prototyping. Obsessed with building zero-latency physical discipline artifacts that eliminate digital distraction, protect human attention, and accelerate personal success.",
+    location: "Remote / Global",
     accent: "#00FF9D",
-    badge: "FOUNDER",
-    github: "https://github.com",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
-    skills: ["Embedded C/C++", "FreeRTOS", "5-Axis CNC Milling", "RISC-V Architecture"],
-  },
-  {
-    name: "Dr. Evelyn Vance",
-    role: "Co-Founder & Chief Cognitive Scientist",
-    bio: "PhD in Spatial Cognition from MIT. Specialized in ego depletion mitigation, haptic sensory resonance, and tactile muscle memory triggers that accelerate entry into deep work flow states.",
-    location: "Boston, MA",
-    accent: "#00E5FF",
-    badge: "RESEARCH LEAD",
-    github: "https://github.com",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
-    skills: ["Spatial Psychology", "Haptic Physics", "EEG Data Analysis", "Ego Depletion"],
-  },
-  {
-    name: "Kaelen Voss",
-    role: "Lead Local AI Architect",
-    bio: "Former AI Systems Researcher specializing in 4-bit NPU quantization, air-gapped Gemini 1.5 vision inference, and native OS kernel socket firewall engineering.",
-    location: "Tokyo, Japan",
-    accent: "#B026FF",
-    badge: "AI ENGINE",
-    github: "https://github.com",
-    twitter: "https://x.com",
-    linkedin: "https://linkedin.com",
-    skills: ["Local VRAM Models", "Gemini Quantization", "OS Kernel Webhooks", "Rust/C++"],
+    badge: "FOUNDER & ARCHITECT",
+    links: [
+      { name: "GitHub", url: "https://github.com/naqashafzal", icon: Code2 },
+      { name: "Google Developer", url: "https://g.dev/naqashafzal", icon: Globe },
+      { name: "MakerWorld", url: "https://makerworld.com/en/@naqash", icon: Layers },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/naqashafzal/", icon: ExternalLink },
+      { name: "Freelancer", url: "https://www.freelancer.com/u/naqashafzal", icon: Briefcase },
+    ],
+    skills: ["Embedded C/C++", "FreeRTOS", "3D CAD & Prototyping", "RISC-V Architecture", "Kernel Daemons"],
   },
 ];
 
@@ -103,7 +84,7 @@ const VALUES = [
   {
     num: "04",
     title: "Zero Planned Obsolescence",
-    desc: "Buttonless KY-003 Hall-effect sensors mean zero mechanical contacts, zero wear, and infinite cycle lifespan. Engineered out of billet 6061-T6 aluminum to last a lifetime.",
+    desc: "Buttonless KY-003 Hall-effect sensors mean zero mechanical contacts, zero wear, and infinite cycle lifespan. Engineered with precision 3D-printed aerospace-grade polymer and carbon-fiber composite housing to last a lifetime.",
     accent: "#FF9F1C",
     icon: HardDrive,
   },
@@ -120,14 +101,34 @@ const MILESTONES = [
 
 export default function AboutPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactEmail || !contactMessage) return;
-    setFormSubmitted(true);
+    if (!contactEmail || !contactMessage || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "contact_inquiry",
+          name: contactName,
+          email: contactEmail,
+          message: contactMessage,
+          source: "/about",
+        }),
+      });
+    } catch (err) {
+      console.error("Error sending contact message to notify API:", err);
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }
   };
 
   return (
@@ -149,7 +150,7 @@ export default function AboutPage() {
         >
           <div className="flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Building2 size={14} /> Nexus Desktop Art Inc. · Founded 2025
+              <Building2 size={14} /> Success & Discipline Engine · Nexus Desktop Art Inc.
             </div>
             <a
               href="https://discord.gg/N82CpZtGu"
@@ -170,7 +171,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            We are an elite team of hardware engineers, cognitive scientists, and open-source developers building physical anchors for deep work in a hyper-distracted digital world.
+            The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
           </p>
 
           {/* Stats Bar */}
@@ -188,8 +189,8 @@ export default function AboutPage() {
               <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Open Source SDK</p>
             </div>
             <div className="p-4 bg-[#070A10] border border-[#151D2A] rounded-2xl">
-              <p className="text-[#FF9F1C] font-bold text-2xl font-display">6061-T6</p>
-              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Aerospace Billet</p>
+              <p className="text-[#FF9F1C] font-bold text-2xl font-display">V1 3D</p>
+              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Precision Printed</p>
             </div>
           </div>
         </motion.div>
@@ -210,7 +211,7 @@ export default function AboutPage() {
                 Modern operating systems are intentionally engineered by ad-tech giants to fracture human attention. Digital focus apps fail because launching an app requires using the mouse and screen—the exact same interface delivering notification triggers.
               </p>
               <p className="text-[#cbd5e1] text-sm md:text-base leading-relaxed font-light border-l-2 border-[#00FF9D] pl-4">
-                The Nexus Ring breaks the digital loop. Picking up a machined 185-gram billet aluminum totem and snapping it into the magnetic dock uses spatial muscle memory to bypass mental friction.
+                The Nexus Ring breaks the digital loop. Picking up a precision-weighted 3D-printed totem and snapping it into the magnetic dock uses spatial muscle memory to bypass mental friction.
               </p>
             </div>
 
@@ -235,49 +236,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ════════════════ 3. FOUNDERS & CORE TEAM ═════════════════════ */}
+      {/* ════════════════ 3. FOUNDER & INVENTOR ═════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00E5FF] uppercase border border-[#00E5FF]/20 bg-[#00E5FF]/5 rounded-full inline-block px-3 py-1 mb-4">
-            Meet The Inventors
+          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/20 bg-[#00FF9D]/5 rounded-full inline-block px-3 py-1 mb-4">
+            The Visionary Behind Nexus Ring
           </p>
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
-            Founders & Core Engineers
+            Founder & Inventor
           </h2>
           <p className="text-[#94a3b8] text-sm mt-3 font-light">
-            Multidisciplinary experts bridging hardware physics, spatial neuroscience, and local AI.
+            Engineering tactile physical discipline artifacts to protect human focus and accelerate personal success.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TEAM.map((member, idx) => (
+        <div className="max-w-2xl mx-auto">
+          {TEAM.map((member) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 space-y-6 relative overflow-hidden group hover:border-[#00FF9D]/40 transition-all duration-500 shadow-xl"
+              transition={{ duration: 0.6 }}
+              className="rounded-3xl border border-[#00FF9D]/40 bg-[#070A10] p-8 md:p-10 space-y-6 relative overflow-hidden group hover:border-[#00FF9D] transition-all duration-500 shadow-[0_0_50px_rgba(0,255,157,0.12)]"
             >
               {/* Member Avatar / Initial Badge Visual */}
               <div className="flex items-center justify-between">
                 <div
-                  className="w-14 h-14 rounded-2xl border flex items-center justify-center font-display font-black text-xl shadow-lg"
+                  className="w-16 h-16 rounded-2xl border flex items-center justify-center font-display font-black text-2xl shadow-lg"
                   style={{
                     borderColor: member.accent + "60",
-                    backgroundColor: member.accent + "10",
+                    backgroundColor: member.accent + "15",
                     color: member.accent,
                   }}
                 >
-                  {member.name.split(" ").map((n) => n[0]).join("")}
+                  NA
                 </div>
 
                 <span
-                  className="text-[9px] font-mono font-bold tracking-widest px-3 py-1 rounded-full border uppercase"
+                  className="text-[10px] font-mono font-bold tracking-widest px-3.5 py-1 rounded-full border uppercase"
                   style={{
                     color: member.accent,
-                    borderColor: member.accent + "40",
-                    backgroundColor: member.accent + "10",
+                    borderColor: member.accent + "50",
+                    backgroundColor: member.accent + "15",
                   }}
                 >
                   {member.badge}
@@ -285,39 +286,55 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-display font-bold text-white">{member.name}</h3>
+                <h3 className="text-3xl font-display font-bold text-white">{member.name}</h3>
                 <p className="text-xs font-mono mt-1" style={{ color: member.accent }}>
                   {member.role}
                 </p>
               </div>
 
-              <p className="text-[#94a3b8] text-xs leading-relaxed font-light">{member.bio}</p>
+              <p className="text-[#cbd5e1] text-sm leading-relaxed font-light">{member.bio}</p>
 
               {/* Skills Tags */}
-              <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#151D2A]">
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-[#151D2A]">
                 {member.skills.map((sk) => (
                   <span
                     key={sk}
-                    className="text-[9px] font-mono px-2 py-0.5 rounded border border-[#151D2A] bg-[#030508] text-[#cbd5e1]"
+                    className="text-[10px] font-mono px-2.5 py-1 rounded border border-[#151D2A] bg-[#030508] text-[#94a3b8]"
                   >
                     {sk}
                   </span>
                 ))}
               </div>
 
-              {/* Social Links */}
-              <div className="flex items-center gap-3 pt-2 font-mono text-xs text-[#64748b]">
-                <a href={member.github} target="_blank" rel="noreferrer" className="hover:text-white transition-colors" title="Repository">
-                  <Code2 size={16} />
-                </a>
-                <a href={member.twitter} target="_blank" rel="noreferrer" className="hover:text-white transition-colors" title="Website">
-                  <Globe size={16} />
-                </a>
-                <a href={member.linkedin} target="_blank" rel="noreferrer" className="hover:text-white transition-colors" title="External Link">
-                  <ExternalLink size={16} />
-                </a>
-                <span className="ml-auto text-[10px] flex items-center gap-1">
-                  <MapPin size={12} className="text-[#64748b]" /> {member.location}
+              {/* Verified Developer & Hardware Portfolios */}
+              <div className="pt-4 border-t border-[#151D2A] space-y-3">
+                <span className="text-[10px] font-mono text-[#64748b] uppercase tracking-widest block">
+                  Verified Engineering & Hardware Profiles
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {member.links.map((link) => {
+                    const IconComp = link.icon;
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#151D2A] bg-[#030508] hover:border-[#00FF9D]/60 hover:bg-[#00FF9D]/10 hover:text-white text-[#94a3b8] text-xs font-mono transition-all group"
+                      >
+                        <IconComp size={14} className="text-[#00FF9D] group-hover:scale-110 transition-transform" />
+                        <span>{link.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Location & Entity Footer */}
+              <div className="flex items-center justify-between pt-2 border-t border-[#151D2A]/60 font-mono text-xs text-[#64748b]">
+                <span className="text-[10px] text-[#64748b]">Nexus Desktop Art Inc.</span>
+                <span className="text-[11px] flex items-center gap-1.5 text-[#94a3b8]">
+                  <MapPin size={13} className="text-[#00FF9D]" /> {member.location}
                 </span>
               </div>
             </motion.div>
@@ -448,9 +465,19 @@ export default function AboutPage() {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
               >
-                Send Direct Message to Founders <Send size={16} />
+                {isSubmitting ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-[#001a0a] border-t-transparent rounded-full animate-spin" />
+                    <span>Transmitting Message...</span>
+                  </>
+                ) : (
+                  <>
+                    Send Direct Message to Founders <Send size={16} />
+                  </>
+                )}
               </button>
             </form>
           )}

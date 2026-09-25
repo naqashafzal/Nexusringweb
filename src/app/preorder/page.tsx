@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   CheckCircle2,
   Sparkles,
@@ -79,18 +80,39 @@ export default function PreorderPage() {
   const [selectedFinish, setSelectedFinish] = useState(0);
   const [selectedTier, setSelectedTier] = useState(2); // Adopter default
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [accessCode, setAccessCode] = useState("");
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const finish = FINISHES[selectedFinish];
   const tier = TIERS[selectedTier];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    const randomHash = "NX-" + Math.random().toString(36).substring(2, 8).toUpperCase();
-    setAccessCode(randomHash);
-    setSubmitted(true);
+    if (!email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "preorder_reservation",
+          email,
+          tier: tier.name,
+          finish: finish.name,
+          price: tier.price,
+          source: "/preorder",
+        }),
+      });
+    } catch (err) {
+      console.error("Error sending preorder reservation to notify API:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setShowComingSoon(true);
+    }
   };
 
   return (
@@ -105,18 +127,18 @@ export default function PreorderPage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Batch 01 Queue Open · 384 / 500 Reserved
+            Protect Your Potential · Batch 01 Priority Queue
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             RESERVE YOUR<br />
             <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              BATCH 01 ARTIFACT.
+              DISCIPLINE ENGINE.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Batch 01 is strictly limited to 500 units worldwide. Reserve your hardware controller now to lock in Early Adopter pricing.
+            The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical discipline engine now to protect your time and focus.
           </p>
         </div>
       </section>
@@ -240,9 +262,19 @@ export default function PreorderPage() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                   >
-                    Lock In Reservation ({tier.price}) <ChevronRight size={16} />
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-[#001a0a] border-t-transparent rounded-full animate-spin" />
+                        <span>Reserving Slot...</span>
+                      </>
+                    ) : (
+                      <>
+                        Lock In Reservation ({tier.price}) <ChevronRight size={16} />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -266,6 +298,14 @@ export default function PreorderPage() {
 
         </div>
       </section>
+
+      <ComingSoonModal
+        isOpen={showComingSoon}
+        onClose={() => setShowComingSoon(false)}
+        tierName={`${tier.name} (${finish.name})`}
+        initialEmail={email}
+        initialSubmitted={submitted}
+      />
     </main>
   );
 }

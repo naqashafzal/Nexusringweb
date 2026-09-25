@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import DiscordIcon from "@/components/DiscordIcon";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   Play,
   Check,
@@ -65,12 +66,12 @@ const TIERS = [
     id: "adopter",
     name: "The Early Adopter Artifact",
     price: "$129",
-    desc: "Fully assembled, plug-and-play aerospace aluminum focus ring dock.",
+    desc: "Fully assembled, plug-and-play precision 3D-printed V1 focus ring dock.",
     badge: "MOST POPULAR",
     badgeColor: "#00FF9D",
     popular: true,
     includes: [
-      "Fully Assembled Nexus Dock (Matte Anodized Aluminum)",
+      "Fully Assembled Nexus V1 Dock (Engineered Matte 3D Print)",
       "4x Modular Bio-Hex Magnetic Totems",
       "Braided Sci-Fi USB-C Cable (1.8m)",
       "Full Local AI Guardian Software License",
@@ -211,7 +212,8 @@ const FAQS = [
 
 export default function CampaignPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [selectedPledgeTier, setSelectedPledgeTier] = useState<string | null>(null);
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [selectedTierForModal, setSelectedTierForModal] = useState("");
   const [videoModal, setVideoModal] = useState(false);
   const [backerIndex, setBackerIndex] = useState(0);
 
@@ -241,7 +243,7 @@ export default function CampaignPage() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00FF9D] animate-pulse shadow-[0_0_10px_rgba(0,255,157,0.8)]" />
             <span className="text-xs font-mono tracking-widest text-white uppercase font-bold">
-              KICKSTARTER CAMPAIGN LIVE
+              CROWDFUNDING CAMPAIGN LIVE
             </span>
           </div>
 
@@ -281,70 +283,66 @@ export default function CampaignPage() {
             className="lg:col-span-7 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-              <Sparkles size={14} /> Batch 01 Crowdfunding · 180% Funded
+              <Sparkles size={14} /> The Discipline Engine · Official Crowdfunding Campaign
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-              FRACTURE THE LOOP.<br />
+              FORCE YOUR FOCUS.<br />
               <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                ANCHOR YOUR MIND.
+                ENGINEER SUCCESS.
               </span>
             </h1>
 
             <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed">
-              The sci-fi hardware focus artifact designed to destroy digital friction. Back the project today to secure your physical anchor and lock in Early Adopter launch pricing.
+              The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
             </p>
 
-            {/* Funding Progress Bar Box */}
+            {/* Launch Status Box */}
             <div className="bg-[#070A10] border border-[#151D2A] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative overflow-hidden">
               <div className="flex justify-between items-end">
                 <div>
-                  <p className="text-4xl font-display font-black text-white tracking-tight">$45,820</p>
-                  <p className="text-xs font-mono text-[#64748b] uppercase tracking-widest mt-1">
-                    RAISED OF $25,000 GOAL
+                  <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">BATCH 01</p>
+                  <p className="text-xs font-mono text-[#00FF9D] uppercase tracking-widest mt-1">
+                    CROWDFUNDING LAUNCHING SOON
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-display font-bold text-[#00FF9D]">183% FUNDED</p>
-                  <p className="text-xs font-mono text-[#64748b] uppercase tracking-widest mt-1">
-                    418 BACKERS WORLDWIDE
-                  </p>
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">
+                    PRIORITY QUEUE OPEN
+                  </span>
                 </div>
               </div>
 
-              {/* Glowing Progress Bar */}
-              <div className="w-full h-3 bg-[#030508] rounded-full overflow-hidden border border-[#151D2A] p-0.5">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="h-full bg-gradient-to-r from-[#00FF9D] to-[#00E5FF] rounded-full shadow-[0_0_15px_rgba(0,255,157,0.8)]"
-                />
+              <div className="p-4 rounded-2xl bg-[#030508] border border-[#151D2A] text-xs font-mono text-[#94A3B8] leading-relaxed">
+                Crowdfunding pledges are opening shortly. Join the priority waitlist to get immediate notification and lock in limited early-bird adopter pricing.
               </div>
 
               <div className="grid grid-cols-3 gap-3 pt-2 font-mono text-xs text-[#64748b] text-center">
                 <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-white font-bold">418</p>
-                  <p className="text-[10px] uppercase">Backers</p>
+                  <p className="text-white font-bold">V1</p>
+                  <p className="text-[10px] uppercase">3D-Printed</p>
                 </div>
                 <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-[#00FF9D] font-bold">$129</p>
-                  <p className="text-[10px] uppercase">Avg Pledge</p>
+                  <p className="text-[#00FF9D] font-bold">Priority</p>
+                  <p className="text-[10px] uppercase">Early Access</p>
                 </div>
                 <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-[#00E5FF] font-bold">28 Days</p>
-                  <p className="text-[10px] uppercase">Remaining</p>
+                  <p className="text-[#00E5FF] font-bold">Q3 2026</p>
+                  <p className="text-[10px] uppercase">Delivery</p>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="#pledge-tiers"
-                className="flex-1 py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2"
+              <button
+                onClick={() => {
+                  setSelectedTierForModal("Batch 01 Early Adopter");
+                  setShowComingSoon(true);
+                }}
+                className="flex-1 py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer"
               >
                 Back This Project Now <ChevronRight size={18} />
-              </a>
+              </button>
               <a
                 href="https://discord.gg/N82CpZtGu"
                 target="_blank"
@@ -632,8 +630,11 @@ export default function CampaignPage() {
               </div>
 
               <button
-                onClick={() => setSelectedPledgeTier(tier.name)}
-                className="w-full py-3.5 rounded-xl font-bold text-xs tracking-wide transition-all shadow-md"
+                onClick={() => {
+                  setSelectedTierForModal(tier.name);
+                  setShowComingSoon(true);
+                }}
+                className="w-full py-3.5 rounded-xl font-bold text-xs tracking-wide transition-all shadow-md cursor-pointer"
                 style={{
                   backgroundColor: tier.popular ? "#00FF9D" : "#151D2A",
                   color: tier.popular ? "#001a0a" : "#FFFFFF",
@@ -646,50 +647,11 @@ export default function CampaignPage() {
         </div>
       </section>
 
-      {/* ════════════════ PLEDGE MODAL CONFIRMATION ═══════════════════ */}
-      <AnimatePresence>
-        {selectedPledgeTier && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[150] bg-black/90 backdrop-blur-2xl flex items-center justify-center p-6"
-            onClick={() => setSelectedPledgeTier(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-md bg-[#070A10] border border-[#00FF9D]/40 rounded-3xl p-8 shadow-2xl space-y-6"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setSelectedPledgeTier(null)}
-                className="absolute top-4 right-4 p-2 rounded-full border border-white/20 text-white hover:text-[#00FF9D] transition-colors"
-              >
-                <X size={18} />
-              </button>
-
-              <div className="text-center space-y-2">
-                <CheckCircle2 size={40} className="text-[#00FF9D] mx-auto" />
-                <h3 className="text-2xl font-display font-bold text-white">Confirm Backer Pledge</h3>
-                <p className="text-xs font-mono text-[#00FF9D]">{selectedPledgeTier}</p>
-              </div>
-
-              <p className="text-xs text-[#94a3b8] leading-relaxed text-center">
-                You are about to reserve your slot in Batch 01 queue. Click below to proceed to our secure checkout portal.
-              </p>
-
-              <Link
-                href="/preorder"
-                className="w-full py-3.5 rounded-xl bg-[#00FF9D] text-[#001a0a] font-bold text-xs tracking-wider flex items-center justify-center gap-2 hover:bg-[#00ffaa] transition-all"
-              >
-                Complete Reservation <ChevronRight size={16} />
-              </Link>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ComingSoonModal
+        isOpen={showComingSoon}
+        onClose={() => setShowComingSoon(false)}
+        tierName={selectedTierForModal}
+      />
 
       {/* ════════════════ EXPANDED FAQ SECTION ════════════════════════ */}
       <section className="relative z-10 max-w-[800px] mx-auto px-6 md:px-12">

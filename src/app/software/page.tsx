@@ -116,7 +116,7 @@ export default function SoftwarePage() {
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/[0.06] text-[#00E5FF] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-ping" />
-            100% Air-Gapped Local Daemon
+            Distraction Elimination System · 100% Air-Gapped Local Daemon
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -127,7 +127,7 @@ export default function SoftwarePage() {
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The hardware is your physical key. The Nexus Guardian is a lightweight, local-first application that runs entirely on your machine's NPU/GPU. Zero screen data ever leaves your computer.
+            More output, less friction: a physical barrier between you and the distractions costing you time and money. Lightweight kernel daemons enforce focus in under 24ms with zero cloud telemetry.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-[#151D2A]">

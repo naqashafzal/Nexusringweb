@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   Cpu,
   Fingerprint,
@@ -134,6 +135,7 @@ Write-Host "[NEXUS] Network Restrictions Lifted. 15-Minute Recharge Initiated." 
 export default function FeaturesPage() {
   const [activeTab, setActiveTab] = useState(0);
   const [copiedCode, setCopiedCode] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   // Scroll Progress tracking for 3D Exploded Model Disassembly
   const explodedSectionRef = useRef<HTMLDivElement>(null);
@@ -170,28 +172,28 @@ export default function FeaturesPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Alien Tech Ecosystem · Complete Specification
+            Flow State Catalyst · Distraction Elimination System
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
             ENGINEERING PURE<br />
             <span style={{ background: "linear-gradient(120deg,#00FF9D 0%,#00E5FF 50%,#B026FF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              FOCUS.
+              DISCIPLINE.
             </span>
           </h1>
 
           <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Discover the hardware and software architecture that transforms physical intent into digital reality.
+            The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling higher quality output in a fraction of the time.
           </p>
 
           {/* Call to Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link
-              href="/preorder"
-              className="px-8 py-4 rounded-xl bg-[#00FF9D] text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2"
+            <button
+              onClick={() => setShowComingSoon(true)}
+              className="px-8 py-4 rounded-xl bg-[#00FF9D] text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2 cursor-pointer"
             >
               Reserve Batch 01 <ChevronRight size={16} />
-            </Link>
+            </button>
             <a
               href="#3d-exploded-view"
               className="px-8 py-4 rounded-xl border border-[#151D2A] bg-[#070A10] text-white hover:bg-[#151D2A] font-mono text-xs tracking-wider transition-all flex items-center gap-2"
@@ -788,6 +790,7 @@ export default function FeaturesPage() {
         </AnimatePresence>
       </section>
 
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </main>
   );
 }

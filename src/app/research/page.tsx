@@ -24,7 +24,7 @@ export default function ResearchPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
-            Nexus Research & Cognitive Science
+            Time & Focus Optimization · Cognitive Science Whitepaper
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
@@ -35,7 +35,7 @@ export default function ResearchPage() {
           </h1>
 
           <p className="text-[#94a3b8] text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            A deep dive into cognitive psychology, ego depletion, hall-sensor telemetry, and local-first quantized AI architecture powering the Nexus Ring.
+            The Nexus Ring is a physical discipline engine built to accelerate your personal success. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
           </p>
 
           <div className="pt-4">
