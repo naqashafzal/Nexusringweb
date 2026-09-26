@@ -12,7 +12,7 @@ const ExplodedRingCanvas = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-[#00FF9D]/50 animate-pulse">
+      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-emerald/50 animate-pulse">
         INITIALIZING 3D DOCK...
       </div>
     ),
@@ -100,7 +100,7 @@ export default function Home() {
   const heroY = useTransform(heroScroll, [0.75, 1], [0, -60]);
 
   return (
-    <main className="bg-[#030508] text-[#F8FAFC] font-sans overflow-x-hidden">
+    <main className="bg-vantablack text-[#F8FAFC] font-sans overflow-x-hidden">
       {/* ════════════════ HERO (DUAL COLUMN SPLIT) ════════════════ */}
       <motion.div
         style={{ opacity: heroOpacity }}
@@ -121,7 +121,7 @@ export default function Home() {
               className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl pointer-events-auto"
             >
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
                 Intelligent Gatekeeper
               </span>
 
@@ -140,7 +140,7 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="text-[#94A3B8] text-base md:text-lg font-light max-w-lg leading-relaxed">
+              <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed">
                 "To bridge the gap between physical intention and digital execution, transforming productivity from a software struggle into a tangible, tactile experience."
               </p>
 
@@ -149,7 +149,7 @@ export default function Home() {
                   onClick={() => setShowComingSoon(true)}
                   className="relative px-8 py-4 rounded-full font-semibold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 cursor-pointer"
                 >
-                  Pre-Order Artifact — $129
+                  Pre-Order — Starting at $15
                 </button>
                 <Link
                   href="/research"
@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════ THE SUCCESS ANGLE (3 MARKETING HOOKS) ════ */}
-      <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
+      <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1300px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-3xl mx-auto mb-20">
             <span className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-4 py-1.5 mb-4 backdrop-blur-md">
@@ -206,7 +206,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tight text-white mb-6">
               ENGINEERED FOR UNBREAKABLE DISCIPLINE.
             </h2>
-            <p className="text-[#94A3B8] text-base md:text-lg font-light leading-relaxed">
+            <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed">
               In a world overflowing with digital distractions, willpower is no longer enough to stay focused. The Nexus Ring was born from a simple realization: changing your digital environment should be as deliberate and physical as closing an office door.
             </p>
           </Reveal>
@@ -229,7 +229,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-slate-300 leading-snug">
                     Force your focus, save your time, and engineer your own success.
                   </p>
-                  <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
+                  <p className="text-slate-400 text-sm font-light leading-relaxed">
                     Stop burning finite willpower trying to resist distraction tabs. By shifting intent into a mechanical gesture, you trigger an immediate cognitive barrier that protects your high-leverage hours.
                   </p>
                 </div>
@@ -256,7 +256,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-slate-300 leading-snug">
                     A physical barrier between you and the distractions costing you time and money.
                   </p>
-                  <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
+                  <p className="text-slate-400 text-sm font-light leading-relaxed">
                     Every digital interruption costs up to 23 minutes of refocusing penalty. The Nexus Ring places a tangible physical object between impulse and action, eliminating distraction leaks and driving 2-3x output.
                   </p>
                 </div>
@@ -283,7 +283,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-slate-300 leading-snug">
                     The ultimate hardware artifact to lock in your habits and build unbreakable discipline.
                   </p>
-                  <p className="text-[#94A3B8] text-sm font-light leading-relaxed">
+                  <p className="text-slate-400 text-sm font-light leading-relaxed">
                     Crafted from solid 6061-T6 aerospace aluminum with ceramic acoustic damping. An uncompromising executive desk artifact that anchors your spatial memory and protects your compounded lifetime potential.
                   </p>
                 </div>
@@ -298,7 +298,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════ PROBLEM VS SOLUTION ═════════════════════ */}
-      <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
+      <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-20">
             <p className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-3.5 py-1 mb-4 backdrop-blur-md">
@@ -307,14 +307,14 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
               Software app blockers fail because they lack physical consequence.
             </h2>
-            <p className="text-[#64748B] text-base leading-relaxed">
+            <p className="text-slate-500 text-base leading-relaxed">
               When willpower is the only wall between you and endless tabs, a single command-tab click destroys your focus.
             </p>
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8 items-stretch">
             <Reveal delay={0.1}>
-              <div className="h-full rounded-2xl border border-white/10 bg-[#070A10] p-8 md:p-10 flex flex-col justify-between">
+              <div className="h-full rounded-2xl border border-white/10 bg-matte p-8 md:p-10 flex flex-col justify-between">
                 <div>
                   <span className="text-[10px] font-mono text-red-400 uppercase tracking-widest px-2.5 py-1 rounded bg-red-400/10 border border-red-400/20 inline-block mb-6">
                     The Old Way · Digital Blockers
@@ -322,7 +322,7 @@ export default function Home() {
                   <h3 className="text-2xl font-display font-bold text-white mb-4">
                     Easy to override. Zero friction.
                   </h3>
-                  <ul className="space-y-3 text-[#94A3B8] text-sm">
+                  <ul className="space-y-3 text-slate-400 text-sm">
                     {[
                       "Bypassed in 2 clicks when impulse strikes",
                       "Consumes CPU & tracks your screen data to cloud",
@@ -348,7 +348,7 @@ export default function Home() {
                   <h3 className="text-2xl font-display font-bold text-white mb-4">
                     Physical Totem. Instant Snap.
                   </h3>
-                  <ul className="space-y-3 text-[#CBD5E1] text-sm font-light">
+                  <ul className="space-y-3 text-slate-300 text-sm font-light">
                     {[
                       "Physical magnetic ring rotation forces conscious intent",
                       "Air-gapped on-device AI — 0 bytes sent anywhere",
@@ -369,16 +369,16 @@ export default function Home() {
       </section>
 
       {/* ════════════════ BENTO GRID: LOOP OF PERFECT FOCUS ══════ */}
-      <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
+      <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[10px] font-mono tracking-[0.25em] text-[#00E5FF] uppercase border border-[#00E5FF]/25 bg-[#00E5FF]/10 rounded-full inline-block px-3.5 py-1 mb-4">
+            <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/25 bg-electric/10 rounded-full inline-block px-3.5 py-1 mb-4">
               Hardware Architecture
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
               The Loop of Perfect Focus.
             </h2>
-            <p className="text-[#64748B] text-base leading-relaxed">
+            <p className="text-slate-500 text-base leading-relaxed">
               Three hardware-accelerated layers working seamlessly to keep your mind locked in the zone.
             </p>
           </Reveal>
@@ -400,7 +400,7 @@ export default function Home() {
                         <span className="text-[10px] font-mono tracking-[0.15em] text-slate-300 uppercase block">
                           Layer 01 · Tactical Sensor
                         </span>
-                        <span className="text-xs text-[#94A3B8] font-mono">
+                        <span className="text-xs text-slate-400 font-mono">
                           N52 Hall Effect Array
                         </span>
                       </div>
@@ -416,14 +416,14 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3 relative z-10">
                     Tangible Intent
                   </h3>
-                  <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed font-light relative z-10 max-w-xl">
+                  <p className="text-slate-400 text-sm md:text-base leading-relaxed font-light relative z-10 max-w-xl">
                     By binding flow states to physical totems, your brain establishes a powerful spatial trigger. Snap the ring onto position — your OS switches mode before your hand leaves the desk.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10 relative z-10 space-y-4">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#64748B]">MAG-SENSE RESPONSE:</span>
+                    <span className="text-slate-500">MAG-SENSE RESPONSE:</span>
                     <span className="text-white font-bold">
                       12ms (Hardware Interrupt)
                     </span>
@@ -446,7 +446,7 @@ export default function Home() {
                     ].map((chip) => (
                       <span
                         key={chip}
-                        className="text-[10px] font-mono text-[#64748B] bg-[#030508] border border-[#151D2A] px-2.5 py-1 rounded-md"
+                        className="text-[10px] font-mono text-slate-500 bg-vantablack border border-slate px-2.5 py-1 rounded-md"
                       >
                         {chip}
                       </span>
@@ -470,7 +470,7 @@ export default function Home() {
                       <span className="text-[10px] font-mono tracking-[0.15em] text-slate-300 uppercase block">
                         Layer 02 · OS Daemon
                       </span>
-                      <span className="text-xs text-[#94A3B8] font-mono">
+                      <span className="text-xs text-slate-400 font-mono">
                         Kernel Direct Webhooks
                       </span>
                     </div>
@@ -479,13 +479,13 @@ export default function Home() {
                   <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-3 relative z-10">
                     Zero-Touch Automation
                   </h3>
-                  <p className="text-[#94A3B8] text-sm leading-relaxed font-light relative z-10">
+                  <p className="text-slate-400 text-sm leading-relaxed font-light relative z-10">
                     Native PowerShell & Bash hooks fire instantly. Sites blocked at kernel level, apps launched, notifications silenced — zero latency, zero middleware.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10 relative z-10 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest">
+                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
                     Execution Engine
                   </span>
                   <span className="text-[10px] font-mono text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full font-bold">
@@ -512,7 +512,7 @@ export default function Home() {
                   <h3 className="text-2xl font-display font-bold text-white">
                     Local AI Guardian (Air-Gapped Local Model)
                   </h3>
-                  <p className="text-[#94A3B8] text-sm leading-relaxed font-light">
+                  <p className="text-slate-400 text-sm leading-relaxed font-light">
                     An on-device model inspects app context in real time. Zero screen pixels or keystrokes ever leave your machine. 100% private enforcement.
                   </p>
                 </div>
@@ -522,7 +522,7 @@ export default function Home() {
                     <p className="text-xs font-mono text-white font-bold">
                       100% AIR-GAPPED
                     </p>
-                    <p className="text-[10px] font-mono text-[#64748B]">
+                    <p className="text-[10px] font-mono text-slate-500">
                       Zero Telemetry
                     </p>
                   </div>
@@ -549,7 +549,7 @@ export default function Home() {
                 <p className="text-2xl font-display font-bold text-white">
                   {s.val}
                 </p>
-                <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-widest mt-1">
+                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mt-1">
                   {s.label}
                 </p>
               </div>
@@ -559,17 +559,17 @@ export default function Home() {
       </section>
 
       {/* ════════════════ THE 4 HARDWARE MODES SHOWCASE ═══════════ */}
-      <section className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]">
+      <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/25 bg-[#00FF9D]/10 rounded-full inline-block px-3.5 py-1 mb-4">
+            <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/25 bg-emerald/10 rounded-full inline-block px-3.5 py-1 mb-4">
               4 Hardware Slots
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
               Master Your Workspace,<br />
-              <span className="text-[#64748B] font-light">One Slot at a Time.</span>
+              <span className="text-slate-500 font-light">One Slot at a Time.</span>
             </h2>
-            <p className="text-[#64748B] leading-relaxed text-sm md:text-base">
+            <p className="text-slate-500 leading-relaxed text-sm md:text-base">
               Assign magnetic totems to physical positions. Spatial memory makes flow state instant, effortless, and automatic.
             </p>
           </Reveal>
@@ -585,13 +585,13 @@ export default function Home() {
       <section
         id="ai-overview"
         aria-labelledby="geo-heading"
-        className="relative z-10 bg-[#05080E] py-24 border-t border-[#151D2A]"
+        className="relative z-10 bg-[#05080E] py-24 border-t border-slate"
       >
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <div className="rounded-3xl border border-[#151D2A] bg-[#070A10]/80 backdrop-blur-xl p-8 md:p-12">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#151D2A]">
+          <div className="rounded-3xl border border-slate bg-matte/80 backdrop-blur-xl p-8 md:p-12">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate">
               <div>
-                <span className="text-[10px] font-mono text-[#00FF9D] uppercase tracking-widest px-3 py-1 rounded bg-[#00FF9D]/10 border border-[#00FF9D]/30 inline-block mb-2">
+                <span className="text-[10px] font-mono text-emerald uppercase tracking-widest px-3 py-1 rounded bg-emerald/10 border border-emerald/30 inline-block mb-2">
                   System Architecture · Generative Engine Index
                 </span>
                 <h2
@@ -601,16 +601,16 @@ export default function Home() {
                   What is the Nexus Ring? Technical Overview
                 </h2>
               </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-[#94A3B8]">
-                <span className="w-2 h-2 rounded-full bg-[#00FF9D] animate-ping" />
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
+                <span className="w-2 h-2 rounded-full bg-emerald animate-ping" />
                 <span>INDEXED FOR AI SEARCH ENGINES & CHATS</span>
               </div>
             </div>
 
-            <article className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-[#94A3B8]">
+            <article className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-400">
               <div className="space-y-4">
                 <h3 className="text-white font-display font-semibold text-lg flex items-center gap-2">
-                  <Cpu size={18} className="text-[#00FF9D]" />
+                  <Cpu size={18} className="text-emerald" />
                   The Intelligent Gatekeeper Defined
                 </h3>
                 <p>
@@ -623,33 +623,33 @@ export default function Home() {
 
               <div className="space-y-4">
                 <h3 className="text-white font-display font-semibold text-lg flex items-center gap-2">
-                  <Layers size={18} className="text-[#00E5FF]" />
+                  <Layers size={18} className="text-electric" />
                   Key Specifications & Search Entities
                 </h3>
                 <dl className="grid grid-cols-2 gap-3 text-xs font-mono">
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Primary Function</dt>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Primary Function</dt>
                     <dd className="text-white font-semibold mt-1">Success & Discipline Engine</dd>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Focus Mechanism</dt>
-                    <dd className="text-[#00FF9D] font-semibold mt-1">Distraction Elimination</dd>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Focus Mechanism</dt>
+                    <dd className="text-emerald font-semibold mt-1">Distraction Elimination</dd>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Hardware Material</dt>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Hardware Material</dt>
                     <dd className="text-white font-semibold mt-1">6061-T6 Billet Aluminum</dd>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Kernel Latency</dt>
-                    <dd className="text-[#00E5FF] font-semibold mt-1">&lt;24ms Direct Interrupt</dd>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Kernel Latency</dt>
+                    <dd className="text-electric font-semibold mt-1">&lt;24ms Direct Interrupt</dd>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Privacy Paradigm</dt>
-                    <dd className="text-[#B026FF] font-semibold mt-1">100% Air-Gapped Local AI</dd>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Privacy Paradigm</dt>
+                    <dd className="text-purple font-semibold mt-1">100% Air-Gapped Local AI</dd>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#030508] border border-[#151D2A]">
-                    <dt className="text-[#64748B] uppercase">Campaign Status</dt>
-                    <dd className="text-[#00FF9D] font-semibold mt-1">Launching Soon (Waitlist Open)</dd>
+                  <div className="p-3 rounded-lg bg-vantablack border border-slate">
+                    <dt className="text-slate-500 uppercase">Campaign Status</dt>
+                    <dd className="text-emerald font-semibold mt-1">Launching Soon (Waitlist Open)</dd>
                   </div>
                 </dl>
               </div>
@@ -662,7 +662,7 @@ export default function Home() {
       <section
         id="faq"
         aria-labelledby="faq-title"
-        className="relative z-10 bg-[#030508] py-28 md:py-36 border-t border-[#151D2A]"
+        className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate"
       >
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <Reveal className="text-center mb-16">
@@ -675,7 +675,7 @@ export default function Home() {
             >
               Everything You Need to Know.
             </h2>
-            <p className="text-[#94A3B8] text-base font-light">
+            <p className="text-slate-400 text-base font-light">
               Clear answers on the discipline engine, hardware architecture, and kernel integrations.
             </p>
           </Reveal>
@@ -708,7 +708,7 @@ export default function Home() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-6 pt-2 text-[#94A3B8] text-sm leading-relaxed border-t border-white/5">
+                          <div className="px-6 pb-6 pt-2 text-slate-400 text-sm leading-relaxed border-t border-white/5">
                             {item.a}
                           </div>
                         </motion.div>
@@ -723,7 +723,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════ FINAL CTA ═══════════════════════════════ */}
-      <section className="relative z-10 bg-[#030508] py-36 md:py-44 text-center overflow-hidden border-t border-white/10">
+      <section className="relative z-10 bg-vantablack py-36 md:py-44 text-center overflow-hidden border-t border-white/10">
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
           <div className="w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[120px]" />
         </div>
@@ -744,7 +744,7 @@ export default function Home() {
               the snap?
             </span>
           </h2>
-          <p className="text-[#94A3B8] text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
+          <p className="text-slate-400 text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
             Join the creators and engineers who refuse to surrender their attention to digital distractions. Protect your potential and lock in your habits today.
           </p>
           <button
@@ -753,7 +753,7 @@ export default function Home() {
           >
             Back This Project <ChevronRight size={18} />
           </button>
-          <p className="text-[#64748B] text-xs mt-6 font-mono tracking-widest">
+          <p className="text-slate-500 text-xs mt-6 font-mono tracking-widest">
             Batch 01 Priority Queue Open · Join Waitlist
           </p>
         </Reveal>

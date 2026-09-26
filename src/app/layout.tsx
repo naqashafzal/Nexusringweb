@@ -92,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#030508] text-[#F8FAFC] selection:bg-emerald-500/30 selection:text-emerald-400">
+      <body className="min-h-full flex flex-col bg-vantablack text-[#F8FAFC] selection:bg-emerald-500/30 selection:text-emerald-400">
         <Navbar />
         {children}
         <Footer />

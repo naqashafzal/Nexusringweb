@@ -105,17 +105,17 @@ export default function SoftwarePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#030508] text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
       {/* Background Dot Grid Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#00E5FF]/[0.05] blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-electric/[0.05] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/[0.06] text-[#00E5FF] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-electric/30 bg-electric/[0.06] text-electric text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-electric animate-ping" />
             Distraction Elimination System · 100% Air-Gapped Local Daemon
           </div>
 
@@ -126,20 +126,20 @@ export default function SoftwarePage() {
             </span>
           </h1>
 
-          <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             More output, less friction: a physical barrier between you and the distractions costing you time and money. Lightweight kernel daemons enforce focus in under 24ms with zero cloud telemetry.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-[#151D2A]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-slate">
             {[
               { val: "0 Bytes", label: "Sent to Cloud", accent: "#00FF9D" },
               { val: "<24ms", label: "Kernel Webhook", accent: "#00E5FF" },
               { val: "Local AI", label: "Quantized NPU", accent: "#B026FF" },
               { val: "Open SDK", label: "Custom Hooks", accent: "#FF9F1C" },
             ].map((st) => (
-              <div key={st.label} className="p-3 rounded-xl border border-[#151D2A] bg-[#070A10]">
+              <div key={st.label} className="p-3 rounded-xl border border-slate bg-matte">
                 <p className="text-lg font-display font-bold" style={{ color: st.accent }}>{st.val}</p>
-                <p className="text-[10px] font-mono text-[#64748b] uppercase tracking-wider">{st.label}</p>
+                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{st.label}</p>
               </div>
             ))}
           </div>
@@ -149,27 +149,27 @@ export default function SoftwarePage() {
       {/* ════════════════ INTERACTIVE CODE & HOOK GENERATOR ═══════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/20 bg-[#00FF9D]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
             Open Webhook SDK
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Native OS Daemon Webhooks
           </h2>
-          <p className="text-[#64748b] text-sm mt-3">
+          <p className="text-slate-500 text-sm mt-3">
             Inspect the exact scripts executed at kernel level when totems snap into position.
           </p>
         </div>
 
         {/* Code Terminal Box */}
-        <div className="rounded-3xl border border-[#151D2A] bg-[#030508] overflow-hidden shadow-2xl">
+        <div className="rounded-3xl border border-slate bg-vantablack overflow-hidden shadow-2xl">
           {/* Top Bar with Language Tabs */}
-          <div className="px-6 py-4 bg-[#070A10] border-b border-[#151D2A] flex flex-wrap items-center justify-between gap-4">
+          <div className="px-6 py-4 bg-matte border-b border-slate flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-[#FF5F56]/80" />
               <div className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
               <div className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
-              <span className="text-xs font-mono text-[#64748b] ml-2 flex items-center gap-1.5">
-                <Terminal size={14} className="text-[#00FF9D]" />
+              <span className="text-xs font-mono text-slate-500 ml-2 flex items-center gap-1.5">
+                <Terminal size={14} className="text-emerald" />
                 nexus_daemon_hooks
               </span>
             </div>
@@ -192,16 +192,16 @@ export default function SoftwarePage() {
 
               <button
                 onClick={handleCopy}
-                className="ml-2 px-3 py-1 rounded-lg border border-[#151D2A] bg-[#070A10] hover:bg-[#151D2A] text-xs font-mono text-[#cbd5e1] flex items-center gap-1.5 transition-colors"
+                className="ml-2 px-3 py-1 rounded-lg border border-slate bg-matte hover:bg-slate text-xs font-mono text-slate-300 flex items-center gap-1.5 transition-colors"
               >
-                {copied ? <Check size={12} className="text-[#00FF9D]" /> : <Copy size={12} />}
+                {copied ? <Check size={12} className="text-emerald" /> : <Copy size={12} />}
                 {copied ? "COPIED" : "COPY"}
               </button>
             </div>
           </div>
 
           {/* Code Viewer Panel */}
-          <div className="p-6 md:p-8 font-mono text-xs md:text-sm overflow-x-auto text-[#cbd5e1] leading-relaxed bg-[#030508]">
+          <div className="p-6 md:p-8 font-mono text-xs md:text-sm overflow-x-auto text-slate-300 leading-relaxed bg-vantablack">
             <pre>
               <code>{CODE_SNIPPETS[activeCodeTab]}</code>
             </pre>
@@ -211,15 +211,15 @@ export default function SoftwarePage() {
 
       {/* ════════════════ AIR-GAPPED VISION ARCHITECTURE ═══════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 md:p-12 relative overflow-hidden">
+        <div className="rounded-3xl border border-slate bg-matte p-8 md:p-12 relative overflow-hidden">
           <div className="max-w-2xl mb-12">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-[#B026FF] border border-[#B026FF]/20 bg-[#B026FF]/10 px-3 py-1 rounded-full">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-purple border border-purple/20 bg-purple/10 px-3 py-1 rounded-full">
               Privacy Architecture
             </span>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-3">
               How the Local AI Guardian Works
             </h3>
-            <p className="text-[#94a3b8] text-sm leading-relaxed font-light mt-2">
+            <p className="text-slate-400 text-sm leading-relaxed font-light mt-2">
               Unlike cloud-based AI tools that upload screen images, Nexus runs a quantized local AI model in local VRAM.
             </p>
           </div>
@@ -248,7 +248,7 @@ export default function SoftwarePage() {
                 icon: Zap,
               },
             ].map((st) => (
-              <div key={st.num} className="p-6 rounded-2xl border border-[#151D2A] bg-[#030508] space-y-4">
+              <div key={st.num} className="p-6 rounded-2xl border border-slate bg-vantablack space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-mono font-bold tracking-widest" style={{ color: st.accent }}>
                     {st.num}
@@ -256,7 +256,7 @@ export default function SoftwarePage() {
                   <st.icon size={20} style={{ color: st.accent }} />
                 </div>
                 <h4 className="text-lg font-display font-bold text-white">{st.title}</h4>
-                <p className="text-[#94a3b8] text-xs leading-relaxed font-light">{st.desc}</p>
+                <p className="text-slate-400 text-xs leading-relaxed font-light">{st.desc}</p>
               </div>
             ))}
           </div>
@@ -266,7 +266,7 @@ export default function SoftwarePage() {
       {/* ════════════════ CORE PROTOCOL BLACKOUT CARDS ═════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#FF9F1C] uppercase border border-[#FF9F1C]/20 bg-[#FF9F1C]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-amber uppercase border border-amber/20 bg-amber/5 rounded-full inline-block px-3 py-1 mb-4">
             Security & Boundary Modules
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
@@ -275,22 +275,22 @@ export default function SoftwarePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="rounded-2xl border border-[#151D2A] bg-[#070A10] p-8 space-y-4">
-            <span className="text-[10px] font-mono text-[#00FF9D] uppercase tracking-widest px-2.5 py-1 rounded bg-[#00FF9D]/10 border border-[#00FF9D]/20 inline-block">
+          <div className="rounded-2xl border border-slate bg-matte p-8 space-y-4">
+            <span className="text-[10px] font-mono text-emerald uppercase tracking-widest px-2.5 py-1 rounded bg-emerald/10 border border-emerald/20 inline-block">
               Kernel Firewall Engine
             </span>
             <h3 className="text-2xl font-display font-bold text-white">Total Blackout Protocol</h3>
-            <p className="text-[#94a3b8] text-sm leading-relaxed font-light">
+            <p className="text-slate-400 text-sm leading-relaxed font-light">
               When Deep Work totem is active, the Guardian intercepts network requests to known distraction domains at OS kernel socket level. It cannot be bypassed by simply opening an incognito browser tab.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[#151D2A] bg-[#070A10] p-8 space-y-4">
-            <span className="text-[10px] font-mono text-[#00E5FF] uppercase tracking-widest px-2.5 py-1 rounded bg-[#00E5FF]/10 border border-[#00E5FF]/20 inline-block">
+          <div className="rounded-2xl border border-slate bg-matte p-8 space-y-4">
+            <span className="text-[10px] font-mono text-electric uppercase tracking-widest px-2.5 py-1 rounded bg-electric/10 border border-electric/20 inline-block">
               Hardware Relay Isolation
             </span>
             <h3 className="text-2xl font-display font-bold text-white">Spatial Mic & Camera Isolation</h3>
-            <p className="text-[#94a3b8] text-sm leading-relaxed font-light">
+            <p className="text-slate-400 text-sm leading-relaxed font-light">
               Instantly opens or severs spatial microphone input streams during meetings. Prevents hot-mic accidents and provides physical reassurance during confidential calls.
             </p>
           </div>

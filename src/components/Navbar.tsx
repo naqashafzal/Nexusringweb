@@ -29,7 +29,7 @@ export default function Navbar() {
           <Link href="/campaign" className="text-emerald-400 hover:opacity-50 transition-opacity">Campaign</Link>
           <button
             onClick={() => setShowComingSoon(true)}
-            className="text-white hover:text-[#00FF9D] transition-colors cursor-pointer"
+            className="text-white hover:text-emerald transition-colors cursor-pointer"
           >
             Pre-order
           </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-[#030508]/95 backdrop-blur-xl border-b border-[#151D2A] flex flex-col items-center justify-center gap-7"
+            className="fixed inset-0 z-[90] bg-vantablack/95 backdrop-blur-xl border-b border-slate flex flex-col items-center justify-center gap-7"
           >
             <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Overview</Link>
             <Link href="/features" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Features</Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
                 setIsOpen(false);
                 setShowComingSoon(true);
               }} 
-              className="text-2xl font-medium tracking-tighter text-white hover:text-[#00FF9D] transition-colors"
+              className="text-2xl font-medium tracking-tighter text-white hover:text-emerald transition-colors"
             >
               Pre-order
             </button>

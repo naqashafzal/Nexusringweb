@@ -228,13 +228,13 @@ export default function CampaignPage() {
   const activeBacker = LIVE_BACKERS[backerIndex];
 
   return (
-    <main className="min-h-screen pt-32 pb-32 bg-[#030508] text-[#E2E8F0] font-sans overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-white">
+    <main className="min-h-screen pt-32 pb-32 bg-vantablack text-[#E2E8F0] font-sans overflow-x-hidden selection:bg-emerald/30 selection:text-white">
       {/* Background Dot Grid Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00FF9D]/[0.05] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-[#00E5FF]/[0.03] blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald/[0.05] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-electric/[0.03] blur-[140px] rounded-full pointer-events-none" />
 
       {/* ════════════════ HERO CAMPAIGN SHOWCASE ═════════════════════ */}
       <section className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
@@ -247,7 +247,7 @@ export default function CampaignPage() {
             </span>
           </div>
 
-          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-[#94a3b8]">
+          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-slate-400">
             <Bell size={14} className="text-slate-400" />
             <span>Waitlist is open &mdash; be the first to back</span>
           </div>
@@ -277,40 +277,40 @@ export default function CampaignPage() {
               </span>
             </h1>
 
-            <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed">
+            <p className="text-slate-400 text-base sm:text-xl font-light leading-relaxed">
               The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it acts as a physical anchor for your mental state—protecting your time and focus so you can do your best work.
             </p>
 
             {/* Launch Status Box */}
-            <div className="bg-[#070A10] border border-[#151D2A] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative overflow-hidden">
+            <div className="bg-matte border border-slate rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl relative overflow-hidden">
               <div className="flex justify-between items-end">
                 <div>
                   <p className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">BATCH 01</p>
-                  <p className="text-xs font-mono text-[#00FF9D] uppercase tracking-widest mt-1">
+                  <p className="text-xs font-mono text-emerald uppercase tracking-widest mt-1">
                     CROWDFUNDING LAUNCHING SOON
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00FF9D]/10 text-[#00FF9D] border border-[#00FF9D]/30">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald/10 text-emerald border border-emerald/30">
                     PRIORITY QUEUE OPEN
                   </span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#030508] border border-[#151D2A] text-xs font-mono text-[#94A3B8] leading-relaxed">
+              <div className="p-4 rounded-2xl bg-vantablack border border-slate text-xs font-mono text-slate-400 leading-relaxed">
                 Crowdfunding pledges are opening shortly. Join the priority waitlist to get immediate notification and lock in limited early-bird adopter pricing.
               </div>
 
-              <div className="grid grid-cols-3 gap-3 pt-2 font-mono text-xs text-[#64748b] text-center">
-                <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
+              <div className="grid grid-cols-3 gap-3 pt-2 font-mono text-xs text-slate-500 text-center">
+                <div className="p-2.5 bg-vantablack rounded-xl border border-slate">
                   <p className="text-white font-bold">V1</p>
                   <p className="text-[10px] uppercase">3D-Printed</p>
                 </div>
-                <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
-                  <p className="text-[#00FF9D] font-bold">Priority</p>
+                <div className="p-2.5 bg-vantablack rounded-xl border border-slate">
+                  <p className="text-emerald font-bold">Priority</p>
                   <p className="text-[10px] uppercase">Early Access</p>
                 </div>
-                <div className="p-2.5 bg-[#030508] rounded-xl border border-[#151D2A]">
+                <div className="p-2.5 bg-vantablack rounded-xl border border-slate">
                   <p className="text-white font-bold">Q3 2027</p>
                   <p className="text-[10px] uppercase">Delivery</p>
                 </div>
@@ -333,15 +333,15 @@ export default function CampaignPage() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-5 relative aspect-square sm:aspect-video lg:aspect-square rounded-3xl overflow-hidden bg-[#070A10] border border-[#151D2A] shadow-2xl group cursor-pointer flex flex-col justify-between p-6"
+            className="lg:col-span-5 relative aspect-square sm:aspect-video lg:aspect-square rounded-3xl overflow-hidden bg-matte border border-slate shadow-2xl group cursor-pointer flex flex-col justify-between p-6"
             onClick={() => setVideoModal(true)}
           >
             {/* Background Image / Ambient Glow */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#00FF9D]/20 via-[#00E5FF]/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald/20 via-electric/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
             <div className="absolute inset-0 opacity-15 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-            <div className="relative z-10 flex justify-between items-center text-xs font-mono text-[#64748b]">
-              <span className="text-[#00FF9D] font-bold flex items-center gap-1.5">
+            <div className="relative z-10 flex justify-between items-center text-xs font-mono text-slate-500">
+              <span className="text-emerald font-bold flex items-center gap-1.5">
                 <Radio size={14} className="animate-pulse" /> LAUNCH FILM
               </span>
               <span className="px-2.5 py-0.5 rounded-full border border-white/10 bg-black/40 text-white text-[10px]">
@@ -350,16 +350,16 @@ export default function CampaignPage() {
             </div>
 
             {/* Play Button HUD Icon */}
-            <div className="relative z-10 self-center my-auto w-20 h-20 rounded-full bg-black/70 border border-[#00FF9D]/40 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-[#00FF9D] transition-all duration-500 shadow-[0_0_30px_rgba(0,255,157,0.3)]">
-              <Play className="text-white ml-1.5 group-hover:text-[#00FF9D] transition-colors" fill="currentColor" size={28} />
+            <div className="relative z-10 self-center my-auto w-20 h-20 rounded-full bg-black/70 border border-emerald/40 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-emerald transition-all duration-500 shadow-[0_0_30px_rgba(0,255,157,0.3)]">
+              <Play className="text-white ml-1.5 group-hover:text-emerald transition-colors" fill="currentColor" size={28} />
             </div>
 
-            <div className="relative z-10 flex justify-between items-end font-mono text-xs text-[#cbd5e1]">
+            <div className="relative z-10 flex justify-between items-end font-mono text-xs text-slate-300">
               <div>
                 <p className="text-white font-bold">Watch Official Launch Trailer</p>
-                <p className="text-[10px] text-[#64748b]">Click to play video presentation</p>
+                <p className="text-[10px] text-slate-500">Click to play video presentation</p>
               </div>
-              <span className="text-[10px] text-[#00FF9D] uppercase tracking-widest font-bold">
+              <span className="text-[10px] text-emerald uppercase tracking-widest font-bold">
                 REC 4K 60FPS
               </span>
             </div>
@@ -381,24 +381,24 @@ export default function CampaignPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl aspect-video bg-[#070A10] border border-[#00FF9D]/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center items-center p-8 text-center"
+              className="relative w-full max-w-4xl aspect-video bg-matte border border-emerald/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-center items-center p-8 text-center"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setVideoModal(false)}
-                className="absolute top-4 right-4 p-2 rounded-full border border-white/20 bg-black/60 text-white hover:text-[#00FF9D] transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full border border-white/20 bg-black/60 text-white hover:text-emerald transition-colors"
               >
                 <X size={20} />
               </button>
 
-              <Play size={48} className="text-[#00FF9D] animate-bounce mb-4" />
+              <Play size={48} className="text-emerald animate-bounce mb-4" />
               <h3 className="text-2xl font-display font-bold text-white mb-2">Nexus Ring Launch Film Demo</h3>
-              <p className="text-xs font-mono text-[#94a3b8] max-w-md">
+              <p className="text-xs font-mono text-slate-400 max-w-md">
                 Demonstrating 4.2N magnetic snap resonance, ESP32-C3 local daemon interrupts, and local AI focus guardian.
               </p>
               <button
                 onClick={() => setVideoModal(false)}
-                className="mt-6 px-6 py-2.5 rounded-xl border border-[#00FF9D] bg-[#00FF9D]/10 text-[#00FF9D] font-mono text-xs font-bold hover:bg-[#00FF9D]/20 transition-all"
+                className="mt-6 px-6 py-2.5 rounded-xl border border-emerald bg-emerald/10 text-emerald font-mono text-xs font-bold hover:bg-emerald/20 transition-all"
               >
                 Close Cinema Viewer
               </button>
@@ -410,18 +410,18 @@ export default function CampaignPage() {
       {/* ════════════════ STRETCH GOALS TRACKER ═══════════════════════ */}
       <section className="relative z-10 max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/20 bg-[#00FF9D]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
             Ecosystem Unlocks
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Campaign Stretch Goals
           </h2>
-          <p className="text-[#94a3b8] text-sm mt-3 font-light">
+          <p className="text-slate-400 text-sm mt-3 font-light">
             Every unlocked milestone upgrades hardware specs and software licenses for all backers.
           </p>
         </div>
 
-        <div className="relative border-l-2 border-[#151D2A] ml-4 md:ml-8 space-y-10 py-4">
+        <div className="relative border-l-2 border-slate ml-4 md:ml-8 space-y-10 py-4">
           {STRETCH_GOALS.map((goal, idx) => {
             const isUnlocked = goal.status === "unlocked";
             const IconComp = goal.icon;
@@ -436,7 +436,7 @@ export default function CampaignPage() {
               >
                 {/* Milestone Node Badge */}
                 <div
-                  className="absolute -left-[21px] top-1 w-10 h-10 rounded-full border-4 border-[#030508] flex items-center justify-center shadow-lg transition-all"
+                  className="absolute -left-[21px] top-1 w-10 h-10 rounded-full border-4 border-vantablack flex items-center justify-center shadow-lg transition-all"
                   style={{
                     backgroundColor: isUnlocked ? "#070A10" : "#030508",
                     borderColor: isUnlocked ? goal.accent : "#151D2A",
@@ -468,15 +468,15 @@ export default function CampaignPage() {
                       <h3 className="text-xl font-display font-bold text-white">{goal.title}</h3>
                     </div>
 
-                    <span className="text-sm font-mono font-bold tracking-widest text-white border border-[#151D2A] bg-[#030508] px-4 py-1.5 rounded-full shrink-0">
+                    <span className="text-sm font-mono font-bold tracking-widest text-white border border-slate bg-vantablack px-4 py-1.5 rounded-full shrink-0">
                       TARGET: <span style={{ color: goal.accent }}>{goal.target}</span>
                     </span>
                   </div>
 
-                  <p className="text-[#94a3b8] text-sm leading-relaxed font-light">{goal.desc}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed font-light">{goal.desc}</p>
 
                   {/* Progress Indicator */}
-                  <div className="w-full bg-[#030508] h-2 rounded-full overflow-hidden border border-[#151D2A]">
+                  <div className="w-full bg-vantablack h-2 rounded-full overflow-hidden border border-slate">
                     <div
                       className="h-full transition-all duration-1000 rounded-full"
                       style={{
@@ -496,13 +496,13 @@ export default function CampaignPage() {
       {/* ════════════════ PRODUCTION ROADMAP TIMELINE ═════════════════ */}
       <section className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00E5FF] uppercase border border-[#00E5FF]/20 bg-[#00E5FF]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/20 bg-electric/5 rounded-full inline-block px-3 py-1 mb-4">
             Production Roadmap
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Manufacturing Timeline
           </h2>
-          <p className="text-[#94a3b8] text-sm mt-3 font-light">
+          <p className="text-slate-400 text-sm mt-3 font-light">
             Transparent execution milestones from initial R&D prototypes to global express delivery.
           </p>
         </div>
@@ -515,21 +515,21 @@ export default function CampaignPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-6 rounded-3xl border border-[#151D2A] bg-[#070A10] space-y-4 relative overflow-hidden group hover:border-[#00FF9D]/40 transition-colors"
+              className="p-6 rounded-3xl border border-slate bg-matte space-y-4 relative overflow-hidden group hover:border-emerald/40 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold tracking-widest" style={{ color: st.color }}>
                   {st.phase}
                 </span>
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-white/10 bg-black/40 text-[#cbd5e1]">
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-white/10 bg-black/40 text-slate-300">
                   {st.date}
                 </span>
               </div>
 
               <h3 className="text-base font-display font-bold text-white">{st.title}</h3>
-              <p className="text-[#94a3b8] text-xs leading-relaxed font-light">{st.desc}</p>
+              <p className="text-slate-400 text-xs leading-relaxed font-light">{st.desc}</p>
 
-              <div className="pt-2 border-t border-[#151D2A]">
+              <div className="pt-2 border-t border-slate">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-white flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: st.color }} />
                   {st.status}
@@ -543,13 +543,13 @@ export default function CampaignPage() {
       {/* ════════════════ PLEDGE TIERS SELECTOR ═══════════════════════ */}
       <section id="pledge-tiers" className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#B026FF] uppercase border border-[#B026FF]/20 bg-[#B026FF]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-purple uppercase border border-purple/20 bg-purple/5 rounded-full inline-block px-3 py-1 mb-4">
             Select Your Pledge Tier
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Back The Nexus Project
           </h2>
-          <p className="text-[#94a3b8] text-sm mt-3 font-light">
+          <p className="text-slate-400 text-sm mt-3 font-light">
             Lock in exclusive crowdfunding discounts and secure your Batch 01 hardware reservation slot.
           </p>
         </div>
@@ -564,8 +564,8 @@ export default function CampaignPage() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className={`group relative flex flex-col p-8 rounded-3xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
                 tier.popular
-                  ? "border-[#00FF9D]/50 bg-[#070A10] shadow-[0_0_40px_rgba(0,255,157,0.12)]"
-                  : "border-[#151D2A] bg-[#070A10]"
+                  ? "border-emerald/50 bg-matte shadow-[0_0_40px_rgba(0,255,157,0.12)]"
+                  : "border-slate bg-matte"
               }`}
             >
               {tier.badge && (
@@ -585,20 +585,20 @@ export default function CampaignPage() {
               <p className="text-4xl font-display font-black text-white mb-3" style={{ color: tier.badgeColor }}>
                 {tier.price}
               </p>
-              <p className="text-[#94a3b8] text-xs font-light leading-relaxed mb-6 flex-grow">
+              <p className="text-slate-400 text-xs font-light leading-relaxed mb-6 flex-grow">
                 {tier.desc}
               </p>
 
-              <div className="space-y-3 mb-8 pt-4 border-t border-[#151D2A]">
+              <div className="space-y-3 mb-8 pt-4 border-t border-slate">
                 {tier.includes.map((item, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-[#cbd5e1] font-light">
+                  <div key={i} className="flex items-start gap-2 text-xs text-slate-300 font-light">
                     <Check size={14} className="shrink-0 mt-0.5" style={{ color: tier.badgeColor }} />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="text-[10px] font-mono text-[#64748b] mb-4 text-center">
+              <div className="text-[10px] font-mono text-slate-500 mb-4 text-center">
                 {tier.delivery}
               </div>
 
@@ -628,7 +628,7 @@ export default function CampaignPage() {
 
       {/* ════════════════ DISCORD BUILDER COMMUNITY BANNER ══════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
-        <div className="rounded-3xl border border-[#5865F2]/40 bg-gradient-to-r from-[#070A10] via-[#5865F2]/10 to-[#070A10] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_50px_rgba(88,101,242,0.15)]">
+        <div className="rounded-3xl border border-[#5865F2]/40 bg-gradient-to-r from-matte via-[#5865F2]/10 to-matte p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_50px_rgba(88,101,242,0.15)]">
           <div className="space-y-3 text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#5865F2]/40 bg-[#5865F2]/20 text-[#5865F2] text-xs font-mono">
               <span className="w-2 h-2 rounded-full bg-[#5865F2] animate-pulse" />
@@ -637,7 +637,7 @@ export default function CampaignPage() {
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
               Join the Backer &amp; Developer Discord
             </h3>
-            <p className="text-sm text-[#CBD5E1] font-light max-w-xl">
+            <p className="text-sm text-slate-300 font-light max-w-xl">
               Connect directly with Founder Naqash Afzal, inspect daily 3MF 3D-printing updates, discuss custom FreeRTOS firmware hooks, and test early software releases.
             </p>
           </div>
@@ -659,7 +659,7 @@ export default function CampaignPage() {
       {/* ════════════════ EXPANDED FAQ SECTION ════════════════════════ */}
       <section className="relative z-10 max-w-[800px] mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/20 bg-[#00FF9D]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
             Crowdfunding FAQ
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
@@ -669,7 +669,7 @@ export default function CampaignPage() {
 
         <div className="space-y-4">
           {FAQS.map((faq, idx) => (
-            <div key={idx} className="border border-[#151D2A] rounded-2xl bg-[#070A10] overflow-hidden">
+            <div key={idx} className="border border-slate rounded-2xl bg-matte overflow-hidden">
               <button
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
@@ -677,8 +677,8 @@ export default function CampaignPage() {
                 <span className="font-medium text-white text-sm sm:text-base">{faq.q}</span>
                 <ChevronDown
                   size={20}
-                  className={`text-[#64748b] transition-transform duration-300 shrink-0 ml-4 ${
-                    openFaq === idx ? "rotate-180 text-[#00FF9D]" : ""
+                  className={`text-slate-500 transition-transform duration-300 shrink-0 ml-4 ${
+                    openFaq === idx ? "rotate-180 text-emerald" : ""
                   }`}
                 />
               </button>
@@ -690,7 +690,7 @@ export default function CampaignPage() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-6 pb-6 text-[#94a3b8] font-light text-xs sm:text-sm leading-relaxed border-t border-[#151D2A] pt-4">
+                    <div className="px-6 pb-6 text-slate-400 font-light text-xs sm:text-sm leading-relaxed border-t border-slate pt-4">
                       {faq.a}
                     </div>
                   </motion.div>

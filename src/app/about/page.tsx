@@ -132,13 +132,13 @@ export default function AboutPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#030508] text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#00FF9D]/30 selection:text-white">
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-emerald/30 selection:text-white">
       {/* Background Dot Grid Overlay */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* Ambient Top Glow Spheres */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00FF9D]/[0.05] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-[#00E5FF]/[0.03] blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald/[0.05] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-electric/[0.03] blur-[140px] rounded-full pointer-events-none" />
 
       {/* ════════════════ 1. HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
@@ -148,7 +148,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center max-w-4xl mx-auto space-y-6 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
             <Building2 size={14} /> The Vision of the Nexus Ring
           </div>
 
@@ -159,27 +159,27 @@ export default function AboutPage() {
             </span>
           </h1>
 
-          <p className="text-[#94a3b8] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             <span className="italic">"To bridge the gap between physical intention and digital execution, transforming productivity from a software struggle into a tangible, tactile experience."</span>
           </p>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-8 border-t border-[#151D2A] font-mono text-xs">
-            <div className="p-4 bg-[#070A10] border border-[#151D2A] rounded-2xl">
-              <p className="text-[#00FF9D] font-bold text-2xl font-display">0 Bytes</p>
-              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Cloud Telemetry</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-8 border-t border-slate font-mono text-xs">
+            <div className="p-4 bg-matte border border-slate rounded-2xl">
+              <p className="text-emerald font-bold text-2xl font-display">0 Bytes</p>
+              <p className="text-slate-500 text-[10px] uppercase tracking-wider mt-1">Cloud Telemetry</p>
             </div>
-            <div className="p-4 bg-[#070A10] border border-[#151D2A] rounded-2xl">
-              <p className="text-[#00E5FF] font-bold text-2xl font-display">&lt;24ms</p>
-              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Kernel Response</p>
+            <div className="p-4 bg-matte border border-slate rounded-2xl">
+              <p className="text-electric font-bold text-2xl font-display">&lt;24ms</p>
+              <p className="text-slate-500 text-[10px] uppercase tracking-wider mt-1">Kernel Response</p>
             </div>
-            <div className="p-4 bg-[#070A10] border border-[#151D2A] rounded-2xl">
-              <p className="text-[#B026FF] font-bold text-2xl font-display">100%</p>
-              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Open Source SDK</p>
+            <div className="p-4 bg-matte border border-slate rounded-2xl">
+              <p className="text-purple font-bold text-2xl font-display">100%</p>
+              <p className="text-slate-500 text-[10px] uppercase tracking-wider mt-1">Open Source SDK</p>
             </div>
-            <div className="p-4 bg-[#070A10] border border-[#151D2A] rounded-2xl">
-              <p className="text-[#FF9F1C] font-bold text-2xl font-display">V1 3D</p>
-              <p className="text-[#64748b] text-[10px] uppercase tracking-wider mt-1">Precision Printed</p>
+            <div className="p-4 bg-matte border border-slate rounded-2xl">
+              <p className="text-amber font-bold text-2xl font-display">V1 3D</p>
+              <p className="text-slate-500 text-[10px] uppercase tracking-wider mt-1">Precision Printed</p>
             </div>
           </div>
         </motion.div>
@@ -187,36 +187,36 @@ export default function AboutPage() {
 
       {/* ════════════════ 2. OUR MISSION & PHILOSOPHY ═════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 md:p-14 relative overflow-hidden shadow-2xl">
+        <div className="rounded-3xl border border-slate bg-matte p-8 md:p-14 relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[#00FF9D] border border-[#00FF9D]/20 bg-[#00FF9D]/10 px-3 py-1 rounded-full">
+              <span className="text-[10px] font-mono tracking-widest uppercase text-emerald border border-emerald/20 bg-emerald/10 px-3 py-1 rounded-full">
                 Core Engineering Philosophy
               </span>
               <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
                 The Ultimate Goal
               </h2>
-              <p className="text-[#94a3b8] text-sm md:text-base leading-relaxed font-light">
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed font-light">
                 In a world overflowing with digital distractions, willpower is no longer enough to stay focused. The Nexus Ring was born from a simple realization: changing your digital environment should be as deliberate and physical as closing an office door.
               </p>
-              <p className="text-[#cbd5e1] text-sm md:text-base leading-relaxed font-light border-l-2 border-[#00FF9D] pl-4">
+              <p className="text-slate-300 text-sm md:text-base leading-relaxed font-light border-l-2 border-emerald pl-4">
                 The Nexus Ring exists to give creators, developers, and designers their time back. It eliminates the friction of "getting into the zone" by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.
               </p>
             </div>
 
             {/* Philosophy Visual Card */}
-            <div className="lg:col-span-6 bg-[#030508] border border-[#151D2A] rounded-2xl p-8 space-y-6">
-              <div className="flex items-center justify-between text-xs font-mono text-[#64748b] border-b border-[#151D2A] pb-4">
+            <div className="lg:col-span-6 bg-vantablack border border-slate rounded-2xl p-8 space-y-6">
+              <div className="flex items-center justify-between text-xs font-mono text-slate-500 border-b border-slate pb-4">
                 <span>SYSTEM MANIFESTO</span>
-                <span className="text-[#00FF9D]">NEXUS_CORE_v2.4</span>
+                <span className="text-emerald">NEXUS_CORE_v2.4</span>
               </div>
-              <div className="space-y-4 text-xs font-mono text-[#cbd5e1]">
-                <div className="p-3 bg-[#070A10] border border-[#151D2A] rounded-xl flex items-center justify-between">
+              <div className="space-y-4 text-xs font-mono text-slate-300">
+                <div className="p-3 bg-matte border border-slate rounded-xl flex items-center justify-between">
                   <span className="text-[#FF5F56]">OLD WAY: Digital App Blockers</span>
-                  <span className="text-[#64748b]">Fails via Ego Depletion</span>
+                  <span className="text-slate-500">Fails via Ego Depletion</span>
                 </div>
-                <div className="p-3 bg-[#070A10] border border-[#00FF9D]/40 rounded-xl flex items-center justify-between shadow-[0_0_15px_rgba(0,255,157,0.1)]">
-                  <span className="text-[#00FF9D] font-bold">NEXUS WAY: Physical Magnetic Totem</span>
+                <div className="p-3 bg-matte border border-emerald/40 rounded-xl flex items-center justify-between shadow-[0_0_15px_rgba(0,255,157,0.1)]">
+                  <span className="text-emerald font-bold">NEXUS WAY: Physical Magnetic Totem</span>
                   <span className="text-white font-bold">Sub-24ms OS Lock</span>
                 </div>
               </div>
@@ -228,13 +228,13 @@ export default function AboutPage() {
       {/* ════════════════ 3. FOUNDER & INVENTOR ═════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00FF9D] uppercase border border-[#00FF9D]/20 bg-[#00FF9D]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
             The Visionary Behind Nexus Ring
           </p>
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
             Founder & Inventor
           </h2>
-          <p className="text-[#94a3b8] text-sm mt-3 font-light">
+          <p className="text-slate-400 text-sm mt-3 font-light">
             Engineering tactile physical discipline artifacts to protect human focus and accelerate personal success.
           </p>
         </div>
@@ -247,7 +247,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="rounded-3xl border border-[#00FF9D]/40 bg-[#070A10] p-8 md:p-10 space-y-6 relative overflow-hidden group hover:border-[#00FF9D] transition-all duration-500 shadow-[0_0_50px_rgba(0,255,157,0.12)]"
+              className="rounded-3xl border border-emerald/40 bg-matte p-8 md:p-10 space-y-6 relative overflow-hidden group hover:border-emerald transition-all duration-500 shadow-[0_0_50px_rgba(0,255,157,0.12)]"
             >
               {/* Member Avatar / Initial Badge Visual */}
               <div className="flex items-center justify-between">
@@ -281,14 +281,14 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <p className="text-[#cbd5e1] text-sm leading-relaxed font-light">{member.bio}</p>
+              <p className="text-slate-300 text-sm leading-relaxed font-light">{member.bio}</p>
 
               {/* Skills Tags */}
-              <div className="flex flex-wrap gap-2 pt-2 border-t border-[#151D2A]">
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-slate">
                 {member.skills.map((sk) => (
                   <span
                     key={sk}
-                    className="text-[10px] font-mono px-2.5 py-1 rounded border border-[#151D2A] bg-[#030508] text-[#94a3b8]"
+                    className="text-[10px] font-mono px-2.5 py-1 rounded border border-slate bg-vantablack text-slate-400"
                   >
                     {sk}
                   </span>
@@ -296,8 +296,8 @@ export default function AboutPage() {
               </div>
 
               {/* Verified Developer & Hardware Portfolios */}
-              <div className="pt-4 border-t border-[#151D2A] space-y-3">
-                <span className="text-[10px] font-mono text-[#64748b] uppercase tracking-widest block">
+              <div className="pt-4 border-t border-slate space-y-3">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">
                   Verified Engineering & Hardware Profiles
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -309,9 +309,9 @@ export default function AboutPage() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#151D2A] bg-[#030508] hover:border-[#00FF9D]/60 hover:bg-[#00FF9D]/10 hover:text-white text-[#94a3b8] text-xs font-mono transition-all group"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate bg-vantablack hover:border-emerald/60 hover:bg-emerald/10 hover:text-white text-slate-400 text-xs font-mono transition-all group"
                       >
-                        <IconComp size={14} className="text-[#00FF9D] group-hover:scale-110 transition-transform" />
+                        <IconComp size={14} className="text-emerald group-hover:scale-110 transition-transform" />
                         <span>{link.name}</span>
                       </a>
                     );
@@ -320,10 +320,10 @@ export default function AboutPage() {
               </div>
 
               {/* Location & Entity Footer */}
-              <div className="flex items-center justify-between pt-2 border-t border-[#151D2A]/60 font-mono text-xs text-[#64748b]">
-                <span className="text-[10px] text-[#64748b]">Nexus Desktop Art Inc.</span>
-                <span className="text-[11px] flex items-center gap-1.5 text-[#94a3b8]">
-                  <MapPin size={13} className="text-[#00FF9D]" /> {member.location}
+              <div className="flex items-center justify-between pt-2 border-t border-slate/60 font-mono text-xs text-slate-500">
+                <span className="text-[10px] text-slate-500">Nexus Desktop Art Inc.</span>
+                <span className="text-[11px] flex items-center gap-1.5 text-slate-400">
+                  <MapPin size={13} className="text-emerald" /> {member.location}
                 </span>
               </div>
             </motion.div>
@@ -334,7 +334,7 @@ export default function AboutPage() {
       {/* ════════════════ 4. COMPANY VALUES & MANIFESTO ═══════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#B026FF] uppercase border border-[#B026FF]/20 bg-[#B026FF]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-purple uppercase border border-purple/20 bg-purple/5 rounded-full inline-block px-3 py-1 mb-4">
             The 4 Pillars of the Nexus Ring
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
@@ -352,7 +352,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="p-8 rounded-3xl border border-[#151D2A] bg-[#070A10] space-y-4 relative overflow-hidden group hover:border-[#00FF9D]/30 transition-colors shadow-lg"
+                className="p-8 rounded-3xl border border-slate bg-matte space-y-4 relative overflow-hidden group hover:border-emerald/30 transition-colors shadow-lg"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold tracking-widest" style={{ color: val.accent }}>
@@ -362,7 +362,7 @@ export default function AboutPage() {
                 </div>
 
                 <h3 className="text-2xl font-display font-bold text-white">{val.title}</h3>
-                <p className="text-[#94a3b8] text-sm leading-relaxed font-light">{val.desc}</p>
+                <p className="text-slate-400 text-sm leading-relaxed font-light">{val.desc}</p>
               </motion.div>
             );
           })}
@@ -371,15 +371,15 @@ export default function AboutPage() {
 
       {/* ════════════════ 5. DEVELOPER & COMPANY CONTACT FORM ═════════ */}
       <section className="relative max-w-[900px] mx-auto px-6 md:px-12">
-        <div className="rounded-3xl border border-[#00FF9D]/30 bg-[#070A10] p-8 md:p-12 relative overflow-hidden shadow-[0_0_50px_rgba(0,255,157,0.08)]">
+        <div className="rounded-3xl border border-emerald/30 bg-matte p-8 md:p-12 relative overflow-hidden shadow-[0_0_50px_rgba(0,255,157,0.08)]">
           <div className="text-center max-w-xl mx-auto mb-10 space-y-3">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-[#00FF9D] border border-[#00FF9D]/20 bg-[#00FF9D]/10 px-3 py-1 rounded-full">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-emerald border border-emerald/20 bg-emerald/10 px-3 py-1 rounded-full">
               Developer & Founder Contact
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-tight">
               Get in Touch with the Founders
             </h2>
-            <p className="text-[#94a3b8] text-sm font-light">
+            <p className="text-slate-400 text-sm font-light">
               Have questions about custom SDK webhooks, enterprise licensing, or press inquiries? Send a direct message to our engineering leads.
             </p>
           </div>
@@ -388,19 +388,19 @@ export default function AboutPage() {
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="p-8 rounded-2xl border border-[#00FF9D]/40 bg-[#00FF9D]/10 text-center space-y-4"
+              className="p-8 rounded-2xl border border-emerald/40 bg-emerald/10 text-center space-y-4"
             >
-              <CheckCircle2 size={40} className="text-[#00FF9D] mx-auto" />
+              <CheckCircle2 size={40} className="text-emerald mx-auto" />
               <h3 className="text-2xl font-display font-bold text-white">Message Dispatched!</h3>
-              <p className="text-xs text-[#cbd5e1] font-mono max-w-md mx-auto">
-                Thank you, <span className="text-[#00FF9D] font-bold">{contactName || "Developer"}</span>. Our founders will get back to your inbox (<span className="text-[#00FF9D] font-bold">{contactEmail}</span>) within 24 hours.
+              <p className="text-xs text-slate-300 font-mono max-w-md mx-auto">
+                Thank you, <span className="text-emerald font-bold">{contactName || "Developer"}</span>. Our founders will get back to your inbox (<span className="text-emerald font-bold">{contactEmail}</span>) within 24 hours.
               </p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="text-[11px] font-mono text-[#64748b] uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block mb-2">
                     Your Name / Developer Alias
                   </label>
                   <input
@@ -409,11 +409,11 @@ export default function AboutPage() {
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="Alex Vance"
                     required
-                    className="w-full bg-[#030508] border border-[#151D2A] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#00FF9D] text-sm font-mono transition-colors"
+                    className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-emerald text-sm font-mono transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="text-[11px] font-mono text-[#64748b] uppercase tracking-wider block mb-2">
+                  <label className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block mb-2">
                     Email Address
                   </label>
                   <input
@@ -422,13 +422,13 @@ export default function AboutPage() {
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="alex@domain.com"
                     required
-                    className="w-full bg-[#030508] border border-[#151D2A] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#00FF9D] text-sm font-mono transition-colors"
+                    className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-emerald text-sm font-mono transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-[11px] font-mono text-[#64748b] uppercase tracking-wider block mb-2">
+                <label className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block mb-2">
                   Message / Inquiries (SDK, Hardware, Press, Partnership)
                 </label>
                 <textarea
@@ -437,14 +437,14 @@ export default function AboutPage() {
                   onChange={(e) => setContactMessage(e.target.value)}
                   placeholder="Hey Nexus team, I'd love to build a custom Home Assistant IoT webhook module..."
                   required
-                  className="w-full bg-[#030508] border border-[#151D2A] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#00FF9D] text-sm font-mono transition-colors resize-none"
+                  className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-emerald text-sm font-mono transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-emerald hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

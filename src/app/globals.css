@@ -1,11 +1,26 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* Colors - Vantablack Premium Palette */
-  --color-vantablack: #030508;
-  --color-obsidian: #030508;
-  --color-matte: #070A10;
-  --color-slate: #151D2A;
+@theme {
+  /* We redefine the base tailwind colors to use CSS variables so they can swap */
+  --color-white: var(--tw-white);
+  --color-black: var(--tw-black);
+  
+  --color-slate-100: var(--tw-slate-100);
+  --color-slate-200: var(--tw-slate-200);
+  --color-slate-300: var(--tw-slate-300);
+  --color-slate-400: var(--tw-slate-400);
+  --color-slate-500: var(--tw-slate-500);
+  --color-slate-600: var(--tw-slate-600);
+  --color-slate-700: var(--tw-slate-700);
+  --color-slate-800: var(--tw-slate-800);
+  --color-slate-900: var(--tw-slate-900);
+  --color-slate-950: var(--tw-slate-950);
+
+  /* Custom App Colors */
+  --color-vantablack: var(--color-vantablack-theme);
+  --color-obsidian: var(--color-obsidian-theme);
+  --color-matte: var(--color-matte-theme);
+  --color-slate: var(--color-slate-theme);
   --color-emerald: #00FF9D;
   --color-electric: #00E5FF;
   --color-amber: #FF9F1C;
@@ -24,17 +39,72 @@
 }
 
 :root {
-  --background: #030508;
-  --foreground: #F8FAFC;
+  /* LIGHT MODE (Default/Base) */
+  --background: #F8FAFC;
+  --foreground: #030508;
+  
+  --tw-white: #030508;
+  --tw-black: #FFFFFF;
+
+  /* Inverse slate scale */
+  --tw-slate-100: #0f172a;
+  --tw-slate-200: #1e293b;
+  --tw-slate-300: #334155;
+  --tw-slate-400: #475569;
+  --tw-slate-500: #64748b;
+  --tw-slate-600: #94a3b8;
+  --tw-slate-700: #cbd5e1;
+  --tw-slate-800: #e2e8f0;
+  --tw-slate-900: #f1f5f9;
+  --tw-slate-950: #f8fafc;
+
+  /* Custom App Colors - Light versions */
+  --color-vantablack-theme: #FFFFFF;
+  --color-obsidian-theme: #F1F5F9;
+  --color-matte-theme: #E2E8F0;
+  --color-slate-theme: #CBD5E1;
+
+  --bg-pattern: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* DARK MODE */
+    --background: #030508;
+    --foreground: #F8FAFC;
+    
+    --tw-white: #ffffff;
+    --tw-black: #000000;
+  
+    /* Normal slate scale */
+    --tw-slate-100: #f1f5f9;
+    --tw-slate-200: #e2e8f0;
+    --tw-slate-300: #cbd5e1;
+    --tw-slate-400: #94a3b8;
+    --tw-slate-500: #64748b;
+    --tw-slate-600: #475569;
+    --tw-slate-700: #334155;
+    --tw-slate-800: #1e293b;
+    --tw-slate-900: #0f172a;
+    --tw-slate-950: #020617;
+  
+    /* Custom App Colors - Dark versions */
+    --color-vantablack-theme: #030508;
+    --color-obsidian-theme: #030508;
+    --color-matte-theme: #070A10;
+    --color-slate-theme: #151D2A;
+
+    --bg-pattern: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
 }
 
 body {
-  background-color: #030508;
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  /* Vantablack Dot-matrix schematic pattern */
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: var(--bg-pattern);
   background-size: 24px 24px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Headings use the display font */
@@ -45,10 +115,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Utility Classes */
 @layer utilities {
   .glass-panel {
-    background-color: rgba(7, 10, 16, 0.7);
+    background-color: color-mix(in srgb, var(--color-matte-theme) 70%, transparent);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid #151D2A;
+    border: 1px solid var(--color-slate-theme);
   }
 
   .text-gradient-neon {

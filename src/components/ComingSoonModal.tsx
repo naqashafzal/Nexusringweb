@@ -82,16 +82,16 @@ export default function ComingSoonModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg rounded-3xl border border-[#00FF9D]/40 bg-[#070A10] p-8 sm:p-10 shadow-[0_0_80px_rgba(0,255,157,0.25)] text-left overflow-hidden z-10"
+            className="relative w-full max-w-lg rounded-3xl border border-emerald/40 bg-matte p-8 sm:p-10 shadow-[0_0_80px_rgba(0,255,157,0.25)] text-left overflow-hidden z-10"
           >
             {/* Top decorative glow */}
-            <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-[#00FF9D]/[0.15] blur-[60px] pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-[#00E5FF]/[0.12] blur-[60px] pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-emerald/[0.15] blur-[60px] pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-electric/[0.12] blur-[60px] pointer-events-none" />
 
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#151D2A]/80 border border-[#151D2A] text-[#94A3B8] hover:text-white hover:border-[#00FF9D]/50 flex items-center justify-center transition-colors"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate/80 border border-slate text-slate-400 hover:text-white hover:border-emerald/50 flex items-center justify-center transition-colors"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -99,8 +99,8 @@ export default function ComingSoonModal({
 
             {!submitted ? (
               <div className="space-y-6 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#00FF9D]/40 bg-[#00FF9D]/10 text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald/40 bg-emerald/10 text-emerald text-[11px] font-mono tracking-widest uppercase">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
                   Coming Soon · Priority Launch
                 </div>
 
@@ -108,24 +108,24 @@ export default function ComingSoonModal({
                   <h3 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white">
                     LAUNCHING SOON.
                   </h3>
-                  <p className="text-[#94A3B8] text-sm sm:text-base font-light leading-relaxed">
+                  <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed">
                     We are putting the final touches on the **Nexus Ring V1** campaign. We haven’t opened public crowdfunding pledges just yet.
                   </p>
                 </div>
 
                 {tierName && (
-                  <div className="px-4 py-2.5 rounded-xl border border-[#151D2A] bg-[#030508] text-xs font-mono text-[#64748B] flex items-center justify-between">
+                  <div className="px-4 py-2.5 rounded-xl border border-slate bg-vantablack text-xs font-mono text-slate-500 flex items-center justify-between">
                     <span>SELECTED TIER:</span>
-                    <span className="text-[#00FF9D] font-bold">{tierName}</span>
+                    <span className="text-emerald font-bold">{tierName}</span>
                   </div>
                 )}
 
-                <div className="p-4 rounded-2xl border border-[#151D2A] bg-[#030508]/70 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#00E5FF]">
+                <div className="p-4 rounded-2xl border border-slate bg-vantablack/70 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-mono text-electric">
                     <Bell size={14} />
                     <span>EARLY ACCESS WAITLIST</span>
                   </div>
-                  <p className="text-xs text-[#94A3B8] font-light leading-relaxed">
+                  <p className="text-xs text-slate-400 font-light leading-relaxed">
                     Enter your email to receive an exclusive instant invite 1 hour before public launch to lock in **limited Early Adopter pricing**.
                   </p>
                 </div>
@@ -138,16 +138,16 @@ export default function ComingSoonModal({
                       placeholder="Enter your email address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 px-4 py-3.5 rounded-xl bg-[#030508] border border-[#151D2A] text-white placeholder:text-[#64748B] text-sm focus:outline-none focus:border-[#00FF9D] transition-colors"
+                      className="flex-1 px-4 py-3.5 rounded-xl bg-vantablack border border-slate text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-emerald transition-colors"
                     />
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-3.5 rounded-xl bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 text-[#030508] font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+                      className="px-6 py-3.5 rounded-xl bg-emerald hover:bg-[#00ffaa] disabled:opacity-60 text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
-                          <span className="w-4 h-4 border-2 border-[#030508] border-t-transparent rounded-full animate-spin" />
+                          <span className="w-4 h-4 border-2 border-vantablack border-t-transparent rounded-full animate-spin" />
                           <span>Reserving...</span>
                         </>
                       ) : (
@@ -157,9 +157,9 @@ export default function ComingSoonModal({
                       )}
                     </button>
                   </div>
-                  <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#64748B] pt-1 flex-wrap">
+                  <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-slate-500 pt-1 flex-wrap">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck size={13} className="text-[#00FF9D]" />
+                      <ShieldCheck size={13} className="text-emerald" />
                       <span>Zero spam. Early-bird reservation.</span>
                     </div>
                     <a
@@ -175,14 +175,14 @@ export default function ComingSoonModal({
               </div>
             ) : (
               <div className="py-8 text-center space-y-5 relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#00FF9D]/10 border border-[#00FF9D]/40 text-[#00FF9D] flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(0,255,157,0.3)]">
+                <div className="w-16 h-16 rounded-full bg-emerald/10 border border-emerald/40 text-emerald flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(0,255,157,0.3)]">
                   <CheckCircle2 size={32} />
                 </div>
                 <div className="space-y-2">
                   <h4 className="text-2xl font-display font-bold text-white">
                     You're on the Priority List!
                   </h4>
-                  <p className="text-sm text-[#94A3B8] max-w-sm mx-auto font-light">
+                  <p className="text-sm text-slate-400 max-w-sm mx-auto font-light">
                     We’ve reserved your spot. As soon as the campaign goes live, we'll send your direct link with guaranteed early-bird access.
                   </p>
                 </div>
@@ -193,7 +193,7 @@ export default function ComingSoonModal({
                     </svg>
                     <span>FOUNDER &amp; BUILDER COMMUNITY</span>
                   </div>
-                  <p className="text-xs text-[#CBD5E1] font-light leading-relaxed">
+                  <p className="text-xs text-slate-300 font-light leading-relaxed">
                     Join the official Discord to see daily 3D print builds, test early firmware hooks, and chat with founder Naqash Afzal.
                   </p>
                   <a
@@ -209,7 +209,7 @@ export default function ComingSoonModal({
 
                 <button
                   onClick={handleClose}
-                  className="px-8 py-3 rounded-xl border border-[#151D2A] bg-[#030508] text-sm font-mono text-[#00FF9D] hover:border-[#00FF9D]/50 transition-colors"
+                  className="px-8 py-3 rounded-xl border border-slate bg-vantablack text-sm font-mono text-emerald hover:border-emerald/50 transition-colors"
                 >
                   Close Window
                 </button>

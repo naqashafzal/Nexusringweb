@@ -97,17 +97,17 @@ export default function HardwarePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#030508] text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
       {/* Background Dot Grid Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#00FF9D]/[0.05] blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald/[0.05] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
             High-Performance Workspace Artifact · V1 3D-Printed Spec
           </div>
 
@@ -118,20 +118,20 @@ export default function HardwarePage() {
             </span>
           </h1>
 
-          <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             The ultimate hardware artifact to lock in your habits and build unbreakable discipline. Engineered with sub-millimeter 3D-printing snap-fit tolerances and ceramic magnetic damping to create an unyielding physical barrier between you and distractions.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-[#151D2A]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-slate">
             {[
               { val: "Matte PLA-CF", label: "V1 Chassis", accent: "#00FF9D" },
               { val: "±0.1mm", label: "Snap Precision", accent: "#00E5FF" },
               { val: "4.2N", label: "Snap Resonance", accent: "#B026FF" },
               { val: "1000Hz", label: "Hall Polling Rate", accent: "#FF9F1C" },
             ].map((st) => (
-              <div key={st.label} className="p-3 rounded-xl border border-[#151D2A] bg-[#070A10]">
+              <div key={st.label} className="p-3 rounded-xl border border-slate bg-matte">
                 <p className="text-lg font-display font-bold" style={{ color: st.accent }}>{st.val}</p>
-                <p className="text-[10px] font-mono text-[#64748b] uppercase tracking-wider">{st.label}</p>
+                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{st.label}</p>
               </div>
             ))}
           </div>
@@ -141,13 +141,13 @@ export default function HardwarePage() {
       {/* ════════════════ INTERACTIVE COMPONENT TEARDOWN ═══════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#00E5FF] uppercase border border-[#00E5FF]/20 bg-[#00E5FF]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/20 bg-electric/5 rounded-full inline-block px-3 py-1 mb-4">
             Component Architecture
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
             Exploded Assembly Teardown
           </h2>
-          <p className="text-[#64748b] text-sm mt-3">
+          <p className="text-slate-500 text-sm mt-3">
             Click through each layer to inspect the internal aerospace hardware stack.
           </p>
         </div>
@@ -189,7 +189,7 @@ export default function HardwarePage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="rounded-3xl border p-8 md:p-12 bg-[#070A10] relative overflow-hidden"
+            className="rounded-3xl border p-8 md:p-12 bg-matte relative overflow-hidden"
             style={{
               borderColor: activeComp.accent + "35",
               boxShadow: `0 0 50px ${activeComp.accent}12`,
@@ -212,20 +212,20 @@ export default function HardwarePage() {
                   <h3 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
                     {activeComp.name}
                   </h3>
-                  <p className="text-[#94a3b8] text-base leading-relaxed font-light mt-2">
+                  <p className="text-slate-400 text-base leading-relaxed font-light mt-2">
                     {activeComp.tagline}
                   </p>
                 </div>
 
-                <p className="text-[#cbd5e1] text-sm leading-relaxed border-l-2 pl-4 py-1" style={{ borderColor: activeComp.accent }}>
+                <p className="text-slate-300 text-sm leading-relaxed border-l-2 pl-4 py-1" style={{ borderColor: activeComp.accent }}>
                   {activeComp.details}
                 </p>
 
                 {/* Specs Grid */}
-                <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#151D2A]">
+                <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate">
                   {activeComp.specs.map((sp) => (
-                    <div key={sp.label} className="bg-[#030508] p-3.5 rounded-xl border border-[#151D2A]">
-                      <p className="text-[10px] font-mono text-[#64748b] uppercase tracking-wider">{sp.label}</p>
+                    <div key={sp.label} className="bg-vantablack p-3.5 rounded-xl border border-slate">
+                      <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{sp.label}</p>
                       <p className="text-xs font-mono font-bold mt-0.5" style={{ color: activeComp.accent }}>{sp.val}</p>
                     </div>
                   ))}
@@ -233,14 +233,14 @@ export default function HardwarePage() {
               </div>
 
               {/* Right Column: Visual Component Blueprint (5 cols) */}
-              <div className="lg:col-span-5 bg-[#030508] border border-[#151D2A] rounded-2xl p-6 flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden">
+              <div className="lg:col-span-5 bg-vantablack border border-slate rounded-2xl p-6 flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden">
                 <div className="absolute top-3 left-3 text-[10px] font-mono text-[#475569] uppercase tracking-widest">
                   Blueprint CAD Render
                 </div>
 
                 <div className="w-48 h-48 rounded-full border-2 border-dashed flex items-center justify-center relative my-6" style={{ borderColor: activeComp.accent + "60" }}>
                   <motion.div
-                    className="w-32 h-32 rounded-full border-4 flex items-center justify-center bg-[#070A10] shadow-2xl"
+                    className="w-32 h-32 rounded-full border-4 flex items-center justify-center bg-matte shadow-2xl"
                     style={{ borderColor: activeComp.accent, boxShadow: `0 0 30px ${activeComp.accent}40` }}
                     animate={{ scale: [1, 1.04, 1] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -249,7 +249,7 @@ export default function HardwarePage() {
                   </motion.div>
                 </div>
 
-                <span className="text-[11px] font-mono text-[#64748b] uppercase tracking-wider">
+                <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
                   Status: <span className="text-white font-bold">VERIFIED AEROSPACE GRADE</span>
                 </span>
               </div>
@@ -260,22 +260,22 @@ export default function HardwarePage() {
 
       {/* ════════════════ ACOUSTIC & TACTILE SNAP SIMULATOR ════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 md:p-12 relative overflow-hidden">
+        <div className="rounded-3xl border border-slate bg-matte p-8 md:p-12 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[#00FF9D] border border-[#00FF9D]/20 bg-[#00FF9D]/10 px-3 py-1 rounded-full">
+              <span className="text-[10px] font-mono tracking-widest uppercase text-emerald border border-emerald/20 bg-emerald/10 px-3 py-1 rounded-full">
                 Tactile Physics Engine
               </span>
               <h3 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
                 Feel the Resonant Magnetic Snap
               </h3>
-              <p className="text-[#94a3b8] text-sm leading-relaxed font-light">
+              <p className="text-slate-400 text-sm leading-relaxed font-light">
                 We tuned the magnetic pull force (`4.2 Newtons`) to trigger a natural sensory lock. Click below to test the acoustic waveform and tactile pulse feedback loop.
               </p>
 
               <button
                 onClick={handleSimulateSnap}
-                className="px-6 py-3.5 rounded-xl border border-[#00FF9D]/40 bg-[#00FF9D]/10 text-[#00FF9D] hover:bg-[#00FF9D]/20 font-bold text-sm tracking-wide transition-all flex items-center gap-3"
+                className="px-6 py-3.5 rounded-xl border border-emerald/40 bg-emerald/10 text-emerald hover:bg-emerald/20 font-bold text-sm tracking-wide transition-all flex items-center gap-3"
               >
                 <Zap size={18} />
                 {snapSimulated ? "Resonance Locked (4.2N Snap)" : "Simulate Magnetic Snap"}
@@ -283,14 +283,14 @@ export default function HardwarePage() {
             </div>
 
             {/* Dynamic Waveform Simulation */}
-            <div className="lg:col-span-6 bg-[#030508] border border-[#151D2A] rounded-2xl p-6 flex flex-col justify-between space-y-6">
-              <div className="flex items-center justify-between text-xs font-mono text-[#64748b]">
+            <div className="lg:col-span-6 bg-vantablack border border-slate rounded-2xl p-6 flex flex-col justify-between space-y-6">
+              <div className="flex items-center justify-between text-xs font-mono text-slate-500">
                 <span>ACOUSTIC RESONANCE SPECTRUM</span>
-                <span className="text-[#00FF9D]">440Hz Damped Harmonic</span>
+                <span className="text-emerald">440Hz Damped Harmonic</span>
               </div>
 
               {/* Waveform Equalizer */}
-              <div className="h-20 bg-[#070A10] rounded-xl border border-[#151D2A] p-4 flex items-center justify-between gap-1">
+              <div className="h-20 bg-matte rounded-xl border border-slate p-4 flex items-center justify-between gap-1">
                 {[15, 30, 70, 95, 100, 85, 40, 20, 10, 5, 2, 0, 0, 0, 0, 0].map((val, i) => (
                   <motion.div
                     key={i}
@@ -305,17 +305,17 @@ export default function HardwarePage() {
               </div>
 
               <div className="grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
-                <div className="p-2 bg-[#070A10] rounded-lg border border-[#151D2A]">
-                  <p className="text-[#64748b]">PULL FORCE</p>
+                <div className="p-2 bg-matte rounded-lg border border-slate">
+                  <p className="text-slate-500">PULL FORCE</p>
                   <p className="text-white font-bold text-xs mt-0.5">4.2N</p>
                 </div>
-                <div className="p-2 bg-[#070A10] rounded-lg border border-[#151D2A]">
-                  <p className="text-[#64748b]">RESPONSE</p>
-                  <p className="text-[#00FF9D] font-bold text-xs mt-0.5">&lt;12ms</p>
+                <div className="p-2 bg-matte rounded-lg border border-slate">
+                  <p className="text-slate-500">RESPONSE</p>
+                  <p className="text-emerald font-bold text-xs mt-0.5">&lt;12ms</p>
                 </div>
-                <div className="p-2 bg-[#070A10] rounded-lg border border-[#151D2A]">
-                  <p className="text-[#64748b]">HALL FLUX</p>
-                  <p className="text-[#00E5FF] font-bold text-xs mt-0.5">420mT</p>
+                <div className="p-2 bg-matte rounded-lg border border-slate">
+                  <p className="text-slate-500">HALL FLUX</p>
+                  <p className="text-electric font-bold text-xs mt-0.5">420mT</p>
                 </div>
               </div>
             </div>
@@ -326,7 +326,7 @@ export default function HardwarePage() {
       {/* ════════════════ TECHNICAL SPECIFICATION MATRIX ═══════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-[#B026FF] uppercase border border-[#B026FF]/20 bg-[#B026FF]/5 rounded-full inline-block px-3 py-1 mb-4">
+          <p className="text-[10px] font-mono tracking-[0.25em] text-purple uppercase border border-purple/20 bg-purple/5 rounded-full inline-block px-3 py-1 mb-4">
             Engineering Matrix
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
@@ -334,8 +334,8 @@ export default function HardwarePage() {
           </h2>
         </div>
 
-        <div className="rounded-2xl border border-[#151D2A] bg-[#070A10] overflow-hidden">
-          <div className="divide-y divide-[#151D2A]">
+        <div className="rounded-2xl border border-slate bg-matte overflow-hidden">
+          <div className="divide-y divide-slate">
             {[
               { cat: "Enclosure", spec: "CNC Machined 6061-T6 Aluminum Billet", note: "15-micron hard anodized matte finish" },
               { cat: "Microcontroller", spec: "ESP32-C3 RISC-V Single Core @ 160MHz", note: "Custom FreeRTOS firmware with open webhooks" },
@@ -344,14 +344,14 @@ export default function HardwarePage() {
               { cat: "Connectivity", spec: "Dual Wi-Fi 802.11 b/g/n + BLE 5.0", note: "Local websocket execution without internet reliance" },
               { cat: "Dimensions", spec: "88mm x 88mm x 22mm (Base Dock)", note: "Weight: 185g heavy desktop anchoring" },
             ].map((row, idx) => (
-              <div key={row.cat} className="p-5 md:p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-[#030508]/50 transition-colors">
-                <span className="md:col-span-3 text-xs font-mono uppercase tracking-widest text-[#00FF9D] font-bold">
+              <div key={row.cat} className="p-5 md:p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-vantablack/50 transition-colors">
+                <span className="md:col-span-3 text-xs font-mono uppercase tracking-widest text-emerald font-bold">
                   {row.cat}
                 </span>
                 <span className="md:col-span-5 text-sm font-medium text-white">
                   {row.spec}
                 </span>
-                <span className="md:col-span-4 text-xs font-mono text-[#64748b]">
+                <span className="md:col-span-4 text-xs font-mono text-slate-500">
                   {row.note}
                 </span>
               </div>

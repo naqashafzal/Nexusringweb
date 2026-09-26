@@ -116,17 +116,17 @@ export default function PreorderPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#030508] text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
       {/* Background Dot Grid Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#00FF9D]/[0.05] blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald/[0.05] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00FF9D]/30 bg-[#00FF9D]/[0.06] text-[#00FF9D] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
             Protect Your Potential · Batch 01 Priority Queue
           </div>
 
@@ -137,7 +137,7 @@ export default function PreorderPage() {
             </span>
           </h1>
 
-          <p className="text-[#94a3b8] text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             The ultimate hardware artifact to act as an intelligent gatekeeper for your attention. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical anchor for your mental state now to protect your time and focus.
           </p>
         </div>
@@ -151,13 +151,13 @@ export default function PreorderPage() {
           <div className="lg:col-span-7 space-y-8">
             
             {/* 1. Hardware Finish Selector */}
-            <div className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 space-y-6">
+            <div className="rounded-3xl border border-slate bg-matte p-8 space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-[#00FF9D] uppercase tracking-widest block">Step 01</span>
+                  <span className="text-[10px] font-mono text-emerald uppercase tracking-widest block">Step 01</span>
                   <h3 className="text-xl font-display font-bold text-white">Choose Hardware Finish</h3>
                 </div>
-                <span className="text-xs font-mono text-[#64748b]">{finish.name}</span>
+                <span className="text-xs font-mono text-slate-500">{finish.name}</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -181,14 +181,14 @@ export default function PreorderPage() {
                 })}
               </div>
 
-              <p className="text-xs text-[#94a3b8] font-light leading-relaxed border-l-2 pl-3" style={{ borderColor: finish.border }}>
+              <p className="text-xs text-slate-400 font-light leading-relaxed border-l-2 pl-3" style={{ borderColor: finish.border }}>
                 {finish.desc}
               </p>
             </div>
 
             {/* 2. Tier Selection */}
-            <div className="rounded-3xl border border-[#151D2A] bg-[#070A10] p-8 space-y-6">
-              <span className="text-[10px] font-mono text-[#00E5FF] uppercase tracking-widest block">Step 02</span>
+            <div className="rounded-3xl border border-slate bg-matte p-8 space-y-6">
+              <span className="text-[10px] font-mono text-electric uppercase tracking-widest block">Step 02</span>
               <h3 className="text-xl font-display font-bold text-white">Select Pledge Tier</h3>
 
               <div className="space-y-3">
@@ -207,11 +207,11 @@ export default function PreorderPage() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <span className="font-display font-bold text-base text-white">{t.name}</span>
-                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-[#00FF9D]/30 bg-[#00FF9D]/10 text-[#00FF9D]">
+                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-emerald/30 bg-emerald/10 text-emerald">
                             {t.badge}
                           </span>
                         </div>
-                        <p className="text-xs text-[#64748b] font-light">{t.desc}</p>
+                        <p className="text-xs text-slate-500 font-light">{t.desc}</p>
                       </div>
                       <span className="text-xl font-display font-bold text-white shrink-0">{t.price}</span>
                     </button>
@@ -224,30 +224,30 @@ export default function PreorderPage() {
 
           {/* ── RIGHT: Checkout Form & Access Generator (5 cols) ── */}
           <div className="lg:col-span-5 sticky top-28 space-y-6">
-            <div className="rounded-3xl border border-[#00FF9D]/30 bg-[#070A10] p-8 space-y-6 shadow-[0_0_50px_rgba(0,255,157,0.08)]">
-              <div className="flex items-center justify-between border-b border-[#151D2A] pb-4">
+            <div className="rounded-3xl border border-emerald/30 bg-matte p-8 space-y-6 shadow-[0_0_50px_rgba(0,255,157,0.08)]">
+              <div className="flex items-center justify-between border-b border-slate pb-4">
                 <div>
-                  <span className="text-[10px] font-mono text-[#64748b] uppercase tracking-widest block">Selected Artifact</span>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">Selected Artifact</span>
                   <p className="font-display font-bold text-lg text-white">{tier.name}</p>
                 </div>
-                <span className="text-2xl font-display font-black text-[#00FF9D]">{tier.price}</span>
+                <span className="text-2xl font-display font-black text-emerald">{tier.price}</span>
               </div>
 
               {submitted ? (
-                <div className="space-y-4 p-6 rounded-2xl border border-[#00FF9D]/40 bg-[#00FF9D]/10 text-center">
-                  <CheckCircle2 size={32} className="text-[#00FF9D] mx-auto" />
+                <div className="space-y-4 p-6 rounded-2xl border border-emerald/40 bg-emerald/10 text-center">
+                  <CheckCircle2 size={32} className="text-emerald mx-auto" />
                   <h4 className="text-xl font-display font-bold text-white">Batch 01 Slot Confirmed!</h4>
-                  <p className="text-xs text-[#cbd5e1] font-light">
-                    Your cryptographic reservation key has been generated and dispatched to <span className="font-mono text-[#00FF9D] font-bold">{email}</span>.
+                  <p className="text-xs text-slate-300 font-light">
+                    Your cryptographic reservation key has been generated and dispatched to <span className="font-mono text-emerald font-bold">{email}</span>.
                   </p>
-                  <div className="p-3 bg-[#030508] rounded-xl border border-[#151D2A] font-mono text-xs text-[#00FF9D]">
+                  <div className="p-3 bg-vantablack rounded-xl border border-slate font-mono text-xs text-emerald">
                     RESERVATION KEY: <span className="font-bold tracking-widest">{accessCode}</span>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="text-[11px] font-mono text-[#64748b] uppercase tracking-wider block mb-2">
+                    <label className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block mb-2">
                       Email Address for Reservation
                     </label>
                     <input
@@ -256,14 +256,14 @@ export default function PreorderPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@domain.com"
                       required
-                      className="w-full bg-[#030508] border border-[#151D2A] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#00FF9D] text-sm font-mono transition-colors"
+                      className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-emerald text-sm font-mono transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-[#00FF9D] hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-emerald hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -279,17 +279,17 @@ export default function PreorderPage() {
                 </form>
               )}
 
-              <div className="space-y-2 pt-4 border-t border-[#151D2A] text-xs font-mono text-[#64748b]">
+              <div className="space-y-2 pt-4 border-t border-slate text-xs font-mono text-slate-500">
                 <div className="flex items-center gap-2">
-                  <Truck size={14} className="text-[#00FF9D]" />
+                  <Truck size={14} className="text-emerald" />
                   <span>Free Express Worldwide Shipping</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <RotateCcw size={14} className="text-[#00E5FF]" />
+                  <RotateCcw size={14} className="text-electric" />
                   <span>30-Day Physical Flow Guarantee</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck size={14} className="text-[#B026FF]" />
+                  <ShieldCheck size={14} className="text-purple" />
                   <span>2-Year Hardware Warranty + Open SDK</span>
                 </div>
               </div>

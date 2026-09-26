@@ -283,7 +283,7 @@ export default function HardwareModesShowcase() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl border p-6 md:p-10 bg-[#070A10] relative overflow-hidden"
+          className="rounded-3xl border p-6 md:p-10 bg-matte relative overflow-hidden"
           style={{
             borderColor: currentMode.border,
             boxShadow: `0 0 65px ${currentMode.glow}`,
@@ -310,8 +310,8 @@ export default function HardwareModesShowcase() {
                   >
                     Totem Dock Synced
                   </span>
-                  <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-widest flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-pulse" />
+                  <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse" />
                     Hall Effect Active
                   </span>
                 </div>
@@ -322,7 +322,7 @@ export default function HardwareModesShowcase() {
                 >
                   {currentMode.name}
                 </h3>
-                <p className="text-[#94A3B8] text-sm leading-relaxed font-light mb-6">
+                <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
                   {currentMode.tagline}
                 </p>
 
@@ -345,7 +345,7 @@ export default function HardwareModesShowcase() {
                     {[0, 90, 180, 270].map((deg, idx) => (
                       <div
                         key={deg}
-                        className="absolute w-4 h-4 rounded-full border flex items-center justify-center bg-[#030508]"
+                        className="absolute w-4 h-4 rounded-full border flex items-center justify-center bg-vantablack"
                         style={{
                           transform: `rotate(${deg}deg) translate(95px) rotate(-${deg}deg)`,
                           borderColor: MODES_DATA[idx].accent,
@@ -363,7 +363,7 @@ export default function HardwareModesShowcase() {
 
                     {/* Active Totem Core Pin */}
                     <div
-                      className="w-16 h-16 rounded-full border-2 flex items-center justify-center bg-[#030508] shadow-2xl relative"
+                      className="w-16 h-16 rounded-full border-2 flex items-center justify-center bg-vantablack shadow-2xl relative"
                       style={{
                         borderColor: currentMode.accent,
                         boxShadow: `0 0 30px ${currentMode.accent}`,
@@ -382,10 +382,10 @@ export default function HardwareModesShowcase() {
               </div>
 
               {/* Hardware Specs Grid */}
-              <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-[#151D2A]">
+              <div className="grid grid-cols-2 gap-2.5 pt-4 border-t border-slate">
                 {currentMode.specs.map((s) => (
-                  <div key={s.label} className="bg-[#030508] rounded-xl p-3 border border-[#151D2A]">
-                    <p className="text-[10px] font-mono text-[#64748B] uppercase tracking-wider mb-0.5">
+                  <div key={s.label} className="bg-vantablack rounded-xl p-3 border border-slate">
+                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-0.5">
                       {s.label}
                     </p>
                     <p className="text-xs font-mono font-semibold" style={{ color: currentMode.accent }}>
@@ -399,15 +399,15 @@ export default function HardwareModesShowcase() {
             {/* ── RIGHT: Simulated Sci-Fi OS Terminal & Action Hooks (7 cols) ── */}
             <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
               {/* Simulated Desktop Window UI */}
-              <div className="rounded-2xl border border-[#151D2A] bg-[#030508] overflow-hidden flex flex-col shadow-2xl">
+              <div className="rounded-2xl border border-slate bg-vantablack overflow-hidden flex flex-col shadow-2xl">
                 {/* OS Window Title Bar */}
-                <div className="px-4 py-3 bg-[#070A10] border-b border-[#151D2A] flex items-center justify-between">
+                <div className="px-4 py-3 bg-matte border-b border-slate flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-[#FF5F56]/80" />
                     <div className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
                     <div className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
-                    <span className="text-[11px] font-mono text-[#64748B] ml-2 flex items-center gap-1.5">
-                      <Terminal size={12} className="text-[#00FF9D]" />
+                    <span className="text-[11px] font-mono text-slate-500 ml-2 flex items-center gap-1.5">
+                      <Terminal size={12} className="text-emerald" />
                       nexus_kernel_v2.4 — {currentMode.osData.title}
                     </span>
                   </div>
@@ -437,7 +437,7 @@ export default function HardwareModesShowcase() {
                       className="w-2 h-2 rounded-full animate-ping shrink-0"
                       style={{ backgroundColor: currentMode.accent }}
                     />
-                    <span className="text-[#CBD5E1] font-mono text-[11px] truncate">
+                    <span className="text-slate-300 font-mono text-[11px] truncate">
                       {currentMode.osData.logMessage}
                     </span>
                   </div>
@@ -446,7 +446,7 @@ export default function HardwareModesShowcase() {
                   {/* 1. Deep Work Blocked Domains */}
                   {currentMode.osData.blockedDomains && (
                     <div className="space-y-2">
-                      <p className="text-[10px] text-[#64748B] uppercase tracking-widest">
+                      <p className="text-[10px] text-slate-500 uppercase tracking-widest">
                         Kernel Network Firewalls (Live Enforced):
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -464,17 +464,17 @@ export default function HardwareModesShowcase() {
 
                   {/* 2. Audio Mute Indicator */}
                   {currentMode.osData.volumeLevel && (
-                    <div className="p-4 rounded-xl border border-[#00E5FF]/30 bg-[#00E5FF]/[0.04] flex items-center justify-between">
+                    <div className="p-4 rounded-xl border border-electric/30 bg-electric/[0.04] flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF]">
+                        <div className="w-9 h-9 rounded-lg bg-electric/10 border border-electric/30 flex items-center justify-center text-electric">
                           <MicOff size={18} />
                         </div>
                         <div>
                           <p className="text-white font-bold text-xs">Spatial Audio Gate</p>
-                          <p className="text-[11px] text-[#64748B]">Hardware Micro-relays Open</p>
+                          <p className="text-[11px] text-slate-500">Hardware Micro-relays Open</p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-[#00E5FF]/20 text-[#00E5FF] font-bold">
+                      <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-electric/20 text-electric font-bold">
                         MUTED
                       </span>
                     </div>
@@ -484,12 +484,12 @@ export default function HardwareModesShowcase() {
                   {currentMode.osData.equalizer && (
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] text-[#64748B] uppercase tracking-widest flex items-center gap-1.5">
-                          <Radio size={12} className="text-[#B026FF]" /> Ambient Lo-Fi Generative Stream
+                        <span className="text-[10px] text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
+                          <Radio size={12} className="text-purple" /> Ambient Lo-Fi Generative Stream
                         </span>
-                        <span className="text-[10px] text-[#B026FF]">96kHz / 24-bit</span>
+                        <span className="text-[10px] text-purple">96kHz / 24-bit</span>
                       </div>
-                      <div className="h-10 rounded-xl bg-[#030508] border border-[#B026FF]/30 p-2 flex items-end gap-1 justify-between">
+                      <div className="h-10 rounded-xl bg-vantablack border border-purple/30 p-2 flex items-end gap-1 justify-between">
                         {[60, 45, 85, 30, 95, 70, 40, 90, 65, 80, 50, 75, 90, 40, 60, 85].map((h, i) => (
                           <motion.div
                             key={i}
@@ -510,9 +510,9 @@ export default function HardwareModesShowcase() {
 
                   {/* 4. Break Pomodoro Timer */}
                   {currentMode.id === "break" && (
-                    <div className="p-4 rounded-xl border border-[#FF9F1C]/30 bg-[#FF9F1C]/[0.04] flex items-center justify-between">
+                    <div className="p-4 rounded-xl border border-amber/30 bg-amber/[0.04] flex items-center justify-between">
                       <div>
-                        <p className="text-[10px] text-[#FF9F1C] uppercase tracking-widest font-mono mb-1">
+                        <p className="text-[10px] text-amber uppercase tracking-widest font-mono mb-1">
                           Pomodoro Countdown
                         </p>
                         <p className="text-3xl font-display font-bold text-white tracking-wider">
@@ -521,7 +521,7 @@ export default function HardwareModesShowcase() {
                       </div>
                       <button
                         onClick={() => setIsTimerRunning(!isTimerRunning)}
-                        className="px-4 py-2.5 rounded-xl border border-[#FF9F1C]/40 bg-[#FF9F1C]/20 text-[#FF9F1C] font-bold text-xs flex items-center gap-2 hover:bg-[#FF9F1C]/30 transition-all"
+                        className="px-4 py-2.5 rounded-xl border border-amber/40 bg-amber/20 text-amber font-bold text-xs flex items-center gap-2 hover:bg-amber/30 transition-all"
                       >
                         {isTimerRunning ? <Pause size={14} /> : <Play size={14} />}
                         {isTimerRunning ? "PAUSE" : "RESUME"}
@@ -531,15 +531,15 @@ export default function HardwareModesShowcase() {
 
                   {/* Active Workspace Apps */}
                   {currentMode.osData.activeApps && (
-                    <div className="pt-2 border-t border-[#151D2A]">
-                      <p className="text-[10px] text-[#64748B] uppercase tracking-widest mb-1.5">
+                    <div className="pt-2 border-t border-slate">
+                      <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1.5">
                         Automated App Orchestration:
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {currentMode.osData.activeApps.map((app) => (
                           <span
                             key={app}
-                            className="px-2 py-0.5 rounded bg-[#151D2A]/80 text-[#CBD5E1] text-[10px] border border-[#151D2A]"
+                            className="px-2 py-0.5 rounded bg-slate/80 text-slate-300 text-[10px] border border-slate"
                           >
                             ✓ {app}
                           </span>
@@ -552,7 +552,7 @@ export default function HardwareModesShowcase() {
 
               {/* Action Hooks List with Interactive Toggles */}
               <div className="space-y-2">
-                <p className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider flex items-center gap-1.5">
+                <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
                   <SlidersHorizontal size={12} style={{ color: currentMode.accent }} />
                   Active Protocol Webhooks (Toggle to Preview):
                 </p>
@@ -594,7 +594,7 @@ export default function HardwareModesShowcase() {
                             backgroundColor: active ? currentMode.accent : "transparent",
                           }}
                         >
-                          {active && <CheckCircle2 size={12} className="text-[#030508]" />}
+                          {active && <CheckCircle2 size={12} className="text-vantablack" />}
                         </div>
                       </button>
                     );
