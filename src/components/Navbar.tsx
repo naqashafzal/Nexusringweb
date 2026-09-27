@@ -26,10 +26,10 @@ export default function Navbar() {
           <Link href="/software" className="text-white hover:opacity-50 transition-opacity">Software</Link>
           <Link href="/research" className="text-white hover:opacity-50 transition-opacity">Research</Link>
           <Link href="/about" className="text-white hover:opacity-50 transition-opacity">Vision</Link>
-          <Link href="/campaign" className="text-emerald-400 hover:opacity-50 transition-opacity">Campaign</Link>
+          <Link href="/campaign" className="text-accent-400 hover:opacity-50 transition-opacity">Campaign</Link>
           <button
             onClick={() => setShowComingSoon(true)}
-            className="text-white hover:text-emerald transition-colors cursor-pointer"
+            className="text-white hover:text-accent transition-colors cursor-pointer"
           >
             Pre-order
           </button>
@@ -71,13 +71,13 @@ export default function Navbar() {
             <Link href="/software" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Software</Link>
             <Link href="/research" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Research</Link>
             <Link href="/about" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-white">Vision</Link>
-            <Link href="/campaign" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-emerald-400">Campaign</Link>
+            <Link href="/campaign" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tighter text-accent-400">Campaign</Link>
             <button 
               onClick={() => {
                 setIsOpen(false);
                 setShowComingSoon(true);
               }} 
-              className="text-2xl font-medium tracking-tighter text-white hover:text-emerald transition-colors"
+              className="text-2xl font-medium tracking-tighter text-white hover:text-accent transition-colors"
             >
               Pre-order
             </button>

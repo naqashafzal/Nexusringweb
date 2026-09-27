@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       embed = {
         title: "🔥 High Intent: Pre-Order Configurator Lead!",
         description: `A visitor configured their Nexus Ring artifact and reserved a slot!`,
-        color: 0x00ff9d, // Emerald Green
+        color: 0x00ff9d, // accent Green
         fields: [
           {
             name: "📧 Email",
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
       embed = {
         title: "⚡ New Nexus Ring Waitlist Lead!",
         description: `A prospective backer entered the priority launch waitlist.`,
-        color: 0x00ff9d, // Emerald Green
+        color: 0x00ff9d, // accent Green
         fields: [
           {
             name: "📧 Email",

@@ -12,7 +12,7 @@ const ExplodedRingCanvas = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-emerald/50 animate-pulse">
+      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-accent/50 animate-pulse">
         INITIALIZING 3D DOCK...
       </div>
     ),
@@ -64,7 +64,7 @@ function Reveal({
 const FAQ_ITEMS = [
   {
     q: "What is the Nexus Ring and how does it accelerate personal success?",
-    a: "The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time. When you snap the magnetic totem into position, it physically transitions your operating system into deep work mode before your hand even leaves your desk.",
+    a: "The Nexus Ring is a Physical Attention Operating System. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time. When you snap the magnetic totem into position, it physically transitions your operating system into deep work mode before your hand even leaves your desk.",
   },
   {
     q: "Why is a physical anchor more effective than software app blockers?",
@@ -121,27 +121,27 @@ export default function Home() {
               className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl pointer-events-auto"
             >
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
-                Intelligent Gatekeeper
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                Physical Digital-State Controller
               </span>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
-                FORCE YOUR FOCUS.<br />
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white uppercase">
+                One physical action.<br />
                 <span
                   style={{
                     background:
-                      "linear-gradient(120deg, #FFFFFF 0%, #94A3B8 100%)",
+                      "linear-gradient(120deg, #ff334f 0%, #ff6a7d 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
                   }}
                 >
-                  ENGINEER SUCCESS.
+                  Your digital world changes with you.
                 </span>
               </h1>
 
-              <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed">
-                "To bridge the gap between physical intention and digital execution, transforming productivity from a software struggle into a tangible, tactile experience."
+              <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl">
+                Place the Nexus Totem into Deep Work, Creative, Meeting or Break mode. Nexus Ring automatically adapts your computer, notifications, apps and compatible workspace around what you intend to do.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -149,24 +149,24 @@ export default function Home() {
                   onClick={() => setShowComingSoon(true)}
                   className="relative px-8 py-4 rounded-full font-semibold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 cursor-pointer"
                 >
-                  Pre-Order — Starting at $15
+                  Get Early Access
                 </button>
                 <Link
-                  href="/research"
+                  href="#how-it-works"
                   className="px-8 py-4 rounded-full font-medium text-sm text-slate-300 hover:text-white border border-white/10 bg-transparent hover:border-white/30 backdrop-blur-md transition-all duration-300"
                 >
-                  Read Whitepaper →
+                  See How It Works ↓
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 border-t border-white/5">
+              <div className="grid grid-cols-2 gap-3 pt-8 border-t border-white/5">
                 {[
-                  { label: "Magnetic Slots", val: "4 Positions" },
-                  { label: "Kernel Hook", val: "<24ms Latency" },
-                  { label: "AI Guardian", val: "100% Air-Gapped" },
-                  { label: "Campaign", val: "Launching Soon" },
+                  { label: "Deep Work · Creative · Meeting · Break", val: "4 Physical Modes" },
+                  { label: "Core automation stays on your devices", val: "Local-First" },
+                  { label: "Computer · Mobile · Workspace", val: "Cross-Device Vision" },
+                  { label: "Digital, DIY and assembled editions planned", val: "Maker Friendly" },
                 ].map((stat) => (
-                  <div key={stat.label}>
+                  <div key={stat.val}>
                     <p className="text-xs font-mono text-white font-semibold">
                       {stat.val}
                     </p>
@@ -204,16 +204,16 @@ export default function Home() {
               Success & Discipline Engine
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tight text-white mb-6">
-              ENGINEERED FOR UNBREAKABLE DISCIPLINE.
+              YOUR ATTENTION HAS AN OFF SWITCH NOW.
             </h2>
             <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed">
-              In a world overflowing with digital distractions, willpower is no longer enough to stay focused. The Nexus Ring was born from a simple realization: changing your digital environment should be as deliberate and physical as closing an office door.
+              In a world overflowing with digital distractions, willpower is no longer enough to stay focused. Make the decision once. Nexus protects it. One physical action changes your apps, devices and environment to match what you're doing.
             </p>
           </Reveal>
 
           {/* 3 Pillars Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Hook 1: The Discipline Engine */}
+            {/* Hook 1: Physical Intent Computing */}
             <Reveal delay={0.1}>
               <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:border-white/30 hover:-translate-y-1">
                 <div className="space-y-4 relative z-10">
@@ -224,10 +224,10 @@ export default function Home() {
                     Marketing Hook · 01
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white">
-                    The Discipline Engine
+                    Physical Intent Computing
                   </h3>
                   <p className="text-sm font-semibold text-slate-300 leading-snug">
-                    Force your focus, save your time, and engineer your own success.
+                    PUT YOUR WORLD IN THE RIGHT MODE, save your time, and engineer your own success.
                   </p>
                   <p className="text-slate-400 text-sm font-light leading-relaxed">
                     Stop burning finite willpower trying to resist distraction tabs. By shifting intent into a mechanical gesture, you trigger an immediate cognitive barrier that protects your high-leverage hours.
@@ -302,13 +302,13 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-20">
             <p className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-3.5 py-1 mb-4 backdrop-blur-md">
-              The Cognitive Friction Problem
+              The Problem
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
-              Software app blockers fail because they lack physical consequence.
+              Digital tools are easy to ignore because the decision happens on the same screen.
             </h2>
             <p className="text-slate-500 text-base leading-relaxed">
-              When willpower is the only wall between you and endless tabs, a single command-tab click destroys your focus.
+              Most productivity systems rely on another button, extension or application. Nexus Ring introduces a physical boundary between intention and distraction. Changing modes requires a deliberate physical action instead of another click.
             </p>
           </Reveal>
 
@@ -342,7 +342,7 @@ export default function Home() {
             <Reveal delay={0.2}>
               <div className="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 md:p-10 flex flex-col justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest px-2.5 py-1 rounded bg-emerald-400/10 border border-emerald-400/20 inline-block mb-6">
+                  <span className="text-[10px] font-mono text-accent-400 uppercase tracking-widest px-2.5 py-1 rounded bg-accent-400/10 border border-accent-400/20 inline-block mb-6">
                     The Nexus Ring Way · Tactile Hardware
                   </span>
                   <h3 className="text-2xl font-display font-bold text-white mb-4">
@@ -351,12 +351,12 @@ export default function Home() {
                   <ul className="space-y-3 text-slate-300 text-sm font-light">
                     {[
                       "Physical magnetic ring rotation forces conscious intent",
-                      "Air-gapped on-device AI — 0 bytes sent anywhere",
-                      "Establishes immediate spatial muscle memory for deep work",
-                      "Kernel Ring-0 hook blocks distractions at system level",
+                      "Local-first architecture — zero mandatory cloud dependence",
+                      "Establishes immediate spatial muscle memory",
+                      "Desktop automation triggers apps, scripts, and rules instantly",
                     ].map((i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-emerald-400 shrink-0 mt-0.5">✓</span>
+                        <span className="text-accent-400 shrink-0 mt-0.5">✓</span>
                         <span>{i}</span>
                       </li>
                     ))}
@@ -372,7 +372,7 @@ export default function Home() {
       <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/25 bg-electric/10 rounded-full inline-block px-3.5 py-1 mb-4">
+            <p className="text-[10px] font-mono tracking-[0.25em] text-accent2 uppercase border border-accent2/25 bg-accent2/10 rounded-full inline-block px-3.5 py-1 mb-4">
               Hardware Architecture
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
@@ -405,9 +405,9 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-400/10">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="text-[10px] font-mono text-emerald-400 tracking-wider uppercase">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-accent-400/30 bg-accent-400/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse" />
+                      <span className="text-[10px] font-mono text-accent-400 tracking-wider uppercase">
                         Detecting
                       </span>
                     </div>
@@ -562,15 +562,18 @@ export default function Home() {
       <section className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/25 bg-emerald/10 rounded-full inline-block px-3.5 py-1 mb-4">
+            <p className="text-[10px] font-mono tracking-[0.25em] text-accent uppercase border border-accent/25 bg-accent/10 rounded-full inline-block px-3.5 py-1 mb-4">
               4 Hardware Slots
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-white mb-4">
               Master Your Workspace,<br />
               <span className="text-slate-500 font-light">One Slot at a Time.</span>
             </h2>
-            <p className="text-slate-500 leading-relaxed text-sm md:text-base">
+            <p className="text-slate-500 leading-relaxed text-sm md:text-base mb-2">
               Assign magnetic totems to physical positions. Spatial memory makes flow state instant, effortless, and automatic.
+            </p>
+            <p className="text-accent text-sm font-medium">
+              100% Customizable: Reconfigure any of the 4 slots to match your workflow—whether you're a gamer, video editor, writer, or trader.
             </p>
           </Reveal>
 
@@ -591,7 +594,7 @@ export default function Home() {
           <div className="rounded-3xl border border-slate bg-matte/80 backdrop-blur-xl p-8 md:p-12">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-slate">
               <div>
-                <span className="text-[10px] font-mono text-emerald uppercase tracking-widest px-3 py-1 rounded bg-emerald/10 border border-emerald/30 inline-block mb-2">
+                <span className="text-[10px] font-mono text-accent uppercase tracking-widest px-3 py-1 rounded bg-accent/10 border border-accent/30 inline-block mb-2">
                   System Architecture · Generative Engine Index
                 </span>
                 <h2
@@ -602,7 +605,7 @@ export default function Home() {
                 </h2>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                <span className="w-2 h-2 rounded-full bg-emerald animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
                 <span>INDEXED FOR AI SEARCH ENGINES & CHATS</span>
               </div>
             </div>
@@ -610,11 +613,11 @@ export default function Home() {
             <article className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-400">
               <div className="space-y-4">
                 <h3 className="text-white font-display font-semibold text-lg flex items-center gap-2">
-                  <Cpu size={18} className="text-emerald" />
-                  The Intelligent Gatekeeper Defined
+                  <Cpu size={18} className="text-accent" />
+                  The Physical Attention Operating System Defined
                 </h3>
                 <p>
-                  The <strong className="text-white">Nexus Ring</strong> is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
+                  The <strong className="text-white">Nexus Ring</strong> is a Physical Attention Operating System. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
                 </p>
                 <p>
                   Unlike software blockers that live in browser tabs or mobile menus, the Nexus Ring operates as a physical desk totem machined from 6061-T6 aerospace aluminum. By grounding focus transitions in spatial reality, it establishes an immutable behavioral boundary between work and distraction.
@@ -623,7 +626,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <h3 className="text-white font-display font-semibold text-lg flex items-center gap-2">
-                  <Layers size={18} className="text-electric" />
+                  <Layers size={18} className="text-accent2" />
                   Key Specifications & Search Entities
                 </h3>
                 <dl className="grid grid-cols-2 gap-3 text-xs font-mono">
@@ -633,7 +636,7 @@ export default function Home() {
                   </div>
                   <div className="p-3 rounded-lg bg-vantablack border border-slate">
                     <dt className="text-slate-500 uppercase">Focus Mechanism</dt>
-                    <dd className="text-emerald font-semibold mt-1">Distraction Elimination</dd>
+                    <dd className="text-accent font-semibold mt-1">Distraction Elimination</dd>
                   </div>
                   <div className="p-3 rounded-lg bg-vantablack border border-slate">
                     <dt className="text-slate-500 uppercase">Hardware Material</dt>
@@ -641,7 +644,7 @@ export default function Home() {
                   </div>
                   <div className="p-3 rounded-lg bg-vantablack border border-slate">
                     <dt className="text-slate-500 uppercase">Kernel Latency</dt>
-                    <dd className="text-electric font-semibold mt-1">&lt;24ms Direct Interrupt</dd>
+                    <dd className="text-accent2 font-semibold mt-1">&lt;24ms Direct Interrupt</dd>
                   </div>
                   <div className="p-3 rounded-lg bg-vantablack border border-slate">
                     <dt className="text-slate-500 uppercase">Privacy Paradigm</dt>
@@ -649,7 +652,7 @@ export default function Home() {
                   </div>
                   <div className="p-3 rounded-lg bg-vantablack border border-slate">
                     <dt className="text-slate-500 uppercase">Campaign Status</dt>
-                    <dd className="text-emerald font-semibold mt-1">Launching Soon (Waitlist Open)</dd>
+                    <dd className="text-accent font-semibold mt-1">Launching Soon (Waitlist Open)</dd>
                   </div>
                 </dl>
               </div>
@@ -676,7 +679,7 @@ export default function Home() {
               Everything You Need to Know.
             </h2>
             <p className="text-slate-400 text-base font-light">
-              Clear answers on the discipline engine, hardware architecture, and kernel integrations.
+              Clear answers on Physical Intent Computing, hardware architecture, and kernel integrations.
             </p>
           </Reveal>
 

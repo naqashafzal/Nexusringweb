@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Nexus Ring | Bridging the gap between physical intention and digital execution";
+export const alt = "Nexus Ring | Physical Intent. Digital Execution.";
 export const size = {
   width: 1200,
   height: 630,
@@ -86,7 +86,7 @@ export default async function Image() {
               marginLeft: "12px",
             }}
           >
-            Bridging the gap between physical intention & digital execution
+            Physical Intent. Digital Execution.
           </span>
         </div>
 
@@ -102,8 +102,8 @@ export default async function Image() {
               margin: 0,
             }}
           >
-            Force your focus. Save your time.{" "}
-            <span style={{ color: "#00FF9D" }}>Engineer your success.</span>
+            ONE PHYSICAL ACTION.<br/>
+            <span style={{ color: "#00FF9D" }}>YOUR DIGITAL WORLD CHANGES WITH YOU.</span>
           </h1>
           <p
             style={{
@@ -114,7 +114,7 @@ export default async function Image() {
               margin: 0,
             }}
           >
-            A physical barrier between you and the digital distractions costing you time and money.
+            Drop the Nexus Totem into a mode and your workspace automatically adapts.
           </p>
         </div>
 
@@ -131,27 +131,27 @@ export default async function Image() {
           <div style={{ display: "flex", gap: "40px" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
-                Latency
+                Modes
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00FF9D", margin: 0 }}>&lt;24ms</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00FF9D", margin: 0 }}>4 Physical States</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
-                Chassis
+                Execution
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>V1 3D-Printed</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>Local-First</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
-                Privacy
+                Automation
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00E5FF", margin: 0 }}>100% Air-Gapped</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00E5FF", margin: 0 }}>Desktop OS Integrations</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Status
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#B026FF", margin: 0 }}>Launching Soon</p>
+              <p style={{ fontSize: "22px", fontWeight: 700, color: "#B026FF", margin: 0 }}>Early Access</p>
             </div>
           </div>
           <span style={{ fontSize: "18px", color: "#64748B", letterSpacing: "1px" }}>nexusring.tech</span>

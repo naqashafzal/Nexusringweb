@@ -21,21 +21,17 @@
   --color-obsidian: var(--color-obsidian-theme);
   --color-matte: var(--color-matte-theme);
   --color-slate: var(--color-slate-theme);
-  --color-emerald: #00FF9D;
-  --color-electric: #00E5FF;
-  --color-amber: #FF9F1C;
-  --color-purple: #B026FF;
+  --color-accent: #ff334f;
+  --color-accent2: #ff6a7d;
+  --color-muted: #9aa3af;
 
   /* Fonts */
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Custom Glow Shadows */
-  --shadow-glow-emerald: 0 0 25px rgba(0, 255, 157, 0.45), 0 0 50px rgba(0, 255, 157, 0.15);
-  --shadow-glow-electric: 0 0 25px rgba(0, 229, 255, 0.45), 0 0 50px rgba(0, 229, 255, 0.15);
-  --shadow-glow-amber: 0 0 25px rgba(255, 159, 28, 0.45), 0 0 50px rgba(255, 159, 28, 0.15);
-  --shadow-glow-purple: 0 0 25px rgba(176, 38, 255, 0.45), 0 0 50px rgba(176, 38, 255, 0.15);
+  --shadow-glow-accent: 0 0 25px rgba(255, 51, 79, 0.45), 0 0 50px rgba(255, 51, 79, 0.15);
 }
 
 :root {
@@ -122,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .text-gradient-neon {
-    background: linear-gradient(120deg, var(--color-emerald), var(--color-electric), var(--color-purple));
+    background: linear-gradient(120deg, var(--color-accent), var(--color-accent2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

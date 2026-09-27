@@ -1,174 +1,178 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll } from "framer-motion";
-import { BrainCircuit, Cpu, ShieldCheck, Download, Sparkles, BookOpen } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ChevronRight, FileText, Beaker, GitPullRequest, BrainCircuit, Play, Pause } from "lucide-react";
+import ComingSoonModal from "@/components/ComingSoonModal";
 
 export default function ResearchPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [showComingSoon, setShowComingSoon] = React.useState(false);
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-32 pb-32 bg-vantablack text-[#E2E8F0] font-sans overflow-x-hidden">
-      {/* Background Dot Grid Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      {/* Hero Section */}
-      <section className="relative w-full max-w-[1100px] mx-auto px-6 md:px-12 mb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald/[0.05] blur-[140px] rounded-full pointer-events-none" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 text-center space-y-6"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
-            Time & Focus Optimization · Cognitive Science Whitepaper
+      {/* 1. HERO */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 text-center">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-6 relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
+            Research & Design Principles
           </div>
-
-          <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            THE SCIENCE OF<br />
-            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              SPATIAL FOCUS.
-            </span>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
+            DESIGNING FOR FOCUS<br /><span className="text-slate-400">IN A DISTRACTING WORLD.</span>
           </h1>
-
-          <p className="text-slate-400 text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            The Nexus Ring is an intelligent gatekeeper for your attention. A rigorous examination of ego depletion mitigation, tactile spatial muscle memory, and the neuroscience of distraction elimination.
+          <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+            The behavioral ideas, interface principles and product hypotheses behind Nexus Ring — and what we still need to test.
           </p>
-
-          <div className="pt-4">
-            <button
-              onClick={() => alert("Downloading Nexus Spatial Focus Whitepaper (PDF)...")}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-emerald/40 bg-emerald/10 text-emerald font-bold text-xs font-mono tracking-wider hover:bg-emerald/20 transition-all"
-            >
-              <Download size={14} /> Download Whitepaper (PDF v2.4)
-            </button>
-          </div>
         </motion.div>
       </section>
 
-      {/* Section 1: Cognitive Psychology */}
-      <section className="w-full max-w-[1100px] mx-auto px-6 md:px-12 mb-28">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
-        >
-          <div className="md:col-span-4 sticky top-32">
-            <div className="w-12 h-12 rounded-xl bg-matte border border-emerald/30 flex items-center justify-center mb-4">
-              <BrainCircuit className="text-emerald" size={24} />
+      {/* 2. RESEARCH PRINCIPLES */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 space-y-16">
+        
+        {/* Context Switching */}
+        <div className="p-8 border border-slate bg-matte rounded-3xl">
+          <h3 className="text-3xl font-display font-bold text-white mb-4">Interruptions have a cost.</h3>
+          <p className="text-slate-400 mb-6">Switching repeatedly between work, messages, feeds and alerts can create cognitive overhead.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-5 bg-vantablack rounded-xl border border-slate">
+              <h4 className="text-accent font-bold mb-2 uppercase text-[10px] tracking-widest">Design Principle</h4>
+              <p className="text-sm text-white">Reduce the number of manual decisions required to enter a work state.</p>
             </div>
-            <h2 className="text-2xl font-display font-bold text-white tracking-tight mb-2">01. Cognitive Psychology</h2>
-            <p className="text-emerald text-xs uppercase tracking-widest font-mono">Ego Depletion Bypass</p>
+            <div className="p-5 bg-vantablack rounded-xl border border-slate">
+              <h4 className="text-accent2 font-bold mb-2 uppercase text-[10px] tracking-widest">Nexus Implementation</h4>
+              <p className="text-sm text-white">One physical mode can run several preparation actions together.</p>
+            </div>
           </div>
+        </div>
 
-          <div className="md:col-span-8 space-y-6 text-slate-400 text-sm md:text-base leading-relaxed font-light">
-            <p>
-              The fundamental flaw in traditional productivity software is its reliance on purely digital friction. App blockers, timers, and specialized desktop spaces require the user to actively configure them using the mouse and screen—the exact same interface that delivers distractions.
-            </p>
-            <p>
-              Psychological studies on <strong className="text-white font-semibold">Ego Depletion</strong> prove that willpower is a finite cognitive energy store. Every time you consciously choose to launch a focus app instead of a social media tab, you drain mental reserves.
-            </p>
-            <div className="p-6 bg-matte border border-emerald/30 rounded-2xl border-l-4 border-l-emerald space-y-2">
-              <h4 className="text-white font-display font-bold text-base">The Tactile Bypass Principle</h4>
-              <p className="text-xs text-slate-300 font-light leading-relaxed">
-                By introducing a physical totem, the Nexus Ring bypasses digital friction entirely. The tactile sensation of picking up machined billet aluminum and the haptic resonance of the magnetic snap establish spatial muscle memory, dramatically accelerating entry into deep work flow states.
-              </p>
-            </div>
+        {/* Environmental Cues */}
+        <div className="p-8 border border-slate bg-matte rounded-3xl">
+          <h3 className="text-3xl font-display font-bold text-white mb-4">Context can help define behavior.</h3>
+          <p className="text-slate-400 mb-6">People often use environmental cues and routines to support habits.</p>
+          <div className="p-5 bg-vantablack rounded-xl border border-slate">
+            <h4 className="text-purple font-bold mb-2 uppercase text-[10px] tracking-widest">Nexus Hypothesis</h4>
+            <p className="text-sm text-white">A consistent physical gesture and visible mode state may make transitions between work contexts more deliberate.</p>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Physical Friction */}
+        <div className="p-8 border border-slate bg-matte rounded-3xl">
+          <h3 className="text-3xl font-display font-bold text-white mb-4">Small barriers can change behavior.</h3>
+          <p className="text-slate-400 mb-6">Digital actions often require almost no effort. Opening another tab may happen automatically. Nexus introduces a physical step.</p>
+          <div className="p-5 bg-vantablack rounded-xl border border-slate">
+            <h4 className="text-accent font-bold mb-2 uppercase text-[10px] tracking-widest">Design Principle</h4>
+            <p className="text-sm text-white">Breaking a selected focus state should require a deliberate action rather than an accidental click.</p>
+          </div>
+        </div>
+
+        {/* Choice Reduction */}
+        <div className="p-8 border border-slate bg-matte rounded-3xl">
+          <h3 className="text-3xl font-display font-bold text-white mb-4">Repeated setup creates unnecessary friction.</h3>
+          <p className="text-slate-400 mb-6">Entering Deep Work may require closing chat, muting alerts, opening work apps, starting a timer, and setting a status. Nexus seeks to reduce those repeated configuration steps.</p>
+          <div className="p-5 bg-vantablack rounded-xl border border-slate">
+            <h4 className="text-purple font-bold mb-2 uppercase text-[10px] tracking-widest">Product Hypothesis</h4>
+            <p className="text-sm text-white">One deliberate action can make starting the intended environment easier and more repeatable.</p>
+          </div>
+        </div>
+
+        {/* Recovery */}
+        <div className="p-8 border border-slate bg-matte rounded-3xl">
+          <h3 className="text-3xl font-display font-bold text-white mb-4">Work boundaries matter too.</h3>
+          <p className="text-slate-400 mb-6">Focus systems shouldn't only help users enter work. They should help users leave work. Break mode is designed around creating a clearer transition between working and recovering.</p>
+        </div>
+
       </section>
 
-      {/* Section 2: Hardware Architecture */}
-      <section className="w-full max-w-[1100px] mx-auto px-6 md:px-12 mb-28">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
-        >
-          <div className="md:col-span-4 sticky top-32">
-            <div className="w-12 h-12 rounded-xl bg-matte border border-electric/30 flex items-center justify-center mb-4">
-              <Cpu className="text-electric" size={24} />
-            </div>
-            <h2 className="text-2xl font-display font-bold text-white tracking-tight mb-2">02. Hardware Architecture</h2>
-            <p className="text-electric text-xs uppercase tracking-widest font-mono">Zero-Latency Polling</p>
-          </div>
-
-          <div className="md:col-span-8 space-y-6 text-slate-400 text-sm md:text-base leading-relaxed font-light">
-            <p>
-              The Nexus Ring is engineered for instantaneous response. Standard Bluetooth protocol overhead was rejected in favor of a direct serial/Wi-Fi hybrid architecture driven by the <strong className="text-white font-semibold">ESP32-C3 RISC-V microcontroller</strong>.
-            </p>
-            <p>
-              Inside the dock, an array of <strong className="text-white font-semibold">KY-003 Hall-effect sensors</strong> reads 3D magnetic flux vectors. When a totem enters the dock, the sensors detect field polarity and strength instantly.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              <div className="p-4 rounded-xl border border-slate bg-matte text-center">
-                <p className="text-xl font-display font-bold text-electric">1000Hz</p>
-                <p className="text-[10px] font-mono text-slate-500 uppercase">Polling Rate</p>
-              </div>
-              <div className="p-4 rounded-xl border border-slate bg-matte text-center">
-                <p className="text-xl font-display font-bold text-electric">4.2N</p>
-                <p className="text-[10px] font-mono text-slate-500 uppercase">Actuation Force</p>
-              </div>
-              <div className="p-4 rounded-xl border border-slate bg-matte text-center">
-                <p className="text-xl font-display font-bold text-electric">&lt;24ms</p>
-                <p className="text-[10px] font-mono text-slate-500 uppercase">Daemon Response</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      {/* 3. EGO DEPLETION CLARIFICATION */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32 text-center bg-matte border border-slate p-8 rounded-3xl">
+        <BrainCircuit className="mx-auto text-slate-500 mb-4" size={32} />
+        <p className="text-sm text-slate-400 leading-relaxed">
+          Research into willpower and ego depletion has produced mixed findings. Nexus Ring does not depend on the assumption that willpower is a finite resource. The product instead focuses on reducing repetitive decisions and creating clearer environmental transitions.
+        </p>
       </section>
 
-      {/* Section 3: Local AI & Privacy */}
-      <section className="w-full max-w-[1100px] mx-auto px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
-        >
-          <div className="md:col-span-4 sticky top-32">
-            <div className="w-12 h-12 rounded-xl bg-matte border border-purple/30 flex items-center justify-center mb-4">
-              <ShieldCheck className="text-purple" size={24} />
+      {/* 4. WHAT WE ARE TESTING */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8">Questions Nexus Ring should answer with real users.</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            "Does a physical mode reduce setup time?",
+            "Do users switch into focus more consistently?",
+            "Which actions provide the most value?",
+            "Does the physical totem make users less likely to impulsively abandon a mode?",
+            "Do users prefer strict or flexible Deep Work profiles?",
+            "Does Break mode improve work/recovery separation?",
+            "Which LED feedback is easiest to understand?",
+            "Does the device feel useful after novelty wears off?"
+          ].map((q, i) => (
+            <div key={i} className="p-4 bg-vantablack border border-slate rounded-xl text-slate-300 text-sm">
+              {q}
             </div>
-            <h2 className="text-2xl font-display font-bold text-white tracking-tight mb-2">03. Local AI & Privacy</h2>
-            <p className="text-purple text-xs uppercase tracking-widest font-mono">100% Air-Gapped NPU</p>
-          </div>
-
-          <div className="md:col-span-8 space-y-6 text-slate-400 text-sm md:text-base leading-relaxed font-light">
-            <p>
-              To provide intelligent context awareness, the Nexus software utilizes a quantized vision-language model. Sending desktop screenshots to external cloud servers is a non-negotiable privacy violation.
-            </p>
-            <p>
-              The Nexus Guardian runs an optimized 4-bit quantization of <strong className="text-white font-semibold">Local AI</strong> directly on your machine's GPU or NPU. Zero screen pixels or keystrokes leave your machine.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-5 border border-slate rounded-xl bg-matte">
-                <h4 className="text-white font-display font-bold text-sm mb-1">Zero Cloud Scraping</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Screen buffer data is processed in local RAM and immediately overwritten. No telemetric payload exists.
-                </p>
-              </div>
-              <div className="p-5 border border-slate rounded-xl bg-matte">
-                <h4 className="text-white font-display font-bold text-sm mb-1">Air-Gapped Operation</h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  The core hardware daemon functions continuously even when your machine is completely offline.
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+          ))}
+        </div>
       </section>
 
+      {/* 5. RESEARCH METHOD & PLAN */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8">Research & Testing Method</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Prototype Testing</h4>
+            <span className="text-[10px] font-mono bg-accent/20 text-accent px-2 py-1 rounded">5–20 EARLY USERS</span>
+            <p className="text-sm text-slate-400 mt-4">Observe setup time, mode usage, failure points, habit formation, and configuration preferences.</p>
+          </div>
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Beta Testing</h4>
+            <span className="text-[10px] font-mono bg-amber/20 text-amber px-2 py-1 rounded">EARLY ACCESS GROUP</span>
+            <p className="text-sm text-slate-400 mt-4">Measure mode usage, session lengths, manual overrides, favorite automations, and retention.</p>
+          </div>
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Production Validation</h4>
+            <span className="text-[10px] font-mono bg-purple/20 text-purple px-2 py-1 rounded">AT SCALE</span>
+            <p className="text-sm text-slate-400 mt-4">Test performance, stability, hardware reliability, software reliability, and overall user satisfaction.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. SOURCES & WHITEPAPER */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32 space-y-12">
+        <div>
+          <h2 className="text-3xl font-display font-bold text-white mb-6">Sources & Further Reading</h2>
+          <p className="text-sm text-slate-400 italic mb-4">A complete bibliography of cognitive science research and design papers influencing our hypotheses is being compiled.</p>
+        </div>
+        <div className="p-8 border border-slate bg-matte rounded-3xl text-center">
+          <FileText size={32} className="mx-auto text-white mb-4" />
+          <h3 className="text-2xl font-bold text-white mb-2">Whitepaper in Development</h3>
+          <p className="text-sm text-slate-400 mb-6 max-w-md mx-auto">
+            We are compiling the product hypotheses, technical architecture, sources and prototype testing methodology into a public whitepaper.
+          </p>
+          <button className="px-6 py-3 rounded-xl border border-slate text-slate-400 font-mono text-xs cursor-not-allowed">
+            Download Whitepaper (Pending)
+          </button>
+        </div>
+      </section>
+
+      {/* 7. CTA */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
+        <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
+          Help us test the hypothesis.
+        </h2>
+        <p className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">
+          Nexus Ring is being developed in public. Early testers will help us learn which physical interactions and automation profiles actually improve the experience of transitioning between work states.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
+            Join Early Access
+          </button>
+          <button className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">
+            Join Discord
+          </button>
+        </div>
+      </section>
+
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </main>
   );
 }

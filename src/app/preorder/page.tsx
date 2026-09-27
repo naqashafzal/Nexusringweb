@@ -24,14 +24,14 @@ const FINISHES = [
     name: "Deep Slate Anodized",
     color: "#030508",
     border: "#00FF9D",
-    desc: "15-micron hard-anodized matte black billet aluminum with stealth emerald ring accent.",
+    desc: "15-micron hard-anodized matte black billet aluminum with stealth accent ring accent.",
   },
   {
     id: "neon",
     name: "Cyberpunk Neon Edition",
     color: "#070A10",
     border: "#00E5FF",
-    desc: "Brushed dark graphite alloy housing with high-luminescence Electric Blue LED ring beam.",
+    desc: "Brushed dark graphite alloy housing with high-luminescence accent2 Blue LED ring beam.",
   },
   {
     id: "ceramic",
@@ -122,11 +122,11 @@ export default function PreorderPage() {
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-emerald/[0.05] blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/[0.05] blur-[140px] rounded-full pointer-events-none" />
 
         <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
             Protect Your Potential · Batch 01 Priority Queue
           </div>
 
@@ -138,7 +138,7 @@ export default function PreorderPage() {
           </h1>
 
           <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The ultimate hardware artifact to act as an intelligent gatekeeper for your attention. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical anchor for your mental state now to protect your time and focus.
+            The ultimate hardware artifact to act as a Physical Attention Operating System. Batch 01 is strictly limited to 500 units worldwide. Reserve your physical anchor for your mental state now to protect your time and focus.
           </p>
         </div>
       </section>
@@ -154,7 +154,7 @@ export default function PreorderPage() {
             <div className="rounded-3xl border border-slate bg-matte p-8 space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-emerald uppercase tracking-widest block">Step 01</span>
+                  <span className="text-[10px] font-mono text-accent uppercase tracking-widest block">Step 01</span>
                   <h3 className="text-xl font-display font-bold text-white">Choose Hardware Finish</h3>
                 </div>
                 <span className="text-xs font-mono text-slate-500">{finish.name}</span>
@@ -188,7 +188,7 @@ export default function PreorderPage() {
 
             {/* 2. Tier Selection */}
             <div className="rounded-3xl border border-slate bg-matte p-8 space-y-6">
-              <span className="text-[10px] font-mono text-electric uppercase tracking-widest block">Step 02</span>
+              <span className="text-[10px] font-mono text-accent2 uppercase tracking-widest block">Step 02</span>
               <h3 className="text-xl font-display font-bold text-white">Select Pledge Tier</h3>
 
               <div className="space-y-3">
@@ -207,7 +207,7 @@ export default function PreorderPage() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <span className="font-display font-bold text-base text-white">{t.name}</span>
-                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-emerald/30 bg-emerald/10 text-emerald">
+                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-accent/30 bg-accent/10 text-accent">
                             {t.badge}
                           </span>
                         </div>
@@ -224,23 +224,23 @@ export default function PreorderPage() {
 
           {/* ── RIGHT: Checkout Form & Access Generator (5 cols) ── */}
           <div className="lg:col-span-5 sticky top-28 space-y-6">
-            <div className="rounded-3xl border border-emerald/30 bg-matte p-8 space-y-6 shadow-[0_0_50px_rgba(0,255,157,0.08)]">
+            <div className="rounded-3xl border border-accent/30 bg-matte p-8 space-y-6 shadow-[0_0_50px_rgba(0,255,157,0.08)]">
               <div className="flex items-center justify-between border-b border-slate pb-4">
                 <div>
                   <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">Selected Artifact</span>
                   <p className="font-display font-bold text-lg text-white">{tier.name}</p>
                 </div>
-                <span className="text-2xl font-display font-black text-emerald">{tier.price}</span>
+                <span className="text-2xl font-display font-black text-accent">{tier.price}</span>
               </div>
 
               {submitted ? (
-                <div className="space-y-4 p-6 rounded-2xl border border-emerald/40 bg-emerald/10 text-center">
-                  <CheckCircle2 size={32} className="text-emerald mx-auto" />
+                <div className="space-y-4 p-6 rounded-2xl border border-accent/40 bg-accent/10 text-center">
+                  <CheckCircle2 size={32} className="text-accent mx-auto" />
                   <h4 className="text-xl font-display font-bold text-white">Batch 01 Slot Confirmed!</h4>
                   <p className="text-xs text-slate-300 font-light">
-                    Your cryptographic reservation key has been generated and dispatched to <span className="font-mono text-emerald font-bold">{email}</span>.
+                    Your cryptographic reservation key has been generated and dispatched to <span className="font-mono text-accent font-bold">{email}</span>.
                   </p>
-                  <div className="p-3 bg-vantablack rounded-xl border border-slate font-mono text-xs text-emerald">
+                  <div className="p-3 bg-vantablack rounded-xl border border-slate font-mono text-xs text-accent">
                     RESERVATION KEY: <span className="font-bold tracking-widest">{accessCode}</span>
                   </div>
                 </div>
@@ -256,14 +256,14 @@ export default function PreorderPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@domain.com"
                       required
-                      className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-emerald text-sm font-mono transition-colors"
+                      className="w-full bg-vantablack border border-slate rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-accent text-sm font-mono transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-emerald hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-[#001a0a] bg-accent hover:bg-[#00ffaa] disabled:opacity-60 transition-all duration-300 shadow-[0_0_30px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -281,11 +281,11 @@ export default function PreorderPage() {
 
               <div className="space-y-2 pt-4 border-t border-slate text-xs font-mono text-slate-500">
                 <div className="flex items-center gap-2">
-                  <Truck size={14} className="text-emerald" />
+                  <Truck size={14} className="text-accent" />
                   <span>Free Express Worldwide Shipping</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <RotateCcw size={14} className="text-electric" />
+                  <RotateCcw size={14} className="text-accent2" />
                   <span>30-Day Physical Flow Guarantee</span>
                 </div>
                 <div className="flex items-center gap-2">

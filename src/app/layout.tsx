@@ -1,20 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SITE_CONFIG, getStructuredData } from "@/lib/seo-data";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -35,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
     description:
-      "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring acts as an intelligent gatekeeper for your attention.",
+      "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring acts as a Physical Attention Operating System.",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_US",
@@ -82,17 +71,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`font-inter font-space-grotesk h-full antialiased`}
     >
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Nexus Ring RSS Feed" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-vantablack text-[#F8FAFC] selection:bg-emerald-500/30 selection:text-emerald-400">
+      <body className="min-h-full flex flex-col bg-vantablack text-[#F8FAFC] selection:bg-accent-500/30 selection:text-accent-400">
         <Navbar />
         {children}
         <Footer />

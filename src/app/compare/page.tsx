@@ -24,18 +24,18 @@ export default function CompareDirectoryPage() {
   const comparisonList = Object.values(COMPARISONS);
 
   return (
-    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-emerald/30 selection:text-white">
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-accent/30 selection:text-white">
       {/* Background Dot Pattern */}
       <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* Ambient Glows */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-emerald/[0.06] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-electric/[0.04] blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-accent/[0.06] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[600px] right-10 w-[500px] h-[300px] bg-accent2/[0.04] blur-[140px] rounded-full pointer-events-none" />
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
           The Head-To-Head Benchmark Matrix
         </div>
 
@@ -61,18 +61,18 @@ export default function CompareDirectoryPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="rounded-3xl border border-slate bg-matte p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group hover:border-emerald/40 transition-all duration-500 shadow-xl"
+              className="rounded-3xl border border-slate bg-matte p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group hover:border-accent/40 transition-all duration-500 shadow-xl"
             >
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-emerald/30 bg-emerald/10 text-emerald">
+                  <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent">
                     VS. {item.competitorName.toUpperCase()}
                   </span>
                   <span className="text-xs font-mono text-slate-500">{item.competitorType}</span>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-emerald transition-colors">
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-accent transition-colors">
                     {item.heroTitle}
                   </h3>
                   <p className="text-sm text-slate-400 font-light leading-relaxed">
@@ -82,7 +82,7 @@ export default function CompareDirectoryPage() {
 
                 {/* Quick Contrast Snapshot */}
                 <div className="space-y-2.5 pt-4 border-t border-slate text-xs font-mono">
-                  <div className="flex items-start gap-2.5 text-emerald">
+                  <div className="flex items-start gap-2.5 text-accent">
                     <CheckCircle2 size={16} className="shrink-0 mt-0.5" />
                     <span>Nexus Ring: {item.nexusAdvantages[0]}</span>
                   </div>
@@ -96,7 +96,7 @@ export default function CompareDirectoryPage() {
               <div className="pt-8 mt-6 border-t border-slate flex items-center justify-between">
                 <Link
                   href={`/compare/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-sm font-mono text-emerald hover:text-white transition-colors group/link"
+                  className="inline-flex items-center gap-2 text-sm font-mono text-accent hover:text-white transition-colors group/link"
                 >
                   <span>Read Full Technical Breakdown</span>
                   <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
@@ -110,8 +110,8 @@ export default function CompareDirectoryPage() {
 
       {/* ════════════════ COGNITIVE SCIENCE MANIFESTO ══════════════ */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
-        <div className="rounded-3xl border border-emerald/30 bg-matte p-8 md:p-12 text-center space-y-6 relative overflow-hidden shadow-[0_0_60px_rgba(0,255,157,0.1)]">
-          <div className="w-12 h-12 rounded-2xl bg-emerald/10 border border-emerald/40 text-emerald flex items-center justify-center mx-auto">
+        <div className="rounded-3xl border border-accent/30 bg-matte p-8 md:p-12 text-center space-y-6 relative overflow-hidden shadow-[0_0_60px_rgba(0,255,157,0.1)]">
+          <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/40 text-accent flex items-center justify-center mx-auto">
             <Zap size={24} />
           </div>
 
@@ -126,13 +126,13 @@ export default function CompareDirectoryPage() {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => setShowComingSoon(true)}
-              className="px-8 py-3.5 rounded-xl bg-emerald hover:bg-[#00ffaa] text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2 cursor-pointer"
+              className="px-8 py-3.5 rounded-xl bg-accent hover:bg-[#00ffaa] text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2 cursor-pointer"
             >
               Reserve Priority Batch 01 <ChevronRight size={16} />
             </button>
             <Link
               href="/research"
-              className="px-6 py-3.5 rounded-xl border border-slate bg-vantablack hover:border-emerald/50 text-xs font-mono text-slate-400 hover:text-white transition-colors"
+              className="px-6 py-3.5 rounded-xl border border-slate bg-vantablack hover:border-accent/50 text-xs font-mono text-slate-400 hover:text-white transition-colors"
             >
               Read Cognitive Whitepaper
             </Link>

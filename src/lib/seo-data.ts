@@ -10,11 +10,11 @@ export const SITE_CONFIG = {
   url: "https://www.nexusring.tech",
   tagline: "Bridging the gap between physical intention and digital execution.",
   description:
-    "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring fuses custom 3D-printed hardware, local OS automation, and generative AI to act as a physical anchor for your mental state and an intelligent gatekeeper for your attention.",
+    "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring fuses custom 3D-printed hardware, local OS automation, and generative AI to act as a physical anchor for your mental state and a Physical Attention Operating System.",
   hooks: {
-    disciplineEngine: "The Discipline Engine: Force your focus, save your time, and engineer your own success.",
+    disciplineEngine: "Physical Intent Computing: PUT YOUR WORLD IN THE RIGHT MODE, save your time, and engineer your own success.",
     moreOutput: "More Output, Less Friction: Changing your digital environment should be as deliberate and physical as closing an office door.",
-    protectPotential: "Protect Your Potential: The ultimate hardware artifact to act as an intelligent gatekeeper for your attention.",
+    protectPotential: "Protect Your Potential: The ultimate hardware artifact to act as a Physical Attention Operating System.",
   },
   keywords: [
     "Success & Discipline Engine",
@@ -99,7 +99,7 @@ export function getStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_CONFIG.url}/#product`,
-    name: "Nexus Ring — Intelligent Gatekeeper & Distraction Elimination System",
+    name: "Nexus Ring — Physical Attention Operating System & Distraction Elimination System",
     image: [`${SITE_CONFIG.url}/opengraph-image`],
     description: SITE_CONFIG.description,
     brand: {
@@ -150,7 +150,7 @@ export function getStructuredData() {
         name: "What is the Nexus Ring?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it eliminates the friction of getting into the zone by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.",
+          text: "The Nexus Ring is a Physical Attention Operating System. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it eliminates the friction of getting into the zone by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.",
         },
       },
       {

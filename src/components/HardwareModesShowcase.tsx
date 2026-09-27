@@ -48,7 +48,7 @@ const MODES_DATA: ModeDetail[] = [
     id: "deep-work",
     slot: "SLOT 01",
     name: "Deep Work",
-    tagline: "Total distraction lockdown at the OS kernel level.",
+    tagline: "Protect the work that matters.",
     accent: "#00FF9D",
     glow: "rgba(0,255,157,0.35)",
     border: "rgba(0,255,157,0.35)",
@@ -56,30 +56,30 @@ const MODES_DATA: ModeDetail[] = [
     icon: ShieldAlert,
     angle: 0,
     specs: [
-      { label: "Trigger Latency", value: "24ms" },
-      { label: "App Blocker", value: "Kernel Ring-0" },
-      { label: "Magnetic Sensor", value: "N52 Hall Effect" },
+      { label: "App Blocker", value: "Local Enforcement" },
+      { label: "Notification", value: "Do Not Disturb" },
+      { label: "Timer", value: "Focus Session" },
       { label: "Slack Status", value: "Auto-Focused" },
     ],
     actions: [
-      { text: "Blocks X, Reddit, Discord & news domains", category: "Network", active: true },
-      { text: "Launches VS Code workspace & terminal", category: "Workspace", active: true },
-      { text: "Enforces 90-minute focus session loop", category: "Timer", active: true },
-      { text: "Silences all system notifications & badges", category: "OS Control", active: true },
+      { text: "Blocks configured websites (social, news, etc)", category: "Network", active: true },
+      { text: "Closes distracting applications", category: "Apps", active: true },
+      { text: "Starts a focus session timer", category: "Timer", active: true },
+      { text: "Opens your preferred workspace tools", category: "Workspace", active: true },
     ],
     osData: {
-      title: "FOCUS KERNEL LOCKDOWN",
+      title: "DEEP WORK AUTOMATION",
       statusBadge: "ENFORCING",
-      logMessage: "00:42:19 | Blocked 14 network distraction requests",
+      logMessage: "00:42:19 | Blocked network distraction requests",
       blockedDomains: ["x.com", "discord.com", "reddit.com", "youtube.com"],
-      activeApps: ["VS Code v1.92", "Warp Terminal", "Nexus Local AI"],
+      activeApps: ["VS Code v1.92", "Warp Terminal"],
     },
   },
   {
     id: "meeting",
     slot: "SLOT 02",
     name: "Meeting Mode",
-    tagline: "Hardware-enforced spatial privacy & instant mic isolation.",
+    tagline: "Prepare your workspace before the call starts.",
     accent: "#00E5FF",
     glow: "rgba(0,229,255,0.35)",
     border: "rgba(0,229,255,0.35)",
@@ -87,22 +87,22 @@ const MODES_DATA: ModeDetail[] = [
     icon: MicOff,
     angle: 90,
     specs: [
-      { label: "Mute Speed", value: "<12ms Direct" },
-      { label: "Audio Bus", value: "Hardware Mute" },
-      { label: "Screen Sync", value: "Auto DND" },
-      { label: "Noise Filter", value: "AI Spatial Mute" },
+      { label: "App Launch", value: "Zoom/Teams" },
+      { label: "Audio", value: "Pause Media" },
+      { label: "Status", value: "In Meeting" },
+      { label: "Notes", value: "Auto-Open" },
     ],
     actions: [
-      { text: "Instant hardware microphone mute toggle", category: "Audio", active: true },
-      { text: "Launches Zoom / Meet with screen clear", category: "App Launch", active: true },
-      { text: "Glows solid cyan ring beam for ambient DND", category: "LED Beam", active: true },
-      { text: "Suppresses popups & background alerts", category: "Privacy", active: true },
+      { text: "Launches Zoom, Meet or Teams", category: "App Launch", active: true },
+      { text: "Pauses active background media", category: "Audio", active: true },
+      { text: "Changes communication status to In a Call", category: "Status", active: true },
+      { text: "Opens relevant meeting notes", category: "Workspace", active: true },
     ],
     osData: {
-      title: "MEETING PRIVACY SUITE",
-      statusBadge: "HARDWARE MUTED",
-      logMessage: "Mic Bus disconnected | Encrypted 24-bit Spatial Passthrough",
-      volumeLevel: "Muted (Hardware Switch)",
+      title: "MEETING PREPARATION",
+      statusBadge: "READY",
+      logMessage: "Communication status updated | Background media paused",
+      volumeLevel: "Media Paused",
       activeApps: ["Zoom HD Workspace", "Notion Meeting Notes"],
     },
   },
@@ -110,7 +110,7 @@ const MODES_DATA: ModeDetail[] = [
     id: "creative",
     slot: "SLOT 03",
     name: "Creative Mode",
-    tagline: "Unrestricted high-speed flow with ambient audio spectrum.",
+    tagline: "Remove noise without removing possibility.",
     accent: "#B026FF",
     glow: "rgba(176,38,255,0.35)",
     border: "rgba(176,38,255,0.35)",
@@ -118,21 +118,21 @@ const MODES_DATA: ModeDetail[] = [
     icon: Sparkles,
     angle: 180,
     specs: [
-      { label: "GPU Profile", value: "Performance" },
-      { label: "Filter State", value: "Unrestricted" },
-      { label: "Audio Stream", value: "Lo-Fi Spatial Wave" },
-      { label: "Workspace", value: "Multi-Canvas" },
+      { label: "Filter State", value: "Relaxed" },
+      { label: "Audio Profile", value: "Creative Presets" },
+      { label: "Notifications", value: "Softer Profile" },
+      { label: "Workspace", value: "Design Tools" },
     ],
     actions: [
-      { text: "Launches Figma, Spline 3D & Blender", category: "Suite", active: true },
-      { text: "Lifts all network blocks for asset research", category: "Network", active: true },
-      { text: "Streams high-bitrate generative synth audio", category: "Audio", active: true },
-      { text: "Sets dynamic ambient ring aura light", category: "Lighting", active: true },
+      { text: "Opens Blender, Figma, Adobe or IDEs", category: "Apps", active: true },
+      { text: "Allows selected research websites", category: "Network", active: true },
+      { text: "Blocks distracting feeds", category: "Filters", active: true },
+      { text: "Triggers creative lighting/music presets", category: "Environment", active: true },
     ],
     osData: {
       title: "CREATIVE PIPELINE ACTIVE",
-      statusBadge: "FULL PERFORMANCE",
-      logMessage: "GPU Acceleration 100% | Generative Synth Synthesizer streaming",
+      statusBadge: "FLOW STATE",
+      logMessage: "Creative applications launched | Softer notification profile set",
       equalizer: true,
       activeApps: ["Figma Enterprise", "Spline 3D Editor", "Ableton Live"],
     },
@@ -141,7 +141,7 @@ const MODES_DATA: ModeDetail[] = [
     id: "break",
     slot: "SLOT 04",
     name: "Break Mode",
-    tagline: "Tactile Pomodoro recovery. Stashed workspace state.",
+    tagline: "Recovery should be protected too.",
     accent: "#FF9F1C",
     glow: "rgba(255,159,28,0.35)",
     border: "rgba(255,159,28,0.35)",
@@ -149,21 +149,21 @@ const MODES_DATA: ModeDetail[] = [
     icon: Coffee,
     angle: 270,
     specs: [
-      { label: "Recovery Timer", value: "15:00 Radial" },
-      { label: "RAM Stash", value: "State Saved" },
-      { label: "Display Dim", value: "Warm 3000K" },
-      { label: "Haptic Pulse", value: "Subtle Chime" },
+      { label: "Work Apps", value: "Hidden" },
+      { label: "Work Alerts", value: "Paused" },
+      { label: "Timers", value: "Stopped" },
+      { label: "Environment", value: "Relaxed" },
     ],
     actions: [
-      { text: "Triggers 15-minute countdown pomodoro loop", category: "Timer", active: true },
-      { text: "Safely stashes active tabs into RAM buffer", category: "OS Memory", active: true },
-      { text: "Dims monitor color temperature to 3000K", category: "Display", active: true },
-      { text: "Gentle tactile haptic pulses when break ends", category: "Haptics", active: true },
+      { text: "Hides work applications from view", category: "Apps", active: true },
+      { text: "Pauses work notifications & alerts", category: "OS Control", active: true },
+      { text: "Stops active focus timers", category: "Timer", active: true },
+      { text: "Triggers a relaxed lighting environment", category: "Environment", active: true },
     ],
     osData: {
-      title: "RECOVERY & POMODORO TIMER",
-      statusBadge: "BREAK IN PROGRESS",
-      logMessage: "RAM workspace stashed | Screen warmed to 3000K",
+      title: "RECOVERY MODE ACTIVE",
+      statusBadge: "DISCONNECTED",
+      logMessage: "Work apps hidden | Focus timers stopped",
       timerDefault: 900, // 15 mins in seconds
       activeApps: ["Mindfulness Breath", "Casual Reading"],
     },
@@ -311,7 +311,7 @@ export default function HardwareModesShowcase() {
                     Totem Dock Synced
                   </span>
                   <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                     Hall Effect Active
                   </span>
                 </div>
@@ -407,7 +407,7 @@ export default function HardwareModesShowcase() {
                     <div className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
                     <div className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
                     <span className="text-[11px] font-mono text-slate-500 ml-2 flex items-center gap-1.5">
-                      <Terminal size={12} className="text-emerald" />
+                      <Terminal size={12} className="text-accent" />
                       nexus_kernel_v2.4 — {currentMode.osData.title}
                     </span>
                   </div>
@@ -464,9 +464,9 @@ export default function HardwareModesShowcase() {
 
                   {/* 2. Audio Mute Indicator */}
                   {currentMode.osData.volumeLevel && (
-                    <div className="p-4 rounded-xl border border-electric/30 bg-electric/[0.04] flex items-center justify-between">
+                    <div className="p-4 rounded-xl border border-accent2/30 bg-accent2/[0.04] flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-electric/10 border border-electric/30 flex items-center justify-center text-electric">
+                        <div className="w-9 h-9 rounded-lg bg-accent2/10 border border-accent2/30 flex items-center justify-center text-accent2">
                           <MicOff size={18} />
                         </div>
                         <div>
@@ -474,7 +474,7 @@ export default function HardwareModesShowcase() {
                           <p className="text-[11px] text-slate-500">Hardware Micro-relays Open</p>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-electric/20 text-electric font-bold">
+                      <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-accent2/20 text-accent2 font-bold">
                         MUTED
                       </span>
                     </div>
@@ -605,6 +605,21 @@ export default function HardwareModesShowcase() {
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* ── Customization Banner ── */}
+      <div className="mt-8 p-4 md:p-5 rounded-2xl border border-accent/20 bg-accent/5 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left justify-between shadow-lg">
+        <div>
+          <h4 className="text-white font-display font-bold text-lg mb-1">Make It Yours</h4>
+          <p className="text-slate-400 text-sm">
+            These are just the 4 default presets. With the Nexus Desktop App, you can completely customize every slot. Build the perfect environment for <strong className="text-slate-200">Gaming, Video Editing, 3D Rendering, Day Trading</strong>, or anything else you do.
+          </p>
+        </div>
+        <div className="shrink-0">
+          <span className="px-4 py-2 rounded-lg bg-accent text-vantablack font-bold text-xs uppercase tracking-widest">
+            Fully Configurable
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

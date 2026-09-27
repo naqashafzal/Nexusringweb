@@ -203,7 +203,8 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
 
     // Main Group Orientation & Continuous 360 Rotation + Gentle Floating
     if (mainGroupRef.current) {
-      mainGroupRef.current.rotation.x = 0.48 + Math.cos(time * 0.4) * 0.02;
+      // Reduced initial X tilt so it's viewed more from the side, allowing the vertical stack to be visible
+      mainGroupRef.current.rotation.x = 0.15 + Math.cos(time * 0.4) * 0.02;
       mainGroupRef.current.rotation.y = time * 0.35 + (scrollProgress ? scrollProgress.get() * Math.PI * 0.5 : 0);
       mainGroupRef.current.position.y = Math.sin(time * 0.8) * 0.18;
     }
@@ -222,46 +223,45 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
 
     // 1. Totem lifts high in Y
     if (parts["totem"]) {
-      parts["totem"].mesh.position.y = parts["totem"].origPos.y + p * 8.5;
+      parts["totem"].mesh.position.y = parts["totem"].origPos.y + p * 12.0;
     }
 
     // 2. Top Anodized Housing Lid lifts
     if (parts["lid"]) {
-      parts["lid"].mesh.position.y = parts["lid"].origPos.y + p * 5.0;
+      parts["lid"].mesh.position.y = parts["lid"].origPos.y + p * 8.0;
     }
 
     // 3. Laser Text Branding lifts with Lid
     ["Text_0", "Text_1", "Text_2", "Text_3", "Text_01"].forEach((name) => {
       if (parts[name]) {
-        parts[name].mesh.position.y = parts[name].origPos.y + p * 5.02;
+        parts[name].mesh.position.y = parts[name].origPos.y + p * 8.02;
       }
     });
 
     // 4. Middle Glow Ring Diffuser & NeoPixel LED ring float mid-air
     if (parts["Body8(7)"]) {
-      parts["Body8(7)"].mesh.position.y = parts["Body8(7)"].origPos.y + p * 3.4;
+      parts["Body8(7)"].mesh.position.y = parts["Body8(7)"].origPos.y + p * 5.5;
     }
     const ledKey = Object.keys(parts).find((k) => k.includes("LED_Ring") || k.includes("Neopixel"));
     if (ledKey && parts[ledKey]) {
-      parts[ledKey].mesh.position.y = parts[ledKey].origPos.y + p * 2.5;
+      parts[ledKey].mesh.position.y = parts[ledKey].origPos.y + p * 4.0;
     }
 
-    // 5. ESP32-C3 Microcontroller PCB lifts & shifts outwards
+    // 5. ESP32-C3 Microcontroller PCB lifts purely upward
     const espKey = Object.keys(parts).find((k) => k.includes("Esp32"));
     if (espKey && parts[espKey]) {
-      parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * 1.6;
-      parts[espKey].mesh.position.x = parts[espKey].origPos.x - p * 2.0;
+      parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * 2.8;
+      parts[espKey].mesh.position.x = parts[espKey].origPos.x;
+      parts[espKey].mesh.position.z = parts[espKey].origPos.z;
     }
 
-    // 6. Hall Effect Sensors separate radially outward
+    // 6. Hall Effect Sensors lift purely upward
     const hallSensors = Object.keys(parts).filter((k) => k.includes("Hall_Sensor"));
     hallSensors.forEach((name, idx) => {
       const pObj = parts[name];
-      pObj.mesh.position.y = pObj.origPos.y + p * 1.2;
-      const radX = Math.sign(pObj.origPos.x || (idx % 2 === 0 ? 1 : -1));
-      const radZ = Math.sign(pObj.origPos.z || (idx < 2 ? 1 : -1));
-      pObj.mesh.position.x = pObj.origPos.x + p * radX * 1.8;
-      pObj.mesh.position.z = pObj.origPos.z + p * radZ * 1.8;
+      pObj.mesh.position.y = pObj.origPos.y + p * 1.5;
+      pObj.mesh.position.x = pObj.origPos.x;
+      pObj.mesh.position.z = pObj.origPos.z;
     });
 
     // 7. Base dock anchors firmly at original position
@@ -316,7 +316,7 @@ export default function ExplodedRingCanvas({
         <div className="absolute bottom-6 right-6 z-[120] flex flex-col sm:flex-row items-center gap-3 pointer-events-auto bg-matte/90 backdrop-blur-md border border-slate p-3 rounded-2xl shadow-2xl">
           {/* Explode Amount Slider */}
           <div className="flex items-center gap-2 font-mono text-xs text-slate-300 px-2">
-            <Layers size={14} className="text-emerald" />
+            <Layers size={14} className="text-accent" />
             <span>DISASSEMBLY:</span>
             <input
               type="range"
@@ -325,9 +325,9 @@ export default function ExplodedRingCanvas({
               step="0.01"
               value={explodeFactor}
               onChange={(e) => setExplodeFactor(parseFloat(e.target.value))}
-              className="w-28 accent-emerald cursor-pointer"
+              className="w-28 accent-accent cursor-pointer"
             />
-            <span className="text-emerald font-bold w-10 text-right">
+            <span className="text-accent font-bold w-10 text-right">
               {Math.round(explodeFactor * 100)}%
             </span>
           </div>
@@ -338,7 +338,7 @@ export default function ExplodedRingCanvas({
               onClick={() => setExplodeFactor(0)}
               className={`px-2.5 py-1 rounded-lg border transition-all ${
                 explodeFactor === 0
-                  ? "border-emerald bg-emerald/20 text-emerald"
+                  ? "border-accent bg-accent/20 text-accent"
                   : "border-slate bg-vantablack text-slate-500 hover:text-white"
               }`}
             >
@@ -348,7 +348,7 @@ export default function ExplodedRingCanvas({
               onClick={() => setExplodeFactor(0.85)}
               className={`px-2.5 py-1 rounded-lg border transition-all ${
                 explodeFactor === 0.85
-                  ? "border-emerald bg-emerald/20 text-emerald"
+                  ? "border-accent bg-accent/20 text-accent"
                   : "border-slate bg-vantablack text-slate-500 hover:text-white"
               }`}
             >
@@ -358,7 +358,7 @@ export default function ExplodedRingCanvas({
               onClick={() => setExplodeFactor(1.0)}
               className={`px-2.5 py-1 rounded-lg border transition-all ${
                 explodeFactor === 1.0
-                  ? "border-emerald bg-emerald/20 text-emerald"
+                  ? "border-accent bg-accent/20 text-accent"
                   : "border-slate bg-vantablack text-slate-500 hover:text-white"
               }`}
             >
@@ -370,14 +370,14 @@ export default function ExplodedRingCanvas({
           <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-slate pt-2 sm:pt-0 sm:pl-3 font-mono text-xs">
             <button
               onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-emerald hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
               title="Zoom Out (-)"
             >
               -
             </button>
             <button
               onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-emerald hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
               title="Zoom In (+)"
             >
               +
@@ -391,14 +391,14 @@ export default function ExplodedRingCanvas({
         <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-matte/90 backdrop-blur-md border border-slate p-2 rounded-2xl shadow-2xl font-mono text-xs">
           <button
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-emerald hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
             title="Zoom Out (-)"
           >
             -
           </button>
           <button
             onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-emerald hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
             title="Zoom In (+)"
           >
             +
@@ -407,7 +407,7 @@ export default function ExplodedRingCanvas({
       )}
 
       <Canvas
-        camera={{ position: [0, 14, 26], fov: 32 }}
+        camera={{ position: [0, 6, 28], fov: 35 }}
         className="pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <Suspense fallback={null}>

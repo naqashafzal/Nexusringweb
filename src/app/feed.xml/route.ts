@@ -20,7 +20,7 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nexus Ring | Intelligent Gatekeeper &amp; Focus Artifact</title>
+    <title>Nexus Ring | Physical Attention Operating System &amp; Focus Artifact</title>
     <link>${baseUrl}</link>
     <description>Engineering announcements, cognitive science research, and distraction elimination system updates for Nexus Ring.</description>
     <language>en-us</language>
@@ -32,7 +32,7 @@ export async function GET() {
       <link>${baseUrl}/campaign</link>
       <guid>${baseUrl}/campaign</guid>
       <pubDate>${now}</pubDate>
-      <description><![CDATA[Batch 01 Priority Queue opens for the Nexus Ring intelligent gatekeeper. Precision 3D-printed chassis with ESP32-C3 RISC-V and 4x Hall-effect sensing array.]]></description>
+      <description><![CDATA[Batch 01 Priority Queue opens for the Nexus Ring Physical Attention Operating System. Precision 3D-printed chassis with ESP32-C3 RISC-V and 4x Hall-effect sensing array.]]></description>
       <category>Hardware Release</category>
     </item>
 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Pre-Order Nexus Ring | Protect Your Potential",
   description:
-    "Reserve your Nexus Ring Batch 01. The intelligent gatekeeper for your attention, built to eliminate digital friction and bridge the gap between physical intention and digital execution.",
+    "Reserve your Nexus Ring Batch 01. A Physical Attention Operating System built to protect your focus and environment.",
   keywords: [
     "Protect Your Potential",
     "Pre-Order Nexus Ring",

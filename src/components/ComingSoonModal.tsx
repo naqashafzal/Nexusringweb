@@ -82,16 +82,16 @@ export default function ComingSoonModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg rounded-3xl border border-emerald/40 bg-matte p-8 sm:p-10 shadow-[0_0_80px_rgba(0,255,157,0.25)] text-left overflow-hidden z-10"
+            className="relative w-full max-w-lg rounded-3xl border border-accent/40 bg-matte p-8 sm:p-10 shadow-[0_0_80px_rgba(0,255,157,0.25)] text-left overflow-hidden z-10"
           >
             {/* Top decorative glow */}
-            <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-emerald/[0.15] blur-[60px] pointer-events-none" />
-            <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-electric/[0.12] blur-[60px] pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-accent/[0.15] blur-[60px] pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-60 h-60 rounded-full bg-accent2/[0.12] blur-[60px] pointer-events-none" />
 
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate/80 border border-slate text-slate-400 hover:text-white hover:border-emerald/50 flex items-center justify-center transition-colors"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate/80 border border-slate text-slate-400 hover:text-white hover:border-accent/50 flex items-center justify-center transition-colors"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -99,34 +99,34 @@ export default function ComingSoonModal({
 
             {!submitted ? (
               <div className="space-y-6 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald/40 bg-emerald/10 text-emerald text-[11px] font-mono tracking-widest uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
-                  Coming Soon · Priority Launch
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/40 bg-accent/10 text-accent text-[11px] font-mono tracking-widest uppercase">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                  Early Access List
                 </div>
 
                 <div className="space-y-2">
                   <h3 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white">
-                    LAUNCHING SOON.
+                    JOIN THE FIRST LAUNCH.
                   </h3>
                   <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed">
-                    We are putting the final touches on the **Nexus Ring V1** campaign. We haven’t opened public crowdfunding pledges just yet.
+                    Choose the version you're interested in and we'll notify you when crowdfunding or ordering opens. **No payment today.**
                   </p>
                 </div>
 
                 {tierName && (
                   <div className="px-4 py-2.5 rounded-xl border border-slate bg-vantablack text-xs font-mono text-slate-500 flex items-center justify-between">
                     <span>SELECTED TIER:</span>
-                    <span className="text-emerald font-bold">{tierName}</span>
+                    <span className="text-accent font-bold">{tierName}</span>
                   </div>
                 )}
 
                 <div className="p-4 rounded-2xl border border-slate bg-vantablack/70 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono text-electric">
+                  <div className="flex items-center gap-2 text-xs font-mono text-accent2">
                     <Bell size={14} />
-                    <span>EARLY ACCESS WAITLIST</span>
+                    <span>EARLY ACCESS NOTIFICATION</span>
                   </div>
                   <p className="text-xs text-slate-400 font-light leading-relaxed">
-                    Enter your email to receive an exclusive instant invite 1 hour before public launch to lock in **limited Early Adopter pricing**.
+                    Enter your email to receive an exclusive invite 1 hour before the public launch to lock in your Early Access spot.
                   </p>
                 </div>
 
@@ -138,12 +138,12 @@ export default function ComingSoonModal({
                       placeholder="Enter your email address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 px-4 py-3.5 rounded-xl bg-vantablack border border-slate text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-emerald transition-colors"
+                      className="flex-1 px-4 py-3.5 rounded-xl bg-vantablack border border-slate text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-accent transition-colors"
                     />
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-3.5 rounded-xl bg-emerald hover:bg-[#00ffaa] disabled:opacity-60 text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+                      className="px-6 py-3.5 rounded-xl bg-accent hover:bg-[#00ffaa] disabled:opacity-60 text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
@@ -159,8 +159,8 @@ export default function ComingSoonModal({
                   </div>
                   <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-slate-500 pt-1 flex-wrap">
                     <div className="flex items-center gap-1.5">
-                      <ShieldCheck size={13} className="text-emerald" />
-                      <span>Zero spam. Early-bird reservation.</span>
+                      <ShieldCheck size={13} className="text-accent" />
+                      <span>Zero spam. No payment today.</span>
                     </div>
                     <a
                       href="https://discord.gg/Q3tTGhH4k"
@@ -175,15 +175,15 @@ export default function ComingSoonModal({
               </div>
             ) : (
               <div className="py-8 text-center space-y-5 relative z-10">
-                <div className="w-16 h-16 rounded-full bg-emerald/10 border border-emerald/40 text-emerald flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(0,255,157,0.3)]">
+                <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/40 text-accent flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(0,255,157,0.3)]">
                   <CheckCircle2 size={32} />
                 </div>
                 <div className="space-y-2">
                   <h4 className="text-2xl font-display font-bold text-white">
-                    You're on the Priority List!
+                    You're on the Early Access List!
                   </h4>
                   <p className="text-sm text-slate-400 max-w-sm mx-auto font-light">
-                    We’ve reserved your spot. As soon as the campaign goes live, we'll send your direct link with guaranteed early-bird access.
+                    We’ve reserved your spot. As soon as the campaign goes live, we'll send your direct link with guaranteed early access.
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl border border-[#5865F2]/40 bg-[#5865F2]/10 space-y-3 text-left">
@@ -209,7 +209,7 @@ export default function ComingSoonModal({
 
                 <button
                   onClick={handleClose}
-                  className="px-8 py-3 rounded-xl border border-slate bg-vantablack text-sm font-mono text-emerald hover:border-emerald/50 transition-colors"
+                  className="px-8 py-3 rounded-xl border border-slate bg-vantablack text-sm font-mono text-accent hover:border-accent/50 transition-colors"
                 >
                   Close Window
                 </button>

@@ -1,302 +1,339 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Terminal,
-  ShieldCheck,
-  Zap,
-  Code2,
-  Lock,
-  Copy,
-  Check,
-  Eye,
-  Cpu,
-  Radio,
-  Sliders,
-  ChevronRight,
-} from "lucide-react";
-
-// ─── Webhook Script Snippets ──────────────────────────────────────
-
-const CODE_SNIPPETS = {
-  powershell: `# Nexus Ring Local Daemon — Windows PowerShell Kernel Hook
-# Triggered directly by ESP32-C3 websocket signal (<24ms)
-
-$Mode = $args[0] # "deep_work", "meeting", "creative", "break"
-
-switch ($Mode) {
-    "deep_work" {
-        Write-Host "[NEXUS] Enforcing Kernel Firewall..." -ForegroundColor Green
-        # Block distraction domains at hosts level
-        Set-Content -Path "C:\\Windows\\System32\\drivers\\etc\\hosts" -Value "127.0.0.1 x.com\`n127.0.0.1 discord.com"
-        # Launch Workspaces
-        Start-Process "code" -ArgumentList "."
-        # Mute System Notifications
-        Set-ItemProperty -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications" -Name "ToastEnabled" -Value 0
-    }
-    "meeting" {
-        Write-Host "[NEXUS] Muting Audio Micro-relays..." -ForegroundColor Cyan
-        # Instant hardware mic disconnect
-        & "ncmdump.exe" --mute-all-mics
-    }
-}`,
-  bash: `#!/usr/bin/env bash
-# Nexus Ring Daemon — macOS / Linux Zsh Hook
-# Executed by local background agent
-
-MODE="$1"
-
-case "$MODE" in
-  deep_work)
-    echo "⚡ [NEXUS] Activating Deep Work Protocol..."
-    sudo pfctl -e -f /etc/pf.nexus_blocklist.conf
-    open -a "Visual Studio Code"
-    defaults write com.apple.notificationcenterui dndEnabled -bool true
-    ;;
-  meeting)
-    echo "🎙️ [NEXUS] Enforcing Spatial Mic Isolation..."
-    osascript -e 'set volume input volume 0'
-    open -a "Zoom"
-    ;;
-esac`,
-  python: `# Nexus Local AI Guardian Loop (Local AI Quantized)
-import asyncio
-from nexus_core import RingDaemon, LocalVisionModel
-
-daemon = RingDaemon(port=8420)
-model = LocalVisionModel.load_npu_quantized("local-ai-vision-q4")
-
-@daemon.on_totem_snap
-async def handle_snap(slot_id: int, mode_name: str):
-    print(f"[NEXUS HARDWARE] Totem Position {slot_id} Synced: {mode_name}")
-    if mode_name == "deep_work":
-        await model.start_focus_monitoring(
-            allowed_apps=["Code", "Terminal", "Notion"],
-            air_gapped=True
-        )
-
-daemon.run_forever()`,
-  json: `{
-  "nexus_kernel_version": "2.4.0",
-  "totem_event": {
-    "slot_position": 1,
-    "mode_name": "Deep Work",
-    "hall_sensor_flux_mt": 420.5,
-    "magnetic_auth": true,
-    "latency_ms": 18
-  },
-  "webhooks": [
-    { "target": "local_hosts_blocker", "status": "executed" },
-    { "target": "workspace_launcher", "app": "VS Code" },
-    { "target": "notification_daemon", "action": "silence_all" }
-  ]
-}`,
-};
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ChevronRight, ShieldCheck, Monitor, Smartphone, Home, Terminal, Zap, CheckCircle2, Sliders, PlayCircle, EyeOff, LayoutTemplate } from "lucide-react";
+import ComingSoonModal from "@/components/ComingSoonModal";
 
 export default function SoftwarePage() {
-  const [activeCodeTab, setActiveCodeTab] = useState<keyof typeof CODE_SNIPPETS>("powershell");
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(CODE_SNIPPETS[activeCodeTab]);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   return (
     <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
-      {/* Background Dot Grid Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      {/* ════════════════ HERO SECTION ═════════════════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-electric/[0.05] blur-[140px] rounded-full pointer-events-none" />
-
-        <div className="text-center max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-electric/30 bg-electric/[0.06] text-electric text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-electric animate-ping" />
-            Distraction Elimination System · 100% Air-Gapped Local Daemon
+      {/* 1. HERO SECTION */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto space-y-6 relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
+            Digital Execution Layer
           </div>
-
-          <h1 className="text-5xl sm:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            A LOCAL GUARDIAN.<br />
-            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              ZERO TELEMETRY.
-            </span>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
+            YOUR MODE CHANGES.<br /><span className="text-slate-400">YOUR COMPUTER FOLLOWS.</span>
           </h1>
-
-          <p className="text-slate-400 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            More output, less friction: a physical barrier between you and the distractions costing you time and money. Lightweight kernel daemons enforce focus in under 24ms with zero cloud telemetry.
+          <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+            Nexus Companion turns physical mode changes into configurable automations across your apps, websites, notifications, timers and supported integrations.
           </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-6 border-t border-slate">
-            {[
-              { val: "0 Bytes", label: "Sent to Cloud", accent: "#00FF9D" },
-              { val: "<24ms", label: "Kernel Webhook", accent: "#00E5FF" },
-              { val: "Local AI", label: "Quantized NPU", accent: "#B026FF" },
-              { val: "Open SDK", label: "Custom Hooks", accent: "#FF9F1C" },
-            ].map((st) => (
-              <div key={st.label} className="p-3 rounded-xl border border-slate bg-matte">
-                <p className="text-lg font-display font-bold" style={{ color: st.accent }}>{st.val}</p>
-                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{st.label}</p>
-              </div>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+            <a href="#mode-profiles" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
+              Explore Mode Profiles <ChevronRight size={16} />
+            </a>
+            <Link href="/hardware" className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
+              See the Hardware
+            </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ════════════════ INTERACTIVE CODE & HOOK GENERATOR ═══════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
-            Open Webhook SDK
-          </p>
-          <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
-            Native OS Daemon Webhooks
-          </h2>
-          <p className="text-slate-500 text-sm mt-3">
-            Inspect the exact scripts executed at kernel level when totems snap into position.
-          </p>
-        </div>
-
-        {/* Code Terminal Box */}
-        <div className="rounded-3xl border border-slate bg-vantablack overflow-hidden shadow-2xl">
-          {/* Top Bar with Language Tabs */}
-          <div className="px-6 py-4 bg-matte border-b border-slate flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F56]/80" />
-              <div className="w-3 h-3 rounded-full bg-[#FFBD2E]/80" />
-              <div className="w-3 h-3 rounded-full bg-[#27C93F]/80" />
-              <span className="text-xs font-mono text-slate-500 ml-2 flex items-center gap-1.5">
-                <Terminal size={14} className="text-emerald" />
-                nexus_daemon_hooks
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {(["powershell", "bash", "python", "json"] as const).map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => setActiveCodeTab(lang)}
-                  className="px-3 py-1 rounded-lg text-xs font-mono transition-colors"
-                  style={{
-                    backgroundColor: activeCodeTab === lang ? "#00E5FF20" : "transparent",
-                    color: activeCodeTab === lang ? "#00E5FF" : "#64748b",
-                    border: `1px solid ${activeCodeTab === lang ? "#00E5FF40" : "transparent"}`,
-                  }}
-                >
-                  {lang.toUpperCase()}
-                </button>
-              ))}
-
-              <button
-                onClick={handleCopy}
-                className="ml-2 px-3 py-1 rounded-lg border border-slate bg-matte hover:bg-slate text-xs font-mono text-slate-300 flex items-center gap-1.5 transition-colors"
-              >
-                {copied ? <Check size={12} className="text-emerald" /> : <Copy size={12} />}
-                {copied ? "COPIED" : "COPY"}
-              </button>
+      {/* 2. HERO UI MOCKUP */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <div className="rounded-2xl border border-slate bg-matte p-6 shadow-2xl flex flex-col md:flex-row gap-8">
+          <div className="w-full md:w-1/3 border-r border-slate pr-6 flex flex-col gap-2">
+            <span className="text-[10px] font-mono text-slate-500 mb-2">MODE SELECTOR</span>
+            <button className="text-left p-3 rounded-lg bg-accent/10 border border-accent/30 text-accent font-bold">DEEP WORK (Active)</button>
+            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">CREATIVE</button>
+            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">MEETING</button>
+            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">BREAK</button>
+          </div>
+          <div className="w-full md:w-2/3">
+            <span className="text-[10px] font-mono text-slate-500 mb-4 block">ACTIVE PROFILE: DEEP WORK</span>
+            <div className="space-y-3 font-mono text-sm text-slate-300">
+              <div className="flex items-center gap-3 p-3 rounded bg-vantablack border border-slate"><CheckCircle2 size={16} className="text-accent" /> Open VS Code & Terminal</div>
+              <div className="flex items-center gap-3 p-3 rounded bg-vantablack border border-slate"><CheckCircle2 size={16} className="text-accent" /> Close Discord</div>
+              <div className="flex items-center gap-3 p-3 rounded bg-vantablack border border-slate"><CheckCircle2 size={16} className="text-accent" /> Block selected sites</div>
+              <div className="flex items-center gap-3 p-3 rounded bg-vantablack border border-slate"><CheckCircle2 size={16} className="text-accent" /> Enable DND</div>
+              <div className="flex items-center gap-3 p-3 rounded bg-vantablack border border-slate"><CheckCircle2 size={16} className="text-accent" /> Start 90-minute timer</div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Code Viewer Panel */}
-          <div className="p-6 md:p-8 font-mono text-xs md:text-sm overflow-x-auto text-slate-300 leading-relaxed bg-vantablack">
-            <pre>
-              <code>{CODE_SNIPPETS[activeCodeTab]}</code>
-            </pre>
+      {/* 3. ARCHITECTURE DIAGRAM */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-16">Physical state in. Digital actions out.</h2>
+        <div className="flex flex-col items-center justify-center font-mono text-sm text-slate-300 max-w-sm mx-auto bg-matte p-8 border border-slate rounded-3xl">
+          <div className="py-2 px-6 rounded-full border border-slate bg-vantablack text-white font-bold">NEXUS RING</div>
+          <div className="h-6 w-px bg-slate my-2" />
+          <div className="text-[10px] text-accent">MODE EVENT</div>
+          <div className="h-6 w-px bg-slate my-2" />
+          <div className="py-2 px-6 rounded-full border border-accent bg-accent/10 text-white font-bold">NEXUS COMPANION</div>
+          <div className="h-6 w-px bg-slate my-2" />
+          <div className="text-[10px] text-accent">PROFILE ENGINE</div>
+          <div className="h-6 w-px bg-slate my-2" />
+          <div className="py-2 px-6 rounded border border-slate bg-vantablack text-white font-bold w-full">
+            Apps • Websites • Notifications<br/>Timers • Scripts • Integrations
           </div>
         </div>
       </section>
 
-      {/* ════════════════ AIR-GAPPED VISION ARCHITECTURE ═══════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="rounded-3xl border border-slate bg-matte p-8 md:p-12 relative overflow-hidden">
-          <div className="max-w-2xl mb-12">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-purple border border-purple/20 bg-purple/10 px-3 py-1 rounded-full">
-              Privacy Architecture
-            </span>
-            <h3 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-3">
-              How the Local AI Guardian Works
-            </h3>
-            <p className="text-slate-400 text-sm leading-relaxed font-light mt-2">
-              Unlike cloud-based AI tools that upload screen images, Nexus runs a quantized local AI model in local VRAM.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                num: "STEP 01",
-                title: "Local Frame Sample",
-                desc: "Every 15s during focus mode, an on-chip screenshot is captured into RAM.",
-                accent: "#00FF9D",
-                icon: Eye,
-              },
-              {
-                num: "STEP 02",
-                title: "On-Device Quantization",
-                desc: "Quantized 4-bit vision model evaluates window titles & active task context locally.",
-                accent: "#00E5FF",
-                icon: Cpu,
-              },
-              {
-                num: "STEP 03",
-                title: "Hardware Pulse Feedback",
-                desc: "If context strays, the ring pulses warm amber to gently nudge you back without shame.",
-                accent: "#FF9F1C",
-                icon: Zap,
-              },
-            ].map((st) => (
-              <div key={st.num} className="p-6 rounded-2xl border border-slate bg-vantablack space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold tracking-widest" style={{ color: st.accent }}>
-                    {st.num}
-                  </span>
-                  <st.icon size={20} style={{ color: st.accent }} />
-                </div>
-                <h4 className="text-lg font-display font-bold text-white">{st.title}</h4>
-                <p className="text-slate-400 text-xs leading-relaxed font-light">{st.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════ CORE PROTOCOL BLACKOUT CARDS ═════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12">
-        <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-amber uppercase border border-amber/20 bg-amber/5 rounded-full inline-block px-3 py-1 mb-4">
-            Security & Boundary Modules
-          </p>
-          <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tighter text-white">
-            Uncompromised OS Control Modules
-          </h2>
+      {/* 4. SOFTWARE EXAMPLES */}
+      <section id="mode-profiles" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 space-y-16">
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">Every physical mode has a profile.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">A mode profile defines what should happen when the totem moves into a specific position.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="rounded-2xl border border-slate bg-matte p-8 space-y-4">
-            <span className="text-[10px] font-mono text-emerald uppercase tracking-widest px-2.5 py-1 rounded bg-emerald/10 border border-emerald/20 inline-block">
-              Kernel Firewall Engine
-            </span>
-            <h3 className="text-2xl font-display font-bold text-white">Total Blackout Protocol</h3>
-            <p className="text-slate-400 text-sm leading-relaxed font-light">
-              When Deep Work totem is active, the Guardian intercepts network requests to known distraction domains at OS kernel socket level. It cannot be bypassed by simply opening an incognito browser tab.
-            </p>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Deep Work Profile</h3>
+            <p className="text-sm text-slate-400 mb-6">Completed in one mode transition.</p>
+            <ul className="space-y-2 text-sm text-slate-300 font-mono">
+              <li>1. enable DND</li>
+              <li>2. close distracting apps</li>
+              <li>3. block selected websites</li>
+              <li>4. open primary workspace</li>
+              <li>5. start optional timer</li>
+              <li>6. update supported status</li>
+              <li>7. trigger optional workspace automation</li>
+            </ul>
           </div>
-
-          <div className="rounded-2xl border border-slate bg-matte p-8 space-y-4">
-            <span className="text-[10px] font-mono text-electric uppercase tracking-widest px-2.5 py-1 rounded bg-electric/10 border border-electric/20 inline-block">
-              Hardware Relay Isolation
-            </span>
-            <h3 className="text-2xl font-display font-bold text-white">Spatial Mic & Camera Isolation</h3>
-            <p className="text-slate-400 text-sm leading-relaxed font-light">
-              Instantly opens or severs spatial microphone input streams during meetings. Prevents hot-mic accidents and provides physical reassurance during confidential calls.
-            </p>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Creative Profile</h3>
+            <p className="text-sm text-slate-400 mb-6">Creative mode doesn't need the same restrictions as Deep Work. Each profile can behave differently.</p>
+            <ul className="space-y-2 text-sm text-slate-300 font-mono">
+              <li>- Open Blender & PureRef</li>
+              <li>- Open project folder</li>
+              <li>- Start music</li>
+              <li>- Mute nonessential alerts</li>
+              <li>- Allow reference sites</li>
+              <li>- Block social feeds</li>
+            </ul>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Meeting Profile</h3>
+            <p className="text-sm text-slate-400 mb-6">Adjust supported audio settings and prepare communication tools.</p>
+            <ul className="space-y-2 text-sm text-slate-300 font-mono">
+              <li>- Open Zoom/Teams & Notes</li>
+              <li>- Pause music</li>
+              <li>- Enable meeting notification profile</li>
+              <li>- Update status</li>
+              <li>- Trigger meeting lighting</li>
+            </ul>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Break Profile</h3>
+            <p className="text-sm text-slate-400 mb-6">Temporarily quiet your work environment so recovery remains separate from work.</p>
+            <ul className="space-y-2 text-sm text-slate-300 font-mono">
+              <li>- Pause work notifications</li>
+              <li>- Hide selected work apps</li>
+              <li>- Stop focus timer</li>
+              <li>- Change status</li>
+              <li>- Start break environment</li>
+              <li>- Restore normal rules when leaving Break</li>
+            </ul>
           </div>
         </div>
       </section>
 
+      {/* 5. PRIVACY & ARCHITECTURE */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">Core automation should not depend on a remote server.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Nexus Companion is being designed so mode detection and core desktop automations can run locally between the Nexus Ring hardware and the user's computer.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-accent font-bold mb-2 uppercase text-[11px] tracking-widest">Core Mode Data</h4>
+            <p className="text-white">Processed locally.</p>
+          </div>
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-accent font-bold mb-2 uppercase text-[11px] tracking-widest">Local Automation</h4>
+            <p className="text-white">Runs on the user's machine using native OS automation.</p>
+          </div>
+          <div className="p-6 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-accent font-bold mb-2 uppercase text-[11px] tracking-widest">External Integrations</h4>
+            <p className="text-white">Only communicate with external services when explicitly enabled.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. OS SUPPORT MATRIX */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">Built for the workstation.</h2>
+        <div className="overflow-x-auto rounded-2xl border border-slate bg-matte">
+          <table className="w-full text-left font-mono text-sm">
+            <thead className="bg-vantablack border-b border-slate text-slate-500 uppercase text-[10px] tracking-widest">
+              <tr>
+                <th className="p-4">Capability</th>
+                <th className="p-4">Windows</th>
+                <th className="p-4">macOS</th>
+                <th className="p-4">Linux</th>
+              </tr>
+            </thead>
+            <tbody className="text-slate-300 divide-y divide-slate/50">
+              <tr><td className="p-4">Mode detection</td><td className="p-4 text-white font-bold">Target</td><td className="p-4 text-white font-bold">Target</td><td className="p-4 text-white font-bold">Target</td></tr>
+              <tr><td className="p-4">App launch/close</td><td className="p-4">Yes/Dev</td><td className="p-4">Yes/Dev</td><td className="p-4">Yes/Dev</td></tr>
+              <tr><td className="p-4">Website rules</td><td className="p-4">Dev</td><td className="p-4">Dev</td><td className="p-4">Dev</td></tr>
+              <tr><td className="p-4">DND control</td><td className="p-4">Dev</td><td className="p-4">Dev</td><td className="p-4">Varies</td></tr>
+              <tr><td className="p-4">Custom scripts</td><td className="p-4">Planned</td><td className="p-4">Planned</td><td className="p-4">Planned</td></tr>
+              <tr><td className="p-4">Native installer</td><td className="p-4">Dev</td><td className="p-4">Dev</td><td className="p-4">Planned</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* 7. DETAILED FEATURES */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Block only what you choose.</h3>
+            <p className="text-sm text-slate-400 mb-4">Users create mode-specific site rules. Deep Work might block YouTube and X but allow Stack Overflow. Creative might allow Pinterest. Meeting might have no restrictions.</p>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Your apps can follow your mode too.</h3>
+            <p className="text-sm text-slate-400 mb-4">Open, close, minimize, bring to front, open project files, or launch URLs depending on the active mode.</p>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Reduce interruption.</h3>
+            <p className="text-sm text-slate-400 mb-4">Profiles could support Normal, Priority Only, or Do Not Disturb notification states.</p>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-2">Focus when you want a timer.</h3>
+            <p className="text-sm text-slate-400 mb-4">Allow No timer, Pomodoro, 50-minute block, 90-minute block, or Custom. Nexus Ring does not force one productivity methodology.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. DEVELOPER PREVIEW / RECIPES */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-bold text-white mb-4">Power users can go deeper.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Conceptually allow PowerShell, Bash, Python, custom executables, webhooks, REST calls, and local commands. (Advanced automations may require elevated OS permissions.)</p>
+        </div>
+        <div className="bg-vantablack p-6 rounded-2xl border border-slate font-mono text-sm">
+          <span className="text-[10px] text-accent2 block mb-4">DEVELOPER PREVIEW: CONCEPTUAL API EXAMPLE</span>
+          <pre className="text-slate-300 overflow-x-auto">
+{`mode.changed
+
+mode: deep_work
+source: nexus_ring
+profile: coding_session
+
+// Actions executed:
+enable_dnd
+launch_workspace
+apply_site_rules
+update_status`}
+          </pre>
+        </div>
+      </section>
+
+      {/* 9. AI & TRANSITIONS */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-4">AI should be optional.</h3>
+            <p className="text-sm text-slate-400 mb-2">Nexus Ring does not need AI to detect a physical mode or execute a profile. The core experience is deterministic and user-configured.</p>
+            <span className="text-[10px] bg-slate/50 px-2 py-1 rounded">EXPERIMENTAL</span> <span className="text-xs text-slate-500">Future local context models.</span>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Predictable first. Intelligent second.</h3>
+            <p className="text-sm text-slate-400">Users should know exactly what a physical mode will do. The core profile engine should be predictable, editable, reversible, and local.</p>
+          </div>
+          <div className="p-8 border border-slate bg-matte rounded-3xl">
+            <h3 className="text-2xl font-bold text-white mb-4">Understand transitions.</h3>
+            <p className="text-sm text-slate-400">Moving from Deep Work to Meeting should restore Deep Work-specific rules, keep globally blocked items, and apply Meeting profiles.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. OFFLINE & FAIL-SAFE */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-3xl font-display font-bold text-white mb-4">Focus should still work when the internet doesn't.</h3>
+            <p className="text-slate-400 mb-4">Core local profiles should continue to function without internet. Works offline: mode detection, local app launching/closing, local timers, local scripts, local site rules.</p>
+            <p className="text-slate-400">May require internet: Slack status, Spotify, cloud calendar, third-party APIs.</p>
+          </div>
+          <div>
+            <h3 className="text-3xl font-display font-bold text-white mb-4">You stay in control.</h3>
+            <ul className="space-y-2 text-slate-400 list-disc list-inside">
+              <li>Emergency exit.</li>
+              <li>Disable hardware temporarily.</li>
+              <li>Restore normal system state.</li>
+              <li>Prevent broken scripts from locking the desktop.</li>
+              <li>Manual override & Safe startup mode.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. SOFTWARE STATUS MATRIX */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">Software Development Status</h2>
+        <div className="space-y-2 font-mono text-sm">
+          {[
+            { f: "Hardware event listener", s: "PROTOTYPE" },
+            { f: "Desktop daemon", s: "IN DEVELOPMENT" },
+            { f: "Profile engine", s: "IN DEVELOPMENT" },
+            { f: "App automation", s: "IN DEVELOPMENT" },
+            { f: "Website rules", s: "IN DEVELOPMENT" },
+            { f: "Notification control", s: "IN DEVELOPMENT" },
+            { f: "Custom scripts", s: "PLANNED" },
+            { f: "Home Assistant", s: "PLANNED" },
+            { f: "Mobile companion", s: "PLANNED" },
+            { f: "Local AI context", s: "EXPERIMENTAL" }
+          ].map(row => (
+            <div key={row.f} className="flex justify-between p-3 border-b border-slate bg-matte">
+              <span className="text-slate-300">{row.f}</span>
+              <span className={`px-2 py-0.5 rounded text-[10px] ${row.s.includes('PROTOTYPE') ? 'bg-amber/20 text-amber' : row.s === 'IN DEVELOPMENT' ? 'bg-accent/20 text-accent' : 'bg-slate text-slate-400'}`}>
+                {row.s}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 12. FAQ */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8">Software FAQ</h2>
+        <div className="space-y-6">
+          {[
+            { q: "Does Nexus Companion need the cloud?", a: "Core automation is intended to run locally. Enabled third-party integrations may require internet access." },
+            { q: "Does Nexus Ring monitor everything I do?", a: "The core system does not need continuous screen monitoring to detect physical modes or execute profiles." },
+            { q: "Is AI required?", a: "No. Core mode automation should remain deterministic and user controlled." },
+            { q: "Can I run my own scripts?", a: "Custom local automations are part of the advanced software direction." },
+            { q: "Does it work offline?", a: "Core local functions are intended to work offline. Cloud integrations will require connectivity." },
+            { q: "Can I undo a mode?", a: "Yes. The software should always provide a manual exit and restore path." },
+          ].map((faq, i) => (
+            <div key={i} className="border-b border-slate pb-4">
+              <h4 className="text-white font-bold mb-2">{faq.q}</h4>
+              <p className="text-slate-400 text-sm">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 13. CTA */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
+        <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
+          YOU CHOOSE THE MODE.<br />NEXUS HANDLES THE TRANSITION.
+        </h2>
+        <p className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">
+          Build the profile once. Then let one physical movement prepare the environment every time you need it.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
+            Join Early Access
+          </button>
+          <Link href="/hardware" className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
+            Explore Hardware
+          </Link>
+        </div>
+      </section>
+
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
     </main>
   );
 }

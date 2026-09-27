@@ -1,793 +1,514 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
-  Cpu,
-  Fingerprint,
-  Zap,
-  ShieldCheck,
-  Layers,
-  Sparkles,
-  ChevronRight,
-  Terminal,
-  Lock,
-  Eye,
-  Activity,
-  Code2,
-  Sliders,
-  CheckCircle2,
-  VolumeX,
-  Globe,
-  Radio,
-  HardDrive,
-  Maximize2,
   RefreshCw,
+  ChevronRight,
+  Layers,
+  Settings,
+  ShieldCheck,
+  Zap,
+  MonitorSmartphone,
+  CheckCircle2,
+  XCircle,
+  EyeOff,
+  Sliders,
+  Cpu,
+  Monitor,
+  Smartphone,
+  Home,
+  Code2,
+  Terminal,
+  Activity,
+  Box,
+  Fingerprint,
   Server,
-  Wifi,
-  Disc,
-  RotateCcw,
-  Move,
+  Globe
 } from "lucide-react";
 
 // Dynamically import 3D Exploded Ring Canvas for SSR safety
 const ExplodedRingCanvas = dynamic(() => import("@/components/ExplodedRingCanvas"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-emerald gap-2">
-      <RefreshCw size={20} className="animate-spin text-emerald" />
+    <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-accent gap-2">
+      <RefreshCw size={20} className="animate-spin text-accent" />
       <span>INITIALIZING 3D CAD SHADER...</span>
     </div>
   ),
 });
 
-// ─── SPATIAL MEMORY MODES DATA ────────────────────────────────────
-
-const MODES = [
+const MODES_DATA = [
   {
     id: "deep_work",
-    name: "Deep Work Protocol",
-    tagline: "Total distraction destruction & kernel-level focus lock.",
-    color: "#00FF9D",
-    bgAlpha: "rgba(0, 255, 157, 0.08)",
-    borderAlpha: "rgba(0, 255, 157, 0.4)",
-    glowShadow: "0 0 30px rgba(0, 255, 157, 0.25)",
-    badge: "EMERALD GLOW",
-    specs: [
-      { label: "Target State", val: "90-Min Flow Lock" },
-      { label: "Network", val: "Hosts Firewall Enforced" },
-      { label: "Apps", val: "Kills Slack, Discord & X" },
-      { label: "Haptics", val: "Subtle 440Hz Damped Pulse" },
+    name: "Deep Work",
+    color: "#FF3366",
+    tagline: "Remove everything that doesn't belong in the session.",
+    desc: "Deep Work mode is designed for the moments when you want maximum focus. Place the totem in the Deep Work position and Nexus Companion can automatically prepare a focused workspace using the rules you selected.",
+    actions: [
+      { type: "block", text: "Block distracting websites (YouTube, Reddit)" },
+      { type: "close", text: "Close Discord & entertainment apps" },
+      { type: "dnd", text: "Enable Do Not Disturb" },
+      { type: "open", text: "Open VS Code & Terminal" },
+      { type: "timer", text: "Start 90-minute focus timer" }
     ],
-    codeSnippet: `# Deep Work OS Webhook Execution
-Stop-Process -Name "Slack", "Discord" -ErrorAction SilentlyContinue
-Set-Content "C:\\Windows\\System32\\drivers\\etc\\hosts" "127.0.0.1 twitter.com\`n127.0.0.1 x.com"
-Start-Process "code" -ArgumentList "."
-Write-Host "[NEXUS KERNEL] Deep Work Locked — 90:00 Timer Active" -ForegroundColor Green`,
-  },
-  {
-    id: "meeting",
-    name: "Spatial Meeting Mode",
-    tagline: "Instant hardware microphone isolation & conferencing workspace.",
-    color: "#00E5FF",
-    bgAlpha: "rgba(0, 229, 255, 0.08)",
-    borderAlpha: "rgba(0, 229, 255, 0.4)",
-    glowShadow: "0 0 30px rgba(0, 229, 255, 0.25)",
-    badge: "ELECTRIC BLUE GLOW",
-    specs: [
-      { label: "Audio Relay", val: "Hardware Mic Sever" },
-      { label: "Workspace", val: "Launches Zoom & Notion" },
-      { label: "Notifications", val: "Mutes Non-Calendar Alerts" },
-      { label: "Latency", val: "<12ms Hardware Interrupt" },
-    ],
-    codeSnippet: `// Meeting Mode Local Daemon Hook
-osascript -e 'set volume input volume 0'
-open -a "Zoom.app"
-open -a "Notion.app"
-console.log("[NEXUS HARDWARE] Audio Micro-relay Muted. Conferencing Active.");`,
+    status: "Solid crimson glow"
   },
   {
     id: "creative",
-    name: "Creative Sandbox",
-    tagline: "Maximizes GPU allocation & opens high-fidelity design tools.",
+    name: "Creative",
     color: "#B026FF",
-    bgAlpha: "rgba(176, 38, 255, 0.08)",
-    borderAlpha: "rgba(176, 38, 255, 0.4)",
-    glowShadow: "0 0 30px rgba(176, 38, 255, 0.25)",
-    badge: "ROYAL PURPLE GLOW",
-    specs: [
-      { label: "GPU Mode", val: "VRAM High-Priority" },
-      { label: "Suite", val: "Opens Figma, Blender, VS Code" },
-      { label: "Analytics", val: "Minimizes Metrics & Dashboards" },
-      { label: "Illumination", val: "Ambient Purple Waveform" },
+    tagline: "Remove noise without closing the door on exploration.",
+    desc: "Creative work is different from Deep Work. You may still need references, music, visual inspiration and multiple tools. Creative mode gives you a more flexible environment while filtering the distractions that break your flow.",
+    actions: [
+      { type: "open", text: "Open Blender & Figma" },
+      { type: "open", text: "Open PureRef & project folders" },
+      { type: "allow", text: "Allow research & reference sites" },
+      { type: "music", text: "Start Creative playlist" },
+      { type: "dnd", text: "Mute Slack & social feeds" }
     ],
-    codeSnippet: `# Creative Sandbox Initialization
-open -a "Figma"
-open -a "Blender"
-systemctl --user stop telemetry-daemon
-echo "🎨 [NEXUS] Creative Environment Loaded. Analytical Apps Muted."`,
+    status: "Slow breathing purple pulse"
+  },
+  {
+    id: "meeting",
+    name: "Meeting",
+    color: "#00E5FF",
+    tagline: "Prepare for the call without scrambling through settings.",
+    desc: "Meeting mode can prepare the tools and communication settings you normally adjust manually before a call.",
+    actions: [
+      { type: "open", text: "Open Zoom / Teams / Meet" },
+      { type: "open", text: "Open Notion meeting notes" },
+      { type: "music", text: "Pause background music" },
+      { type: "status", text: "Update communication status" },
+      { type: "light", text: "Activate meeting lighting preset" }
+    ],
+    status: "Clean steady blue glow"
   },
   {
     id: "break",
-    name: "Restoration Break",
-    tagline: "Lifts network blocks & sends gentle ambient relaxation pulse.",
+    name: "Break",
     color: "#FF9F1C",
-    bgAlpha: "rgba(255, 159, 28, 0.08)",
-    borderAlpha: "rgba(255, 159, 28, 0.4)",
-    glowShadow: "0 0 30px rgba(255, 159, 28, 0.25)",
-    badge: "AMBER GLOW",
-    specs: [
-      { label: "Restrictions", val: "All Network Blocks Lifted" },
-      { label: "Browser", val: "Opens Casual Reading Tabs" },
-      { label: "Timer", val: "15-Min Circadian Recharge" },
-      { label: "LED Array", val: "Warm Amber Breathing Light" },
+    tagline: "Protect recovery with the same intention you protect focus.",
+    desc: "A real break should not become five minutes of rest followed by checking Slack, email and project boards. Break mode can temporarily quiet your work environment so recovery remains separate from work.",
+    actions: [
+      { type: "hide", text: "Hide work applications" },
+      { type: "mute", text: "Silence email & Slack alerts" },
+      { type: "pause", text: "Pause focus timers" },
+      { type: "music", text: "Open break playlist" },
+      { type: "light", text: "Relaxed lighting scene" }
     ],
-    codeSnippet: `# Restoration Mode Reset
-Clear-Content "C:\\Windows\\System32\\drivers\\etc\\hosts"
-Start-Process "https://news.ycombinator.com"
-Write-Host "[NEXUS] Network Restrictions Lifted. 15-Minute Recharge Initiated." -ForegroundColor Yellow`,
-  },
+    status: "Soft ambient amber glow"
+  }
 ];
 
 export default function FeaturesPage() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [copiedCode, setCopiedCode] = useState(false);
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [activeModeIdx, setActiveModeIdx] = useState(0);
 
-  // Scroll Progress tracking for 3D Exploded Model Disassembly
-  const explodedSectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: explodedSectionRef,
-    offset: ["start end", "end start"],
-  });
-  const smoothScrollProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-
-  const currentMode = MODES[activeTab];
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(currentMode.codeSnippet);
-    setCopiedCode(true);
-    setTimeout(() => setCopiedCode(false), 2000);
-  };
+  const currentMode = MODES_DATA[activeModeIdx];
 
   return (
-    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-emerald/30 selection:text-white">
-      {/* Background Dot Grid Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
+    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-accent/30 selection:text-white">
+      {/* Background Dot Grid */}
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      {/* Ambient Top Glow Spheres */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald/[0.04] blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-96 right-10 w-[500px] h-[300px] bg-electric/[0.03] blur-[140px] rounded-full pointer-events-none" />
-
-      {/* ════════════════ 1. HERO SECTION ═════════════════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
+      {/* ════════════════ 1. HERO SECTION ════════════════ */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center max-w-4xl mx-auto space-y-6 relative z-10"
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto space-y-6 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald/30 bg-emerald/[0.06] text-emerald text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-ping" />
-            Flow State Catalyst · Distraction Elimination System
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
+            Physical Intent → Digital Execution
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            ENGINEERING PURE<br />
-            <span style={{ background: "linear-gradient(120deg, #FFFFFF, #94A3B8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              DISCIPLINE.
-            </span>
+            ONE PHYSICAL MOVE.<br />
+            <span className="text-slate-400">AN ENTIRE WORKSPACE CHANGES.</span>
           </h1>
 
-          <p className="text-slate-400 text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            The Nexus Ring is an intelligent gatekeeper for your attention. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it acts as a physical anchor for your mental state—protecting your time and focus so you can do your best work.
+          <p className="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+            Place the Nexus Totem into Deep Work, Creative, Meeting or Break. Nexus Companion reads the mode and runs the profile you created — preparing your apps, reducing distractions, changing notifications and triggering supported workspace automations.
           </p>
 
-          {/* Call to Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <button
-              onClick={() => setShowComingSoon(true)}
-              className="px-8 py-4 rounded-xl bg-emerald text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2 cursor-pointer"
-            >
-              Reserve Batch 01 <ChevronRight size={16} />
-            </button>
-            <a
-              href="#3d-exploded-view"
-              className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate font-mono text-xs tracking-wider transition-all flex items-center gap-2"
-            >
-              <Layers size={15} className="text-electric" /> View 3D Exploded Model
+          <p className="text-white text-lg font-medium">
+            No hunting through menus. No rebuilding your setup every time.<br/>
+            You choose the state. Nexus handles the transition.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+            <a href="#interactive-modes" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
+              Explore the Modes <ChevronRight size={16} />
             </a>
+            <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate font-mono text-xs tracking-wider transition-all flex items-center gap-2">
+              Join Early Access
+            </button>
           </div>
         </motion.div>
 
-        {/* ── Macro PCB Render Visual Container ── */}
+        {/* Badges */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-16 rounded-3xl border border-slate bg-matte p-6 sm:p-10 relative overflow-hidden shadow-2xl"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-20 text-left"
         >
-          {/* HUD Overlay Frame */}
-          <div className="absolute top-4 left-6 flex items-center gap-3 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
-            <span className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
-            ESP32-C3 MACRO PCB BLUEPRINT v2.4
+          <div className="p-5 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">4 Physical Modes</h4>
+            <p className="text-sm text-slate-400">Deep Work · Creative · Meeting · Break</p>
           </div>
-          <div className="absolute top-4 right-6 text-[10px] font-mono text-electric tracking-widest uppercase border border-electric/20 bg-electric/10 px-3 py-0.5 rounded-full">
-            AIR-GAPPED SYSTEM
+          <div className="p-5 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Local-First</h4>
+            <p className="text-sm text-slate-400">Core desktop automations are designed to run locally.</p>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8">
-            {/* Left Diagram Description */}
-            <div className="lg:col-span-4 space-y-6">
-              <div className="p-4 rounded-2xl border border-emerald/30 bg-emerald/[0.04] space-y-2">
-                <span className="text-[10px] font-mono text-emerald uppercase tracking-widest font-bold">01. Central Micro-Kernel</span>
-                <h4 className="text-white font-display font-bold text-lg">ESP32-C3 RISC-V Engine</h4>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">
-                  Single-core 32-bit RISC-V processor operating at 160MHz. Direct local websocket interrupts with &lt;24ms response latency.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl border border-electric/30 bg-electric/[0.04] space-y-2">
-                <span className="text-[10px] font-mono text-electric uppercase tracking-widest font-bold">02. Magnetic Flux Array</span>
-                <h4 className="text-white font-display font-bold text-lg">4x KY-003 Hall Array</h4>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">
-                  Sub-1mm 3D spatial magnetic sensing detects totem orientation and polarity without mechanical buttons or contact degradation.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl border border-purple/30 bg-purple/[0.04] space-y-2">
-                <span className="text-[10px] font-mono text-purple uppercase tracking-widest font-bold">03. Addressable Optics</span>
-                <h4 className="text-white font-display font-bold text-lg">NeoPixel RGB Ring</h4>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">
-                  16-LED addressable matrix bleeding context-aware ambient glow through the Voronoi exoskeleton.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Macro PCB Circuit Render Simulation */}
-            <div className="lg:col-span-8 bg-vantablack border border-slate rounded-2xl p-8 min-h-[380px] flex flex-col items-center justify-center relative overflow-hidden group">
-              {/* Dynamic Circuit Traces Glow */}
-              <div className="absolute inset-0 opacity-20 bg-[linear-gradient(90deg,#151D2A_1px,transparent_1px),linear-gradient(180deg,#151D2A_1px,transparent_1px)] bg-[size:32px_32px]" />
-
-              {/* Glowing Core Chip Graphic */}
-              <div className="relative z-10 w-44 h-44 rounded-2xl border-2 border-emerald bg-matte flex flex-col items-center justify-center p-4 shadow-[0_0_50px_rgba(0,255,157,0.3)] transition-all duration-500 group-hover:shadow-[0_0_80px_rgba(0,255,157,0.5)]">
-                <Cpu size={48} className="text-emerald animate-pulse mb-2" />
-                <span className="font-mono text-xs font-bold text-white tracking-widest">ESP32-C3</span>
-                <span className="font-mono text-[9px] text-emerald tracking-wider uppercase mt-1">160MHz RISC-V</span>
-
-                {/* Animated Pulsing Signal Rings */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl border border-emerald/40 pointer-events-none"
-                  animate={{ scale: [1, 1.25, 1], opacity: [0.8, 0, 0.8] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </div>
-
-              {/* Surrounding Hall Effect Sensor Pinouts */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 w-full relative z-10">
-                {[
-                  { label: "HALL_SENSOR_01", status: "420mT FLUX", color: "#00FF9D" },
-                  { label: "HALL_SENSOR_02", status: "420mT FLUX", color: "#00E5FF" },
-                  { label: "HALL_SENSOR_03", status: "420mT FLUX", color: "#B026FF" },
-                  { label: "HALL_SENSOR_04", status: "420mT FLUX", color: "#FF9F1C" },
-                ].map((s) => (
-                  <div key={s.label} className="p-3 bg-matte border border-slate rounded-xl text-center">
-                    <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ backgroundColor: s.color }} />
-                    <p className="text-[9px] font-mono text-slate-500 uppercase">{s.label}</p>
-                    <p className="text-xs font-mono font-bold mt-0.5 text-white">{s.status}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="p-5 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Configurable</h4>
+            <p className="text-sm text-slate-400">Decide what each mode opens, blocks or changes.</p>
+          </div>
+          <div className="p-5 border border-slate bg-matte rounded-2xl">
+            <h4 className="text-white font-bold mb-2">Cross-Device Vision</h4>
+            <p className="text-sm text-slate-400">Desktop first, with mobile and workspace integrations expanding over time.</p>
           </div>
         </motion.div>
       </section>
 
-      {/* ════════════════ 2. INTERACTIVE 3D EXPLODED MODEL SHOWCASE ═══ */}
-      <section id="3d-exploded-view" ref={explodedSectionRef} className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-emerald uppercase border border-emerald/20 bg-emerald/5 rounded-full inline-block px-3 py-1 mb-4">
-            Real-Time 3D Disassembly
-          </p>
-          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
-            Interactive 3D Exploded View
-          </h2>
-          <p className="text-slate-400 text-sm md:text-base mt-3 font-light">
-            Drag to rotate the 3D model in real time. Scroll down to trigger the physical disassembly of the aerospace shell, Hall sensors, and ESP32-C3 PCB.
-          </p>
-        </div>
+      {/* ════════════════ 2. INTERACTIVE MODE DEMONSTRATION ════════════════ */}
+      <section id="interactive-modes" className="relative max-w-[1400px] mx-auto px-6 md:px-12 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: 3D Model placeholder for interaction (In reality, would use ExplodedRingCanvas with mode props) */}
+          <div className="h-[600px] rounded-3xl border border-slate bg-matte relative overflow-hidden flex flex-col justify-end p-6 group">
+            <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
+              INTERACTIVE MODE PREVIEW
+            </div>
+            {/* The 3D Canvas */}
+            <div className="absolute inset-0 z-10">
+              <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
+            </div>
 
-        <div className="h-[550px] w-full rounded-3xl border border-slate bg-matte relative overflow-hidden shadow-2xl group">
-          {/* HUD Status Overlay */}
-          <div className="absolute top-6 left-6 z-20 flex items-center gap-3 text-[10px] font-mono text-slate-500 tracking-widest uppercase pointer-events-none">
-            <span className="w-2 h-2 rounded-full bg-emerald animate-ping" />
-            3D INTERACTIVE CAD MODEL • DRAG TO ROTATE
+            {/* Mode selection buttons overlay */}
+            <div className="relative z-20 flex gap-2 justify-center w-full bg-vantablack/80 backdrop-blur p-2 rounded-2xl border border-slate">
+              {MODES_DATA.map((mode, idx) => (
+                <button
+                  key={mode.id}
+                  onClick={() => setActiveModeIdx(idx)}
+                  className={`flex-1 py-3 px-2 rounded-xl text-xs font-mono font-bold transition-all ${activeModeIdx === idx ? 'bg-white text-black' : 'text-slate-400 hover:text-white'}`}
+                  style={activeModeIdx === idx ? { boxShadow: `0 0 20px ${mode.color}40` } : {}}
+                >
+                  {mode.name.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="absolute top-6 right-6 z-20 text-[10px] font-mono text-electric tracking-widest uppercase border border-electric/30 bg-electric/10 px-3 py-1 rounded-full pointer-events-none">
-            REAL-TIME SHADER ACTIVE
-          </div>
 
-          {/* 3D Canvas */}
-          <ExplodedRingCanvas scrollProgress={smoothScrollProgress} centerPosition={true} />
+          {/* Right: Automation Panel */}
+          <div className="space-y-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentMode.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 md:p-10 rounded-3xl border bg-matte relative overflow-hidden"
+                style={{ borderColor: currentMode.color + "40" }}
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-20 pointer-events-none" style={{ backgroundColor: currentMode.color }} />
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: currentMode.color }} />
+                  <span className="font-mono text-xs tracking-widest uppercase" style={{ color: currentMode.color }}>
+                    {currentMode.name} ACTIVE
+                  </span>
+                </div>
 
-          {/* Drag Instruction Banner */}
-          <div className="absolute bottom-6 left-6 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-[10px] font-mono text-slate-300 pointer-events-none">
-            <Move size={12} className="text-emerald" /> Click & Drag to Orbit 360°
+                <h3 className="text-3xl font-display font-bold text-white mb-2">{currentMode.name}</h3>
+                <p className="text-slate-400 mb-8">{currentMode.tagline}</p>
+
+                <div className="space-y-3 font-mono text-sm">
+                  {currentMode.actions.map((action, i) => (
+                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-slate/50 bg-vantablack text-slate-300">
+                      <CheckCircle2 size={16} style={{ color: currentMode.color }} />
+                      {action.text}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate">
+                  <p className="text-xs text-slate-500 italic">*Availability depends on supported platform integrations.</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
-      {/* ════════════════ 3. HARDWARE ARCHITECTURE (BENTO GRID) ═════ */}
+      {/* ════════════════ 3. HOW NEXUS WORKS ════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/20 bg-electric/5 rounded-full inline-block px-3 py-1 mb-4">
-            Hardware Architecture
-          </p>
-          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
-            Precision Machined Hardware Stack
-          </h2>
-          <p className="text-slate-400 text-sm md:text-base mt-3 font-light">
-            Engineered with zero mechanical friction, zero physical contact wear, and sub-millisecond local response times.
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">One gesture becomes a digital command.</h2>
+          <p className="text-slate-400">
+            Nexus Ring separates intention from execution. You choose the state physically. The companion software handles the repetitive setup.
           </p>
         </div>
 
-        {/* Bento Grid (4 Tech-Focused Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate -translate-y-1/2 z-0" />
           
-          {/* Card 1: The ESP32-C3 Brain (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-7 rounded-3xl border border-slate bg-matte p-8 md:p-10 relative overflow-hidden group hover:border-emerald/50 transition-all duration-500 shadow-lg"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald/[0.04] blur-3xl rounded-full pointer-events-none group-hover:bg-emerald/[0.08] transition-colors" />
-
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-emerald px-3 py-1 rounded-full border border-emerald/20 bg-emerald/10">
-                CORE PROCESSOR
-              </span>
-              <Cpu size={24} className="text-emerald" />
+          {[
+            { step: "01", title: "Choose your mode", desc: "Move the magnetic totem into one of four physical positions." },
+            { step: "02", title: "Nexus detects position", desc: "Hall-effect sensors detect the mode and send the event to Nexus Companion." },
+            { step: "03", title: "Your profile runs", desc: "The software checks what actions you configured for that mode." },
+            { step: "04", title: "Environment changes", desc: "Apps, websites, notifications, timers and integrations respond automatically." },
+          ].map((s, i) => (
+            <div key={i} className="relative z-10 p-6 rounded-2xl border border-slate bg-matte text-center">
+              <div className="w-10 h-10 mx-auto rounded-full bg-vantablack border border-accent flex items-center justify-center text-accent font-mono text-sm mb-4">
+                {s.step}
+              </div>
+              <h4 className="text-white font-bold mb-2">{s.title}</h4>
+              <p className="text-xs text-slate-400">{s.desc}</p>
             </div>
-
-            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-3">
-              The ESP32-C3 Brain
-            </h3>
-
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light mb-6">
-              Powered by a high-performance 32-bit RISC-V core operating at 160MHz. Features dual Wi-Fi 4 and BLE 5.0 wireless stacks to communicate directly with your OS daemon via zero-latency local sockets.
-            </p>
-
-            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate font-mono text-xs">
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">CLOCK SPEED</p>
-                <p className="text-emerald font-bold mt-1">160MHz RISC-V</p>
-              </div>
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">LATENCY</p>
-                <p className="text-white font-bold mt-1">&lt;24ms Exec</p>
-              </div>
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">WIRELESS</p>
-                <p className="text-electric font-bold mt-1">Wi-Fi + BLE 5.0</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 2: KY-003 Hall Effect Sensors (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-5 rounded-3xl border border-slate bg-matte p-8 md:p-10 relative overflow-hidden group hover:border-electric/50 transition-all duration-500 shadow-lg"
-          >
-            <div className="absolute top-0 right-0 w-48 h-48 bg-electric/[0.04] blur-3xl rounded-full pointer-events-none group-hover:bg-electric/[0.08] transition-colors" />
-
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-electric px-3 py-1 rounded-full border border-electric/20 bg-electric/10">
-                PROXIMITY ARRAY
-              </span>
-              <Fingerprint size={24} className="text-electric" />
-            </div>
-
-            <h3 className="text-2xl font-display font-bold text-white mb-3">
-              KY-003 Hall Effect Sensors
-            </h3>
-
-            <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
-              Buttonless 3D magnetic proximity detection array. Identifies docked totem slots with sub-1mm spatial accuracy and infinite mechanical cycle lifespan.
-            </p>
-
-            <div className="p-4 bg-vantablack rounded-xl border border-slate space-y-1 font-mono text-xs">
-              <div className="flex justify-between text-slate-500">
-                <span>SAMPLING RATE</span>
-                <span className="text-electric font-bold">1000Hz (1ms)</span>
-              </div>
-              <div className="flex justify-between text-slate-500">
-                <span>MAGNETIC FLUX</span>
-                <span className="text-white font-bold">420mT Detection</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 3: Neodymium Coupling (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-5 rounded-3xl border border-slate bg-matte p-8 md:p-10 relative overflow-hidden group hover:border-purple/50 transition-all duration-500 shadow-lg"
-          >
-            <div className="absolute top-0 right-0 w-48 h-48 bg-purple/[0.04] blur-3xl rounded-full pointer-events-none group-hover:bg-purple/[0.08] transition-colors" />
-
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-purple px-3 py-1 rounded-full border border-purple/20 bg-purple/10">
-                TACTILE MECHANIC
-              </span>
-              <Zap size={24} className="text-purple" />
-            </div>
-
-            <h3 className="text-2xl font-display font-bold text-white mb-3">
-              Neodymium Coupling
-            </h3>
-
-            <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
-              Engineered with 6mm N52 Neodymium rare-earth magnetic cores. Delivers a tuned 4.2 Newton magnetic snap that triggers instant tactile feedback.
-            </p>
-
-            <div className="p-4 bg-vantablack rounded-xl border border-slate space-y-1 font-mono text-xs">
-              <div className="flex justify-between text-slate-500">
-                <span>SNAP FORCE</span>
-                <span className="text-purple font-bold">4.2N Resonant Lock</span>
-              </div>
-              <div className="flex justify-between text-slate-500">
-                <span>DAMPING RING</span>
-                <span className="text-white font-bold">Sub-surface Ceramic</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Card 4: NeoPixel Illumination (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-7 rounded-3xl border border-slate bg-matte p-8 md:p-10 relative overflow-hidden group hover:border-amber/50 transition-all duration-500 shadow-lg"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber/[0.04] blur-3xl rounded-full pointer-events-none group-hover:bg-amber/[0.08] transition-colors" />
-
-            <div className="flex items-center justify-between mb-6">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-amber px-3 py-1 rounded-full border border-amber/20 bg-amber/10">
-                AMBIENT OPTICS
-              </span>
-              <Sparkles size={24} className="text-amber" />
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-3">
-              NeoPixel Illumination
-            </h3>
-
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light mb-6">
-              Context-aware addressable RGB lighting array. Seamlessly diffuses mode status telemetry through the Voronoi exoskeleton mesh for real-time visual feedback.
-            </p>
-
-            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate font-mono text-xs">
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">LED MATRIX</p>
-                <p className="text-amber font-bold mt-1">16x Addressable</p>
-              </div>
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">DIFFUSION</p>
-                <p className="text-white font-bold mt-1">Voronoi Exoskeleton</p>
-              </div>
-              <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                <p className="text-slate-500 text-[10px] uppercase">PWM SPECTRUM</p>
-                <p className="text-emerald font-bold mt-1">24-Bit RGB</p>
-              </div>
-            </div>
-          </motion.div>
-
+          ))}
         </div>
       </section>
 
-      {/* ════════════════ 4. ZERO-TOUCH OS AUTOMATION ═════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 space-y-24">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-electric uppercase border border-electric/20 bg-electric/5 rounded-full inline-block px-3 py-1 mb-4">
-            Zero-Touch OS Automation
+      {/* ════════════════ 4. FOUR CORE MODES DETAILS ════════════════ */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 space-y-32">
+        <div className="text-center">
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">Four physical modes.<br/>Four different digital environments.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Each mode is a configurable profile. Nexus Ring doesn't decide how you work — you decide what each physical position means.
           </p>
-          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
-            Physical Intent to OS Execution
-          </h2>
         </div>
 
-        {/* Section A: Native Integration */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
-        >
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-emerald uppercase tracking-widest">
-              <Terminal size={16} /> Section A · Native Integration
+        {MODES_DATA.map((mode, idx) => (
+          <div key={mode.id} className="pt-8 border-t border-slate">
+            <h3 className="text-5xl font-display font-black text-white mb-2">{mode.name}</h3>
+            <p className="text-xl font-medium mb-6" style={{ color: mode.color }}>{mode.tagline}</p>
+            <p className="text-slate-300 mb-8 leading-relaxed">{mode.desc}</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="p-6 rounded-2xl bg-matte border border-slate">
+                <h4 className="text-white font-bold mb-4 font-mono uppercase tracking-wider text-sm">Example Actions</h4>
+                <ul className="space-y-3 font-mono text-xs text-slate-400">
+                  {mode.actions.map((act, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="text-white">-</span> {act.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-6 rounded-2xl bg-vantablack border border-slate flex flex-col justify-center">
+                <h4 className="text-white font-bold mb-4 font-mono uppercase tracking-wider text-sm">Integration Status</h4>
+                <div className="space-y-2">
+                  <span className="inline-block px-3 py-1 rounded bg-slate text-[10px] font-mono text-white mr-2">DESKTOP AUTOMATION - CORE</span>
+                  <span className="inline-block px-3 py-1 rounded bg-slate/50 text-[10px] font-mono text-slate-400 mr-2">MOBILE - IN DEVELOPMENT</span>
+                  <span className="inline-block px-3 py-1 rounded bg-slate/50 text-[10px] font-mono text-slate-400">SMART WORKSPACE - PLANNED</span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
-              Zero Menus. Zero Clicking. Direct Kernel Interrupts.
-            </h3>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed font-light">
-              Docking a physical totem instantly fires local webhooks and PowerShell or Zsh scripts. Your workstation transforms mode within 24 milliseconds without needing to open app menus or toggle software switches.
+          </div>
+        ))}
+      </section>
+
+      {/* ════════════════ 5. CUSTOM MODE PROFILES ════════════════ */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Your modes. Your rules.</h2>
+            <p className="text-slate-300 leading-relaxed mb-6">
+              Every mode can be customized. A developer's Deep Work setup may look completely different from a designer's, founder's or student's.
             </p>
-            <ul className="space-y-3 font-mono text-xs text-slate-300">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-emerald" /> Direct hardware-to-socket event routing
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-emerald" /> Custom user-defined PowerShell & Zsh scripts
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-emerald" /> Automated workspace app layout launches
-              </li>
-            </ul>
-          </div>
-
-          {/* Terminal Code Mockup */}
-          <div className="lg:col-span-6 rounded-3xl border border-slate bg-matte overflow-hidden shadow-2xl">
-            <div className="px-6 py-4 bg-vantablack border-b border-slate flex items-center justify-between">
-              <span className="text-xs font-mono text-slate-500">daemon_webhook_listener.ps1</span>
-              <span className="text-[10px] font-mono text-emerald">STATUS: LISTENING</span>
-            </div>
-            <div className="p-6 font-mono text-xs text-slate-300 leading-relaxed overflow-x-auto bg-matte">
-              <p className="text-slate-500"># Executed via ESP32-C3 Websocket Event</p>
-              <p className="text-emerald">Write-Host "[NEXUS] Totem 01 Snap Detected" -ForegroundColor Green</p>
-              <p className="mt-2">Start-Process "code" -ArgumentList "."</p>
-              <p>Set-ItemProperty -Path "HKCU:\Software\..." -Name "ToastEnabled" -Value 0</p>
-              <p className="text-electric mt-2">&gt; Kernel interrupts dispatched in 18ms.</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Section B: Network-Level Blocking */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
-        >
-          <div className="lg:col-span-6 lg:order-2 space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-electric uppercase tracking-widest">
-              <ShieldCheck size={16} /> Section B · Network-Level Firewall
-            </div>
-            <h3 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
-              Ruthless Host-File Domain Interception
-            </h3>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed font-light">
-              Digital app blockers can easily be closed or bypassed with a single click. The Nexus daemon rewrites local system hosts files and configures OS socket firewall rules, making distraction sites unreachable even in browser incognito mode.
-            </p>
-            <ul className="space-y-3 font-mono text-xs text-slate-300">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-electric" /> Hardened OS kernel socket blocking
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-electric" /> Bypasses browser incognito loopholes
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-electric" /> Automatic restoration upon totem removal
-              </li>
-            </ul>
-          </div>
-
-          {/* Firewall Status Mockup */}
-          <div className="lg:col-span-6 lg:order-1 rounded-3xl border border-slate bg-matte p-8 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-4 border-b border-slate">
-              <span className="text-xs font-mono text-slate-500">KERNEL FIREWALL RULEBOOK</span>
-              <span className="text-[10px] font-mono text-[#FF5F56] px-2.5 py-0.5 rounded bg-[#FF5F56]/10 border border-[#FF5F56]/20">
-                ACTIVE BLOCKLIST
-              </span>
-            </div>
-            <div className="space-y-3 font-mono text-xs">
+            <div className="space-y-4">
               {[
-                { domain: "x.com", status: "127.0.0.1 (DROPPED)", latency: "<1ms" },
-                { domain: "discord.com", status: "127.0.0.1 (DROPPED)", latency: "<1ms" },
-                { domain: "youtube.com", status: "127.0.0.1 (DROPPED)", latency: "<1ms" },
-                { domain: "reddit.com", status: "127.0.0.1 (DROPPED)", latency: "<1ms" },
-              ].map((row) => (
-                <div key={row.domain} className="p-3 bg-vantablack rounded-xl border border-slate flex justify-between items-center">
-                  <span className="text-white font-bold">{row.domain}</span>
-                  <span className="text-[#FF5F56] font-bold">{row.status}</span>
+                { title: "Apps", items: "Open, Close, Minimize, Launch workspace" },
+                { title: "Websites", items: "Allow list, Block list, Temporary restrictions" },
+                { title: "Notifications", items: "Normal, Priority only, Do Not Disturb" },
+                { title: "Communication", items: "Update supported statuses (Slack, Teams)" },
+                { title: "Timers", items: "Start timer, Stop timer, Run custom session" },
+                { title: "Scripts", items: "PowerShell, Zsh, Python, custom webhooks" }
+              ].map(cat => (
+                <div key={cat.title} className="border-b border-slate pb-2">
+                  <span className="font-bold text-white">{cat.title}:</span> <span className="text-slate-400 text-sm">{cat.items}</span>
                 </div>
               ))}
             </div>
           </div>
-        </motion.div>
-      </section>
-
-      {/* ════════════════ 5. THE AI GUARDIAN (LOCAL AI) ═════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8 }}
-          className="rounded-3xl border border-purple/30 bg-matte p-8 md:p-12 relative overflow-hidden shadow-[0_0_60px_rgba(176,38,255,0.08)]"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple/30 bg-purple/10 text-purple text-[10px] font-mono tracking-widest uppercase">
-                <Eye size={14} /> Local NPU Vision Model · Local AI Quantized
-              </div>
-
-              <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
-                The AI Guardian Loop
-              </h2>
-
-              <p className="text-slate-400 text-base leading-relaxed font-light">
-                The Nexus Guardian runs an optimized 4-bit quantized <strong className="text-white font-semibold">Local AI</strong> vision model locally in your GPU/NPU VRAM. Every 10 seconds during focus sessions, the Guardian scans active window titles.
-              </p>
-
-              <div className="p-5 rounded-2xl border border-slate bg-vantablack space-y-3">
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald font-bold">
-                  <ShieldCheck size={16} /> 100% AIR-GAPPED PRIVACY GUARANTEE
-                </div>
-                <p className="text-xs text-slate-300 font-light leading-relaxed">
-                  Zero screen pixels or telemetry data leave your machine. Frame buffer samples are processed directly in local RAM and overwritten instantly.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-2 font-mono text-xs">
-                <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                  <p className="text-slate-500 text-[10px]">SCAN INTERVAL</p>
-                  <p className="text-purple font-bold mt-0.5">Every 10 Seconds</p>
-                </div>
-                <div className="p-3 bg-vantablack rounded-xl border border-slate">
-                  <p className="text-slate-500 text-[10px]">UNAUTHORIZED ACTION</p>
-                  <p className="text-[#FF5F56] font-bold mt-0.5">Auto-Termination</p>
-                </div>
-              </div>
+          
+          <div className="rounded-2xl border border-slate bg-matte p-6 shadow-2xl">
+            <div className="border-b border-slate pb-4 mb-4 flex justify-between items-center">
+              <h4 className="font-mono text-white">Deep Work Profile</h4>
+              <span className="px-2 py-1 bg-accent/20 text-accent text-[10px] rounded">CONFIGURING</span>
             </div>
-
-            {/* Visual AI Scan Loop Box */}
-            <div className="lg:col-span-5 bg-vantablack border border-slate rounded-2xl p-6 flex flex-col items-center justify-center space-y-6 relative overflow-hidden">
-              <div className="w-36 h-36 rounded-full border-2 border-dashed border-purple flex items-center justify-center relative">
-                <motion.div
-                  className="w-24 h-24 rounded-full border-4 border-purple bg-matte flex items-center justify-center shadow-[0_0_30px_rgba(176,38,255,0.4)]"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Eye size={36} className="text-purple" />
-                </motion.div>
-              </div>
-
-              <div className="text-center font-mono text-xs space-y-1">
-                <p className="text-white font-bold">LOCAL VRAM INFERENCE</p>
-                <p className="text-slate-500 text-[10px]">local-ai-vision-q4.bin</p>
-                <p className="text-emerald text-[10px] pt-2">0 BYTES TRANSMITTED TO CLOUD</p>
-              </div>
+            <div className="space-y-3 font-mono text-sm text-slate-300">
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Open VS Code</label>
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Open project folder</label>
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Block YouTube & Reddit</label>
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Close Discord</label>
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Enable DND</label>
+              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Start 90-minute timer</label>
             </div>
+            <button className="w-full mt-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-slate-200 transition-colors">
+              Save Profile
+            </button>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* ════════════════ 6. THE SPATIAL MEMORY MODES (INTERACTIVE TABS) ═ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-[10px] font-mono tracking-[0.25em] text-purple uppercase border border-purple/20 bg-purple/5 rounded-full inline-block px-3 py-1 mb-4">
-            Spatial Memory System
-          </p>
-          <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter text-white">
-            4 Physical Focus Modes
-          </h2>
-          <p className="text-slate-400 text-sm md:text-base mt-3 font-light">
-            Select a mode tab below to preview the active lighting spectrum, OS actions, and script webhooks.
+      {/* ════════════════ 6. LOCAL-FIRST & PRIVACY ════════════════ */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
+        <h2 className="text-4xl font-display font-bold text-white mb-6">Your focus system shouldn't need permission from the cloud.</h2>
+        <p className="text-slate-400 max-w-2xl mx-auto mb-16">
+          Core Nexus Ring automation is being designed around local communication between the hardware and companion software.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <div className="p-6 rounded-2xl border border-slate bg-matte">
+            <ShieldCheck className="text-accent mb-4" size={32} />
+            <h4 className="text-white font-bold mb-2">Local Mode Detection</h4>
+            <p className="text-sm text-slate-400">The selected physical mode is processed locally.</p>
+          </div>
+          <div className="p-6 rounded-2xl border border-slate bg-matte">
+            <Server className="text-accent mb-4" size={32} />
+            <h4 className="text-white font-bold mb-2">No Mandatory Cloud</h4>
+            <p className="text-sm text-slate-400">Core desktop mode changes should continue without dependence on a remote server.</p>
+          </div>
+          <div className="p-6 rounded-2xl border border-slate bg-matte">
+            <Globe className="text-accent mb-4" size={32} />
+            <h4 className="text-white font-bold mb-2">Integrations Are Explicit</h4>
+            <p className="text-sm text-slate-400">External services only become involved when the user enables an integration that requires them.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════ 7. CROSS-DEVICE ════════════════ */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-display font-bold text-white mb-4">One physical state. More than one screen.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            The long-term Nexus ecosystem is designed to let a single physical mode coordinate the devices around you.
           </p>
         </div>
-
-        {/* Tab Selection Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          {MODES.map((mode, idx) => {
-            const isActive = activeTab === idx;
-            return (
-              <button
-                key={mode.id}
-                onClick={() => setActiveTab(idx)}
-                className="p-4 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden"
-                style={{
-                  borderColor: isActive ? mode.color : "#151D2A",
-                  backgroundColor: isActive ? mode.bgAlpha : "#070A10",
-                  boxShadow: isActive ? mode.glowShadow : "none",
-                }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: mode.color }} />
-                  <span className="text-[9px] font-mono tracking-widest uppercase text-slate-500">
-                    MODE 0{idx + 1}
-                  </span>
-                </div>
-                <p className="font-display font-bold text-sm sm:text-base text-white truncate">
-                  {mode.name}
-                </p>
-              </button>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-8 rounded-2xl border border-slate bg-matte">
+            <Monitor className="mb-4 text-white" size={32} />
+            <h4 className="text-xl font-bold text-white mb-2">Desktop</h4>
+            <span className="text-[10px] font-mono bg-accent/20 text-accent px-2 py-1 rounded">CORE PLATFORM</span>
+            <p className="text-sm text-slate-400 mt-4">Windows, macOS, Linux target support. Controls apps, websites, notifications, scripts, and timers.</p>
+          </div>
+          <div className="p-8 rounded-2xl border border-slate bg-matte">
+            <Smartphone className="mb-4 text-white" size={32} />
+            <h4 className="text-xl font-bold text-white mb-2">Mobile</h4>
+            <span className="text-[10px] font-mono bg-slate text-slate-300 px-2 py-1 rounded">IN DEVELOPMENT / PLANNED</span>
+            <p className="text-sm text-slate-400 mt-4">Potential behaviors: Focus mode, notification rules, app restrictions, dependent on iOS/Android API exposure.</p>
+          </div>
+          <div className="p-8 rounded-2xl border border-slate bg-matte">
+            <Home className="mb-4 text-white" size={32} />
+            <h4 className="text-xl font-bold text-white mb-2">Smart Workspace</h4>
+            <span className="text-[10px] font-mono bg-slate text-slate-300 px-2 py-1 rounded">PLANNED</span>
+            <p className="text-sm text-slate-400 mt-4">Potential integrations: Home Assistant, lights, music, desk devices, IoT routines.</p>
+          </div>
         </div>
+      </section>
 
-        {/* Selected Tab Detail Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentMode.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="rounded-3xl border p-8 md:p-12 bg-matte relative overflow-hidden shadow-2xl"
-            style={{
-              borderColor: currentMode.borderAlpha,
-              boxShadow: currentMode.glowShadow,
-            }}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column (7 cols) */}
-              <div className="lg:col-span-7 space-y-6">
-                <div>
-                  <span
-                    className="text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border inline-block mb-3"
-                    style={{
-                      color: currentMode.color,
-                      borderColor: currentMode.color + "40",
-                      backgroundColor: currentMode.color + "10",
-                    }}
-                  >
-                    {currentMode.badge}
-                  </span>
-                  <h3 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-                    {currentMode.name}
-                  </h3>
-                  <p className="text-slate-400 text-base leading-relaxed font-light mt-2">
-                    {currentMode.tagline}
-                  </p>
-                </div>
+      {/* ════════════════ 8. MORE THAN A BLOCKER ════════════════ */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-bold text-white mb-4">Blocking is only one action.</h2>
+          <p className="text-slate-400">
+            Traditional blockers focus on saying "no." Nexus Ring is designed around transitions. It can remove distractions, but it can also prepare the tools, settings and environment you actually need.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-8 bg-vantablack border border-slate rounded-2xl text-center text-slate-300">
+            <h4 className="text-white font-bold mb-4">Blocking</h4>
+            <p>Close distracting apps</p>
+            <p>Block websites</p>
+            <p>Mute notifications</p>
+          </div>
+          <div className="p-8 bg-matte border border-slate rounded-2xl text-center text-slate-300">
+            <h4 className="text-white font-bold mb-4">Preparing</h4>
+            <p>Open project & tools</p>
+            <p>Start music & scripts</p>
+            <p>Adjust environment</p>
+          </div>
+        </div>
+        <p className="text-center text-white text-lg font-bold mt-8">
+          The goal isn't simply to prevent distraction.<br/>The goal is to make the right state easier to enter.
+        </p>
+      </section>
 
-                {/* Mode Specs Matrix */}
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  {currentMode.specs.map((sp) => (
-                    <div key={sp.label} className="p-3.5 bg-vantablack rounded-xl border border-slate">
-                      <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{sp.label}</p>
-                      <p className="text-xs font-mono font-bold mt-1" style={{ color: currentMode.color }}>
-                        {sp.val}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column (5 cols): Script Code Preview */}
-              <div className="lg:col-span-5 bg-vantablack border border-slate rounded-2xl p-6 space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-500 border-b border-slate pb-3">
-                  <span>DISPATCH_HOOK.ps1</span>
-                  <button
-                    onClick={handleCopyCode}
-                    className="hover:text-white transition-colors flex items-center gap-1 text-[11px]"
-                  >
-                    {copiedCode ? <CheckCircle2 size={12} className="text-emerald" /> : null}
-                    {copiedCode ? "COPIED" : "COPY HOOK"}
-                  </button>
-                </div>
-
-                <pre className="font-mono text-xs text-slate-300 leading-relaxed overflow-x-auto p-2">
-                  <code>{currentMode.codeSnippet}</code>
-                </pre>
-              </div>
+      {/* ════════════════ 9. DEVELOPMENT MATRIX ════════════════ */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">What we're building now.</h2>
+        <div className="space-y-2 font-mono text-sm">
+          {[
+            { f: "Physical mode detection", s: "PROTOTYPE" },
+            { f: "3D-printed enclosure", s: "PROTOTYPE" },
+            { f: "ESP32 firmware", s: "IN DEVELOPMENT" },
+            { f: "Desktop companion", s: "IN DEVELOPMENT" },
+            { f: "Custom mode profiles", s: "IN DEVELOPMENT" },
+            { f: "Website & App blocking", s: "IN DEVELOPMENT" },
+            { f: "Mobile companion", s: "PLANNED" },
+            { f: "Smart-home integrations", s: "PLANNED" },
+            { f: "Local context AI", s: "EXPERIMENTAL" }
+          ].map(row => (
+            <div key={row.f} className="flex justify-between p-3 border-b border-slate bg-matte">
+              <span className="text-slate-300">{row.f}</span>
+              <span className={`px-2 py-0.5 rounded text-[10px] ${row.s === 'PROTOTYPE' ? 'bg-amber/20 text-amber' : row.s === 'IN DEVELOPMENT' ? 'bg-accent/20 text-accent' : 'bg-slate text-slate-400'}`}>
+                {row.s}
+              </span>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          ))}
+        </div>
+      </section>
+
+      {/* ════════════════ 10. FAQ ════════════════ */}
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {[
+            { q: "Can I customize what each mode does?", a: "Yes. Nexus Ring is designed around configurable mode profiles so the same physical mode can behave differently for different users." },
+            { q: "Does Nexus Ring need the internet?", a: "Core desktop automation is being designed to operate locally. External integrations may require an internet connection." },
+            { q: "Can it block websites and close applications?", a: "Website restrictions and application automation are part of the planned desktop companion feature set, driven by user-defined rules." },
+            { q: "Does Nexus Ring use AI?", a: "AI-assisted context awareness is being explored as an optional local-first feature. Core Nexus functionality does not need AI to detect modes or execute automations." }
+          ].map((faq, i) => (
+            <div key={i} className="border-b border-slate pb-4">
+              <h4 className="text-white font-bold mb-2">{faq.q}</h4>
+              <p className="text-slate-400 text-sm">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ════════════════ 11. CLOSING CTA ════════════════ */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
+        <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
+          YOUR WORKSPACE SHOULD KNOW WHAT YOU'RE TRYING TO DO.
+        </h2>
+        <p className="text-slate-400 text-lg mb-4 max-w-2xl mx-auto">
+          Deep Work shouldn't begin with five minutes of closing apps. A meeting shouldn't begin with scrambling through settings. A break shouldn't be interrupted by work notifications.
+        </p>
+        <p className="text-white font-bold text-xl mb-12">
+          Nexus Ring turns those transitions into something physical.<br/><br/>
+          Move the totem.<br/>Change the mode.<br/>Let the environment follow.
+        </p>
+        
+        <div className="flex flex-wrap justify-center gap-4">
+          <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
+            Get Early Access
+          </button>
+          <Link href="/campaign" className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
+            View Campaign
+          </Link>
+        </div>
+        <p className="text-xs text-slate-500 mt-4 font-mono">No payment required today.</p>
       </section>
 
       <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />

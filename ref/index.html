@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus Ring — Master Web Documentation</title>
+<meta name="description" content="Nexus Ring product vision, roadmap, software, hardware, brand, AI, crowdfunding and platform strategy.">
+<style>
+:root {
+  --bg:#0a0b0e; --panel:#111319; --panel2:#171a22; --text:#f4f6f8; --muted:#9aa3af;
+  --line:#272b35; --accent:#ff334f; --accent2:#ff6a7d; --max:900px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+a{color:inherit}
+.layout{display:grid;grid-template-columns:290px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--line);background:#0d0f13;padding:22px}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.logo{width:38px;height:38px;border-radius:50%;border:5px solid var(--accent);box-shadow:0 0 28px rgba(255,51,79,.35)}
+.brand h1{font-size:15px;margin:0;letter-spacing:.08em}
+.brand small{color:var(--muted)}
+.search{width:100%;padding:11px 12px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;outline:none;margin:8px 0 16px}
+nav{display:flex;flex-direction:column;gap:3px}
+nav a{font-size:13px;text-decoration:none;color:#bdc3cc;padding:7px 9px;border-radius:8px}
+nav a:hover{background:var(--panel2);color:white}
+main{min-width:0}
+.hero{padding:72px 42px 50px;border-bottom:1px solid var(--line);background:
+radial-gradient(circle at 75% 15%,rgba(255,51,79,.14),transparent 28%),
+linear-gradient(180deg,#0c0d11,#0a0b0e)}
+.hero-inner{max-width:var(--max);margin:auto}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--accent2);font-weight:700}
+.hero h1{font-size:clamp(42px,7vw,82px);line-height:.95;margin:14px 0 20px;letter-spacing:-.045em}
+.hero p{font-size:20px;color:#c7cdd6;max-width:760px}
+.quote{margin-top:28px;padding:18px 20px;border-left:3px solid var(--accent);background:rgba(255,255,255,.03);border-radius:0 12px 12px 0}
+.content{max-width:var(--max);margin:auto;padding:28px 42px 80px}
+.doc-section{padding:34px 0;border-bottom:1px solid var(--line)}
+.section-kicker{font-size:11px;letter-spacing:.14em;color:var(--accent2);font-weight:700}
+h2{font-size:30px;line-height:1.15;margin:7px 0 16px;letter-spacing:-.02em}
+p{color:#cbd1d9;margin:9px 0}
+ul{color:#cbd1d9;padding-left:22px}
+li{margin:5px 0}
+.topbar{position:sticky;top:0;z-index:5;display:none;padding:12px 16px;background:rgba(10,11,14,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.menu-btn{border:1px solid var(--line);background:var(--panel);color:white;border-radius:9px;padding:8px 10px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.badge{font-size:12px;border:1px solid var(--line);padding:6px 9px;border-radius:999px;color:#cbd1d9;background:rgba(255,255,255,.025)}
+.hidden{display:none!important}
+footer{max-width:var(--max);margin:auto;padding:0 42px 50px;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .layout{display:block}
+  aside{position:fixed;z-index:20;width:290px;left:-310px;transition:.25s;box-shadow:20px 0 50px rgba(0,0,0,.4)}
+  aside.open{left:0}
+  .topbar{display:flex;justify-content:space-between;align-items:center}
+  .hero{padding:54px 22px 36px}
+  .content{padding:18px 22px 60px}
+  footer{padding:0 22px 40px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside id="sidebar">
+  <div class="brand"><div class="logo"></div><div><h1>NEXUS RING</h1><small>Master Documentation</small></div></div>
+  <input id="search" class="search" placeholder="Search sections..." />
+  <nav id="nav"><a href="#executive-vision" data-title="executive vision">Executive Vision</a>
+<a href="#core-problem" data-title="core problem">Core Problem</a>
+<a href="#product-principle" data-title="product principle">Product Principle</a>
+<a href="#core-product-promise" data-title="core product promise">Core Product Promise</a>
+<a href="#product-category" data-title="product category">Product Category</a>
+<a href="#brand-positioning" data-title="brand positioning">Brand Positioning</a>
+<a href="#core-values" data-title="core values">Core Values</a>
+<a href="#taglines" data-title="taglines">Taglines</a>
+<a href="#physical-experience" data-title="physical experience">Physical Experience</a>
+<a href="#screenless-design" data-title="screenless design">Screenless Design</a>
+<a href="#default-modes" data-title="default modes">Default Modes</a>
+<a href="#deep-work-mode" data-title="deep work mode">Deep Work Mode</a>
+<a href="#creative-mode" data-title="creative mode">Creative Mode</a>
+<a href="#meeting-mode" data-title="meeting mode">Meeting Mode</a>
+<a href="#break-mode" data-title="break mode">Break Mode</a>
+<a href="#nexus-profiles" data-title="nexus profiles">Nexus Profiles</a>
+<a href="#automation-engine" data-title="automation engine">Automation Engine</a>
+<a href="#nexus-shield" data-title="nexus shield">Nexus Shield</a>
+<a href="#emergency-exit" data-title="emergency exit">Emergency Exit</a>
+<a href="#desktop-software" data-title="desktop software">Desktop Software</a>
+<a href="#desktop-ux" data-title="desktop ux">Desktop UX</a>
+<a href="#mobile-companion" data-title="mobile companion">Mobile Companion</a>
+<a href="#cross-device-state" data-title="cross-device state">Cross-Device State</a>
+<a href="#local-first-architecture" data-title="local-first architecture">Local-First Architecture</a>
+<a href="#privacy" data-title="privacy">Privacy</a>
+<a href="#security" data-title="security">Security</a>
+<a href="#hardware-architecture" data-title="hardware architecture">Hardware Architecture</a>
+<a href="#mode-detection-reliability" data-title="mode detection reliability">Mode Detection Reliability</a>
+<a href="#firmware" data-title="firmware">Firmware</a>
+<a href="#lighting-system" data-title="lighting system">Lighting System</a>
+<a href="#industrial-design" data-title="industrial design">Industrial Design</a>
+<a href="#materials" data-title="materials">Materials</a>
+<a href="#the-totem" data-title="the totem">The Totem</a>
+<a href="#nexus-ai" data-title="nexus ai">Nexus AI</a>
+<a href="#ai-mode-suggestions" data-title="ai mode suggestions">AI Mode Suggestions</a>
+<a href="#integrations" data-title="integrations">Integrations</a>
+<a href="#plugin-system" data-title="plugin system">Plugin System</a>
+<a href="#local-api" data-title="local api">Local API</a>
+<a href="#developer-sdk" data-title="developer sdk">Developer SDK</a>
+<a href="#maker-ecosystem" data-title="maker ecosystem">Maker Ecosystem</a>
+<a href="#user-onboarding" data-title="user onboarding">User Onboarding</a>
+<a href="#first-run-magic-moment" data-title="first-run magic moment">First-Run Magic Moment</a>
+<a href="#software-business-model" data-title="software business model">Software Business Model</a>
+<a href="#crowdfunding-structure" data-title="crowdfunding structure">Crowdfunding Structure</a>
+<a href="#cost-model" data-title="cost model">Cost Model</a>
+<a href="#manufacturing-roadmap" data-title="manufacturing roadmap">Manufacturing Roadmap</a>
+<a href="#quality-control" data-title="quality control">Quality Control</a>
+<a href="#software-quality" data-title="software quality">Software Quality</a>
+<a href="#observability" data-title="observability">Observability</a>
+<a href="#analytics" data-title="analytics">Analytics</a>
+<a href="#success-metrics" data-title="success metrics">Success Metrics</a>
+<a href="#phase-0-product-truth" data-title="phase 0 — product truth">Phase 0 — Product Truth</a>
+<a href="#phase-1-nexus-v1" data-title="phase 1 — nexus v1">Phase 1 — Nexus V1</a>
+<a href="#phase-2-connected-nexus" data-title="phase 2 — connected nexus">Phase 2 — Connected Nexus</a>
+<a href="#phase-3-nexus-shield" data-title="phase 3 — nexus shield">Phase 3 — Nexus Shield</a>
+<a href="#phase-4-nexus-ai" data-title="phase 4 — nexus ai">Phase 4 — Nexus AI</a>
+<a href="#phase-5-nexus-platform" data-title="phase 5 — nexus platform">Phase 5 — Nexus Platform</a>
+<a href="#phase-6-nexus-teams" data-title="phase 6 — nexus teams">Phase 6 — Nexus Teams</a>
+<a href="#future-hardware-family" data-title="future hardware family">Future Hardware Family</a>
+<a href="#website-messaging" data-title="website messaging">Website Messaging</a>
+<a href="#crowdfunding-video" data-title="crowdfunding video">Crowdfunding Video</a>
+<a href="#investor-story" data-title="investor story">Investor Story</a>
+<a href="#defensibility" data-title="defensibility">Defensibility</a>
+<a href="#what-not-to-build" data-title="what not to build">What Not to Build</a>
+<a href="#product-standard" data-title="product standard">Product Standard</a>
+<a href="#the-nexus-test" data-title="the nexus test">The Nexus Test</a>
+<a href="#24-month-roadmap" data-title="24-month roadmap">24-Month Roadmap</a>
+<a href="#long-term-vision" data-title="long-term vision">Long-Term Vision</a>
+<a href="#product-manifesto" data-title="product manifesto">Product Manifesto</a></nav>
+</aside>
+
+<main>
+<div class="topbar"><strong>Nexus Ring Docs</strong><button class="menu-btn" id="menuBtn">☰ Sections</button></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">PRODUCT VISION · HARDWARE · SOFTWARE · AI · ROADMAP</div>
+    <h1>Put your world in the right mode.</h1>
+    <p>One physical action changes your apps, devices and environment to match what you're doing.</p>
+    <div class="quote"><strong>The Nexus Ring solves the biggest bottleneck to modern success:</strong> relying on mental willpower to fight billion-dollar distraction algorithms.</div>
+    <div class="badges">
+      <span class="badge">Physical Intent Computing</span>
+      <span class="badge">Local First</span>
+      <span class="badge">Screenless</span>
+      <span class="badge">Cross-Device</span>
+      <span class="badge">Automation Engine</span>
+      <span class="badge">Maker + Pro Ecosystem</span>
+    </div>
+  </div>
+</header>
+
+<div class="content" id="content">
+
+    <section id="executive-vision" class="doc-section" data-title="executive vision">
+      <div class="section-kicker">SECTION 01</div>
+      <h2>Executive Vision</h2>
+      <p>Nexus Ring is a physical operating system for attention and intent. Instead of managing apps, notifications, focus settings, smart devices, communication status, and work tools one-by-one, the user makes one deliberate physical action: move the Nexus Totem into a mode.</p><p>The long-term vision is simple: one physical action should place every connected device, application, notification system, workspace, and environment into the state that best supports what the user intends to do.</p><p>The hardware is the physical interface. The software is the intelligence. The ecosystem is the long-term moat.</p>
+    </section>
+    
+    <section id="core-problem" class="doc-section" data-title="core problem">
+      <div class="section-kicker">SECTION 02</div>
+      <h2>Core Problem</h2>
+      <p>The Nexus Ring solves the biggest bottleneck to modern success: relying on mental willpower to fight billion-dollar distraction algorithms.</p><p>Modern digital environments constantly compete for attention through notifications, social feeds, messaging, video platforms, games, email, news, recommendation systems and browser distractions. Existing software blockers still rely on the same distracted user to remember to activate and manage them.</p><p>Nexus changes this. The user chooses the intention once. Nexus protects the environment afterward.</p>
+    </section>
+    
+    <section id="product-principle" class="doc-section" data-title="product principle">
+      <div class="section-kicker">SECTION 03</div>
+      <h2>Product Principle</h2>
+      <p>Do not ask the user to repeatedly make the same good decision. Let them make the decision once and let the environment protect it.</p><p>Nexus should never feel like a machine controlling the user. It should feel like a system protecting a decision the user already made.</p>
+    </section>
+    
+    <section id="core-product-promise" class="doc-section" data-title="core product promise">
+      <div class="section-kicker">SECTION 04</div>
+      <h2>Core Product Promise</h2>
+      <p>Choose → Place → Transform → Protect → Recover</p><p>Choose: The user decides what they want to do.<br>Place: The user moves the physical totem into the corresponding Nexus mode.<br>Transform: Apps, devices, notifications, tools and environment automatically change.<br>Protect: Nexus Shield maintains the selected state.<br>Recover: Nexus helps the user genuinely disconnect when work is complete.</p>
+    </section>
+    
+    <section id="product-category" class="doc-section" data-title="product category">
+      <div class="section-kicker">SECTION 05</div>
+      <h2>Product Category</h2>
+      <p>Nexus should avoid being positioned primarily as a Pomodoro timer, macro pad, app blocker, smart switch or desk gadget.</p><p>Recommended category language:<br>• Physical Intent Computing<br>• Physical Attention Operating System</p><p>Human intention → physical action → digital environment.</p>
+    </section>
+    
+    <section id="brand-positioning" class="doc-section" data-title="brand positioning">
+      <div class="section-kicker">SECTION 06</div>
+      <h2>Brand Positioning</h2>
+      <p>Nexus should feel calm, powerful, minimal, deliberate, private, premium, reliable, intelligent, human, physical, screenless and fast.</p><p>It should not feel punitive, childish, over-gamified, complicated, cheap, distracting, surveillance-oriented or dependent on constant internet connectivity.</p><p>Desired emotional response: “I place the Ring, and everything is handled.”</p>
+    </section>
+    
+    <section id="core-values" class="doc-section" data-title="core values">
+      <div class="section-kicker">SECTION 07</div>
+      <h2>Core Values</h2>
+      <ul><li>Intent Before Interface — Physical intent comes first. Software follows.</li><li>Zero Friction — Totem moves, Nexus detects, environment changes.</li><li>Protect, Never Control — Strictness is configurable and emergency exits always exist.</li><li>Local First — Core functionality should work locally whenever possible.</li><li>Privacy by Architecture — Minimize data collection and keep personal automation local.</li><li>Calm Technology — No unnecessary screens, alerts or attention-seeking UI.</li><li>Reliability Before Feature Count — One flawless automation beats fifty unreliable integrations.</li><li>User Ownership — Users own their profiles, rules and device configuration.</li><li>Extensibility — Nexus should evolve into a developer and maker platform.</li><li>Beautiful Physical Interaction — Weight, sound, magnetism, finish and light are part of the interface.</li></ul>
+    </section>
+    
+    <section id="taglines" class="doc-section" data-title="taglines">
+      <div class="section-kicker">SECTION 08</div>
+      <h2>Taglines</h2>
+      <p>Primary: Put your world in the right mode.</p><p>Primary explanation: One physical action changes your apps, devices and environment to match what you&#x27;re doing.</p><p>Premium: Move the Ring. Change your environment.<br>Focus campaign: Your attention has an off switch now.<br>Discipline campaign: Make the decision once. Nexus protects it.<br>Automation campaign: One move. Everything changes.<br>Deep Work campaign: Enter focus physically.<br>Ecosystem campaign: One Ring. Every device. One intention.<br>Privacy campaign: Your focus. Your rules. Your devices.<br>AI campaign: Tell Nexus how you want to work. It builds the mode for you.<br>Crowdfunding: Take your focus out of the screen.<br>Investor: Nexus is building the physical interface for human attention.</p>
+    </section>
+    
+    <section id="physical-experience" class="doc-section" data-title="physical experience">
+      <div class="section-kicker">SECTION 09</div>
+      <h2>Physical Experience</h2>
+      <p>The physical sequence should feel: Reach → Lift → Move → Snap → Glow → Transform.</p><p>The weighted Nexus Totem should provide satisfying resistance. Magnetic engagement should give a clear tactile confirmation. Subtle lighting should respond immediately, followed by fast software transitions.</p><p>The relationship must become obvious: “I moved the Ring. My environment changed.”</p>
+    </section>
+    
+    <section id="screenless-design" class="doc-section" data-title="screenless design">
+      <div class="section-kicker">SECTION 10</div>
+      <h2>Screenless Design</h2>
+      <p>Nexus should remain screenless. The Ring communicates state through physical position, tactile response, subtle lighting, desktop software and mobile software only when required.</p><p>The device should reduce interfaces, not create another display competing for attention.</p>
+    </section>
+    
+    <section id="default-modes" class="doc-section" data-title="default modes">
+      <div class="section-kicker">SECTION 11</div>
+      <h2>Default Modes</h2>
+      <p>Default mode mapping:<br>1. Deep Work<br>2. Creative<br>3. Meeting<br>4. Break</p><p>The hardware should remain configurable so users can rename the positions to Study, Coding, Writing, Recording, Trading, Reading, Planning, Gaming, Family, Relax and more.</p>
+    </section>
+    
+    <section id="deep-work-mode" class="doc-section" data-title="deep work mode">
+      <div class="section-kicker">SECTION 12</div>
+      <h2>Deep Work Mode</h2>
+      <p>Possible actions: block distracting websites, close distracting apps, silence selected notifications, set Slack/Teams to DND, open IDE/project workspace/documentation, start a focus playlist, disable entertainment apps, activate browser rules, change lighting and track a session locally.</p>
+    </section>
+    
+    <section id="creative-mode" class="doc-section" data-title="creative mode">
+      <div class="section-kicker">SECTION 13</div>
+      <h2>Creative Mode</h2>
+      <p>Creative Mode should reduce interruption without being excessively restrictive. It can launch Photoshop, Blender, Cinema 4D, Figma, Illustrator, a DAW or project folders; allow research while blocking social feeds; permit selected contacts; and configure creative lighting or audio.</p>
+    </section>
+    
+    <section id="meeting-mode" class="doc-section" data-title="meeting mode">
+      <div class="section-kicker">SECTION 14</div>
+      <h2>Meeting Mode</h2>
+      <p>Meeting Mode can launch Zoom/Teams/Meet, open the calendar event, pause music, close noisy apps, choose microphone and webcam devices, set communication status, adjust smart lighting and open relevant notes or documents.</p>
+    </section>
+    
+    <section id="break-mode" class="doc-section" data-title="break mode">
+      <div class="section-kicker">SECTION 15</div>
+      <h2>Break Mode</h2>
+      <p>Break Mode should actively protect recovery by hiding work apps, pausing email, hiding project tools, disabling work notifications, stopping timers and changing the physical environment.</p><p>It should remain user-controlled and avoid making medical or mental-health promises.</p>
+    </section>
+    
+    <section id="nexus-profiles" class="doc-section" data-title="nexus profiles">
+      <div class="section-kicker">SECTION 16</div>
+      <h2>Nexus Profiles</h2>
+      <p>A Nexus Profile can include allowed apps, blocked apps, allowed websites, blocked websites, notification rules, communication rules, launch actions, close actions, audio actions, lighting actions, smart-home actions, duration, strictness level, exit behavior, scripts and exceptions.</p>
+    </section>
+    
+    <section id="automation-engine" class="doc-section" data-title="automation engine">
+      <div class="section-kicker">SECTION 17</div>
+      <h2>Automation Engine</h2>
+      <p>Core architecture:<br>Physical Event → Mode Event → Rules Engine → Actions → Confirmation</p><p>Example Deep Work activation:<br>• Discord closes<br>• Steam closes<br>• YouTube is blocked<br>• VS Code opens<br>• Slack enters DND<br>• Spotify starts a focus playlist<br>• Lighting changes<br>• Phone enters its configured focus state</p>
+    </section>
+    
+    <section id="nexus-shield" class="doc-section" data-title="nexus shield">
+      <div class="section-kicker">SECTION 18</div>
+      <h2>Nexus Shield</h2>
+      <p>Protection levels:<br>• Open Mode — automations run, user can freely override<br>• Focused Mode — selected distractions remain blocked while active<br>• Strict Mode — distractions cannot be casually reopened<br>• Locked Session — deliberate 25/50/90/custom sessions</p><p>Always include a proper emergency exit and accessibility override.</p>
+    </section>
+    
+    <section id="emergency-exit" class="doc-section" data-title="emergency exit">
+      <div class="section-kicker">SECTION 19</div>
+      <h2>Emergency Exit</h2>
+      <p>Possible exit methods: long physical hold, specific multi-step movement, emergency desktop shortcut, accessibility override, emergency-contact rule or safety PIN.</p><p>Goal: prevent impulsive exit without preventing legitimate exit.</p>
+    </section>
+    
+    <section id="desktop-software" class="doc-section" data-title="desktop software">
+      <div class="section-kicker">SECTION 20</div>
+      <h2>Desktop Software</h2>
+      <p>Priority: Windows → macOS → Linux.</p><p>Simple Mode should ask: “What should happen when Nexus enters this mode?”</p><p>Advanced Mode can support conditions, scripts, webhooks, APIs, schedules, environment variables, local services and developer integrations.</p>
+    </section>
+    
+    <section id="desktop-ux" class="doc-section" data-title="desktop ux">
+      <div class="section-kicker">SECTION 21</div>
+      <h2>Desktop UX</h2>
+      <p>Represent the physical Ring visually with four positions.</p><p>Ideal interaction:<br>Drag Discord into Block.<br>Drag VS Code into Open.<br>Drag Spotify into Play Focus.<br>Drag Slack into Do Not Disturb.<br>Save.</p><p>Advanced complexity remains hidden until requested.</p>
+    </section>
+    
+    <section id="mobile-companion" class="doc-section" data-title="mobile companion">
+      <div class="section-kicker">SECTION 22</div>
+      <h2>Mobile Companion</h2>
+      <p>Potential features include notification management, focus-state sync, allowed-contact configuration, emergency contacts, profile editing, device diagnostics, firmware support, optional mode history and optional wearable integration.</p><p>Mobile capabilities must be validated against iOS and Android permission limits before being marketed.</p>
+    </section>
+    
+    <section id="cross-device-state" class="doc-section" data-title="cross-device state">
+      <div class="section-kicker">SECTION 23</div>
+      <h2>Cross-Device State</h2>
+      <p>Eventually Nexus should maintain one synchronized intention:<br>Desktop → Deep Work<br>Phone → Focus<br>Tablet → Focus<br>Slack → DND<br>Lights → Focus scene</p><p>This is where Nexus becomes an ecosystem rather than a peripheral.</p>
+    </section>
+    
+    <section id="local-first-architecture" class="doc-section" data-title="local-first architecture">
+      <div class="section-kicker">SECTION 24</div>
+      <h2>Local-First Architecture</h2>
+      <p>Recommended architecture:<br>Nexus Ring Hardware<br>↓<br>Bluetooth / local Wi-Fi / USB<br>↓<br>Nexus Desktop Service<br>↓<br>Local Automation Engine<br>↓<br>Applications / OS / Local APIs / Smart Devices</p><p>Optional cloud services should be limited to features that genuinely require them.</p>
+    </section>
+    
+    <section id="privacy" class="doc-section" data-title="privacy">
+      <div class="section-kicker">SECTION 25</div>
+      <h2>Privacy</h2>
+      <p>Potential principles:<br>• No advertising business model<br>• No selling behavioral data<br>• No unnecessary productivity surveillance<br>• Local processing by default<br>• Clear permissions<br>• Profile export and deletion<br>• Optional analytics</p><p>Nexus should never become a surveillance tool pretending to be a productivity product.</p>
+    </section>
+    
+    <section id="security" class="doc-section" data-title="security">
+      <div class="section-kicker">SECTION 26</div>
+      <h2>Security</h2>
+      <p>Requirements should eventually include signed app releases, signed firmware, secure updates, device authentication, protected local communications, encrypted configuration, permission minimization, secure integration tokens, revocable credentials, secure reset and a vulnerability-reporting process.</p>
+    </section>
+    
+    <section id="hardware-architecture" class="doc-section" data-title="hardware architecture">
+      <div class="section-kicker">SECTION 27</div>
+      <h2>Hardware Architecture</h2>
+      <p>Prototype platform can use ESP32-C3-class hardware, but the production product should move to a custom PCB.</p><p>Potential system:<br>• ESP32-class MCU<br>• Hall-effect sensing<br>• Controlled LEDs<br>• USB-C<br>• Bluetooth<br>• Local Wi-Fi<br>• Firmware storage<br>• Reset/setup control<br>• Power management<br>• Optional secure element later</p>
+    </section>
+    
+    <section id="mode-detection-reliability" class="doc-section" data-title="mode detection reliability">
+      <div class="section-kicker">SECTION 28</div>
+      <h2>Mode Detection Reliability</h2>
+      <p>Firmware should handle magnetic hysteresis, sensor debounce, threshold calibration, transition state, startup state, power interruption, reconnects and recovery.</p><p>Only confirmed physical transitions should trigger major automations.</p>
+    </section>
+    
+    <section id="firmware" class="doc-section" data-title="firmware">
+      <div class="section-kicker">SECTION 29</div>
+      <h2>Firmware</h2>
+      <p>Firmware responsibilities should stay narrow: detect physical state, control lighting, communicate state, handle pairing, report health, apply updates and recover safely.</p><p>Complex automation belongs primarily on the computer so firmware can remain stable.</p>
+    </section>
+    
+    <section id="lighting-system" class="doc-section" data-title="lighting system">
+      <div class="section-kicker">SECTION 30</div>
+      <h2>Lighting System</h2>
+      <p>Recommended defaults:<br>Deep Work → steady focused color<br>Creative → slow breathing behavior<br>Meeting → clean neutral light<br>Break → warm relaxed behavior<br>Error → distinct warning pattern<br>Pairing → subtle pulse<br>Firmware update → progress behavior</p>
+    </section>
+    
+    <section id="industrial-design" class="doc-section" data-title="industrial design">
+      <div class="section-kicker">SECTION 31</div>
+      <h2>Industrial Design</h2>
+      <p>Priorities: low center of gravity, strong tactile engagement, anti-slip base, minimal seams, hidden fasteners where practical, serviceable electronics, durable USB-C, premium finishes and quiet light diffusion.</p><p>The product should look desirable even when disconnected.</p>
+    </section>
+    
+    <section id="materials" class="doc-section" data-title="materials">
+      <div class="section-kicker">SECTION 32</div>
+      <h2>Materials</h2>
+      <p>Maker Edition: PLA, PETG, PLA-CF, Resin; minimal supports, standard hardware and clear tolerances.</p><p>Pro Edition: walnut/bamboo/hardwood, matte anodized aluminum totem, frosted acrylic/polycarbonate diffuser, internal weight and rubber anti-slip base.</p><p>Future: Black, Walnut, Aluminum, Creator, Founder and limited editions.</p>
+    </section>
+    
+    <section id="the-totem" class="doc-section" data-title="the totem">
+      <div class="section-kicker">SECTION 33</div>
+      <h2>The Totem</h2>
+      <p>The totem should become iconic: comfortable grip, meaningful weight, premium feel, durable coating, reliable magnet behavior, easy orientation, rounded edges and strong visual identity.</p><p>Future possibilities include custom, engraved, limited-edition and team totems.</p>
+    </section>
+    
+    <section id="nexus-ai" class="doc-section" data-title="nexus ai">
+      <div class="section-kicker">SECTION 34</div>
+      <h2>Nexus AI</h2>
+      <p>AI should function primarily as an Automation Composer.</p><p>Example:<br>“When I code, block entertainment, keep GitHub and documentation available, open VS Code, silence everyone except my family and make my lighting warm.”</p><p>Nexus converts the request into a profile for user review.</p>
+    </section>
+    
+    <section id="ai-mode-suggestions" class="doc-section" data-title="ai mode suggestions">
+      <div class="section-kicker">SECTION 35</div>
+      <h2>AI Mode Suggestions</h2>
+      <p>Future AI can help generate context-aware profiles from explicit user input, such as preparing for a presentation or meeting, while keeping approval with the user.</p>
+    </section>
+    
+    <section id="integrations" class="doc-section" data-title="integrations">
+      <div class="section-kicker">SECTION 36</div>
+      <h2>Integrations</h2>
+      <p>Potential targets:</p><p>Productivity: Slack, Teams, Discord, Notion, Todoist, Trello, Asana<br>Meetings: Zoom, Teams, Google Meet<br>Creative: Adobe, Blender, Cinema 4D, Figma, DaVinci Resolve<br>Development: VS Code, JetBrains, GitHub, Terminal, Docker<br>Entertainment: Spotify, Steam, YouTube<br>Smart Home: Home Assistant, Philips Hue, Matter<br>System: browsers, audio, Bluetooth, notifications, app processes</p><p>Prioritize reliability over quantity.</p>
+    </section>
+    
+    <section id="plugin-system" class="doc-section" data-title="plugin system">
+      <div class="section-kicker">SECTION 37</div>
+      <h2>Plugin System</h2>
+      <p>A future plugin architecture can expose declared permissions, triggers and actions for custom workflows such as opening Blender projects, starting OBS, changing Home Assistant scenes, running local scripts or calling internal APIs.</p>
+    </section>
+    
+    <section id="local-api" class="doc-section" data-title="local api">
+      <div class="section-kicker">SECTION 38</div>
+      <h2>Local API</h2>
+      <p>Potential commands: read active mode, change software profile, subscribe to mode events, trigger actions, read hardware state, control lighting and query device health.</p><p>This supports Home Assistant, Raspberry Pi, scripts and maker hardware.</p>
+    </section>
+    
+    <section id="developer-sdk" class="doc-section" data-title="developer sdk">
+      <div class="section-kicker">SECTION 39</div>
+      <h2>Developer SDK</h2>
+      <p>Long-term SDK options: JavaScript, Python, REST and WebSocket.</p><p>Developers should be able to create Nexus Actions and eventually distribute them through a marketplace.</p>
+    </section>
+    
+    <section id="maker-ecosystem" class="doc-section" data-title="maker ecosystem">
+      <div class="section-kicker">SECTION 40</div>
+      <h2>Maker Ecosystem</h2>
+      <p>Provide 3MF, STL, BOM, assembly guide, wiring diagram, firmware, print profiles, hardware docs and developer examples.</p><p>The community can build new shells, totems, integrations, automation templates and accessories.</p>
+    </section>
+    
+    <section id="user-onboarding" class="doc-section" data-title="user onboarding">
+      <div class="section-kicker">SECTION 41</div>
+      <h2>User Onboarding</h2>
+      <p>Ideal onboarding:<br>1. Plug in Nexus<br>2. Install app<br>3. Device detected<br>4. Name device<br>5. Select Deep Work<br>6. Choose distracting apps<br>7. Choose work app<br>8. Move totem<br>9. Environment changes</p><p>Avoid forcing account creation before value is demonstrated unless technically required.</p>
+    </section>
+    
+    <section id="first-run-magic-moment" class="doc-section" data-title="first-run magic moment">
+      <div class="section-kicker">SECTION 42</div>
+      <h2>First-Run Magic Moment</h2>
+      <p>The first five minutes should prove the product:<br>Block Discord.<br>Block YouTube.<br>Open VS Code.<br>Move the Ring.<br>Everything changes.</p><p>That is the product.</p>
+    </section>
+    
+    <section id="software-business-model" class="doc-section" data-title="software business model">
+      <div class="section-kicker">SECTION 43</div>
+      <h2>Software Business Model</h2>
+      <p>Nexus Core: included with hardware — local modes, basic integrations, app control, website blocking, profiles and firmware updates.</p><p>Nexus Pro Software: optional — advanced AI profile building, cloud sync, team profiles, advanced analytics, premium integrations, multi-device orchestration and marketplace features.</p><p>The hardware should remain useful without a mandatory subscription.</p>
+    </section>
+    
+    <section id="crowdfunding-structure" class="doc-section" data-title="crowdfunding structure">
+      <div class="section-kicker">SECTION 44</div>
+      <h2>Crowdfunding Structure</h2>
+      <p>Maker Tier — “Print your own Nexus.”<br>Hacker Kit — “We provide the brain. You build the body.”<br>Nexus Pro — “Ready out of the box.”</p><p>Pricing should be finalized only after real supplier quotes, landed-cost calculations and software economics are validated.</p>
+    </section>
+    
+    <section id="cost-model" class="doc-section" data-title="cost model">
+      <div class="section-kicker">SECTION 45</div>
+      <h2>Cost Model</h2>
+      <p>Include PCB, MCU, sensors, LEDs, magnets, connectors, enclosure materials, aluminum, diffuser, weight, cable, assembly, packaging, freight, customs, fulfillment, fees, returns, replacements, warranty, support, certification, scrap and QA failure rates.</p>
+    </section>
+    
+    <section id="manufacturing-roadmap" class="doc-section" data-title="manufacturing roadmap">
+      <div class="section-kicker">SECTION 46</div>
+      <h2>Manufacturing Roadmap</h2>
+      <p>Prototype → Engineering Prototype → Design Validation → Production Validation → Mass Production.</p><p>Do not move to mass production before the small production run proves assembly, QA, packaging, flashing and tracking.</p>
+    </section>
+    
+    <section id="quality-control" class="doc-section" data-title="quality control">
+      <div class="section-kicker">SECTION 47</div>
+      <h2>Quality Control</h2>
+      <p>Every production device should be tested for power, USB, sensor state, all physical positions, lighting, firmware version, connectivity, mode transition speed, repeated movement, cable stability, cosmetics and anti-slip performance.</p><p>Build a factory test fixture.</p>
+    </section>
+    
+    <section id="software-quality" class="doc-section" data-title="software quality">
+      <div class="section-kicker">SECTION 48</div>
+      <h2>Software Quality</h2>
+      <p>Nexus should survive app crashes, restart, sleep/wake, disconnects, reconnects, Wi-Fi loss, internet loss, partial automation failures and integration expiration.</p><p>Users should always know whether Nexus is active and what failed.</p>
+    </section>
+    
+    <section id="observability" class="doc-section" data-title="observability">
+      <div class="section-kicker">SECTION 49</div>
+      <h2>Observability</h2>
+      <p>Instead of cryptic errors, surface calm actionable messages.</p><p>Example:<br>“Slack needs to be reconnected.”</p><p>The system should know which actions succeeded and which failed.</p>
+    </section>
+    
+    <section id="analytics" class="doc-section" data-title="analytics">
+      <div class="section-kicker">SECTION 50</div>
+      <h2>Analytics</h2>
+      <p>Useful local insights may include focus sessions, total protected time, most-used mode, typical session length, interrupted sessions and weekly patterns.</p><p>Avoid manipulative streak systems as the core mechanism.</p>
+    </section>
+    
+    <section id="success-metrics" class="doc-section" data-title="success metrics">
+      <div class="section-kicker">SECTION 51</div>
+      <h2>Success Metrics</h2>
+      <p>Track activation rate, magic-moment rate, weekly active Rings, mode activations, automation success rate, session completion and 7/30/90/180-day retention.</p><p>Hardware retention matters more than app downloads.</p>
+    </section>
+    
+    <section id="phase-0-product-truth" class="doc-section" data-title="phase 0 — product truth">
+      <div class="section-kicker">SECTION 52</div>
+      <h2>Phase 0 — Product Truth</h2>
+      <p>Build only enough to prove the interaction: Ring prototype, reliable sensing, Windows daemon, Deep Work mode, app blocking and app launching.</p><p>Success means the user immediately understands why Nexus should exist.</p>
+    </section>
+    
+    <section id="phase-1-nexus-v1" class="doc-section" data-title="phase 1 — nexus v1">
+      <div class="section-kicker">SECTION 53</div>
+      <h2>Phase 1 — Nexus V1</h2>
+      <p>Focus on reliability: custom PCB, Hall detection, LED feedback, USB-C, production-oriented enclosure, Windows/macOS, four modes, editable profiles, app control, website blocking, notification control, diagnostics and local configuration.</p>
+    </section>
+    
+    <section id="phase-2-connected-nexus" class="doc-section" data-title="phase 2 — connected nexus">
+      <div class="section-kicker">SECTION 54</div>
+      <h2>Phase 2 — Connected Nexus</h2>
+      <p>Add mobile companion, Slack, Teams, Discord, Zoom, Spotify, browser integration, smart lights, Home Assistant and better synchronization.</p><p>Goal: make “Put your world in the right mode” literally true.</p>
+    </section>
+    
+    <section id="phase-3-nexus-shield" class="doc-section" data-title="phase 3 — nexus shield">
+      <div class="section-kicker">SECTION 55</div>
+      <h2>Phase 3 — Nexus Shield</h2>
+      <p>Add Focused Mode, Strict Mode, Locked Sessions, emergency exits, advanced exceptions and session rules.</p>
+    </section>
+    
+    <section id="phase-4-nexus-ai" class="doc-section" data-title="phase 4 — nexus ai">
+      <div class="section-kicker">SECTION 56</div>
+      <h2>Phase 4 — Nexus AI</h2>
+      <p>Add natural-language profile creation, automation suggestions, profile debugging and intelligent integration setup.</p>
+    </section>
+    
+    <section id="phase-5-nexus-platform" class="doc-section" data-title="phase 5 — nexus platform">
+      <div class="section-kicker">SECTION 57</div>
+      <h2>Phase 5 — Nexus Platform</h2>
+      <p>Add public API, SDK, plugins, community profiles, integration marketplace and developer portal.</p>
+    </section>
+    
+    <section id="phase-6-nexus-teams" class="doc-section" data-title="phase 6 — nexus teams">
+      <div class="section-kicker">SECTION 58</div>
+      <h2>Phase 6 — Nexus Teams</h2>
+      <p>Add company focus profiles, team quiet-hour templates, shared automation profiles and privacy-respecting administration.</p><p>Avoid employee-surveillance positioning.</p>
+    </section>
+    
+    <section id="future-hardware-family" class="doc-section" data-title="future hardware family">
+      <div class="section-kicker">SECTION 59</div>
+      <h2>Future Hardware Family</h2>
+      <p>Possible future products:<br>• Nexus Ring Mini<br>• Nexus Ring Pro<br>• Nexus Ring Studio<br>• Nexus Ring Teams<br>• Nexus Button<br>• Nexus Totem Collection</p>
+    </section>
+    
+    <section id="website-messaging" class="doc-section" data-title="website messaging">
+      <div class="section-kicker">SECTION 60</div>
+      <h2>Website Messaging</h2>
+      <p>Hero:<br>Put your world in the right mode.</p><p>Subhead:<br>One physical action changes your apps, devices and environment to match what you&#x27;re doing.</p><p>Primary CTA:<br>Join the Waitlist</p><p>Secondary CTA:<br>Watch Nexus Work</p>
+    </section>
+    
+    <section id="crowdfunding-video" class="doc-section" data-title="crowdfunding video">
+      <div class="section-kicker">SECTION 61</div>
+      <h2>Crowdfunding Video</h2>
+      <p>Start with notification noise and distraction.</p><p>Then:<br>“The Nexus Ring solves the biggest bottleneck to modern success: relying on mental willpower to fight billion-dollar distraction algorithms.”</p><p>Hand reaches for Nexus.<br>CLACK.<br>Light activates.<br>Discord closes.<br>Social feed blocks.<br>Workspace opens.<br>Phone enters focus.<br>Lighting changes.</p><p>Voice-over:<br>“Make the decision once. Nexus protects it.”</p><p>Final:<br>“Put your world in the right mode.”</p>
+    </section>
+    
+    <section id="investor-story" class="doc-section" data-title="investor story">
+      <div class="section-kicker">SECTION 62</div>
+      <h2>Investor Story</h2>
+      <p>Layer 1 — Hardware: desirable physical interface.<br>Layer 2 — Software: cross-device automation and enforcement engine.<br>Layer 3 — Platform: integrations, developers, shared profiles, teams and future physical interfaces.</p><p>Long-term thesis: Nexus is building the physical interface layer between human intention and digital systems.</p>
+    </section>
+    
+    <section id="defensibility" class="doc-section" data-title="defensibility">
+      <div class="section-kicker">SECTION 63</div>
+      <h2>Defensibility</h2>
+      <p>Hardware can be copied. Defensibility must come from the automation engine, integration library, local enforcement, UX, hardware/software synchronization, developer ecosystem, profiles, brand, industrial design, reliability, community and privacy reputation.</p>
+    </section>
+    
+    <section id="what-not-to-build" class="doc-section" data-title="what not to build">
+      <div class="section-kicker">SECTION 64</div>
+      <h2>What Not to Build</h2>
+      <p>Avoid unnecessary displays, social feeds, productivity leaderboards, constant cloud dependency, generic AI chatbots, cameras/microphones without strong reason, attention-seeking notifications, excessive gamification, complicated menus and surveillance-oriented analytics.</p>
+    </section>
+    
+    <section id="product-standard" class="doc-section" data-title="product standard">
+      <div class="section-kicker">SECTION 65</div>
+      <h2>Product Standard</h2>
+      <p>Every feature should answer:<br>• Does it reduce friction?<br>• Does it protect user intention?<br>• Can it work locally?<br>• Will the user understand it immediately?<br>• Does it make Nexus calmer or noisier?</p>
+    </section>
+    
+    <section id="the-nexus-test" class="doc-section" data-title="the nexus test">
+      <div class="section-kicker">SECTION 66</div>
+      <h2>The Nexus Test</h2>
+      <p>Before approving any feature, ask:</p><p>“Does this help a person move from intention to action with less distraction?”</p><p>If yes, explore it. If no, it probably does not belong.</p>
+    </section>
+    
+    <section id="24-month-roadmap" class="doc-section" data-title="24-month roadmap">
+      <div class="section-kicker">SECTION 67</div>
+      <h2>24-Month Roadmap</h2>
+      <p>Months 0–3: Product truth — sensing, prototype, Windows daemon, Deep Work, blocking and launching.<br>Months 3–6: Engineering validation — custom PCB, enclosure, firmware, lighting, Windows stability, macOS alpha.<br>Months 6–9: Crowdfunding preparation — production prototype, demo units, landing page, waitlist, campaign video, supplier quotes.<br>Months 9–12: Crowdfunding and production validation — small run, QA, firmware, desktop release.<br>Months 12–18: Connected Nexus — mobile and major integrations.<br>Months 18–24: Platform foundation — Shield, API, plugins, AI composer and community profiles.</p>
+    </section>
+    
+    <section id="long-term-vision" class="doc-section" data-title="long-term vision">
+      <div class="section-kicker">SECTION 68</div>
+      <h2>Long-Term Vision</h2>
+      <p>The user should eventually walk to their desk, move one physical object and have their entire technological environment understand their intention.</p><p>“I am working now.”<br>The environment responds.</p><p>“I am creating now.”<br>The environment responds.</p><p>“I am meeting now.”<br>The environment responds.</p><p>“I am done.”<br>The environment lets go.</p>
+    </section>
+    
+    <section id="product-manifesto" class="doc-section" data-title="product manifesto">
+      <div class="section-kicker">SECTION 69</div>
+      <h2>Product Manifesto</h2>
+      <p>Technology should not require constant management.</p><p>Your devices should understand the state you deliberately choose.<br>Your tools should prepare themselves.<br>Your distractions should step aside.<br>Your environment should support your intention instead of competing against it.</p><p>The Nexus Ring solves the biggest bottleneck to modern success: relying on mental willpower to fight billion-dollar distraction algorithms.</p><p>Nexus does not promise success automatically. It protects the conditions in which focused work becomes easier to sustain.</p><p>You make the decision.<br>Nexus protects it.</p><p>Move the Ring.<br>Your environment changes.<br>Your attention remains yours.</p><p>NEXUS RING<br>Put your world in the right mode.</p>
+    </section>
+    
+</div>
+
+<footer>Nexus Ring Master Web Documentation · Product source-of-truth format</footer>
+</main>
+</div>
+
+<script>
+const search = document.getElementById('search');
+const sections = [...document.querySelectorAll('.doc-section')];
+const links = [...document.querySelectorAll('#nav a')];
+search.addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  sections.forEach(s => {
+    const match = !q || s.innerText.toLowerCase().includes(q);
+    s.classList.toggle('hidden', !match);
+  });
+  links.forEach(a => {
+    const target = document.querySelector(a.getAttribute('href'));
+    a.classList.toggle('hidden', target && target.classList.contains('hidden'));
+  });
+});
+const sidebar = document.getElementById('sidebar');
+document.getElementById('menuBtn').onclick = () => sidebar.classList.toggle('open');
+links.forEach(a => a.addEventListener('click', () => sidebar.classList.remove('open')));
+</script>
+</body>
+</html>
