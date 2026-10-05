@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   publisher: SITE_CONFIG.legalName,
   applicationName: "Nexus Ring",
   category: "technology",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
     description:

@@ -162,9 +162,9 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-4 font-mono text-xs">
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Vision</a>
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Design</a>
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">LinkedIn</a>
+            <Link href="/features" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Vision</Link>
+            <Link href="/hardware" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Design</Link>
+            <a href="https://linkedin.com/in/naqashafzal" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </section>

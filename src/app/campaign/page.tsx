@@ -232,9 +232,9 @@ export default function CampaignPage() {
             <h2 className="text-3xl font-display font-bold text-white mb-6">Build it with us.</h2>
             <p className="text-slate-400 mb-6">Backers should not disappear into a mailing list after funding. Nexus Ring should maintain a public development trail.</p>
             <div className="flex flex-wrap gap-4 font-mono text-sm">
-              <a href="#" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white">Discord</a>
-              <a href="#" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white">GitHub</a>
-              <a href="#" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white">MakerWorld</a>
+              <a href="https://discord.gg/Q3tTGhH4k" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white" target="_blank" rel="noopener noreferrer">Discord</a>
+              <a href="https://github.com/naqashafzal" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://makerworld.com" className="px-4 py-2 bg-vantablack border border-slate rounded-lg hover:text-white" target="_blank" rel="noopener noreferrer">MakerWorld</a>
             </div>
             
             <h3 className="text-xl font-bold text-white mt-12 mb-4">Stretch Goals</h3>
