@@ -48,10 +48,10 @@ function Reveal({
 // ─── FAQ Data ─────────────────────────────────────────────────────
 
 const FAQ_ITEMS = [
-  {q: "What is Nexus Ring?", a: "Nexus Ring is a physical desk controller designed to connect your intention with your digital workspace. Moving a magnetic totem between four positions selects a workflow mode."},
+  {q: "What is Nexus Ring?", a: "Nexus Ring is a physical intent computing device designed to connect your intention with your digital workspace. Moving a magnetic totem between four positions selects a workflow mode."},
   {q: "Can I customize the four modes?", a: "The product vision includes configurable workflows for Deep Work, Creative, Meeting and Break. Supported actions and integrations will be confirmed as development progresses."},
   {q: "Is Nexus Ring available to buy?", a: "Nexus Ring is currently in development. The waitlist is for launch updates, with no payment required. Final specifications, availability and pricing will be announced when ready."},
-  {q: "What does local-first mean?", a: "Core workspace automation is designed to run on your own devices. Final privacy details and any integration-specific requirements will be documented before launch."},
+  {q: "What does local-first mean?", a: "Core workspace automation is designed to run on your own devices. Zero friction, privacy by architecture, and keeping personal automation local."},
   {q: "How can I follow development?", a: "Visit the development page for the project direction, join the community, or sign up for email updates."},
 ];
 
@@ -93,11 +93,11 @@ export default function Home() {
             >
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-                Physical Digital-State Controller
+                Physical Intent Computing
               </span>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
-                Your workspace.<br />
+                Put your world in the<br />
                 <span
                   style={{
                     background:
@@ -107,12 +107,12 @@ export default function Home() {
                     backgroundClip: "text",
                   }}
                 >
-                  One physical switch.
+                  right mode.
                 </span>
               </h1>
 
               <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl">
-                Move the magnetic totem to change your apps, notifications and focus settings. A deliberate gesture for whatever comes next.
+                One physical action changes your apps, devices and environment to match what you're doing. The biggest bottleneck to modern success is relying on mental willpower to fight distraction algorithms.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -132,10 +132,10 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-3 pt-8 border-t border-white/5">
                 {[
-                  { label: "Deep Work · Creative · Meeting · Break", val: "4 Physical Modes" },
-                  { label: "Core automation stays on your devices", val: "Local-First" },
-                  { label: "Computer · Mobile · Workspace", val: "Cross-Device Vision" },
-                  { label: "Digital, DIY and assembled editions planned", val: "Maker Friendly" },
+                  { label: "Deep Work · Creative · Meeting · Break", val: "Default Modes" },
+                  { label: "Protect, Never Control", val: "Local First" },
+                  { label: "One Ring. Every device.", val: "Cross-Device State" },
+                  { label: "Digital, DIY and Pro editions", val: "Maker Ecosystem" },
                 ].map((stat) => (
                   <div key={stat.val}>
                     <p className="text-xs font-mono text-white font-semibold">
@@ -167,18 +167,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="relative z-20 bg-obsidian py-24 border-y border-slate">
+      <section id="vision" className="relative z-20 bg-obsidian py-24 border-y border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Reveal className="max-w-2xl mb-12">
-            <p className="eyebrow">A little less friction</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight">Make room for what matters.</h2>
-            <p className="mt-5 text-slate-400 text-lg leading-relaxed">Turn a change of intention into a change of environment. Nexus brings your workspace together around one simple action.</p>
+          {/* Top part: Problem and Principle */}
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+            <Reveal>
+              <p className="eyebrow">The Core Problem</p>
+              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight">Willpower is not a scalable system.</h2>
+              <p className="mt-5 text-slate-400 text-lg leading-relaxed">Modern digital environments constantly compete for your attention. Notifications, social feeds, and recommendation algorithms are billion-dollar systems designed to break your focus.</p>
+              <p className="mt-4 text-slate-400 text-lg leading-relaxed">Existing software blockers rely on the same distracted user to remember to activate and manage them. You shouldn't have to fight your own computer to do your job.</p>
+            </Reveal>
+            <Reveal delay={0.2} className="relative p-8 md:p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
+              <p className="eyebrow text-accent2">Product Principle</p>
+              <h3 className="text-2xl font-semibold mt-2 mb-4 text-white">Do not ask the user to repeatedly make the same good decision.</h3>
+              <p className="text-slate-300 leading-relaxed">Let them make the decision once and let the environment protect it. Nexus should never feel like a machine controlling the user. It should feel like a system protecting a decision you already made.</p>
+            </Reveal>
+          </div>
+
+          {/* Bottom part: Promise */}
+          <Reveal className="max-w-2xl mb-12 border-t border-white/10 pt-16">
+            <p className="eyebrow">Core Product Promise</p>
+            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight">Make the decision once. Nexus protects it.</h2>
+            <p className="mt-5 text-slate-400 text-lg leading-relaxed">You choose your intention once, place the physical totem, and let the system handle the rest.</p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {title: "Choose your mode", text: "Deep Work, Creative, Meeting or Break. Give each position a purpose that fits your day."},
-              {title: "Place the totem", text: "A tactile, magnetic interaction makes the transition feel deliberate. No extra tab to manage."},
-              {title: "Settle into your work", text: "Configure the apps and settings you want each mode to trigger through the companion software."},
+              {title: "Choose & Place", text: "You decide what you want to do. Move the physical totem into the corresponding Nexus mode. Physical intent comes first."},
+              {title: "Transform & Protect", text: "Apps, devices, notifications, tools and environment automatically change. Nexus Shield maintains the selected state."},
+              {title: "Disconnect & Recover", text: "When work is complete, Nexus helps you genuinely disconnect. A physical off-switch for your attention."},
             ].map((step, i) => <Reveal key={step.title} delay={i * 0.08} className="border-t border-white/15 pt-7"><span className="text-accent text-sm font-mono">0{i + 1}</span><h3 className="text-xl font-semibold mt-5 mb-3">{step.title}</h3><p className="text-slate-400 leading-relaxed">{step.text}</p></Reveal>)}
           </div>
         </div>
@@ -285,7 +301,7 @@ export default function Home() {
             In development · Get launch updates
           </p>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter mb-6 leading-[0.9] text-white">
-            Ready to feel<br />
+            Your attention has an<br />
             <span
               style={{
                 background: "linear-gradient(120deg, #FFFFFF, #94A3B8)",
@@ -294,11 +310,11 @@ export default function Home() {
                 backgroundClip: "text",
               }}
             >
-              the snap?
+              off switch.
             </span>
           </h2>
           <p className="text-slate-400 text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
-            Be part of the journey. Get updates on the build and hear when Nexus Ring is ready for its next chapter.
+            Take your focus out of the screen. Join the waitlist for updates on the build and hardware.
           </p>
           <button
             onClick={() => setShowComingSoon(true)}
