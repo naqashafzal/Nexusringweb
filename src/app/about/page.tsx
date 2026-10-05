@@ -13,24 +13,23 @@ export default function AboutPage() {
     <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden">
       <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      {/* 1. HERO */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            The Vision Behind Nexus Ring
+            Our Vision
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            PHYSICAL INTENT.<br /><span className="text-slate-400">DIGITAL EXECUTION.</span>
+            WE ARE RECLAIMING<br /><span className="text-slate-400">HUMAN INTENTION.</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Technology has learned how to capture attention. Nexus Ring is an attempt to give people a physical way to tell their technology what they actually intend to do.
+            Technology has spent the last decade learning how to perfectly capture our attention. We are building the physical anchor to help you take it back.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <Link href="/features" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
               See the Product <ChevronRight size={16} />
             </Link>
             <button className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
-              Follow the Build
+              Join the Mission
             </button>
           </div>
         </motion.div>
@@ -38,26 +37,26 @@ export default function AboutPage() {
 
       {/* 2. THE CORE PROBLEM */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 text-center">
-        <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8">The same screen contains your ambition and your distraction.</h2>
+        <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8">The screen holding your ambition is the same one holding your distraction.</h2>
         <p className="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto mb-4">
-          The computer you use to build your business, write code, design, learn and create also contains messages, feeds, videos, games and endless interruptions.
+          The machine you use to build your business, write code, design, learn, and create also contains endless feeds, notifications, and interruptions designed by teams of engineers to break your focus.
         </p>
         <p className="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto mb-4">
-          Most tools try to solve this by adding another button to the same screen.
+          The tech industry's answer? Add another app. Another blocker. Another digital switch hidden in the same chaotic screen.
         </p>
         <p className="text-white text-xl font-bold leading-relaxed max-w-3xl mx-auto">
-          Nexus Ring asks a different question: what if the decision happened physically first?
+          We asked a different question: What if the decision happened physically first?
         </p>
       </section>
 
       {/* 3. FOUNDER INSIGHT */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="p-8 md:p-12 border border-slate bg-matte rounded-3xl">
-          <h3 className="text-2xl font-bold text-white mb-6">It started with a simple frustration.</h3>
+          <h3 className="text-2xl font-bold text-white mb-6">It started with a fundamental realization.</h3>
           <div className="space-y-4 text-slate-400">
-            <p>Productivity software is easy to ignore because it lives inside the same digital environment it is trying to control.</p>
-            <p>A blocker can be closed. A setting can be forgotten. A focus mode can remain unused.</p>
-            <p className="text-white font-bold text-lg">The idea behind Nexus Ring is to move the moment of intention out of the screen and onto the desk.</p>
+            <p>Productivity software fails because it lives inside the very environment it is trying to control. It asks you to use willpower to turn on a blocker, while you are already overwhelmed.</p>
+            <p>A digital blocker can be easily closed. A setting is easily forgotten. A focus mode is easily bypassed.</p>
+            <p className="text-white font-bold text-lg">To truly protect your mind, the moment of intention has to be moved out of the screen and into the physical world.</p>
           </div>
         </div>
       </section>
@@ -68,22 +67,22 @@ export default function AboutPage() {
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">01</span>
             <h4 className="text-white font-bold mb-2">Physical Intent</h4>
-            <p className="text-sm text-slate-400">The user makes a deliberate physical decision.</p>
+            <p className="text-sm text-slate-400">A deliberate, tactile action that tells your brain it's time to shift gears.</p>
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">02</span>
             <h4 className="text-white font-bold mb-2">Digital Execution</h4>
-            <p className="text-sm text-slate-400">The environment responds automatically.</p>
+            <p className="text-sm text-slate-400">The entire environment bends to your will automatically.</p>
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">03</span>
-            <h4 className="text-white font-bold mb-2">Local Control</h4>
-            <p className="text-sm text-slate-400">Core behavior should remain under the user's control and run locally where practical.</p>
+            <h4 className="text-white font-bold mb-2">Local Sanctuary</h4>
+            <p className="text-sm text-slate-400">Your focus is yours. Automations run locally without surveillance.</p>
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">04</span>
-            <h4 className="text-white font-bold mb-2">Clear State</h4>
-            <p className="text-sm text-slate-400">The user should always know which mode is active. No hidden AI deciding everything.</p>
+            <h4 className="text-white font-bold mb-2">Absolute Clarity</h4>
+            <p className="text-sm text-slate-400">You always know exactly what mode you are in. No hidden AI guessing your needs.</p>
           </div>
         </div>
       </section>
@@ -150,18 +149,22 @@ export default function AboutPage() {
       <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
         <div className="p-8 md:p-12 border border-slate bg-matte rounded-3xl">
           <h2 className="text-4xl font-display font-bold text-white mb-2">Naqash Afzal</h2>
-          <p className="text-accent font-mono text-sm tracking-widest uppercase mb-6">Founder — Nexus Ring</p>
-          <p className="text-lg text-white font-medium mb-4">
-            Designer, developer and maker working across product design, 3D printing, software and electronics.
+          <p className="text-accent font-mono text-sm tracking-widest uppercase mb-6">Visionary & Founder</p>
+          <p className="text-xl text-white font-medium mb-6 leading-relaxed border-l-2 border-accent pl-4">
+            "We are not building a gadget. We are building the physical boundary between human intention and algorithmic distraction."
           </p>
-          <p className="text-slate-400 mb-8">
-            Nexus Ring grew from an interest in building tools that connect physical interaction with digital systems. The goal is to create a product that makes switching into the right environment simpler, more deliberate and more repeatable.
-          </p>
+          <div className="space-y-4 text-slate-400 mb-8 leading-relaxed">
+            <p>
+              Naqash recognized a fundamental flaw in modern computing: our machines have infinite willpower, but we do not. After witnessing countless talented people lose hours of their lives fighting their own tools, he realized the solution wasn't another piece of software. 
+            </p>
+            <p>
+              The solution had to be physical. It had to be a tangible anchor that respects human psychology. Naqash combined hardware engineering, industrial design, and an uncompromising philosophy to create the Nexus Ring—a lifeline for a generation exhausted by digital noise.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-4 font-mono text-xs">
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">MakerWorld</a>
+            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Vision</a>
+            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Design</a>
             <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="px-4 py-2 border border-slate rounded-lg hover:bg-slate hover:text-white transition-colors">Discord</a>
           </div>
         </div>
       </section>
@@ -214,23 +217,23 @@ export default function AboutPage() {
       {/* 9. CTA */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
         <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
-          The goal isn't to add another productivity app.
+          The goal isn't to add another app. It's to give you your mind back.
         </h2>
         <div className="text-slate-400 text-lg mb-12 space-y-2">
-          <p>The goal is to make the transition between intention and action tangible.</p>
-          <p className="text-white">You decide what you are doing.</p>
-          <p className="text-white">The physical environment confirms it.</p>
-          <p className="text-white">The digital environment follows.</p>
+          <p>We are making the transition between intention and action tangible.</p>
+          <p className="text-white font-bold">You decide what you are doing.</p>
+          <p className="text-white font-bold">The physical environment confirms it.</p>
+          <p className="text-white font-bold">The digital environment obeys.</p>
         </div>
         <h3 className="text-4xl md:text-5xl font-display font-black text-accent tracking-tight mb-12">
-          PHYSICAL INTENT. DIGITAL EXECUTION.
+          YOUR ATTENTION. YOUR RULES.
         </h3>
         <div className="flex flex-wrap justify-center gap-4">
           <Link href="/features" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
-            Explore Features
+            See it in Action
           </Link>
           <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">
-            Join the Build
+            Join the Waitlist
           </button>
         </div>
       </section>

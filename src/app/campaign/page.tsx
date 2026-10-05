@@ -17,13 +17,13 @@ export default function CampaignPage() {
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            Crowdfunding — Preparing for Launch
+            The Mission
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            HELP US TURN NEXUS RING<br /><span className="text-slate-400">INTO A REAL PRODUCT.</span>
+            JOIN THE REBELLION<br /><span className="text-slate-400">AGAINST DISTRACTION.</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Nexus Ring is moving from prototype hardware and software development toward its first production-ready ecosystem. Join the launch list, follow the build and help shape Batch 01.
+            We are bringing the Nexus Ring into reality. This isn't just about launching a product; it's about reclaiming our time, our focus, and our minds. Back the project and secure your lifeline.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
@@ -47,10 +47,10 @@ export default function CampaignPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-display font-bold text-white mb-6">Why we're building Nexus Ring.</h2>
-            <p className="text-slate-400 mb-4">The problem isn't that people don't know they should focus. The problem is that the tools used for work and distraction are the same tools.</p>
-            <p className="text-slate-400 mb-4">Nexus Ring creates a physical boundary between intention and digital execution.</p>
-            <p className="text-white font-bold">Choose a mode physically. Let the software prepare the environment.</p>
+            <h2 className="text-3xl font-display font-bold text-white mb-6">Why we are fighting back.</h2>
+            <p className="text-slate-400 mb-4">The problem isn't your discipline. The problem is that billion-dollar companies have spent decades figuring out how to hijack the exact same screens you use to do your life's work.</p>
+            <p className="text-slate-400 mb-4">Nexus Ring is our physical counter-measure. A concrete boundary between what you intend to do, and the digital noise trying to stop you.</p>
+            <p className="text-white font-bold">You decide. The totem enforces it.</p>
           </div>
           <div className="p-6 bg-matte border border-slate rounded-2xl flex flex-col items-center justify-center font-mono text-sm text-center">
             <span className="text-white font-bold">MOVE TOTEM</span>
@@ -292,12 +292,12 @@ export default function CampaignPage() {
       {/* 9. CTA */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
         <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
-          A physical interface for a more intentional digital life.
+          Take your mind back.
         </h2>
         <div className="text-slate-400 text-lg mb-12 space-y-4 max-w-2xl mx-auto">
-          <p>Nexus Ring started as a simple question: what if changing your digital environment were as deliberate as moving a physical object on your desk?</p>
-          <p>We're building the hardware, software and maker ecosystem needed to answer that question properly.</p>
-          <p className="text-white font-bold">Join the first group helping turn the idea into a production product.</p>
+          <p>We are exhausted by the digital noise. We are tired of fighting algorithms to do our work. And we believe the only way to win is to step out of the screen.</p>
+          <p>We are building the hardware, software, and community to make focus physical again.</p>
+          <p className="text-white font-bold">Stand with us. Join the waitlist for Batch 01.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">

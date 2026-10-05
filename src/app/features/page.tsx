@@ -124,21 +124,21 @@ export default function FeaturesPage() {
           className="max-w-4xl mx-auto space-y-6 relative z-10"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            Physical Intent → Digital Execution
+            The Physical Anchor
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
             ONE PHYSICAL MOVE.<br />
-            <span className="text-slate-400">AN ENTIRE WORKSPACE CHANGES.</span>
+            <span className="text-slate-400">TOTAL DIGITAL CLARITY.</span>
           </h1>
 
           <p className="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Place the Nexus Totem into Deep Work, Creative, Meeting or Break. Nexus Companion reads the mode and runs the profile you created — preparing your apps, reducing distractions, changing notifications and triggering supported workspace automations.
+            Place the heavy magnetic totem into position. Nexus reads the physical mode and instantly enforces your digital boundaries—closing distractions, opening workspaces, and shielding your attention from the chaos.
           </p>
 
           <p className="text-white text-lg font-medium">
-            No hunting through menus. No rebuilding your setup every time.<br/>
-            You choose the state. Nexus handles the transition.
+            No hunting through menus. No fighting your own willpower.<br/>
+            You make the decision once. Nexus protects it.
           </p>
 
           {/* CTAs */}
@@ -251,9 +251,9 @@ export default function FeaturesPage() {
       {/* ════════════════ 3. HOW NEXUS WORKS ════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">One gesture becomes a digital command.</h2>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">From intention to action in one second.</h2>
           <p className="text-slate-400">
-            Nexus Ring separates intention from execution. You choose the state physically. The companion software handles the repetitive setup.
+            Nexus Ring bridges the gap between what you want to do and actually doing it. You choose the state physically; the software enforces the boundaries.
           </p>
         </div>
 
@@ -362,9 +362,9 @@ export default function FeaturesPage() {
 
       {/* ════════════════ 6. LOCAL-FIRST & PRIVACY ════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
-        <h2 className="text-4xl font-display font-bold text-white mb-6">Your focus system shouldn't need permission from the cloud.</h2>
+        <h2 className="text-4xl font-display font-bold text-white mb-6">A sanctuary, not a surveillance tool.</h2>
         <p className="text-slate-400 max-w-2xl mx-auto mb-16">
-          Core Nexus Ring automation is being designed around local communication between the hardware and companion software.
+          We don't want your data. Your focus is your own. The core Nexus automation runs completely locally on your machine—no cloud permissions required.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -490,14 +490,14 @@ export default function FeaturesPage() {
       {/* ════════════════ 11. CLOSING CTA ════════════════ */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
         <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
-          YOUR WORKSPACE SHOULD KNOW WHAT YOU'RE TRYING TO DO.
+          YOUR ATTENTION HAS AN OFF SWITCH.
         </h2>
         <p className="text-slate-400 text-lg mb-4 max-w-2xl mx-auto">
-          Deep Work shouldn't begin with five minutes of closing apps. A meeting shouldn't begin with scrambling through settings. A break shouldn't be interrupted by work notifications.
+          You don't lack discipline. You lack a boundary. Deep Work shouldn't begin with fighting distractions. A break shouldn't be interrupted by work notifications.
         </p>
         <p className="text-white font-bold text-xl mb-12">
           Nexus Ring turns those transitions into something physical.<br/><br/>
-          Move the totem.<br/>Change the mode.<br/>Let the environment follow.
+          Make the decision once.<br/>Nexus protects it.
         </p>
         
         <div className="flex flex-wrap justify-center gap-4">

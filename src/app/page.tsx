@@ -97,7 +97,7 @@ export default function Home() {
               </span>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
-                Put your world in the<br />
+                Your attention is<br />
                 <span
                   style={{
                     background:
@@ -107,12 +107,12 @@ export default function Home() {
                     backgroundClip: "text",
                   }}
                 >
-                  right mode.
+                  slipping away.
                 </span>
               </h1>
 
               <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl">
-                One physical action changes your apps, devices and environment to match what you're doing. The biggest bottleneck to modern success is relying on mental willpower to fight distraction algorithms.
+                We spend our days fighting our own screens just to get our work done. The Nexus Ring is the physical off-switch for digital distraction. One deliberate move changes your apps, your notifications, and your entire environment.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -172,49 +172,48 @@ export default function Home() {
           {/* Top part: Problem and Principle */}
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <Reveal>
-              <p className="eyebrow">The Core Problem</p>
-              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight">Willpower is not a scalable system.</h2>
-              <p className="mt-5 text-slate-400 text-lg leading-relaxed">Modern digital environments constantly compete for your attention. Notifications, social feeds, and recommendation algorithms are billion-dollar systems designed to break your focus.</p>
-              <p className="mt-4 text-slate-400 text-lg leading-relaxed">Existing software blockers rely on the same distracted user to remember to activate and manage them. You shouldn't have to fight your own computer to do your job.</p>
+              <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Silent Crisis</p>
+              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white mb-6">Willpower was never going to be enough.</h2>
+              <p className="text-slate-400 text-lg leading-relaxed mb-4">Every day, you sit at your desk and wage a quiet war. On one side: your goals, your deadlines, and your peace of mind. On the other side: billion-dollar algorithms, endless notifications, and the chaotic hum of a dozen open tabs specifically engineered to steal your focus.</p>
+              <p className="text-slate-400 text-lg leading-relaxed font-medium border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl mt-6">You don't lack discipline. You lack a boundary. You shouldn't have to fight your own computer just to do your job.</p>
             </Reveal>
             <Reveal delay={0.2} className="relative p-8 md:p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
-              <p className="eyebrow text-accent2">Product Principle</p>
-              <h3 className="text-2xl font-semibold mt-2 mb-4 text-white">Do not ask the user to repeatedly make the same good decision.</h3>
-              <p className="text-slate-300 leading-relaxed">Let them make the decision once and let the environment protect it. Nexus should never feel like a machine controlling the user. It should feel like a system protecting a decision you already made.</p>
+              <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Nexus Philosophy</p>
+              <h3 className="text-3xl font-semibold mt-2 mb-6 text-white leading-tight">Make the right decision exactly once. We’ll protect it.</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">The Nexus Ring isn't another productivity app demanding your attention. It's a physical anchor for your intention.</p>
+              <p className="text-slate-300 leading-relaxed">You don't click a button. You don't navigate a menu. You simply snap the heavy, magnetic totem into position. That single physical action tells your entire digital world exactly what you need right now. And then? The noise stops. You finally get to breathe—and work.</p>
             </Reveal>
           </div>
 
           {/* Bottom part: Promise */}
           <Reveal className="max-w-2xl mb-12 border-t border-white/10 pt-16">
-            <p className="eyebrow">Core Product Promise</p>
-            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight">Make the decision once. Nexus protects it.</h2>
-            <p className="mt-5 text-slate-400 text-lg leading-relaxed">You choose your intention once, place the physical totem, and let the system handle the rest.</p>
+            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white">From intention to action in one second.</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {title: "Choose & Place", text: "You decide what you want to do. Move the physical totem into the corresponding Nexus mode. Physical intent comes first."},
-              {title: "Transform & Protect", text: "Apps, devices, notifications, tools and environment automatically change. Nexus Shield maintains the selected state."},
-              {title: "Disconnect & Recover", text: "When work is complete, Nexus helps you genuinely disconnect. A physical off-switch for your attention."},
-            ].map((step, i) => <Reveal key={step.title} delay={i * 0.08} className="border-t border-white/15 pt-7"><span className="text-accent text-sm font-mono">0{i + 1}</span><h3 className="text-xl font-semibold mt-5 mb-3">{step.title}</h3><p className="text-slate-400 leading-relaxed">{step.text}</p></Reveal>)}
+              {title: "Choose & Place", text: "Decide what you need to do, and slide the physical totem into the corresponding mode. The tactile feedback tells your brain it’s time to shift gears."},
+              {title: "Transform & Protect", text: "Instantly, your environment bends to your will. Distracting websites are blocked, Slack goes quiet, your coding tools open, and your lighting shifts. Nexus Shield locks it in."},
+              {title: "Disconnect & Recover", text: "When the work is done, move the totem to Break. Work notifications vanish. Projects hide. The environment softens. Because shutting off is just as important as turning on."},
+            ].map((step, i) => <Reveal key={step.title} delay={i * 0.08} className="border-t border-white/15 pt-7"><span className="text-accent text-sm font-mono">0{i + 1}</span><h3 className="text-xl font-semibold mt-5 mb-3 text-white">{step.title}</h3><p className="text-slate-400 leading-relaxed">{step.text}</p></Reveal>)}
           </div>
         </div>
       </section>
       <section id="modes" className="relative z-20 bg-vantablack py-24 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="max-w-2xl mb-12">
-            <p className="eyebrow">Four modes. Your rhythm.</p>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">A place for every part of your day.</h2>
-            <p className="mt-5 text-slate-400 text-lg leading-relaxed">Select a mode to explore its intended workflow. These previews illustrate the product vision; integrations are still in development.</p>
+            <p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2">Your Rhythm</p>
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Four modes. Infinite control.</h2>
+            <p className="text-slate-400 text-lg leading-relaxed">Your day isn't just "work" and "not work." Give every part of your day a physical home. These previews illustrate the product vision; integrations are still in development.</p>
           </Reveal>
           <HardwareModesShowcase />
         </div>
       </section>
       <section className="relative z-20 bg-obsidian py-24 border-y border-slate">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12">
-          <Reveal><p className="eyebrow">Physical intent. Digital execution.</p><h2 className="text-4xl md:text-5xl font-semibold tracking-tight">Thoughtful hardware.<br /><span className="text-slate-400">Personal software.</span></h2><p className="text-slate-400 text-lg mt-6 leading-relaxed">A desk controller you can touch, paired with workflows you can shape. Explore the design and the software behind it.</p></Reveal>
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+          <Reveal><p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2 text-accent2">Calm Technology</p><h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white leading-tight">We built a sanctuary,<br /><span className="text-slate-400">not a surveillance tool.</span></h2><p className="text-slate-400 text-lg mt-6 leading-relaxed">Nexus isn't here to lock you in a digital cage or make you feel guilty. It’s here to quietly guard the door so you can work in peace.</p></Reveal>
           <div className="space-y-4">
-            <Link href="/hardware" className="product-link"><span><span className="eyebrow block">The object</span><span className="text-2xl font-semibold">Built around a simple gesture</span><span className="block text-slate-400 mt-3">Explore the ring, magnetic totem and hardware design.</span></span><ChevronRight className="shrink-0" /></Link>
-            <Link href="/software" className="product-link"><span><span className="eyebrow block">The companion</span><span className="text-2xl font-semibold">Your modes, your rules</span><span className="block text-slate-400 mt-3">Discover the local-first automation approach.</span></span><ChevronRight className="shrink-0" /></Link>
+            <Link href="/hardware" className="product-link"><span><span className="eyebrow block">Zero Screens</span><span className="text-2xl font-semibold text-white">You look at enough screens</span><span className="block text-slate-400 mt-3">Nexus communicates through weight, magnetic resistance, and a soft, calming glow.</span></span><ChevronRight className="shrink-0" /></Link>
+            <Link href="/software" className="product-link"><span><span className="eyebrow block">Local-First Privacy</span><span className="text-2xl font-semibold text-white">Your rules, on your device</span><span className="block text-slate-400 mt-3">We don't want your data. Your automations live entirely on your own devices.</span></span><ChevronRight className="shrink-0" /></Link>
           </div>
         </div>
       </section>
@@ -314,7 +313,7 @@ export default function Home() {
             </span>
           </h2>
           <p className="text-slate-400 text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
-            Take your focus out of the screen. Join the waitlist for updates on the build and hardware.
+            You deserve to finish your workday feeling accomplished, not drained. Be part of the journey and get behind-the-scenes updates.
           </p>
           <button
             onClick={() => setShowComingSoon(true)}
@@ -323,7 +322,7 @@ export default function Home() {
             Join the Waitlist <ChevronRight size={18} />
           </button>
           <p className="text-slate-500 text-xs mt-6 font-mono tracking-widest">
-            No payment required. Launch details will be shared when ready.
+            No payment required.
           </p>
         </Reveal>
       </section>

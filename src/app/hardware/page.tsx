@@ -28,13 +28,13 @@ export default function HardwarePage() {
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            Physical Intent Layer
+            The Physical Anchor
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            BUILT AROUND ONE<br /><span className="text-slate-400">DELIBERATE MOVEMENT.</span>
+            BUILT AROUND ONE<br /><span className="text-slate-400">DELIBERATE DECISION.</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Nexus Ring turns a physical choice into a digital mode change. A magnetic totem, Hall-effect sensing, local electronics and ambient light work together to create a simple physical interface for Deep Work, Creative, Meeting and Break.
+            You cannot fight algorithms with willpower alone. You need a physical boundary. The Nexus Ring uses heavy magnetic resistance, Hall-effect sensing, and local computing to anchor your attention in the physical world.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <a href="#interactive-3d" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
@@ -95,7 +95,7 @@ export default function HardwarePage() {
       {/* 4. EXPLODED HARDWARE ARCHITECTURE */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 space-y-24">
         <div className="text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">Designed as a system, not a gadget.</h2>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">A sanctuary. Not a gadget.</h2>
         </div>
 
         {/* Enclosure */}
@@ -190,7 +190,7 @@ export default function HardwarePage() {
           <div className="p-8 border border-slate bg-matte rounded-3xl">
             <Fingerprint size={32} className="text-accent mb-6" />
             <h3 className="text-2xl font-bold text-white mb-4">The interaction matters.</h3>
-            <p className="text-sm text-slate-400">The user should feel a clear difference between casually clicking a software button and physically moving the Nexus Totem into another state. Designed to create a repeatable physical ritual.</p>
+            <p className="text-sm text-slate-400">The human brain needs a clear boundary. There is a profound difference between clicking a digital toggle and physically slamming a weighted magnetic totem into place to protect your time.</p>
           </div>
           <div className="p-8 border border-slate bg-matte rounded-3xl">
             <Layers size={32} className="text-accent mb-6" />

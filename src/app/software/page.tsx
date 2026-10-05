@@ -17,13 +17,13 @@ export default function SoftwarePage() {
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            Digital Execution Layer
+            The Digital Execution
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            YOUR MODE CHANGES.<br /><span className="text-slate-400">YOUR COMPUTER FOLLOWS.</span>
+            YOUR MIND DECIDES.<br /><span className="text-slate-400">THE MACHINE OBEYS.</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Nexus Companion turns physical mode changes into configurable automations across your apps, websites, notifications, timers and supported integrations.
+            The Nexus Companion software is the silent bodyguard for your attention. It translates your physical intent into absolute digital boundaries—stripping away distractions and deploying the tools you need instantly.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <a href="#mode-profiles" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
@@ -139,8 +139,8 @@ export default function SoftwarePage() {
       {/* 5. PRIVACY & ARCHITECTURE */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">Core automation should not depend on a remote server.</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">Nexus Companion is being designed so mode detection and core desktop automations can run locally between the Nexus Ring hardware and the user's computer.</p>
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">Total privacy. Zero surveillance.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Your attention is your most valuable asset. The Nexus Companion runs entirely locally—no remote servers, no cloud dependencies, and absolutely no surveillance.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 border border-slate bg-matte rounded-2xl">
@@ -318,10 +318,10 @@ update_status`}
       {/* 13. CTA */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
         <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
-          YOU CHOOSE THE MODE.<br />NEXUS HANDLES THE TRANSITION.
+          STOP FIGHTING YOUR COMPUTER.
         </h2>
         <p className="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">
-          Build the profile once. Then let one physical movement prepare the environment every time you need it.
+          You have better things to do than manage tabs, notifications, and blockers. Make the decision once.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
