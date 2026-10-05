@@ -14,14 +14,18 @@ export async function POST(request: Request) {
       source = "unknown",
     } = data;
 
-    if (!email) {
+    if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
       return NextResponse.json(
-        { error: "Email is required" },
+        { error: "A valid email is required" },
         { status: 400 }
       );
     }
 
     const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL?.trim();
+
+    if (!discordWebhookUrl) {
+      return NextResponse.json({ error: "Signup is temporarily unavailable" }, { status: 503 });
+    }
 
     // Prepare Discord Webhook Embed
     let embed;
@@ -143,6 +147,7 @@ export async function POST(request: Request) {
         console.error(
           `[Discord Webhook Error] Status: ${response.status} ${response.statusText}`
         );
+        return NextResponse.json({ error: "Unable to save signup" }, { status: 502 });
       }
     } else {
       console.warn(

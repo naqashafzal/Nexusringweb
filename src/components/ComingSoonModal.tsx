@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles, CheckCircle2, ArrowRight, Bell, ShieldCheck } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Bell, ShieldCheck } from "lucide-react";
 
 interface ComingSoonModalProps {
   isOpen: boolean;
@@ -21,23 +21,47 @@ export default function ComingSoonModal({
 }: ComingSoonModalProps) {
   const [email, setEmail] = useState(initialEmail);
   const [submitted, setSubmitted] = useState(initialSubmitted);
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Sync initialEmail/initialSubmitted when modal opens
   React.useEffect(() => {
-    if (isOpen) {
-      if (initialEmail) setEmail(initialEmail);
-      if (initialSubmitted) setSubmitted(true);
-    }
-  }, [isOpen, initialEmail, initialSubmitted]);
+    if (!isOpen) return;
+    const timer = window.setTimeout(() => {
+      setEmail(initialEmail);
+      setSubmitted(initialSubmitted);
+      setError("");
+    }, 0);
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusTimer = window.setTimeout(() => document.querySelector<HTMLElement>('[role="dialog"] input, [role="dialog"] button')?.focus(), 50);
+    const keyHandler = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+      if (event.key !== "Tab") return;
+      const controls = Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"] button:not(:disabled), [role="dialog"] input, [role="dialog"] a[href]'));
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(focusTimer);
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", keyHandler);
+      previousFocus?.focus();
+    };
+  }, [isOpen, initialEmail, initialSubmitted, onClose]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || isSubmitting) return;
 
+    setError("");
     setIsSubmitting(true);
     try {
-      await fetch("/api/notify", {
+      const response = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,15 +71,18 @@ export default function ComingSoonModal({
           source: typeof window !== "undefined" ? window.location.pathname : "/modal",
         }),
       });
+      if (!response.ok) throw new Error("Submission failed");
+      setSubmitted(true);
     } catch (err) {
       console.error("Error submitting waitlist email:", err);
+      setError("We couldn’t save your signup. Please try again in a moment.");
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
   const handleClose = () => {
+    setError("");
     onClose();
     setTimeout(() => {
       setSubmitted(false);
@@ -82,7 +109,8 @@ export default function ComingSoonModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg rounded-3xl border border-accent/40 bg-matte p-8 sm:p-10 shadow-[0_0_80px_rgba(0,255,157,0.25)] text-left overflow-hidden z-10"
+            role="dialog" aria-modal="true" aria-labelledby="waitlist-title"
+            className="relative w-full max-w-lg rounded-3xl border border-accent/40 bg-matte p-8 sm:p-10 shadow-[0_0_80px_rgba(255,51,79,0.25)] text-left overflow-hidden z-10"
           >
             {/* Top decorative glow */}
             <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-accent/[0.15] blur-[60px] pointer-events-none" />
@@ -105,11 +133,11 @@ export default function ComingSoonModal({
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white">
+                  <h3 id="waitlist-title" className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white">
                     JOIN THE FIRST LAUNCH.
                   </h3>
                   <p className="text-slate-400 text-sm sm:text-base font-light leading-relaxed">
-                    Choose the version you're interested in and we'll notify you when crowdfunding or ordering opens. **No payment today.**
+                    Get development updates and hear when ordering opens. No payment required.
                   </p>
                 </div>
 
@@ -126,13 +154,16 @@ export default function ComingSoonModal({
                     <span>EARLY ACCESS NOTIFICATION</span>
                   </div>
                   <p className="text-xs text-slate-400 font-light leading-relaxed">
-                    Enter your email to receive an exclusive invite 1 hour before the public launch to lock in your Early Access spot.
+                    Enter your email for progress updates and launch availability.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
+                  {error && <p role="alert" className="text-sm text-red-300">{error}</p>}
                   <div className="flex flex-col sm:flex-row gap-2">
                     <input
+                      aria-label="Email address"
+                      autoComplete="email"
                       type="email"
                       required
                       placeholder="Enter your email address"
@@ -143,7 +174,7 @@ export default function ComingSoonModal({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-3.5 rounded-xl bg-accent hover:bg-[#00ffaa] disabled:opacity-60 text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(0,255,157,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+                      className="px-6 py-3.5 rounded-xl bg-accent hover:bg-[#e82d48] disabled:opacity-60 text-vantablack font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(255,51,79,0.4)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
@@ -168,22 +199,22 @@ export default function ComingSoonModal({
                       rel="noopener noreferrer"
                       className="text-[#5865F2] hover:text-white transition-colors flex items-center gap-1"
                     >
-                      <span>Join Discord ➔</span>
+                      <span>Join Discord →</span>
                     </a>
                   </div>
                 </form>
               </div>
             ) : (
               <div className="py-8 text-center space-y-5 relative z-10">
-                <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/40 text-accent flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(0,255,157,0.3)]">
+                <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/40 text-accent flex items-center justify-center mx-auto shadow-[0_0_40px_rgba(255,51,79,0.3)]">
                   <CheckCircle2 size={32} />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-2xl font-display font-bold text-white">
-                    You're on the Early Access List!
+                  <h4 id="waitlist-title" className="text-2xl font-display font-bold text-white">
+                    You’re on the Waitlist!
                   </h4>
                   <p className="text-sm text-slate-400 max-w-sm mx-auto font-light">
-                    We’ve reserved your spot. As soon as the campaign goes live, we'll send your direct link with guaranteed early access.
+                    Thanks for joining. We’ll share development updates and let you know when the launch is ready.
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl border border-[#5865F2]/40 bg-[#5865F2]/10 space-y-3 text-left">

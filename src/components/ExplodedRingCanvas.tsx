@@ -80,7 +80,7 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
     () =>
       new THREE.MeshStandardMaterial({
         color: new THREE.Color("#002a18"),
-        emissive: new THREE.Color("#00FF9D"),
+        emissive: new THREE.Color("#ff6a7d"),
         emissiveIntensity: 1.8,
         roughness: 0.15,
         metalness: 0.3,
@@ -93,8 +93,8 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
   const glowMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#00FF9D"),
-        emissive: new THREE.Color("#00FF9D"),
+        color: new THREE.Color("#ff6a7d"),
+        emissive: new THREE.Color("#ff6a7d"),
         emissiveIntensity: 3.2,
         roughness: 0.1,
         toneMapped: false,
@@ -126,7 +126,7 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
     () =>
       new THREE.MeshStandardMaterial({
         color: new THREE.Color("#ffffff"),
-        emissive: new THREE.Color("#00FF9D"),
+        emissive: new THREE.Color("#ff6a7d"),
         emissiveIntensity: 0.4,
         roughness: 0.3,
         metalness: 0.2,
@@ -414,10 +414,10 @@ export default function ExplodedRingCanvas({
           {/* Robust Self-Contained Studio Lighting (100% offline & instant) */}
           <ambientLight intensity={1.6} color="#e0f2fe" />
           <directionalLight position={[12, 18, 12]} intensity={3.0} color="#ffffff" />
-          <directionalLight position={[-12, 10, -8]} intensity={2.2} color="#00FF9D" />
-          <directionalLight position={[0, -8, 10]} intensity={1.0} color="#00E5FF" />
-          <pointLight position={[0, 6, 0]} intensity={2.5} color="#00FF9D" distance={15} />
-          <pointLight position={[-4, 2, 4]} intensity={1.8} color="#00E5FF" distance={12} />
+          <directionalLight position={[-12, 10, -8]} intensity={2.2} color="#ff6a7d" />
+          <directionalLight position={[0, -8, 10]} intensity={1.0} color="#ffffff" />
+          <pointLight position={[0, 6, 0]} intensity={2.5} color="#ff6a7d" distance={15} />
+          <pointLight position={[-4, 2, 4]} intensity={1.8} color="#ffffff" distance={12} />
 
           <OrbitControls
             enableZoom={false}

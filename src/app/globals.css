@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/fonts/inter-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(/fonts/space-grotesk-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
   /* We redefine the base tailwind colors to use CSS variables so they can swap */
   --color-white: var(--tw-white);
@@ -35,63 +53,26 @@
 }
 
 :root {
-  /* LIGHT MODE (Default/Base) */
-  --background: #F8FAFC;
-  --foreground: #030508;
-  
-  --tw-white: #030508;
-  --tw-black: #FFFFFF;
-
-  /* Inverse slate scale */
-  --tw-slate-100: #0f172a;
-  --tw-slate-200: #1e293b;
-  --tw-slate-300: #334155;
-  --tw-slate-400: #475569;
-  --tw-slate-500: #64748b;
-  --tw-slate-600: #94a3b8;
-  --tw-slate-700: #cbd5e1;
-  --tw-slate-800: #e2e8f0;
-  --tw-slate-900: #f1f5f9;
-  --tw-slate-950: #f8fafc;
-
-  /* Custom App Colors - Light versions */
-  --color-vantablack-theme: #FFFFFF;
-  --color-obsidian-theme: #F1F5F9;
-  --color-matte-theme: #E2E8F0;
-  --color-slate-theme: #CBD5E1;
-
-  --bg-pattern: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* DARK MODE */
-    --background: #030508;
-    --foreground: #F8FAFC;
-    
-    --tw-white: #ffffff;
-    --tw-black: #000000;
-  
-    /* Normal slate scale */
-    --tw-slate-100: #f1f5f9;
-    --tw-slate-200: #e2e8f0;
-    --tw-slate-300: #cbd5e1;
-    --tw-slate-400: #94a3b8;
-    --tw-slate-500: #64748b;
-    --tw-slate-600: #475569;
-    --tw-slate-700: #334155;
-    --tw-slate-800: #1e293b;
-    --tw-slate-900: #0f172a;
-    --tw-slate-950: #020617;
-  
-    /* Custom App Colors - Dark versions */
-    --color-vantablack-theme: #030508;
-    --color-obsidian-theme: #030508;
-    --color-matte-theme: #070A10;
-    --color-slate-theme: #151D2A;
-
-    --bg-pattern: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  }
+  color-scheme: dark;
+  --background: #08090c;
+  --foreground: #f8fafc;
+  --tw-white: #ffffff;
+  --tw-black: #000000;
+  --tw-slate-100: #f1f5f9;
+  --tw-slate-200: #e2e8f0;
+  --tw-slate-300: #cbd5e1;
+  --tw-slate-400: #a1a8b5;
+  --tw-slate-500: #8a94a4;
+  --tw-slate-600: #64748b;
+  --tw-slate-700: #334155;
+  --tw-slate-800: #1e293b;
+  --tw-slate-900: #0f172a;
+  --tw-slate-950: #020617;
+  --color-vantablack-theme: #08090c;
+  --color-obsidian-theme: #101216;
+  --color-matte-theme: #15181e;
+  --color-slate-theme: #292d35;
+  --bg-pattern: none;
 }
 
 body {
@@ -124,4 +105,14 @@ h1, h2, h3, h4, h5, h6 {
     background-clip: text;
     color: transparent;
   }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+:focus-visible { outline: 2px solid #ff6a7d; outline-offset: 5px; }
+.eyebrow { color: #ff6a7d; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+.product-link { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px; border: 1px solid #292d35; border-radius: 20px; background: #15181e; transition: border-color .2s, background .2s; }
+.product-link:hover { border-color: #ff6a7d; background: #1b1e25; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
