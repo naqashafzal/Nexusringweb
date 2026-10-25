@@ -282,7 +282,7 @@ export default function FeaturesPage() {
         <div className="text-center">
           <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">Four physical modes.<br/>Four different digital environments.</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Each mode is a configurable profile. Nexus Ring doesn't decide how you work — you decide what each physical position means.
+            Each mode is a configurable profile. Nexus Ring doesn&apos;t decide how you work — you decide what each physical position means.
           </p>
         </div>
 
@@ -322,7 +322,7 @@ export default function FeaturesPage() {
           <div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Your modes. Your rules.</h2>
             <p className="text-slate-300 leading-relaxed mb-6">
-              Every mode can be customized. A developer's Deep Work setup may look completely different from a designer's, founder's or student's.
+              Every mode can be customized. A developer&apos;s Deep Work setup may look completely different from a designer&apos;s, founder&apos;s or student&apos;s.
             </p>
             <div className="space-y-4">
               {[
@@ -353,8 +353,8 @@ export default function FeaturesPage() {
               <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Enable DND</label>
               <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Start 90-minute timer</label>
             </div>
-            <button className="w-full mt-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-slate-200 transition-colors">
-              Save Profile
+            <button onClick={() => setShowComingSoon(true)} className="w-full mt-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-slate-200 transition-colors">
+              Get companion updates
             </button>
           </div>
         </div>
@@ -364,7 +364,7 @@ export default function FeaturesPage() {
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
         <h2 className="text-4xl font-display font-bold text-white mb-6">A sanctuary, not a surveillance tool.</h2>
         <p className="text-slate-400 max-w-2xl mx-auto mb-16">
-          We don't want your data. Your focus is your own. The core Nexus automation runs completely locally on your machine—no cloud permissions required.
+          We don&apos;t want your data. Your focus is your own. The core Nexus automation runs completely locally on your machine—no cloud permissions required.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
@@ -421,7 +421,7 @@ export default function FeaturesPage() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-display font-bold text-white mb-4">Blocking is only one action.</h2>
           <p className="text-slate-400">
-            Traditional blockers focus on saying "no." Nexus Ring is designed around transitions. It can remove distractions, but it can also prepare the tools, settings and environment you actually need.
+            Traditional blockers focus on saying &quot;no.&quot; Nexus Ring is designed around transitions. It can remove distractions, but it can also prepare the tools, settings and environment you actually need.
           </p>
         </div>
         
@@ -440,13 +440,13 @@ export default function FeaturesPage() {
           </div>
         </div>
         <p className="text-center text-white text-lg font-bold mt-8">
-          The goal isn't simply to prevent distraction.<br/>The goal is to make the right state easier to enter.
+          The goal isn&apos;t simply to prevent distraction.<br/>The goal is to make the right state easier to enter.
         </p>
       </section>
 
       {/* ════════════════ 9. DEVELOPMENT MATRIX ════════════════ */}
       <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
-        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">What we're building now.</h2>
+        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">What we&apos;re building now.</h2>
         <div className="space-y-2 font-mono text-sm">
           {[
             { f: "Physical mode detection", s: "PROTOTYPE" },
@@ -493,7 +493,7 @@ export default function FeaturesPage() {
           YOUR ATTENTION HAS AN OFF SWITCH.
         </h2>
         <p className="text-slate-400 text-lg mb-4 max-w-2xl mx-auto">
-          You don't lack discipline. You lack a boundary. Deep Work shouldn't begin with fighting distractions. A break shouldn't be interrupted by work notifications.
+          You don&apos;t lack discipline. You lack a boundary. Deep Work shouldn&apos;t begin with fighting distractions. A break shouldn&apos;t be interrupted by work notifications.
         </p>
         <p className="text-white font-bold text-xl mb-12">
           Nexus Ring turns those transitions into something physical.<br/><br/>

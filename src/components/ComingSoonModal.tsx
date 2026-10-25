@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, ArrowRight, Bell, ShieldCheck } from "lucide-react";
@@ -143,7 +144,7 @@ export default function ComingSoonModal({
 
                 {tierName && (
                   <div className="px-4 py-2.5 rounded-xl border border-slate bg-vantablack text-xs font-mono text-slate-500 flex items-center justify-between">
-                    <span>SELECTED TIER:</span>
+                    <span>EDITION OF INTEREST:</span>
                     <span className="text-accent font-bold">{tierName}</span>
                   </div>
                 )}
@@ -179,7 +180,7 @@ export default function ComingSoonModal({
                       {isSubmitting ? (
                         <>
                           <span className="w-4 h-4 border-2 border-vantablack border-t-transparent rounded-full animate-spin" />
-                          <span>Reserving...</span>
+                          <span>Saving...</span>
                         </>
                       ) : (
                         <>
@@ -188,6 +189,7 @@ export default function ComingSoonModal({
                       )}
                     </button>
                   </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">By signing up, you agree to receive development and launch emails. See our <Link href="/privacy" className="underline text-accent2">privacy notice</Link> for data handling and removal requests. No stock is reserved.</p>
                   <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-slate-500 pt-1 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <ShieldCheck size={13} className="text-accent" />

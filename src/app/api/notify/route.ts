@@ -21,6 +21,12 @@ export async function POST(request: Request) {
       );
     }
 
+    for (const [field, value] of Object.entries({ type, name, message, tier, finish, price, source })) {
+      if (value !== undefined && (typeof value !== "string" || value.length > (field === "message" ? 1000 : 200))) {
+        return NextResponse.json({ error: "Invalid submission details" }, { status: 400 });
+      }
+    }
+
     const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL?.trim();
 
     if (!discordWebhookUrl) {
@@ -65,8 +71,8 @@ export async function POST(request: Request) {
       };
     } else if (type === "preorder_reservation") {
       embed = {
-        title: "🔥 High Intent: Pre-Order Configurator Lead!",
-        description: `A visitor configured their Nexus Ring artifact and reserved a slot!`,
+        title: "Nexus Ring Edition Interest",
+        description: `A visitor expressed interest in a planned Nexus Ring edition. No stock is reserved.`,
         color: 0x00ff9d, // accent Green
         fields: [
           {
@@ -132,7 +138,7 @@ export async function POST(request: Request) {
 
     const payload = {
       username: "Nexus Ring Lead Bot",
-      avatar_url: "https://www.nexusring.tech/icon.png",
+      allowed_mentions: { parse: [] },
       embeds: [embed],
     };
 
@@ -149,11 +155,6 @@ export async function POST(request: Request) {
         );
         return NextResponse.json({ error: "Unable to save signup" }, { status: 502 });
       }
-    } else {
-      console.warn(
-        "⚠️ [Nexus Webhook Notification] DISCORD_WEBHOOK_URL is not set in environment variables! Submission logged:",
-        { type, email, name, tier, finish, source }
-      );
     }
 
     return NextResponse.json({

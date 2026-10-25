@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability -- Three.js scene materials are intentionally mutated in useFrame, outside React state. */
 "use client";
 
 import React, { useRef, useMemo, useState, useEffect, Suspense } from "react";
@@ -43,7 +44,7 @@ interface ModelProps {
 }
 
 function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
-  const gltf = useGLTF("/models/nexus_ring.glb") as any;
+  const gltf = useGLTF("/models/nexus_ring.glb");
   const mainGroupRef = useRef<THREE.Group>(null);
   const partsRef = useRef<{
     [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 };
@@ -138,15 +139,15 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
   const clonedScene = useMemo(() => {
     if (!gltf?.scene) return null;
     return gltf.scene.clone(true);
-  }, [gltf?.scene]);
+  }, [gltf.scene]);
 
   // Setup parts mapping and assign materials
   useEffect(() => {
     if (!clonedScene) return;
     const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
 
-    clonedScene.traverse((child: any) => {
-      if (child.isMesh) {
+    clonedScene.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
         child.castShadow = true;
         child.receiveShadow = true;
         parts[child.name] = {

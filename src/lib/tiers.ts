@@ -1,0 +1,5 @@
+export const PLANNED_TIERS = [
+  { id: "maker", name: "Maker", price: "$15", format: "Digital files", description: "Print and build your own Nexus Ring.", items: ["Digital enclosure files and print profiles", "Bill of materials and assembly guide", "Build documentation and planned firmware/software access"], note: "No physical hardware included." },
+  { id: "hacker", name: "Hacker", price: "$49", format: "DIY electronics", description: "Build the enclosure around the planned electronics kit.", items: ["Electronics package with Hall sensor components", "Magnets and LED components", "Digital Maker files and planned software access"], note: "Enclosure not included. Assembly required." },
+  { id: "pro", name: "Pro", price: "$129", format: "Assembled hardware", description: "The planned fully assembled desktop controller.", items: ["Assembled Nexus Ring and weighted magnetic totem", "USB-C cable and setup guide", "Planned software access"], note: "Production materials and specifications are being validated." },
+] as const;

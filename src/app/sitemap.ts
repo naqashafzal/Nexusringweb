@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
 
   const coreRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/privacy`, changeFrequency: "yearly", priority: 0.3 },
     {
       url: `${baseUrl}`,
       lastModified: currentDate,

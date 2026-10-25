@@ -80,7 +80,7 @@ export default function ResearchPage() {
         {/* Recovery */}
         <div className="p-8 border border-slate bg-matte rounded-3xl">
           <h3 className="text-3xl font-display font-bold text-white mb-4">Work boundaries matter too.</h3>
-          <p className="text-slate-400 mb-6">Focus systems shouldn't only help users enter work. They should help users leave work. Break mode is designed around creating a clearer transition between working and recovering.</p>
+          <p className="text-slate-400 mb-6">Focus systems shouldn&apos;t only help users enter work. They should help users leave work. Break mode is designed around creating a clearer transition between working and recovering.</p>
         </div>
 
       </section>
@@ -148,7 +148,7 @@ export default function ResearchPage() {
           <p className="text-sm text-slate-400 mb-6 max-w-md mx-auto">
             We are compiling the product hypotheses, technical architecture, sources and prototype testing methodology into a public whitepaper.
           </p>
-          <button className="px-6 py-3 rounded-xl border border-slate text-slate-400 font-mono text-xs cursor-not-allowed">
+          <button disabled className="px-6 py-3 rounded-xl border border-slate text-slate-400 font-mono text-xs cursor-not-allowed">
             Download Whitepaper (Pending)
           </button>
         </div>
@@ -166,9 +166,7 @@ export default function ResearchPage() {
           <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
             Join Early Access
           </button>
-          <button className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">
-            Join Discord
-          </button>
+          <a href="https://discord.gg/Q3tTGhH4k" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">Join Discord</a>
         </div>
       </section>
 

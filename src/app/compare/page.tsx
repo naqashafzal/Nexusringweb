@@ -47,7 +47,7 @@ export default function CompareDirectoryPage() {
         </h1>
 
         <p className="mt-6 text-slate-400 text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-          Software blockers live on the same screen that distracts you. Compare the Nexus Ring discipline engine against the world's most popular apps and desk tools.
+          Software blockers live on the same screen that distracts you. Compare the Nexus Ring discipline engine against the world&apos;s most popular apps and desk tools.
         </p>
       </section>
 

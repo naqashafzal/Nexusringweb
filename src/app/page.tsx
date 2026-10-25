@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
@@ -31,10 +31,9 @@ function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const reducedMotion = useReducedMotion();
   return (
     <motion.div
-      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
@@ -64,17 +63,14 @@ export default function Home() {
 
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
-  const heroOpacity = useTransform(heroScroll, [0.75, 1], [1, 0]);
-  const heroY = useTransform(heroScroll, [0.75, 1], [0, -60]);
 
   return (
     <main className="bg-vantablack text-[#F8FAFC] font-sans overflow-x-hidden">
       {/* ════════════════ HERO (DUAL COLUMN SPLIT) ════════════════ */}
       <motion.div
-        style={{ opacity: heroOpacity }}
         className="absolute top-0 right-0 w-full lg:w-[55%] h-[460px] lg:h-screen z-10 pointer-events-auto"
       >
         <ExplodedRingCanvas scrollProgress={heroScroll} disableExplode={true} centerPosition={true} />
@@ -88,7 +84,6 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto w-full">
             {/* ── LEFT COLUMN: Text Content & CTAs (6 cols) ── */}
             <motion.div
-              style={{ opacity: heroOpacity, y: heroY }}
               className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl pointer-events-auto"
             >
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
@@ -97,7 +92,7 @@ export default function Home() {
               </span>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
-                Your attention is<br />
+                A physical switch<br />
                 <span
                   style={{
                     background:
@@ -107,12 +102,12 @@ export default function Home() {
                     backgroundClip: "text",
                   }}
                 >
-                  slipping away.
+                  for a focused workspace.
                 </span>
               </h1>
 
               <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl">
-                We spend our days fighting our own screens just to get our work done. The Nexus Ring is the physical off-switch for digital distraction. One deliberate move changes your apps, your notifications, and your entire environment.
+                We spend our days fighting our own screens just to get our work done. Nexus Ring is a desktop controller in development. Move a magnetic totem to select a mode, with planned automations for your apps, notifications, and workspace.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -151,8 +146,7 @@ export default function Home() {
 
             {/* ── RIGHT COLUMN: Top-Right Badge Callout (6 cols) ── */}
             <motion.div
-              style={{ opacity: heroOpacity }}
-              className="hidden lg:flex lg:col-span-6 flex-col items-end justify-start h-full pt-4 pr-4 relative pointer-events-none"
+                    className="hidden lg:flex lg:col-span-6 flex-col items-end justify-start h-full pt-4 pr-4 relative pointer-events-none"
             >
               <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-mono text-slate-300 flex items-center gap-2 pointer-events-auto cursor-grab active:cursor-grabbing">
                 <Rotate3D
@@ -167,33 +161,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="vision" className="relative z-20 bg-obsidian py-24 border-y border-slate">
+      <section id="how-it-works" className="relative z-20 bg-obsidian py-24 border-y border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           {/* Top part: Problem and Principle */}
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <Reveal>
               <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Silent Crisis</p>
               <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white mb-6">Willpower was never going to be enough.</h2>
-              <p className="text-slate-400 text-lg leading-relaxed mb-4">Every day, you sit at your desk and wage a quiet war. On one side: your goals, your deadlines, and your peace of mind. On the other side: billion-dollar algorithms, endless notifications, and the chaotic hum of a dozen open tabs specifically engineered to steal your focus.</p>
-              <p className="text-slate-400 text-lg leading-relaxed font-medium border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl mt-6">You don't lack discipline. You lack a boundary. You shouldn't have to fight your own computer just to do your job.</p>
+              <p className="text-slate-400 text-lg leading-relaxed mb-4">Notifications and open tabs make it hard to stay with one task. Nexus Ring explores a simpler way to mark the boundary between focused work, collaboration, creativity, and rest.</p>
+              <p className="text-slate-400 text-lg leading-relaxed font-medium border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl mt-6">You don&apos;t lack discipline. You lack a boundary. You shouldn&apos;t have to fight your own computer just to do your job.</p>
             </Reveal>
             <Reveal delay={0.2} className="relative p-8 md:p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
               <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Nexus Philosophy</p>
               <h3 className="text-3xl font-semibold mt-2 mb-6 text-white leading-tight">Make the right decision exactly once. We’ll protect it.</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">The Nexus Ring isn't another productivity app demanding your attention. It's a physical anchor for your intention.</p>
-              <p className="text-slate-300 leading-relaxed">You don't click a button. You don't navigate a menu. You simply snap the heavy, magnetic totem into position. That single physical action tells your entire digital world exactly what you need right now. And then? The noise stops. You finally get to breathe—and work.</p>
+              <p className="text-slate-300 leading-relaxed mb-4">The Nexus Ring isn&apos;t another productivity app demanding your attention. It&apos;s a physical anchor for your intention.</p>
+              <p className="text-slate-300 leading-relaxed">The planned experience starts with a magnetic totem. Place it in a mode position, and the companion software runs the workspace actions you have configured. Supported integrations will be confirmed through testing.</p>
             </Reveal>
           </div>
 
           {/* Bottom part: Promise */}
           <Reveal className="max-w-2xl mb-12 border-t border-white/10 pt-16">
-            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white">From intention to action in one second.</h2>
+            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white">How the planned experience works.</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {title: "Choose & Place", text: "Decide what you need to do, and slide the physical totem into the corresponding mode. The tactile feedback tells your brain it’s time to shift gears."},
-              {title: "Transform & Protect", text: "Instantly, your environment bends to your will. Distracting websites are blocked, Slack goes quiet, your coding tools open, and your lighting shifts. Nexus Shield locks it in."},
-              {title: "Disconnect & Recover", text: "When the work is done, move the totem to Break. Work notifications vanish. Projects hide. The environment softens. Because shutting off is just as important as turning on."},
+              {title: "Transform & Protect", text: "The planned companion runs your configured actions, such as opening tools or changing supported notification settings. Availability depends on your operating system and integrations."},
+              {title: "Disconnect & Recover", text: "Move the totem to Break to signal a pause. Planned profiles can help you leave work behind and make room to recover."},
             ].map((step, i) => <Reveal key={step.title} delay={i * 0.08} className="border-t border-white/15 pt-7"><span className="text-accent text-sm font-mono">0{i + 1}</span><h3 className="text-xl font-semibold mt-5 mb-3 text-white">{step.title}</h3><p className="text-slate-400 leading-relaxed">{step.text}</p></Reveal>)}
           </div>
         </div>
@@ -203,17 +197,17 @@ export default function Home() {
           <Reveal className="max-w-2xl mb-12">
             <p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2">Your Rhythm</p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Four modes. Infinite control.</h2>
-            <p className="text-slate-400 text-lg leading-relaxed">Your day isn't just "work" and "not work." Give every part of your day a physical home. These previews illustrate the product vision; integrations are still in development.</p>
+            <p className="text-slate-400 text-lg leading-relaxed">Your day isn&apos;t just &quot;work&quot; and &quot;not work.&quot; Give every part of your day a physical home. These previews illustrate the product vision; integrations are still in development.</p>
           </Reveal>
           <HardwareModesShowcase />
         </div>
       </section>
       <section className="relative z-20 bg-obsidian py-24 border-y border-slate">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-          <Reveal><p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2 text-accent2">Calm Technology</p><h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white leading-tight">We built a sanctuary,<br /><span className="text-slate-400">not a surveillance tool.</span></h2><p className="text-slate-400 text-lg mt-6 leading-relaxed">Nexus isn't here to lock you in a digital cage or make you feel guilty. It’s here to quietly guard the door so you can work in peace.</p></Reveal>
+          <Reveal><p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2 text-accent2">Calm Technology</p><h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white leading-tight">We built a sanctuary,<br /><span className="text-slate-400">not a surveillance tool.</span></h2><p className="text-slate-400 text-lg mt-6 leading-relaxed">Nexus isn&apos;t here to lock you in a digital cage or make you feel guilty. It’s here to quietly guard the door so you can work in peace.</p></Reveal>
           <div className="space-y-4">
             <Link href="/hardware" className="product-link"><span><span className="eyebrow block">Zero Screens</span><span className="text-2xl font-semibold text-white">You look at enough screens</span><span className="block text-slate-400 mt-3">Nexus communicates through weight, magnetic resistance, and a soft, calming glow.</span></span><ChevronRight className="shrink-0" /></Link>
-            <Link href="/software" className="product-link"><span><span className="eyebrow block">Local-First Privacy</span><span className="text-2xl font-semibold text-white">Your rules, on your device</span><span className="block text-slate-400 mt-3">We don't want your data. Your automations live entirely on your own devices.</span></span><ChevronRight className="shrink-0" /></Link>
+            <Link href="/software" className="product-link"><span><span className="eyebrow block">Local-First Privacy</span><span className="text-2xl font-semibold text-white">Your rules, on your device</span><span className="block text-slate-400 mt-3">We don&apos;t want your data. Core automations are being designed to run on your own devices.</span></span><ChevronRight className="shrink-0" /></Link>
           </div>
         </div>
       </section>

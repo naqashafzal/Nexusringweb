@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   url: "https://www.nexusring.tech",
   tagline: "Bridging the gap between physical intention and digital execution.",
   description:
-    "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring fuses custom 3D-printed hardware, local OS automation, and generative AI to act as a physical anchor for your mental state and a Physical Attention Operating System.",
+    "Nexus Ring is a desktop controller in development. Move a magnetic totem between four modes, with planned local automations for your digital workspace. Join the free launch waitlist.",
   hooks: {
     disciplineEngine: "Physical Intent Computing: PUT YOUR WORLD IN THE RIGHT MODE, save your time, and engineer your own success.",
     moreOutput: "More Output, Less Friction: Changing your digital environment should be as deliberate and physical as closing an office door.",
@@ -63,11 +63,6 @@ export function getStructuredData() {
     publisher: {
       "@id": `${SITE_CONFIG.url}/#organization`,
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_CONFIG.url}/features?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const organizationSchema = {
@@ -77,7 +72,7 @@ export function getStructuredData() {
     name: SITE_CONFIG.legalName,
     alternateName: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    logo: `${SITE_CONFIG.url}/next.svg`,
+    logo: `${SITE_CONFIG.url}/logo.svg`,
     description: SITE_CONFIG.description,
     founder: {
       "@type": "Person",
@@ -99,7 +94,7 @@ export function getStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_CONFIG.url}/#product`,
-    name: "Nexus Ring — Physical Attention Operating System & Distraction Elimination System",
+    name: "Nexus Ring — Desktop Workspace Controller",
     image: [`${SITE_CONFIG.url}/opengraph-image`],
     description: SITE_CONFIG.description,
     brand: {
@@ -108,77 +103,7 @@ export function getStructuredData() {
     },
     category: "Electronics > Hardware > Productivity Tools",
     material: "Precision 3D-Printed V1 (Engineered Matte Composite / PLA-CF), N52 Neodymium, ESP32-C3 RISC-V",
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Founder's Artifact (Early Bird)",
-        price: "129.00",
-        priceCurrency: "USD",
-        availability: "https://schema.org/PreOrder",
-        url: `${SITE_CONFIG.url}/campaign`,
-      },
-      {
-        "@type": "Offer",
-        name: "Maker Kit",
-        price: "15.00",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        url: `${SITE_CONFIG.url}/campaign`,
-      },
-      {
-        "@type": "Offer",
-        name: "Nexus Pro Desk Set",
-        price: "169.00",
-        priceCurrency: "USD",
-        availability: "https://schema.org/PreOrder",
-        url: `${SITE_CONFIG.url}/preorder`,
-      },
-    ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "452",
-    },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is the Nexus Ring?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Nexus Ring is a Physical Attention Operating System. By fusing custom 3D-printed hardware, local OS automation, and generative AI, it eliminates the friction of getting into the zone by automating the setup and guarding the perimeter, allowing you to simply drop the totem and do your best work.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Why is a physical anchor better than software app blockers?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "In a world overflowing with digital distractions, willpower is no longer enough to stay focused. Software app blockers fail because they lack physical consequence. The Nexus Ring bridges the gap between physical intention and digital execution—changing your environment becomes as deliberate and physical as closing an office door.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does the Nexus Ring eliminate distractions at the OS level?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Nexus Ring uses 4 Hall-effect sensors and an ESP32-C3 microcontroller with sub-24ms hardware interrupt latency. Rotating or snapping the magnetic totem triggers local kernel-level hooks (PowerShell / macOS pfctl / Linux iptables) to block distraction domains, silence notifications, and open targeted focus workspaces.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is the Nexus Ring private and air-gapped?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. 100% of telemetry, local AI vision guardian processing, and kernel hooks run locally on your machine. Zero screen pixels, keystrokes, or browser history are ever transmitted to any external cloud server.",
-        },
-      },
-    ],
-  };
-
-  return [websiteSchema, organizationSchema, productSchema, faqSchema];
+  return [websiteSchema, organizationSchema, productSchema];
 }

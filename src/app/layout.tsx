@@ -8,7 +8,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Nexus Ring | Bridging the gap between physical intention and digital execution",
+    default: "Nexus Ring | A Physical Switch for a Focused Workspace",
     template: "%s | Nexus Ring",
   },
   description: SITE_CONFIG.description,
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   applicationName: "Nexus Ring",
   category: "technology",
   openGraph: {
-    title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
+    title: "Nexus Ring | A Physical Switch for a Focused Workspace",
     description:
-      "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring acts as a Physical Attention Operating System.",
+      SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_US",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
+    title: "Nexus Ring | A Physical Switch for a Focused Workspace",
     description:
-      "A physical barrier between you and digital distractions. Accelerate personal success with hardware-locked focus.",
+      SITE_CONFIG.description,
     creator: "@nexusring",
     site: "@nexusring",
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 

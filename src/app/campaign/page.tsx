@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronRight, Zap, Target, Box, Code2, PlayCircle, Settings, HardDrive } from "lucide-react";
+import PlannedTiers from "@/components/PlannedTiers";
 import ComingSoonModal from "@/components/ComingSoonModal";
 
 export default function CampaignPage() {
@@ -23,14 +24,14 @@ export default function CampaignPage() {
             JOIN THE REBELLION<br /><span className="text-slate-400">AGAINST DISTRACTION.</span>
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            We are bringing the Nexus Ring into reality. This isn't just about launching a product; it's about reclaiming our time, our focus, and our minds. Back the project and secure your lifeline.
+            We are developing a physical controller for a calmer digital workspace. Follow the prototypes, see what is planned, and help shape the first release.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
             <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
               Join Launch List <ChevronRight size={16} />
             </button>
             <a href="#demo" className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
-              <PlayCircle size={16} /> Watch Prototype Demo
+              <Box size={16} /> Explore the product concept
             </a>
           </div>
           <p className="text-[10px] font-mono text-slate-500 mt-4">No payment required today.</p>
@@ -39,16 +40,17 @@ export default function CampaignPage() {
 
       {/* 2. DEMO & STORY */}
       <section id="demo" className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
-        <div className="aspect-video bg-matte border border-slate rounded-3xl flex flex-col items-center justify-center shadow-2xl mb-16 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10"></div>
-          <PlayCircle size={64} className="text-white opacity-80 z-20 group-hover:scale-110 transition-transform cursor-pointer" />
-          <p className="mt-4 font-mono text-sm text-slate-300 z-20">See the idea working.</p>
+        <div className="bg-matte border border-slate rounded-3xl p-8 md:p-12 mb-16">
+          <p className="eyebrow">Product concept</p>
+          <h2 className="text-3xl font-semibold mb-4">One action, four workspace modes.</h2>
+          <p className="text-slate-400 leading-relaxed mb-6">Move the magnetic totem to select Deep Work, Creative, Meeting, or Break. Hardware and companion automations are still being developed; the interactive model illustrates the intended experience.</p>
+          <Link href="/#modes" className="text-accent2 underline underline-offset-4">Explore the interactive modes →</Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl font-display font-bold text-white mb-6">Why we are fighting back.</h2>
-            <p className="text-slate-400 mb-4">The problem isn't your discipline. The problem is that billion-dollar companies have spent decades figuring out how to hijack the exact same screens you use to do your life's work.</p>
+            <p className="text-slate-400 mb-4">The problem isn&apos;t your discipline. The problem is that billion-dollar companies have spent decades figuring out how to hijack the exact same screens you use to do your life&apos;s work.</p>
             <p className="text-slate-400 mb-4">Nexus Ring is our physical counter-measure. A concrete boundary between what you intend to do, and the digital noise trying to stop you.</p>
             <p className="text-white font-bold">You decide. The totem enforces it.</p>
           </div>
@@ -67,7 +69,7 @@ export default function CampaignPage() {
       </section>
 
       {/* 3. DEVELOPMENT STATUS */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+      <section id="status" className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
         <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">Where the project stands today.</h2>
         <div className="space-y-2 font-mono text-sm">
           {[
@@ -90,69 +92,9 @@ export default function CampaignPage() {
         </div>
       </section>
 
-      {/* 4. CROWDFUNDING TIERS */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-display font-bold text-white">Choose your tier.</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Maker Tier */}
-          <div className="p-8 border border-slate bg-matte rounded-3xl relative overflow-hidden hover:border-accent/50 transition-colors">
-            <span className="absolute top-4 right-4 bg-slate/20 text-slate-400 px-2 py-1 rounded text-[10px] font-mono tracking-widest">DIGITAL</span>
-            <h3 className="text-2xl font-bold text-white mb-2">MAKER</h3>
-            <div className="text-4xl font-display font-black text-white mb-4">$15</div>
-            <p className="text-accent font-bold mb-4">Print your own Nexus Ring.</p>
-            <p className="text-sm text-slate-400 mb-6 min-h-[40px]">Target: 3D printing enthusiasts and DIY builders.</p>
-            <ul className="space-y-2 text-sm text-slate-300 mb-8 list-disc list-inside">
-              <li>Digital enclosure files</li>
-              <li>Print profiles</li>
-              <li>Bill of materials</li>
-              <li>Assembly guide</li>
-              <li>Build documentation</li>
-              <li>Firmware/software access</li>
-            </ul>
-            <p className="text-[10px] text-slate-500 font-mono mb-4 text-center">Estimated delivery: campaign delivery schedule</p>
-            <button className="w-full py-3 rounded-lg border border-slate bg-vantablack text-white font-bold hover:bg-slate transition-colors">Select Tier</button>
-          </div>
-
-          {/* Hacker Tier */}
-          <div className="p-8 border border-accent/40 bg-matte rounded-3xl relative overflow-hidden shadow-[0_0_40px_rgba(0,255,157,0.1)]">
-            <span className="absolute top-4 right-4 bg-accent/20 text-accent px-2 py-1 rounded text-[10px] font-mono tracking-widest">DIY HARDWARE</span>
-            <h3 className="text-2xl font-bold text-white mb-2">HACKER</h3>
-            <div className="text-4xl font-display font-black text-white mb-4">$49</div>
-            <p className="text-accent font-bold mb-4">We supply the electronics. You build the body.</p>
-            <p className="text-sm text-slate-400 mb-6 min-h-[40px]">Target: users with a 3D printer who do not want to source every component.</p>
-            <ul className="space-y-2 text-sm text-slate-300 mb-8 list-disc list-inside">
-              <li>Official electronics package</li>
-              <li>Hall sensor components</li>
-              <li>Magnets & LED components</li>
-              <li>Digital Maker files</li>
-              <li>Software access</li>
-            </ul>
-            <p className="text-[10px] text-slate-500 font-mono mb-4 text-center">Shipping/taxes calculated at checkout. Assembly required.</p>
-            <button className="w-full py-3 rounded-lg bg-accent text-[#001a0a] font-bold hover:bg-[#00ffaa] transition-colors">Select Tier</button>
-          </div>
-
-          {/* Pro Tier */}
-          <div className="p-8 border border-slate bg-matte rounded-3xl relative overflow-hidden hover:border-purple/50 transition-colors">
-            <span className="absolute top-4 right-4 bg-purple/20 text-purple px-2 py-1 rounded text-[10px] font-mono tracking-widest">FULLY ASSEMBLED</span>
-            <h3 className="text-2xl font-bold text-white mb-2">PRO</h3>
-            <div className="text-4xl font-display font-black text-white mb-4">$129</div>
-            <p className="text-purple font-bold mb-4">Fully assembled. Ready to use.</p>
-            <p className="text-sm text-slate-400 mb-6 min-h-[40px]">Target: developers, designers, founders, and non-makers.</p>
-            <ul className="space-y-2 text-sm text-slate-300 mb-8 list-disc list-inside">
-              <li>Assembled Nexus Ring</li>
-              <li>Weighted magnetic totem</li>
-              <li>USB-C cable</li>
-              <li>Packaging & setup guide</li>
-              <li>Software access</li>
-            </ul>
-            <p className="text-[10px] text-slate-500 font-mono mb-4 text-center">Shipping/taxes calculated at checkout.</p>
-            <button className="w-full py-3 rounded-lg border border-slate bg-vantablack text-white font-bold hover:bg-slate transition-colors">Select Tier</button>
-          </div>
-
-        </div>
+      <section id="tiers" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-4xl font-semibold mb-10">Planned editions.</h2>
+        <PlannedTiers />
       </section>
 
       {/* 5. MANUFACTURING & ROADMAP */}
@@ -297,15 +239,13 @@ export default function CampaignPage() {
         <div className="text-slate-400 text-lg mb-12 space-y-4 max-w-2xl mx-auto">
           <p>We are exhausted by the digital noise. We are tired of fighting algorithms to do our work. And we believe the only way to win is to step out of the screen.</p>
           <p>We are building the hardware, software, and community to make focus physical again.</p>
-          <p className="text-white font-bold">Stand with us. Join the waitlist for Batch 01.</p>
+          <p className="text-white font-bold">Join the waitlist for development and launch updates.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
             Join Launch List
           </button>
-          <button className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">
-            Follow Development
-          </button>
+          <a href="#status" className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm">Follow Development</a>
         </div>
       </section>
 

@@ -16,7 +16,7 @@
 
 ## Quick Facts
 - **Product Type:** Desktop hardware artifact & OS automation controller
-- **Price:** $15 (Maker Edition), $49 (Hacker Edition), $129 (Pro Edition)
+- **Indicative planned prices (subject to change):** $15 (Maker Edition), $49 (Hacker Edition), $129 (Pro Edition)
 - **Availability:** Early Access Waitlist Active (PLANNED for Crowdfunding)
 - **Hardware Architecture (IN DEVELOPMENT):** 3D-Printed chassis, Hall-effect magnetic flux sensing array, ESP32-C3 microcontroller, magnetic totem.
 - **Software Architecture (IN DEVELOPMENT):** Local desktop automation, system focus rules, Experimental Local Context Assistant (EXPERIMENTAL).
@@ -32,7 +32,7 @@
 - **Software & Daemon**: Local system automation, native OS integration, configurable webhooks.
 - **Design Principles**: Reasoning and behavioral research used in the product.
 - **Crowdfunding Campaign**: Backer pledge tiers, transparent roadmap timeline, risks and challenges.
-- **Early Access**: Direct reservation for Batch 01. No payment taken today.
+- **Early Access**: Free launch updates. Orders are not open; joining does not reserve stock.
 - **Comparisons Hub**: Head-to-head feature matrix.
 
 ## Key Capabilities & Distinctions

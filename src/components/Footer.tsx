@@ -43,7 +43,7 @@ export default function Footer() {
           <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Company</h4>
           <Link href="/about" className="text-xs hover:text-accent transition-colors">Vision</Link>
           <Link href="/about#founder" className="text-xs hover:text-accent transition-colors">Founder</Link>
-          <Link href="/about#founder" className="text-xs hover:text-accent transition-colors">Meet the founder</Link>
+          <Link href="/privacy" className="text-xs hover:text-accent transition-colors">Privacy</Link>
           <a
             href="https://discord.gg/Q3tTGhH4k"
             target="_blank"

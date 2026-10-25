@@ -28,7 +28,7 @@ export default function AboutPage() {
             <Link href="/features" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
               See the Product <ChevronRight size={16} />
             </Link>
-            <button className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
+            <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
               Join the Mission
             </button>
           </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
           The machine you use to build your business, write code, design, learn, and create also contains endless feeds, notifications, and interruptions designed by teams of engineers to break your focus.
         </p>
         <p className="text-slate-400 text-lg leading-relaxed max-w-3xl mx-auto mb-4">
-          The tech industry's answer? Add another app. Another blocker. Another digital switch hidden in the same chaotic screen.
+          The tech industry&apos;s answer? Add another app. Another blocker. Another digital switch hidden in the same chaotic screen.
         </p>
         <p className="text-white text-xl font-bold leading-relaxed max-w-3xl mx-auto">
           We asked a different question: What if the decision happened physically first?
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">01</span>
             <h4 className="text-white font-bold mb-2">Physical Intent</h4>
-            <p className="text-sm text-slate-400">A deliberate, tactile action that tells your brain it's time to shift gears.</p>
+            <p className="text-sm text-slate-400">A deliberate, tactile action that tells your brain it&apos;s time to shift gears.</p>
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <span className="text-accent font-mono text-xs uppercase block mb-2">02</span>
@@ -104,10 +104,10 @@ export default function AboutPage() {
           <div className="p-8 border border-slate bg-matte rounded-3xl">
             <h3 className="text-3xl font-display font-bold text-white mb-6">Technology should adapt to the state you choose.</h3>
             <div className="space-y-4 text-slate-400">
-              <p><strong className="text-white">When you're focusing:</strong> reduce distractions.</p>
-              <p><strong className="text-white">When you're creating:</strong> prepare creative tools.</p>
-              <p><strong className="text-white">When you're meeting:</strong> prepare communication tools.</p>
-              <p><strong className="text-white">When you're recovering:</strong> quiet work.</p>
+              <p><strong className="text-white">When you&apos;re focusing:</strong> reduce distractions.</p>
+              <p><strong className="text-white">When you&apos;re creating:</strong> prepare creative tools.</p>
+              <p><strong className="text-white">When you&apos;re meeting:</strong> prepare communication tools.</p>
+              <p><strong className="text-white">When you&apos;re recovering:</strong> quiet work.</p>
             </div>
             <div className="mt-8 p-6 bg-vantablack border border-slate rounded-xl">
               <h4 className="text-white font-bold mb-2">Four states. Simple enough to become physical.</h4>
@@ -140,22 +140,22 @@ export default function AboutPage() {
           </div>
           <div className="p-6 mt-4 border border-accent/30 bg-accent/10 rounded-xl text-center">
             <span className="font-bold text-white block mb-2">Long-Term</span>
-            <span className="text-accent text-sm">A physical interface capable of telling an ecosystem of devices: <br/><strong>"This is what I am doing now."</strong></span>
+            <span className="text-accent text-sm">A physical interface capable of telling an ecosystem of devices: <br/><strong>&quot;This is what I am doing now.&quot;</strong></span>
           </div>
         </div>
       </section>
 
       {/* 7. FOUNDER SECTION */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+      <section id="founder" className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
         <div className="p-8 md:p-12 border border-slate bg-matte rounded-3xl">
           <h2 className="text-4xl font-display font-bold text-white mb-2">Naqash Afzal</h2>
           <p className="text-accent font-mono text-sm tracking-widest uppercase mb-6">Visionary & Founder</p>
           <p className="text-xl text-white font-medium mb-6 leading-relaxed border-l-2 border-accent pl-4">
-            "We are not building a gadget. We are building the physical boundary between human intention and algorithmic distraction."
+            &quot;We are not building a gadget. We are building the physical boundary between human intention and algorithmic distraction.&quot;
           </p>
           <div className="space-y-4 text-slate-400 mb-8 leading-relaxed">
             <p>
-              Naqash recognized a fundamental flaw in modern computing: our machines have infinite willpower, but we do not. After witnessing countless talented people lose hours of their lives fighting their own tools, he realized the solution wasn't another piece of software. 
+              Naqash recognized a fundamental flaw in modern computing: our machines have infinite willpower, but we do not. After witnessing countless talented people lose hours of their lives fighting their own tools, he realized the solution wasn&apos;t another piece of software.
             </p>
             <p>
               The solution had to be physical. It had to be a tangible anchor that respects human psychology. Naqash combined hardware engineering, industrial design, and an uncompromising philosophy to create the Nexus Ring—a lifeline for a generation exhausted by digital noise.
@@ -217,7 +217,7 @@ export default function AboutPage() {
       {/* 9. CTA */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
         <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
-          The goal isn't to add another app. It's to give you your mind back.
+          The goal isn&apos;t to add another app. It&apos;s to give you your mind back.
         </h2>
         <div className="text-slate-400 text-lg mb-12 space-y-2">
           <p>We are making the transition between intention and action tangible.</p>

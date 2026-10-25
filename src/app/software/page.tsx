@@ -40,11 +40,11 @@ export default function SoftwarePage() {
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="rounded-2xl border border-slate bg-matte p-6 shadow-2xl flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/3 border-r border-slate pr-6 flex flex-col gap-2">
-            <span className="text-[10px] font-mono text-slate-500 mb-2">MODE SELECTOR</span>
-            <button className="text-left p-3 rounded-lg bg-accent/10 border border-accent/30 text-accent font-bold">DEEP WORK (Active)</button>
-            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">CREATIVE</button>
-            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">MEETING</button>
-            <button className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">BREAK</button>
+            <span className="text-[10px] font-mono text-slate-500 mb-2">CONCEPT PREVIEW · MODE SELECTOR</span>
+            <div className="text-left p-3 rounded-lg bg-accent/10 border border-accent/30 text-accent font-bold">DEEP WORK (Preview)</div>
+            <div className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">CREATIVE</div>
+            <div className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">MEETING</div>
+            <div className="text-left p-3 rounded-lg hover:bg-slate text-slate-400">BREAK</div>
           </div>
           <div className="w-full md:w-2/3">
             <span className="text-[10px] font-mono text-slate-500 mb-4 block">ACTIVE PROFILE: DEEP WORK</span>
@@ -100,7 +100,7 @@ export default function SoftwarePage() {
           </div>
           <div className="p-8 border border-slate bg-matte rounded-3xl">
             <h3 className="text-2xl font-bold text-white mb-2">Creative Profile</h3>
-            <p className="text-sm text-slate-400 mb-6">Creative mode doesn't need the same restrictions as Deep Work. Each profile can behave differently.</p>
+            <p className="text-sm text-slate-400 mb-6">Creative mode doesn&apos;t need the same restrictions as Deep Work. Each profile can behave differently.</p>
             <ul className="space-y-2 text-sm text-slate-300 font-mono">
               <li>- Open Blender & PureRef</li>
               <li>- Open project folder</li>
@@ -149,7 +149,7 @@ export default function SoftwarePage() {
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <h4 className="text-accent font-bold mb-2 uppercase text-[11px] tracking-widest">Local Automation</h4>
-            <p className="text-white">Runs on the user's machine using native OS automation.</p>
+            <p className="text-white">Runs on the user&apos;s machine using native OS automation.</p>
           </div>
           <div className="p-6 border border-slate bg-matte rounded-2xl">
             <h4 className="text-accent font-bold mb-2 uppercase text-[11px] tracking-widest">External Integrations</h4>
@@ -252,7 +252,7 @@ update_status`}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-3xl font-display font-bold text-white mb-4">Focus should still work when the internet doesn't.</h3>
+            <h3 className="text-3xl font-display font-bold text-white mb-4">Focus should still work when the internet doesn&apos;t.</h3>
             <p className="text-slate-400 mb-4">Core local profiles should continue to function without internet. Works offline: mode detection, local app launching/closing, local timers, local scripts, local site rules.</p>
             <p className="text-slate-400">May require internet: Slack status, Spotify, cloud calendar, third-party APIs.</p>
           </div>
