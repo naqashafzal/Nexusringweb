@@ -125,3 +125,4 @@ if (failedTests > 0) {
   console.log("✓ ALL TECHNICAL SEO & INTEGRITY AUDIT CHECKS PASSED SUCCESSFULLY.\n");
   process.exit(0);
 }
+
