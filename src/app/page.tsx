@@ -233,6 +233,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════════════ BRAND MANIFESTO ════════════════ */}
+      <section className="relative z-20 bg-[#080B12] py-24 border-b border-[#283141]">
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center space-y-6">
+          <Reveal>
+            <span className="eyebrow block">Brand Manifesto</span>
+            <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white uppercase mb-6">
+              The World is Fighting for Your Attention.
+            </h2>
+            <div className="space-y-4 text-[#A5AFBF] text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto">
+              <p className="border-b border-[#283141] pb-3">Every notification wants a response.</p>
+              <p className="border-b border-[#283141] pb-3">Every feed wants another scroll.</p>
+              <p className="border-b border-[#283141] pb-3">Every advertisement wants another moment.</p>
+              <p className="border-b border-[#283141] pb-3">Every recommendation system wants to predict what will keep you engaged.</p>
+              <p className="text-white font-medium pt-2">But your goals need that attention too.</p>
+              <p>Your ambitions need time. Your creativity needs space. Your most meaningful work requires intention.</p>
+              <p className="text-[#F8FAFC] bg-[#101723] p-4 rounded-2xl border border-[#283141]">
+                We believe technology should support human purpose, not constantly compete against it. We believe discipline becomes easier to practice when our environments support our decisions. We believe distraction should be a choice, not the default.
+              </p>
+            </div>
+            <div className="pt-6">
+              <p className="text-xs font-mono tracking-widest text-[#A5AFBF] uppercase">
+                YOUR ATTENTION. YOUR TIME. YOUR DECISION.
+              </p>
+              <p className="text-xl font-display font-bold text-white pt-1">
+                NEXUS RING — FORCE YOUR FOCUS. ENGINEER SUCCESS.
+              </p>
+            </div>
+            <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/digital-distraction"
+                className="px-6 py-3 rounded-full text-xs font-mono text-[#FF405A] border border-[#FF405A]/40 hover:bg-[#FF405A]/10 transition-colors flex items-center gap-2"
+              >
+                <span>Read Why Digital Distraction Competes for Your Time</span>
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ════════════════ SECTION C: FOUR OPERATING MODES ════════════════ */}
       <section id="modes" className="relative z-20 bg-[#080B12] py-28 md:py-36">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">

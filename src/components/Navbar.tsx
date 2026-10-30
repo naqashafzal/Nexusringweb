@@ -10,10 +10,11 @@ const ComingSoonModal = dynamic(() => import("@/components/ComingSoonModal"), {
 });
 
 const links = [
-  { href: "/#how-it-works", label: "How it Works" },
-  { href: "/#modes", label: "Four Modes" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
+  { href: "/digital-distraction", label: "Distraction" },
+  { href: "/focus", label: "Focus Hub" },
+  { href: "/journal", label: "Journal" },
   { href: "/campaign", label: "Development" },
   { href: "/about", label: "About" },
 ];

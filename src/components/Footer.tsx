@@ -16,11 +16,11 @@ export default function Footer() {
               NEXUS RING
             </span>
           </Link>
-          <p className="text-xs font-light text-[#A5AFBF] leading-relaxed max-w-[260px]">
-            One physical move. Your workspace follows.
+          <p className="text-xs font-mono font-bold text-white tracking-wider">
+            FORCE YOUR FOCUS. ENGINEER SUCCESS.
           </p>
-          <p className="text-[11px] font-mono text-[#A5AFBF]/70">
-            Physical intent computing for deliberate, focused work.
+          <p className="text-[11px] font-light text-[#A5AFBF] leading-relaxed max-w-[260px]">
+            One physical move. Your workspace follows. Physical intent computing for deliberate, focused work.
           </p>
         </div>
 
@@ -47,18 +47,12 @@ export default function Footer() {
 
         {/* Project & Vision Column */}
         <div className="flex flex-col gap-3">
-          <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Project</h4>
+          <h4 className="text-white font-mono font-bold text-xs uppercase tracking-widest mb-2">Mission &amp; Ideas</h4>
+          <Link href="/digital-distraction" className="text-xs hover:text-white transition-colors">Digital Distraction</Link>
+          <Link href="/focus" className="text-xs hover:text-white transition-colors">Focus Resource Hub</Link>
+          <Link href="/journal" className="text-xs hover:text-white transition-colors">The Focus Journal</Link>
           <Link href="/about" className="text-xs hover:text-white transition-colors">Vision &amp; Philosophy</Link>
-          <Link href="/about#founder" className="text-xs hover:text-white transition-colors">Founder &amp; Creator</Link>
           <Link href="/compare" className="text-xs hover:text-white transition-colors">Approach Comparison</Link>
-          <a
-            href="https://discord.gg/Q3tTGhH4k"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-[#5865F2] hover:text-white transition-colors font-medium"
-          >
-            Discord Community
-          </a>
         </div>
 
         {/* Development Status Notice */}

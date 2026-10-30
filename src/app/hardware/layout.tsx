@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hardware Architecture",
+  title: "Nexus Ring Hardware | Magnetic Focus Controller",
   description:
-    "Engineering architecture of the Nexus Ring: dual-shell prototype chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, and 360° ambient optical diffuser.",
+    "Explore the engineering behind Nexus Ring, including magnetic position sensing, ESP32-C3 prototype architecture, and tactile workspace control.",
   keywords: [
     "Nexus Ring Hardware",
+    "Magnetic Focus Controller",
     "Hall Effect Magnetic Sensor",
     "ESP32-C3 Controller",
     "Desk Controller Hardware",
     "Calm Technology",
   ],
   alternates: {
-    canonical: "/hardware",
+    canonical: "https://www.nexusring.tech/hardware",
   },
   openGraph: {
-    title: "Hardware Architecture | Nexus Ring",
+    title: "Nexus Ring Hardware | Magnetic Focus Controller",
     description:
-      "Engineering architecture of the Nexus Ring: dual-shell prototype chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, and 360° ambient optical diffuser.",
+      "Explore the engineering behind Nexus Ring, including magnetic position sensing, ESP32-C3 prototype architecture, and tactile workspace control.",
     url: "https://www.nexusring.tech/hardware",
   },
 };

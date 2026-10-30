@@ -27,12 +27,14 @@
 
 ## Primary Sections
 - **Features & Modes**: 4 dedicated spatial focus positions (Deep Work, Creative, Meeting, Break).
-- **Hardware Architecture**: Hall-effect magnetic sensing array, weighted magnetic totem, ESP32-C3 microcontroller.
-- **Software Companion**: Local system automation, native OS integration, configurable profile hooks.
-- **Design Principles**: Environmental psychology and workflow friction reduction.
-- **Development Campaign**: Transparent production roadmap, backer editions, risks and engineering challenges.
-- **Early Access**: Non-binding waitlist registration for prototype milestones and launch news.
-- **Comparisons Hub**: Architectural comparison against software-only blockers and desk accessories.
+- **Digital Distraction & Attention Economy**: Why modern feeds compete for your time and how to protect focus (https://www.nexusring.tech/digital-distraction).
+- **Focus & Discipline Hub**: Evidence-based systems and tailored routines for engineers, designers, and students (https://www.nexusring.tech/focus).
+- **The Focus Journal**: In-depth research essays on habit formation, stopping cues, and hardware engineering (https://www.nexusring.tech/journal).
+- **Hardware Architecture**: Hall-effect magnetic sensing array, weighted magnetic totem, ESP32-C3 microcontroller (https://www.nexusring.tech/hardware).
+- **Software Companion**: Local system automation, native OS integration, configurable profile hooks (https://www.nexusring.tech/software).
+- **Development Campaign**: Transparent production roadmap, backer editions, risks and engineering challenges (https://www.nexusring.tech/campaign).
+- **Early Access**: Non-binding waitlist registration for prototype milestones and launch news (https://www.nexusring.tech/preorder).
+- **Comparisons Hub**: Architectural comparison against software-only blockers and desk accessories (https://www.nexusring.tech/compare).
 
 ## Key Principles & Distinctions
 1. **Physicality Over Willpower:** Digital tools are easy to ignore because the decision happens on the same screen. Nexus Ring introduces a physical boundary between intention and distraction.

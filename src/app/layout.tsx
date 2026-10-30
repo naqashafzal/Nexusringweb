@@ -8,7 +8,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Nexus Ring — One physical move. Your workspace follows.",
+    default: "Nexus Ring | Physical Focus & Productivity Controller",
     template: "%s | Nexus Ring",
   },
   description: SITE_CONFIG.description,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   applicationName: "Nexus Ring",
   category: "technology",
   openGraph: {
-    title: "Nexus Ring — One physical move. Your workspace follows.",
+    title: "Nexus Ring | Physical Focus & Productivity Controller",
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexus Ring — One physical move. Your workspace follows.",
+    title: "Nexus Ring | Physical Focus & Productivity Controller",
     description: SITE_CONFIG.description,
     creator: "@nexusring",
     site: "@nexusring",

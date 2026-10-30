@@ -1,26 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const INDEXNOW_KEY = "4a92f8016b8e4e9f9024a1b0287cf8e1";
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || "4a92f8016b8e4e9f9024a1b0287cf8e1";
 const HOST = "www.nexusring.tech";
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
-// Default site URLs to ping if none are provided
-const DEFAULT_URLS = [
-  `https://${HOST}`,
-  `https://${HOST}/features`,
-  `https://${HOST}/hardware`,
-  `https://${HOST}/software`,
-  `https://${HOST}/campaign`,
-  `https://${HOST}/preorder`,
-  `https://${HOST}/research`,
-  `https://${HOST}/about`,
-  `https://${HOST}/compare`,
-  `https://${HOST}/compare/nexus-ring-vs-opal-app`,
-  `https://${HOST}/compare/nexus-ring-vs-freedom-blocker`,
-  `https://${HOST}/compare/nexus-ring-vs-pomodoro-timer`,
-  `https://${HOST}/compare/nexus-ring-vs-brick-device`,
-];
-
+/**
+ * Broadcasts modified URLs to the IndexNow protocol endpoint (Bing, Yandex, Seznam, Naver)
+ */
 async function broadcastToIndexNow(urls: string[]) {
   const payload = {
     host: HOST,
@@ -45,34 +31,65 @@ async function broadcastToIndexNow(urls: string[]) {
   };
 }
 
+/**
+ * Informational endpoint: Reports IndexNow configuration and verification status
+ * Does NOT spam IndexNow on simple read requests.
+ */
 export async function GET() {
-  try {
-    const result = await broadcastToIndexNow(DEFAULT_URLS);
-    return NextResponse.json({
-      success: true,
-      message: "IndexNow broadcast initiated successfully",
-      result,
-    });
-  } catch (error) {
-    console.error("[IndexNow Error]:", error);
-    return NextResponse.json(
-      { error: "Failed to broadcast to IndexNow", details: String(error) },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json({
+    service: "IndexNow Protocol Gateway",
+    host: HOST,
+    keyLocation: KEY_LOCATION,
+    status: "configured",
+    documentation: "https://www.indexnow.org/documentation",
+    note: "Submit a POST request with an authorized secret and { urls: string[] } to broadcast updated URLs.",
+  });
 }
 
-export async function POST(request: Request) {
+/**
+ * Protected submission handler: Accepts specific modified URLs for IndexNow broadcasting
+ */
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json().catch(() => ({}));
-    const urlsToSubmit = Array.isArray(body?.urls) && body.urls.length > 0
-      ? body.urls
-      : DEFAULT_URLS;
+    const authHeader = req.headers.get("authorization");
+    const secret = process.env.INDEXNOW_SECRET;
 
-    const result = await broadcastToIndexNow(urlsToSubmit);
+    // If an INDEXNOW_SECRET is configured in environment, require bearer authorization
+    if (secret && authHeader !== `Bearer ${secret}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await req.json().catch(() => ({}));
+    const urls: string[] = Array.isArray(body?.urls) ? body.urls : [];
+
+    if (urls.length === 0) {
+      return NextResponse.json(
+        { error: "No URLs provided. Provide an array of canonical URLs in the 'urls' field." },
+        { status: 400 }
+      );
+    }
+
+    // Validate that all URLs belong to the verified host
+    const invalidUrls = urls.filter((u) => {
+      try {
+        const parsed = new URL(u);
+        return parsed.hostname !== HOST;
+      } catch {
+        return true;
+      }
+    });
+
+    if (invalidUrls.length > 0) {
+      return NextResponse.json(
+        { error: "All submitted URLs must belong to www.nexusring.tech", invalidUrls },
+        { status: 400 }
+      );
+    }
+
+    const result = await broadcastToIndexNow(urls);
     return NextResponse.json({
       success: true,
-      message: "IndexNow submission processed",
+      message: `Successfully notified IndexNow for ${urls.length} URL(s)`,
       result,
     });
   } catch (error) {

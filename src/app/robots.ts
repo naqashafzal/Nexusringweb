@@ -8,21 +8,37 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
-      // Explicitly allow and prioritize AI search engines & LLM retrieval agents
+      // Search engines, AI search engines, and answer engine retrieval crawlers
       {
         userAgent: [
-          "GPTBot",
+          "Googlebot",
+          "Bingbot",
+          "Slurp",
+          "DuckDuckBot",
+          "Baiduspider",
+          "YandexBot",
+          "OAI-SearchBot",
           "ChatGPT-User",
           "PerplexityBot",
           "ClaudeBot",
           "Claude-Web",
-          "Google-Extended",
+          "Applebot",
           "Applebot-Extended",
-          "Amazonbot",
-          "CCBot",
-          "cohere-ai",
         ],
         allow: "/",
+        disallow: ["/api/"],
+      },
+      // Restrict bulk data-mining / AI model-training bots from scraping backend routes
+      {
+        userAgent: [
+          "GPTBot",
+          "CCBot",
+          "cohere-ai",
+          "Bytespider",
+          "Diffbot",
+        ],
+        allow: "/",
+        disallow: ["/api/"],
       },
     ],
     sitemap: "https://www.nexusring.tech/sitemap.xml",

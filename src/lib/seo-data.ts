@@ -1,27 +1,32 @@
 /**
- * SEO & AI Search Engine Structured Data Configuration
+ * SEO, AI Search Engine (AEO/GEO) & Structured Data Engine
  * Generates Schema.org JSON-LD for generative engine optimization (GEO),
- * Google rich snippets, and AI search engine ingestion (Perplexity, ChatGPT, Claude).
+ * Google rich snippets, Perplexity, ChatGPT Search, Bing, and search-grounded LLM crawlers.
  */
+
+import { JournalArticle } from "./journal-data";
 
 export const SITE_CONFIG = {
   name: "Nexus Ring",
   legalName: "Nexus Ring",
   url: "https://www.nexusring.tech",
-  tagline: "One physical move. Your workspace follows.",
+  tagline: "FORCE YOUR FOCUS. ENGINEER SUCCESS.",
+  mission: "Take back control of your attention.",
+  supportingStatement:
+    "Your time is valuable. Your attention is limited. In a digital world competing to capture both, Nexus Ring is being built to help you choose what matters and protect the environment you need to pursue it.",
+  canonicalProductDefinition:
+    "Nexus Ring is a physical workspace controller in development that uses a magnetic totem and position sensing to select focus-related modes. Its planned companion software connects those choices with supported desktop automations, helping users create more intentional working environments.",
   description:
-    "Nexus Ring is a physical control interface designed to connect your intention with your digital workspace. Move the magnetic totem to select a mode and let Nexus Companion prepare your environment for the work ahead.",
-  hooks: {
-    disciplineEngine: "Physical Intent Computing: One physical move. Your workspace follows.",
-    moreOutput: "From intention to action: Changing your digital environment through a deliberate physical gesture.",
-    protectPotential: "Engineered for intention: A desk-based physical interface connecting deliberate actions with workspace automation.",
-  },
+    "Meet Nexus Ring, a physical workspace controller in development. Designed to help you reduce digital distractions, choose your work mode with a magnetic totem, and reclaim your attention through local-first automation.",
   keywords: [
     "Nexus Ring",
     "Physical Workspace Controller",
     "Physical Intent Computing",
     "Focus Hardware",
     "Desk Interface",
+    "Digital Distraction Solution",
+    "Attention Economy",
+    "Deep Work Setup",
     "Workspace Automation",
     "Hall Effect Magnetic Totem",
     "Local-First Productivity",
@@ -62,7 +67,7 @@ export function getStructuredData() {
     },
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_CONFIG.url}/features?q={search_term_string}`,
+      target: `${SITE_CONFIG.url}/focus?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -98,17 +103,17 @@ export function getStructuredData() {
     "@id": `${SITE_CONFIG.url}/#product`,
     name: "Nexus Ring — Physical Workspace Controller",
     image: [`${SITE_CONFIG.url}/opengraph-image`],
-    description: SITE_CONFIG.description,
+    description: SITE_CONFIG.canonicalProductDefinition,
     brand: {
       "@type": "Brand",
       name: "Nexus Ring",
     },
     category: "Electronics > Hardware > Productivity Tools",
-    material: "Prototype 3D-Printed Chassis (PLA-CF / PETG), Neodymium Totem, ESP32-C3 Controller Architecture",
+    material: "Dual-Shell Modular Prototype Chassis (PLA-CF / PETG), Neodymium Totem, ESP32-C3 Controller Architecture",
     offers: [
       {
         "@type": "Offer",
-        name: "Nexus Ring Early Access",
+        name: "Nexus Ring Early Access Waitlist",
         availability: "https://schema.org/PreOrder",
         price: "0.00",
         priceCurrency: "USD",
@@ -124,18 +129,26 @@ export function getStructuredData() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is the Nexus Ring?",
+        name: "What is Nexus Ring?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Nexus Ring is a desk-based physical interface designed to connect deliberate physical actions with digital workspace automation. A user moves a magnetic totem into one of four designated positions to select their intended working mode.",
+          text: SITE_CONFIG.canonicalProductDefinition,
         },
       },
       {
         "@type": "Question",
-        name: "How does the hardware work?",
+        name: "Is Nexus Ring a wearable smart ring?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "When the weighted magnetic totem is moved into a position, onboard Hall-effect sensors detect the magnetic field change. The microcontroller interprets the position and communicates the selected mode to companion software on your computer.",
+          text: "No. Nexus Ring is a stationary, desk-based physical interface. It sits on your workspace alongside your keyboard and mouse. It does not track biometric pulses or require wrist wear.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does the magnetic totem communicate with software?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "When the weighted magnetic totem is moved into a quadrant slot, internal digital Hall-effect sensors detect the magnetic flux density. The ESP32-C3 microcontroller interprets the position and transmits standard USB HID event packets to the local Nexus Companion software running on your computer.",
         },
       },
       {
@@ -143,27 +156,81 @@ export function getStructuredData() {
         name: "What are the four operating modes?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The four primary operating modes are Deep Work (distraction-free concentration), Creative (exploratory workflow), Meeting (communication-focused setup), and Break (deliberate boundary between work and recovery).",
+          text: "The four primary operating modes are Deep Work (distraction-free concentration with notification muting and domain filtering), Creative (divergent ideation and creative tool launching), Meeting (conferencing setups and audio status checks), and Break (deliberate boundary between work and cognitive recovery).",
         },
       },
       {
         "@type": "Question",
-        name: "Is Nexus Ring currently available for purchase?",
+        name: "Does Nexus Ring require an internet connection or cloud account?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Nexus Ring is currently under active development. Visitors can join the early access waitlist to receive prototype progress updates and launch news with no payment required.",
+          text: "No. Nexus Ring operates on a strict local-first philosophy. Core mode switching, application orchestration, notification muting, and local filtering are performed on-device without cloud telemetry, mandatory remote accounts, or background data collection.",
         },
       },
       {
         "@type": "Question",
-        name: "What does local-first mean for Nexus Ring?",
+        name: "Is Nexus Ring available to purchase today?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Core workspace automation profiles are designed to run locally on your host machine without requiring external cloud servers for basic mode switching.",
+          text: "Nexus Ring is currently under active prototype development. Interested users, developers, and makers can join the free, non-binding waitlist to receive authentic engineering milestones and early crowdfunding launch notice.",
         },
       },
     ],
   };
 
   return [websiteSchema, organizationSchema, productSchema, faqSchema];
+}
+
+/**
+ * Generates Schema.org JSON-LD Article structured data for Focus Journal posts
+ */
+export function getArticleSchema(article: JournalArticle) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${SITE_CONFIG.url}/journal/${article.slug}#article`,
+    headline: article.title,
+    alternativeHeadline: article.subtitle,
+    description: article.summary,
+    url: `${SITE_CONFIG.url}/journal/${article.slug}`,
+    image: [`${SITE_CONFIG.url}/opengraph-image`],
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    author: {
+      "@type": "Person",
+      name: article.author.name,
+      jobTitle: article.author.role,
+      url: SITE_CONFIG.founder.sameAs[0],
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_CONFIG.legalName,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_CONFIG.url}/icon.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_CONFIG.url}/journal/${article.slug}`,
+    },
+    keywords: article.keywords.join(", "),
+    articleSection: article.category,
+  };
+}
+
+/**
+ * Generates BreadcrumbList Schema.org structured data
+ */
+export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url.startsWith("http") ? item.url : `${SITE_CONFIG.url}${item.url}`,
+    })),
+  };
 }
