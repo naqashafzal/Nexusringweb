@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Software & Kernel Daemon | Zero-Latency Distraction Elimination",
+  title: "Nexus Companion Software",
   description:
-    "Native OS webhooks and kernel-level distraction firewall for Windows, macOS, and Linux. Sub-24ms response, air-gapped on-device AI guardian, zero cloud telemetry.",
+    "Nexus Companion desktop software connects physical totem mode selections to local workspace automations for Windows, macOS, and Linux.",
   keywords: [
-    "Distraction Elimination System",
-    "Kernel-Level Focus Lock",
-    "Air-Gapped AI Guardian",
-    "Zero Telemetry Privacy",
-    "Windows PowerShell Kernel Hooks",
-    "macOS pfctl Distraction Firewall",
+    "Nexus Companion",
+    "Desktop Workspace Daemon",
+    "Local Automation",
+    "Productivity Software",
+    "Focus Automation",
   ],
   alternates: {
     canonical: "/software",
   },
   openGraph: {
-    title: "Software & Kernel Daemon | Zero-Latency Distraction Elimination",
+    title: "Nexus Companion Software | Nexus Ring",
     description:
-      "Native OS kernel hooks fire instantly upon ring placement. 100% air-gapped, zero cloud telemetry.",
+      "Nexus Companion desktop software connects physical totem mode selections to local workspace automations for Windows, macOS, and Linux.",
     url: "https://www.nexusring.tech/software",
   },
 };

@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pre-Order Nexus Ring | Protect Your Potential",
+  title: "Early Access Registration",
   description:
-    "Reserve your Nexus Ring Batch 01. A Physical Attention Operating System built to protect your focus and environment.",
+    "Register interest for Nexus Ring early access. Follow prototype milestones and receive early backer notification with no payment required.",
   keywords: [
-    "Protect Your Potential",
-    "Pre-Order Nexus Ring",
-    "Time & Focus Optimization",
-    "High-Performance Workspace Artifact",
-    "Batch 01 Reservation",
+    "Nexus Ring Early Access",
+    "Physical Workspace Controller",
+    "Focus Hardware",
+    "Waitlist Registration",
+    "Prototype Updates",
   ],
   alternates: {
     canonical: "/preorder",
   },
   openGraph: {
-    title: "Pre-Order Nexus Ring | Protect Your Potential",
+    title: "Early Access Registration | Nexus Ring",
     description:
-      "Lock in your Batch 01 reservation. Eliminate distractions and achieve higher quality output in a fraction of the time.",
+      "Register interest for Nexus Ring early access. Follow prototype milestones and receive early backer notification with no payment required.",
     url: "https://www.nexusring.tech/preorder",
   },
 };

@@ -1,105 +1,111 @@
 # Nexus Ring — Complete Technical, Scientific & Product Reference
 
 ## Executive Summary
-The Nexus Ring is a physical discipline engine built to accelerate your personal success. By ruthlessly eliminating digital distractions, it protects your most valuable assets—time and focus—enabling you to achieve higher quality output in a fraction of the time.
+Nexus Ring is a desk-based physical interface designed to connect deliberate physical actions with digital workspace automation. Move the magnetic totem to select an operating mode, and let the local Nexus Companion software prepare your environment for the work ahead.
 
-Designed and engineered by Nexus Desktop Art Inc., the Nexus Ring represents the convergence of high-end tactile hardware, aerospace-grade machining, zero-latency kernel integration, and 100% air-gapped local AI.
-
----
-
-## Brand Positioning & Marketing Hooks (The "Success" Angle)
-
-1. **The Discipline Engine: Force your focus, save your time, and engineer your own success.**
-   Willpower is a finite cognitive currency that depletes continuously under modern notification saturation. The Nexus Ring transforms focus from a vulnerable willpower struggle into a physical, mechanical state transition. When the physical ring is engaged, focus is enforced rather than negotiated.
-
-2. **More Output, Less Friction: A physical barrier between you and the distractions costing you time and money.**
-   Digital app blockers and browser plugins are trivial to bypass with two clicks when an impulse strikes. The Nexus Ring establishes a physical boundary: to break focus, a user must physically remove and alter an engineered tactile artifact on their desk. This micro-moment of physical friction breaks automatic dopamine loops.
-
-3. **Protect Your Potential: The ultimate hardware artifact to lock in your habits and build unbreakable discipline.**
-   High performers understand that long-term compounded success depends on deep uninterrupted flow blocks. The Nexus Ring anchors muscle memory to mental intent, creating an unbreakable habit loop between tactile action and peak cognitive performance.
+Engineered and developed by Nexus Ring (founded by Naqash Afzal), the system combines tactile desk hardware, Hall-effect magnetic vector detection, and a local-first companion daemon for Windows, macOS, and Linux.
 
 ---
 
-## Core Keyword Taxonomy
-- **Success & Discipline Engine**: Hardware engineered to maximize individual high-leverage cognitive output and eliminate time leakage.
-- **Time & Focus Optimization**: Preserving high-value cognitive hours by shielding the operator from contextual switching and notification fatigue.
-- **Distraction Elimination System**: Multi-layer defense comprising physical totem state tracking, kernel-level firewall blocking, and local vision anomaly detection.
-- **Flow State Catalyst**: A spatial anchor that cues the subconscious brain into immediate task immersion, reducing flow entry time from 23 minutes to seconds.
-- **High-Performance Workspace Artifact**: CNC 6061-T6 aluminum kinetic sculpture designed to live prominently on high-end desks as an intentional statement of discipline.
+## Brand Positioning & Philosophy (Physical Intent Computing)
+
+1. **Physicality Over Willpower: One physical move. Your workspace follows.**
+   Willpower is a finite cognitive resource depleted by continuous screen notifications. Nexus Ring transforms workflow mode changes into a deliberate physical action. Moving a physical magnetic totem creates a tangible threshold between intention and distraction.
+
+2. **Friction Where It Matters:**
+   Digital app blockers and browser extensions are easy to dismiss with two clicks when an impulse strikes. Nexus Ring establishes a physical commitment: to break a focus session, the operator physically moves the magnetic totem on their desk, breaking unconscious dopamine loops.
+
+3. **Calm, Screen-Free Hardware:**
+   No OLED screens, no notification feeds, no vibrations. A glanceable, 360-degree diffused LED confirmation gives quiet ambient status without demanding cognitive attention.
+
+4. **Transparent Engineering & Development:**
+   The product is currently in active prototype development. All specifications clearly indicate whether a feature is **VALIDATED**, **PROTOTYPE**, **IN DEVELOPMENT**, or **PLANNED**. No payments are collected; early access registration is free and non-binding.
+
+---
+
+## Core Taxonomy & Definitions
+- **Physical Intent Computing:** A design philosophy where physical manipulation of desk objects directly triggers deterministic digital environment states.
+- **Magnetic Totem:** An ergonomically contoured, weighted desk artifact with an embedded N52 neodymium magnetic core used to designate one of four operational quadrant zones.
+- **Nexus Companion:** A lightweight, local-first background daemon running natively on desktop operating systems (Windows, macOS, Linux) communicating with the ring over USB HID or local connection.
+- **Local-First Architecture:** Mode switching, application launching, notification muting, and local filtering are performed on-device without cloud telemetry, mandatory remote accounts, or background data collection.
 
 ---
 
 ## Technical Specifications
 
 ### Hardware Architecture
-- **Chassis:** Precision 3D-Printed V1 chassis engineered with sub-millimeter snap-fit tolerances for PLA-CF, PETG, and SLA resins. Official 3MF print profiles calibrated for Bambu Lab and Prusa printers. (CNC 6061-T6 aluminum available in Pro/Stretch tier).
-- **Sensor Array:** 4x KY-003 Hall-effect sensors measuring magnetic flux density (up to 420mT) with sub-1mm spatial accuracy at 1000Hz (1ms polling frequency).
-- **Core Microcontroller:** Espressif ESP32-C3 32-bit RISC-V processor clocked at 160MHz with hardware AES-256 acceleration and FreeRTOS embedded daemon.
-- **Haptic & Acoustic Damping:** Engineered ceramic magnetic absorption ring yielding a resonant 440Hz low acoustic thud with 4.2N magnetic snap force and zero mechanical wobble.
-- **Totems:** Precision-turned magnetic cylinders with directional N52 neodymium cores.
+- **Chassis Structure:** Dual-shell modular enclosure (upper bezel lid + reinforced structural base) engineered with sub-millimeter snap-fit tolerances for PLA-CF, PETG, and resin prototyping. Production design targets injection-molded ABS/polycarbonate and optional precision CNC 6061-T6 aluminum.
+- **Sensor Array:** 4-quadrant Hall-effect magnetic sensor array (A3144 / KY-003 class, digital bipolar latching) measuring magnetic flux proximity with sub-millimeter positional detection.
+- **Core Microcontroller:** Espressif ESP32-C3 32-bit RISC-V processor clocked at 160MHz with hardware crypto acceleration and FreeRTOS embedded firmware.
+- **Totem & Base Mechanics:** Precision-contoured weighted totem containing an oriented N52 neodymium core providing tactile seating into quadrant receptacles with zero mechanical wobble.
+- **Status Indicator:** 360-degree peripheral diffused light ring using individually addressable RGB LEDs (WS2812B class) for glanceable mode confirmation.
+- **Interface & Power:** USB Type-C connector providing 5V DC power and standard USB HID communication.
 
 ### Software & Operating System Integration
-- **Kernel Daemon:** Native background daemons for Windows (PowerShell / registry hooks), macOS (launchd / pfctl packet filter / AppleScript), and Linux (systemd / iptables).
-- **Latency:** Sub-24ms hardware interrupt to OS action response time.
-- **Network Security:** Operates locally. Capable of air-gapped operation via USB HID or local Wi-Fi/BLE websocket.
-- **AI Guardian:** Local quantized custom AI vision and context model running completely on-device. Zero keystrokes, screenshots, or metadata are ever transmitted to any cloud server.
+- **Platform Daemons:** Native local companion daemons:
+  - **Windows:** PowerShell automation, Windows Focus Assist integration, hosts file domain routing.
+  - **macOS:** AppleScript workspace orchestration, Do Not Disturb triggers, pfctl packet filtering hooks.
+  - **Linux:** systemd daemon service, D-Bus notification inhibition, iptables/nftables local domain rules.
+- **Communication Protocol:** Standard USB HID device reports (vendor-defined usage page) with zero driver installation required on modern operating systems. Optional local WebSocket server for IDE and browser extensions.
+- **Privacy & Security:** Local-first operation. All workspace scripts and filters execute locally on user hardware. Zero keystrokes, screenshots, or browsing history are ever transmitted to external servers.
 
 ---
 
-## 4 Hardware Spatial Modes
+## Four Operating Modes
 
-1. **Deep Work Protocol (Position 1 - Emerald Glow):**
-   - Automatically activates kernel-level distraction firewall (`/etc/hosts` and packet filter blocking Twitter, YouTube, Reddit, Discord).
-   - Silences all OS toast and mobile push notifications.
-   - Launches targeted IDE, document editor, and project terminal.
-   - Initiates 90-minute ultradian flow timer.
+1. **Deep Work Mode (Quadrant 1 — Crimson Red `#FF405A`):**
+   - **Intent:** Uninterrupted, distraction-free concentration.
+   - **Software Actions:** Mutes system notifications, minimizes background communication apps, applies local distracting domain blocking, opens configured project IDE or text editor.
+   - **Status:** Core USB signaling validated; companion automation scripts in active development.
 
-2. **Meeting & Collaboration Mode (Position 2 - Electric Cyan):**
-   - Instant hardware mute toggle for micro-relays and microphone inputs.
-   - Launches conferencing software (Zoom, Google Meet, Slack Huddle).
-   - Enables background transcription agent and meeting summary scratchpad.
+2. **Creative Mode (Quadrant 2 — Clean White/Slate `#F8FAFC`):**
+   - **Intent:** Divergent ideation, design, and exploration.
+   - **Software Actions:** Launches primary creative applications (Figma, Blender, CAD, audio workstations), disables aggressive domain filters, applies non-intrusive ambient lighting.
+   - **Status:** Profile switching architecture in active development.
 
-3. **Creative Flow & Ideation Mode (Position 3 - Cyber Purple):**
-   - Launches digital canvas / Figma / CAD environment.
-   - Activates ambient generative soundscapes via local audio engine.
-   - Sets non-intrusive ambient lighting pulse to encourage divergent thinking.
+3. **Meeting Mode (Quadrant 3 — Emerald Green `#35C98A`):**
+   - **Intent:** Clear collaboration and video conferencing.
+   - **Software Actions:** Launches video conferencing software, triggers microphone/camera status checks, suppresses incoming system toast alerts.
+   - **Status:** Hotkey trigger validated; automated meeting app hooks planned.
 
-4. **Recharge & Cognitive Reset (Position 4 - Amber Glow):**
-   - Minimizes active workspaces and displays calming biometric breathing guide.
-   - Suspends all work telemetry and logs session accomplishments into local SQLite ledger.
+4. **Break Mode (Quadrant 4 — Warm Amber `#F0B35A`):**
+   - **Intent:** Deliberate physical and cognitive recovery.
+   - **Software Actions:** Suspends focus timers, dismisses active work windows, restores notification channels, provides subtle breathing/break pacing indicator.
+   - **Status:** Timer trigger validated; workspace minimize script in development.
 
 ---
 
-## Pricing & Pledge Tiers
-- **The Maker Kit ($15):** Complete 3MF 3D print profiles, PCB schematics, firmware source code, and local software suite.
-- **The Hacker Electronics Pack ($49):** Pre-soldered ESP32-C3 PCB, 4x Hall sensors, NeoPixel LED ring, N52 magnets, and wiring harness.
-- **Early Bird Founder's Artifact ($129):** Complete CNC aluminum artifact, 4 magnetic totems, braided USB-C cable, lifetime local software updates.
-- **Nexus Pro ($169):** CNC artifact, custom engraved serialized serial number, weighted brass totem set, executive desk mat.
-- **Dual Executive Desk Set ($349):** Two matching serialized artifacts with premium display cradle.
+## Provisional Pricing & Roadmap Editions
+> Note: Pricing targets are provisional estimates subject to final component sourcing and manufacturing volume. No pre-orders or funds are collected until crowdfunding launch.
+
+- **Digital Maker Edition (~$15–$19 target):** Complete CAD files (STEP / STL / 3MF), PCB schematics, ESP32-C3 firmware source code, and local companion scripts for self-fabrication.
+- **Hacker Electronics Pack (~$49 target):** Solder-ready PCB, pre-flashed ESP32-C3 microcontroller, 4x Hall-effect sensors, addressable LED ring, N52 magnets, and wiring harness.
+- **Desk Edition (~$129 target):** Fully assembled, calibrated hardware unit, weighted magnetic totem, USB-C braided cable, and full desktop companion suite.
+- **Pro Edition (~$169 target):** CNC-machined metal upper bezel, weighted brass or machined aluminum totem, serialized production badge, and premium desk pad.
 
 ---
 
 ## Frequently Asked Questions (FAQ)
 
-### What makes the Nexus Ring different from apps like Freedom, Opal, or Cold Turkey?
-Software apps run on the same screen where distractions occur, making them subject to instant override through impulsive clicking or task manager termination. The Nexus Ring introduces a physical consequence: changing your mental mode requires moving a physical object in physical reality, interrupting automatic unconscious dopamine loops.
+### What makes the Nexus Ring different from software apps like Opal, Freedom, or Forest?
+Software applications live on the same display where distraction occurs, making them vulnerable to impulsive override or task termination during moments of fatigue. The Nexus Ring introduces a physical boundary: switching your working mode requires a physical, tactile movement of an object on your desk, breaking automatic digital reflex loops.
 
-### How does the Nexus Ring help accelerate personal success?
-Success in knowledge work, engineering, and leadership is directly bounded by the duration of high-grade uninterrupted focus. By reclaiming an estimated 2.4 hours of wasted context-switching time each day, users produce higher quality output in a fraction of the time, compounding productivity over quarters and years.
+### Is the Nexus Ring a wearable ring or smartwatch?
+No. The Nexus Ring is a stationary, desk-based physical interface. It sits on your workspace alongside your keyboard and mouse. It does not track biometric pulses or require wrist wear.
 
-### Does the Nexus Ring collect or sell my private data?
-Never. Nexus Ring is built on a 100% air-gapped local-first philosophy. The kernel daemons and local AI guardian run entirely on your CPU/GPU. Zero bytes of screen capture, browser history, or keystrokes are uploaded.
+### Does the Nexus Ring operate offline?
+Yes. The companion software and USB HID interface operate entirely locally on your computer. Core workspace automations (window management, notification muting, focus timers) do not require cloud connectivity or remote server accounts.
 
 ### Who created the Nexus Ring?
-Nexus Ring was created and founded by Naqash Afzal (Founder & Chief Hardware Architect), pioneering physical discipline engines that merge embedded firmware, Hall-effect magnetic tracking, and distraction-free workspace artifacts.
+Nexus Ring was created and founded by Naqash Afzal.
 - GitHub: https://github.com/naqashafzal
-- Google Developer: https://g.dev/naqashafzal
 - MakerWorld: https://makerworld.com/en/@naqash
 - LinkedIn: https://www.linkedin.com/in/naqashafzal/
-- Freelancer: https://www.freelancer.com/u/naqashafzal
+- Official Website: https://www.nexusring.tech
 
-### How does the Nexus Ring compare to Opal, Freedom, and other app blockers?
-- **vs. Opal App:** Opal is a smartphone screen-time subscription ($99/yr) that runs on the same screen delivering notifications, easily bypassed during moments of ego depletion. Nexus Ring is a one-time physical hardware artifact ($129) controlling desktop OS kernels with tactile spatial permanence and zero recurring fees.
-- **vs. Freedom.to:** Freedom relies on local VPN tunnels and browser extensions that can be force-killed via Task Manager. Nexus Ring operates at the hardware layer via ESP32-C3 Hall-effect vector tracking and sub-24ms local kernel interrupts.
-- **vs. Pomodoro Timers:** Kitchen timers and Pomodoro apps passively count down minutes while you browse distractions. The Nexus Ring actively defends your OS boundaries, dropping firewalls and closing distraction sockets in Deep Work mode.
-- **vs. Brick Device:** Brick only locks smartphone apps via an NFC tap, leaving multi-monitor desktop workstations vulnerable. Nexus Ring manages full desktop workstation operating systems (Windows, macOS, Linux) with an air-gapped local AI guardian and open REST/WebSocket SDK.
+---
+
+## Architectural Comparison Summary
+- **vs. Software Blockers (Freedom, Opal, Cold Turkey):** Software-only blockers run on the distraction device and carry recurring subscriptions. Nexus Ring provides a physical desk anchor with one-time ownership and no recurring fees.
+- **vs. Smart Timers (Timeular, Pomodoro Timers):** Traditional timers passively count down without actively changing OS states. Nexus Ring commands local system environments (silencing alerts, opening tools, applying domain filters).
+- **vs. Smartphone NFC Tokens (Brick):** Smartphone NFC tokens only restrict phone apps, leaving multi-monitor computer workstations vulnerable. Nexus Ring manages desktop operating systems (Windows, macOS, Linux) where demanding professional work occurs.

@@ -1,26 +1,36 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import {
+  ChevronRight,
+  Rotate3D,
+  ChevronDown,
+  ArrowRight,
+  Cpu,
+  Layers,
+  ShieldCheck,
+  Compass,
+  HardDrive,
+  CloudOff,
+} from "lucide-react";
 
 const ExplodedRingCanvas = dynamic(
   () => import("@/components/ExplodedRingCanvas"),
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full flex items-center justify-center font-mono text-xs text-accent/50 animate-pulse">
-        INITIALIZING 3D DOCK...
+      <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-[#A5AFBF] gap-3">
+        <div className="w-6 h-6 border-2 border-[#FF405A] border-t-transparent rounded-full animate-spin" />
+        <span className="tracking-widest uppercase">Loading 3D Hardware Model...</span>
       </div>
     ),
   }
 );
-import { ChevronRight, Rotate3D, ChevronDown } from "lucide-react";
-
-// ─── Reveal helper ────────────────────────────────────────────────
 
 function Reveal({
   children,
@@ -34,10 +44,10 @@ function Reveal({
   const reducedMotion = useReducedMotion();
   return (
     <motion.div
-      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      initial={reducedMotion ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -45,225 +55,382 @@ function Reveal({
   );
 }
 
-// ─── FAQ Data ─────────────────────────────────────────────────────
-
 const FAQ_ITEMS = [
-  {q: "What is Nexus Ring?", a: "Nexus Ring is a physical intent computing device designed to connect your intention with your digital workspace. Moving a magnetic totem between four positions selects a workflow mode."},
-  {q: "Can I customize the four modes?", a: "The product vision includes configurable workflows for Deep Work, Creative, Meeting and Break. Supported actions and integrations will be confirmed as development progresses."},
-  {q: "Is Nexus Ring available to buy?", a: "Nexus Ring is currently in development. The waitlist is for launch updates, with no payment required. Final specifications, availability and pricing will be announced when ready."},
-  {q: "What does local-first mean?", a: "Core workspace automation is designed to run on your own devices. Zero friction, privacy by architecture, and keeping personal automation local."},
-  {q: "How can I follow development?", a: "Visit the development page for the project direction, join the community, or sign up for email updates."},
+  {
+    q: "What is Nexus Ring?",
+    a: "Nexus Ring is a desk-based physical interface designed to connect deliberate physical actions with digital workspace automation. A user moves a magnetic totem into one of four designated positions to select their intended working mode.",
+  },
+  {
+    q: "How does the magnetic totem communicate with software?",
+    a: "When the totem is placed into a slot, internal Hall-effect sensors detect the magnetic field change without requiring physical push-buttons. The onboard controller interprets the selected position and transmits the mode event to Nexus Companion software running on your computer.",
+  },
+  {
+    q: "Can I customize what happens in each mode?",
+    a: "Yes. In the product vision for Nexus Companion, users will be able to customize profile rules for each mode position—such as website filters, notification silencing, application launches, or project setup scripts.",
+  },
+  {
+    q: "Is Nexus Ring available to purchase today?",
+    a: "Nexus Ring is currently in active hardware and software development. We have opened a non-binding waitlist so interested builders, makers, and focus enthusiasts can receive genuine prototype milestones and early notice when production batches open. No payment is required.",
+  },
+  {
+    q: "What does local-first mean for privacy?",
+    a: "Core mode switching and workspace automation rules are designed to execute locally on your machine. We believe basic tool switching should not require external cloud routing or telemetry to function.",
+  },
+  {
+    q: "What editions will be available?",
+    a: "We are designing three paths: a Maker Edition for 3D-printing enthusiasts with CAD files and BOM; a Hacker Kit supplying the custom PCB and electronics; and a fully assembled Pro Desk Set.",
+  },
 ];
 
-// ─── Page Component ───────────────────────────────────────────────
-
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showComingSoon, setShowComingSoon] = useState(false);
 
-  const { scrollYProgress: heroScroll } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"],
-  });
-
-  const heroOpacity = useTransform(heroScroll, [0.75, 1], [1, 0]);
-  const heroY = useTransform(heroScroll, [0.75, 1], [0, -60]);
-
   return (
-    <main className="bg-vantablack text-[#F8FAFC] font-sans overflow-x-hidden">
-      {/* ════════════════ HERO (DUAL COLUMN SPLIT) ════════════════ */}
-      <motion.div
-        style={{ opacity: heroOpacity }}
-        className="absolute top-0 right-0 w-full lg:w-[55%] h-[460px] lg:h-screen z-10 pointer-events-auto"
-      >
-        <ExplodedRingCanvas scrollProgress={heroScroll} disableExplode={true} centerPosition={true} />
-      </motion.div>
+    <main className="bg-[#080B12] text-[#F8FAFC] font-sans overflow-x-hidden selection:bg-[#FF405A]/30 selection:text-white">
+      {/* ════════════════ SECTION A: HERO ════════════════ */}
+      <section className="relative min-h-[calc(100vh-80px)] w-full flex items-center pt-28 pb-16 lg:py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+          {/* ── LEFT COLUMN: Text Content & CTAs (6 cols) ── */}
+          <div className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+              PHYSICAL INTENT COMPUTING
+            </div>
 
-      <section
-        ref={heroRef}
-        className="relative min-h-screen w-full z-20 pointer-events-none"
-      >
-        <div className="relative min-h-screen w-full flex flex-col justify-between pt-[460px] lg:pt-32 pb-16 px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden pointer-events-none">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto w-full">
-            {/* ── LEFT COLUMN: Text Content & CTAs (6 cols) ── */}
-            <motion.div
-              style={{ opacity: heroOpacity, y: heroY }}
-              className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl pointer-events-auto"
-            >
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-[11px] font-mono tracking-widest uppercase backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-                Physical Intent Computing
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.94] text-white">
+              One physical move.<br />
+              <span className="text-[#A5AFBF]">
+                Your workspace follows.
               </span>
+            </h1>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.92] text-white">
-                Your attention is<br />
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(120deg, #ff334f 0%, #ff6a7d 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  slipping away.
-                </span>
-              </h1>
+            <p className="text-[#A5AFBF] text-base md:text-lg font-light leading-relaxed border-l-2 border-[#FF405A] pl-4 bg-[#101723]/60 p-4 rounded-r-2xl">
+              Your work deserves your full attention. Nexus Ring is being developed to turn a simple physical action into a deliberate change in your digital workspace.
+            </p>
 
-              <p className="text-slate-400 text-base md:text-lg font-light max-w-lg leading-relaxed border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl">
-                We spend our days fighting our own screens just to get our work done. The Nexus Ring is the physical off-switch for digital distraction. One deliberate move changes your apps, your notifications, and your entire environment.
-              </p>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowComingSoon(true)}
+                className="px-8 py-4 rounded-full font-bold text-sm tracking-wide text-white bg-[#FF405A] hover:bg-[#e0354e] transition-all duration-200 shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer flex items-center gap-2"
+              >
+                <span>Join the Waitlist</span>
+                <ChevronRight size={16} />
+              </button>
+              <Link
+                href="#how-it-works"
+                className="px-8 py-4 rounded-full font-medium text-sm text-[#F8FAFC] hover:text-white border border-[#283141] bg-[#101723] hover:border-[#A5AFBF]/50 transition-all duration-200"
+              >
+                Explore Nexus Ring ↓
+              </Link>
+            </div>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  onClick={() => setShowComingSoon(true)}
-                  className="relative px-8 py-4 rounded-full font-semibold text-sm tracking-wide text-black bg-white hover:bg-gray-200 transition-all duration-300 cursor-pointer"
-                >
-                  Join the Waitlist
-                </button>
-                <Link
-                  href="#modes"
-                  className="px-8 py-4 rounded-full font-medium text-sm text-slate-300 hover:text-white border border-white/10 bg-transparent hover:border-white/30 backdrop-blur-md transition-all duration-300"
-                >
-                  Explore the modes ↓
-                </Link>
+            <p className="text-[11px] font-mono text-[#A5AFBF] tracking-wider pt-1">
+              Currently in development. Join for prototype updates and launch news. No payment required.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#283141]">
+              <div>
+                <p className="text-xs font-mono text-white font-semibold">
+                  Four Operating Modes
+                </p>
+                <p className="text-[10px] font-mono text-[#A5AFBF] uppercase tracking-wider mt-1">
+                  Deep Work · Creative · Meeting · Break
+                </p>
               </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-8 border-t border-white/5">
-                {[
-                  { label: "Deep Work · Creative · Meeting · Break", val: "Default Modes" },
-                  { label: "Protect, Never Control", val: "Local First" },
-                  { label: "One Ring. Every device.", val: "Cross-Device State" },
-                  { label: "Digital, DIY and Pro editions", val: "Maker Ecosystem" },
-                ].map((stat) => (
-                  <div key={stat.val}>
-                    <p className="text-xs font-mono text-white font-semibold">
-                      {stat.val}
-                    </p>
-                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mt-1">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
+              <div>
+                <p className="text-xs font-mono text-white font-semibold">
+                  Contactless Sensing
+                </p>
+                <p className="text-[10px] font-mono text-[#A5AFBF] uppercase tracking-wider mt-1">
+                  Hall-Effect Magnetic Detection
+                </p>
               </div>
-            </motion.div>
+            </div>
+          </div>
 
-            {/* ── RIGHT COLUMN: Top-Right Badge Callout (6 cols) ── */}
-            <motion.div
-              style={{ opacity: heroOpacity }}
-              className="hidden lg:flex lg:col-span-6 flex-col items-end justify-start h-full pt-4 pr-4 relative pointer-events-none"
-            >
-              <div className="px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-mono text-slate-300 flex items-center gap-2 pointer-events-auto cursor-grab active:cursor-grabbing">
-                <Rotate3D
-                  size={16}
-                  className="animate-spin text-white"
-                  style={{ animationDuration: "8s" }}
-                />
-                <span>Drag to Rotate 3D Artifact</span>
-              </div>
-            </motion.div>
+          {/* ── RIGHT COLUMN: Interactive 3D Model (6 cols) ── */}
+          <div className="lg:col-span-6 relative w-full h-[460px] sm:h-[520px] lg:h-[620px] rounded-3xl overflow-hidden border border-[#283141] bg-[#101723]/60 backdrop-blur-sm shadow-2xl">
+            {/* Top-right hint */}
+            <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#080B12]/80 backdrop-blur-md text-xs font-mono text-[#A5AFBF] flex items-center gap-2 pointer-events-none">
+              <Rotate3D size={14} className="text-[#FF405A] animate-spin" style={{ animationDuration: "10s" }} />
+              <span>Drag to Rotate</span>
+            </div>
+
+            {/* 3D Canvas */}
+            <div className="w-full h-full">
+              <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
+            </div>
+
+            {/* Bottom-left status badge */}
+            <div className="absolute bottom-4 left-4 z-20 text-[10px] font-mono text-[#A5AFBF]/80 uppercase tracking-widest bg-[#080B12]/90 px-3 py-1.5 rounded-full border border-[#283141] backdrop-blur-sm pointer-events-none">
+              Interactive 3D CAD Visualization · Public Prototype Model
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="vision" className="relative z-20 bg-obsidian py-24 border-y border-slate">
+      {/* ════════════════ SECTION B: HOW IT WORKS ════════════════ */}
+      <section id="how-it-works" className="relative z-20 bg-[#101723] py-28 border-y border-[#283141]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          {/* Top part: Problem and Principle */}
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-            <Reveal>
-              <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Silent Crisis</p>
-              <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white mb-6">Willpower was never going to be enough.</h2>
-              <p className="text-slate-400 text-lg leading-relaxed mb-4">Every day, you sit at your desk and wage a quiet war. On one side: your goals, your deadlines, and your peace of mind. On the other side: billion-dollar algorithms, endless notifications, and the chaotic hum of a dozen open tabs specifically engineered to steal your focus.</p>
-              <p className="text-slate-400 text-lg leading-relaxed font-medium border-l-2 border-accent pl-4 bg-white/5 p-4 rounded-r-xl mt-6">You don't lack discipline. You lack a boundary. You shouldn't have to fight your own computer just to do your job.</p>
-            </Reveal>
-            <Reveal delay={0.2} className="relative p-8 md:p-12 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md">
-              <p className="eyebrow text-accent2 tracking-widest uppercase text-xs font-bold mb-2">The Nexus Philosophy</p>
-              <h3 className="text-3xl font-semibold mt-2 mb-6 text-white leading-tight">Make the right decision exactly once. We’ll protect it.</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">The Nexus Ring isn't another productivity app demanding your attention. It's a physical anchor for your intention.</p>
-              <p className="text-slate-300 leading-relaxed">You don't click a button. You don't navigate a menu. You simply snap the heavy, magnetic totem into position. That single physical action tells your entire digital world exactly what you need right now. And then? The noise stops. You finally get to breathe—and work.</p>
-            </Reveal>
-          </div>
-
-          {/* Bottom part: Promise */}
-          <Reveal className="max-w-2xl mb-12 border-t border-white/10 pt-16">
-            <h2 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-white">From intention to action in one second.</h2>
-          </Reveal>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {title: "Choose & Place", text: "Decide what you need to do, and slide the physical totem into the corresponding mode. The tactile feedback tells your brain it’s time to shift gears."},
-              {title: "Transform & Protect", text: "Instantly, your environment bends to your will. Distracting websites are blocked, Slack goes quiet, your coding tools open, and your lighting shifts. Nexus Shield locks it in."},
-              {title: "Disconnect & Recover", text: "When the work is done, move the totem to Break. Work notifications vanish. Projects hide. The environment softens. Because shutting off is just as important as turning on."},
-            ].map((step, i) => <Reveal key={step.title} delay={i * 0.08} className="border-t border-white/15 pt-7"><span className="text-accent text-sm font-mono">0{i + 1}</span><h3 className="text-xl font-semibold mt-5 mb-3 text-white">{step.title}</h3><p className="text-slate-400 leading-relaxed">{step.text}</p></Reveal>)}
-          </div>
-        </div>
-      </section>
-      <section id="modes" className="relative z-20 bg-vantablack py-24 md:py-28">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Reveal className="max-w-2xl mb-12">
-            <p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2">Your Rhythm</p>
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Four modes. Infinite control.</h2>
-            <p className="text-slate-400 text-lg leading-relaxed">Your day isn't just "work" and "not work." Give every part of your day a physical home. These previews illustrate the product vision; integrations are still in development.</p>
-          </Reveal>
-          <HardwareModesShowcase />
-        </div>
-      </section>
-      <section className="relative z-20 bg-obsidian py-24 border-y border-slate">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-          <Reveal><p className="eyebrow tracking-widest uppercase text-xs font-bold mb-2 text-accent2">Calm Technology</p><h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-white leading-tight">We built a sanctuary,<br /><span className="text-slate-400">not a surveillance tool.</span></h2><p className="text-slate-400 text-lg mt-6 leading-relaxed">Nexus isn't here to lock you in a digital cage or make you feel guilty. It’s here to quietly guard the door so you can work in peace.</p></Reveal>
-          <div className="space-y-4">
-            <Link href="/hardware" className="product-link"><span><span className="eyebrow block">Zero Screens</span><span className="text-2xl font-semibold text-white">You look at enough screens</span><span className="block text-slate-400 mt-3">Nexus communicates through weight, magnetic resistance, and a soft, calming glow.</span></span><ChevronRight className="shrink-0" /></Link>
-            <Link href="/software" className="product-link"><span><span className="eyebrow block">Local-First Privacy</span><span className="text-2xl font-semibold text-white">Your rules, on your device</span><span className="block text-slate-400 mt-3">We don't want your data. Your automations live entirely on your own devices.</span></span><ChevronRight className="shrink-0" /></Link>
-          </div>
-        </div>
-      </section>
-      <section id="development" className="relative z-20 bg-vantablack py-24">
-        <Reveal className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.025] p-8 md:p-12 flex flex-col md:flex-row gap-10 md:items-center justify-between">
-            <div className="max-w-xl"><p className="eyebrow">Follow the build</p><h2 className="text-3xl md:text-4xl font-semibold tracking-tight">An idea taking physical form.</h2><p className="text-slate-400 mt-5 leading-relaxed">Nexus Ring is in development. Hardware, companion software and integrations are evolving. Follow progress and help shape what comes next.</p></div>
-            <Link href="/campaign" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/20 px-7 py-4 hover:border-accent transition-colors shrink-0">View development <ChevronRight size={18} /></Link>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ════════════════ INTERACTIVE ACCORDION FAQ SECTION ════════════════ */}
-      <section
-        id="faq"
-        aria-labelledby="faq-title"
-        className="relative z-10 bg-vantablack py-28 md:py-36 border-t border-slate"
-      >
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <Reveal className="text-center mb-16">
-            <span className="text-[10px] font-mono tracking-[0.25em] text-slate-300 uppercase border border-white/10 bg-white/5 rounded-full inline-block px-4 py-1.5 mb-4 backdrop-blur-md">
-              Frequently Asked Questions
-            </span>
-            <h2
-              id="faq-title"
-              className="text-4xl md:text-5xl font-display font-bold tracking-tight text-white mb-4"
-            >
-              Everything You Need to Know.
+          <Reveal className="max-w-2xl mb-16">
+            <span className="eyebrow block">The Workflow</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-white mb-4">
+              From intention to action.
             </h2>
-            <p className="text-slate-400 text-base font-light">
-              The essentials, before you join the waitlist.
+            <p className="text-[#A5AFBF] text-lg leading-relaxed">
+              Software switches live inside the very screens that interrupt you. Nexus Ring shifts the decision out into the physical world through three clear steps.
             </p>
           </Reveal>
 
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Choose your work mode",
+                desc: "Identify what kind of work you intend to do: focused deep work, open exploration, team communication, or rest.",
+                tag: "Cognitive Intention",
+              },
+              {
+                step: "02",
+                title: "Move the magnetic totem",
+                desc: "Place the weighted totem into the corresponding position. Contactless Hall-effect sensors detect the position change without mechanical wear.",
+                tag: "Physical Trigger",
+              },
+              {
+                step: "03",
+                title: "Nexus Companion responds",
+                desc: "The local companion software executes the matching profile, adjusting website filters, muting alerts, and opening target tools.",
+                tag: "Workspace Automation",
+              },
+            ].map((s, idx) => (
+              <Reveal key={s.step} delay={idx * 0.1}>
+                <div className="p-8 rounded-3xl border border-[#283141] bg-[#172130] h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-2xl font-display font-black text-[#FF405A]">
+                        {s.step}
+                      </span>
+                      <span className="text-[10px] font-mono tracking-widest text-[#A5AFBF] uppercase border border-[#283141] px-2.5 py-1 rounded-full bg-[#080B12]">
+                        {s.tag}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-display font-bold text-white mb-3">
+                      {s.title}
+                    </h3>
+                    <p className="text-sm text-[#A5AFBF] leading-relaxed font-light">
+                      {s.desc}
+                    </p>
+                  </div>
+                  <div className="mt-8 pt-4 border-t border-[#283141] text-[11px] font-mono text-[#A5AFBF]">
+                    {idx === 2 ? "Integrations in active development" : "Firmware prototype demonstrated"}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════ SECTION C: FOUR OPERATING MODES ════════════════ */}
+      <section id="modes" className="relative z-20 bg-[#080B12] py-28 md:py-36">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <Reveal className="max-w-2xl mb-12">
+            <span className="eyebrow block">The Modes</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-white mb-4">
+              Four modes. Built for purpose.
+            </h2>
+            <p className="text-[#A5AFBF] text-lg leading-relaxed">
+              Your workday is not one uniform state. Nexus Ring provides dedicated physical anchors for the distinct modes of modern technical and creative work.
+            </p>
+          </Reveal>
+
+          <HardwareModesShowcase />
+        </div>
+      </section>
+
+      {/* ════════════════ SECTION D: PRODUCT HARDWARE PREVIEW ════════════════ */}
+      <section className="relative z-20 bg-[#101723] py-28 border-y border-[#283141]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <Reveal className="lg:col-span-6 space-y-6">
+            <span className="eyebrow block">Industrial Architecture</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-white leading-tight">
+              Engineered for intention.
+            </h2>
+            <p className="text-[#A5AFBF] text-lg leading-relaxed">
+              Nexus Ring is designed as a substantial desk object. A weighted magnetic totem provides tactile resistance, seating into precision Hall-sensor quadrants connected to an ESP32 microcontroller.
+            </p>
+            <p className="text-sm text-[#A5AFBF] leading-relaxed border-l-2 border-[#FF405A] pl-4">
+              No screens, no notifications, and no micro-menus. Status is communicated through diffuse ambient light that you can read from the corner of your eye.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/hardware"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm bg-[#172130] border border-[#283141] text-white hover:border-[#FF405A] transition-colors"
+              >
+                <span>Explore the Engineering</span>
+                <ArrowRight size={16} className="text-[#FF405A]" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2} className="lg:col-span-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-6 rounded-2xl border border-[#283141] bg-[#172130] space-y-3">
+                <Cpu size={24} className="text-[#FF405A]" />
+                <h4 className="font-display font-bold text-white text-base">Local Controller</h4>
+                <p className="text-xs text-[#A5AFBF] leading-relaxed">
+                  ESP32-C3 architecture reading Hall-effect sensor inputs and managing LED ring state locally.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl border border-[#283141] bg-[#172130] space-y-3">
+                <Compass size={24} className="text-[#35C98A]" />
+                <h4 className="font-display font-bold text-white text-base">Contactless Sensing</h4>
+                <p className="text-xs text-[#A5AFBF] leading-relaxed">
+                  Magnetic field detection replaces fragile mechanical switches with smooth, repeatable positioning.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl border border-[#283141] bg-[#172130] space-y-3">
+                <Layers size={24} className="text-[#F8FAFC]" />
+                <h4 className="font-display font-bold text-white text-base">Weighted Totem</h4>
+                <p className="text-xs text-[#A5AFBF] leading-relaxed">
+                  Engineered with deliberate heft so mode transitions require intentional physical action.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl border border-[#283141] bg-[#172130] space-y-3">
+                <ShieldCheck size={24} className="text-[#F0B35A]" />
+                <h4 className="font-display font-bold text-white text-base">Screen-Free Feedback</h4>
+                <p className="text-xs text-[#A5AFBF] leading-relaxed">
+                  360° light ring provides glanceable state confirmation without adding another glowing display.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════ SECTION E: LOCAL-FIRST PHILOSOPHY ════════════════ */}
+      <section className="relative z-20 bg-[#080B12] py-28">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <Reveal className="space-y-6">
+            <span className="eyebrow block">Architecture Principle</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-white leading-tight">
+              Your workspace.<br />Your rules.
+            </h2>
+            <p className="text-[#A5AFBF] text-lg leading-relaxed">
+              We believe a productivity controller should serve you, not collect behavioral metrics. Core mode switching runs locally on your computer via Nexus Companion.
+            </p>
+            <div className="space-y-3 text-sm text-[#A5AFBF]">
+              <div className="flex items-start gap-3">
+                <HardDrive size={18} className="text-[#35C98A] shrink-0 mt-0.5" />
+                <span>
+                  <strong className="text-white">Local-First Automations:</strong> Mode triggers, local scripts, and app launching execute directly on your host machine.
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CloudOff size={18} className="text-[#A5AFBF] shrink-0 mt-0.5" />
+                <span>
+                  <strong className="text-white">Clear Network Boundaries:</strong> No cloud connection is needed for basic operation. Only optional integrations (such as calendar sync) require external network access.
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2} className="space-y-4">
+            <Link href="/hardware" className="product-link">
+              <div>
+                <span className="eyebrow block mb-1">Hardware Engineering</span>
+                <span className="text-xl font-bold text-white">Physical Dock Architecture</span>
+                <span className="block text-xs text-[#A5AFBF] mt-2">
+                  Examine the controller, Hall-effect sensors, magnetic totem, and printable chassis.
+                </span>
+              </div>
+              <ChevronRight className="shrink-0 text-[#FF405A]" />
+            </Link>
+
+            <Link href="/software" className="product-link">
+              <div>
+                <span className="eyebrow block mb-1">Software Companion</span>
+                <span className="text-xl font-bold text-white">Nexus Companion Profiles</span>
+                <span className="block text-xs text-[#A5AFBF] mt-2">
+                  Discover how physical mode triggers connect to local operating system automations.
+                </span>
+              </div>
+              <ChevronRight className="shrink-0 text-[#FF405A]" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════ SECTION F: DEVELOPMENT TRANSPARENCY ════════════════ */}
+      <section id="development" className="relative z-20 bg-[#101723] py-28 border-t border-[#283141]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <Reveal className="p-8 md:p-12 rounded-3xl border border-[#283141] bg-[#172130] flex flex-col md:flex-row gap-10 md:items-center justify-between">
+            <div className="max-w-xl space-y-4">
+              <span className="eyebrow block">Built In The Open</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-white">
+                Built in the open. Developed with purpose.
+              </h2>
+              <p className="text-[#A5AFBF] text-sm md:text-base leading-relaxed">
+                Nexus Ring is not a mass-produced product yet. We are actively refining 3D chassis designs, testing Hall sensor PCB layouts, and writing Companion software. Follow every milestone honestly.
+              </p>
+              <div className="flex flex-wrap gap-2 text-[10px] font-mono text-[#A5AFBF] pt-2">
+                <span className="px-2.5 py-1 rounded bg-[#080B12] border border-[#283141]">Industrial CAD: Validated</span>
+                <span className="px-2.5 py-1 rounded bg-[#080B12] border border-[#283141]">Magnetic Totem: Functional Prototype</span>
+                <span className="px-2.5 py-1 rounded bg-[#080B12] border border-[#283141]">ESP32 Firmware: In Testing</span>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <Link
+                href="/campaign"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#080B12] border border-[#283141] hover:border-[#FF405A] text-white px-6 py-4 text-xs font-mono tracking-wider uppercase transition-colors"
+              >
+                <span>View Development Roadmap</span>
+                <ChevronRight size={14} className="text-[#FF405A]" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════ INTERACTIVE FAQ ════════════════ */}
+      <section
+        id="faq"
+        aria-labelledby="faq-title"
+        className="relative z-10 bg-[#080B12] py-28 border-t border-[#283141]"
+      >
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
+          <Reveal className="text-center mb-16 space-y-3">
+            <span className="eyebrow block">Questions &amp; Answers</span>
+            <h2
+              id="faq-title"
+              className="text-3xl md:text-4xl font-display font-bold tracking-tight text-white"
+            >
+              Frequently Asked Questions.
+            </h2>
+            <p className="text-[#A5AFBF] text-sm font-light">
+              Clear facts about the product, architecture, and development status.
+            </p>
+          </Reveal>
+
+          <div className="space-y-3">
             {FAQ_ITEMS.map((item, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <Reveal key={item.q} delay={idx * 0.05}>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition-colors overflow-hidden">
+                <Reveal key={item.q} delay={idx * 0.04}>
+                  <div className="rounded-2xl border border-[#283141] bg-[#101723] overflow-hidden transition-colors">
                     <button
+                      type="button"
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-left text-white font-medium text-base hover:text-slate-300 transition-colors gap-4"
+                      className="w-full px-6 py-5 flex items-center justify-between text-left text-white font-medium text-sm sm:text-base hover:text-[#A5AFBF] transition-colors gap-4 cursor-pointer"
                       aria-expanded={isOpen}
                     >
-                      <span className="font-display">{item.q}</span>
+                      <span className="font-display font-bold">{item.q}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-slate-400 shrink-0 transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
+                        className={`text-[#A5AFBF] shrink-0 transition-transform duration-200 ${
+                          isOpen ? "rotate-180 text-[#FF405A]" : ""
                         }`}
                       />
                     </button>
@@ -273,10 +440,10 @@ export default function Home() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-6 pt-2 text-slate-400 text-sm leading-relaxed border-t border-white/5">
+                          <div className="px-6 pb-6 pt-2 text-[#A5AFBF] text-xs sm:text-sm leading-relaxed border-t border-[#283141]">
                             {item.a}
                           </div>
                         </motion.div>
@@ -290,39 +457,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ FINAL CTA ═══════════════════════════════ */}
-      <section className="relative z-10 bg-vantablack py-36 md:py-44 text-center overflow-hidden border-t border-white/10">
+      {/* ════════════════ SECTION G: FINAL WAITLIST CTA ════════════════ */}
+      <section className="relative z-10 bg-[#101723] py-32 text-center overflow-hidden border-t border-[#283141]">
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <div className="w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-[120px]" />
+          <div className="w-[500px] h-[500px] rounded-full bg-[#FF405A]/[0.05] blur-[100px]" />
         </div>
-        <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12">
-          <p className="text-[10px] font-mono tracking-[0.3em] text-slate-400 uppercase mb-5">
-            In development · Get launch updates
-          </p>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter mb-6 leading-[0.9] text-white">
-            Your attention has an<br />
-            <span
-              style={{
-                background: "linear-gradient(120deg, #FFFFFF, #94A3B8)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              off switch.
-            </span>
+        <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12 space-y-6">
+          <span className="eyebrow block">Early Access</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-white leading-tight">
+            Build a more intentional workspace.
           </h2>
-          <p className="text-slate-400 text-base md:text-lg font-light mb-10 max-w-md mx-auto leading-relaxed">
-            You deserve to finish your workday feeling accomplished, not drained. Be part of the journey and get behind-the-scenes updates.
+          <p className="text-[#A5AFBF] text-base md:text-lg font-light max-w-md mx-auto leading-relaxed">
+            Follow Nexus Ring&apos;s development, get prototype updates, and hear when early access becomes available.
           </p>
-          <button
-            onClick={() => setShowComingSoon(true)}
-            className="relative inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-base tracking-wide text-black bg-white hover:bg-gray-200 transition-colors duration-200 cursor-pointer"
-          >
-            Join the Waitlist <ChevronRight size={18} />
-          </button>
-          <p className="text-slate-500 text-xs mt-6 font-mono tracking-widest">
-            No payment required.
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+              className="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-sm tracking-wide text-white bg-[#FF405A] hover:bg-[#e0354e] transition-all duration-200 shadow-[0_0_30px_rgba(255,64,90,0.4)] cursor-pointer"
+            >
+              <span>Join the Waitlist</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
+          <p className="text-[#A5AFBF] text-xs font-mono tracking-widest pt-2">
+            Currently in development · No payment required
           </p>
         </Reveal>
       </section>

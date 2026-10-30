@@ -1,8 +1,49 @@
 import { NextResponse } from "next/server";
 
+// Simple in-memory rate-limiter & de-duplication cache
+// Limits requests to 5 per minute per IP, and prevents duplicate submissions for the same email within 5 minutes.
+const rateLimitMap = new Map<string, { count: number; expiresAt: number }>();
+const emailSubmissions = new Map<string, number>();
+
+function maskEmail(email: string): string {
+  const [local, domain] = email.split("@");
+  if (!domain) return "***";
+  const maskedLocal = local.length > 2 ? `${local[0]}***${local[local.length - 1]}` : "***";
+  return `${maskedLocal}@${domain}`;
+}
+
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    // 1. IP rate limiting (best effort)
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown-ip";
+    const now = Date.now();
+    const clientLimit = rateLimitMap.get(ip);
+
+    if (clientLimit && clientLimit.expiresAt > now) {
+      if (clientLimit.count >= 10) {
+        return NextResponse.json(
+          { error: "Too many requests. Please wait a moment before trying again." },
+          { status: 429 }
+        );
+      }
+      clientLimit.count += 1;
+    } else {
+      rateLimitMap.set(ip, { count: 1, expiresAt: now + 60_000 });
+    }
+
+    // Clean up old rate limit entries periodically
+    if (rateLimitMap.size > 2000) {
+      for (const [key, val] of rateLimitMap.entries()) {
+        if (val.expiresAt <= now) rateLimitMap.delete(key);
+      }
+    }
+
+    // 2. Parse payload
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== "object") {
+      return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 });
+    }
+
     const {
       type = "waitlist",
       email,
@@ -12,158 +53,173 @@ export async function POST(request: Request) {
       finish,
       price,
       source = "unknown",
-    } = data;
+    } = body;
 
-    if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
+    // 3. Email validation
+    if (
+      typeof email !== "string" ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ||
+      email.length > 254
+    ) {
       return NextResponse.json(
-        { error: "A valid email is required" },
+        { error: "Please provide a valid email address." },
         { status: 400 }
       );
     }
 
-    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL?.trim();
+    const normalizedEmail = email.trim().toLowerCase();
 
-    if (!discordWebhookUrl) {
-      return NextResponse.json({ error: "Signup is temporarily unavailable" }, { status: 503 });
+    // Check duplicate submissions within 5 minutes
+    const lastSubmitted = emailSubmissions.get(normalizedEmail);
+    if (lastSubmitted && now - lastSubmitted < 300_000) {
+      return NextResponse.json({
+        success: true,
+        message: "You're already on the list! We'll keep you updated on progress.",
+      });
     }
 
-    // Prepare Discord Webhook Embed
-    let embed;
+    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL?.trim();
+
+    // In production without webhook, return 503
+    if (!discordWebhookUrl && process.env.NODE_ENV === "production") {
+      return NextResponse.json(
+        { error: "Waitlist registration is temporarily unavailable. Please check back soon." },
+        { status: 503 }
+      );
+    }
+
+    // Prepare notification
     const nowIso = new Date().toISOString();
+    let embed;
 
     if (type === "contact_inquiry") {
       embed = {
-        title: "📬 New Founder / Developer Inquiry Received",
-        description: `Someone reached out via the contact form on **${source}**.`,
-        color: 0x00e5ff, // Cyberpunk Cyan
+        title: "📬 New Project Inquiry",
+        description: `Inquiry submitted via **${String(source).slice(0, 50)}**.`,
+        color: 0xff405a, // Nexus Brand Accent
         fields: [
           {
-            name: "👤 Sender Name",
-            value: name || "Not provided",
+            name: "👤 Sender",
+            value: typeof name === "string" ? name.slice(0, 100) : "Not provided",
             inline: true,
           },
           {
-            name: "📧 Email Address",
-            value: `\`${email}\``,
+            name: "📧 Email",
+            value: `\`${normalizedEmail}\``,
             inline: true,
           },
           {
             name: "💬 Message",
-            value: message || "No message content",
+            value: typeof message === "string" ? message.slice(0, 1000) : "No message",
             inline: false,
           },
-          {
-            name: "🌐 Source Route",
-            value: `\`${source}\``,
-            inline: true,
-          },
         ],
-        footer: {
-          text: "Nexus Ring • Contact Notification Engine",
-        },
+        footer: { text: "Nexus Ring • Contact Engine" },
         timestamp: nowIso,
       };
-    } else if (type === "preorder_reservation") {
+    } else if (type === "preorder_reservation" || type === "early_access") {
       embed = {
-        title: "🔥 High Intent: Pre-Order Configurator Lead!",
-        description: `A visitor configured their Nexus Ring artifact and reserved a slot!`,
-        color: 0x00ff9d, // accent Green
+        title: "⚡ Early Access Interest Registered",
+        description: `A visitor expressed interest in the **${String(tier || "Early Access").slice(0, 50)}** tier.`,
+        color: 0x35c98a, // Success Green
         fields: [
           {
             name: "📧 Email",
-            value: `\`${email}\``,
-            inline: false,
-          },
-          {
-            name: "🎯 Selected Tier",
-            value: tier ? `**${tier}**` : "Standard Waitlist",
+            value: `\`${normalizedEmail}\``,
             inline: true,
           },
           {
-            name: "🎨 Finish Chosen",
-            value: finish ? `**${finish}**` : "Default",
+            name: "🎯 Tier",
+            value: typeof tier === "string" ? tier.slice(0, 50) : "General Interest",
             inline: true,
           },
           {
-            name: "💰 Tier Price",
-            value: price ? `**${price}**` : "N/A",
+            name: "🎨 Finish Direction",
+            value: typeof finish === "string" ? finish.slice(0, 50) : "Standard",
             inline: true,
           },
           {
-            name: "🌐 Source Route",
-            value: `\`${source}\``,
+            name: "💰 Reference Price",
+            value: typeof price === "string" ? price.slice(0, 20) : "TBD",
+            inline: true,
+          },
+          {
+            name: "🌐 Source",
+            value: `\`${String(source).slice(0, 50)}\``,
             inline: false,
           },
         ],
-        footer: {
-          text: "Nexus Ring • Pre-Order Lead Engine",
-        },
+        footer: { text: "Nexus Ring • Early Access Queue" },
         timestamp: nowIso,
       };
     } else {
-      // Standard Early Access / Priority Waitlist
       embed = {
-        title: "⚡ New Nexus Ring Waitlist Lead!",
-        description: `A prospective backer entered the priority launch waitlist.`,
-        color: 0x00ff9d, // accent Green
+        title: "✨ New Waitlist Signup",
+        description: `A visitor joined the development updates list.`,
+        color: 0xff405a, // Nexus Brand Accent
         fields: [
           {
             name: "📧 Email",
-            value: `\`${email}\``,
+            value: `\`${normalizedEmail}\``,
             inline: true,
           },
           {
             name: "🏷️ Tier / Interest",
-            value: tier ? `**${tier}**` : "General Priority Launch",
+            value: typeof tier === "string" ? tier.slice(0, 50) : "Launch Waitlist",
             inline: true,
           },
           {
-            name: "🌐 Source Route",
-            value: `\`${source}\``,
+            name: "🌐 Source",
+            value: `\`${String(source).slice(0, 50)}\``,
             inline: false,
           },
         ],
-        footer: {
-          text: "Nexus Ring • Early Adopter Queue",
-        },
+        footer: { text: "Nexus Ring • Development Waitlist" },
         timestamp: nowIso,
       };
     }
 
-    const payload = {
-      username: "Nexus Ring Lead Bot",
-      avatar_url: "https://www.nexusring.tech/icon.png",
-      embeds: [embed],
-    };
-
     if (discordWebhookUrl) {
-      const response = await fetch(discordWebhookUrl, {
+      const discordPayload = {
+        username: "Nexus Ring Bot",
+        avatar_url: "https://www.nexusring.tech/icon.svg",
+        embeds: [embed],
+      };
+
+      const res = await fetch(discordWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(discordPayload),
       });
 
-      if (!response.ok) {
-        console.error(
-          `[Discord Webhook Error] Status: ${response.status} ${response.statusText}`
+      if (!res.ok) {
+        console.error(`[Webhook delivery failed] Status: ${res.status}`);
+        return NextResponse.json(
+          { error: "Could not save your registration. Please try again shortly." },
+          { status: 502 }
         );
-        return NextResponse.json({ error: "Unable to save signup" }, { status: 502 });
       }
     } else {
-      console.warn(
-        "⚠️ [Nexus Webhook Notification] DISCORD_WEBHOOK_URL is not set in environment variables! Submission logged:",
-        { type, email, name, tier, finish, source }
-      );
+      // In development mode when no webhook is set
+      console.log(`[DEV] Registration recorded for: ${maskEmail(normalizedEmail)} (${type})`);
+    }
+
+    // Record submission to prevent spam duplicates
+    emailSubmissions.set(normalizedEmail, now);
+    if (emailSubmissions.size > 2000) {
+      for (const [key, val] of emailSubmissions.entries()) {
+        if (now - val > 300_000) emailSubmissions.delete(key);
+      }
     }
 
     return NextResponse.json({
       success: true,
-      message: "Lead recorded successfully",
+      message: "You're on the list! We'll keep you updated with genuine development progress.",
     });
-  } catch (error) {
-    console.error("[Notify API Error]:", error);
+  } catch (err) {
+    console.error("[Notify API Error]:", err instanceof Error ? err.message : "Unknown error");
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "An unexpected error occurred. Please try again later." },
       { status: 500 }
     );
   }

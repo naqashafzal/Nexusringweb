@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hardware Architecture | High-Performance Workspace Artifact",
+  title: "Hardware Architecture",
   description:
-    "Teardown of the Nexus Ring: Precision 3D-printed V1 chassis (with Bambu Lab & Prusa 3MF profiles), 4x Hall-effect magnetic flux sensing array, ESP32-C3 RISC-V core, and resonant ceramic damping.",
+    "Engineering architecture of the Nexus Ring: dual-shell prototype chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, and 360° ambient optical diffuser.",
   keywords: [
-    "High-Performance Workspace Artifact",
-    "3D-Printed Focus Artifact",
+    "Nexus Ring Hardware",
     "Hall Effect Magnetic Sensor",
-    "ESP32-C3 RISC-V",
-    "Ceramic Acoustic Damping",
-    "Tactile Discipline Engine",
+    "ESP32-C3 Controller",
+    "Desk Controller Hardware",
+    "Calm Technology",
   ],
   alternates: {
     canonical: "/hardware",
   },
   openGraph: {
-    title: "Hardware Architecture | High-Performance Workspace Artifact",
+    title: "Hardware Architecture | Nexus Ring",
     description:
-      "Engineered with sub-millimeter 3D printing tolerances, N52 Neodymium magnetic vectors, and sub-1mm spatial accuracy.",
+      "Engineering architecture of the Nexus Ring: dual-shell prototype chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, and 360° ambient optical diffuser.",
     url: "https://www.nexusring.tech/hardware",
   },
 };

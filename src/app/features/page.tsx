@@ -1,42 +1,26 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   RefreshCw,
   ChevronRight,
-  Layers,
-  Settings,
-  ShieldCheck,
-  Zap,
-  MonitorSmartphone,
   CheckCircle2,
-  XCircle,
-  EyeOff,
-  Sliders,
-  Cpu,
   Monitor,
   Smartphone,
-  Home,
-  Code2,
-  Terminal,
-  Activity,
-  Box,
-  Fingerprint,
-  Server,
-  Globe
+  Home as HomeIcon,
+  Info,
 } from "lucide-react";
 
-// Dynamically import 3D Exploded Ring Canvas for SSR safety
 const ExplodedRingCanvas = dynamic(() => import("@/components/ExplodedRingCanvas"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-accent gap-2">
-      <RefreshCw size={20} className="animate-spin text-accent" />
-      <span>INITIALIZING 3D CAD SHADER...</span>
+    <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-[#A5AFBF] gap-2">
+      <RefreshCw size={20} className="animate-spin text-[#FF405A]" />
+      <span>INITIALIZING 3D CAD MODEL...</span>
     </div>
   ),
 });
@@ -45,63 +29,63 @@ const MODES_DATA = [
   {
     id: "deep_work",
     name: "Deep Work",
-    color: "#FF3366",
-    tagline: "Remove everything that doesn't belong in the session.",
+    color: "#FF405A",
+    tagline: "Remove everything that does not belong in the session.",
     desc: "Deep Work mode is designed for the moments when you want maximum focus. Place the totem in the Deep Work position and Nexus Companion can automatically prepare a focused workspace using the rules you selected.",
     actions: [
-      { type: "block", text: "Block distracting websites (YouTube, Reddit)" },
-      { type: "close", text: "Close Discord & entertainment apps" },
-      { type: "dnd", text: "Enable Do Not Disturb" },
-      { type: "open", text: "Open VS Code & Terminal" },
-      { type: "timer", text: "Start 90-minute focus timer" }
+      { text: "Block configured distracting websites (YouTube, social feeds)" },
+      { text: "Close entertainment apps and distracting messengers" },
+      { text: "Enable OS Do Not Disturb notification profile" },
+      { text: "Open primary IDE, terminal, or document workspace" },
+      { text: "Start optional 90-minute focus session timer" },
     ],
-    status: "Solid crimson glow"
+    status: "Steady crimson glow",
   },
   {
     id: "creative",
     name: "Creative",
-    color: "#B026FF",
+    color: "#F8FAFC",
     tagline: "Remove noise without closing the door on exploration.",
-    desc: "Creative work is different from Deep Work. You may still need references, music, visual inspiration and multiple tools. Creative mode gives you a more flexible environment while filtering the distractions that break your flow.",
+    desc: "Creative work is different from Deep Work. You may still need reference imagery, music, and exploratory browsing. Creative mode gives you a more flexible environment while filtering out algorithmic feeds.",
     actions: [
-      { type: "open", text: "Open Blender & Figma" },
-      { type: "open", text: "Open PureRef & project folders" },
-      { type: "allow", text: "Allow research & reference sites" },
-      { type: "music", text: "Start Creative playlist" },
-      { type: "dnd", text: "Mute Slack & social feeds" }
+      { text: "Open design and 3D modeling tools (Figma, Blender)" },
+      { text: "Open project asset folders and reference boards" },
+      { text: "Allow research and design reference platforms" },
+      { text: "Trigger creative audio presets" },
+      { text: "Silence non-urgent workplace notifications" },
     ],
-    status: "Slow breathing purple pulse"
+    status: "Soft white breathing pulse",
   },
   {
     id: "meeting",
     name: "Meeting",
-    color: "#00E5FF",
+    color: "#35C98A",
     tagline: "Prepare for the call without scrambling through settings.",
-    desc: "Meeting mode can prepare the tools and communication settings you normally adjust manually before a call.",
+    desc: "Meeting mode prepares the tools, audio state, and communication settings you normally adjust manually before a call.",
     actions: [
-      { type: "open", text: "Open Zoom / Teams / Meet" },
-      { type: "open", text: "Open Notion meeting notes" },
-      { type: "music", text: "Pause background music" },
-      { type: "status", text: "Update communication status" },
-      { type: "light", text: "Activate meeting lighting preset" }
+      { text: "Launch Zoom, Teams, or Google Meet workspace" },
+      { text: "Open meeting notes or agenda templates" },
+      { text: "Pause background music and playback" },
+      { text: "Update communication status to In a Call" },
+      { text: "Soften ambient notification volume" },
     ],
-    status: "Clean steady blue glow"
+    status: "Clean steady emerald glow",
   },
   {
     id: "break",
     name: "Break",
-    color: "#FF9F1C",
+    color: "#F0B35A",
     tagline: "Protect recovery with the same intention you protect focus.",
-    desc: "A real break should not become five minutes of rest followed by checking Slack, email and project boards. Break mode can temporarily quiet your work environment so recovery remains separate from work.",
+    desc: "A real break should not become five minutes of checking Slack, email, and task boards. Break mode temporarily quiets your work environment so recovery remains separate from work.",
     actions: [
-      { type: "hide", text: "Hide work applications" },
-      { type: "mute", text: "Silence email & Slack alerts" },
-      { type: "pause", text: "Pause focus timers" },
-      { type: "music", text: "Open break playlist" },
-      { type: "light", text: "Relaxed lighting scene" }
+      { text: "Hide work applications and code editors" },
+      { text: "Mute work alerts and incoming emails" },
+      { text: "Pause active focus countdown timers" },
+      { text: "Initiate recovery session countdown" },
+      { text: "Restore active state upon totem return" },
     ],
-    status: "Soft ambient amber glow"
-  }
+    status: "Soft ambient amber glow",
+  },
 ];
 
 export default function FeaturesPage() {
@@ -111,94 +95,87 @@ export default function FeaturesPage() {
   const currentMode = MODES_DATA[activeModeIdx];
 
   return (
-    <main className="min-h-screen bg-vantablack text-[#E2E8F0] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-accent/30 selection:text-white">
-      {/* Background Dot Grid */}
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#151D2A_1px,transparent_1px)] [background-size:24px_24px]" />
+    <main className="min-h-screen bg-[#080B12] text-[#F8FAFC] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#FF405A]/30 selection:text-white">
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#283141_1px,transparent_1px)] [background-size:24px_24px]" />
 
-      {/* ════════════════ 1. HERO SECTION ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
+      {/* 1. HERO SECTION */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto space-y-6 relative z-10"
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto space-y-6 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/[0.06] text-accent text-[11px] font-mono tracking-widest uppercase mb-4">
-            The Physical Anchor
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+            Feature Architecture
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tighter leading-[0.95] text-white">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
             ONE PHYSICAL MOVE.<br />
-            <span className="text-slate-400">TOTAL DIGITAL CLARITY.</span>
+            <span className="text-[#A5AFBF]">DELIBERATE DIGITAL CLARITY.</span>
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-            Place the heavy magnetic totem into position. Nexus reads the physical mode and instantly enforces your digital boundaries—closing distractions, opening workspaces, and shielding your attention from the chaos.
+          <p className="text-[#A5AFBF] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            Place the weighted magnetic totem into position. Nexus reads the physical mode and enforces your workspace profile—closing distractions, launching tools, and establishing clear boundaries.
           </p>
 
-          <p className="text-white text-lg font-medium">
-            No hunting through menus. No fighting your own willpower.<br/>
-            You make the decision once. Nexus protects it.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
-            <a href="#interactive-modes" className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold text-sm tracking-wide hover:bg-[#00ffaa] transition-all shadow-[0_0_30px_rgba(0,255,157,0.35)] flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a
+              href="#interactive-modes"
+              className="px-8 py-4 rounded-xl bg-[#FF405A] text-white font-bold text-sm tracking-wide hover:bg-[#e0354e] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2"
+            >
               Explore the Modes <ChevronRight size={16} />
             </a>
-            <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl border border-slate bg-matte text-white hover:bg-slate font-mono text-xs tracking-wider transition-all flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+              className="px-8 py-4 rounded-xl border border-[#283141] bg-[#101723] text-white hover:border-[#FF405A] font-mono text-xs tracking-wider transition-all cursor-pointer"
+            >
               Join Early Access
             </button>
           </div>
         </motion.div>
 
-        {/* Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-20 text-left"
-        >
-          <div className="p-5 border border-slate bg-matte rounded-2xl">
-            <h4 className="text-white font-bold mb-2">4 Physical Modes</h4>
-            <p className="text-sm text-slate-400">Deep Work · Creative · Meeting · Break</p>
-          </div>
-          <div className="p-5 border border-slate bg-matte rounded-2xl">
-            <h4 className="text-white font-bold mb-2">Local-First</h4>
-            <p className="text-sm text-slate-400">Core desktop automations are designed to run locally.</p>
-          </div>
-          <div className="p-5 border border-slate bg-matte rounded-2xl">
-            <h4 className="text-white font-bold mb-2">Configurable</h4>
-            <p className="text-sm text-slate-400">Decide what each mode opens, blocks or changes.</p>
-          </div>
-          <div className="p-5 border border-slate bg-matte rounded-2xl">
-            <h4 className="text-white font-bold mb-2">Cross-Device Vision</h4>
-            <p className="text-sm text-slate-400">Desktop first, with mobile and workspace integrations expanding over time.</p>
-          </div>
-        </motion.div>
+        {/* Overview Badges */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-16 text-left max-w-4xl mx-auto">
+          {[
+            { t: "4 Physical Positions", d: "Deep Work · Creative · Meeting · Break" },
+            { t: "Local-First Architecture", d: "Automation profiles execute directly on your host machine." },
+            { t: "Configurable Profiles", d: "Define which tools, filters, and timers each mode controls." },
+            { t: "Screen-Free Feedback", d: "Glanceable ambient glow without another demanding display." },
+          ].map((item) => (
+            <div key={item.t} className="p-5 border border-[#283141] bg-[#101723] rounded-2xl">
+              <h4 className="text-white font-bold text-sm mb-1">{item.t}</h4>
+              <p className="text-xs text-[#A5AFBF] leading-relaxed font-light">{item.d}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ════════════════ 2. INTERACTIVE MODE DEMONSTRATION ════════════════ */}
-      <section id="interactive-modes" className="relative max-w-[1400px] mx-auto px-6 md:px-12 mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: 3D Model placeholder for interaction (In reality, would use ExplodedRingCanvas with mode props) */}
-          <div className="h-[600px] rounded-3xl border border-slate bg-matte relative overflow-hidden flex flex-col justify-end p-6 group">
-            <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
-              INTERACTIVE MODE PREVIEW
+      {/* 2. INTERACTIVE MODE DEMONSTRATION */}
+      <section id="interactive-modes" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* 3D Canvas with overlay */}
+          <div className="h-[520px] rounded-3xl border border-[#283141] bg-[#101723] relative overflow-hidden flex flex-col justify-end p-6">
+            <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#A5AFBF] tracking-widest uppercase bg-[#080B12]/80 px-3 py-1.5 rounded-full border border-[#283141]">
+              Interactive 3D Hardware Model
             </div>
-            {/* The 3D Canvas */}
             <div className="absolute inset-0 z-10">
               <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
             </div>
 
             {/* Mode selection buttons overlay */}
-            <div className="relative z-20 flex gap-2 justify-center w-full bg-vantablack/80 backdrop-blur p-2 rounded-2xl border border-slate">
+            <div className="relative z-20 flex gap-2 justify-center w-full bg-[#080B12]/90 backdrop-blur-md p-2 rounded-2xl border border-[#283141]">
               {MODES_DATA.map((mode, idx) => (
                 <button
                   key={mode.id}
+                  type="button"
                   onClick={() => setActiveModeIdx(idx)}
-                  className={`flex-1 py-3 px-2 rounded-xl text-xs font-mono font-bold transition-all ${activeModeIdx === idx ? 'bg-white text-black' : 'text-slate-400 hover:text-white'}`}
-                  style={activeModeIdx === idx ? { boxShadow: `0 0 20px ${mode.color}40` } : {}}
+                  className={`flex-1 py-2.5 px-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${activeModeIdx === idx
+                      ? "bg-white text-black shadow-lg"
+                      : "text-[#A5AFBF] hover:text-white"
+                    }`}
                 >
                   {mode.name.toUpperCase()}
                 </button>
@@ -206,41 +183,45 @@ export default function FeaturesPage() {
             </div>
           </div>
 
-          {/* Right: Automation Panel */}
-          <div className="space-y-6">
+          {/* Mode Details Panel */}
+          <div className="space-y-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentMode.id}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 15 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="p-8 md:p-10 rounded-3xl border bg-matte relative overflow-hidden"
-                style={{ borderColor: currentMode.color + "40" }}
+                exit={{ opacity: 0, x: -15 }}
+                transition={{ duration: 0.25 }}
+                className="p-8 rounded-3xl border border-[#283141] bg-[#101723] relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-64 h-64 blur-[100px] opacity-20 pointer-events-none" style={{ backgroundColor: currentMode.color }} />
-                
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: currentMode.color }} />
-                  <span className="font-mono text-xs tracking-widest uppercase" style={{ color: currentMode.color }}>
-                    {currentMode.name} ACTIVE
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: currentMode.color }} />
+                  <span className="font-mono text-xs tracking-widest uppercase text-white font-bold">
+                    {currentMode.name} Active
+                  </span>
+                  <span className="text-[10px] font-mono text-[#A5AFBF] ml-auto">
+                    {currentMode.status}
                   </span>
                 </div>
 
-                <h3 className="text-3xl font-display font-bold text-white mb-2">{currentMode.name}</h3>
-                <p className="text-slate-400 mb-8">{currentMode.tagline}</p>
+                <h3 className="text-2xl font-display font-bold text-white mb-2">{currentMode.name}</h3>
+                <p className="text-sm text-[#A5AFBF] mb-6 font-light">{currentMode.tagline}</p>
 
-                <div className="space-y-3 font-mono text-sm">
+                <div className="space-y-2.5 font-mono text-xs">
                   {currentMode.actions.map((action, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg border border-slate/50 bg-vantablack text-slate-300">
-                      <CheckCircle2 size={16} style={{ color: currentMode.color }} />
-                      {action.text}
+                    <div
+                      key={i}
+                      className="flex items-center gap-3 p-3 rounded-xl border border-[#283141] bg-[#080B12] text-[#F8FAFC]"
+                    >
+                      <CheckCircle2 size={15} style={{ color: currentMode.color }} />
+                      <span>{action.text}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate">
-                  <p className="text-xs text-slate-500 italic">*Availability depends on supported platform integrations.</p>
+                <div className="mt-6 pt-4 border-t border-[#283141] flex items-center gap-2 text-xs text-[#A5AFBF]">
+                  <Info size={14} className="text-[#FF405A] shrink-0" />
+                  <span>Configurable profile actions in active companion development.</span>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -248,267 +229,78 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* ════════════════ 3. HOW NEXUS WORKS ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">From intention to action in one second.</h2>
-          <p className="text-slate-400">
-            Nexus Ring bridges the gap between what you want to do and actually doing it. You choose the state physically; the software enforces the boundaries.
+      {/* 3. PLATFORM ECOSYSTEM */}
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
+        <div className="text-center mb-12 space-y-2">
+          <span className="eyebrow block">Target Environments</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
+            Ecosystem Vision.
+          </h2>
+          <p className="text-xs sm:text-sm text-[#A5AFBF]">
+            Nexus begins at your desk with direct desktop operating system integration.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate -translate-y-1/2 z-0" />
-          
-          {[
-            { step: "01", title: "Choose your mode", desc: "Move the magnetic totem into one of four physical positions." },
-            { step: "02", title: "Nexus detects position", desc: "Hall-effect sensors detect the mode and send the event to Nexus Companion." },
-            { step: "03", title: "Your profile runs", desc: "The software checks what actions you configured for that mode." },
-            { step: "04", title: "Environment changes", desc: "Apps, websites, notifications, timers and integrations respond automatically." },
-          ].map((s, i) => (
-            <div key={i} className="relative z-10 p-6 rounded-2xl border border-slate bg-matte text-center">
-              <div className="w-10 h-10 mx-auto rounded-full bg-vantablack border border-accent flex items-center justify-center text-accent font-mono text-sm mb-4">
-                {s.step}
-              </div>
-              <h4 className="text-white font-bold mb-2">{s.title}</h4>
-              <p className="text-xs text-slate-400">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════════════════ 4. FOUR CORE MODES DETAILS ════════════════ */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32 space-y-32">
-        <div className="text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">Four physical modes.<br/>Four different digital environments.</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            Each mode is a configurable profile. Nexus Ring doesn't decide how you work — you decide what each physical position means.
-          </p>
-        </div>
-
-        {MODES_DATA.map((mode, idx) => (
-          <div key={mode.id} className="pt-8 border-t border-slate">
-            <h3 className="text-5xl font-display font-black text-white mb-2">{mode.name}</h3>
-            <p className="text-xl font-medium mb-6" style={{ color: mode.color }}>{mode.tagline}</p>
-            <p className="text-slate-300 mb-8 leading-relaxed">{mode.desc}</p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 rounded-2xl bg-matte border border-slate">
-                <h4 className="text-white font-bold mb-4 font-mono uppercase tracking-wider text-sm">Example Actions</h4>
-                <ul className="space-y-3 font-mono text-xs text-slate-400">
-                  {mode.actions.map((act, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="text-white">-</span> {act.text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-6 rounded-2xl bg-vantablack border border-slate flex flex-col justify-center">
-                <h4 className="text-white font-bold mb-4 font-mono uppercase tracking-wider text-sm">Integration Status</h4>
-                <div className="space-y-2">
-                  <span className="inline-block px-3 py-1 rounded bg-slate text-[10px] font-mono text-white mr-2">DESKTOP AUTOMATION - CORE</span>
-                  <span className="inline-block px-3 py-1 rounded bg-slate/50 text-[10px] font-mono text-slate-400 mr-2">MOBILE - IN DEVELOPMENT</span>
-                  <span className="inline-block px-3 py-1 rounded bg-slate/50 text-[10px] font-mono text-slate-400">SMART WORKSPACE - PLANNED</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      {/* ════════════════ 5. CUSTOM MODE PROFILES ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Your modes. Your rules.</h2>
-            <p className="text-slate-300 leading-relaxed mb-6">
-              Every mode can be customized. A developer's Deep Work setup may look completely different from a designer's, founder's or student's.
-            </p>
-            <div className="space-y-4">
-              {[
-                { title: "Apps", items: "Open, Close, Minimize, Launch workspace" },
-                { title: "Websites", items: "Allow list, Block list, Temporary restrictions" },
-                { title: "Notifications", items: "Normal, Priority only, Do Not Disturb" },
-                { title: "Communication", items: "Update supported statuses (Slack, Teams)" },
-                { title: "Timers", items: "Start timer, Stop timer, Run custom session" },
-                { title: "Scripts", items: "PowerShell, Zsh, Python, custom webhooks" }
-              ].map(cat => (
-                <div key={cat.title} className="border-b border-slate pb-2">
-                  <span className="font-bold text-white">{cat.title}:</span> <span className="text-slate-400 text-sm">{cat.items}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="rounded-2xl border border-slate bg-matte p-6 shadow-2xl">
-            <div className="border-b border-slate pb-4 mb-4 flex justify-between items-center">
-              <h4 className="font-mono text-white">Deep Work Profile</h4>
-              <span className="px-2 py-1 bg-accent/20 text-accent text-[10px] rounded">CONFIGURING</span>
-            </div>
-            <div className="space-y-3 font-mono text-sm text-slate-300">
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Open VS Code</label>
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Open project folder</label>
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Block YouTube & Reddit</label>
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Close Discord</label>
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Enable DND</label>
-              <label className="flex items-center gap-3"><input type="checkbox" checked readOnly className="accent-accent" /> Start 90-minute timer</label>
-            </div>
-            <button className="w-full mt-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-slate-200 transition-colors">
-              Save Profile
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════ 6. LOCAL-FIRST & PRIVACY ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32 text-center">
-        <h2 className="text-4xl font-display font-bold text-white mb-6">A sanctuary, not a surveillance tool.</h2>
-        <p className="text-slate-400 max-w-2xl mx-auto mb-16">
-          We don't want your data. Your focus is your own. The core Nexus automation runs completely locally on your machine—no cloud permissions required.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          <div className="p-6 rounded-2xl border border-slate bg-matte">
-            <ShieldCheck className="text-accent mb-4" size={32} />
-            <h4 className="text-white font-bold mb-2">Local Mode Detection</h4>
-            <p className="text-sm text-slate-400">The selected physical mode is processed locally.</p>
-          </div>
-          <div className="p-6 rounded-2xl border border-slate bg-matte">
-            <Server className="text-accent mb-4" size={32} />
-            <h4 className="text-white font-bold mb-2">No Mandatory Cloud</h4>
-            <p className="text-sm text-slate-400">Core desktop mode changes should continue without dependence on a remote server.</p>
-          </div>
-          <div className="p-6 rounded-2xl border border-slate bg-matte">
-            <Globe className="text-accent mb-4" size={32} />
-            <h4 className="text-white font-bold mb-2">Integrations Are Explicit</h4>
-            <p className="text-sm text-slate-400">External services only become involved when the user enables an integration that requires them.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════ 7. CROSS-DEVICE ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-display font-bold text-white mb-4">One physical state. More than one screen.</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            The long-term Nexus ecosystem is designed to let a single physical mode coordinate the devices around you.
-          </p>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-8 rounded-2xl border border-slate bg-matte">
-            <Monitor className="mb-4 text-white" size={32} />
-            <h4 className="text-xl font-bold text-white mb-2">Desktop</h4>
-            <span className="text-[10px] font-mono bg-accent/20 text-accent px-2 py-1 rounded">CORE PLATFORM</span>
-            <p className="text-sm text-slate-400 mt-4">Windows, macOS, Linux target support. Controls apps, websites, notifications, scripts, and timers.</p>
+          <div className="p-8 rounded-2xl border border-[#283141] bg-[#101723] space-y-2">
+            <Monitor className="text-[#FF405A] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-white">Desktop (Core)</h4>
+            <span className="text-[10px] font-mono bg-[#FF405A]/10 text-[#FF405A] px-2 py-0.5 rounded border border-[#FF405A]/30 inline-block">
+              Primary Platform
+            </span>
+            <p className="text-xs text-[#A5AFBF] leading-relaxed pt-2">
+              Windows, macOS, and Linux support. Manages local apps, website filters, notifications, timers, and shell scripts.
+            </p>
           </div>
-          <div className="p-8 rounded-2xl border border-slate bg-matte">
-            <Smartphone className="mb-4 text-white" size={32} />
-            <h4 className="text-xl font-bold text-white mb-2">Mobile</h4>
-            <span className="text-[10px] font-mono bg-slate text-slate-300 px-2 py-1 rounded">IN DEVELOPMENT / PLANNED</span>
-            <p className="text-sm text-slate-400 mt-4">Potential behaviors: Focus mode, notification rules, app restrictions, dependent on iOS/Android API exposure.</p>
+
+          <div className="p-8 rounded-2xl border border-[#283141] bg-[#101723] space-y-2">
+            <Smartphone className="text-[#A5AFBF] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-white">Mobile Companion</h4>
+            <span className="text-[10px] font-mono bg-[#172130] text-[#A5AFBF] px-2 py-0.5 rounded border border-[#283141] inline-block">
+              Planned
+            </span>
+            <p className="text-xs text-[#A5AFBF] leading-relaxed pt-2">
+              Potential state sync for mobile Focus modes and notification rules via supported iOS/Android system APIs.
+            </p>
           </div>
-          <div className="p-8 rounded-2xl border border-slate bg-matte">
-            <Home className="mb-4 text-white" size={32} />
-            <h4 className="text-xl font-bold text-white mb-2">Smart Workspace</h4>
-            <span className="text-[10px] font-mono bg-slate text-slate-300 px-2 py-1 rounded">PLANNED</span>
-            <p className="text-sm text-slate-400 mt-4">Potential integrations: Home Assistant, lights, music, desk devices, IoT routines.</p>
+
+          <div className="p-8 rounded-2xl border border-[#283141] bg-[#101723] space-y-2">
+            <HomeIcon className="text-[#A5AFBF] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-white">Workspace IoT</h4>
+            <span className="text-[10px] font-mono bg-[#172130] text-[#A5AFBF] px-2 py-0.5 rounded border border-[#283141] inline-block">
+              Planned
+            </span>
+            <p className="text-xs text-[#A5AFBF] leading-relaxed pt-2">
+              Future webhook integration for smart desk lighting, Home Assistant routines, and external hardware status indicators.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ════════════════ 8. MORE THAN A BLOCKER ════════════════ */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-display font-bold text-white mb-4">Blocking is only one action.</h2>
-          <p className="text-slate-400">
-            Traditional blockers focus on saying "no." Nexus Ring is designed around transitions. It can remove distractions, but it can also prepare the tools, settings and environment you actually need.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-8 bg-vantablack border border-slate rounded-2xl text-center text-slate-300">
-            <h4 className="text-white font-bold mb-4">Blocking</h4>
-            <p>Close distracting apps</p>
-            <p>Block websites</p>
-            <p>Mute notifications</p>
-          </div>
-          <div className="p-8 bg-matte border border-slate rounded-2xl text-center text-slate-300">
-            <h4 className="text-white font-bold mb-4">Preparing</h4>
-            <p>Open project & tools</p>
-            <p>Start music & scripts</p>
-            <p>Adjust environment</p>
-          </div>
-        </div>
-        <p className="text-center text-white text-lg font-bold mt-8">
-          The goal isn't simply to prevent distraction.<br/>The goal is to make the right state easier to enter.
-        </p>
-      </section>
-
-      {/* ════════════════ 9. DEVELOPMENT MATRIX ════════════════ */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
-        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">What we're building now.</h2>
-        <div className="space-y-2 font-mono text-sm">
-          {[
-            { f: "Physical mode detection", s: "PROTOTYPE" },
-            { f: "3D-printed enclosure", s: "PROTOTYPE" },
-            { f: "ESP32 firmware", s: "IN DEVELOPMENT" },
-            { f: "Desktop companion", s: "IN DEVELOPMENT" },
-            { f: "Custom mode profiles", s: "IN DEVELOPMENT" },
-            { f: "Website & App blocking", s: "IN DEVELOPMENT" },
-            { f: "Mobile companion", s: "PLANNED" },
-            { f: "Smart-home integrations", s: "PLANNED" },
-            { f: "Local context AI", s: "EXPERIMENTAL" }
-          ].map(row => (
-            <div key={row.f} className="flex justify-between p-3 border-b border-slate bg-matte">
-              <span className="text-slate-300">{row.f}</span>
-              <span className={`px-2 py-0.5 rounded text-[10px] ${row.s === 'PROTOTYPE' ? 'bg-amber/20 text-amber' : row.s === 'IN DEVELOPMENT' ? 'bg-accent/20 text-accent' : 'bg-slate text-slate-400'}`}>
-                {row.s}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════════════════ 10. FAQ ════════════════ */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
-        <h2 className="text-3xl font-display font-bold text-white mb-8">Frequently Asked Questions</h2>
-        <div className="space-y-6">
-          {[
-            { q: "Can I customize what each mode does?", a: "Yes. Nexus Ring is designed around configurable mode profiles so the same physical mode can behave differently for different users." },
-            { q: "Does Nexus Ring need the internet?", a: "Core desktop automation is being designed to operate locally. External integrations may require an internet connection." },
-            { q: "Can it block websites and close applications?", a: "Website restrictions and application automation are part of the planned desktop companion feature set, driven by user-defined rules." },
-            { q: "Does Nexus Ring use AI?", a: "AI-assisted context awareness is being explored as an optional local-first feature. Core Nexus functionality does not need AI to detect modes or execute automations." }
-          ].map((faq, i) => (
-            <div key={i} className="border-b border-slate pb-4">
-              <h4 className="text-white font-bold mb-2">{faq.q}</h4>
-              <p className="text-slate-400 text-sm">{faq.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════════════════ 11. CLOSING CTA ════════════════ */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-matte border border-slate p-12 md:p-24 rounded-3xl">
-        <h2 className="text-4xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-tight">
-          YOUR ATTENTION HAS AN OFF SWITCH.
+      {/* 4. CLOSING CTA */}
+      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 text-center bg-[#101723] border border-[#283141] p-12 md:p-20 rounded-3xl">
+        <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase tracking-tight">
+          Your attention deserves an off-switch.
         </h2>
-        <p className="text-slate-400 text-lg mb-4 max-w-2xl mx-auto">
-          You don't lack discipline. You lack a boundary. Deep Work shouldn't begin with fighting distractions. A break shouldn't be interrupted by work notifications.
+        <p className="text-[#A5AFBF] text-sm md:text-base mb-8 max-w-xl mx-auto font-light leading-relaxed">
+          Deep work shouldn&apos;t begin with fighting distractions. A break shouldn&apos;t be interrupted by work notifications. Nexus Ring turns those boundaries into something physical.
         </p>
-        <p className="text-white font-bold text-xl mb-12">
-          Nexus Ring turns those transitions into something physical.<br/><br/>
-          Make the decision once.<br/>Nexus protects it.
-        </p>
-        
+
         <div className="flex flex-wrap justify-center gap-4">
-          <button onClick={() => setShowComingSoon(true)} className="px-8 py-4 rounded-xl bg-accent text-[#001a0a] font-bold tracking-wide hover:bg-[#00ffaa] transition-all">
-            Get Early Access
+          <button
+            type="button"
+            onClick={() => setShowComingSoon(true)}
+            className="px-8 py-4 rounded-xl bg-[#FF405A] text-white font-bold tracking-wide hover:bg-[#e0354e] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer"
+          >
+            Join the Waitlist
           </button>
-          <Link href="/campaign" className="px-8 py-4 rounded-xl border border-slate text-white hover:bg-slate transition-all font-mono text-sm flex items-center gap-2">
-            View Campaign
+          <Link
+            href="/hardware"
+            className="px-8 py-4 rounded-xl border border-[#283141] text-white hover:border-[#FF405A] transition-all font-mono text-sm"
+          >
+            Explore Hardware Details
           </Link>
         </div>
-        <p className="text-xs text-slate-500 mt-4 font-mono">No payment required today.</p>
       </section>
 
       <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />

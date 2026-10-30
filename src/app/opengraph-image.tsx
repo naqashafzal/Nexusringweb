@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Nexus Ring | Physical Intent. Digital Execution.";
+export const alt = "Nexus Ring | One physical move. Your workspace follows.";
 export const size = {
   width: 1200,
   height: 630,
@@ -17,7 +17,7 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#030508",
+          backgroundColor: "#080B12",
           padding: "64px 72px",
           fontFamily: "system-ui, sans-serif",
           color: "#F8FAFC",
@@ -34,20 +34,8 @@ export default async function Image() {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0, 255, 157, 0.25) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255, 64, 90, 0.2) 0%, transparent 70%)",
             filter: "blur(40px)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-150px",
-            left: "-50px",
-            width: "450px",
-            height: "450px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, transparent 70%)",
-            filter: "blur(50px)",
           }}
         />
 
@@ -55,18 +43,17 @@ export default async function Image() {
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <div
             style={{
-              width: "28px",
-              height: "28px",
+              width: "24px",
+              height: "24px",
               borderRadius: "50%",
-              backgroundColor: "#00FF9D",
-              boxShadow: "0 0 24px #00FF9D",
+              border: "4px solid #FF405A",
             }}
           />
           <span
             style={{
               fontSize: "24px",
               fontWeight: 800,
-              letterSpacing: "4px",
+              letterSpacing: "3px",
               color: "#FFFFFF",
             }}
           >
@@ -74,23 +61,23 @@ export default async function Image() {
           </span>
           <span
             style={{
-              fontSize: "13px",
+              fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "2px",
-              color: "#00FF9D",
-              border: "1px solid rgba(0, 255, 157, 0.4)",
-              backgroundColor: "rgba(0, 255, 157, 0.08)",
+              color: "#FF405A",
+              border: "1px solid rgba(255, 64, 90, 0.4)",
+              backgroundColor: "rgba(255, 64, 90, 0.08)",
               padding: "6px 14px",
               borderRadius: "9999px",
               textTransform: "uppercase",
               marginLeft: "12px",
             }}
           >
-            Physical Intent. Digital Execution.
+            Physical Intent Computing
           </span>
         </div>
 
-        {/* Main Hook & Value Proposition */}
+        {/* Main Headline & Value Proposition */}
         <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "980px" }}>
           <h1
             style={{
@@ -102,19 +89,19 @@ export default async function Image() {
               margin: 0,
             }}
           >
-            ONE PHYSICAL ACTION.<br/>
-            <span style={{ color: "#00FF9D" }}>YOUR DIGITAL WORLD CHANGES WITH YOU.</span>
+            ONE PHYSICAL MOVE.<br />
+            <span style={{ color: "#A5AFBF" }}>YOUR WORKSPACE FOLLOWS.</span>
           </h1>
           <p
             style={{
               fontSize: "24px",
               fontWeight: 400,
               lineHeight: 1.4,
-              color: "#94A3B8",
+              color: "#A5AFBF",
               margin: 0,
             }}
           >
-            Drop the Nexus Totem into a mode and your workspace automatically adapts.
+            A desk-based physical interface designed to connect deliberate intention with digital workspace automation.
           </p>
         </div>
 
@@ -124,37 +111,39 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid #151D2A",
+            borderTop: "1px solid #283141",
             paddingTop: "28px",
           }}
         >
-          <div style={{ display: "flex", gap: "40px" }}>
+          <div style={{ display: "flex", gap: "48px" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
+              <p style={{ fontSize: "12px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Modes
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00FF9D", margin: 0 }}>4 Physical States</p>
+              <p style={{ fontSize: "20px", fontWeight: 700, color: "#FF405A", margin: 0 }}>4 Dedicated States</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
+              <p style={{ fontSize: "12px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
+                Sensing
+              </p>
+              <p style={{ fontSize: "20px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>Contactless Hall-Effect</p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <p style={{ fontSize: "12px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Execution
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>Local-First</p>
+              <p style={{ fontSize: "20px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>Local-First Daemon</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
-                Automation
-              </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#00E5FF", margin: 0 }}>Desktop OS Integrations</p>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: "14px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
+              <p style={{ fontSize: "12px", color: "#64748B", margin: 0, textTransform: "uppercase", letterSpacing: "1px" }}>
                 Status
               </p>
-              <p style={{ fontSize: "22px", fontWeight: 700, color: "#B026FF", margin: 0 }}>Early Access</p>
+              <p style={{ fontSize: "20px", fontWeight: 700, color: "#35C98A", margin: 0 }}>In Development</p>
             </div>
           </div>
-          <span style={{ fontSize: "18px", color: "#64748B", letterSpacing: "1px" }}>nexusring.tech</span>
+          <span style={{ fontSize: "16px", color: "#64748B", letterSpacing: "1px", fontFamily: "monospace" }}>
+            nexusring.tech
+          </span>
         </div>
       </div>
     ),

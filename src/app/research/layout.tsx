@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cognitive Science & Research | Time & Focus Optimization",
+  title: "Research & Design Principles",
   description:
-    "Whitepaper and cognitive research on ego depletion mitigation, spatial muscle memory triggers, and tactile intervention in digital distraction.",
+    "Design principles, environmental psychology hypotheses, and behavioral research guiding the development of Nexus Ring.",
   keywords: [
-    "Time & Focus Optimization",
-    "Cognitive Psychology Research",
-    "Ego Depletion Mitigation",
-    "Spatial Memory Habit Formation",
-    "Digital Distraction Science",
+    "Nexus Ring Research",
+    "Cognitive Ergonomics",
+    "Physical Intent Computing",
+    "Environmental Cues",
+    "Workflow Design",
   ],
   alternates: {
     canonical: "/research",
   },
   openGraph: {
-    title: "Cognitive Science & Research | Time & Focus Optimization",
+    title: "Research & Design Principles | Nexus Ring",
     description:
-      "Why willpower fails and physical consequence succeeds: A scientific investigation into spatial focus anchors.",
+      "Design principles, environmental psychology hypotheses, and behavioral research guiding the development of Nexus Ring.",
     url: "https://www.nexusring.tech/research",
   },
 };

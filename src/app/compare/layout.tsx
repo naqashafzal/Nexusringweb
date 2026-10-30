@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Comparisons & Alternatives | Physical Anchor vs Software Blockers",
+  title: "Comparisons & Architecture Matrix",
   description:
-    "See how the Nexus Ring Physical Attention Operating System compares to digital app blockers (Opal, Freedom), passive Pomodoro timers, and NFC phone lockers.",
+    "Compare the Nexus Ring physical controller approach against software app blockers (Opal, Freedom) and traditional desk timers.",
   keywords: [
-    "Nexus Ring Alternatives",
+    "Nexus Ring Comparisons",
     "Nexus Ring vs Opal",
     "Nexus Ring vs Freedom",
-    "Nexus Ring vs Pomodoro Timer",
-    "Best Physical Focus Tools",
-    "Hardware Distraction Elimination",
-    "ADHD Desk Focus Artifact",
+    "Nexus Ring vs Pomodoro",
+    "Physical Focus Tools",
+    "Desk Controller Comparison",
   ],
   alternates: {
     canonical: "/compare",
   },
   openGraph: {
-    title: "Nexus Ring Comparisons & Competitor Matrix",
+    title: "Comparisons & Architecture Matrix | Nexus Ring",
     description:
-      "Physical consequence vs digital friction. Discover why top software engineers and founders replace app blockers with the Nexus Ring.",
+      "Compare the Nexus Ring physical controller approach against software app blockers (Opal, Freedom) and traditional desk timers.",
     url: "https://www.nexusring.tech/compare",
   },
 };

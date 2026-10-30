@@ -40,9 +40,11 @@ interface ModelProps {
   explodeFactor?: number;
   disableExplode?: boolean;
   scale?: number;
+  selectedComponent?: string | null;
 }
 
-function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
+function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponent }: ModelProps) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gltf = useGLTF("/models/nexus_ring.glb") as any;
   const mainGroupRef = useRef<THREE.Group>(null);
   const partsRef = useRef<{
@@ -51,100 +53,87 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
 
   const noiseTexture = useMemo(() => generateNoiseTexture(), []);
 
-  // Premium Curated Materials
-  const matteAnodizedMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#0c111a"),
-        roughness: 0.45,
-        metalness: 0.65,
-        bumpMap: noiseTexture || undefined,
-        bumpScale: 0.003,
-      }),
-    [noiseTexture]
-  );
-
-  const totemMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#182232"),
-        roughness: 0.25,
-        metalness: 0.85,
-        bumpMap: noiseTexture || undefined,
-        bumpScale: 0.002,
-      }),
-    [noiseTexture]
-  );
-
-  const subtleGlowMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#002a18"),
-        emissive: new THREE.Color("#ff6a7d"),
-        emissiveIntensity: 1.8,
-        roughness: 0.15,
-        metalness: 0.3,
-        transparent: true,
-        opacity: 0.9,
-      }),
-    []
-  );
-
-  const glowMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#ff6a7d"),
-        emissive: new THREE.Color("#ff6a7d"),
-        emissiveIntensity: 3.2,
-        roughness: 0.1,
-        toneMapped: false,
-      }),
-    []
-  );
-
-  const pcbHighlightMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#071a10"),
-        roughness: 0.35,
-        metalness: 0.6,
-      }),
-    []
-  );
-
-  const matteComponentMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#111827"),
-        roughness: 0.6,
-        metalness: 0.35,
-      }),
-    []
-  );
-
-  const textMaterial = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#ffffff"),
-        emissive: new THREE.Color("#ff6a7d"),
-        emissiveIntensity: 0.4,
-        roughness: 0.3,
-        metalness: 0.2,
-      }),
-    []
-  );
+  // Material references to avoid mutating memoized values in render loops (React 19 compiler safety)
+  const materialsRef = useRef<{
+    matteAnodized: THREE.MeshStandardMaterial;
+    totem: THREE.MeshStandardMaterial;
+    subtleGlow: THREE.MeshStandardMaterial;
+    glow: THREE.MeshStandardMaterial;
+    pcb: THREE.MeshStandardMaterial;
+    component: THREE.MeshStandardMaterial;
+    text: THREE.MeshStandardMaterial;
+    highlight: THREE.MeshStandardMaterial;
+  }>({
+    matteAnodized: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#0d121c"),
+      roughness: 0.45,
+      metalness: 0.65,
+      bumpMap: noiseTexture || undefined,
+      bumpScale: 0.003,
+    }),
+    totem: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#172130"),
+      roughness: 0.3,
+      metalness: 0.8,
+      bumpMap: noiseTexture || undefined,
+      bumpScale: 0.002,
+    }),
+    subtleGlow: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#080B12"),
+      emissive: new THREE.Color("#FF405A"),
+      emissiveIntensity: 1.2,
+      roughness: 0.2,
+      metalness: 0.3,
+      transparent: true,
+      opacity: 0.9,
+    }),
+    glow: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#FF405A"),
+      emissive: new THREE.Color("#FF405A"),
+      emissiveIntensity: 2.5,
+      roughness: 0.1,
+      toneMapped: false,
+    }),
+    pcb: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#0d1b14"),
+      roughness: 0.35,
+      metalness: 0.6,
+    }),
+    component: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#161c27"),
+      roughness: 0.5,
+      metalness: 0.4,
+    }),
+    text: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#F8FAFC"),
+      emissive: new THREE.Color("#FF405A"),
+      emissiveIntensity: 0.3,
+      roughness: 0.3,
+      metalness: 0.2,
+    }),
+    highlight: new THREE.MeshStandardMaterial({
+      color: new THREE.Color("#FF405A"),
+      emissive: new THREE.Color("#FF405A"),
+      emissiveIntensity: 1.8,
+      roughness: 0.2,
+      metalness: 0.5,
+    }),
+  });
 
   // Clone scene so we can mutate positions cleanly per instance
+  const scene = gltf?.scene;
   const clonedScene = useMemo(() => {
-    if (!gltf?.scene) return null;
-    return gltf.scene.clone(true);
-  }, [gltf?.scene]);
+    if (!scene) return null;
+    return scene.clone(true);
+  }, [scene]);
 
   // Setup parts mapping and assign materials
   useEffect(() => {
     if (!clonedScene) return;
     const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
+    const mats = materialsRef.current;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     clonedScene.traverse((child: any) => {
       if (child.isMesh) {
         child.castShadow = true;
@@ -154,38 +143,38 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
           origPos: child.position.clone(),
         };
 
-        // Assign curated materials
-        if (child.name === "base" || child.name === "lid") {
-          child.material = matteAnodizedMaterial;
+        // Assign curated materials with optional selection highlight
+        const isSelected =
+          (selectedComponent === "enclosure" && (child.name === "base" || child.name === "lid")) ||
+          (selectedComponent === "totem" && child.name === "totem") ||
+          (selectedComponent === "controller" && child.name.includes("Esp32")) ||
+          (selectedComponent === "sensors" && child.name.includes("Hall_Sensor")) ||
+          (selectedComponent === "led" && (child.name.includes("LED_Ring") || child.name === "Body8(7)"));
+
+        if (isSelected) {
+          child.material = mats.highlight;
+        } else if (child.name === "base" || child.name === "lid") {
+          child.material = mats.matteAnodized;
         } else if (child.name === "totem") {
-          child.material = totemMaterial;
+          child.material = mats.totem;
         } else if (child.name === "Body8(7)") {
-          child.material = subtleGlowMaterial;
+          child.material = mats.subtleGlow;
         } else if (child.name.includes("LED_Ring") || child.name.includes("Neopixel")) {
-          child.material = glowMaterial;
+          child.material = mats.glow;
         } else if (child.name.includes("Esp32")) {
-          child.material = pcbHighlightMaterial;
+          child.material = mats.pcb;
         } else if (child.name.includes("Hall_Sensor")) {
-          child.material = matteComponentMaterial;
+          child.material = mats.component;
         } else if (child.name.startsWith("Text")) {
-          child.material = textMaterial;
+          child.material = mats.text;
         }
       }
     });
 
     partsRef.current = parts;
-  }, [
-    clonedScene,
-    matteAnodizedMaterial,
-    totemMaterial,
-    subtleGlowMaterial,
-    glowMaterial,
-    pcbHighlightMaterial,
-    matteComponentMaterial,
-    textMaterial,
-  ]);
+  }, [clonedScene, selectedComponent]);
 
-  // ─── Frame Loop: Animated Pulsing Glow + Exploded View Disassembly ───
+  // ─── Frame Loop: Animated Disassembly + Gentle Floating ───
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
 
@@ -201,21 +190,20 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
       p = 0.85;
     }
 
-    // Main Group Orientation & Continuous 360 Rotation + Gentle Floating
+    // Main Group Orientation & Continuous 360 Rotation + Floating
     if (mainGroupRef.current) {
-      // Reduced initial X tilt so it's viewed more from the side, allowing the vertical stack to be visible
       mainGroupRef.current.rotation.x = 0.15 + Math.cos(time * 0.4) * 0.02;
       mainGroupRef.current.rotation.y = time * 0.35 + (scrollProgress ? scrollProgress.get() * Math.PI * 0.5 : 0);
       mainGroupRef.current.position.y = Math.sin(time * 0.8) * 0.18;
     }
 
-    // High-Intensity Pulsing Animated Glow on NeoPixel ring
-    if (glowMaterial) {
-      glowMaterial.emissiveIntensity = 3.0 + Math.sin(time * 4.5) * 1.5;
+    // Gentle pulsing emissive on glow elements
+    const mats = materialsRef.current;
+    if (mats.glow) {
+      mats.glow.emissiveIntensity = 2.4 + Math.sin(time * 3.5) * 0.8;
     }
-
-    if (subtleGlowMaterial) {
-      subtleGlowMaterial.emissiveIntensity = 1.6 + Math.sin(time * 2.5) * 0.8 + p * 1.0;
+    if (mats.subtleGlow) {
+      mats.subtleGlow.emissiveIntensity = 1.2 + Math.sin(time * 2.0) * 0.4 + p * 0.5;
     }
 
     const parts = partsRef.current;
@@ -251,17 +239,15 @@ function Model({ scrollProgress, explodeFactor, disableExplode }: ModelProps) {
     const espKey = Object.keys(parts).find((k) => k.includes("Esp32"));
     if (espKey && parts[espKey]) {
       parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * 2.8;
-      parts[espKey].mesh.position.x = parts[espKey].origPos.x;
-      parts[espKey].mesh.position.z = parts[espKey].origPos.z;
     }
 
     // 6. Hall Effect Sensors lift purely upward
     const hallSensors = Object.keys(parts).filter((k) => k.includes("Hall_Sensor"));
-    hallSensors.forEach((name, idx) => {
+    hallSensors.forEach((name) => {
       const pObj = parts[name];
-      pObj.mesh.position.y = pObj.origPos.y + p * 1.5;
-      pObj.mesh.position.x = pObj.origPos.x;
-      pObj.mesh.position.z = pObj.origPos.z;
+      if (pObj) {
+        pObj.mesh.position.y = pObj.origPos.y + p * 1.5;
+      }
     });
 
     // 7. Base dock anchors firmly at original position
@@ -286,11 +272,13 @@ export default function ExplodedRingCanvas({
   centerPosition = false,
   disableExplode = false,
   explodeFactor: externalExplodeFactor,
+  selectedComponent,
 }: {
   scrollProgress?: MotionValue<number>;
   centerPosition?: boolean;
   disableExplode?: boolean;
   explodeFactor?: number;
+  selectedComponent?: string | null;
 }) {
   const [zoom, setZoom] = useState(1);
   const [explodeFactor, setExplodeFactor] = useState(0.85);
@@ -303,20 +291,18 @@ export default function ExplodedRingCanvas({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Position and Scale tuned for desktop & mobile
-  // Model native radius is ~9 units (diameter 18 units)
   const posX = centerPosition ? 0 : isMobile ? 0 : disableExplode ? 4.6 : 5.8;
-  const posY = disableExplode ? (isMobile ? -0.6 : 0.2) : (isMobile ? -0.8 : -0.2);
-  const baseScale = disableExplode ? (isMobile ? 0.32 : 0.44) : (isMobile ? 0.28 : 0.38);
+  const posY = disableExplode ? (isMobile ? -0.6 : 0.2) : isMobile ? -0.8 : -0.2;
+  const baseScale = disableExplode ? (isMobile ? 0.32 : 0.44) : isMobile ? 0.28 : 0.38;
 
   return (
     <div className="w-full h-full bg-transparent relative pointer-events-auto">
-      {/* Interactive HUD Controls Overlay (Only shown when explosion controls are active) */}
+      {/* Interactive HUD Controls Overlay */}
       {!disableExplode && (
-        <div className="absolute bottom-6 right-6 z-[120] flex flex-col sm:flex-row items-center gap-3 pointer-events-auto bg-matte/90 backdrop-blur-md border border-slate p-3 rounded-2xl shadow-2xl">
+        <div className="absolute bottom-6 right-6 z-[120] flex flex-col sm:flex-row items-center gap-3 pointer-events-auto bg-[#101723]/90 backdrop-blur-md border border-[#283141] p-3 rounded-2xl shadow-2xl">
           {/* Explode Amount Slider */}
-          <div className="flex items-center gap-2 font-mono text-xs text-slate-300 px-2">
-            <Layers size={14} className="text-accent" />
+          <div className="flex items-center gap-2 font-mono text-xs text-[#A5AFBF] px-2">
+            <Layers size={14} className="text-[#FF405A]" />
             <span>DISASSEMBLY:</span>
             <input
               type="range"
@@ -325,59 +311,53 @@ export default function ExplodedRingCanvas({
               step="0.01"
               value={explodeFactor}
               onChange={(e) => setExplodeFactor(parseFloat(e.target.value))}
-              className="w-28 accent-accent cursor-pointer"
+              className="w-24 sm:w-28 accent-[#FF405A] cursor-pointer"
             />
-            <span className="text-accent font-bold w-10 text-right">
+            <span className="text-[#FF405A] font-bold w-10 text-right">
               {Math.round(explodeFactor * 100)}%
             </span>
           </div>
 
-          {/* Quick Explosion Preset Buttons */}
-          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-slate pt-2 sm:pt-0 sm:pl-3 font-mono text-[10px]">
+          {/* Preset Buttons */}
+          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#283141] pt-2 sm:pt-0 sm:pl-3 font-mono text-[10px]">
             <button
+              type="button"
               onClick={() => setExplodeFactor(0)}
-              className={`px-2.5 py-1 rounded-lg border transition-all ${
+              className={`px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
                 explodeFactor === 0
-                  ? "border-accent bg-accent/20 text-accent"
-                  : "border-slate bg-vantablack text-slate-500 hover:text-white"
+                  ? "border-[#FF405A] bg-[#FF405A]/20 text-[#FF405A]"
+                  : "border-[#283141] bg-[#080B12] text-[#A5AFBF] hover:text-white"
               }`}
             >
               ASSEMBLED
             </button>
             <button
+              type="button"
               onClick={() => setExplodeFactor(0.85)}
-              className={`px-2.5 py-1 rounded-lg border transition-all ${
+              className={`px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
                 explodeFactor === 0.85
-                  ? "border-accent bg-accent/20 text-accent"
-                  : "border-slate bg-vantablack text-slate-500 hover:text-white"
+                  ? "border-[#FF405A] bg-[#FF405A]/20 text-[#FF405A]"
+                  : "border-[#283141] bg-[#080B12] text-[#A5AFBF] hover:text-white"
               }`}
             >
               EXPLODED
             </button>
-            <button
-              onClick={() => setExplodeFactor(1.0)}
-              className={`px-2.5 py-1 rounded-lg border transition-all ${
-                explodeFactor === 1.0
-                  ? "border-accent bg-accent/20 text-accent"
-                  : "border-slate bg-vantablack text-slate-500 hover:text-white"
-              }`}
-            >
-              MAX 100%
-            </button>
           </div>
 
-          {/* Zoom In/Out Buttons */}
-          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-slate pt-2 sm:pt-0 sm:pl-3 font-mono text-xs">
+          {/* Zoom Buttons */}
+          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#283141] pt-2 sm:pt-0 sm:pl-3 font-mono text-xs">
             <button
+              type="button"
               onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+              className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
               title="Zoom Out (-)"
             >
               -
             </button>
             <button
+              type="button"
               onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-              className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+              className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
               title="Zoom In (+)"
             >
               +
@@ -386,19 +366,21 @@ export default function ExplodedRingCanvas({
         </div>
       )}
 
-      {/* Simplified Zoom Buttons for Homepage (when disableExplode is true) */}
+      {/* Simplified Zoom for Homepage */}
       {disableExplode && (
-        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-matte/90 backdrop-blur-md border border-slate p-2 rounded-2xl shadow-2xl font-mono text-xs">
+        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-[#101723]/90 backdrop-blur-md border border-[#283141] p-2 rounded-2xl shadow-2xl font-mono text-xs">
           <button
+            type="button"
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+            className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
             title="Zoom Out (-)"
           >
             -
           </button>
           <button
+            type="button"
             onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-            className="w-8 h-8 rounded-lg bg-vantablack hover:bg-accent hover:text-[#001a0a] border border-slate text-white flex items-center justify-center transition-all"
+            className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
             title="Zoom In (+)"
           >
             +
@@ -411,13 +393,11 @@ export default function ExplodedRingCanvas({
         className="pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <Suspense fallback={null}>
-          {/* Robust Self-Contained Studio Lighting (100% offline & instant) */}
-          <ambientLight intensity={1.6} color="#e0f2fe" />
-          <directionalLight position={[12, 18, 12]} intensity={3.0} color="#ffffff" />
-          <directionalLight position={[-12, 10, -8]} intensity={2.2} color="#ff6a7d" />
-          <directionalLight position={[0, -8, 10]} intensity={1.0} color="#ffffff" />
-          <pointLight position={[0, 6, 0]} intensity={2.5} color="#ff6a7d" distance={15} />
-          <pointLight position={[-4, 2, 4]} intensity={1.8} color="#ffffff" distance={12} />
+          <ambientLight intensity={1.5} color="#e2e8f0" />
+          <directionalLight position={[12, 18, 12]} intensity={2.8} color="#ffffff" />
+          <directionalLight position={[-12, 10, -8]} intensity={1.8} color="#FF405A" />
+          <directionalLight position={[0, -8, 10]} intensity={0.9} color="#ffffff" />
+          <pointLight position={[0, 6, 0]} intensity={2.2} color="#FF405A" distance={15} />
 
           <OrbitControls
             enableZoom={false}
@@ -433,16 +413,17 @@ export default function ExplodedRingCanvas({
               scrollProgress={scrollProgress}
               explodeFactor={externalExplodeFactor !== undefined ? externalExplodeFactor : explodeFactor}
               disableExplode={disableExplode}
+              selectedComponent={selectedComponent}
             />
           </group>
 
           <EffectComposer>
-            <Bloom luminanceThreshold={0.8} luminanceSmoothing={0.9} intensity={1.2} />
+            <Bloom luminanceThreshold={0.85} luminanceSmoothing={0.9} intensity={1.1} />
           </EffectComposer>
 
           <ContactShadows
             position={[posX, posY - 2.2, 0]}
-            opacity={0.5}
+            opacity={0.45}
             scale={22}
             blur={2.5}
             far={6}

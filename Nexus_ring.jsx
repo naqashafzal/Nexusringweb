@@ -8,8 +8,9 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export function Model(props) {
   const group = React.useRef()
-  const { nodes, materials, animations } = useGLTF('/nexus_ring.glb')
-  const { actions } = useAnimations(animations, group)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { nodes, materials, animations } = useGLTF('/models/nexus_ring.glb') as any
+  useAnimations(animations, group)
   return (
     <group ref={group} {...props} dispose={null}>
       <group>
@@ -37,4 +38,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/nexus_ring.glb')
+useGLTF.preload('/models/nexus_ring.glb')

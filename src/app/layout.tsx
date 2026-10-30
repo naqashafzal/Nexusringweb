@@ -8,20 +8,19 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Nexus Ring | Bridging the gap between physical intention and digital execution",
+    default: "Nexus Ring — One physical move. Your workspace follows.",
     template: "%s | Nexus Ring",
   },
   description: SITE_CONFIG.description,
   keywords: SITE_CONFIG.keywords,
-  authors: [{ name: SITE_CONFIG.founder.name }, { name: SITE_CONFIG.legalName }],
+  authors: [{ name: SITE_CONFIG.founder.name }, { name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.founder.name,
-  publisher: SITE_CONFIG.legalName,
+  publisher: SITE_CONFIG.name,
   applicationName: "Nexus Ring",
   category: "technology",
   openGraph: {
-    title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
-    description:
-      "Transforming productivity from a software struggle into a tangible, tactile experience. The Nexus Ring acts as a Physical Attention Operating System.",
+    title: "Nexus Ring — One physical move. Your workspace follows.",
+    description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_US",
@@ -29,9 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexus Ring | Bridging the gap between physical intention and digital execution",
-    description:
-      "A physical barrier between you and digital distractions. Accelerate personal success with hardware-locked focus.",
+    title: "Nexus Ring — One physical move. Your workspace follows.",
+    description: SITE_CONFIG.description,
     creator: "@nexusring",
     site: "@nexusring",
   },
@@ -47,12 +45,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#030508",
+  themeColor: "#080B12",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -68,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`font-inter font-space-grotesk h-full antialiased`}
+      className="font-inter font-space-grotesk h-full antialiased"
     >
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
@@ -78,7 +76,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-vantablack text-[#F8FAFC] selection:bg-accent-500/30 selection:text-accent-400">
+      <body className="min-h-full flex flex-col bg-[#080B12] text-[#F8FAFC] selection:bg-[#FF405A]/30 selection:text-white">
         <Navbar />
         {children}
         <Footer />

@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Flow State Catalyst & Features",
+  title: "Operating Modes & Features",
   description:
-    "Explore the 4 spatial focus modes of the Nexus Ring: Deep Work Protocol, Meeting Isolation, Creative Flow, and Cognitive Reset. Built for time and focus optimization.",
+    "Explore the four physical operating modes of Nexus Ring: Deep Work, Creative, Meeting, and Break. Connect deliberate physical gestures to custom workspace profiles.",
   keywords: [
-    "Flow State Catalyst",
-    "Distraction Elimination System",
-    "Deep Work Protocol",
-    "Spatial Memory Focus",
-    "Kernel-Level Focus Lock",
-    "ADHD Workspace Hardware",
+    "Nexus Ring Features",
+    "Physical Modes",
+    "Deep Work Controller",
+    "Focus Interface",
+    "Workspace Automation",
   ],
   alternates: {
     canonical: "/features",
   },
   openGraph: {
-    title: "Flow State Catalyst & Features | Nexus Ring",
+    title: "Operating Modes & Features | Nexus Ring",
     description:
-      "4 physical modes to ruthlessly eliminate digital distractions and anchor your mind into deep work.",
+      "Explore the four physical operating modes of Nexus Ring: Deep Work, Creative, Meeting, and Break. Connect deliberate physical gestures to custom workspace profiles.",
     url: "https://www.nexusring.tech/features",
   },
 };

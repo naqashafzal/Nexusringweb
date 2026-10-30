@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Crowdfunding Campaign | Back Physical Intent Computing",
+  title: "Development & Campaign Roadmap",
   description:
-    "Join early backers in bringing the Nexus Ring to life. Pledge tiers from $15 DIY Maker kit with official 3MF print profiles to the fully assembled V1 3D-printed artifact.",
+    "Follow the open development trail of Nexus Ring. Transparent production roadmap, maker CAD files, and planned crowdfunding tiers.",
   keywords: [
-    "Success & Discipline Engine",
-    "Nexus Ring MakeWorld",
-    "Crowdfunding Campaign",
-    "3D Printed Focus Tool",
-    "High-Performance Workspace Artifact",
-    "Pre-Order Nexus Ring",
+    "Nexus Ring Development",
+    "Crowdfunding Roadmap",
+    "Maker Hardware",
+    "Physical Intent Computing",
+    "Workspace Automation",
   ],
   alternates: {
     canonical: "/campaign",
   },
   openGraph: {
-    title: "Crowdfunding Campaign | Back Physical Intent Computing",
+    title: "Development & Campaign Roadmap | Nexus Ring",
     description:
-      "Protect your potential and back the Physical Attention Operating System built for deep work.",
+      "Follow the open development trail of Nexus Ring. Transparent production roadmap, maker CAD files, and planned crowdfunding tiers.",
     url: "https://www.nexusring.tech/campaign",
   },
 };

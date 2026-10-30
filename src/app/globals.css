@@ -19,65 +19,55 @@
 }
 
 @theme {
-  /* We redefine the base tailwind colors to use CSS variables so they can swap */
-  --color-white: var(--tw-white);
-  --color-black: var(--tw-black);
+  /* Redefine base tailwind colors to match refined hardware palette */
+  --color-white: #ffffff;
+  --color-black: #000000;
   
-  --color-slate-100: var(--tw-slate-100);
-  --color-slate-200: var(--tw-slate-200);
-  --color-slate-300: var(--tw-slate-300);
-  --color-slate-400: var(--tw-slate-400);
-  --color-slate-500: var(--tw-slate-500);
-  --color-slate-600: var(--tw-slate-600);
-  --color-slate-700: var(--tw-slate-700);
-  --color-slate-800: var(--tw-slate-800);
-  --color-slate-900: var(--tw-slate-900);
-  --color-slate-950: var(--tw-slate-950);
+  --color-slate-100: #f8fafc;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #a5afbf;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #101723;
+  --color-slate-950: #080b12;
 
-  /* Custom App Colors */
-  --color-vantablack: var(--color-vantablack-theme);
-  --color-obsidian: var(--color-obsidian-theme);
-  --color-matte: var(--color-matte-theme);
-  --color-slate: var(--color-slate-theme);
-  --color-accent: #ff334f;
+  /* Unified Design Tokens */
+  --color-vantablack: #080B12;
+  --color-obsidian: #101723;
+  --color-matte: #172130;
+  --color-slate: #283141;
+  --color-accent: #FF405A;
   --color-accent2: #ff6a7d;
-  --color-muted: #9aa3af;
+  --color-muted: #A5AFBF;
+  --color-success: #35C98A;
+  --color-warning: #F0B35A;
 
-  /* Fonts */
+  /* Typography */
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Custom Glow Shadows */
-  --shadow-glow-accent: 0 0 25px rgba(255, 51, 79, 0.45), 0 0 50px rgba(255, 51, 79, 0.15);
+  --shadow-glow-accent: 0 0 25px rgba(255, 64, 90, 0.4), 0 0 50px rgba(255, 64, 90, 0.12);
 }
 
 :root {
   color-scheme: dark;
-  --background: #08090c;
-  --foreground: #f8fafc;
-  --tw-white: #ffffff;
-  --tw-black: #000000;
-  --tw-slate-100: #f1f5f9;
-  --tw-slate-200: #e2e8f0;
-  --tw-slate-300: #cbd5e1;
-  --tw-slate-400: #a1a8b5;
-  --tw-slate-500: #8a94a4;
-  --tw-slate-600: #64748b;
-  --tw-slate-700: #334155;
-  --tw-slate-800: #1e293b;
-  --tw-slate-900: #0f172a;
-  --tw-slate-950: #020617;
-  --color-vantablack-theme: #08090c;
-  --color-obsidian-theme: #101216;
-  --color-matte-theme: #15181e;
-  --color-slate-theme: #292d35;
+  --background: #080B12;
+  --foreground: #F8FAFC;
+  --color-vantablack-theme: #080B12;
+  --color-obsidian-theme: #101723;
+  --color-matte-theme: #172130;
+  --color-slate-theme: #283141;
   --bg-pattern: none;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #080B12;
+  color: #F8FAFC;
   font-family: var(--font-sans);
   background-image: var(--bg-pattern);
   background-size: 24px 24px;
@@ -92,14 +82,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Utility Classes */
 @layer utilities {
   .glass-panel {
-    background-color: color-mix(in srgb, var(--color-matte-theme) 70%, transparent);
+    background-color: rgba(23, 33, 48, 0.7);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--color-slate-theme);
+    border: 1px solid #283141;
   }
 
-  .text-gradient-neon {
-    background: linear-gradient(120deg, var(--color-accent), var(--color-accent2));
+  .text-gradient-accent {
+    background: linear-gradient(120deg, #F8FAFC 0%, #A5AFBF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -107,12 +97,50 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-:focus-visible { outline: 2px solid #ff6a7d; outline-offset: 5px; }
-.eyebrow { color: #ff6a7d; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
-.product-link { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px; border: 1px solid #292d35; border-radius: 20px; background: #15181e; transition: border-color .2s, background .2s; }
-.product-link:hover { border-color: #ff6a7d; background: #1b1e25; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+:focus-visible {
+  outline: 2px solid #FF405A;
+  outline-offset: 4px;
+}
+
+.eyebrow {
+  color: #FF405A;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.product-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  border: 1px solid #283141;
+  border-radius: 20px;
+  background: #101723;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.product-link:hover {
+  border-color: #FF405A;
+  background: #172130;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

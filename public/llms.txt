@@ -1,25 +1,24 @@
-# Nexus Ring — Physical Digital-State Controller
+# Nexus Ring — Physical Workspace Controller
 
-> Nexus Ring is a physical controller for your digital state. Place the magnetic totem into Deep Work, Creative, Meeting or Break, and your configured digital environment responds automatically.
+> Nexus Ring is a desk-based physical interface designed to connect deliberate physical actions with digital workspace automation. Move the magnetic totem to select a mode and let Nexus Companion prepare your environment for the work ahead.
 
-## Core Marketing Hooks
-- **Physical Intent. Digital Execution:** Drop the Nexus Totem into a mode and your workspace automatically adapts.
-- **One physical action:** Your digital world changes with you.
-- **Local-First:** Core automation stays on your devices.
+## Primary Brand Message
+- **Tagline:** FORCE YOUR FOCUS. ENGINEER SUCCESS.
+- **Supporting Headline:** One physical move. Your workspace follows.
+- **Philosophy:** Physical Intent Computing. Calm technology that bridges the gap between intention and action without demanding another screen.
 
 ## Status Labels
-- **AVAILABLE:** Feature works today.
-- **PROTOTYPE:** Working but not final.
-- **IN DEVELOPMENT:** Actively being built.
-- **PLANNED:** Roadmap.
-- **EXPERIMENTAL:** R&D.
+- **VALIDATED:** Demonstrated and verified in current prototype.
+- **PROTOTYPE:** Functional hardware/chassis test unit.
+- **IN DEVELOPMENT:** Actively being engineered.
+- **PLANNED:** On the production roadmap.
 
 ## Quick Facts
-- **Product Type:** Desktop hardware artifact & OS automation controller
-- **Price:** $15 (Maker Edition), $49 (Hacker Edition), $129 (Pro Edition)
-- **Availability:** Early Access Waitlist Active (PLANNED for Crowdfunding)
-- **Hardware Architecture (IN DEVELOPMENT):** 3D-Printed chassis, Hall-effect magnetic flux sensing array, ESP32-C3 microcontroller, magnetic totem.
-- **Software Architecture (IN DEVELOPMENT):** Local desktop automation, system focus rules, Experimental Local Context Assistant (EXPERIMENTAL).
+- **Product Type:** Desk-based physical interface & companion software controller
+- **Target Pricing:** Provisional targets — $15 (Maker Edition), $49 (Hacker Edition), $129 (Pro Desk Set). Final pricing to be announced at campaign launch.
+- **Availability:** Early Access Waitlist Active. No payment required today.
+- **Hardware Architecture (IN DEVELOPMENT):** Dual-shell 3D chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, 360° diffuse ambient LED system, weighted magnetic totem, USB Type-C interface.
+- **Software Architecture (IN DEVELOPMENT):** Local Nexus Companion daemon for Windows, macOS, and Linux. Local-first execution for website filtering, application orchestration, notification muting, and focus timers.
 - **Founder:** Naqash Afzal
   - GitHub: https://github.com/naqashafzal
   - MakerWorld: https://makerworld.com/en/@naqash
@@ -27,17 +26,18 @@
 - **Official Website:** https://www.nexusring.tech
 
 ## Primary Sections
-- **Features & Modes**: 4 dedicated spatial focus positions (Deep Work, Meeting, Creative, Break).
-- **Hardware Architecture**: Hall-effect magnetic flux sensing array, magnetic totem, local electronics.
-- **Software & Daemon**: Local system automation, native OS integration, configurable webhooks.
-- **Design Principles**: Reasoning and behavioral research used in the product.
-- **Crowdfunding Campaign**: Backer pledge tiers, transparent roadmap timeline, risks and challenges.
-- **Early Access**: Direct reservation for Batch 01. No payment taken today.
-- **Comparisons Hub**: Head-to-head feature matrix.
+- **Features & Modes**: 4 dedicated spatial focus positions (Deep Work, Creative, Meeting, Break).
+- **Hardware Architecture**: Hall-effect magnetic sensing array, weighted magnetic totem, ESP32-C3 microcontroller.
+- **Software Companion**: Local system automation, native OS integration, configurable profile hooks.
+- **Design Principles**: Environmental psychology and workflow friction reduction.
+- **Development Campaign**: Transparent production roadmap, backer editions, risks and engineering challenges.
+- **Early Access**: Non-binding waitlist registration for prototype milestones and launch news.
+- **Comparisons Hub**: Architectural comparison against software-only blockers and desk accessories.
 
-## Key Capabilities & Distinctions
+## Key Principles & Distinctions
 1. **Physicality Over Willpower:** Digital tools are easy to ignore because the decision happens on the same screen. Nexus Ring introduces a physical boundary between intention and distraction.
-2. **Local System Enforcement:** Switching magnetic totem positions commands the OS directly, triggering local scripts to block domains, launch project environments, or silence notifications.
-3. **Privacy-First:** Core automation is designed to happen locally whenever possible without mandatory cloud connections.
+2. **Local System Enforcement:** Switching magnetic totem positions commands the local companion software, triggering native scripts to filter domains, launch workspaces, or silence alerts.
+3. **Calm Technology:** Zero screens. Glanceable peripheral light confirms the active state without creating visual clutter.
+4. **Privacy-First:** Core automation runs locally without mandatory cloud servers or activity telemetry.
 
 For full technical specifications, code hooks, and design principles, see [llms-full.txt](https://www.nexusring.tech/llms-full.txt).

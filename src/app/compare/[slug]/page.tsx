@@ -1,7 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { COMPARISONS } from "@/lib/comparisons-data";
 import CompareDetailClient from "./CompareDetailClient";
 
@@ -59,35 +58,35 @@ export default async function CompareDetailPage({ params }: Props) {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.nexusring.tech",
+            position: 1,
+            name: "Home",
+            item: "https://www.nexusring.tech",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Compare",
-            "item": "https://www.nexusring.tech/compare",
+            position: 2,
+            name: "Compare",
+            item: "https://www.nexusring.tech/compare",
           },
           {
             "@type": "ListItem",
-            "position": 3,
-            "name": comparison.heroTitle,
-            "item": `https://www.nexusring.tech/compare/${slug}`,
+            position: 3,
+            name: comparison.heroTitle,
+            item: `https://www.nexusring.tech/compare/${slug}`,
           },
         ],
       },
       {
         "@type": "FAQPage",
-        "mainEntity": comparison.faqs.map((faq) => ({
+        mainEntity: comparison.faqs.map((faq) => ({
           "@type": "Question",
-          "name": faq.question,
-          "acceptedAnswer": {
+          name: faq.question,
+          acceptedAnswer: {
             "@type": "Answer",
-            "text": faq.answer,
+            text: faq.answer,
           },
         })),
       },

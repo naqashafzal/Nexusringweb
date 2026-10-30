@@ -20,37 +20,37 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nexus Ring | Physical Attention Operating System &amp; Focus Artifact</title>
+    <title>Nexus Ring — Engineering &amp; Development Feed</title>
     <link>${baseUrl}</link>
-    <description>Engineering announcements, cognitive science research, and distraction elimination system updates for Nexus Ring.</description>
+    <description>Engineering announcements, architecture milestones, and companion software development updates for Nexus Ring.</description>
     <language>en-us</language>
     <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
     
     <item>
-      <title><![CDATA[Nexus Ring V1 Launch & Priority Queue Open]]></title>
+      <title><![CDATA[Nexus Ring Early Access Waitlist Active]]></title>
       <link>${baseUrl}/campaign</link>
       <guid>${baseUrl}/campaign</guid>
       <pubDate>${now}</pubDate>
-      <description><![CDATA[Batch 01 Priority Queue opens for the Nexus Ring Physical Attention Operating System. Precision 3D-printed chassis with ESP32-C3 RISC-V and 4x Hall-effect sensing array.]]></description>
+      <description><![CDATA[Early access registration is open for the Nexus Ring physical workspace controller. Dual-shell prototype chassis with ESP32-C3 RISC-V controller and 4x Hall-effect contactless sensing array.]]></description>
       <category>Hardware Release</category>
     </item>
 
     <item>
-      <title><![CDATA[Cognitive Science Whitepaper: Ego Depletion vs Spatial Habit Anchors]]></title>
+      <title><![CDATA[Behavioral Psychology &amp; Focus Design Principles]]></title>
       <link>${baseUrl}/research</link>
       <guid>${baseUrl}/research</guid>
       <pubDate>${now}</pubDate>
-      <description><![CDATA[Why willpower fails and physical consequence succeeds: A scientific investigation into spatial focus anchors and digital dopamine loop interruption.]]></description>
-      <category>Cognitive Science</category>
+      <description><![CDATA[Investigating physical friction, environmental cues, and workflow automation to reduce context-switching overhead.]]></description>
+      <category>Design Research</category>
     </item>
 
     <item>
-      <title><![CDATA[100% Air-Gapped Local Focus Guardian & Kernel Firewall]]></title>
+      <title><![CDATA[Nexus Companion: Local-First Desktop Automation]]></title>
       <link>${baseUrl}/software</link>
       <guid>${baseUrl}/software</guid>
       <pubDate>${now}</pubDate>
-      <description><![CDATA[Sub-24ms local hardware interrupts, native OS socket firewalling, and local on-device AI focus inference with zero cloud telemetry.]]></description>
+      <description><![CDATA[Connecting physical totem mode events to native desktop automations locally with zero cloud telemetry.]]></description>
       <category>Software Architecture</category>
     </item>
 

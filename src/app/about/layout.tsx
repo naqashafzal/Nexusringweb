@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vision & Founder | Physical Intent Computing",
+  title: "Vision & Founder",
   description:
-    "Meet the visionary behind Nexus Desktop Art Inc. Founded by Naqash Afzal with a single obsession: engineering physical artifacts that accelerate human potential and discipline.",
+    "The vision behind Nexus Ring: founded by Naqash Afzal to bridge deliberate physical action with digital workspace focus.",
   keywords: [
-    "Success & Discipline Engine",
-    "Nexus Ring Founder",
+    "Nexus Ring Vision",
+    "Physical Intent Computing",
     "Naqash Afzal",
-    "High-Performance Workspace Artifact",
-    "Nexus Desktop Art Inc",
+    "Focus Hardware",
+    "Calm Computing",
   ],
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "Vision & Founders | Physical Intent Computing",
+    title: "Vision & Founder | Nexus Ring",
     description:
-      "Engineering the tools that turn personal discipline from a daily struggle into an effortless physical ritual.",
+      "The vision behind Nexus Ring: founded by Naqash Afzal to bridge deliberate physical action with digital workspace focus.",
     url: "https://www.nexusring.tech/about",
   },
 };
