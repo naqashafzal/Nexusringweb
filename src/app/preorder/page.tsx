@@ -18,21 +18,21 @@ const FINISHES = [
   {
     id: "charcoal",
     name: "Matte Charcoal Anodized",
-    color: "#080B12",
-    accent: "#FF405A",
+    color: "#080A0E",
+    accent: "#D83A50",
     desc: "Low-glare deep charcoal finish with a micro-textured surface designed to blend cleanly onto developer and designer desks.",
   },
   {
     id: "graphite",
     name: "Dark Graphite Alloy",
-    color: "#101723",
-    accent: "#F8FAFC",
+    color: "#11151C",
+    accent: "#F5F6F8",
     desc: "Machined dark alloy totem paired with a diffuse optical ring for clear, screen-free ambient mode feedback.",
   },
   {
     id: "maker",
     name: "Maker Edition / Raw Chassis",
-    color: "#172130",
+    color: "#1B222D",
     accent: "#35C98A",
     desc: "Chassis files optimized for personal FDM printing (PLA-CF / PETG) with exposed fastener design and open hardware mounting points.",
   },
@@ -123,29 +123,29 @@ export default function PreorderPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#080B12] text-[#F8FAFC] font-sans pt-32 pb-32 overflow-x-hidden">
+    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden">
       {/* Background Subtle Grid Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#283141_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-16 text-center">
         <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
             Development Stage · Early Access Interest
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter leading-[1.0] text-white">
             REGISTER YOUR<br />
-            <span className="text-[#A5AFBF]">EARLY ACCESS INTEREST.</span>
+            <span className="text-[#A5AFBD]">EARLY ACCESS INTEREST.</span>
           </h1>
 
-          <p className="text-[#A5AFBF] text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#A5AFBD] text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
             Nexus Ring is currently in active hardware and software development. Select your preferred tier and finish direction to help us forecast manufacturing batches and receive early notification before public availability.
           </p>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#172130] border border-[#283141] text-xs font-mono text-[#A5AFBF]">
-            <Info size={14} className="text-[#FF405A]" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1B222D] border border-[#303A48] text-xs font-mono text-[#A5AFBD]">
+            <Info size={14} className="text-[#D83A50]" />
             <span>No payment is collected today. Pricing shown represents provisional targets.</span>
           </div>
         </div>
@@ -159,13 +159,13 @@ export default function PreorderPage() {
           <div className="lg:col-span-7 space-y-8">
             
             {/* 1. Hardware Finish Direction */}
-            <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 space-y-6">
+            <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-[#FF405A] uppercase tracking-widest block">Step 01</span>
+                  <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">Step 01</span>
                   <h3 className="text-xl font-display font-bold text-white">Select Material Direction</h3>
                 </div>
-                <span className="text-xs font-mono text-[#A5AFBF]">{finish.name}</span>
+                <span className="text-xs font-mono text-[#A5AFBD]">{finish.name}</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -178,8 +178,8 @@ export default function PreorderPage() {
                       onClick={() => setSelectedFinish(i)}
                       className={`p-4 rounded-2xl border text-left transition-all duration-200 relative overflow-hidden cursor-pointer ${
                         isActive
-                          ? "border-[#FF405A] bg-[#172130] shadow-[0_0_20px_rgba(255,64,90,0.15)]"
-                          : "border-[#283141] bg-[#080B12] hover:border-[#A5AFBF]/40"
+                          ? "border-[#D83A50] bg-[#1B222D] shadow-[0_0_20px_rgba(255,64,90,0.15)]"
+                          : "border-[#303A48] bg-[#080A0E] hover:border-[#A5AFBD]/40"
                       }`}
                     >
                       <div className="w-3.5 h-3.5 rounded-full mb-3" style={{ backgroundColor: f.accent }} />
@@ -189,19 +189,19 @@ export default function PreorderPage() {
                 })}
               </div>
 
-              <p className="text-xs text-[#A5AFBF] font-light leading-relaxed border-l-2 border-[#FF405A] pl-3">
+              <p className="text-xs text-[#A5AFBD] font-light leading-relaxed border-l-2 border-[#D83A50] pl-3">
                 {finish.desc}
               </p>
             </div>
 
             {/* 2. Tier Selection */}
-            <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 space-y-6">
+            <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono text-[#FF405A] uppercase tracking-widest block">Step 02</span>
+                  <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">Step 02</span>
                   <h3 className="text-xl font-display font-bold text-white">Select Edition Interest</h3>
                 </div>
-                <span className="text-xs font-mono text-[#A5AFBF]">Target Specs</span>
+                <span className="text-xs font-mono text-[#A5AFBD]">Target Specs</span>
               </div>
 
               <div className="space-y-3">
@@ -214,20 +214,20 @@ export default function PreorderPage() {
                       onClick={() => setSelectedTier(i)}
                       className={`w-full p-5 rounded-2xl border text-left transition-all duration-200 flex items-center justify-between gap-4 cursor-pointer ${
                         isActive
-                          ? "border-[#FF405A] bg-[#172130] shadow-[0_0_20px_rgba(255,64,90,0.1)]"
-                          : "border-[#283141] bg-[#080B12] hover:border-[#A5AFBF]/40"
+                          ? "border-[#D83A50] bg-[#1B222D] shadow-[0_0_20px_rgba(255,64,90,0.1)]"
+                          : "border-[#303A48] bg-[#080A0E] hover:border-[#A5AFBD]/40"
                       }`}
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <span className="font-display font-bold text-base text-white">{t.name}</span>
-                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-[#283141] bg-[#101723] text-[#A5AFBF]">
+                          <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-[#303A48] bg-[#11151C] text-[#A5AFBD]">
                             {t.badge}
                           </span>
                         </div>
-                        <p className="text-xs text-[#A5AFBF] font-light">{t.desc}</p>
+                        <p className="text-xs text-[#A5AFBD] font-light">{t.desc}</p>
                       </div>
-                      <span className="text-sm font-mono font-bold text-[#FF405A] shrink-0">{t.price}</span>
+                      <span className="text-sm font-mono font-bold text-[#D83A50] shrink-0">{t.price}</span>
                     </button>
                   );
                 })}
@@ -238,23 +238,23 @@ export default function PreorderPage() {
 
           {/* ── RIGHT: Registration Form (5 cols) ── */}
           <div className="lg:col-span-5 sticky top-28 space-y-6">
-            <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 space-y-6 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-[#283141] pb-4">
+            <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-[#303A48] pb-4">
                 <div>
-                  <span className="text-[10px] font-mono text-[#A5AFBF] uppercase tracking-widest block">Selected Interest</span>
+                  <span className="text-[10px] font-mono text-[#A5AFBD] uppercase tracking-widest block">Selected Interest</span>
                   <p className="font-display font-bold text-lg text-white">{tier.name}</p>
                 </div>
-                <span className="text-base font-mono font-bold text-[#FF405A]">{tier.price}</span>
+                <span className="text-base font-mono font-bold text-[#D83A50]">{tier.price}</span>
               </div>
 
               {submitted ? (
                 <div className="space-y-4 p-6 rounded-2xl border border-[#35C98A]/30 bg-[#35C98A]/10 text-center">
                   <CheckCircle2 size={36} className="text-[#35C98A] mx-auto" />
                   <h4 className="text-xl font-display font-bold text-white">Interest Registered!</h4>
-                  <p className="text-xs text-[#A5AFBF] font-light leading-relaxed">
+                  <p className="text-xs text-[#A5AFBD] font-light leading-relaxed">
                     Thank you for supporting Nexus Ring. We have added <span className="font-mono text-white font-semibold">{email}</span> to our early notification list for the <span className="text-white font-semibold">{tier.name}</span>.
                   </p>
-                  <p className="text-xs text-[#A5AFBF] font-light leading-relaxed">
+                  <p className="text-xs text-[#A5AFBD] font-light leading-relaxed">
                     You will receive direct engineering milestones and early access before public crowdfunding launch. No payment has been taken.
                   </p>
                   <button
@@ -263,7 +263,7 @@ export default function PreorderPage() {
                       setSubmitted(false);
                       setEmail("");
                     }}
-                    className="mt-2 px-4 py-2 rounded-xl border border-[#283141] bg-[#172130] text-xs font-mono text-white hover:border-[#A5AFBF] transition-colors"
+                    className="mt-2 px-4 py-2 rounded-xl border border-[#303A48] bg-[#1B222D] text-xs font-mono text-white hover:border-[#A5AFBD] transition-colors"
                   >
                     Register another email
                   </button>
@@ -281,7 +281,7 @@ export default function PreorderPage() {
                   )}
 
                   <div>
-                    <label htmlFor="preorder-email" className="text-[11px] font-mono text-[#A5AFBF] uppercase tracking-wider block mb-2">
+                    <label htmlFor="preorder-email" className="text-[11px] font-mono text-[#A5AFBD] uppercase tracking-wider block mb-2">
                       Email Address for Notification
                     </label>
                     <input
@@ -294,14 +294,14 @@ export default function PreorderPage() {
                       }}
                       placeholder="you@domain.com"
                       required
-                      className="w-full bg-[#080B12] border border-[#283141] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#FF405A] text-sm font-mono transition-colors"
+                      className="w-full bg-[#080A0E] border border-[#303A48] rounded-xl px-4 py-3.5 text-white placeholder-[#475569] focus:outline-none focus:border-[#D83A50] text-sm font-mono transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-white bg-[#FF405A] hover:bg-[#e0354e] disabled:opacity-60 transition-all duration-200 shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                    className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-white bg-[#D83A50] hover:bg-[#EB5268] disabled:opacity-60 transition-all duration-200 shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -317,17 +317,17 @@ export default function PreorderPage() {
                 </form>
               )}
 
-              <div className="space-y-2.5 pt-4 border-t border-[#283141] text-xs font-mono text-[#A5AFBF]">
+              <div className="space-y-2.5 pt-4 border-t border-[#303A48] text-xs font-mono text-[#A5AFBD]">
                 <div className="flex items-center gap-2">
                   <ShieldCheck size={14} className="text-[#35C98A]" />
                   <span>No payment or deposit required today</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Cpu size={14} className="text-[#FF405A]" />
+                  <Cpu size={14} className="text-[#D83A50]" />
                   <span>Honest prototype &amp; firmware progress updates</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Layers size={14} className="text-[#A5AFBF]" />
+                  <Layers size={14} className="text-[#A5AFBD]" />
                   <span>Notification before public campaign opening</span>
                 </div>
               </div>
