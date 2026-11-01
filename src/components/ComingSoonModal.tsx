@@ -117,27 +117,24 @@ export default function ComingSoonModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-[#080B12]/85 backdrop-blur-xl"
+            className="fixed inset-0 bg-[#080A0E]/85 backdrop-blur-xl"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="waitlist-title"
-            className="relative w-full max-w-lg rounded-3xl border border-[#283141] bg-[#101723] p-8 sm:p-10 shadow-[0_0_80px_rgba(255,64,90,0.15)] text-left overflow-hidden z-10"
+            className="relative w-full max-w-lg rounded-3xl border border-[#303A48] bg-[#11151C] p-8 sm:p-10 shadow-2xl text-left overflow-hidden z-10"
           >
-            {/* Top decorative glow */}
-            <div className="absolute -top-24 -right-24 w-60 h-60 rounded-full bg-[#FF405A]/[0.08] blur-[60px] pointer-events-none" />
-
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#172130] border border-[#283141] text-[#A5AFBF] hover:text-white hover:border-[#FF405A]/50 flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#1B222D] border border-[#303A48] text-[#A5AFBD] hover:text-[#F5F6F8] hover:border-[#D83A50] flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -145,33 +142,33 @@ export default function ComingSoonModal({
 
             {!submitted ? (
               <div className="space-y-6 relative z-10">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#172130] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#303A48] bg-[#1B222D] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
                   Early Access Waitlist
                 </div>
 
                 <div className="space-y-2">
-                  <h3 id="waitlist-title" className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white">
-                    FOLLOW THE BUILD.
+                  <h3 id="waitlist-title" className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#F5F6F8] uppercase">
+                    BE THERE WHEN INTENTION BECOMES HARDWARE.
                   </h3>
-                  <p className="text-[#A5AFBF] text-sm sm:text-base font-light leading-relaxed">
-                    Nexus Ring is in active development. Sign up for prototype updates and launch announcements. No payment required.
+                  <p className="text-[#A5AFBD] text-xs sm:text-sm font-light leading-relaxed">
+                    Nexus Ring is in active prototype development. Join early access for engineering milestones, CAD releases, and crowdfunding launch alerts. No payment required.
                   </p>
                 </div>
 
                 {tierName && (
-                  <div className="px-4 py-2.5 rounded-xl border border-[#283141] bg-[#080B12] text-xs font-mono text-[#A5AFBF] flex items-center justify-between">
+                  <div className="px-4 py-2.5 rounded-xl border border-[#303A48] bg-[#080A0E] text-xs font-mono text-[#A5AFBD] flex items-center justify-between">
                     <span>SELECTED INTEREST:</span>
-                    <span className="text-white font-bold">{tierName}</span>
+                    <span className="text-[#F5F6F8] font-bold">{tierName}</span>
                   </div>
                 )}
 
-                <div className="p-4 rounded-2xl border border-[#283141] bg-[#080B12] space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#FF405A]">
-                    <Bell size={14} />
-                    <span>PROTOTYPE &amp; LAUNCH UPDATES</span>
+                <div className="p-4 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-1.5">
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#D83A50]">
+                    <Bell size={13} />
+                    <span className="font-semibold">PROTOTYPE &amp; PRODUCTION UPDATES</span>
                   </div>
-                  <p className="text-xs text-[#A5AFBF] font-light leading-relaxed">
+                  <p className="text-xs text-[#778292] font-light leading-relaxed">
                     We share genuine engineering progress, testing milestones, and early bird access before public launch.
                   </p>
                 </div>
@@ -195,26 +192,26 @@ export default function ComingSoonModal({
                         setEmail(e.target.value);
                         if (error) setError("");
                       }}
-                      className="flex-1 px-4 py-3.5 rounded-xl bg-[#080B12] border border-[#283141] text-white placeholder:text-[#475569] text-sm focus:outline-none focus:border-[#FF405A] transition-colors"
+                      className="flex-1 px-4 py-3 rounded-full bg-[#080A0E] border border-[#303A48] text-[#F5F6F8] placeholder:text-[#778292] text-xs sm:text-sm focus:outline-none focus:border-[#D83A50] transition-colors"
                     />
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-3.5 rounded-xl bg-[#FF405A] hover:bg-[#e0354e] disabled:opacity-60 text-white font-bold text-sm tracking-wide transition-all shadow-[0_0_20px_rgba(255,64,90,0.35)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
+                      className="px-6 py-3 rounded-full bg-[#D83A50] hover:bg-[#EB5268] disabled:opacity-60 text-[#F5F6F8] font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-[0_0_15px_rgba(216,58,80,0.25)] flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                           <span>Joining...</span>
                         </>
                       ) : (
                         <>
-                          Join Waitlist <ArrowRight size={16} />
+                          Join Early Access <ArrowRight size={14} />
                         </>
                       )}
                     </button>
                   </div>
-                  <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#A5AFBF] pt-1 flex-wrap">
+                  <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#778292] pt-1 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <ShieldCheck size={13} className="text-[#35C98A]" />
                       <span>Zero spam. No payment collected.</span>
@@ -223,7 +220,7 @@ export default function ComingSoonModal({
                       href="https://discord.gg/Q3tTGhH4k"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#A5AFBF] hover:text-white transition-colors flex items-center gap-1"
+                      className="text-[#A5AFBD] hover:text-[#F5F6F8] transition-colors flex items-center gap-1"
                     >
                       <span>Join Discord Community →</span>
                     </a>
@@ -232,38 +229,38 @@ export default function ComingSoonModal({
               </div>
             ) : (
               <div className="py-8 text-center space-y-5 relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#35C98A]/10 border border-[#35C98A]/30 text-[#35C98A] flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(53,201,138,0.2)]">
-                  <CheckCircle2 size={32} />
+                <div className="w-14 h-14 rounded-full bg-[#35C98A]/10 border border-[#35C98A]/30 text-[#35C98A] flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={28} />
                 </div>
-                <div className="space-y-2">
-                  <h4 id="waitlist-title" className="text-2xl font-display font-bold text-white">
-                    You’re on the Waitlist!
+                <div className="space-y-1.5">
+                  <h4 id="waitlist-title" className="text-xl sm:text-2xl font-display font-bold text-[#F5F6F8]">
+                    You’re on the Early Access List!
                   </h4>
-                  <p className="text-sm text-[#A5AFBF] max-w-sm mx-auto font-light leading-relaxed">
-                    Thank you for joining. We will share legitimate development milestones and notify you as soon as early access opens.
+                  <p className="text-xs sm:text-sm text-[#A5AFBD] max-w-sm mx-auto font-light leading-relaxed">
+                    Thank you for following Nexus Ring. We will share authentic engineering milestones and notify you as soon as backer slots open.
                   </p>
                 </div>
-                <div className="p-5 rounded-2xl border border-[#283141] bg-[#080B12] space-y-3 text-left">
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#A5AFBF]">
+                <div className="p-4 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-2 text-left">
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
                     <span>MAKER &amp; BUILDER COMMUNITY</span>
                   </div>
-                  <p className="text-xs text-[#A5AFBF] font-light leading-relaxed">
+                  <p className="text-xs text-[#778292] font-light leading-relaxed">
                     Follow 3D print tests, sensor development, and firmware progress, or chat directly with the creator.
                   </p>
                   <a
                     href="https://discord.gg/Q3tTGhH4k"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#172130] hover:bg-[#283141] border border-[#283141] text-white text-xs font-bold font-mono tracking-wide transition-colors"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-[#1B222D] hover:bg-[#303A48] border border-[#303A48] text-[#F5F6F8] text-xs font-semibold font-mono tracking-wide transition-colors"
                   >
                     <span>Join the Discord Server</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={13} />
                   </a>
                 </div>
 
                 <button
                   onClick={handleClose}
-                  className="px-8 py-3 rounded-xl border border-[#283141] bg-[#172130] text-sm font-mono text-white hover:border-[#FF405A] transition-colors cursor-pointer"
+                  className="px-6 py-2.5 rounded-full border border-[#303A48] bg-[#1B222D] text-xs font-mono text-[#F5F6F8] hover:border-[#D83A50] transition-colors cursor-pointer"
                 >
                   Close Window
                 </button>

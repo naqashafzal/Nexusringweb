@@ -65,56 +65,56 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
     highlight: THREE.MeshStandardMaterial;
   }>({
     matteAnodized: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#0d121c"),
-      roughness: 0.45,
-      metalness: 0.65,
+      color: new THREE.Color("#11151C"),
+      roughness: 0.52,
+      metalness: 0.58,
       bumpMap: noiseTexture || undefined,
-      bumpScale: 0.003,
+      bumpScale: 0.002,
     }),
     totem: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#172130"),
-      roughness: 0.3,
-      metalness: 0.8,
+      color: new THREE.Color("#1B222D"),
+      roughness: 0.28,
+      metalness: 0.85,
       bumpMap: noiseTexture || undefined,
       bumpScale: 0.002,
     }),
     subtleGlow: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#080B12"),
-      emissive: new THREE.Color("#FF405A"),
-      emissiveIntensity: 1.2,
-      roughness: 0.2,
+      color: new THREE.Color("#080A0E"),
+      emissive: new THREE.Color("#D83A50"),
+      emissiveIntensity: 0.9,
+      roughness: 0.25,
       metalness: 0.3,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.85,
     }),
     glow: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#FF405A"),
-      emissive: new THREE.Color("#FF405A"),
-      emissiveIntensity: 2.5,
-      roughness: 0.1,
+      color: new THREE.Color("#D83A50"),
+      emissive: new THREE.Color("#D83A50"),
+      emissiveIntensity: 1.8,
+      roughness: 0.15,
       toneMapped: false,
     }),
     pcb: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#0d1b14"),
-      roughness: 0.35,
-      metalness: 0.6,
+      color: new THREE.Color("#0c1913"),
+      roughness: 0.4,
+      metalness: 0.5,
     }),
     component: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#161c27"),
-      roughness: 0.5,
-      metalness: 0.4,
+      color: new THREE.Color("#181D26"),
+      roughness: 0.55,
+      metalness: 0.35,
     }),
     text: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#F8FAFC"),
-      emissive: new THREE.Color("#FF405A"),
-      emissiveIntensity: 0.3,
+      color: new THREE.Color("#F5F6F8"),
+      emissive: new THREE.Color("#D83A50"),
+      emissiveIntensity: 0.2,
       roughness: 0.3,
       metalness: 0.2,
     }),
     highlight: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#FF405A"),
-      emissive: new THREE.Color("#FF405A"),
-      emissiveIntensity: 1.8,
+      color: new THREE.Color("#D83A50"),
+      emissive: new THREE.Color("#D83A50"),
+      emissiveIntensity: 1.4,
       roughness: 0.2,
       metalness: 0.5,
     }),
@@ -368,11 +368,11 @@ export default function ExplodedRingCanvas({
 
       {/* Simplified Zoom for Homepage */}
       {disableExplode && (
-        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-[#101723]/90 backdrop-blur-md border border-[#283141] p-2 rounded-2xl shadow-2xl font-mono text-xs">
+        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-[#11151C]/90 backdrop-blur-md border border-[#303A48] p-2 rounded-2xl shadow-xl font-mono text-xs">
           <button
             type="button"
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-            className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
+            className="w-7 h-7 rounded-lg bg-[#080A0E] hover:bg-[#D83A50] hover:text-[#F5F6F8] border border-[#303A48] text-[#F5F6F8] flex items-center justify-center transition-all cursor-pointer"
             title="Zoom Out (-)"
           >
             -
@@ -380,7 +380,7 @@ export default function ExplodedRingCanvas({
           <button
             type="button"
             onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-            className="w-7 h-7 rounded-lg bg-[#080B12] hover:bg-[#FF405A] hover:text-white border border-[#283141] text-white flex items-center justify-center transition-all cursor-pointer"
+            className="w-7 h-7 rounded-lg bg-[#080A0E] hover:bg-[#D83A50] hover:text-[#F5F6F8] border border-[#303A48] text-[#F5F6F8] flex items-center justify-center transition-all cursor-pointer"
             title="Zoom In (+)"
           >
             +
@@ -393,11 +393,11 @@ export default function ExplodedRingCanvas({
         className="pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={1.5} color="#e2e8f0" />
-          <directionalLight position={[12, 18, 12]} intensity={2.8} color="#ffffff" />
-          <directionalLight position={[-12, 10, -8]} intensity={1.8} color="#FF405A" />
-          <directionalLight position={[0, -8, 10]} intensity={0.9} color="#ffffff" />
-          <pointLight position={[0, 6, 0]} intensity={2.2} color="#FF405A" distance={15} />
+          <ambientLight intensity={1.2} color="#e2e8f0" />
+          <directionalLight position={[10, 16, 12]} intensity={2.4} color="#ffffff" />
+          <directionalLight position={[-12, 10, -8]} intensity={1.0} color="#D83A50" />
+          <directionalLight position={[0, -8, 10]} intensity={0.6} color="#94a3b8" />
+          <pointLight position={[0, 5, 0]} intensity={1.5} color="#D83A50" distance={12} />
 
           <OrbitControls
             enableZoom={false}
@@ -418,14 +418,14 @@ export default function ExplodedRingCanvas({
           </group>
 
           <EffectComposer>
-            <Bloom luminanceThreshold={0.85} luminanceSmoothing={0.9} intensity={1.1} />
+            <Bloom luminanceThreshold={0.9} luminanceSmoothing={0.8} intensity={0.6} />
           </EffectComposer>
 
           <ContactShadows
             position={[posX, posY - 2.2, 0]}
-            opacity={0.45}
+            opacity={0.5}
             scale={22}
-            blur={2.5}
+            blur={2.0}
             far={6}
             color="#000000"
           />

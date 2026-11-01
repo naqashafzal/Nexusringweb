@@ -22,13 +22,13 @@ export default function CompareDetailClient({
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <main className="min-h-screen bg-[#080B12] text-[#F8FAFC] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#FF405A]/30 selection:text-white">
+    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/30 selection:text-white">
       {/* Background Dot Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#283141_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* ════════════════ BREADCRUMBS ═════════════════════════════ */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 mb-8">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#A5AFBF]">
+        <div className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
           <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
@@ -37,15 +37,15 @@ export default function CompareDetailClient({
             Compare
           </Link>
           <ChevronRight size={12} />
-          <span className="text-[#FF405A] truncate">VS {comparison.competitorName}</span>
+          <span className="text-[#D83A50] truncate">VS {comparison.competitorName}</span>
         </div>
       </div>
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-16">
         <div className="space-y-6 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
             Technical &amp; Workflow Comparison
           </div>
 
@@ -53,7 +53,7 @@ export default function CompareDetailClient({
             {comparison.heroTitle}
           </h1>
 
-          <p className="text-lg sm:text-xl text-[#A5AFBF] font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#A5AFBD] font-light leading-relaxed">
             {comparison.heroSubtitle}
           </p>
         </div>
@@ -61,17 +61,17 @@ export default function CompareDetailClient({
 
       {/* ════════════════ COMPARISON TABLE (MATRIX) ════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="rounded-3xl border border-[#283141] bg-[#101723] p-6 md:p-10 shadow-2xl relative overflow-hidden">
-          <div className="flex items-center justify-between pb-6 border-b border-[#283141]">
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-6 md:p-10 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center justify-between pb-6 border-b border-[#303A48]">
             <div>
-              <span className="text-[10px] font-mono text-[#FF405A] uppercase tracking-widest block">
+              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">
                 Direct Feature Matrix
               </span>
               <h2 className="text-2xl font-display font-bold text-white">
                 Nexus Ring vs. {comparison.competitorName}
               </h2>
             </div>
-            <span className="hidden sm:inline-block text-xs font-mono text-[#A5AFBF]">
+            <span className="hidden sm:inline-block text-xs font-mono text-[#A5AFBD]">
               Hardware &amp; Software Architecture
             </span>
           </div>
@@ -79,15 +79,15 @@ export default function CompareDetailClient({
           <div className="overflow-x-auto mt-6">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-[#283141] text-xs font-mono text-[#A5AFBF]">
+                <tr className="border-b border-[#303A48] text-xs font-mono text-[#A5AFBD]">
                   <th className="py-4 pr-6 font-medium">CRITERIA</th>
-                  <th className="py-4 px-6 text-[#FF405A] font-bold">NEXUS RING</th>
-                  <th className="py-4 pl-6 text-[#A5AFBF] font-medium">{comparison.competitorName.toUpperCase()}</th>
+                  <th className="py-4 px-6 text-[#D83A50] font-bold">NEXUS RING</th>
+                  <th className="py-4 pl-6 text-[#A5AFBD] font-medium">{comparison.competitorName.toUpperCase()}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#283141] text-sm">
+              <tbody className="divide-y divide-[#303A48] text-sm">
                 {comparison.comparisonMatrix.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-[#172130] transition-colors">
+                  <tr key={idx} className="hover:bg-[#1B222D] transition-colors">
                     <td className="py-4 pr-6 font-mono text-xs text-white whitespace-nowrap">
                       {row.feature}
                     </td>
@@ -97,9 +97,9 @@ export default function CompareDetailClient({
                         <span>{row.nexusRing}</span>
                       </div>
                     </td>
-                    <td className="py-4 pl-6 text-[#A5AFBF]">
+                    <td className="py-4 pl-6 text-[#A5AFBD]">
                       <div className="flex items-start gap-2">
-                        <XCircle size={16} className="shrink-0 mt-0.5 text-[#FF405A]" />
+                        <XCircle size={16} className="shrink-0 mt-0.5 text-[#D83A50]" />
                         <span>{row.competitor}</span>
                       </div>
                     </td>
@@ -113,8 +113,8 @@ export default function CompareDetailClient({
 
       {/* ════════════════ COGNITIVE SCIENCE ANALYSIS ═══════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 md:p-12 relative overflow-hidden shadow-xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#FF405A] mb-4">
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 md:p-12 relative overflow-hidden shadow-xl">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#D83A50] mb-4">
             <Brain size={16} />
             <span>BEHAVIORAL PSYCHOLOGY &amp; INTERFACE DESIGN</span>
           </div>
@@ -123,11 +123,11 @@ export default function CompareDetailClient({
             Digital Switches vs. Physical Anchors
           </h3>
 
-          <div className="text-[#A5AFBF] font-light leading-relaxed space-y-4 text-base md:text-lg">
+          <div className="text-[#A5AFBD] font-light leading-relaxed space-y-4 text-base md:text-lg">
             <p>{comparison.cognitiveAnalysis}</p>
           </div>
 
-          <div className="mt-8 p-4 rounded-2xl border border-[#283141] bg-[#080B12] flex items-center justify-between text-xs font-mono text-[#A5AFBF]">
+          <div className="mt-8 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E] flex items-center justify-between text-xs font-mono text-[#A5AFBD]">
             <span>DESIGNED FOR:</span>
             <span className="text-white font-bold">{comparison.targetPersona}</span>
           </div>
@@ -138,7 +138,7 @@ export default function CompareDetailClient({
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Nexus Ring Advantages */}
-          <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 space-y-6">
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
             <div className="flex items-center gap-2 text-xs font-mono text-[#35C98A]">
               <Sparkles size={16} />
               <span>THE NEXUS RING ADVANTAGE</span>
@@ -148,7 +148,7 @@ export default function CompareDetailClient({
             </h4>
             <ul className="space-y-3">
               {comparison.nexusAdvantages.map((adv, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-[#F8FAFC] font-light">
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#F5F6F8] font-light">
                   <CheckCircle2 size={16} className="text-[#35C98A] shrink-0 mt-0.5" />
                   <span>{adv}</span>
                 </li>
@@ -157,8 +157,8 @@ export default function CompareDetailClient({
           </div>
 
           {/* Competitor Pitfalls */}
-          <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 space-y-6">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#FF405A]">
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#D83A50]">
               <XCircle size={16} />
               <span>LIMITATIONS OF {comparison.competitorName.toUpperCase()}</span>
             </div>
@@ -167,8 +167,8 @@ export default function CompareDetailClient({
             </h4>
             <ul className="space-y-3">
               {comparison.consCompetitor.map((con, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-[#A5AFBF] font-light">
-                  <XCircle size={16} className="text-[#FF405A] shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#A5AFBD] font-light">
+                  <XCircle size={16} className="text-[#D83A50] shrink-0 mt-0.5" />
                   <span>{con}</span>
                 </li>
               ))}
@@ -181,8 +181,8 @@ export default function CompareDetailClient({
       {comparison.faqs.length > 0 && (
         <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-20">
           <div className="text-center mb-10 space-y-2">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#A5AFBF]">
-              <HelpCircle size={14} className="text-[#FF405A]" />
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#A5AFBD]">
+              <HelpCircle size={14} className="text-[#D83A50]" />
               <span>FREQUENTLY ASKED QUESTIONS</span>
             </div>
             <h3 className="text-2xl md:text-3xl font-display font-bold text-white">
@@ -196,18 +196,18 @@ export default function CompareDetailClient({
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-[#283141] bg-[#101723] p-6 transition-colors"
+                  className="rounded-2xl border border-[#303A48] bg-[#11151C] p-6 transition-colors"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left flex items-center justify-between gap-4 font-display font-bold text-base text-white hover:text-[#A5AFBF] transition-colors cursor-pointer"
+                    className="w-full text-left flex items-center justify-between gap-4 font-display font-bold text-base text-white hover:text-[#A5AFBD] transition-colors cursor-pointer"
                   >
                     <span>{faq.question}</span>
-                    <span className="font-mono text-xs text-[#FF405A]">{isOpen ? "−" : "+"}</span>
+                    <span className="font-mono text-xs text-[#D83A50]">{isOpen ? "−" : "+"}</span>
                   </button>
                   {isOpen && (
-                    <p className="mt-4 text-sm text-[#A5AFBF] font-light leading-relaxed border-t border-[#283141] pt-4">
+                    <p className="mt-4 text-sm text-[#A5AFBD] font-light leading-relaxed border-t border-[#303A48] pt-4">
                       {faq.answer}
                     </p>
                   )}
@@ -220,8 +220,8 @@ export default function CompareDetailClient({
 
       {/* ════════════════ FINAL VERDICT & CTA ══════════════════════ */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12">
-        <div className="rounded-3xl border border-[#283141] bg-[#101723] p-8 md:p-12 text-center space-y-6 shadow-2xl">
-          <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-[#FF405A]/30 bg-[#FF405A]/10 text-[#FF405A]">
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 md:p-12 text-center space-y-6 shadow-2xl">
+          <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-[#D83A50]/30 bg-[#D83A50]/10 text-[#D83A50]">
             The Engineering Verdict
           </span>
 
@@ -229,7 +229,7 @@ export default function CompareDetailClient({
             Physical Intent. Digital Workspace Automation.
           </h3>
 
-          <p className="text-[#A5AFBF] text-base font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#A5AFBD] text-base font-light leading-relaxed max-w-2xl mx-auto">
             {comparison.verdict}
           </p>
 
@@ -237,13 +237,13 @@ export default function CompareDetailClient({
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-8 py-4 rounded-xl bg-[#FF405A] hover:bg-[#e0354e] text-white font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 rounded-xl bg-[#D83A50] hover:bg-[#EB5268] text-white font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
             >
               <span>Join Early Access Waitlist</span> <ChevronRight size={16} />
             </button>
             <Link
               href="/compare"
-              className="px-6 py-4 rounded-xl border border-[#283141] bg-[#080B12] hover:border-[#FF405A] text-xs font-mono text-[#A5AFBF] hover:text-white transition-colors"
+              className="px-6 py-4 rounded-xl border border-[#303A48] bg-[#080A0E] hover:border-[#D83A50] text-xs font-mono text-[#A5AFBD] hover:text-white transition-colors"
             >
               Explore All Comparisons
             </Link>

@@ -10,13 +10,11 @@ const ComingSoonModal = dynamic(() => import("@/components/ComingSoonModal"), {
 });
 
 const links = [
+  { href: "/#modes", label: "Product" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
-  { href: "/digital-distraction", label: "Distraction" },
-  { href: "/focus", label: "Focus Hub" },
+  { href: "/digital-distraction", label: "Our Mission" },
   { href: "/journal", label: "Journal" },
-  { href: "/campaign", label: "Development" },
-  { href: "/about", label: "About" },
 ];
 
 export default function Navbar() {
@@ -25,26 +23,26 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#283141] bg-[#080B12]/85 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#303A48] bg-[#080A0E]/85 backdrop-blur-xl">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-6">
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 text-white font-display font-bold tracking-tight text-base group"
+            className="flex items-center gap-3 text-[#F5F6F8] font-display font-bold tracking-tight text-base group"
           >
-            <span className="w-5 h-5 rounded-full border-[3px] border-[#FF405A] group-hover:scale-105 transition-transform" />
+            <span className="w-4 h-4 rounded-full border-[2.5px] border-[#D83A50] group-hover:scale-105 transition-transform" />
             <span className="tracking-wider">NEXUS RING</span>
           </Link>
 
           <nav
             aria-label="Main navigation"
-            className="hidden md:flex items-center gap-7 text-xs font-mono tracking-wider uppercase text-[#A5AFBF]"
+            className="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider uppercase text-[#A5AFBD]"
           >
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-white transition-colors py-1"
+                className="hover:text-[#F5F6F8] transition-colors py-1"
               >
                 {link.label}
               </Link>
@@ -57,14 +55,14 @@ export default function Navbar() {
                 setWaitlist(true);
                 setOpen(false);
               }}
-              className="rounded-full bg-white text-black px-5 py-2.5 text-xs font-bold tracking-wide hover:bg-slate-200 transition-colors cursor-pointer flex items-center gap-1.5"
+              className="rounded-full bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-150 cursor-pointer flex items-center gap-1.5 shadow-[0_0_20px_rgba(216,58,80,0.25)]"
             >
-              <span>Join Waitlist</span>
+              <span>Join Early Access</span>
               <ArrowUpRight size={14} className="hidden sm:inline" />
             </button>
 
             <button
-              className="md:hidden text-white p-2 rounded-lg hover:bg-[#101723] transition-colors"
+              className="md:hidden text-[#F5F6F8] p-2 rounded-lg hover:bg-[#11151C] transition-colors border border-[#303A48]"
               aria-label={open ? "Close navigation" : "Open navigation"}
               aria-expanded={open}
               aria-controls="mobile-navigation"
@@ -79,14 +77,14 @@ export default function Navbar() {
           <nav
             id="mobile-navigation"
             aria-label="Mobile navigation"
-            className="md:hidden px-6 pb-6 pt-2 flex flex-col gap-4 text-sm font-mono uppercase tracking-wider text-[#A5AFBF] border-t border-[#283141] bg-[#080B12]"
+            className="md:hidden px-6 pb-6 pt-3 flex flex-col gap-4 text-xs font-mono uppercase tracking-wider text-[#A5AFBD] border-t border-[#303A48] bg-[#080A0E]"
           >
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="hover:text-white transition-colors py-1.5"
+                className="hover:text-[#F5F6F8] transition-colors py-2 border-b border-[#303A48]/40"
               >
                 {link.label}
               </Link>

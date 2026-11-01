@@ -81,19 +81,19 @@ export default function FocusHubPage() {
   };
 
   return (
-    <main className="bg-[#080B12] text-[#F8FAFC] font-sans min-h-screen selection:bg-[#FF405A]/30 selection:text-white">
+    <main className="bg-[#080A0E] text-[#F5F6F8] font-sans min-h-screen selection:bg-[#D83A50]/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1200px] mx-auto border-b border-[#283141]/50">
-        <ol className="flex items-center gap-2 text-xs font-mono text-[#A5AFBF]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1200px] mx-auto border-b border-[#303A48]/50">
+        <ol className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
           <li>
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
           </li>
-          <li className="text-[#283141]">/</li>
+          <li className="text-[#303A48]">/</li>
           <li className="text-white font-medium" aria-current="page">Focus & Discipline Hub</li>
         </ol>
       </nav>
@@ -101,7 +101,7 @@ export default function FocusHubPage() {
       {/* ── HERO SECTION ── */}
       <section className="pt-16 pb-20 px-6 md:px-12 max-w-[1200px] mx-auto">
         <div className="max-w-3xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A]" />
             EVIDENCE-BASED PRACTICES & SYSTEMS
           </div>
@@ -110,20 +110,20 @@ export default function FocusHubPage() {
             The Discipline & Focus Resource Hub
           </h1>
 
-          <p className="text-lg text-[#A5AFBF] leading-relaxed border-l-2 border-[#35C98A] pl-4 bg-[#101723]/60 p-5 rounded-r-2xl">
+          <p className="text-lg text-[#A5AFBD] leading-relaxed border-l-2 border-[#35C98A] pl-4 bg-[#11151C]/60 p-5 rounded-r-2xl">
             Focus is not an innate genetic superpower. It is a trainable practice supported by environmental design, thoughtful boundaries, and deliberate habit loops. Explore practical frameworks to protect your cognitive stamina.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <Link
               href="#frameworks"
-              className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#FF405A] hover:bg-[#e0354e] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)]"
+              className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)]"
             >
               Explore Core Frameworks
             </Link>
             <Link
               href="/journal"
-              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F8FAFC] hover:text-white border border-[#283141] bg-[#101723] hover:border-[#A5AFBF]/50 transition-all flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all flex items-center gap-2"
             >
               <BookOpen size={16} />
               <span>Read The Focus Journal</span>
@@ -133,14 +133,14 @@ export default function FocusHubPage() {
       </section>
 
       {/* ── CORE FOCUS FRAMEWORKS ── */}
-      <section id="frameworks" className="py-20 px-6 md:px-12 bg-[#101723] border-y border-[#283141]">
+      <section id="frameworks" className="py-20 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
         <div className="max-w-[1200px] mx-auto space-y-12">
           <div className="max-w-2xl space-y-3">
             <span className="text-xs font-mono text-[#35C98A] uppercase tracking-widest">Foundations</span>
             <h2 className="text-3xl font-display font-bold text-white tracking-tight">
               Four pillars of sustainable concentration.
             </h2>
-            <p className="text-sm text-[#A5AFBF] leading-relaxed">
+            <p className="text-sm text-[#A5AFBD] leading-relaxed">
               Before introducing any tool or software, establishing these structural pillars creates a resilient foundation for daily deep work.
             </p>
           </div>
@@ -168,10 +168,10 @@ export default function FocusHubPage() {
                 tag: "System Design",
               },
             ].map((pillar, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#080B12] border border-[#283141] space-y-3">
-                <span className="text-[10px] font-mono text-[#FF405A] uppercase tracking-widest">{pillar.tag}</span>
+              <div key={idx} className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-3">
+                <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest">{pillar.tag}</span>
                 <h3 className="text-base font-bold text-white font-display">{pillar.title}</h3>
-                <p className="text-xs text-[#A5AFBF] leading-relaxed">{pillar.desc}</p>
+                <p className="text-xs text-[#A5AFBD] leading-relaxed">{pillar.desc}</p>
               </div>
             ))}
           </div>
@@ -181,11 +181,11 @@ export default function FocusHubPage() {
       {/* ── ROLE-SPECIFIC FOCUS STRATEGIES (INTERACTIVE) ── */}
       <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto space-y-12">
         <div className="max-w-2xl space-y-3">
-          <span className="text-xs font-mono text-[#FF405A] uppercase tracking-widest">Role-Specific Guides</span>
+          <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Role-Specific Guides</span>
           <h2 className="text-3xl font-display font-bold text-white tracking-tight">
             Tailored focus workflows for demanding disciplines.
           </h2>
-          <p className="text-sm text-[#A5AFBF] leading-relaxed">
+          <p className="text-sm text-[#A5AFBD] leading-relaxed">
             Different types of knowledge work face unique distraction profiles. Select your discipline to view targeted protocols:
           </p>
         </div>
@@ -204,8 +204,8 @@ export default function FocusHubPage() {
               onClick={() => setActivePersona(tab.id as typeof activePersona)}
               className={`px-5 py-2.5 rounded-full text-xs font-mono transition-all flex items-center gap-2 cursor-pointer border ${
                 activePersona === tab.id
-                  ? "bg-[#FF405A] text-white border-[#FF405A] shadow-[0_0_15px_rgba(255,64,90,0.3)]"
-                  : "bg-[#101723] text-[#A5AFBF] border-[#283141] hover:text-white hover:border-[#A5AFBF]/50"
+                  ? "bg-[#D83A50] text-white border-[#D83A50] shadow-[0_0_15px_rgba(255,64,90,0.3)]"
+                  : "bg-[#11151C] text-[#A5AFBD] border-[#303A48] hover:text-white hover:border-[#A5AFBD]/50"
               }`}
             >
               <tab.icon size={15} />
@@ -215,15 +215,15 @@ export default function FocusHubPage() {
         </div>
 
         {/* Selected Persona Card */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#101723] border border-[#283141] space-y-6">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-6">
           <div className="flex items-center gap-3">
-            {React.createElement(personas[activePersona].icon, { size: 24, className: "text-[#FF405A]" })}
+            {React.createElement(personas[activePersona].icon, { size: 24, className: "text-[#D83A50]" })}
             <h3 className="text-2xl font-display font-bold text-white">
               {personas[activePersona].title}
             </h3>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#080B12] border border-[#283141]/60 text-xs text-[#A5AFBF] flex items-start gap-2">
+          <div className="p-4 rounded-xl bg-[#080A0E] border border-[#303A48]/60 text-xs text-[#A5AFBD] flex items-start gap-2">
             <span className="text-white font-semibold shrink-0">Primary Challenge:</span>
             <span>{personas[activePersona].challenge}</span>
           </div>
@@ -232,23 +232,23 @@ export default function FocusHubPage() {
             <h4 className="text-xs font-mono text-white uppercase tracking-wider">Recommended Protocol</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {personas[activePersona].strategies.map((strategy, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-[#172130] border border-[#283141] space-y-2">
+                <div key={idx} className="p-4 rounded-xl bg-[#1B222D] border border-[#303A48] space-y-2">
                   <span className="text-xs font-mono font-bold text-[#35C98A]">0{idx + 1}</span>
-                  <p className="text-xs text-[#F8FAFC] leading-relaxed">{strategy}</p>
+                  <p className="text-xs text-[#F5F6F8] leading-relaxed">{strategy}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-[#172130]/60 border border-[#283141] text-xs font-mono text-[#A5AFBF]">
-            <span className="text-[#FF405A] font-bold">Planned Nexus Ring Companion Integration: </span>
+          <div className="p-4 rounded-xl bg-[#1B222D]/60 border border-[#303A48] text-xs font-mono text-[#A5AFBD]">
+            <span className="text-[#D83A50] font-bold">Planned Nexus Ring Companion Integration: </span>
             <span>{personas[activePersona].nexusRole}</span>
           </div>
         </div>
       </section>
 
       {/* ── ETHICAL & HEALTH BOUNDARIES (NO MEDICAL CLAIMS) ── */}
-      <section className="py-20 px-6 md:px-12 bg-[#101723] border-y border-[#283141]">
+      <section className="py-20 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
         <div className="max-w-[900px] mx-auto space-y-6">
           <div className="flex items-center gap-3">
             <AlertTriangle size={24} className="text-[#F0B35A] shrink-0" />
@@ -257,24 +257,24 @@ export default function FocusHubPage() {
             </h2>
           </div>
 
-          <div className="space-y-4 text-sm text-[#A5AFBF] leading-relaxed">
+          <div className="space-y-4 text-sm text-[#A5AFBD] leading-relaxed">
             <p>
               Human focus and attention are governed by biological, psychological, and environmental systems. No physical hardware device, productivity tool, or software extension can replace the essential biological requirements for cognitive performance:
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-white pt-2">
-              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080B12] border border-[#283141]">
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
                 <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Adequate sleep (7–9 hours nightly)</span>
               </li>
-              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080B12] border border-[#283141]">
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
                 <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Physical movement & hydration</span>
               </li>
-              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080B12] border border-[#283141]">
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
                 <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Realistic, manageable workload bounds</span>
               </li>
-              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080B12] border border-[#283141]">
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
                 <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Professional medical/psychological care</span>
               </li>
@@ -291,28 +291,28 @@ export default function FocusHubPage() {
         <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white uppercase">
           Build a More Intentional Workspace.
         </h2>
-        <p className="text-base text-[#A5AFBF] max-w-xl mx-auto leading-relaxed">
+        <p className="text-base text-[#A5AFBD] max-w-xl mx-auto leading-relaxed">
           Read deep-dive research in The Focus Journal, explore the digital distraction landscape, or follow Nexus Ring’s open prototype development.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="/journal"
-            className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#FF405A] hover:bg-[#e0354e] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)] flex items-center gap-2"
+            className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)] flex items-center gap-2"
           >
             <BookOpen size={16} />
             <span>The Focus Journal</span>
           </Link>
           <Link
             href="/digital-distraction"
-            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F8FAFC] hover:text-white border border-[#283141] bg-[#101723] hover:border-[#A5AFBF]/50 transition-all"
+            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all"
           >
             Digital Distraction Explained
           </Link>
           <button
             type="button"
             onClick={() => setShowModal(true)}
-            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#A5AFBF] hover:text-white border border-[#283141] transition-all cursor-pointer"
+            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#A5AFBD] hover:text-white border border-[#303A48] transition-all cursor-pointer"
           >
             Join Early Access
           </button>
