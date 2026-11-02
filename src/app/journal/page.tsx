@@ -59,7 +59,7 @@ export default function JournalIndexPage() {
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1120px] mx-auto border-b border-[#E5E5E7]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 page-container border-b border-[#E5E5E7]">
         <ol className="flex items-center gap-2 text-xs text-[#6E6E73]">
           <li>
             <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
@@ -70,7 +70,7 @@ export default function JournalIndexPage() {
       </nav>
 
       {/* ── HEADER ── */}
-      <section className="pt-16 pb-16 px-6 md:px-12 max-w-[1120px] mx-auto space-y-6">
+      <section className="pt-16 pb-16 page-container space-y-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
           Editorial Essays & Evidence-Based Research
@@ -80,7 +80,7 @@ export default function JournalIndexPage() {
           The Focus Journal
         </h1>
 
-        <p className="text-lg sm:text-xl text-[#6E6E73] max-w-2xl leading-relaxed">
+        <p className="text-lg sm:text-xl text-[#6E6E73] max-w-3xl leading-relaxed">
           Research, ideas, and practical systems for reclaiming attention in a distracted world.
         </p>
 
@@ -104,7 +104,7 @@ export default function JournalIndexPage() {
       </section>
 
       {/* ── ARTICLES GRID ── */}
-      <section className="pb-28 px-6 md:px-12 max-w-[1120px] mx-auto">
+      <section className="pb-28 page-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredArticles.map((article) => (
             <article

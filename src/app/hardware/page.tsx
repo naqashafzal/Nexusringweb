@@ -88,8 +88,8 @@ export default function HardwarePage() {
   return (
     <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* ════════════════ SECTION 1: HERO ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20 text-center">
-        <div className="max-w-3xl mx-auto space-y-5 relative z-10">
+      <section className="relative page-container mb-20 text-center">
+        <div className="max-w-4xl mx-auto space-y-5 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Hardware Engineering &amp; Architecture
@@ -110,7 +110,7 @@ export default function HardwarePage() {
             </a>
             <Link
               href="/software"
-              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-all text-sm font-medium flex items-center gap-2"
+              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-all text-sm font-medium flex items-center gap-2"
             >
               <span>See Companion Software</span>
             </Link>
@@ -119,8 +119,8 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 2: HOW THE HARDWARE WORKS ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <section className="relative page-container mb-32">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <span className="eyebrow block">Functional Pipeline</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
             From movement to mode.
@@ -130,7 +130,7 @@ export default function HardwarePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 relative">
           {[
             {
               step: "01",
@@ -165,21 +165,21 @@ export default function HardwarePage() {
           ].map((item, i) => (
             <div
               key={item.step}
-              className="relative z-10 p-6 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-sm flex flex-col justify-between"
+              className="relative z-10 p-6 md:p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="w-8 h-8 rounded-full bg-[#F5F5F7] border border-[#E5E5E7] flex items-center justify-center text-[#1D1D1F] font-mono text-xs font-bold">
                     {item.step}
                   </span>
-                  <span className="text-[10px] font-mono text-[#6E6E73] uppercase px-2 py-0.5 rounded-full bg-[#F5F5F7] border border-[#E5E5E7]">
+                  <span className="text-[10px] font-mono text-[#6E6E73] uppercase px-2.5 py-0.5 rounded-full bg-[#F5F5F7] border border-[#E5E5E7]">
                     {item.badge}
                   </span>
                 </div>
                 <h4 className="text-[#1D1D1F] font-bold text-sm mb-2">{item.title}</h4>
                 <p className="text-xs text-[#6E6E73] font-light leading-relaxed">{item.desc}</p>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#E5E5E7] text-[10px] font-mono text-[#86868B]">
+              <div className="mt-6 pt-3 border-t border-[#E5E5E7] text-[10px] font-mono text-[#86868B]">
                 {i < 3 ? "Prototype Verified" : "Integration in Progress"}
               </div>
             </div>
@@ -187,9 +187,9 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 3: INTERACTIVE EXPLODED VIEW ════════════════ */}
-      <section id="exploded-view" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+      {/* ════════════════ SECTION 3: INTERACTIVE EXPLODED VIEW (SHOWCASE CONTAINER 1600PX) ════════════════ */}
+      <section id="exploded-view" className="relative showcase-container mb-32">
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="eyebrow block">Interactive CAD Disassembly</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
             Exploded Engineering View.
@@ -199,8 +199,8 @@ export default function HardwarePage() {
           </p>
         </div>
 
-        {/* 3D Canvas Box */}
-        <div className="h-[520px] sm:h-[600px] rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] relative overflow-hidden shadow-sm mb-8">
+        {/* 3D Canvas Box Expanded to Full Showcase Width & 680px Height */}
+        <div className="h-[560px] sm:h-[640px] lg:h-[720px] rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] relative overflow-hidden shadow-sm mb-8">
           <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#6E6E73] tracking-widest uppercase bg-[#FFFFFF]/90 px-3.5 py-1.5 rounded-full border border-[#E5E5E7] backdrop-blur-md shadow-xs">
             Interactive CAD Stacking · Select Component Below
           </div>
@@ -263,9 +263,9 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 4: DETAILED ARCHITECTURE SCHEMATICS ════════════════ */}
-      <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-32 space-y-24">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
+      {/* ════════════════ SECTION 4: DETAILED ARCHITECTURE SCHEMATICS (PAGE CONTAINER 1440PX) ════════════════ */}
+      <section className="relative page-container mb-32 space-y-24">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="eyebrow block">Subsystem Breakdown</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
             Engineering Behind Nexus Ring.
@@ -590,18 +590,18 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 5: HARDWARE SPECIFICATION TABLE ════════════════ */}
-      <section className="relative max-w-[960px] mx-auto px-6 md:px-12 mb-32">
+      <section className="relative page-container mb-32">
         <div className="text-center mb-10 space-y-2">
           <span className="eyebrow block">Technical Data</span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F]">
             Hardware Specifications.
           </h2>
-          <p className="text-sm text-[#6E6E73] font-light">
+          <p className="text-sm text-[#6E6E73] font-light max-w-2xl mx-auto">
             Confirmed prototype parameters and planned manufacturing targets. Unconfirmed specifications are marked truthfully.
           </p>
         </div>
 
-        <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] overflow-hidden shadow-sm">
+        <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] overflow-hidden shadow-sm max-w-5xl mx-auto">
           {[
             { label: "Controller Architecture", value: "ESP32-C3 RISC-V SoC (32-bit, 160MHz)", status: "Validated in Prototype" },
             { label: "Position Detection Method", value: "4x Contactless Hall-effect magnetic sensors", status: "Functional Testing" },
@@ -616,7 +616,7 @@ export default function HardwarePage() {
           ].map((row, idx) => (
             <div
               key={row.label}
-              className={`p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E5E5E7] ${
+              className={`p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E5E5E7] ${
                 idx % 2 === 0 ? "bg-[#FFFFFF]" : "bg-[#F8F9FA]"
               }`}
             >
@@ -624,7 +624,7 @@ export default function HardwarePage() {
                 <span className="text-sm font-bold text-[#1D1D1F] block">{row.label}</span>
                 <span className="text-xs font-mono text-[#6E6E73]">{row.value}</span>
               </div>
-              <span className="text-[10px] font-mono text-[#1D1D1F] font-semibold px-2.5 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7] shrink-0 self-start sm:self-auto shadow-xs">
+              <span className="text-[10px] font-mono text-[#1D1D1F] font-semibold px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7] shrink-0 self-start sm:self-auto shadow-xs">
                 {row.status}
               </span>
             </div>
@@ -633,11 +633,11 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 6: DEVELOPMENT STATUS ════════════════ */}
-      <section className="relative max-w-[840px] mx-auto px-6 md:px-12 mb-32">
+      <section className="relative editorial-container mb-32">
         <h2 className="text-3xl font-display font-bold text-[#1D1D1F] mb-8 text-center">
           What is real today.
         </h2>
-        <div className="space-y-2 font-mono text-xs">
+        <div className="space-y-2.5 font-mono text-xs">
           {[
             { f: "Product concept & 4-mode layout", s: "VALIDATED" },
             { f: "Industrial CAD modeling (GLB/STEP)", s: "VALIDATED" },
@@ -650,7 +650,7 @@ export default function HardwarePage() {
             { f: "Production tooling & CNC fixtures", s: "PLANNED" },
             { f: "Mass manufacturing & assembly", s: "PLANNED" },
           ].map((row) => (
-            <div key={row.f} className="flex justify-between items-center p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl shadow-xs">
+            <div key={row.f} className="flex justify-between items-center p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl shadow-xs">
               <span className="text-[#1D1D1F] font-sans font-medium">{row.f}</span>
               <span
                 className={`px-3 py-1 rounded-full text-[10px] font-bold ${
@@ -671,9 +671,9 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 7: MAKER ECOSYSTEM ════════════════ */}
-      <section className="relative max-w-[1040px] mx-auto px-6 md:px-12 mb-32">
+      <section className="relative page-container mb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-sm">
+          <div className="p-8 md:p-10 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-xs">
             <span className="eyebrow block mb-1">Maker Philosophy</span>
             <h3 className="text-2xl font-bold text-[#1D1D1F]">Open to inspect, build, and modify.</h3>
             <p className="text-sm text-[#6E6E73] leading-relaxed font-light">
@@ -684,7 +684,7 @@ export default function HardwarePage() {
             </p>
           </div>
 
-          <div className="p-8 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-sm">
+          <div className="p-8 md:p-10 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-xs">
             <span className="eyebrow block mb-1">Planned Editions</span>
             <h3 className="text-2xl font-bold text-[#1D1D1F]">Three planned ways to get it.</h3>
             <div className="space-y-3 text-xs">
@@ -706,7 +706,7 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 8: BOTTOM CTA ════════════════ */}
-      <section className="relative max-w-[1040px] mx-auto px-6 md:px-12 text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-18 rounded-3xl shadow-sm">
+      <section className="relative page-container text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-20 rounded-3xl shadow-xs">
         <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F] mb-4 tracking-tight">
           Hardware detects the state.<br />
           <span className="text-[#6E6E73]">Software makes it useful.</span>
@@ -717,14 +717,14 @@ export default function HardwarePage() {
         <div className="flex flex-wrap justify-center gap-3">
           <Link
             href="/software"
-            className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm"
+            className="px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm"
           >
             Explore Companion Software
           </Link>
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-all text-sm font-medium cursor-pointer"
+            className="px-8 py-3.5 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-all text-sm font-medium cursor-pointer"
           >
             Join Early Access
           </button>

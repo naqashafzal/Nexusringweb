@@ -24,8 +24,8 @@ const ExplodedRingCanvas = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-[#A5AFBD] gap-3">
-        <div className="w-6 h-6 border-2 border-[#D83A50] border-t-transparent rounded-full animate-spin" />
+      <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-[#86868B] gap-3">
+        <div className="w-6 h-6 border-2 border-[#C93E50] border-t-transparent rounded-full animate-spin" />
         <span className="tracking-widest uppercase text-[10px]">Loading 3D Hardware Model...</span>
       </div>
     ),
@@ -88,35 +88,35 @@ export default function Home() {
 
   return (
     <main className="bg-[#FFFFFF] text-[#1D1D1F] font-sans overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
-      {/* ════════════════ SECTION A: APPLE/GOOGLE PRODUCT HERO ════════════════ */}
-      <section className="relative w-full min-h-[90vh] flex flex-col justify-between pt-24 pb-16 px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden">
+      {/* ════════════════ SECTION A: APPLE/GOOGLE PRODUCT HERO (EXPANDED SHOWCASE) ════════════════ */}
+      <section className="relative w-full min-h-[92vh] flex flex-col justify-between pt-28 pb-16 showcase-container overflow-hidden">
         {/* Subtle warm lighting gradient backdrop */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,rgba(201,62,80,0.04)_0%,rgba(245,245,247,0.8)_60%,transparent_80%)] pointer-events-none blur-3xl z-0" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[750px] rounded-full bg-[radial-gradient(circle_at_center,rgba(201,62,80,0.04)_0%,rgba(245,245,247,0.85)_60%,transparent_80%)] pointer-events-none blur-3xl z-0" />
 
-        {/* ── TOP: Clean Centered Typography ── */}
-        <div className="relative z-20 text-center max-w-3xl mx-auto space-y-4 pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
+        {/* ── TOP: Clean Centered Typography with Refined Sizing ── */}
+        <div className="relative z-20 text-center max-w-4xl mx-auto space-y-4 pt-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             NEXUS RING · PHYSICAL WORKSPACE CONTROLLER
           </div>
 
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold tracking-tight text-[#1D1D1F]">
+          <div className="space-y-3">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-[#1D1D1F] leading-[1.02]">
               Reclaim your attention.
             </h1>
-            <p className="text-xl sm:text-2xl font-display font-medium text-[#6E6E73] tracking-tight">
+            <p className="text-xl sm:text-3xl font-display font-medium text-[#6E6E73] tracking-tight">
               A more intentional way to work.
             </p>
           </div>
 
-          <p className="text-[#6E6E73] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#6E6E73] text-base sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             Nexus Ring is a physical workspace controller being developed to help you switch between focused working modes through one deliberate movement.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Link
               href="#how-it-works"
-              className="px-7 py-3 rounded-full font-medium text-sm text-white bg-[#1D1D1F] hover:bg-[#000000] transition-all duration-150 shadow-sm cursor-pointer flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full font-medium text-sm text-white bg-[#1D1D1F] hover:bg-[#000000] transition-all duration-150 shadow-sm cursor-pointer flex items-center gap-2"
             >
               <span>Explore Nexus Ring</span>
               <ChevronDown size={14} />
@@ -124,7 +124,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-7 py-3 rounded-full font-medium text-sm text-[#1D1D1F] bg-[#F5F5F7] hover:bg-[#E5E5E7] border border-[#E5E5E7] transition-all duration-150 cursor-pointer flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#1D1D1F] bg-[#F5F5F7] hover:bg-[#EAEAEA] border border-[#E5E5E7] transition-all duration-150 cursor-pointer flex items-center gap-2"
             >
               <span>Join Early Access</span>
               <ChevronRight size={14} className="text-[#6E6E73]" />
@@ -136,40 +136,40 @@ export default function Home() {
           </p>
         </div>
 
-        {/* ── CENTER: Refined 3D Centerpiece Stage ── */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto h-[460px] sm:h-[520px] lg:h-[580px] my-8 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden">
-          {/* Subtle Studio Lighting Rings */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.9)_0%,rgba(245,245,247,0.7)_70%)] pointer-events-none" />
+        {/* ── CENTER: Substantial 3D Centerpiece Stage (Expanded Width up to 1600px) ── */}
+        <div className="relative z-10 w-full h-[540px] sm:h-[620px] lg:h-[720px] my-10 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] shadow-[0_4px_30px_rgba(0,0,0,0.04)] overflow-hidden">
+          {/* Subtle Studio Lighting Backdrop */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(245,245,247,0.7)_70%)] pointer-events-none" />
 
           {/* Floating Engineering Callout Left */}
-          <div className="hidden lg:flex flex-col gap-1 absolute left-6 top-6 z-30 p-4 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md shadow-sm max-w-[210px] text-left pointer-events-none">
+          <div className="hidden lg:flex flex-col gap-1 absolute left-8 top-8 z-30 p-4.5 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md shadow-sm max-w-[240px] text-left pointer-events-none">
             <span className="text-[10px] font-mono tracking-widest uppercase text-[#C93E50] font-semibold">
               01 // SENSING
             </span>
-            <span className="text-xs font-display font-semibold text-[#1D1D1F]">
+            <span className="text-sm font-display font-semibold text-[#1D1D1F]">
               Radial Hall-Effect Array
             </span>
-            <p className="text-[11px] text-[#6E6E73] font-light leading-snug">
+            <p className="text-xs text-[#6E6E73] font-light leading-snug">
               Contactless magnetic quadrant detection without mechanical fatigue.
             </p>
           </div>
 
           {/* Floating Engineering Callout Right */}
-          <div className="hidden lg:flex flex-col gap-1 absolute right-6 top-6 z-30 p-4 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md shadow-sm max-w-[210px] text-left pointer-events-none">
+          <div className="hidden lg:flex flex-col gap-1 absolute right-8 top-8 z-30 p-4.5 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md shadow-sm max-w-[240px] text-left pointer-events-none">
             <span className="text-[10px] font-mono tracking-widest uppercase text-[#34A853] font-semibold">
               02 // LOCAL ENGINE
             </span>
-            <span className="text-xs font-display font-semibold text-[#1D1D1F]">
+            <span className="text-sm font-display font-semibold text-[#1D1D1F]">
               ESP32-C3 RISC-V
             </span>
-            <p className="text-[11px] text-[#6E6E73] font-light leading-snug">
+            <p className="text-xs text-[#6E6E73] font-light leading-snug">
               Instant hardware debouncing transmitting USB serial events.
             </p>
           </div>
 
           {/* Interaction Hint Badge */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 px-3.5 py-1.5 rounded-full border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md text-xs font-mono text-[#6E6E73] flex items-center gap-2 pointer-events-none shadow-sm">
-            <Rotate3D size={13} className="text-[#C93E50]" />
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full border border-[#E5E5E7] bg-[#FFFFFF]/90 backdrop-blur-md text-xs font-mono text-[#6E6E73] flex items-center gap-2 pointer-events-none shadow-sm">
+            <Rotate3D size={14} className="text-[#C93E50]" />
             <span>Interactive 3D Hardware · Drag to Rotate</span>
           </div>
 
@@ -179,54 +179,54 @@ export default function Home() {
           </div>
 
           {/* Bottom Engineering Tag */}
-          <div className="absolute bottom-4 left-6 z-20 text-[10px] font-mono text-[#86868B] uppercase tracking-widest pointer-events-none">
+          <div className="absolute bottom-5 left-8 z-20 text-[11px] font-mono text-[#86868B] uppercase tracking-widest pointer-events-none">
             CAD REV 2.4 · ANODIZED ALUMINUM &amp; SOLID BRASS TOTEM
           </div>
         </div>
 
-        {/* ── BOTTOM: Architectural Spec Strip ── */}
-        <div className="relative z-20 w-full grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-[#E5E5E7] max-w-5xl mx-auto">
+        {/* ── BOTTOM: Architectural Spec Strip (Span Full Showcase Width) ── */}
+        <div className="relative z-20 w-full grid grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-[#E5E5E7]">
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#1D1D1F] font-semibold">
+            <p className="text-sm font-semibold text-[#1D1D1F]">
               Four Operating Modes
             </p>
-            <p className="text-[11px] font-mono text-[#6E6E73]">
+            <p className="text-xs text-[#6E6E73]">
               Deep Work · Creative · Meeting · Break
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#1D1D1F] font-semibold">
+            <p className="text-sm font-semibold text-[#1D1D1F]">
               Contactless Sensing
             </p>
-            <p className="text-[11px] font-mono text-[#6E6E73]">
+            <p className="text-xs text-[#6E6E73]">
               Radial Hall-Effect Magnetics
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#1D1D1F] font-semibold">
+            <p className="text-sm font-semibold text-[#1D1D1F]">
               Local-First Automation
             </p>
-            <p className="text-[11px] font-mono text-[#6E6E73]">
+            <p className="text-xs text-[#6E6E73]">
               Private Companion Engine
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#1D1D1F] font-semibold">
+            <p className="text-sm font-semibold text-[#1D1D1F]">
               Peripheral Lighting
             </p>
-            <p className="text-[11px] font-mono text-[#6E6E73]">
+            <p className="text-xs text-[#6E6E73]">
               360° Glanceable Status Ring
             </p>
           </div>
         </div>
       </section>
 
-      {/* ════════════════ SECTION B: HOW IT WORKS ════════════════ */}
-      <section id="how-it-works" className="relative z-20 bg-[#F5F5F7] py-28 border-y border-[#E5E5E7]">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Reveal className="max-w-2xl mb-16">
+      {/* ════════════════ SECTION B: HOW IT WORKS (PAGE CONTAINER 1440PX) ════════════════ */}
+      <section id="how-it-works" className="relative z-20 bg-[#F5F5F7] py-24 md:py-32 border-y border-[#E5E5E7]">
+        <div className="page-container">
+          <Reveal className="max-w-3xl mb-14">
             <span className="eyebrow block">The Workflow</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] mb-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] mb-4">
               One simple movement. A different workspace.
             </h2>
             <p className="text-[#6E6E73] text-lg leading-relaxed font-light">
@@ -234,7 +234,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
                 step: "01",
@@ -256,13 +256,13 @@ export default function Home() {
               },
             ].map((s, idx) => (
               <Reveal key={s.step} delay={idx * 0.1}>
-                <div className="p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] h-full flex flex-col justify-between shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all">
+                <div className="p-8 md:p-10 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] h-full flex flex-col justify-between shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-all">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-2xl font-display font-bold text-[#1D1D1F]">
+                      <span className="text-3xl font-display font-bold text-[#1D1D1F]">
                         {s.step}
                       </span>
-                      <span className="text-[10px] font-mono tracking-widest text-[#6E6E73] uppercase border border-[#E5E5E7] px-2.5 py-1 rounded-full bg-[#F5F5F7]">
+                      <span className="text-[11px] font-mono tracking-wider text-[#6E6E73] uppercase border border-[#E5E5E7] px-3 py-1 rounded-full bg-[#F5F5F7]">
                         {s.tag}
                       </span>
                     </div>
@@ -273,7 +273,7 @@ export default function Home() {
                       {s.desc}
                     </p>
                   </div>
-                  <div className="mt-8 pt-4 border-t border-[#E5E5E7] text-[11px] font-mono text-[#86868B]">
+                  <div className="mt-8 pt-4 border-t border-[#E5E5E7] text-xs font-mono text-[#86868B]">
                     {idx === 2 ? "Integrations in active development" : "Firmware prototype demonstrated"}
                   </div>
                 </div>
@@ -283,15 +283,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 2: THE PROBLEM / MANIFESTO ════════════════ */}
-      <section className="relative z-20 bg-[#FFFFFF] py-28 border-b border-[#E5E5E7]">
-        <div className="max-w-[960px] mx-auto px-6 md:px-12 text-center space-y-8">
+      {/* ════════════════ SECTION 2: THE PROBLEM / MANIFESTO (EDITORIAL 800PX) ════════════════ */}
+      <section className="relative z-20 bg-[#FFFFFF] py-24 md:py-32 border-b border-[#E5E5E7]">
+        <div className="editorial-container text-center space-y-8">
           <Reveal>
             <span className="eyebrow block">Attention Ecology</span>
             <h2 className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] mb-6">
               Your attention deserves better.
             </h2>
-            <div className="space-y-4 text-[#6E6E73] text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto">
+            <div className="space-y-4 text-[#6E6E73] text-base sm:text-lg leading-relaxed text-left pt-2">
               <p className="border-b border-[#E5E5E7] pb-3">Every notification wants a response.</p>
               <p className="border-b border-[#E5E5E7] pb-3">Every feed wants another scroll.</p>
               <p className="border-b border-[#E5E5E7] pb-3">Every advertisement wants another moment.</p>
@@ -308,7 +308,7 @@ export default function Home() {
                 <p className="text-sm text-[#6E6E73] font-light">A physical interface designed to transform a deliberate decision into a focused change in your digital workspace.</p>
               </div>
             </div>
-            <div className="pt-6">
+            <div className="pt-8">
               <p className="text-xs font-mono tracking-widest text-[#86868B] uppercase">
                 YOUR ATTENTION. YOUR TIME. YOUR DECISION.
               </p>
@@ -329,12 +329,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION C: FOUR OPERATING MODES ════════════════ */}
-      <section id="modes" className="relative z-20 bg-[#F5F5F7] py-28 md:py-36">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Reveal className="max-w-2xl mb-12">
+      {/* ════════════════ SECTION C: FOUR OPERATING MODES (PAGE CONTAINER 1440PX) ════════════════ */}
+      <section id="modes" className="relative z-20 bg-[#F5F5F7] py-24 md:py-32">
+        <div className="page-container">
+          <Reveal className="max-w-3xl mb-12">
             <span className="eyebrow block">The Operating Modes</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] mb-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] mb-4">
               A mode for every moment.
             </h2>
             <p className="text-[#6E6E73] text-lg leading-relaxed font-light">
@@ -346,12 +346,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION D: PRODUCT HARDWARE PREVIEW ════════════════ */}
-      <section className="relative z-20 bg-[#FFFFFF] py-28 border-y border-[#E5E5E7]">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <Reveal className="lg:col-span-6 space-y-6">
+      {/* ════════════════ SECTION D: PRODUCT HARDWARE PREVIEW (ASIDE/GRID 1440PX) ════════════════ */}
+      <section className="relative z-20 bg-[#FFFFFF] py-24 md:py-32 border-y border-[#E5E5E7]">
+        <div className="page-container grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <Reveal className="lg:col-span-5 space-y-6">
             <span className="eyebrow block">Hardware Architecture</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
               Thoughtfully engineered.
             </h2>
             <p className="text-[#6E6E73] text-lg leading-relaxed font-light">
@@ -363,7 +363,7 @@ export default function Home() {
             <div className="pt-2">
               <Link
                 href="/hardware"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-medium text-sm bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-medium text-sm bg-[#F5F5F7] border border-[#E5E5E7] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-colors"
               >
                 <span>Explore the Engineering</span>
                 <ArrowRight size={15} className="text-[#C93E50]" />
@@ -371,34 +371,34 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.2} className="lg:col-span-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-sm">
-                <Cpu size={22} className="text-[#C93E50]" />
+          <Reveal delay={0.2} className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+              <div className="p-7 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-xs">
+                <Cpu size={24} className="text-[#C93E50]" />
                 <h4 className="font-display font-bold text-[#1D1D1F] text-base">Local Controller</h4>
-                <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  ESP32-C3 architecture reading Hall-effect sensor inputs and managing LED ring state locally.
+                <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+                  ESP32-C3 architecture reading Hall-effect sensor inputs and managing LED ring state locally without cloud dependence.
                 </p>
               </div>
-              <div className="p-6 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-sm">
-                <Compass size={22} className="text-[#34A853]" />
+              <div className="p-7 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-xs">
+                <Compass size={24} className="text-[#34A853]" />
                 <h4 className="font-display font-bold text-[#1D1D1F] text-base">Contactless Sensing</h4>
-                <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Magnetic field detection replaces fragile mechanical switches with smooth, repeatable positioning.
+                <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+                  Magnetic field detection replaces fragile mechanical switches with smooth, repeatable, fatigue-free positioning.
                 </p>
               </div>
-              <div className="p-6 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-sm">
-                <Layers size={22} className="text-[#1D1D1F]" />
+              <div className="p-7 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-xs">
+                <Layers size={24} className="text-[#1D1D1F]" />
                 <h4 className="font-display font-bold text-[#1D1D1F] text-base">Weighted Totem</h4>
-                <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  Engineered with deliberate heft so mode transitions require intentional physical action.
+                <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+                  Engineered with deliberate heft so mode transitions require an intentional, mindful physical action.
                 </p>
               </div>
-              <div className="p-6 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-sm">
-                <ShieldCheck size={22} className="text-[#FBBC04]" />
+              <div className="p-7 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-3 shadow-xs">
+                <ShieldCheck size={24} className="text-[#FBBC04]" />
                 <h4 className="font-display font-bold text-[#1D1D1F] text-base">Screen-Free Feedback</h4>
-                <p className="text-xs text-[#6E6E73] leading-relaxed">
-                  360° light ring provides glanceable state confirmation without adding another glowing display.
+                <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+                  360° diffuse light ring provides glanceable state confirmation without adding another glowing display to your workspace.
                 </p>
               </div>
             </div>
@@ -406,12 +406,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION E: LOCAL-FIRST SOFTWARE & PHILOSOPHY ════════════════ */}
-      <section className="relative z-20 bg-[#F5F5F7] py-28">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <Reveal className="space-y-6">
+      {/* ════════════════ SECTION E: LOCAL-FIRST SOFTWARE & PHILOSOPHY (PAGE CONTAINER 1440PX) ════════════════ */}
+      <section className="relative z-20 bg-[#F5F5F7] py-24 md:py-32">
+        <div className="page-container grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <Reveal className="lg:col-span-6 space-y-6">
             <span className="eyebrow block">Software &amp; Architecture</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
+            <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
               Hardware and software,<br />working together.
             </h2>
             <p className="text-[#6E6E73] text-lg leading-relaxed font-light">
@@ -433,15 +433,15 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.2} className="space-y-4">
+          <Reveal delay={0.2} className="lg:col-span-6 space-y-4">
             <Link
               href="/hardware"
-              className="flex items-center justify-between gap-6 p-6 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all duration-150"
+              className="flex items-center justify-between gap-6 p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-150"
             >
               <div>
                 <span className="eyebrow block mb-1">Hardware Engineering</span>
                 <span className="text-lg font-bold text-[#1D1D1F]">Physical Dock Architecture</span>
-                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light">
+                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light leading-relaxed">
                   Examine the controller, Hall-effect sensors, magnetic totem, and printable chassis.
                 </span>
               </div>
@@ -450,12 +450,12 @@ export default function Home() {
 
             <Link
               href="/software"
-              className="flex items-center justify-between gap-6 p-6 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all duration-150"
+              className="flex items-center justify-between gap-6 p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-150"
             >
               <div>
                 <span className="eyebrow block mb-1">Software Companion</span>
                 <span className="text-lg font-bold text-[#1D1D1F]">Nexus Companion Profiles</span>
-                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light">
+                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light leading-relaxed">
                   Discover how physical mode triggers connect to local operating system automations.
                 </span>
               </div>
@@ -465,11 +465,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION F: DEVELOPMENT TRANSPARENCY ════════════════ */}
-      <section id="development" className="relative z-20 bg-[#FFFFFF] py-28 border-t border-[#E5E5E7]">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Reveal className="p-8 md:p-12 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] flex flex-col md:flex-row gap-10 md:items-center justify-between shadow-sm">
-            <div className="max-w-xl space-y-4">
+      {/* ════════════════ SECTION F: DEVELOPMENT TRANSPARENCY (PAGE CONTAINER 1440PX) ════════════════ */}
+      <section id="development" className="relative z-20 bg-[#FFFFFF] py-24 md:py-32 border-t border-[#E5E5E7]">
+        <div className="page-container">
+          <Reveal className="p-8 md:p-14 rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] flex flex-col lg:flex-row gap-10 lg:items-center justify-between shadow-sm">
+            <div className="max-w-2xl space-y-4">
               <span className="eyebrow block">Development Stage</span>
               <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-[#1D1D1F]">
                 A new way to focus is taking shape.
@@ -477,16 +477,16 @@ export default function Home() {
               <p className="text-[#6E6E73] text-sm md:text-base leading-relaxed font-light">
                 Nexus Ring is not a mass-produced product yet. We are actively refining 3D chassis designs, testing Hall sensor PCB layouts, and writing Companion software. Follow every milestone honestly.
               </p>
-              <div className="flex flex-wrap gap-2 text-[11px] font-mono text-[#6E6E73] pt-2">
-                <span className="px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">Industrial CAD: Validated</span>
-                <span className="px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">Magnetic Totem: Functional Prototype</span>
-                <span className="px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">ESP32 Firmware: In Testing</span>
+              <div className="flex flex-wrap gap-2 text-xs font-mono text-[#6E6E73] pt-2">
+                <span className="px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">Industrial CAD: Validated</span>
+                <span className="px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">Magnetic Totem: Functional Prototype</span>
+                <span className="px-3.5 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7]">ESP32 Firmware: In Testing</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
               <Link
                 href="/campaign"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1D1D1F] hover:bg-[#000000] text-white px-7 py-3 text-sm font-medium transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1D1D1F] hover:bg-[#000000] text-white px-8 py-3.5 text-sm font-medium transition-colors shadow-sm"
               >
                 <span>View Development Roadmap</span>
                 <ChevronRight size={14} />
@@ -496,14 +496,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ INTERACTIVE FAQ ════════════════ */}
+      {/* ════════════════ INTERACTIVE FAQ (EDITORIAL 800PX) ════════════════ */}
       <section
         id="faq"
         aria-labelledby="faq-title"
-        className="relative z-10 bg-[#F5F5F7] py-28 border-t border-[#E5E5E7]"
+        className="relative z-10 bg-[#F5F5F7] py-24 md:py-32 border-t border-[#E5E5E7]"
       >
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <Reveal className="text-center mb-16 space-y-3">
+        <div className="editorial-container">
+          <Reveal className="text-center mb-14 space-y-3">
             <span className="eyebrow block">Questions &amp; Answers</span>
             <h2
               id="faq-title"
@@ -559,9 +559,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION G: FINAL WAITLIST CTA ════════════════ */}
-      <section className="relative z-10 bg-[#FFFFFF] py-32 text-center overflow-hidden border-t border-[#E5E5E7]">
-        <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12 space-y-6">
+      {/* ════════════════ SECTION G: FINAL WAITLIST CTA (EDITORIAL 800PX) ════════════════ */}
+      <section className="relative z-10 bg-[#FFFFFF] py-28 md:py-36 text-center overflow-hidden border-t border-[#E5E5E7]">
+        <Reveal className="relative z-10 editorial-container space-y-6">
           <span className="eyebrow block">Early Access</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
             Make room for what matters.

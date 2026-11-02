@@ -70,7 +70,7 @@ export default function DigitalDistractionPage() {
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1120px] mx-auto border-b border-[#E5E5E7]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 page-container border-b border-[#E5E5E7]">
         <ol className="flex items-center gap-2 text-xs text-[#6E6E73]">
           <li>
             <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
@@ -81,8 +81,8 @@ export default function DigitalDistractionPage() {
       </nav>
 
       {/* ── HERO SECTION ── */}
-      <section className="pt-16 pb-20 px-6 md:px-12 max-w-[1120px] mx-auto">
-        <div className="max-w-3xl space-y-6">
+      <section className="pt-16 pb-20 page-container">
+        <div className="max-w-4xl space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Attention Economy & Cognitive Resilience
@@ -120,8 +120,8 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── BRAND MANIFESTO CALLOUT ── */}
-      <section className="bg-[#F8F9FA] border-y border-[#E5E5E7] py-20 px-6 md:px-12">
-        <div className="max-w-[800px] mx-auto text-center space-y-6">
+      <section className="bg-[#F8F9FA] border-y border-[#E5E5E7] py-20 px-6 md:px-10 xl:px-16">
+        <div className="editorial-container text-center space-y-6">
           <span className="text-[12px] font-semibold text-[#C93E50] tracking-wide uppercase block">
             The Nexus Ring Manifesto
           </span>
@@ -157,7 +157,7 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 1: THE PROBLEM ── */}
-      <section id="the-problem" className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
+      <section id="the-problem" className="py-24 page-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-4">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 01</span>
@@ -203,8 +203,8 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 2: THE ATTENTION ECONOMY ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
-        <div className="max-w-[1120px] mx-auto space-y-12">
+      <section className="py-24 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="page-container space-y-12">
           <div className="max-w-2xl space-y-4">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 02</span>
             <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
@@ -244,7 +244,7 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 3: THE HIDDEN COST ── */}
-      <section className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
+      <section className="py-24 page-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 03</span>
@@ -295,8 +295,8 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 4: DISCIPLINE NEEDS AN ENVIRONMENT ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
-        <div className="max-w-[1120px] mx-auto space-y-8">
+      <section className="py-24 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="page-container space-y-8">
           <div className="max-w-3xl space-y-4">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 04</span>
             <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
@@ -341,7 +341,7 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 5: THE NEXUS RING APPROACH ── */}
-      <section className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
+      <section className="py-24 page-container">
         <div className="space-y-12">
           <div className="max-w-2xl space-y-4">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 05</span>
@@ -409,8 +409,8 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 6: PRACTICAL STRATEGIES ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
-        <div className="max-w-[1120px] mx-auto space-y-12">
+      <section className="py-24 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="page-container space-y-12">
           <div className="max-w-2xl space-y-4">
             <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 06</span>
             <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
@@ -461,7 +461,7 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 7: JOIN DEVELOPMENT JOURNEY ── */}
-      <section className="py-28 px-6 md:px-12 max-w-[800px] mx-auto text-center space-y-8">
+      <section className="py-28 editorial-container text-center space-y-8">
         <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider block">
           Take Back Control of Your Attention
         </span>

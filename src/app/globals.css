@@ -93,8 +93,86 @@ h1, h2, h3, h4, h5, h6 {
   color: #1D1D1F;
 }
 
-/* Utility Classes */
+/* Global Responsive Layout Containers & Gutters */
 @layer utilities {
+  /* Standard section container up to 1440px with responsive gutters */
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (min-width: 768px) {
+    .page-container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .page-container {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+  }
+
+  /* Wide showcase container up to 1600px for flagship 3D hardware & interactive displays */
+  .showcase-container {
+    width: 100%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (min-width: 768px) {
+    .showcase-container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .showcase-container {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+  }
+
+  /* Editorial reading container (720px - 840px) for long-form readability */
+  .editorial-container {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (min-width: 768px) {
+    .editorial-container {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+
+  /* Standard page gutter utility */
+  .page-gutter {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @media (min-width: 768px) {
+    .page-gutter {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .page-gutter {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+  }
+
   .surface-card {
     background-color: #FFFFFF;
     border: 1px solid #E5E5E7;

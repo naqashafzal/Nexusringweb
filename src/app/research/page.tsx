@@ -11,13 +11,13 @@ export default function ResearchPage() {
   return (
     <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* 1. HERO */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28 text-center">
+      <section className="relative page-container mb-28 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Cognitive Science &amp; Hypotheses
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[#1D1D1F]">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.04] text-[#1D1D1F] max-w-4xl mx-auto">
             Designing for focus in a distracting world.
           </h1>
           <p className="text-[#6E6E73] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
@@ -27,7 +27,7 @@ export default function ResearchPage() {
       </section>
 
       {/* 2. RESEARCH PRINCIPLES */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28 space-y-8">
+      <section className="relative page-container mb-28 space-y-8">
         {/* Context Switching */}
         <div className="surface-card p-8 border border-[#E5E5E7] rounded-3xl space-y-4">
           <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider block">Principle 01</span>
@@ -73,7 +73,7 @@ export default function ResearchPage() {
       </section>
 
       {/* 3. SCIENTIFIC HONESTY */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-28 text-center bg-[#F8F9FA] border border-[#E5E5E7] p-8 rounded-3xl space-y-3">
+      <section className="relative editorial-container mb-28 text-center bg-[#F8F9FA] border border-[#E5E5E7] p-8 rounded-3xl space-y-3">
         <BrainCircuit className="mx-auto text-[#C93E50] mb-2" size={28} />
         <h4 className="text-[#1D1D1F] font-semibold text-base">Ego Depletion &amp; Scientific Honesty</h4>
         <p className="text-xs text-[#6E6E73] leading-relaxed max-w-xl mx-auto">
@@ -82,14 +82,14 @@ export default function ResearchPage() {
       </section>
 
       {/* 4. WHAT WE ARE TESTING */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
+      <section className="relative page-container mb-28">
         <h2 className="text-2xl sm:text-3xl font-semibold text-[#1D1D1F] mb-2 text-center">
           Questions Nexus Ring is testing with early users.
         </h2>
         <p className="text-xs text-[#6E6E73] text-center mb-8">
           Hypotheses currently under validation in prototype feedback sessions.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           {[
             "Does a physical totem reduce setup time before entering focus sessions?",
             "Do users switch into Deep Work more consistently with physical anchors?",
@@ -108,7 +108,7 @@ export default function ResearchPage() {
       </section>
 
       {/* 5. WHITEPAPER NOTICE */}
-      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-28 text-center bg-[#F8F9FA] border border-[#E5E5E7] p-10 rounded-3xl space-y-4">
+      <section className="relative editorial-container mb-28 text-center bg-[#F8F9FA] border border-[#E5E5E7] p-10 rounded-3xl space-y-4">
         <FileText size={32} className="mx-auto text-[#C93E50]" />
         <h3 className="text-xl font-semibold text-[#1D1D1F]">Whitepaper &amp; Bibliography in Progress</h3>
         <p className="text-xs text-[#6E6E73] leading-relaxed max-w-md mx-auto">
@@ -124,7 +124,7 @@ export default function ResearchPage() {
       </section>
 
       {/* 6. CTA */}
-      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 text-center bg-[#F8F9FA] border border-[#E5E5E7] p-12 md:p-16 rounded-3xl space-y-4">
+      <section className="relative editorial-container text-center bg-[#F8F9FA] border border-[#E5E5E7] p-12 md:p-16 rounded-3xl space-y-4">
         <h2 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
           Help us test the hypotheses.
         </h2>

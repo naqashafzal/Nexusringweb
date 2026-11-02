@@ -11,9 +11,9 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
-      {/* 1. HERO */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-20 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-5 relative z-10">
+      {/* 1. HERO (PAGE CONTAINER 1440PX) */}
+      <section className="relative page-container mb-24 text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-5 relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Vision &amp; Philosophy
@@ -27,7 +27,7 @@ export default function AboutPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <Link
               href="/hardware"
-              className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
             >
               <span>Explore the Hardware</span>
               <ChevronRight size={14} />
@@ -35,7 +35,7 @@ export default function AboutPage() {
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5E7] text-sm font-medium transition-all cursor-pointer"
+              className="px-8 py-3.5 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#EAEAEA] text-sm font-medium transition-all cursor-pointer"
             >
               Join Early Access
             </button>
@@ -43,8 +43,8 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* 2. THE CORE PROBLEM */}
-      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-28 text-center space-y-6">
+      {/* 2. THE CORE PROBLEM (EDITORIAL CONTAINER 800PX) */}
+      <section className="relative editorial-container mb-28 text-center space-y-6">
         <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F] leading-tight">
           The screen holding your ambition is the same one holding your distraction.
         </h2>
@@ -59,12 +59,12 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* 3. FOUNDER INSIGHT */}
-      <section className="relative max-w-[1040px] mx-auto px-6 md:px-12 mb-28">
-        <div className="p-8 md:p-12 border border-[#E5E5E7] bg-[#F8F9FA] rounded-3xl space-y-4 shadow-sm">
+      {/* 3. FOUNDER INSIGHT (PAGE CONTAINER 1440PX) */}
+      <section className="relative page-container mb-28">
+        <div className="p-8 md:p-14 border border-[#E5E5E7] bg-[#F8F9FA] rounded-3xl space-y-4 shadow-xs max-w-5xl mx-auto">
           <span className="eyebrow block">The Origin</span>
-          <h3 className="text-2xl font-bold text-[#1D1D1F]">Why software blockers fail alone.</h3>
-          <div className="space-y-4 text-sm md:text-base text-[#6E6E73] leading-relaxed font-light">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#1D1D1F]">Why software blockers fail alone.</h3>
+          <div className="space-y-4 text-base text-[#6E6E73] leading-relaxed font-light">
             <p>
               Productivity software often struggles because it lives inside the environment it is attempting to control. It asks you to exert willpower while you are already overwhelmed by digital noise.
             </p>
@@ -78,9 +78,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. PRODUCT PHILOSOPHY */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      {/* 4. PRODUCT PHILOSOPHY (PAGE CONTAINER 1440PX) */}
+      <section className="relative page-container mb-28">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               step: "01",
@@ -103,50 +103,50 @@ export default function AboutPage() {
               desc: "Always know your active mode at a glance through ambient light without checking another screen.",
             },
           ].map((item) => (
-            <div key={item.step} className="p-6 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl shadow-xs">
-              <span className="text-[#C93E50] font-mono text-xs uppercase block mb-2 font-semibold">{item.step}</span>
-              <h4 className="text-[#1D1D1F] font-bold mb-2 text-base">{item.title}</h4>
+            <div key={item.step} className="p-7 md:p-8 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl shadow-xs">
+              <span className="text-[#C93E50] font-mono text-xs uppercase block mb-3 font-semibold">{item.step}</span>
+              <h4 className="text-[#1D1D1F] font-bold mb-2 text-lg">{item.title}</h4>
               <p className="text-xs text-[#6E6E73] leading-relaxed font-light">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 5. ROADMAP */}
-      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-28 text-center">
+      {/* 5. ROADMAP (EDITORIAL CONTAINER 800PX) */}
+      <section className="relative editorial-container mb-28 text-center">
         <span className="eyebrow block">Evolution</span>
-        <h2 className="text-3xl font-display font-bold text-[#1D1D1F] mb-8">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-8">
           One physical interface for digital state.
         </h2>
-        <div className="flex flex-col gap-3 max-w-xl mx-auto text-left text-xs font-mono">
-          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+        <div className="flex flex-col gap-3.5 text-left text-xs font-mono">
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl flex items-center justify-between shadow-xs">
             <span className="font-bold text-[#1D1D1F]">Current Focus</span>
             <span className="text-[#6E6E73]">Desktop hardware prototype &amp; Hall sensor testing.</span>
           </div>
-          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl flex items-center justify-between shadow-xs">
             <span className="font-bold text-[#1D1D1F]">Next Stage</span>
             <span className="text-[#6E6E73]">Desktop companion daemon + configurable profiles.</span>
           </div>
-          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl flex items-center justify-between shadow-xs">
             <span className="font-bold text-[#1D1D1F]">Maker Release</span>
             <span className="text-[#6E6E73]">Open CAD files, BOM, and assembly guides for makers.</span>
           </div>
-          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl flex items-center justify-between shadow-xs">
             <span className="font-bold text-[#1D1D1F]">Production</span>
             <span className="text-[#6E6E73]">Tooling, pilot manufacturing, and backer fulfillment.</span>
           </div>
         </div>
       </section>
 
-      {/* 6. FOUNDER SECTION */}
-      <section id="founder" className="relative max-w-[840px] mx-auto px-6 md:px-12 mb-28">
-        <div className="p-8 md:p-12 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl shadow-sm">
+      {/* 6. FOUNDER SECTION (PAGE CONTAINER 1440PX) */}
+      <section id="founder" className="relative page-container mb-28">
+        <div className="p-8 md:p-14 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl shadow-sm max-w-4xl mx-auto">
           <span className="eyebrow block">The Creator</span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-1">Naqash Afzal</h2>
           <p className="text-[#C93E50] font-mono text-xs tracking-widest uppercase mb-6 font-semibold">
             Founder &amp; Hardware Architect
           </p>
-          <div className="space-y-4 text-sm text-[#6E6E73] mb-8 leading-relaxed font-light">
+          <div className="space-y-4 text-sm md:text-base text-[#6E6E73] mb-8 leading-relaxed font-light">
             <p>
               Naqash recognized that software alone cannot solve screen-induced distraction when the solution lives in the same chaotic window.
             </p>
@@ -159,7 +159,7 @@ export default function AboutPage() {
               href="https://github.com/naqashafzal"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
+              className="px-5 py-2.5 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#EAEAEA] text-[#1D1D1F] transition-colors"
             >
               GitHub
             </a>
@@ -167,7 +167,7 @@ export default function AboutPage() {
               href="https://makerworld.com/en/@naqash"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
+              className="px-5 py-2.5 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#EAEAEA] text-[#1D1D1F] transition-colors"
             >
               MakerWorld
             </a>
@@ -175,7 +175,7 @@ export default function AboutPage() {
               href="https://www.linkedin.com/in/naqashafzal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
+              className="px-5 py-2.5 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#EAEAEA] text-[#1D1D1F] transition-colors"
             >
               LinkedIn
             </a>
@@ -183,8 +183,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. CTA */}
-      <section className="relative max-w-[960px] mx-auto px-6 md:px-12 text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-18 rounded-3xl shadow-sm">
+      {/* 7. CTA (PAGE CONTAINER 1440PX) */}
+      <section className="relative page-container text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-20 rounded-3xl shadow-xs">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-4">
           Follow the journey from prototype to production.
         </h2>
@@ -195,13 +195,13 @@ export default function AboutPage() {
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm cursor-pointer"
+            className="px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm cursor-pointer"
           >
             Join the Waitlist
           </button>
           <Link
             href="/hardware"
-            className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-all text-sm font-medium"
+            className="px-8 py-3.5 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-all text-sm font-medium"
           >
             Explore the Hardware
           </Link>

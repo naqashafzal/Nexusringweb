@@ -125,8 +125,8 @@ export default function PreorderPage() {
   return (
     <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-16 text-center">
-        <div className="max-w-3xl mx-auto space-y-5 relative z-10">
+      <section className="relative page-container mb-16 text-center">
+        <div className="max-w-4xl mx-auto space-y-5 relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Development Stage · Early Access Interest
@@ -148,7 +148,7 @@ export default function PreorderPage() {
       </section>
 
       {/* ════════════════ CONFIGURATOR & REGISTRATION FORM ═════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
+      <section className="relative page-container mb-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* ── LEFT: Hardware Configurator (7 cols) ── */}

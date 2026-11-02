@@ -85,7 +85,7 @@ export default async function JournalArticlePage({ params }: Props) {
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[900px] mx-auto border-b border-[#E5E5E7]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 page-container border-b border-[#E5E5E7]">
         <ol className="flex items-center gap-2 text-xs text-[#6E6E73] overflow-x-auto whitespace-nowrap">
           <li>
             <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
@@ -102,7 +102,7 @@ export default async function JournalArticlePage({ params }: Props) {
       </nav>
 
       {/* ── ARTICLE HEADER ── */}
-      <header className="pt-12 pb-12 px-6 md:px-12 max-w-[900px] mx-auto space-y-6">
+      <header className="pt-12 pb-12 editorial-container space-y-6">
         <div className="flex flex-wrap items-center gap-3 text-xs">
           <span className="px-3 py-1 rounded-full bg-[#FDF2F4] border border-[#C93E50]/20 text-[#C93E50] font-semibold uppercase tracking-wider">
             {article.category}
@@ -153,7 +153,7 @@ export default async function JournalArticlePage({ params }: Props) {
       </header>
 
       {/* ── TABLE OF CONTENTS ── */}
-      <section className="px-6 md:px-12 max-w-[900px] mx-auto mb-12">
+      <section className="editorial-container mb-12">
         <div className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-3">
           <div className="flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#1D1D1F]">
             <BookOpen size={14} className="text-[#C93E50]" />
@@ -172,14 +172,14 @@ export default async function JournalArticlePage({ params }: Props) {
       </section>
 
       {/* ── ARTICLE BODY ── */}
-      <article className="px-6 md:px-12 max-w-[900px] mx-auto prose prose-slate prose-headings:font-semibold prose-headings:text-[#1D1D1F] prose-p:text-[#6E6E73] prose-p:leading-relaxed prose-li:text-[#6E6E73] prose-strong:text-[#1D1D1F] prose-blockquote:border-[#C93E50] prose-blockquote:bg-[#F8F9FA] prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-[#1D1D1F]">
+      <article className="editorial-container prose prose-slate prose-headings:font-semibold prose-headings:text-[#1D1D1F] prose-p:text-[#6E6E73] prose-p:leading-relaxed prose-li:text-[#6E6E73] prose-strong:text-[#1D1D1F] prose-blockquote:border-[#C93E50] prose-blockquote:bg-[#F8F9FA] prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:text-[#1D1D1F]">
         <div className="space-y-6 text-[#6E6E73] text-base leading-relaxed whitespace-pre-line">
           {article.content}
         </div>
       </article>
 
       {/* ── SOURCES & CITATIONS ── */}
-      <section className="px-6 md:px-12 max-w-[900px] mx-auto mt-16 pt-10 border-t border-[#E5E5E7]">
+      <section className="editorial-container mt-16 pt-10 border-t border-[#E5E5E7]">
         <div className="space-y-4">
           <h2 className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]">
             References & Primary Sources
@@ -208,7 +208,7 @@ export default async function JournalArticlePage({ params }: Props) {
       </section>
 
       {/* ── PRODUCT CONNECTION BOX ── */}
-      <section className="px-6 md:px-12 max-w-[900px] mx-auto my-16">
+      <section className="page-container my-16">
         <div className="p-8 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-2">
             <span className="text-[11px] font-semibold text-[#C93E50] uppercase tracking-wider block">
@@ -217,7 +217,7 @@ export default async function JournalArticlePage({ params }: Props) {
             <h3 className="text-xl font-semibold text-[#1D1D1F]">
               Nexus Ring: Physical Intent Computing
             </h3>
-            <p className="text-xs text-[#6E6E73] max-w-lg leading-relaxed">
+            <p className="text-xs text-[#6E6E73] max-w-xl leading-relaxed">
               We are engineering a physical desk controller to make intentional work easier to begin and protect. Solid-state magnetic sensing, local-first companion software, and zero external telemetry.
             </p>
           </div>
@@ -232,7 +232,7 @@ export default async function JournalArticlePage({ params }: Props) {
 
       {/* ── RELATED READING ── */}
       {relatedArticles.length > 0 && (
-        <section className="px-6 md:px-12 max-w-[900px] mx-auto pb-24 border-t border-[#E5E5E7] pt-12 space-y-6">
+        <section className="page-container pb-24 border-t border-[#E5E5E7] pt-12 space-y-6">
           <h2 className="text-xs font-semibold uppercase tracking-wider text-[#1D1D1F]">
             Related Research & Articles
           </h2>

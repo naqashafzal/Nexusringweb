@@ -20,7 +20,7 @@ export default function CompareDirectoryPage() {
   return (
     <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
-      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-20 text-center">
+      <section className="relative page-container mb-20 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
           Product Architecture Comparison
@@ -36,7 +36,7 @@ export default function CompareDirectoryPage() {
       </section>
 
       {/* ════════════════ COMPARISON CARDS GRID ════════════════════ */}
-      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-24">
+      <section className="relative page-container mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {comparisonList.map((item, idx) => (
             <motion.div

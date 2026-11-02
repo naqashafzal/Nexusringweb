@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#E5E5E7] bg-[#FFFFFF]/80 backdrop-blur-xl transition-all">
-        <div className="max-w-[1240px] mx-auto px-6 md:px-8 h-14 flex items-center justify-between gap-6">
+        <div className="page-container h-16 flex items-center justify-between gap-6">
           <Link
             href="/"
             onClick={() => setOpen(false)}

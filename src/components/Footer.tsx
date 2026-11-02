@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative z-[100] w-full pt-16 pb-12 border-t border-[#E5E5E7] bg-[#F5F5F7] flex flex-col items-center justify-center pointer-events-auto text-[#6E6E73]">
-      <div className="w-full max-w-[1240px] mx-auto px-6 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12 relative z-10 pointer-events-auto">
+      <div className="page-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12 relative z-10 pointer-events-auto">
         
         {/* Brand Column */}
         <div className="flex flex-col gap-3">
