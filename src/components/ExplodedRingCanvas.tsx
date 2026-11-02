@@ -43,7 +43,7 @@ interface ModelProps {
   selectedComponent?: string | null;
 }
 
-function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponent }: ModelProps) {
+function Model({ scrollProgress, explodeFactor, disableExplode, scale = 1, selectedComponent }: ModelProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gltf = useGLTF("/models/nexus_ring.glb") as any;
   const mainGroupRef = useRef<THREE.Group>(null);
@@ -51,87 +51,43 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
     [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 };
   }>({});
 
-  const noiseTexture = useMemo(() => generateNoiseTexture(), []);
+  // Clone scene so we can mutate positions cleanly per instance
+  const scene = gltf?.scene;
+  const { clonedScene, autoScale, centerOffset } = useMemo(() => {
+    if (!scene) return { clonedScene: null, autoScale: 1, centerOffset: new THREE.Vector3() };
+    const cloned = scene.clone(true);
 
-  // Material references to avoid mutating memoized values in render loops (React 19 compiler safety)
-  const materialsRef = useRef<{
-    matteAnodized: THREE.MeshStandardMaterial;
-    totem: THREE.MeshStandardMaterial;
-    subtleGlow: THREE.MeshStandardMaterial;
-    glow: THREE.MeshStandardMaterial;
-    pcb: THREE.MeshStandardMaterial;
-    component: THREE.MeshStandardMaterial;
-    text: THREE.MeshStandardMaterial;
-    highlight: THREE.MeshStandardMaterial;
-  }>({
-    matteAnodized: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#24272D"),
-      roughness: 0.42,
-      metalness: 0.65,
-      bumpMap: noiseTexture || undefined,
-      bumpScale: 0.0015,
-    }),
-    totem: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#1A1D23"),
-      roughness: 0.22,
-      metalness: 0.88,
-      bumpMap: noiseTexture || undefined,
-      bumpScale: 0.0015,
-    }),
-    subtleGlow: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#111317"),
-      emissive: new THREE.Color("#C93E50"),
-      emissiveIntensity: 0.8,
-      roughness: 0.3,
-      metalness: 0.2,
-      transparent: true,
-      opacity: 0.9,
-    }),
-    glow: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#C93E50"),
-      emissive: new THREE.Color("#C93E50"),
-      emissiveIntensity: 1.6,
-      roughness: 0.2,
-      toneMapped: false,
-    }),
-    pcb: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#0f1c16"),
-      roughness: 0.45,
-      metalness: 0.45,
-    }),
-    component: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#20242B"),
-      roughness: 0.5,
-      metalness: 0.3,
-    }),
-    text: new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#F5F5F7"),
-      emissive: new THREE.Color("#C93E50"),
-      emissiveIntensity: 0.15,
-      roughness: 0.35,
-      metalness: 0.2,
-    }),
-    highlight: new THREE.MeshStandardMaterial({
+    // Compute bounding box to automatically calculate proper scale factor regardless of meters/mm units
+    const bbox = new THREE.Box3().setFromObject(cloned);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    bbox.getSize(size);
+    bbox.getCenter(center);
+
+    const maxDim = Math.max(size.x, size.y, size.z);
+    // Target dimension of the ring in Three.js units (~13.5 units for commanding hero presence)
+    const targetSize = 13.5;
+    const computedScale = maxDim > 0 ? targetSize / maxDim : 1;
+
+    return {
+      clonedScene: cloned,
+      autoScale: computedScale,
+      centerOffset: center.clone().negate(),
+    };
+  }, [scene]);
+
+  // Setup parts mapping and highlight materials
+  useEffect(() => {
+    if (!clonedScene) return;
+    const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
+
+    const highlightMat = new THREE.MeshStandardMaterial({
       color: new THREE.Color("#C93E50"),
       emissive: new THREE.Color("#C93E50"),
       emissiveIntensity: 1.2,
       roughness: 0.25,
       metalness: 0.5,
-    }),
-  });
-
-  // Clone scene so we can mutate positions cleanly per instance
-  const scene = gltf?.scene;
-  const clonedScene = useMemo(() => {
-    if (!scene) return null;
-    return scene.clone(true);
-  }, [scene]);
-
-  // Setup parts mapping and assign materials
-  useEffect(() => {
-    if (!clonedScene) return;
-    const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
-    const mats = materialsRef.current;
+    });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     clonedScene.traverse((child: any) => {
@@ -143,30 +99,16 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
           origPos: child.position.clone(),
         };
 
-        // Assign curated materials with optional selection highlight
+        // Component selection highlight support for both old and new GLB node naming
         const isSelected =
           (selectedComponent === "enclosure" && (child.name === "base" || child.name === "lid")) ||
-          (selectedComponent === "totem" && child.name === "totem") ||
-          (selectedComponent === "controller" && child.name.includes("Esp32")) ||
+          (selectedComponent === "totem" && (child.name === "totem" || child.name.startsWith("totem_"))) ||
+          (selectedComponent === "controller" && (child.name.includes("Esp32") || child.name.includes("controller"))) ||
           (selectedComponent === "sensors" && child.name.includes("Hall_Sensor")) ||
-          (selectedComponent === "led" && (child.name.includes("LED_Ring") || child.name === "Body8(7)"));
+          (selectedComponent === "led" && (child.name.includes("LED_Ring") || child.name === "Body8(7)" || child.name === "led_cover" || child.name === "totem_light_ring"));
 
         if (isSelected) {
-          child.material = mats.highlight;
-        } else if (child.name === "base" || child.name === "lid") {
-          child.material = mats.matteAnodized;
-        } else if (child.name === "totem") {
-          child.material = mats.totem;
-        } else if (child.name === "Body8(7)") {
-          child.material = mats.subtleGlow;
-        } else if (child.name.includes("LED_Ring") || child.name.includes("Neopixel")) {
-          child.material = mats.glow;
-        } else if (child.name.includes("Esp32")) {
-          child.material = mats.pcb;
-        } else if (child.name.includes("Hall_Sensor")) {
-          child.material = mats.component;
-        } else if (child.name.startsWith("Text")) {
-          child.material = mats.text;
+          child.material = highlightMat;
         }
       }
     });
@@ -197,60 +139,54 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
       mainGroupRef.current.position.y = Math.sin(time * 0.8) * 0.18;
     }
 
-    // Gentle pulsing emissive on glow elements
-    const mats = materialsRef.current;
-    if (mats.glow) {
-      mats.glow.emissiveIntensity = 2.4 + Math.sin(time * 3.5) * 0.8;
-    }
-    if (mats.subtleGlow) {
-      mats.subtleGlow.emissiveIntensity = 1.2 + Math.sin(time * 2.0) * 0.4 + p * 0.5;
-    }
-
     const parts = partsRef.current;
     if (!parts || Object.keys(parts).length === 0) return;
 
-    // 1. Totem lifts high in Y
-    if (parts["totem"]) {
-      parts["totem"].mesh.position.y = parts["totem"].origPos.y + p * 12.0;
-    }
+    // Relative lift scalar in native model coordinates (normalized to 10% model height per unit)
+    const liftUnit = 0.012;
 
-    // 2. Top Anodized Housing Lid lifts
-    if (parts["lid"]) {
-      parts["lid"].mesh.position.y = parts["lid"].origPos.y + p * 8.0;
-    }
-
-    // 3. Laser Text Branding lifts with Lid
-    ["Text_0", "Text_1", "Text_2", "Text_3", "Text_01"].forEach((name) => {
+    // 1. Totem lifts highest in Y
+    ["totem", "totem_main", "totem_base", "totem_light_ring", "Decal_Totem_Dish"].forEach((name) => {
       if (parts[name]) {
-        parts[name].mesh.position.y = parts[name].origPos.y + p * 8.02;
+        parts[name].mesh.position.y = parts[name].origPos.y + p * liftUnit * 10;
       }
     });
 
-    // 4. Middle Glow Ring Diffuser & NeoPixel LED ring float mid-air
-    if (parts["Body8(7)"]) {
-      parts["Body8(7)"].mesh.position.y = parts["Body8(7)"].origPos.y + p * 5.5;
-    }
+    // 2. Top Housing Lid lifts with all mode decals & logos
+    ["lid", "Decal_Middle_Logo", "Decal_Mode_Break", "Decal_Mode_Creative", "Decal_Mode_Deep", "Decal_Mode_Meeting", "Text_0", "Text_1", "Text_2", "Text_3", "Text_01"].forEach((name) => {
+      if (parts[name]) {
+        parts[name].mesh.position.y = parts[name].origPos.y + p * liftUnit * 6.5;
+      }
+    });
+
+    // 3. LED cover / diffuser ring floats mid-air
+    ["led_cover", "Body8(7)"].forEach((name) => {
+      if (parts[name]) {
+        parts[name].mesh.position.y = parts[name].origPos.y + p * liftUnit * 4.0;
+      }
+    });
+
     const ledKey = Object.keys(parts).find((k) => k.includes("LED_Ring") || k.includes("Neopixel"));
     if (ledKey && parts[ledKey]) {
-      parts[ledKey].mesh.position.y = parts[ledKey].origPos.y + p * 4.0;
+      parts[ledKey].mesh.position.y = parts[ledKey].origPos.y + p * liftUnit * 3.0;
     }
 
-    // 5. ESP32-C3 Microcontroller PCB lifts purely upward
+    // 4. ESP32-C3 Microcontroller PCB lifts
     const espKey = Object.keys(parts).find((k) => k.includes("Esp32"));
     if (espKey && parts[espKey]) {
-      parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * 2.8;
+      parts[espKey].mesh.position.y = parts[espKey].origPos.y + p * liftUnit * 2.2;
     }
 
-    // 6. Hall Effect Sensors lift purely upward
+    // 5. Hall Effect Sensors lift
     const hallSensors = Object.keys(parts).filter((k) => k.includes("Hall_Sensor"));
     hallSensors.forEach((name) => {
       const pObj = parts[name];
       if (pObj) {
-        pObj.mesh.position.y = pObj.origPos.y + p * 1.5;
+        pObj.mesh.position.y = pObj.origPos.y + p * liftUnit * 1.4;
       }
     });
 
-    // 7. Base dock anchors firmly at original position
+    // 6. Base dock remains anchored
     if (parts["base"]) {
       parts["base"].mesh.position.copy(parts["base"].origPos);
     }
@@ -258,9 +194,13 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
 
   if (!clonedScene) return null;
 
+  const finalScale = autoScale * scale;
+
   return (
-    <group ref={mainGroupRef} dispose={null}>
-      <primitive object={clonedScene} />
+    <group ref={mainGroupRef} dispose={null} scale={finalScale}>
+      <group position={[centerOffset.x, centerOffset.y, centerOffset.z]}>
+        <primitive object={clonedScene} />
+      </group>
     </group>
   );
 }
@@ -292,8 +232,8 @@ export default function ExplodedRingCanvas({
   }, []);
 
   const posX = centerPosition ? 0 : isMobile ? 0 : disableExplode ? 4.6 : 5.8;
-  const posY = disableExplode ? (isMobile ? 0.0 : 0.6) : isMobile ? -0.8 : -0.2;
-  const baseScale = disableExplode ? (isMobile ? 0.40 : 0.56) : isMobile ? 0.28 : 0.38;
+  const posY = disableExplode ? (isMobile ? 0.0 : 0.4) : isMobile ? -0.8 : -0.2;
+  const baseScale = disableExplode ? (isMobile ? 0.55 : 0.72) : isMobile ? 0.40 : 0.52;
 
   return (
     <div className="w-full h-full bg-transparent relative pointer-events-auto">
@@ -422,11 +362,11 @@ export default function ExplodedRingCanvas({
           </EffectComposer>
 
           <ContactShadows
-            position={[posX, posY - 2.0, 0]}
-            opacity={0.55}
-            scale={24}
-            blur={2.2}
-            far={6}
+            position={[posX, posY - 2.8, 0]}
+            opacity={0.35}
+            scale={48}
+            blur={2.8}
+            far={10}
             color="#000000"
           />
         </Suspense>
