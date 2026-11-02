@@ -88,88 +88,133 @@ export default function Home() {
 
   return (
     <main className="bg-[#080A0E] text-[#F5F6F8] font-sans overflow-x-hidden selection:bg-[#D83A50]/20 selection:text-white">
-      {/* ════════════════ SECTION A: CINEMATIC HERO ════════════════ */}
-      <section className="relative min-h-[calc(100vh-80px)] w-full flex items-center pt-28 pb-16 lg:py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
-          {/* ── LEFT COLUMN: Text Content & CTAs (6 cols) ── */}
-          <div className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
-              NEXUS RING / PHYSICAL WORKSPACE CONTROL
-            </div>
+      {/* ════════════════ SECTION A: CINEMATIC FULL-BLEED HERO ════════════════ */}
+      <section className="relative w-full min-h-[92vh] flex flex-col justify-between pt-28 pb-16 px-6 md:px-12 max-w-[1500px] mx-auto overflow-hidden">
+        {/* Subtle radial ambient backdrop */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle_at_center,rgba(216,58,80,0.12)_0%,rgba(17,21,28,0.05)_50%,transparent_75%)] pointer-events-none blur-3xl z-0" />
+        <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:32px_32px]" />
 
-            <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#F5F6F8] uppercase">
-                RECLAIM YOUR ATTENTION.
-              </h1>
-              <p className="text-lg sm:text-xl font-display font-bold text-[#D83A50] tracking-tight uppercase">
-                FORCE YOUR FOCUS. ENGINEER SUCCESS.
-              </p>
-            </div>
-
-            <p className="text-[#A5AFBD] text-base md:text-lg font-light leading-relaxed border-l-2 border-[#D83A50] pl-4 bg-[#11151C]/70 p-4 rounded-r-2xl">
-              In a digital world competing for your attention, Nexus Ring is being developed to help you create a more intentional workspace through a simple physical interaction.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link
-                href="#how-it-works"
-                className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide text-[#F5F6F8] bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_20px_rgba(216,58,80,0.25)] cursor-pointer flex items-center gap-2"
-              >
-                <span>Explore Nexus Ring</span>
-                <ChevronDown size={14} />
-              </Link>
-              <button
-                type="button"
-                onClick={() => setShowComingSoon(true)}
-                className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD] transition-all duration-150 cursor-pointer flex items-center gap-2"
-              >
-                <span>Join Early Access</span>
-                <ChevronRight size={15} />
-              </button>
-            </div>
-
-            <p className="text-[11px] font-mono text-[#778292] tracking-wider pt-1">
-              Currently in development.
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#303A48]">
-              <div>
-                <p className="text-xs font-mono text-[#F5F6F8] font-semibold">
-                  Four Operating Modes
-                </p>
-                <p className="text-[10px] font-mono text-[#778292] uppercase tracking-wider mt-1">
-                  Deep Work · Creative · Meeting · Break
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-mono text-[#F5F6F8] font-semibold">
-                  Contactless Sensing
-                </p>
-                <p className="text-[10px] font-mono text-[#778292] uppercase tracking-wider mt-1">
-                  Hall-Effect Magnetic Detection
-                </p>
-              </div>
-            </div>
+        {/* ── TOP: High-Impact Editorial Typography ── */}
+        <div className="relative z-20 text-center max-w-4xl mx-auto space-y-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C]/90 backdrop-blur-md text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase shadow-lg">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50] animate-pulse" />
+            NEXUS RING / PHYSICAL WORKSPACE CONTROL
           </div>
 
-          {/* ── RIGHT COLUMN: Interactive 3D Model (6 cols) ── */}
-          <div className="lg:col-span-6 relative w-full h-[460px] sm:h-[520px] lg:h-[620px] rounded-3xl overflow-hidden border border-[#303A48] bg-[#11151C]/60 backdrop-blur-sm shadow-2xl">
-            {/* Top-right hint */}
-            <div className="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#080A0E]/80 backdrop-blur-md text-xs font-mono text-[#A5AFBD] flex items-center gap-2 pointer-events-none">
-              <Rotate3D size={14} className="text-[#D83A50] animate-spin" style={{ animationDuration: "12s" }} />
-              <span>Drag to Rotate</span>
-            </div>
+          <div className="space-y-3">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tight leading-[0.92] text-[#F5F6F8] uppercase">
+              RECLAIM YOUR ATTENTION.
+            </h1>
+            <p className="text-lg sm:text-2xl font-display font-bold text-[#D83A50] tracking-wider uppercase">
+              FORCE YOUR FOCUS. ENGINEER SUCCESS.
+            </p>
+          </div>
 
-            {/* 3D Canvas */}
-            <div className="w-full h-full">
-              <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
-            </div>
+          <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            In a digital world competing for your attention, Nexus Ring is being developed to help you create a more intentional workspace through a simple physical interaction.
+          </p>
 
-            {/* Bottom-left status badge */}
-            <div className="absolute bottom-4 left-4 z-20 text-[10px] font-mono text-[#A5AFBD]/80 uppercase tracking-widest bg-[#080A0E]/90 px-3 py-1.5 rounded-full border border-[#303A48] backdrop-blur-sm pointer-events-none">
-              Interactive 3D CAD Visualization · Public Prototype Model
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <Link
+              href="#how-it-works"
+              className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide text-[#F5F6F8] bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_25px_rgba(216,58,80,0.35)] cursor-pointer flex items-center gap-2"
+            >
+              <span>Explore Nexus Ring</span>
+              <ChevronDown size={14} />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C]/80 hover:border-[#A5AFBD] transition-all duration-150 cursor-pointer flex items-center gap-2 backdrop-blur-sm"
+            >
+              <span>Join Early Access</span>
+              <ChevronRight size={15} />
+            </button>
+          </div>
+
+          <p className="text-[11px] font-mono text-[#778292] tracking-wider">
+            Currently in development.
+          </p>
+        </div>
+
+        {/* ── CENTER: Dramatic 3D Centerpiece Stage ── */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto h-[480px] sm:h-[540px] lg:h-[600px] my-10 rounded-3xl border border-[#303A48] bg-[#11151C]/60 backdrop-blur-md shadow-2xl overflow-hidden">
+          {/* Floating Telemetry Callout Left */}
+          <div className="hidden lg:flex flex-col gap-1 absolute left-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E]/85 backdrop-blur-md shadow-2xl max-w-[220px] text-left pointer-events-none">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-[#D83A50] font-semibold">
+              01 // SENSING
+            </span>
+            <span className="text-xs font-display font-bold text-[#F5F6F8]">
+              Hall-Effect Array
+            </span>
+            <p className="text-[11px] text-[#A5AFBD] font-light leading-snug">
+              Contactless magnetic quadrant detection without mechanical fatigue.
+            </p>
+          </div>
+
+          {/* Floating Telemetry Callout Right */}
+          <div className="hidden lg:flex flex-col gap-1 absolute right-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E]/85 backdrop-blur-md shadow-2xl max-w-[220px] text-left pointer-events-none">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-[#35C98A] font-semibold">
+              02 // LOCAL ENGINE
+            </span>
+            <span className="text-xs font-display font-bold text-[#F5F6F8]">
+              ESP32-C3 RISC-V
+            </span>
+            <p className="text-[11px] text-[#A5AFBD] font-light leading-snug">
+              Instant hardware debouncing transmitting USB serial events.
+            </p>
+          </div>
+
+          {/* Interaction Hint Badge */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#080A0E]/90 backdrop-blur-md text-xs font-mono text-[#A5AFBD] flex items-center gap-2 pointer-events-none shadow-xl">
+            <Rotate3D size={14} className="text-[#D83A50] animate-spin" style={{ animationDuration: "12s" }} />
+            <span>Interactive 3D Controller · Drag to Rotate</span>
+          </div>
+
+          {/* 3D Canvas Stage */}
+          <div className="w-full h-full">
+            <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
+          </div>
+
+          {/* Bottom Engineering Tag */}
+          <div className="absolute bottom-4 left-6 z-20 text-[10px] font-mono text-[#778292] uppercase tracking-widest pointer-events-none">
+            CAD REV 2.4 · DUAL-SHELL ANODIZED PROTOTYPE
+          </div>
+        </div>
+
+        {/* ── BOTTOM: Architectural Spec Strip ── */}
+        <div className="relative z-20 w-full grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[#303A48]/80 max-w-5xl mx-auto">
+          <div className="space-y-1 text-left">
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">
+              Four Operating Modes
+            </p>
+            <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
+              Deep Work · Creative · Meeting · Break
+            </p>
+          </div>
+          <div className="space-y-1 text-left">
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">
+              Contactless Sensing
+            </p>
+            <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
+              Radial Hall-Effect Magnetics
+            </p>
+          </div>
+          <div className="space-y-1 text-left">
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">
+              Local-First Automation
+            </p>
+            <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
+              Zero Cloud Surveillance
+            </p>
+          </div>
+          <div className="space-y-1 text-left">
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">
+              Peripheral Lighting
+            </p>
+            <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
+              360° Glanceable Ambient Ring
+            </p>
           </div>
         </div>
       </section>

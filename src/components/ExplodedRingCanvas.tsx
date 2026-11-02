@@ -192,7 +192,7 @@ function Model({ scrollProgress, explodeFactor, disableExplode, selectedComponen
 
     // Main Group Orientation & Continuous 360 Rotation + Floating
     if (mainGroupRef.current) {
-      mainGroupRef.current.rotation.x = 0.15 + Math.cos(time * 0.4) * 0.02;
+      mainGroupRef.current.rotation.x = 0.42 + Math.cos(time * 0.4) * 0.02;
       mainGroupRef.current.rotation.y = time * 0.35 + (scrollProgress ? scrollProgress.get() * Math.PI * 0.5 : 0);
       mainGroupRef.current.position.y = Math.sin(time * 0.8) * 0.18;
     }
@@ -292,8 +292,8 @@ export default function ExplodedRingCanvas({
   }, []);
 
   const posX = centerPosition ? 0 : isMobile ? 0 : disableExplode ? 4.6 : 5.8;
-  const posY = disableExplode ? (isMobile ? -0.6 : 0.2) : isMobile ? -0.8 : -0.2;
-  const baseScale = disableExplode ? (isMobile ? 0.32 : 0.44) : isMobile ? 0.28 : 0.38;
+  const posY = disableExplode ? (isMobile ? 0.0 : 0.6) : isMobile ? -0.8 : -0.2;
+  const baseScale = disableExplode ? (isMobile ? 0.40 : 0.56) : isMobile ? 0.28 : 0.38;
 
   return (
     <div className="w-full h-full bg-transparent relative pointer-events-auto">
@@ -389,15 +389,15 @@ export default function ExplodedRingCanvas({
       )}
 
       <Canvas
-        camera={{ position: [0, 6, 28], fov: 35 }}
+        camera={{ position: [0, 10, 22], fov: 36 }}
         className="pointer-events-auto cursor-grab active:cursor-grabbing"
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={1.2} color="#e2e8f0" />
-          <directionalLight position={[10, 16, 12]} intensity={2.4} color="#ffffff" />
-          <directionalLight position={[-12, 10, -8]} intensity={1.0} color="#D83A50" />
-          <directionalLight position={[0, -8, 10]} intensity={0.6} color="#94a3b8" />
-          <pointLight position={[0, 5, 0]} intensity={1.5} color="#D83A50" distance={12} />
+          <ambientLight intensity={1.4} color="#e2e8f0" />
+          <directionalLight position={[10, 18, 14]} intensity={2.6} color="#ffffff" />
+          <directionalLight position={[-12, 12, -8]} intensity={1.2} color="#D83A50" />
+          <directionalLight position={[0, -6, 10]} intensity={0.6} color="#94a3b8" />
+          <pointLight position={[0, 6, 0]} intensity={1.8} color="#D83A50" distance={14} />
 
           <OrbitControls
             enableZoom={false}
@@ -422,10 +422,10 @@ export default function ExplodedRingCanvas({
           </EffectComposer>
 
           <ContactShadows
-            position={[posX, posY - 2.2, 0]}
-            opacity={0.5}
-            scale={22}
-            blur={2.0}
+            position={[posX, posY - 2.0, 0]}
+            opacity={0.55}
+            scale={24}
+            blur={2.2}
             far={6}
             color="#000000"
           />
