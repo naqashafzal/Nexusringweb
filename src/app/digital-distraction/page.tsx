@@ -59,7 +59,7 @@ export default function DigitalDistractionPage() {
   };
 
   return (
-    <main className="bg-[#080A0E] text-[#F5F6F8] font-sans min-h-screen selection:bg-[#D83A50]/30 selection:text-white">
+    <main className="bg-[#FFFFFF] text-[#1D1D1F] font-sans min-h-screen selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -70,33 +70,33 @@ export default function DigitalDistractionPage() {
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1200px] mx-auto border-b border-[#303A48]/50">
-        <ol className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1120px] mx-auto border-b border-[#E5E5E7]">
+        <ol className="flex items-center gap-2 text-xs text-[#6E6E73]">
           <li>
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
           </li>
-          <li className="text-[#303A48]">/</li>
-          <li className="text-white font-medium" aria-current="page">Digital Distraction</li>
+          <li className="text-[#86868B]">/</li>
+          <li className="text-[#1D1D1F] font-medium" aria-current="page">Digital Distraction</li>
         </ol>
       </nav>
 
       {/* ── HERO SECTION ── */}
-      <section className="pt-16 pb-20 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <section className="pt-16 pb-20 px-6 md:px-12 max-w-[1120px] mx-auto">
         <div className="max-w-3xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
-            ATTENTION ECONOMY & COGNITIVE RESILIENCE
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
+            Attention Economy & Cognitive Resilience
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white leading-[1.02]">
-            THE WORLD IS COMPETING FOR YOUR ATTENTION.
+          <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05]">
+            The world is competing for your attention.
           </h1>
 
-          <p className="text-2xl sm:text-3xl font-display font-semibold text-[#D83A50]">
+          <p className="text-2xl sm:text-3xl font-medium text-[#C93E50] tracking-tight">
             It&apos;s time to take control of it.
           </p>
 
-          <p className="text-lg text-[#A5AFBD] leading-relaxed border-l-2 border-[#D83A50] pl-4 bg-[#11151C]/60 p-5 rounded-r-2xl">
+          <p className="text-lg text-[#6E6E73] leading-relaxed border-l-2 border-[#C93E50] pl-4 bg-[#F8F9FA] p-5 rounded-r-2xl">
             Digital platforms are engineered to compete for engagement. Notifications, endless feeds, autoplay, and personalized recommendations can make distraction feel effortless. Nexus Ring is being developed to make intentional work easier to begin and easier to protect.
           </p>
 
@@ -104,14 +104,14 @@ export default function DigitalDistractionPage() {
             <button
               type="button"
               onClick={() => setShowModal(true)}
-              className="px-8 py-3.5 rounded-full font-bold text-sm tracking-wide text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer flex items-center gap-2"
+              className="btn-primary cursor-pointer flex items-center gap-2"
             >
               <span>Join Early Access</span>
               <ChevronRight size={16} />
             </button>
             <Link
               href="#the-problem"
-              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all"
+              className="btn-secondary flex items-center gap-2"
             >
               Explore the Research ↓
             </Link>
@@ -120,51 +120,51 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── BRAND MANIFESTO CALLOUT ── */}
-      <section className="bg-[#11151C] border-y border-[#303A48] py-20 px-6 md:px-12">
-        <div className="max-w-[900px] mx-auto text-center space-y-6">
-          <span className="text-[11px] font-mono text-[#D83A50] tracking-widest uppercase block">
+      <section className="bg-[#F8F9FA] border-y border-[#E5E5E7] py-20 px-6 md:px-12">
+        <div className="max-w-[800px] mx-auto text-center space-y-6">
+          <span className="text-[12px] font-semibold text-[#C93E50] tracking-wide uppercase block">
             The Nexus Ring Manifesto
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white uppercase">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#1D1D1F]">
             The World is Fighting for Your Attention.
           </h2>
 
-          <div className="space-y-4 text-[#A5AFBD] text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto pt-4">
-            <p className="border-b border-[#303A48] pb-3">Every notification wants a response.</p>
-            <p className="border-b border-[#303A48] pb-3">Every feed wants another scroll.</p>
-            <p className="border-b border-[#303A48] pb-3">Every advertisement wants another moment.</p>
-            <p className="border-b border-[#303A48] pb-3">Every recommendation system wants to predict what will keep you engaged.</p>
-            <p className="text-white font-medium pt-2">But your goals need that attention too.</p>
+          <div className="space-y-4 text-[#6E6E73] text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto pt-4">
+            <p className="border-b border-[#E5E5E7] pb-3">Every notification wants a response.</p>
+            <p className="border-b border-[#E5E5E7] pb-3">Every feed wants another scroll.</p>
+            <p className="border-b border-[#E5E5E7] pb-3">Every advertisement wants another moment.</p>
+            <p className="border-b border-[#E5E5E7] pb-3">Every recommendation system wants to predict what will keep you engaged.</p>
+            <p className="text-[#1D1D1F] font-medium pt-2">But your goals need that attention too.</p>
             <p>Your ambitions need time. Your creativity needs space. Your most meaningful work requires intention.</p>
-            <p className="text-[#F5F6F8] bg-[#1B222D] p-4 rounded-xl border border-[#303A48]">
+            <p className="text-[#1D1D1F] bg-[#FFFFFF] p-5 rounded-2xl border border-[#E5E5E7] shadow-sm">
               We believe technology should support human purpose, not constantly compete against it. We believe discipline becomes easier to practice when our environments support our decisions. We believe distraction should be a choice, not the default.
             </p>
-            <div className="pt-2 text-[#F5F6F8] space-y-1">
+            <div className="pt-2 text-[#1D1D1F] space-y-1">
               <p className="font-semibold text-lg">That is why we are building Nexus Ring.</p>
-              <p className="text-sm text-[#A5AFBD] font-light">A physical interface designed to transform a deliberate decision into a change in your digital workspace.</p>
+              <p className="text-sm text-[#6E6E73]">A physical interface designed to transform a deliberate decision into a change in your digital workspace.</p>
             </div>
           </div>
 
           <div className="pt-6">
-            <p className="text-xs font-mono tracking-widest text-[#A5AFBD] uppercase">
-              YOUR ATTENTION. YOUR TIME. YOUR DECISION.
+            <p className="text-xs font-semibold tracking-wider text-[#6E6E73] uppercase">
+              Your Attention. Your Time. Your Decision.
             </p>
-            <p className="text-lg font-display font-bold text-white pt-1">
-              NEXUS RING — FORCE YOUR FOCUS. ENGINEER SUCCESS.
+            <p className="text-lg font-semibold text-[#1D1D1F] pt-1">
+              Nexus Ring — Force Your Focus. Engineer Success.
             </p>
           </div>
         </div>
       </section>
 
       {/* ── SECTION 1: THE PROBLEM ── */}
-      <section id="the-problem" className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <section id="the-problem" className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Section 01</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 01</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               How digital environments compete for your attention.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               When all tasks—work, communication, news, entertainment, and shopping—converge onto a single display, boundary lines blur. The devices we use to build our careers are simultaneously connected to the most potent notification streams in history.
             </p>
           </div>
@@ -192,10 +192,10 @@ export default function DigitalDistractionPage() {
                 desc: "An interruption every 3 minutes forces working memory into continuous garbage collection, creating persistent cognitive fatigue.",
               },
             ].map((item, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#11151C] border border-[#303A48] space-y-3">
-                <item.icon size={22} className="text-[#D83A50]" />
-                <h3 className="text-base font-semibold text-white font-display">{item.title}</h3>
-                <p className="text-sm text-[#A5AFBD] leading-relaxed">{item.desc}</p>
+              <div key={idx} className="surface-card p-6 rounded-2xl border border-[#E5E5E7] space-y-3">
+                <item.icon size={22} className="text-[#C93E50]" />
+                <h3 className="text-base font-semibold text-[#1D1D1F]">{item.title}</h3>
+                <p className="text-sm text-[#6E6E73] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -203,39 +203,39 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 2: THE ATTENTION ECONOMY ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
-        <div className="max-w-[1200px] mx-auto space-y-12">
+      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="max-w-[1120px] mx-auto space-y-12">
           <div className="max-w-2xl space-y-4">
-            <span className="text-xs font-mono text-[#35C98A] uppercase tracking-widest">Section 02</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 02</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               The economics of engagement algorithms.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               Software interfaces reflect the business models of the organizations that create them. In an ad-supported framework, active user minutes directly govern platform valuation.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-4">
-              <span className="text-2xl font-mono font-bold text-[#D83A50]">01</span>
-              <h3 className="text-lg font-bold text-white">Variable Reward Schedules</h3>
-              <p className="text-sm text-[#A5AFBD] leading-relaxed">
+            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-4">
+              <span className="text-2xl font-bold text-[#C93E50]">01</span>
+              <h3 className="text-lg font-semibold text-[#1D1D1F]">Variable Reward Schedules</h3>
+              <p className="text-sm text-[#6E6E73] leading-relaxed">
                 Borrowing from behavioral operant conditioning research (B.F. Skinner), modern recommendation feeds deliver high-value insights interspersed unpredictably with mundane updates, encouraging repetitive pull-to-refresh actions.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-4">
-              <span className="text-2xl font-mono font-bold text-[#35C98A]">02</span>
-              <h3 className="text-lg font-bold text-white">The Loss of Stopping Cues</h3>
-              <p className="text-sm text-[#A5AFBD] leading-relaxed">
+            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-4">
+              <span className="text-2xl font-bold text-[#1D1D1F]">02</span>
+              <h3 className="text-lg font-semibold text-[#1D1D1F]">The Loss of Stopping Cues</h3>
+              <p className="text-sm text-[#6E6E73] leading-relaxed">
                 Traditional media featured chapters, page numbers, and television end-credits that served as natural pause points. Infinite scroll and automatic video playback eliminate these cognitive boundaries entirely.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-4">
-              <span className="text-2xl font-mono font-bold text-[#F0B35A]">03</span>
-              <h3 className="text-lg font-bold text-white">Engagement-Weighted Delivery</h3>
-              <p className="text-sm text-[#A5AFBD] leading-relaxed">
+            <div className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-4">
+              <span className="text-2xl font-bold text-[#6E6E73]">03</span>
+              <h3 className="text-lg font-semibold text-[#1D1D1F]">Engagement-Weighted Delivery</h3>
+              <p className="text-sm text-[#6E6E73] leading-relaxed">
                 Content that triggers moral outrage, novelty, or urgency receives higher distribution weight than calm, analytical information, increasing background anxiety during working hours.
               </p>
             </div>
@@ -244,29 +244,29 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 3: THE HIDDEN COST ── */}
-      <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <section className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Section 03</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 03</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               The hidden cost of task switching and attention residue.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               Dr. Gloria Mark&apos;s empirical research at UC Irvine demonstrated that knowledge workers switch tasks or get interrupted approximately every 3 minutes. Re-engaging full cognitive flow following an interruption requires an average of over 20 minutes.
             </p>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               When you glance at an incoming notification while programming, designing, or drafting an agreement, your brain does not instantaneously return to peak processing. A fragment of attention remains stuck on the secondary context—a phenomenon psychologist Sophie Leroy termed <em>attention residue</em>.
             </p>
-            <div className="p-4 rounded-xl bg-[#11151C] border border-[#303A48] flex items-start gap-3">
-              <BookOpen size={20} className="text-[#35C98A] mt-0.5 shrink-0" />
-              <p className="text-xs font-mono text-[#A5AFBD]">
+            <div className="p-4 rounded-xl bg-[#F5F5F7] border border-[#E5E5E7] flex items-start gap-3">
+              <BookOpen size={20} className="text-[#C93E50] mt-0.5 shrink-0" />
+              <p className="text-xs text-[#6E6E73]">
                 Source: Mark, G., Gudith, D., & Klocke, U. (2008). <em>The Cost of Interrupted Work: More Speed and Stress</em>. Proceedings of ACM CHI 2008.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-6 p-8 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-6">
-            <h3 className="text-lg font-bold text-white font-display">The Anatomy of a Disrupted Work Hour</h3>
+          <div className="lg:col-span-6 p-8 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-6">
+            <h3 className="text-lg font-semibold text-[#1D1D1F]">The Anatomy of a Disrupted Work Hour</h3>
             <div className="space-y-4">
               {[
                 { time: "00:00 - 00:15", title: "Ramping up flow state", status: "Focus building" },
@@ -276,14 +276,14 @@ export default function DigitalDistractionPage() {
                 { time: "00:46", title: "Incoming calendar notification alert", status: "Interruption" },
                 { time: "00:47 - 01:00", title: "Superficial task completion with cognitive fatigue", status: "Suboptimal output" },
               ].map((step, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 rounded-lg bg-[#080A0E] border border-[#303A48]/60 text-xs font-mono">
-                  <span className="text-[#A5AFBD]">{step.time}</span>
-                  <span className="text-white font-medium">{step.title}</span>
-                  <span className={`px-2 py-0.5 rounded text-[10px] ${
-                    step.status === "Interruption" ? "bg-[#D83A50]/20 text-[#D83A50]" :
-                    step.status === "Context drift" ? "bg-[#F0B35A]/20 text-[#F0B35A]" :
-                    step.status === "Focus building" ? "bg-[#35C98A]/20 text-[#35C98A]" :
-                    "bg-[#303A48] text-[#A5AFBD]"
+                <div key={idx} className="flex items-center justify-between p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E5E5E7] text-xs">
+                  <span className="text-[#6E6E73] font-medium">{step.time}</span>
+                  <span className="text-[#1D1D1F] font-medium">{step.title}</span>
+                  <span className={`px-2.5 py-0.5 rounded-full font-medium text-[11px] ${
+                    step.status === "Interruption" ? "bg-[#FDF2F4] text-[#C93E50] border border-[#C93E50]/20" :
+                    step.status === "Context drift" ? "bg-[#FEF7EA] text-[#B54708] border border-[#B54708]/20" :
+                    step.status === "Focus building" ? "bg-[#EDFDF5] text-[#12B76A] border border-[#12B76A]/20" :
+                    "bg-[#F5F5F7] text-[#6E6E73]"
                   }`}>
                     {step.status}
                   </span>
@@ -295,14 +295,14 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 4: DISCIPLINE NEEDS AN ENVIRONMENT ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
-        <div className="max-w-[1200px] mx-auto space-y-8">
+      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="max-w-[1120px] mx-auto space-y-8">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Section 04</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 04</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               Discipline is an environmental design problem.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               Decades of behavioral psychology (e.g., Wendy Wood, James Clear) show that sustained high performance rarely relies on raw willpower alone. High performers do not have infinite self-control; they intentionally engineer environments that make distraction difficult and intentional work frictionless.
             </p>
           </div>
@@ -330,10 +330,10 @@ export default function DigitalDistractionPage() {
                 desc: "Separating working tools from communication feeds isolates working memory from extraneous stimuli.",
               },
             ].map((card, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-3">
-                <span className="text-xs font-mono text-[#D83A50] font-bold">{card.step}</span>
-                <h3 className="text-base font-bold text-white font-display">{card.title}</h3>
-                <p className="text-xs text-[#A5AFBD] leading-relaxed">{card.desc}</p>
+              <div key={idx} className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-3">
+                <span className="text-xs font-bold text-[#C93E50]">{card.step}</span>
+                <h3 className="text-base font-semibold text-[#1D1D1F]">{card.title}</h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -341,14 +341,14 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 5: THE NEXUS RING APPROACH ── */}
-      <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+      <section className="py-24 px-6 md:px-12 max-w-[1120px] mx-auto">
         <div className="space-y-12">
           <div className="max-w-2xl space-y-4">
-            <span className="text-xs font-mono text-[#35C98A] uppercase tracking-widest">Section 05</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 05</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               The Nexus Ring approach: Physical Intent Computing.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               Nexus Ring bridges the gap between your physical workspace and your digital operating system. Rather than fighting distraction inside an app, you move a physical magnetic totem to initiate a mode transition.
             </p>
           </div>
@@ -359,47 +359,47 @@ export default function DigitalDistractionPage() {
                 step: "DECIDE",
                 subtitle: "Choose Intention",
                 desc: "Decide whether your next block is Deep Work, Creative ideation, Meeting collaboration, or Cognitive recovery.",
-                color: "#D83A50",
+                color: "#C93E50",
               },
               {
                 step: "MOVE",
                 subtitle: "Physical Action",
                 desc: "Lift and position the weighted magnetic totem into the corresponding quadrant. Magnetic pull snaps it into position.",
-                color: "#35C98A",
+                color: "#1D1D1F",
               },
               {
                 step: "SWITCH MODE",
                 subtitle: "Hardware Sensing",
                 desc: "Solid-state Hall-effect sensors detect magnetic flux and send a standard USB HID event to your local machine.",
-                color: "#F5F6F8",
+                color: "#6E6E73",
               },
               {
                 step: "PROTECT",
                 subtitle: "Local Automation",
                 desc: "Nexus Companion mutes notifications, routes distracting domains to localhost, and prepares your IDE or canvas.",
-                color: "#F0B35A",
+                color: "#12B76A",
               },
             ].map((node, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#11151C] border border-[#303A48] space-y-3">
-                <span className="text-xs font-mono font-bold" style={{ color: node.color }}>
+              <div key={idx} className="surface-card p-6 rounded-2xl border border-[#E5E5E7] space-y-3">
+                <span className="text-xs font-bold tracking-wider" style={{ color: node.color }}>
                   {node.step}
                 </span>
-                <h3 className="text-lg font-bold text-white font-display">{node.subtitle}</h3>
-                <p className="text-xs text-[#A5AFBD] leading-relaxed">{node.desc}</p>
+                <h3 className="text-lg font-semibold text-[#1D1D1F]">{node.subtitle}</h3>
+                <p className="text-xs text-[#6E6E73] leading-relaxed">{node.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#11151C]/60 border border-[#303A48] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-xs font-mono text-[#A5AFBD] uppercase tracking-wider">Engineering Status</span>
-              <p className="text-sm font-medium text-white">
+          <div className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center sm:text-left">
+              <span className="text-xs font-semibold text-[#6E6E73] uppercase tracking-wider">Engineering Status</span>
+              <p className="text-sm font-medium text-[#1D1D1F]">
                 Contactless Hall-effect array and ESP32-C3 firmware validated. Companion OS automations in active engineering.
               </p>
             </div>
             <Link
               href="/hardware"
-              className="px-6 py-2.5 rounded-full text-xs font-mono text-white bg-[#1B222D] hover:bg-[#303A48] border border-[#303A48] transition-colors shrink-0 flex items-center gap-2"
+              className="btn-secondary text-xs px-5 py-2.5 shrink-0 flex items-center gap-2"
             >
               <span>Explore Hardware Specs</span>
               <ArrowUpRight size={14} />
@@ -409,14 +409,14 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 6: PRACTICAL STRATEGIES ── */}
-      <section className="py-24 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
-        <div className="max-w-[1200px] mx-auto space-y-12">
+      <section className="py-24 px-6 md:px-12 bg-[#F8F9FA] border-y border-[#E5E5E7]">
+        <div className="max-w-[1120px] mx-auto space-y-12">
           <div className="max-w-2xl space-y-4">
-            <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Section 06</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider">Section 06</span>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
               Actionable focus strategies you can use today.
             </h2>
-            <p className="text-[#A5AFBD] leading-relaxed">
+            <p className="text-[#6E6E73] leading-relaxed">
               Reclaiming attention does not require purchasing any device. You can begin redesigning your digital workspace immediately with these evidence-backed protocols:
             </p>
           </div>
@@ -440,20 +440,20 @@ export default function DigitalDistractionPage() {
                 desc: "Before opening a text editor or IDE, write your single target objective on a physical index card. Place the card immediately below your monitor as an external visual anchor.",
               },
             ].map((strategy, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-3">
-                <CheckCircle2 size={20} className="text-[#35C98A]" />
-                <h3 className="text-base font-bold text-white font-display">{strategy.title}</h3>
-                <p className="text-sm text-[#A5AFBD] leading-relaxed">{strategy.desc}</p>
+              <div key={idx} className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-3">
+                <CheckCircle2 size={20} className="text-[#12B76A]" />
+                <h3 className="text-base font-semibold text-[#1D1D1F]">{strategy.title}</h3>
+                <p className="text-sm text-[#6E6E73] leading-relaxed">{strategy.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="pt-4 text-center">
             <Link
-              href="/focus"
-              className="inline-flex items-center gap-2 text-sm font-mono text-[#D83A50] hover:underline"
+              href="/journal"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#C93E50] hover:underline"
             >
-              <span>Explore our comprehensive Discipline & Focus Resource Hub</span>
+              <span>Explore our comprehensive Discipline & Focus Research</span>
               <ArrowRight size={15} />
             </Link>
           </div>
@@ -461,14 +461,14 @@ export default function DigitalDistractionPage() {
       </section>
 
       {/* ── SECTION 7: JOIN DEVELOPMENT JOURNEY ── */}
-      <section className="py-28 px-6 md:px-12 max-w-[900px] mx-auto text-center space-y-8">
-        <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest block">
+      <section className="py-28 px-6 md:px-12 max-w-[800px] mx-auto text-center space-y-8">
+        <span className="text-xs font-semibold text-[#C93E50] uppercase tracking-wider block">
           Take Back Control of Your Attention
         </span>
-        <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white uppercase">
-          Reclaim Your Attention.
+        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#1D1D1F]">
+          Reclaim your attention.
         </h2>
-        <p className="text-lg text-[#A5AFBD] leading-relaxed max-w-xl mx-auto">
+        <p className="text-lg text-[#6E6E73] leading-relaxed max-w-xl mx-auto">
           Follow the development of Nexus Ring. Receive genuine prototype milestones, CAD engineering updates, and early notification when the crowdfunding campaign launches.
         </p>
 
@@ -476,21 +476,21 @@ export default function DigitalDistractionPage() {
           <button
             type="button"
             onClick={() => setShowModal(true)}
-            className="w-full sm:w-auto px-10 py-4 rounded-full font-bold text-base tracking-wide text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_30px_rgba(255,64,90,0.4)] cursor-pointer flex items-center justify-center gap-2"
+            className="w-full sm:w-auto btn-accent px-8 py-3.5 cursor-pointer flex items-center justify-center gap-2"
           >
             <span>Join Early Access</span>
             <ChevronRight size={18} />
           </button>
           <Link
             href="/journal"
-            className="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto btn-secondary px-8 py-3.5 flex items-center justify-center gap-2"
           >
             <BookOpen size={16} />
             <span>Read The Focus Journal</span>
           </Link>
         </div>
 
-        <p className="text-xs font-mono text-[#A5AFBD] pt-2">
+        <p className="text-xs text-[#6E6E73] pt-2">
           Free waitlist. Zero payment required. Unsubscribe anytime.
         </p>
       </section>

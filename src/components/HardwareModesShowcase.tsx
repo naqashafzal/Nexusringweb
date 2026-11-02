@@ -47,10 +47,10 @@ const MODES_DATA: ModeDetail[] = [
     slot: "SLOT 01",
     name: "Deep Work",
     tagline: "Designed for distraction-free concentration.",
-    accent: "#D83A50",
-    glow: "rgba(216,58,80,0.15)",
-    border: "rgba(216,58,80,0.3)",
-    bg: "rgba(216,58,80,0.04)",
+    accent: "#C93E50",
+    glow: "rgba(201,62,80,0.08)",
+    border: "#E5E5E7",
+    bg: "#FDF8F9",
     icon: ShieldAlert,
     angle: 0,
     specs: [
@@ -78,10 +78,10 @@ const MODES_DATA: ModeDetail[] = [
     slot: "SLOT 02",
     name: "Creative Mode",
     tagline: "Prepare a workspace for designing, exploring, and building.",
-    accent: "#F5F6F8",
-    glow: "rgba(245,246,248,0.12)",
-    border: "rgba(245,246,248,0.2)",
-    bg: "rgba(245,246,248,0.03)",
+    accent: "#1D1D1F",
+    glow: "rgba(29,29,31,0.06)",
+    border: "#E5E5E7",
+    bg: "#FAFAFA",
     icon: Sparkles,
     angle: 90,
     specs: [
@@ -109,10 +109,10 @@ const MODES_DATA: ModeDetail[] = [
     slot: "SLOT 03",
     name: "Meeting Mode",
     tagline: "Switch into a communication-focused setup.",
-    accent: "#35C98A",
-    glow: "rgba(53,201,138,0.15)",
-    border: "rgba(53,201,138,0.3)",
-    bg: "rgba(53,201,138,0.04)",
+    accent: "#34A853",
+    glow: "rgba(52,168,83,0.08)",
+    border: "#E5E5E7",
+    bg: "#F6FBF7",
     icon: MicOff,
     angle: 180,
     specs: [
@@ -140,10 +140,10 @@ const MODES_DATA: ModeDetail[] = [
     slot: "SLOT 04",
     name: "Break Mode",
     tagline: "Create a deliberate boundary between work and recovery.",
-    accent: "#F0B35A",
-    glow: "rgba(240,179,90,0.15)",
-    border: "rgba(240,179,90,0.3)",
-    bg: "rgba(240,179,90,0.04)",
+    accent: "#FBBC04",
+    glow: "rgba(251,188,4,0.08)",
+    border: "#E5E5E7",
+    bg: "#FEFAF0",
     icon: Coffee,
     angle: 270,
     specs: [
@@ -216,26 +216,26 @@ export default function HardwareModesShowcase() {
               onClick={() => setActiveModeIndex(idx)}
               className={`p-5 rounded-2xl border text-left transition-all duration-150 relative overflow-hidden cursor-pointer ${
                 isActive
-                  ? "border-[#D83A50] bg-[#1B222D] shadow-lg"
-                  : "border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]"
+                  ? "border-[#1D1D1F] bg-[#FFFFFF] shadow-md ring-1 ring-[#1D1D1F]"
+                  : "border-[#E5E5E7] bg-[#F5F5F7] hover:bg-[#FFFFFF] hover:border-[#D2D2D7]"
               }`}
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono tracking-widest text-[#778292] uppercase">
+                <span className="text-[11px] font-medium tracking-tight text-[#86868B]">
                   {mode.slot}
                 </span>
                 <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
                   style={{
-                    backgroundColor: isActive ? mode.accent + "20" : "#080A0E",
-                    color: isActive ? mode.accent : "#A5AFBD",
+                    backgroundColor: isActive ? mode.accent + "15" : "#E5E5E7",
+                    color: isActive ? mode.accent : "#6E6E73",
                   }}
                 >
-                  <ModeIcon size={16} />
+                  <ModeIcon size={15} />
                 </div>
               </div>
-              <h3 className="font-display font-bold text-base text-[#F5F6F8] mb-1">{mode.name}</h3>
-              <p className="text-xs text-[#A5AFBD] font-light line-clamp-2">{mode.tagline}</p>
+              <h3 className="font-semibold text-[15px] text-[#1D1D1F] mb-1">{mode.name}</h3>
+              <p className="text-xs text-[#6E6E73] font-normal line-clamp-2 leading-relaxed">{mode.tagline}</p>
             </button>
           );
         })}
@@ -249,38 +249,38 @@ export default function HardwareModesShowcase() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="rounded-3xl border border-[#303A48] bg-[#11151C] p-6 md:p-10 shadow-2xl relative overflow-hidden"
+          className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] p-6 md:p-10 shadow-sm relative overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Left Column: Mode Concept & Hardware Spec (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#303A48] bg-[#080A0E] text-[10px] font-mono tracking-widest uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: currentMode.accent }} />
-                  <span style={{ color: currentMode.accent }}>{currentMode.slot} Active</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[11px] font-medium">
+                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: currentMode.accent }} />
+                  <span className="text-[#1D1D1F]">{currentMode.slot} Active</span>
                 </div>
-                <h3 className="text-3xl font-display font-black text-[#F5F6F8]">{currentMode.name}</h3>
-                <p className="text-sm text-[#A5AFBD] font-light leading-relaxed">{currentMode.tagline}</p>
+                <h3 className="text-3xl font-semibold tracking-tight text-[#1D1D1F]">{currentMode.name}</h3>
+                <p className="text-sm text-[#6E6E73] font-normal leading-relaxed">{currentMode.tagline}</p>
               </div>
 
               {/* Hardware Parameters */}
-              <div className="p-5 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-3">
-                <span className="text-[10px] font-mono text-[#778292] uppercase tracking-widest block">
+              <div className="p-5 rounded-2xl border border-[#E5E5E7] bg-[#F5F5F7] space-y-3">
+                <span className="text-xs font-semibold text-[#1D1D1F] block">
                   Configuration Targets
                 </span>
                 <div className="grid grid-cols-2 gap-3">
                   {currentMode.specs.map((s) => (
                     <div key={s.label} className="space-y-0.5">
-                      <p className="text-[10px] font-mono text-[#778292]">{s.label}</p>
-                      <p className="text-xs font-semibold text-[#F5F6F8]">{s.value}</p>
+                      <p className="text-[11px] text-[#86868B]">{s.label}</p>
+                      <p className="text-xs font-medium text-[#1D1D1F]">{s.value}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl border border-[#303A48] bg-[#1B222D] text-xs text-[#A5AFBD] flex items-start gap-2.5">
-                <Info size={16} className="text-[#D83A50] shrink-0 mt-0.5" />
+              <div className="p-4 rounded-xl border border-[#E5E5E7] bg-[#F8F9FA] text-xs text-[#6E6E73] flex items-start gap-2.5">
+                <Info size={16} className="text-[#C93E50] shrink-0 mt-0.5" />
                 <span>
                   Actions labeled <strong>Validated</strong> represent confirmed prototype capabilities. Features labeled <strong>Preview</strong> or <strong>Planned</strong> are currently undergoing testing in Nexus Companion.
                 </span>
@@ -289,38 +289,38 @@ export default function HardwareModesShowcase() {
 
             {/* Right Column: Simulated OS Companion Response (7 cols) */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="rounded-2xl border border-[#303A48] bg-[#080A0E] p-5 space-y-4">
-                <div className="flex items-center justify-between border-b border-[#303A48] pb-3">
+              <div className="rounded-2xl border border-[#E5E5E7] bg-[#F5F5F7] p-5 space-y-4">
+                <div className="flex items-center justify-between border-b border-[#E5E5E7] pb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-                    <span className="text-xs font-mono font-bold text-[#F5F6F8] ml-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                    <span className="text-xs font-semibold text-[#1D1D1F] ml-2">
                       {currentMode.osData.title}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono px-2 py-0.5 rounded border border-[#303A48] bg-[#1B222D] text-[#A5AFBD]">
+                  <span className="text-[10px] font-medium px-2 py-0.5 rounded border border-[#E5E5E7] bg-[#FFFFFF] text-[#6E6E73]">
                     {currentMode.osData.statusBadge}
                   </span>
                 </div>
 
-                <p className="text-xs font-mono text-[#A5AFBD] border-l-2 border-[#D83A50] pl-3 py-0.5">
+                <p className="text-xs text-[#1D1D1F] border-l-2 border-[#C93E50] pl-3 py-0.5 font-normal">
                   {currentMode.osData.logMessage}
                 </p>
 
                 {/* Simulated Mode Specific Visuals */}
                 {currentMode.osData.blockedDomains && (
                   <div className="space-y-2 pt-2">
-                    <span className="text-[10px] font-mono text-[#778292] uppercase tracking-wider block">
+                    <span className="text-xs text-[#86868B] block font-medium">
                       Configured Domain Filters (Simulation)
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {currentMode.osData.blockedDomains.map((dom) => (
                         <span
                           key={dom}
-                          className="px-2.5 py-1 rounded-lg border border-[#303A48] bg-[#11151C] text-[#A5AFBD] font-mono text-xs flex items-center gap-1.5"
+                          className="px-2.5 py-1 rounded-lg border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] text-xs flex items-center gap-1.5 font-normal"
                         >
-                          <Lock size={11} className="text-[#D83A50]" />
+                          <Lock size={11} className="text-[#C93E50]" />
                           <span>{dom}</span>
                         </span>
                       ))}
@@ -329,36 +329,36 @@ export default function HardwareModesShowcase() {
                 )}
 
                 {currentMode.id === "break" && (
-                  <div className="p-4 rounded-xl border border-[#303A48] bg-[#11151C] flex items-center justify-between">
+                  <div className="p-4 rounded-xl border border-[#E5E5E7] bg-[#FFFFFF] flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] text-[#778292] uppercase tracking-widest font-mono mb-0.5">
+                      <p className="text-[11px] text-[#86868B] font-medium mb-0.5">
                         Recovery Session Timer
                       </p>
-                      <p className="text-2xl font-display font-bold text-[#F5F6F8] tracking-wider">
+                      <p className="text-2xl font-semibold text-[#1D1D1F] tracking-tight">
                         {formatTimer(timerSeconds)}
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setIsTimerRunning(!isTimerRunning)}
-                      className="px-4 py-2 rounded-xl border border-[#303A48] bg-[#1B222D] text-[#F5F6F8] text-xs font-mono font-semibold flex items-center gap-2 hover:border-[#D83A50] transition-colors cursor-pointer"
+                      className="px-4 py-2 rounded-xl border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] text-xs font-medium flex items-center gap-2 hover:bg-[#EAEAEA] transition-colors cursor-pointer"
                     >
                       {isTimerRunning ? <Pause size={13} /> : <Play size={13} />}
-                      {isTimerRunning ? "PAUSE" : "START"}
+                      {isTimerRunning ? "Pause" : "Start"}
                     </button>
                   </div>
                 )}
 
                 {currentMode.osData.activeApps && (
-                  <div className="pt-2 border-t border-[#303A48]">
-                    <span className="text-[10px] font-mono text-[#778292] uppercase tracking-wider block mb-2">
+                  <div className="pt-2 border-t border-[#E5E5E7]">
+                    <span className="text-xs text-[#86868B] block mb-2 font-medium">
                       Target Workspace Applications:
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {currentMode.osData.activeApps.map((app) => (
                         <span
                           key={app}
-                          className="px-2.5 py-1 rounded-lg border border-[#303A48] bg-[#1B222D] text-[#F5F6F8] text-xs font-mono"
+                          className="px-2.5 py-1 rounded-lg border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] text-xs font-normal"
                         >
                           ✓ {app}
                         </span>
@@ -370,8 +370,8 @@ export default function HardwareModesShowcase() {
 
               {/* Action Webhook Toggles */}
               <div className="space-y-2">
-                <span className="text-[11px] font-mono text-[#A5AFBD] uppercase tracking-wider flex items-center gap-1.5">
-                  <SlidersHorizontal size={12} className="text-[#D83A50]" />
+                <span className="text-xs text-[#6E6E73] font-medium flex items-center gap-1.5">
+                  <SlidersHorizontal size={13} className="text-[#C93E50]" />
                   <span>Configurable Profile Hooks (Click to toggle):</span>
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -384,26 +384,26 @@ export default function HardwareModesShowcase() {
                         onClick={() => toggleAction(act.text)}
                         className={`p-3 rounded-xl border text-left transition-all duration-150 flex items-start justify-between gap-3 cursor-pointer ${
                           active
-                            ? "border-[#303A48] bg-[#080A0E] hover:border-[#D83A50]/50"
-                            : "border-[#303A48]/50 bg-[#080A0E]/50 opacity-60"
+                            ? "border-[#E5E5E7] bg-[#FFFFFF] shadow-sm hover:border-[#D2D2D7]"
+                            : "border-[#E5E5E7]/60 bg-[#F5F5F7] opacity-60"
                         }`}
                       >
                         <div className="space-y-1 flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-[9px] font-mono tracking-widest uppercase px-1.5 py-0.5 rounded border border-[#303A48] bg-[#11151C] text-[#A5AFBD]">
+                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73]">
                               {act.category}
                             </span>
-                            <span className="text-[9px] font-mono text-[#778292]">
+                            <span className="text-[10px] text-[#86868B]">
                               {act.status}
                             </span>
                           </div>
-                          <p className="text-xs text-[#F5F6F8] leading-snug">{act.text}</p>
+                          <p className="text-xs text-[#1D1D1F] leading-snug">{act.text}</p>
                         </div>
                         <div
                           className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
                             active
-                              ? "border-[#D83A50] bg-[#D83A50] text-white"
-                              : "border-[#303A48] bg-transparent text-transparent"
+                              ? "border-[#1D1D1F] bg-[#1D1D1F] text-white"
+                              : "border-[#D2D2D7] bg-transparent text-transparent"
                           }`}
                         >
                           {active && <CheckCircle2 size={12} />}

@@ -95,42 +95,40 @@ export default function FeaturesPage() {
   const currentMode = MODES_DATA[activeModeIdx];
 
   return (
-    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/30 selection:text-white">
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
-
+    <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* 1. HERO SECTION */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28 text-center">
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto space-y-6 relative z-10"
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto space-y-5 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Feature Architecture
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white">
-            ONE PHYSICAL MOVE.<br />
-            <span className="text-[#A5AFBD]">DELIBERATE DIGITAL CLARITY.</span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold tracking-tight text-[#1D1D1F]">
+            One physical move.<br />Deliberate digital clarity.
           </h1>
 
-          <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Place the weighted magnetic totem into position. Nexus reads the physical mode and enforces your workspace profile—closing distractions, launching tools, and establishing clear boundaries.
+          <p className="text-[#6E6E73] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+            Place the weighted magnetic totem into position. Nexus reads the physical mode and enforces your workspace profile — closing distractions, launching tools, and establishing clear boundaries.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <a
               href="#interactive-modes"
-              className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2"
+              className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
             >
-              Explore the Modes <ChevronRight size={16} />
+              <span>Explore the Modes</span>
+              <ChevronRight size={14} />
             </a>
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] font-mono text-xs tracking-wider transition-all cursor-pointer"
+              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5E7] text-sm font-medium transition-all cursor-pointer"
             >
               Join Early Access
             </button>
@@ -145,9 +143,9 @@ export default function FeaturesPage() {
             { t: "Configurable Profiles", d: "Define which tools, filters, and timers each mode controls." },
             { t: "Screen-Free Feedback", d: "Glanceable ambient glow without another demanding display." },
           ].map((item) => (
-            <div key={item.t} className="p-5 border border-[#303A48] bg-[#11151C] rounded-2xl">
-              <h4 className="text-white font-bold text-sm mb-1">{item.t}</h4>
-              <p className="text-xs text-[#A5AFBD] leading-relaxed font-light">{item.d}</p>
+            <div key={item.t} className="p-5 border border-[#E5E5E7] bg-[#F8F9FA] rounded-2xl shadow-xs">
+              <h4 className="text-[#1D1D1F] font-bold text-sm mb-1">{item.t}</h4>
+              <p className="text-xs text-[#6E6E73] leading-relaxed font-light">{item.d}</p>
             </div>
           ))}
         </div>
@@ -157,8 +155,8 @@ export default function FeaturesPage() {
       <section id="interactive-modes" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* 3D Canvas with overlay */}
-          <div className="h-[520px] rounded-3xl border border-[#303A48] bg-[#11151C] relative overflow-hidden flex flex-col justify-end p-6">
-            <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#A5AFBD] tracking-widest uppercase bg-[#080A0E]/80 px-3 py-1.5 rounded-full border border-[#303A48]">
+          <div className="h-[520px] rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] relative overflow-hidden flex flex-col justify-end p-6 shadow-sm">
+            <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#6E6E73] tracking-widest uppercase bg-[#FFFFFF]/90 px-3.5 py-1.5 rounded-full border border-[#E5E5E7] backdrop-blur-md shadow-xs">
               Interactive 3D Hardware Model
             </div>
             <div className="absolute inset-0 z-10">
@@ -166,16 +164,17 @@ export default function FeaturesPage() {
             </div>
 
             {/* Mode selection buttons overlay */}
-            <div className="relative z-20 flex gap-2 justify-center w-full bg-[#080A0E]/90 backdrop-blur-md p-2 rounded-2xl border border-[#303A48]">
+            <div className="relative z-20 flex gap-2 justify-center w-full bg-[#FFFFFF]/90 backdrop-blur-md p-2 rounded-2xl border border-[#E5E5E7] shadow-sm">
               {MODES_DATA.map((mode, idx) => (
                 <button
                   key={mode.id}
                   type="button"
                   onClick={() => setActiveModeIdx(idx)}
-                  className={`flex-1 py-2.5 px-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${activeModeIdx === idx
-                      ? "bg-white text-black shadow-lg"
-                      : "text-[#A5AFBD] hover:text-white"
-                    }`}
+                  className={`flex-1 py-2.5 px-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+                    activeModeIdx === idx
+                      ? "bg-[#1D1D1F] text-white shadow-sm"
+                      : "text-[#6E6E73] hover:text-[#1D1D1F]"
+                  }`}
                 >
                   {mode.name.toUpperCase()}
                 </button>
@@ -192,35 +191,35 @@ export default function FeaturesPage() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -15 }}
                 transition={{ duration: 0.25 }}
-                className="p-8 rounded-3xl border border-[#303A48] bg-[#11151C] relative overflow-hidden"
+                className="p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] relative overflow-hidden shadow-sm"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: currentMode.color }} />
-                  <span className="font-mono text-xs tracking-widest uppercase text-white font-bold">
+                  <span className="font-mono text-xs tracking-widest uppercase text-[#1D1D1F] font-bold">
                     {currentMode.name} Active
                   </span>
-                  <span className="text-[10px] font-mono text-[#A5AFBD] ml-auto">
+                  <span className="text-[10px] font-mono text-[#86868B] ml-auto">
                     {currentMode.status}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-display font-bold text-white mb-2">{currentMode.name}</h3>
-                <p className="text-sm text-[#A5AFBD] mb-6 font-light">{currentMode.tagline}</p>
+                <h3 className="text-2xl font-display font-bold text-[#1D1D1F] mb-2">{currentMode.name}</h3>
+                <p className="text-sm text-[#6E6E73] mb-6 font-light">{currentMode.tagline}</p>
 
-                <div className="space-y-2.5 font-mono text-xs">
+                <div className="space-y-2.5 text-xs text-[#1D1D1F]">
                   {currentMode.actions.map((action, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 p-3 rounded-xl border border-[#303A48] bg-[#080A0E] text-[#F5F6F8]"
+                      className="flex items-center gap-3 p-3.5 rounded-xl border border-[#E5E5E7] bg-[#F8F9FA]"
                     >
-                      <CheckCircle2 size={15} style={{ color: currentMode.color }} />
+                      <CheckCircle2 size={16} style={{ color: currentMode.color }} className="shrink-0" />
                       <span>{action.text}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#303A48] flex items-center gap-2 text-xs text-[#A5AFBD]">
-                  <Info size={14} className="text-[#D83A50] shrink-0" />
+                <div className="mt-6 pt-4 border-t border-[#E5E5E7] flex items-center gap-2 text-xs text-[#86868B]">
+                  <Info size={14} className="text-[#C93E50] shrink-0" />
                   <span>Configurable profile actions in active companion development.</span>
                 </div>
               </motion.div>
@@ -230,47 +229,47 @@ export default function FeaturesPage() {
       </section>
 
       {/* 3. PLATFORM ECOSYSTEM */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
+      <section className="relative max-w-[1040px] mx-auto px-6 md:px-12 mb-28">
         <div className="text-center mb-12 space-y-2">
           <span className="eyebrow block">Target Environments</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F]">
             Ecosystem Vision.
           </h2>
-          <p className="text-xs sm:text-sm text-[#A5AFBD]">
+          <p className="text-sm text-[#6E6E73] font-light">
             Nexus begins at your desk with direct desktop operating system integration.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
-            <Monitor className="text-[#D83A50] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Desktop (Core)</h4>
-            <span className="text-[10px] font-mono bg-[#D83A50]/10 text-[#D83A50] px-2 py-0.5 rounded border border-[#D83A50]/30 inline-block">
+          <div className="p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] space-y-2 shadow-sm">
+            <Monitor className="text-[#C93E50] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-[#1D1D1F]">Desktop (Core)</h4>
+            <span className="text-[10px] font-mono bg-[#FDF2F4] text-[#C93E50] px-2.5 py-0.5 rounded-full border border-[#C93E50]/20 inline-block font-semibold">
               Primary Platform
             </span>
-            <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
+            <p className="text-xs text-[#6E6E73] leading-relaxed pt-2 font-light">
               Windows, macOS, and Linux support. Manages local apps, website filters, notifications, timers, and shell scripts.
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
-            <Smartphone className="text-[#A5AFBD] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Mobile Companion</h4>
-            <span className="text-[10px] font-mono bg-[#1B222D] text-[#A5AFBD] px-2 py-0.5 rounded border border-[#303A48] inline-block">
+          <div className="p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] space-y-2 shadow-sm">
+            <Smartphone className="text-[#6E6E73] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-[#1D1D1F]">Mobile Companion</h4>
+            <span className="text-[10px] font-mono bg-[#F5F5F7] text-[#6E6E73] px-2.5 py-0.5 rounded-full border border-[#E5E5E7] inline-block font-semibold">
               Planned
             </span>
-            <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
+            <p className="text-xs text-[#6E6E73] leading-relaxed pt-2 font-light">
               Potential state sync for mobile Focus modes and notification rules via supported iOS/Android system APIs.
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
-            <HomeIcon className="text-[#A5AFBD] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Workspace IoT</h4>
-            <span className="text-[10px] font-mono bg-[#1B222D] text-[#A5AFBD] px-2 py-0.5 rounded border border-[#303A48] inline-block">
+          <div className="p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] space-y-2 shadow-sm">
+            <HomeIcon className="text-[#6E6E73] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-[#1D1D1F]">Workspace IoT</h4>
+            <span className="text-[10px] font-mono bg-[#F5F5F7] text-[#6E6E73] px-2.5 py-0.5 rounded-full border border-[#E5E5E7] inline-block font-semibold">
               Planned
             </span>
-            <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
+            <p className="text-xs text-[#6E6E73] leading-relaxed pt-2 font-light">
               Future webhook integration for smart desk lighting, Home Assistant routines, and external hardware status indicators.
             </p>
           </div>
@@ -278,25 +277,25 @@ export default function FeaturesPage() {
       </section>
 
       {/* 4. CLOSING CTA */}
-      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 text-center bg-[#11151C] border border-[#303A48] p-12 md:p-20 rounded-3xl">
-        <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-4 uppercase tracking-tight">
+      <section className="relative max-w-[960px] mx-auto px-6 md:px-12 text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-18 rounded-3xl shadow-sm">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-4 tracking-tight">
           Your attention deserves an off-switch.
         </h2>
-        <p className="text-[#A5AFBD] text-sm md:text-base mb-8 max-w-xl mx-auto font-light leading-relaxed">
+        <p className="text-[#6E6E73] text-base md:text-lg mb-8 max-w-xl mx-auto font-light leading-relaxed">
           Deep work shouldn&apos;t begin with fighting distractions. A break shouldn&apos;t be interrupted by work notifications. Nexus Ring turns those boundaries into something physical.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-3">
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer"
+            className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm cursor-pointer"
           >
             Join the Waitlist
           </button>
           <Link
             href="/hardware"
-            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
+            className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-all text-sm font-medium"
           >
             Explore Hardware Details
           </Link>

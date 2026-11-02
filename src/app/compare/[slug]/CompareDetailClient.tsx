@@ -22,56 +22,53 @@ export default function CompareDetailClient({
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/30 selection:text-white">
-      {/* Background Dot Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
-
+    <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* ════════════════ BREADCRUMBS ═════════════════════════════ */}
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 mb-8">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
-          <Link href="/" className="hover:text-white transition-colors">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-12 mb-8">
+        <div className="flex items-center gap-2 text-xs text-[#6E6E73]">
+          <Link href="/" className="hover:text-[#1D1D1F] transition-colors">
             Home
           </Link>
           <ChevronRight size={12} />
-          <Link href="/compare" className="hover:text-white transition-colors">
+          <Link href="/compare" className="hover:text-[#1D1D1F] transition-colors">
             Compare
           </Link>
           <ChevronRight size={12} />
-          <span className="text-[#D83A50] truncate">VS {comparison.competitorName}</span>
+          <span className="text-[#C93E50] font-medium truncate">VS {comparison.competitorName}</span>
         </div>
       </div>
 
       {/* ════════════════ HERO SECTION ═════════════════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-16">
+      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-16">
         <div className="space-y-6 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-medium tracking-wide uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Technical &amp; Workflow Comparison
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-tight text-white leading-[1.05]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-[#1D1D1F] leading-[1.05]">
             {comparison.heroTitle}
           </h1>
 
-          <p className="text-lg sm:text-xl text-[#A5AFBD] font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#6E6E73] leading-relaxed">
             {comparison.heroSubtitle}
           </p>
         </div>
       </section>
 
       {/* ════════════════ COMPARISON TABLE (MATRIX) ════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-6 md:p-10 shadow-2xl relative overflow-hidden">
-          <div className="flex items-center justify-between pb-6 border-b border-[#303A48]">
+      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-20">
+        <div className="surface-card rounded-3xl border border-[#E5E5E7] p-6 md:p-10 shadow-sm relative overflow-hidden">
+          <div className="flex items-center justify-between pb-6 border-b border-[#E5E5E7]">
             <div>
-              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">
+              <span className="text-[11px] font-medium text-[#C93E50] uppercase tracking-wide block">
                 Direct Feature Matrix
               </span>
-              <h2 className="text-2xl font-display font-bold text-white">
+              <h2 className="text-2xl font-semibold text-[#1D1D1F]">
                 Nexus Ring vs. {comparison.competitorName}
               </h2>
             </div>
-            <span className="hidden sm:inline-block text-xs font-mono text-[#A5AFBD]">
+            <span className="hidden sm:inline-block text-xs text-[#6E6E73]">
               Hardware &amp; Software Architecture
             </span>
           </div>
@@ -79,27 +76,27 @@ export default function CompareDetailClient({
           <div className="overflow-x-auto mt-6">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-[#303A48] text-xs font-mono text-[#A5AFBD]">
-                  <th className="py-4 pr-6 font-medium">CRITERIA</th>
-                  <th className="py-4 px-6 text-[#D83A50] font-bold">NEXUS RING</th>
-                  <th className="py-4 pl-6 text-[#A5AFBD] font-medium">{comparison.competitorName.toUpperCase()}</th>
+                <tr className="border-b border-[#E5E5E7] text-xs text-[#6E6E73]">
+                  <th className="py-4 pr-6 font-semibold uppercase tracking-wider">Criteria</th>
+                  <th className="py-4 px-6 text-[#C93E50] font-semibold uppercase tracking-wider">Nexus Ring</th>
+                  <th className="py-4 pl-6 text-[#6E6E73] font-semibold uppercase tracking-wider">{comparison.competitorName.toUpperCase()}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#303A48] text-sm">
+              <tbody className="divide-y divide-[#E5E5E7] text-sm">
                 {comparison.comparisonMatrix.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-[#1B222D] transition-colors">
-                    <td className="py-4 pr-6 font-mono text-xs text-white whitespace-nowrap">
+                  <tr key={idx} className="hover:bg-[#F8F9FA] transition-colors">
+                    <td className="py-4 pr-6 font-medium text-xs text-[#1D1D1F] whitespace-nowrap">
                       {row.feature}
                     </td>
-                    <td className="py-4 px-6 font-medium text-white">
+                    <td className="py-4 px-6 font-medium text-[#1D1D1F]">
                       <div className="flex items-start gap-2">
-                        <CheckCircle2 size={16} className="shrink-0 mt-0.5 text-[#35C98A]" />
+                        <CheckCircle2 size={16} className="shrink-0 mt-0.5 text-[#12B76A]" />
                         <span>{row.nexusRing}</span>
                       </div>
                     </td>
-                    <td className="py-4 pl-6 text-[#A5AFBD]">
+                    <td className="py-4 pl-6 text-[#6E6E73]">
                       <div className="flex items-start gap-2">
-                        <XCircle size={16} className="shrink-0 mt-0.5 text-[#D83A50]" />
+                        <XCircle size={16} className="shrink-0 mt-0.5 text-[#C93E50]" />
                         <span>{row.competitor}</span>
                       </div>
                     </td>
@@ -112,44 +109,44 @@ export default function CompareDetailClient({
       </section>
 
       {/* ════════════════ COGNITIVE SCIENCE ANALYSIS ═══════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
-        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 md:p-12 relative overflow-hidden shadow-xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#D83A50] mb-4">
+      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-20">
+        <div className="rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] p-8 md:p-12 relative overflow-hidden shadow-sm">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#C93E50] mb-4">
             <Brain size={16} />
             <span>BEHAVIORAL PSYCHOLOGY &amp; INTERFACE DESIGN</span>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-display font-bold text-white tracking-tight mb-6">
+          <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] tracking-tight mb-6">
             Digital Switches vs. Physical Anchors
           </h3>
 
-          <div className="text-[#A5AFBD] font-light leading-relaxed space-y-4 text-base md:text-lg">
+          <div className="text-[#6E6E73] leading-relaxed space-y-4 text-base md:text-lg">
             <p>{comparison.cognitiveAnalysis}</p>
           </div>
 
-          <div className="mt-8 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E] flex items-center justify-between text-xs font-mono text-[#A5AFBD]">
-            <span>DESIGNED FOR:</span>
-            <span className="text-white font-bold">{comparison.targetPersona}</span>
+          <div className="mt-8 p-4 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] flex items-center justify-between text-xs text-[#6E6E73]">
+            <span className="font-semibold uppercase tracking-wider">Designed For:</span>
+            <span className="text-[#1D1D1F] font-semibold">{comparison.targetPersona}</span>
           </div>
         </div>
       </section>
 
       {/* ════════════════ PROS & CONS BREAKDOWN ════════════════════ */}
-      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20">
+      <section className="relative max-w-[1120px] mx-auto px-6 md:px-12 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Nexus Ring Advantages */}
-          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#35C98A]">
+          <div className="surface-card rounded-3xl border border-[#E5E5E7] p-8 space-y-6">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#12B76A]">
               <Sparkles size={16} />
               <span>THE NEXUS RING ADVANTAGE</span>
             </div>
-            <h4 className="text-2xl font-display font-bold text-white">
+            <h4 className="text-2xl font-semibold text-[#1D1D1F]">
               Why Creators Choose Physical Boundaries
             </h4>
             <ul className="space-y-3">
               {comparison.nexusAdvantages.map((adv, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-[#F5F6F8] font-light">
-                  <CheckCircle2 size={16} className="text-[#35C98A] shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#1D1D1F]">
+                  <CheckCircle2 size={16} className="text-[#12B76A] shrink-0 mt-0.5" />
                   <span>{adv}</span>
                 </li>
               ))}
@@ -157,18 +154,18 @@ export default function CompareDetailClient({
           </div>
 
           {/* Competitor Pitfalls */}
-          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#D83A50]">
+          <div className="surface-card rounded-3xl border border-[#E5E5E7] p-8 space-y-6">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#C93E50]">
               <XCircle size={16} />
               <span>LIMITATIONS OF {comparison.competitorName.toUpperCase()}</span>
             </div>
-            <h4 className="text-2xl font-display font-bold text-white">
+            <h4 className="text-2xl font-semibold text-[#1D1D1F]">
               Where {comparison.competitorName} Differs
             </h4>
             <ul className="space-y-3">
               {comparison.consCompetitor.map((con, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-[#A5AFBD] font-light">
-                  <XCircle size={16} className="text-[#D83A50] shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#6E6E73]">
+                  <XCircle size={16} className="text-[#C93E50] shrink-0 mt-0.5" />
                   <span>{con}</span>
                 </li>
               ))}
@@ -181,11 +178,11 @@ export default function CompareDetailClient({
       {comparison.faqs.length > 0 && (
         <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-20">
           <div className="text-center mb-10 space-y-2">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#A5AFBD]">
-              <HelpCircle size={14} className="text-[#D83A50]" />
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#6E6E73]">
+              <HelpCircle size={14} className="text-[#C93E50]" />
               <span>FREQUENTLY ASKED QUESTIONS</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-display font-bold text-white">
+            <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F]">
               Nexus Ring vs. {comparison.competitorName} FAQ
             </h3>
           </div>
@@ -196,18 +193,18 @@ export default function CompareDetailClient({
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-[#303A48] bg-[#11151C] p-6 transition-colors"
+                  className="surface-card rounded-2xl border border-[#E5E5E7] p-6 transition-colors"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left flex items-center justify-between gap-4 font-display font-bold text-base text-white hover:text-[#A5AFBD] transition-colors cursor-pointer"
+                    className="w-full text-left flex items-center justify-between gap-4 font-semibold text-base text-[#1D1D1F] hover:text-[#6E6E73] transition-colors cursor-pointer"
                   >
                     <span>{faq.question}</span>
-                    <span className="font-mono text-xs text-[#D83A50]">{isOpen ? "−" : "+"}</span>
+                    <span className="font-semibold text-base text-[#C93E50]">{isOpen ? "−" : "+"}</span>
                   </button>
                   {isOpen && (
-                    <p className="mt-4 text-sm text-[#A5AFBD] font-light leading-relaxed border-t border-[#303A48] pt-4">
+                    <p className="mt-4 text-sm text-[#6E6E73] leading-relaxed border-t border-[#E5E5E7] pt-4">
                       {faq.answer}
                     </p>
                   )}
@@ -219,17 +216,17 @@ export default function CompareDetailClient({
       )}
 
       {/* ════════════════ FINAL VERDICT & CTA ══════════════════════ */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12">
-        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 md:p-12 text-center space-y-6 shadow-2xl">
-          <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-[#D83A50]/30 bg-[#D83A50]/10 text-[#D83A50]">
+      <section className="relative max-w-[900px] mx-auto px-6 md:px-12">
+        <div className="rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] p-8 md:p-12 text-center space-y-6 shadow-sm">
+          <span className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full border border-[#C93E50]/20 bg-[#FDF2F4] text-[#C93E50]">
             The Engineering Verdict
           </span>
 
-          <h3 className="text-3xl md:text-4xl font-display font-black text-white tracking-tight">
-            Physical Intent. Digital Workspace Automation.
+          <h3 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
+            Physical intent. Digital workspace automation.
           </h3>
 
-          <p className="text-[#A5AFBD] text-base font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#6E6E73] text-base leading-relaxed max-w-2xl mx-auto">
             {comparison.verdict}
           </p>
 
@@ -237,13 +234,13 @@ export default function CompareDetailClient({
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-8 py-4 rounded-xl bg-[#D83A50] hover:bg-[#EB5268] text-white font-bold text-sm tracking-wide transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
+              className="btn-accent px-8 py-3.5 cursor-pointer flex items-center gap-2"
             >
               <span>Join Early Access Waitlist</span> <ChevronRight size={16} />
             </button>
             <Link
               href="/compare"
-              className="px-6 py-4 rounded-xl border border-[#303A48] bg-[#080A0E] hover:border-[#D83A50] text-xs font-mono text-[#A5AFBD] hover:text-white transition-colors"
+              className="btn-secondary px-6 py-3.5 text-xs font-medium"
             >
               Explore All Comparisons
             </Link>

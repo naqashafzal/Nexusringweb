@@ -10,33 +10,32 @@ export default function AboutPage() {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/30 selection:text-white">
-      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
-
+    <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
       {/* 1. HERO */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28 text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-20 text-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-5 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
             Vision &amp; Philosophy
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#F5F6F8] uppercase leading-[0.96]">
-            YOUR ATTENTION BELONGS TO YOU.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
+            Technology should work for you.
           </h1>
-          <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            We&apos;re building tools for a world where technology serves human intention.
+          <p className="text-[#6E6E73] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+            We&apos;re building physical and digital tools for a world where technology serves human purpose rather than competing for attention.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <Link
               href="/hardware"
-              className="px-8 py-3.5 rounded-full bg-[#D83A50] text-[#F5F6F8] font-semibold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(216,58,80,0.25)] flex items-center gap-2"
+              className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
             >
-              Explore the Hardware <ChevronRight size={15} />
+              <span>Explore the Hardware</span>
+              <ChevronRight size={14} />
             </Link>
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              className="px-8 py-3.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#F5F6F8] hover:border-[#A5AFBD] transition-all font-mono text-sm cursor-pointer"
+              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E5E5E7] text-sm font-medium transition-all cursor-pointer"
             >
               Join Early Access
             </button>
@@ -46,33 +45,33 @@ export default function AboutPage() {
 
       {/* 2. THE CORE PROBLEM */}
       <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-28 text-center space-y-6">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-white leading-tight">
+        <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F] leading-tight">
           The screen holding your ambition is the same one holding your distraction.
         </h2>
-        <p className="text-[#A5AFBD] text-base leading-relaxed max-w-2xl mx-auto">
+        <p className="text-[#6E6E73] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-light">
           The computer you use to design, write software, solve problems, and learn also contains endless feeds, notifications, and context switches.
         </p>
-        <p className="text-[#A5AFBD] text-base leading-relaxed max-w-2xl mx-auto">
+        <p className="text-[#6E6E73] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-light">
           The software industry&apos;s answer has often been another app: another digital toggle hidden inside the very screen demanding your attention.
         </p>
-        <p className="text-white text-lg font-bold leading-relaxed pt-2">
+        <p className="text-[#1D1D1F] text-lg font-semibold leading-relaxed pt-2">
           We asked a different question: What if the decision happened physically first?
         </p>
       </section>
 
       {/* 3. FOUNDER INSIGHT */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
-        <div className="p-8 md:p-12 border border-[#303A48] bg-[#11151C] rounded-3xl space-y-4">
+      <section className="relative max-w-[1040px] mx-auto px-6 md:px-12 mb-28">
+        <div className="p-8 md:p-12 border border-[#E5E5E7] bg-[#F8F9FA] rounded-3xl space-y-4 shadow-sm">
           <span className="eyebrow block">The Origin</span>
-          <h3 className="text-2xl font-bold text-white">Why software blockers fail alone.</h3>
-          <div className="space-y-4 text-sm text-[#A5AFBD] leading-relaxed font-light">
+          <h3 className="text-2xl font-bold text-[#1D1D1F]">Why software blockers fail alone.</h3>
+          <div className="space-y-4 text-sm md:text-base text-[#6E6E73] leading-relaxed font-light">
             <p>
               Productivity software often struggles because it lives inside the environment it is attempting to control. It asks you to exert willpower while you are already overwhelmed by digital noise.
             </p>
             <p>
               A digital setting can be closed in a split-second impulse. A focus mode is easily bypassed.
             </p>
-            <p className="text-white font-medium text-base pt-2 border-l-2 border-[#D83A50] pl-4">
+            <p className="text-[#1D1D1F] font-medium text-base pt-2 border-l-2 border-[#C93E50] pl-4">
               To create an intentional boundary, the moment of decision should be moved into the physical world.
             </p>
           </div>
@@ -104,10 +103,10 @@ export default function AboutPage() {
               desc: "Always know your active mode at a glance through ambient light without checking another screen.",
             },
           ].map((item) => (
-            <div key={item.step} className="p-6 border border-[#303A48] bg-[#11151C] rounded-2xl">
-              <span className="text-[#D83A50] font-mono text-xs uppercase block mb-2">{item.step}</span>
-              <h4 className="text-white font-bold mb-2 text-base">{item.title}</h4>
-              <p className="text-xs text-[#A5AFBD] leading-relaxed font-light">{item.desc}</p>
+            <div key={item.step} className="p-6 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl shadow-xs">
+              <span className="text-[#C93E50] font-mono text-xs uppercase block mb-2 font-semibold">{item.step}</span>
+              <h4 className="text-[#1D1D1F] font-bold mb-2 text-base">{item.title}</h4>
+              <p className="text-xs text-[#6E6E73] leading-relaxed font-light">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -116,38 +115,38 @@ export default function AboutPage() {
       {/* 5. ROADMAP */}
       <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-28 text-center">
         <span className="eyebrow block">Evolution</span>
-        <h2 className="text-3xl font-display font-bold text-white mb-8">
+        <h2 className="text-3xl font-display font-bold text-[#1D1D1F] mb-8">
           One physical interface for digital state.
         </h2>
         <div className="flex flex-col gap-3 max-w-xl mx-auto text-left text-xs font-mono">
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Current Focus</span>
-            <span className="text-[#A5AFBD]">Desktop hardware prototype &amp; Hall sensor testing.</span>
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+            <span className="font-bold text-[#1D1D1F]">Current Focus</span>
+            <span className="text-[#6E6E73]">Desktop hardware prototype &amp; Hall sensor testing.</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Next Stage</span>
-            <span className="text-[#A5AFBD]">Desktop companion daemon + configurable profiles.</span>
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+            <span className="font-bold text-[#1D1D1F]">Next Stage</span>
+            <span className="text-[#6E6E73]">Desktop companion daemon + configurable profiles.</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Maker Release</span>
-            <span className="text-[#A5AFBD]">Open CAD files, BOM, and assembly guides for makers.</span>
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+            <span className="font-bold text-[#1D1D1F]">Maker Release</span>
+            <span className="text-[#6E6E73]">Open CAD files, BOM, and assembly guides for makers.</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Production</span>
-            <span className="text-[#A5AFBD]">Tooling, pilot manufacturing, and backer fulfillment.</span>
+          <div className="p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-xl flex items-center justify-between shadow-xs">
+            <span className="font-bold text-[#1D1D1F]">Production</span>
+            <span className="text-[#6E6E73]">Tooling, pilot manufacturing, and backer fulfillment.</span>
           </div>
         </div>
       </section>
 
       {/* 6. FOUNDER SECTION */}
-      <section id="founder" className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-28">
-        <div className="p-8 md:p-12 border border-[#303A48] bg-[#11151C] rounded-3xl">
+      <section id="founder" className="relative max-w-[840px] mx-auto px-6 md:px-12 mb-28">
+        <div className="p-8 md:p-12 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl shadow-sm">
           <span className="eyebrow block">The Creator</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-1">Naqash Afzal</h2>
-          <p className="text-[#D83A50] font-mono text-xs tracking-widest uppercase mb-6">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-1">Naqash Afzal</h2>
+          <p className="text-[#C93E50] font-mono text-xs tracking-widest uppercase mb-6 font-semibold">
             Founder &amp; Hardware Architect
           </p>
-          <div className="space-y-4 text-sm text-[#A5AFBD] mb-8 leading-relaxed font-light">
+          <div className="space-y-4 text-sm text-[#6E6E73] mb-8 leading-relaxed font-light">
             <p>
               Naqash recognized that software alone cannot solve screen-induced distraction when the solution lives in the same chaotic window.
             </p>
@@ -160,7 +159,7 @@ export default function AboutPage() {
               href="https://github.com/naqashafzal"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#303A48] bg-[#080A0E] rounded-lg hover:border-[#D83A50] text-white transition-colors"
+              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
             >
               GitHub
             </a>
@@ -168,7 +167,7 @@ export default function AboutPage() {
               href="https://makerworld.com/en/@naqash"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#303A48] bg-[#080A0E] rounded-lg hover:border-[#D83A50] text-white transition-colors"
+              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
             >
               MakerWorld
             </a>
@@ -176,7 +175,7 @@ export default function AboutPage() {
               href="https://www.linkedin.com/in/naqashafzal/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#303A48] bg-[#080A0E] rounded-lg hover:border-[#D83A50] text-white transition-colors"
+              className="px-4 py-2 border border-[#E5E5E7] bg-[#F5F5F7] rounded-full hover:bg-[#E5E5E7] text-[#1D1D1F] transition-colors"
             >
               LinkedIn
             </a>
@@ -185,24 +184,24 @@ export default function AboutPage() {
       </section>
 
       {/* 7. CTA */}
-      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 text-center bg-[#11151C] border border-[#303A48] p-12 md:p-20 rounded-3xl">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+      <section className="relative max-w-[960px] mx-auto px-6 md:px-12 text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-18 rounded-3xl shadow-sm">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F] mb-4">
           Follow the journey from prototype to production.
         </h2>
-        <p className="text-sm md:text-base text-[#A5AFBD] mb-8 max-w-xl mx-auto font-light leading-relaxed">
+        <p className="text-sm md:text-base text-[#6E6E73] mb-8 max-w-xl mx-auto font-light leading-relaxed">
           Join our waitlist for genuine engineering updates, 3D printing files, and notification when early access batches open.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-3">
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer"
+            className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm cursor-pointer"
           >
             Join the Waitlist
           </button>
           <Link
             href="/hardware"
-            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
+            className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#E5E5E7] transition-all text-sm font-medium"
           >
             Explore the Hardware
           </Link>
