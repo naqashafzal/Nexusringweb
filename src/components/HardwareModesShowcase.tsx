@@ -370,8 +370,8 @@ export default function HardwareModesShowcase() {
 
               {/* Action Webhook Toggles */}
               <div className="space-y-2">
-                <span className="text-[11px] font-mono text-[#A5AFBF] uppercase tracking-wider flex items-center gap-1.5">
-                  <SlidersHorizontal size={12} className="text-[#FF405A]" />
+                <span className="text-[11px] font-mono text-[#A5AFBD] uppercase tracking-wider flex items-center gap-1.5">
+                  <SlidersHorizontal size={12} className="text-[#D83A50]" />
                   <span>Configurable Profile Hooks (Click to toggle):</span>
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -384,26 +384,26 @@ export default function HardwareModesShowcase() {
                         onClick={() => toggleAction(act.text)}
                         className={`p-3 rounded-xl border text-left transition-all duration-150 flex items-start justify-between gap-3 cursor-pointer ${
                           active
-                            ? "border-[#283141] bg-[#080B12] hover:border-[#FF405A]/50"
-                            : "border-[#283141]/50 bg-[#080B12]/50 opacity-60"
+                            ? "border-[#303A48] bg-[#080A0E] hover:border-[#D83A50]/50"
+                            : "border-[#303A48]/50 bg-[#080A0E]/50 opacity-60"
                         }`}
                       >
                         <div className="space-y-1 flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-[9px] font-mono tracking-widest uppercase px-1.5 py-0.5 rounded border border-[#283141] bg-[#101723] text-[#A5AFBF]">
+                            <span className="text-[9px] font-mono tracking-widest uppercase px-1.5 py-0.5 rounded border border-[#303A48] bg-[#11151C] text-[#A5AFBD]">
                               {act.category}
                             </span>
-                            <span className="text-[9px] font-mono text-[#A5AFBF]">
+                            <span className="text-[9px] font-mono text-[#778292]">
                               {act.status}
                             </span>
                           </div>
-                          <p className="text-xs text-[#F8FAFC] leading-snug">{act.text}</p>
+                          <p className="text-xs text-[#F5F6F8] leading-snug">{act.text}</p>
                         </div>
                         <div
                           className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
                             active
-                              ? "border-[#FF405A] bg-[#FF405A] text-white"
-                              : "border-[#283141] bg-transparent text-transparent"
+                              ? "border-[#D83A50] bg-[#D83A50] text-white"
+                              : "border-[#303A48] bg-transparent text-transparent"
                           }`}
                         >
                           {active && <CheckCircle2 size={12} />}

@@ -491,7 +491,7 @@ In their seminal 1996 paper *The Coming Age of Calm Technology*, Xerox PARC rese
 We intentionally chose **not** to include an OLED display or screen on the Nexus Ring. Another screen on your desk only creates another distraction feed.
 
 Instead, the device uses a 360-degree diffused LED ring (WS2812B class) embedded between the upper bezel and lower chassis. The light provides glanceable, ambient confirmation of your active mode:
-- **Crimson Red (#FF405A):** Deep Work — high focus, notifications blocked.
+- **Crimson Red (#D83A50):** Deep Work — high focus, notifications blocked.
 - **Clean White/Slate (#F8FAFC):** Creative — open tools, fluid ideation.
 - **Emerald Green (#35C98A):** Meeting — collaboration and video conference active.
 - **Warm Amber (#F0B35A):** Break — work minimized, cognitive recovery.
