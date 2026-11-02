@@ -93,44 +93,44 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
           {/* ── LEFT COLUMN: Text Content & CTAs (6 cols) ── */}
           <div className="lg:col-span-6 space-y-6 text-left relative z-20 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
-              PHYSICAL INTENT COMPUTING
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
+              NEXUS RING / PHYSICAL WORKSPACE CONTROL
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.94] text-[#F8FAFC] uppercase">
-                One physical move. Your workspace follows.
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight leading-[0.95] text-[#F5F6F8] uppercase">
+                RECLAIM YOUR ATTENTION.
               </h1>
-              <p className="text-lg sm:text-xl font-display font-bold text-[#FF405A] tracking-tight uppercase">
+              <p className="text-lg sm:text-xl font-display font-bold text-[#D83A50] tracking-tight uppercase">
                 FORCE YOUR FOCUS. ENGINEER SUCCESS.
               </p>
             </div>
 
-            <p className="text-[#A5AFBF] text-base md:text-lg font-light leading-relaxed border-l-2 border-[#FF405A] pl-4 bg-[#101723]/70 p-4 rounded-r-2xl">
-              Nexus Ring is a physical control interface designed to connect your intention with your digital workspace. Move the magnetic totem to select a mode and let Nexus Companion prepare your environment for the work ahead.
+            <p className="text-[#A5AFBD] text-base md:text-lg font-light leading-relaxed border-l-2 border-[#D83A50] pl-4 bg-[#11151C]/70 p-4 rounded-r-2xl">
+              In a digital world competing for your attention, Nexus Ring is being developed to help you create a more intentional workspace through a simple physical interaction.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowComingSoon(true)}
-                className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide text-[#F8FAFC] bg-[#FF405A] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_20px_rgba(255,64,90,0.3)] cursor-pointer flex items-center gap-2"
-              >
-                <span>Join the Waitlist</span>
-                <ChevronRight size={15} />
-              </button>
               <Link
                 href="#how-it-works"
-                className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F8FAFC] hover:text-white border border-[#283141] bg-[#101723] hover:border-[#A5AFBF] transition-all duration-150 cursor-pointer flex items-center gap-2"
+                className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide text-[#F5F6F8] bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_20px_rgba(216,58,80,0.25)] cursor-pointer flex items-center gap-2"
               >
                 <span>Explore Nexus Ring</span>
                 <ChevronDown size={14} />
               </Link>
+              <button
+                type="button"
+                onClick={() => setShowComingSoon(true)}
+                className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD] transition-all duration-150 cursor-pointer flex items-center gap-2"
+              >
+                <span>Join Early Access</span>
+                <ChevronRight size={15} />
+              </button>
             </div>
 
-            <p className="text-[11px] font-mono text-[#A5AFBF] tracking-wider pt-1">
-              Currently in development. Join for prototype updates and launch news. No payment required.
+            <p className="text-[11px] font-mono text-[#778292] tracking-wider pt-1">
+              Currently in development.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#303A48]">

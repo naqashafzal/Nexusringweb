@@ -92,15 +92,15 @@ export default function HardwarePage() {
       {/* ════════════════ SECTION 1: HERO ════════════════ */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20 text-center">
         <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#283141] bg-[#101723] text-[#A5AFBF] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF405A]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50]" />
             Hardware Engineering &amp; Architecture
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#F8FAFC] uppercase">
-            Inside Nexus Ring.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#F5F6F8] uppercase">
+            ENGINEERED FOR INTENTION.
           </h1>
-          <p className="text-[#A5AFBF] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Purposeful hardware, built around a deliberate physical interaction.
+          <p className="text-[#A5AFBD] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+            An exploration of the physical architecture behind Nexus Ring.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
