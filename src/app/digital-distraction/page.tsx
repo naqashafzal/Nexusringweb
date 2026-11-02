@@ -139,6 +139,10 @@ export default function DigitalDistractionPage() {
             <p className="text-[#F5F6F8] bg-[#1B222D] p-4 rounded-xl border border-[#303A48]">
               We believe technology should support human purpose, not constantly compete against it. We believe discipline becomes easier to practice when our environments support our decisions. We believe distraction should be a choice, not the default.
             </p>
+            <div className="pt-2 text-[#F5F6F8] space-y-1">
+              <p className="font-semibold text-lg">That is why we are building Nexus Ring.</p>
+              <p className="text-sm text-[#A5AFBD] font-light">A physical interface designed to transform a deliberate decision into a change in your digital workspace.</p>
+            </div>
           </div>
 
           <div className="pt-6">

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { COMPARISONS } from "@/lib/comparisons-data";
+import { JOURNAL_ARTICLES } from "@/lib/journal-data";
 
 export async function GET() {
   const baseUrl = "https://www.nexusring.tech";
@@ -14,6 +15,18 @@ export async function GET() {
       <pubDate>${now}</pubDate>
       <description><![CDATA[${comp.metaDescription}]]></description>
       <category>Product Comparison</category>
+    </item>`;
+  }).join("\n");
+
+  const journalItems = Object.values(JOURNAL_ARTICLES).map((art) => {
+    return `
+    <item>
+      <title><![CDATA[${art.title}]]></title>
+      <link>${baseUrl}/journal/${art.slug}</link>
+      <guid>${baseUrl}/journal/${art.slug}</guid>
+      <pubDate>${new Date(art.publishedAt).toUTCString()}</pubDate>
+      <description><![CDATA[${art.summary}]]></description>
+      <category>${art.category}</category>
     </item>`;
   }).join("\n");
 
@@ -55,6 +68,7 @@ export async function GET() {
     </item>
 
     ${comparisonItems}
+    ${journalItems}
   </channel>
 </rss>`;
 

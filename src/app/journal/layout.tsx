@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/seo-data";
 
 export const metadata: Metadata = {
-  title: "Focus Journal | Deep Work, Behavioral Science & Attention Economics",
+  title: "Focus Journal | Deep Work, Discipline & Digital Well-Being",
   description:
-    "Explore in-depth articles, behavioral research, and engineering insights on reclaiming human attention, habit loops, and designing distraction-free workspaces.",
+    "Explore practical guides and research on digital distraction, deep work, attention management, and more intentional technology use.",
   alternates: {
     canonical: `${SITE_CONFIG.url}/journal`,
   },

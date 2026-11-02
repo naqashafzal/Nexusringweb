@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/seo-data";
 
 export const metadata: Metadata = {
-  title: "Digital Distraction: Why Feeds Compete for Your Time & How to Reclaim Focus",
+  title: "Digital Distraction: How to Reclaim Your Attention | Nexus Ring",
   description:
-    "Explore why modern digital platforms and recommendation algorithms compete for your attention, the hidden cognitive cost of task switching, and practical strategies to protect your deep focus.",
+    "Understand how feeds, notifications, and engagement-driven design compete for your attention, and explore practical ways to protect your focus.",
   alternates: {
     canonical: `${SITE_CONFIG.url}/digital-distraction`,
   },
