@@ -8,10 +8,9 @@ import {
   Palette,
   GraduationCap,
   Briefcase,
-  CheckCircle2,
+  CheckCircle,
   AlertTriangle,
   BookOpen,
-  ArrowRight,
 } from "lucide-react";
 
 export default function FocusHubPage() {
@@ -82,49 +81,49 @@ export default function FocusHubPage() {
   };
 
   return (
-    <main className="bg-[#FFFFFF] text-[#1D1D1F] font-sans min-h-screen selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
+    <main className="bg-[#080A0E] text-[#F5F6F8] font-sans min-h-screen selection:bg-[#D83A50]/30 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {/* ── Breadcrumb Bar ── */}
-      <nav aria-label="Breadcrumb" className="pt-24 pb-4 page-container border-b border-[#E5E5E7]">
-        <ol className="flex items-center gap-2 text-xs text-[#6E6E73]">
+      <nav aria-label="Breadcrumb" className="pt-24 pb-4 px-6 md:px-12 max-w-[1200px] mx-auto border-b border-[#303A48]/50">
+        <ol className="flex items-center gap-2 text-xs font-mono text-[#A5AFBD]">
           <li>
-            <Link href="/" className="hover:text-[#1D1D1F] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
           </li>
-          <li className="text-[#86868B]">/</li>
-          <li className="text-[#1D1D1F] font-medium" aria-current="page">Focus &amp; Discipline Hub</li>
+          <li className="text-[#303A48]">/</li>
+          <li className="text-white font-medium" aria-current="page">Focus & Discipline Hub</li>
         </ol>
       </nav>
 
       {/* ── HERO SECTION ── */}
-      <section className="pt-16 pb-20 page-container">
+      <section className="pt-16 pb-20 px-6 md:px-12 max-w-[1200px] mx-auto">
         <div className="max-w-3xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
-            EVIDENCE-BASED PRACTICES &amp; SYSTEMS
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A]" />
+            EVIDENCE-BASED PRACTICES & SYSTEMS
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-display font-bold tracking-tight text-[#1D1D1F] leading-[1.05]">
-            The Discipline &amp; Focus Resource Hub
+          <h1 className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white leading-[1.02]">
+            The Discipline & Focus Resource Hub
           </h1>
 
-          <p className="text-base sm:text-lg text-[#6E6E73] leading-relaxed border-l-2 border-[#34A853] pl-4 bg-[#F8F9FA] p-5 rounded-r-2xl font-light">
+          <p className="text-lg text-[#A5AFBD] leading-relaxed border-l-2 border-[#35C98A] pl-4 bg-[#11151C]/60 p-5 rounded-r-2xl">
             Focus is not an innate genetic superpower. It is a trainable practice supported by environmental design, thoughtful boundaries, and deliberate habit loops. Explore practical frameworks to protect your cognitive stamina.
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-wrap gap-4 pt-2">
             <Link
               href="#frameworks"
-              className="px-8 py-3.5 rounded-full font-medium text-sm text-white bg-[#1D1D1F] hover:bg-[#000000] transition-all shadow-sm"
+              className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)]"
             >
               Explore Core Frameworks
             </Link>
             <Link
               href="/journal"
-              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#1D1D1F] hover:bg-[#EAEAEA] border border-[#E5E5E7] bg-[#F5F5F7] transition-all flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all flex items-center gap-2"
             >
               <BookOpen size={16} />
               <span>Read The Focus Journal</span>
@@ -134,14 +133,14 @@ export default function FocusHubPage() {
       </section>
 
       {/* ── CORE FOCUS FRAMEWORKS ── */}
-      <section id="frameworks" className="py-20 page-container border-t border-[#E5E5E7]">
-        <div className="space-y-12">
+      <section id="frameworks" className="py-20 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
+        <div className="max-w-[1200px] mx-auto space-y-12">
           <div className="max-w-2xl space-y-3">
-            <span className="text-xs font-mono text-[#34A853] uppercase tracking-widest font-semibold">Foundations</span>
-            <h2 className="text-3xl font-display font-bold text-[#1D1D1F] tracking-tight">
+            <span className="text-xs font-mono text-[#35C98A] uppercase tracking-widest">Foundations</span>
+            <h2 className="text-3xl font-display font-bold text-white tracking-tight">
               Four pillars of sustainable concentration.
             </h2>
-            <p className="text-sm text-[#6E6E73] leading-relaxed font-light">
+            <p className="text-sm text-[#A5AFBD] leading-relaxed">
               Before introducing any tool or software, establishing these structural pillars creates a resilient foundation for daily deep work.
             </p>
           </div>
@@ -169,10 +168,10 @@ export default function FocusHubPage() {
                 tag: "System Design",
               },
             ].map((pillar, idx) => (
-              <div key={idx} className="p-6 md:p-7 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-3 shadow-xs">
-                <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest font-semibold">{pillar.tag}</span>
-                <h3 className="text-base font-bold text-[#1D1D1F] font-display">{pillar.title}</h3>
-                <p className="text-xs text-[#6E6E73] leading-relaxed font-light">{pillar.desc}</p>
+              <div key={idx} className="p-6 rounded-2xl bg-[#080A0E] border border-[#303A48] space-y-3">
+                <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest">{pillar.tag}</span>
+                <h3 className="text-base font-bold text-white font-display">{pillar.title}</h3>
+                <p className="text-xs text-[#A5AFBD] leading-relaxed">{pillar.desc}</p>
               </div>
             ))}
           </div>
@@ -180,19 +179,19 @@ export default function FocusHubPage() {
       </section>
 
       {/* ── ROLE-SPECIFIC FOCUS STRATEGIES (INTERACTIVE) ── */}
-      <section className="py-20 page-container border-t border-[#E5E5E7] space-y-12">
+      <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto space-y-12">
         <div className="max-w-2xl space-y-3">
-          <span className="text-xs font-mono text-[#C93E50] uppercase tracking-widest font-semibold">Role-Specific Guides</span>
-          <h2 className="text-3xl font-display font-bold text-[#1D1D1F] tracking-tight">
+          <span className="text-xs font-mono text-[#D83A50] uppercase tracking-widest">Role-Specific Guides</span>
+          <h2 className="text-3xl font-display font-bold text-white tracking-tight">
             Tailored focus workflows for demanding disciplines.
           </h2>
-          <p className="text-sm text-[#6E6E73] leading-relaxed font-light">
+          <p className="text-sm text-[#A5AFBD] leading-relaxed">
             Different types of knowledge work face unique distraction profiles. Select your discipline to view targeted protocols:
           </p>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex flex-wrap gap-2.5">
+        <div className="flex flex-wrap gap-3">
           {[
             { id: "developers", label: "Software Developers", icon: Code },
             { id: "designers", label: "Designers & Creators", icon: Palette },
@@ -203,10 +202,10 @@ export default function FocusHubPage() {
               key={tab.id}
               type="button"
               onClick={() => setActivePersona(tab.id as typeof activePersona)}
-              className={`px-5 py-2.5 rounded-full text-xs font-medium transition-all flex items-center gap-2 cursor-pointer border ${
+              className={`px-5 py-2.5 rounded-full text-xs font-mono transition-all flex items-center gap-2 cursor-pointer border ${
                 activePersona === tab.id
-                  ? "bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-sm"
-                  : "bg-[#F5F5F7] text-[#6E6E73] border-[#E5E5E7] hover:text-[#1D1D1F] hover:bg-[#EAEAEA]"
+                  ? "bg-[#D83A50] text-white border-[#D83A50] shadow-[0_0_15px_rgba(255,64,90,0.3)]"
+                  : "bg-[#11151C] text-[#A5AFBD] border-[#303A48] hover:text-white hover:border-[#A5AFBD]/50"
               }`}
             >
               <tab.icon size={15} />
@@ -216,71 +215,71 @@ export default function FocusHubPage() {
         </div>
 
         {/* Selected Persona Card */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#FFFFFF] border border-[#E5E5E7] shadow-sm space-y-6">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-6">
           <div className="flex items-center gap-3">
-            {React.createElement(personas[activePersona].icon, { size: 24, className: "text-[#C93E50]" })}
-            <h3 className="text-2xl font-display font-bold text-[#1D1D1F]">
+            {React.createElement(personas[activePersona].icon, { size: 24, className: "text-[#D83A50]" })}
+            <h3 className="text-2xl font-display font-bold text-white">
               {personas[activePersona].title}
             </h3>
           </div>
 
-          <div className="p-4 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7] text-xs text-[#6E6E73] flex items-start gap-2">
-            <span className="text-[#1D1D1F] font-semibold shrink-0">Primary Challenge:</span>
+          <div className="p-4 rounded-xl bg-[#080A0E] border border-[#303A48]/60 text-xs text-[#A5AFBD] flex items-start gap-2">
+            <span className="text-white font-semibold shrink-0">Primary Challenge:</span>
             <span>{personas[activePersona].challenge}</span>
           </div>
 
           <div className="space-y-4 pt-2">
-            <h4 className="text-xs font-mono text-[#6E6E73] uppercase tracking-wider font-semibold">Recommended Protocol</h4>
+            <h4 className="text-xs font-mono text-white uppercase tracking-wider">Recommended Protocol</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {personas[activePersona].strategies.map((strategy, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-2">
-                  <span className="text-xs font-mono font-bold text-[#34A853]">0{idx + 1}</span>
-                  <p className="text-xs text-[#1D1D1F] leading-relaxed font-normal">{strategy}</p>
+                <div key={idx} className="p-4 rounded-xl bg-[#1B222D] border border-[#303A48] space-y-2">
+                  <span className="text-xs font-mono font-bold text-[#35C98A]">0{idx + 1}</span>
+                  <p className="text-xs text-[#F5F6F8] leading-relaxed">{strategy}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="p-4.5 rounded-2xl bg-[#FDF2F4] border border-[#C93E50]/20 text-xs font-mono text-[#1D1D1F]">
-            <span className="text-[#C93E50] font-bold">Planned Nexus Ring Companion Integration: </span>
+          <div className="p-4 rounded-xl bg-[#1B222D]/60 border border-[#303A48] text-xs font-mono text-[#A5AFBD]">
+            <span className="text-[#D83A50] font-bold">Planned Nexus Ring Companion Integration: </span>
             <span>{personas[activePersona].nexusRole}</span>
           </div>
         </div>
       </section>
 
       {/* ── ETHICAL & HEALTH BOUNDARIES (NO MEDICAL CLAIMS) ── */}
-      <section className="py-20 page-container border-t border-[#E5E5E7]">
-        <div className="max-w-4xl mx-auto space-y-6 bg-[#F8F9FA] border border-[#E5E5E7] p-8 md:p-10 rounded-3xl shadow-xs">
+      <section className="py-20 px-6 md:px-12 bg-[#11151C] border-y border-[#303A48]">
+        <div className="max-w-[900px] mx-auto space-y-6">
           <div className="flex items-center gap-3">
-            <AlertTriangle size={24} className="text-[#FBBC04] shrink-0" />
-            <h2 className="text-2xl font-display font-bold text-[#1D1D1F]">
+            <AlertTriangle size={24} className="text-[#F0B35A] shrink-0" />
+            <h2 className="text-2xl font-display font-bold text-white">
               Important Perspective: Focus is Multi-Factorial
             </h2>
           </div>
 
-          <div className="space-y-4 text-sm text-[#6E6E73] leading-relaxed font-light">
+          <div className="space-y-4 text-sm text-[#A5AFBD] leading-relaxed">
             <p>
               Human focus and attention are governed by biological, psychological, and environmental systems. No physical hardware device, productivity tool, or software extension can replace the essential biological requirements for cognitive performance:
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-sans text-[#1D1D1F] pt-2">
-              <li className="flex items-center gap-2 p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E5E5E7]">
-                <CheckCircle2 size={16} className="text-[#34A853] shrink-0" />
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-white pt-2">
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
+                <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Adequate sleep (7–9 hours nightly)</span>
               </li>
-              <li className="flex items-center gap-2 p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E5E5E7]">
-                <CheckCircle2 size={16} className="text-[#34A853] shrink-0" />
-                <span>Physical movement &amp; hydration</span>
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
+                <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
+                <span>Physical movement & hydration</span>
               </li>
-              <li className="flex items-center gap-2 p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E5E5E7]">
-                <CheckCircle2 size={16} className="text-[#34A853] shrink-0" />
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
+                <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Realistic, manageable workload bounds</span>
               </li>
-              <li className="flex items-center gap-2 p-3.5 rounded-xl bg-[#FFFFFF] border border-[#E5E5E7]">
-                <CheckCircle2 size={16} className="text-[#34A853] shrink-0" />
+              <li className="flex items-center gap-2 p-3 rounded-lg bg-[#080A0E] border border-[#303A48]">
+                <CheckCircle size={15} className="text-[#35C98A] shrink-0" />
                 <span>Professional medical/psychological care</span>
               </li>
             </ul>
-            <p className="text-xs pt-2 text-[#86868B] border-t border-[#E5E5E7] mt-4">
+            <p className="text-xs pt-2">
               <strong>Medical Disclaimer:</strong> Nexus Ring is an environmental desk interface and companion automation controller under development. It is not a medical device, therapeutic apparatus, or clinical treatment for ADHD, depression, anxiety, or compulsive disorders.
             </p>
           </div>
@@ -288,35 +287,34 @@ export default function FocusHubPage() {
       </section>
 
       {/* ── EXPLORE FURTHER CTA ── */}
-      <section className="py-20 page-container border-t border-[#E5E5E7] text-center space-y-6">
-        <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-[#1D1D1F]">
+      <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto text-center space-y-8">
+        <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white uppercase">
           Build a More Intentional Workspace.
         </h2>
-        <p className="text-base text-[#6E6E73] max-w-xl mx-auto leading-relaxed font-light">
+        <p className="text-base text-[#A5AFBD] max-w-xl mx-auto leading-relaxed">
           Read deep-dive research in The Focus Journal, explore the digital distraction landscape, or follow Nexus Ring’s open prototype development.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="/journal"
-            className="px-8 py-3.5 rounded-full font-medium text-sm text-white bg-[#1D1D1F] hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
+            className="px-8 py-3.5 rounded-full font-bold text-sm text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.3)] flex items-center gap-2"
           >
             <BookOpen size={16} />
             <span>The Focus Journal</span>
           </Link>
           <Link
             href="/digital-distraction"
-            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#1D1D1F] hover:bg-[#EAEAEA] border border-[#E5E5E7] bg-[#F5F5F7] transition-all"
+            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/50 transition-all"
           >
             Digital Distraction Explained
           </Link>
           <button
             type="button"
             onClick={() => setShowModal(true)}
-            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#1D1D1F] hover:bg-[#EAEAEA] border border-[#E5E5E7] bg-[#F5F5F7] transition-all cursor-pointer flex items-center gap-1.5"
+            className="px-8 py-3.5 rounded-full font-medium text-sm text-[#A5AFBD] hover:text-white border border-[#303A48] transition-all cursor-pointer"
           >
-            <span>Join Early Access</span>
-            <ArrowRight size={14} className="text-[#6E6E73]" />
+            Join Early Access
           </button>
         </div>
       </section>

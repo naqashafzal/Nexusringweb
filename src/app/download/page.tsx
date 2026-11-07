@@ -1,26 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Download,
-  Laptop,
   Smartphone,
-  ShieldCheck,
   CheckCircle2,
   Zap,
-  ArrowRight,
-  ExternalLink,
   RefreshCw,
-  Terminal,
-  Activity,
-  Cpu,
-  Layers,
   Sparkles,
-  HelpCircle,
   AlertCircle
 } from "lucide-react";
+
+interface SerialPort {
+  open: (options: { baudRate: number }) => Promise<void>;
+  readable: ReadableStream<BufferSource>;
+  writable: WritableStream<BufferSource>;
+}
 
 export default function DownloadPage() {
   // Web Serial Live Hardware Test State
@@ -42,7 +39,9 @@ export default function DownloadPage() {
     setSerialError(null);
 
     try {
-      const port = await (navigator as any).serial.requestPort();
+      const navWithSerial = navigator as unknown as { serial?: { requestPort: () => Promise<SerialPort> } };
+      if (!navWithSerial.serial) throw new Error("Serial API not available");
+      const port = await navWithSerial.serial.requestPort();
       await port.open({ baudRate: 115200 });
       setSerialConnected(true);
       setConnecting(false);
@@ -68,16 +67,18 @@ export default function DownloadPage() {
           else if (text.includes("MODE_UNDOCKED")) setActiveSlot("UNDOCKED");
         }
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setConnecting(false);
-      if (err.name !== "NotFoundError") {
-        setSerialError(err.message || "Could not connect to USB serial device.");
+      const message = err instanceof Error ? err.message : String(err);
+      const name = err instanceof Error ? err.name : "";
+      if (name !== "NotFoundError") {
+        setSerialError(message || "Could not connect to USB serial device.");
       }
     }
   };
 
   return (
-    <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
+    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/25 selection:text-white">
       {/* 1. HERO SECTION */}
       <section className="relative page-container mb-16 text-center">
         <motion.div
@@ -86,16 +87,22 @@ export default function DownloadPage() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#34A853]" />
-            Official Release • v0.1.0 Stable
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <Image
+              src="/branding/nexus-emblem.svg"
+              alt="Nexus Ring Emblem"
+              width={14}
+              height={14}
+              className="w-3.5 h-3.5 object-contain"
+            />
+            <span>Official Release • v0.1.0 Stable</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-display font-bold tracking-tight text-[#1D1D1F]">
+          <h1 className="text-4xl sm:text-6xl font-display font-bold tracking-tight text-[#F5F6F8]">
             Command your workspace.
           </h1>
 
-          <p className="text-[#6E6E73] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#A5AFBD] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
             Physical totem focus meets zero-latency desktop automation. Download the local engine for Windows or the Android companion app.
           </p>
         </motion.div>
@@ -109,43 +116,49 @@ export default function DownloadPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative rounded-3xl border-2 border-[#1D1D1F] bg-[#FAFAFA] p-8 flex flex-col justify-between shadow-lg overflow-hidden group"
+            className="relative rounded-3xl border-2 border-[#D83A50] bg-[#11151C] p-8 flex flex-col justify-between shadow-[0_0_40px_rgba(216,58,80,0.15)] overflow-hidden group"
           >
             <div className="absolute top-5 right-5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1D1D1F] text-white text-[10px] font-mono font-medium uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D83A50] text-[#F5F6F8] text-[10px] font-mono font-medium uppercase tracking-wider">
                 Recommended
               </span>
             </div>
 
             <div className="space-y-5">
-              <div className="w-12 h-12 rounded-2xl bg-[#1D1D1F] text-white flex items-center justify-center shadow-md">
-                <Laptop size={24} />
+              <div className="relative w-14 h-14 rounded-2xl bg-[#1B222D] border border-[#303A48] p-2 flex items-center justify-center shadow-lg">
+                <Image
+                  src="/branding/nexus-app-icon.png"
+                  alt="Nexus Companion Icon"
+                  width={44}
+                  height={44}
+                  className="rounded-xl object-contain"
+                />
               </div>
 
               <div>
-                <h3 className="text-2xl font-display font-bold text-[#1D1D1F]">
+                <h3 className="text-2xl font-display font-bold text-[#F5F6F8]">
                   Nexus Core Engine for Windows
                 </h3>
-                <p className="text-xs text-[#6E6E73] font-mono mt-1">
+                <p className="text-xs text-[#778292] font-mono mt-1">
                   Windows 10 / 11 (64-bit) • Build 0.1.0
                 </p>
               </div>
 
-              <p className="text-sm text-[#6E6E73] leading-relaxed">
+              <p className="text-sm text-[#A5AFBD] leading-relaxed">
                 Complete desktop daemon with USB auto-handshake, 14-second guardrails countdown, Nexus Flow mission planner, and Sentinel app enforcer.
               </p>
 
-              <ul className="space-y-2 text-xs text-[#48484A]">
+              <ul className="space-y-2 text-xs text-[#A5AFBD]">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>One-click NSIS setup wizard with desktop shortcuts</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>100% Offline-capable • Zero telemetry or accounts</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>Built-in Google Gemini Free-Tier & Local Ollama engines</span>
                 </li>
               </ul>
@@ -155,19 +168,19 @@ export default function DownloadPage() {
               <a
                 href="/downloads/Nexus-Ring-Setup-x64.exe"
                 download="Nexus-Ring-Setup-x64.exe"
-                className="w-full py-3.5 px-6 rounded-2xl bg-[#1D1D1F] hover:bg-[#000000] text-white font-medium text-sm flex items-center justify-center gap-2.5 transition-all shadow-md group-hover:shadow-lg active:scale-[0.99]"
+                className="w-full py-3.5 px-6 rounded-2xl bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all shadow-md group-hover:shadow-[0_0_20px_rgba(216,58,80,0.35)] active:scale-[0.99]"
               >
                 <Download size={16} />
                 <span>Download Windows Installer (.exe)</span>
-                <span className="text-xs text-[#86868B] font-mono font-normal">5.4 MB</span>
+                <span className="text-xs text-white/70 font-mono font-normal">5.4 MB</span>
               </a>
 
-              <div className="flex items-center justify-between text-[11px] text-[#86868B] px-1">
+              <div className="flex items-center justify-between text-[11px] text-[#778292] px-1">
                 <span>Portable standalone build:</span>
                 <a
                   href="/downloads/Nexus-Ring-x64.exe"
                   download="Nexus-Ring-x64.exe"
-                  className="text-[#1D1D1F] hover:underline font-medium font-mono"
+                  className="text-[#F5F6F8] hover:text-[#D83A50] hover:underline font-medium font-mono"
                 >
                   Nexus-Ring-x64.exe (19 MB)
                 </a>
@@ -180,37 +193,37 @@ export default function DownloadPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] p-8 flex flex-col justify-between shadow-xs hover:border-[#D1D1D6] transition-all"
+            className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 flex flex-col justify-between shadow-lg hover:border-[#A5AFBD] transition-all"
           >
             <div className="space-y-5">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5F5F7] text-[#1D1D1F] flex items-center justify-center border border-[#E5E5E7]">
-                <Smartphone size={24} />
+              <div className="w-14 h-14 rounded-2xl bg-[#1B222D] text-[#F5F6F8] flex items-center justify-center border border-[#303A48]">
+                <Smartphone size={24} className="text-[#35C98A]" />
               </div>
 
               <div>
-                <h3 className="text-2xl font-display font-bold text-[#1D1D1F]">
+                <h3 className="text-2xl font-display font-bold text-[#F5F6F8]">
                   Android Mobile Companion
                 </h3>
-                <p className="text-xs text-[#6E6E73] font-mono mt-1">
+                <p className="text-xs text-[#778292] font-mono mt-1">
                   Android 10+ • Release Build
                 </p>
               </div>
 
-              <p className="text-sm text-[#6E6E73] leading-relaxed">
+              <p className="text-sm text-[#A5AFBD] leading-relaxed">
                 Connect your phone to your PC via local Wi-Fi auto-discovery. Mutes mobile distractions while allowing VIP emergency dispatches through.
               </p>
 
-              <ul className="space-y-2 text-xs text-[#48484A]">
+              <ul className="space-y-2 text-xs text-[#A5AFBD]">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>Zero-Config mDNS / LAN Auto-Discovery (No manual IP)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>VIP Emergency dispatch channel with desktop HUD alerts</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
                   <span>100% Local Wi-Fi sync (Works completely offline)</span>
                 </li>
               </ul>
@@ -220,14 +233,14 @@ export default function DownloadPage() {
               <a
                 href="/downloads/nexus-ring-release.apk"
                 download="nexus-ring-release.apk"
-                className="w-full py-3.5 px-6 rounded-2xl border border-[#E5E5E7] bg-[#F5F5F7] hover:bg-[#EAEAEA] text-[#1D1D1F] font-medium text-sm flex items-center justify-center gap-2.5 transition-all active:scale-[0.99]"
+                className="w-full py-3.5 px-6 rounded-2xl border border-[#303A48] bg-[#1B222D] hover:bg-[#303A48] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all active:scale-[0.99]"
               >
                 <Download size={16} />
                 <span>Download Android Package (.apk)</span>
-                <span className="text-xs text-[#86868B] font-mono font-normal">94 MB</span>
+                <span className="text-xs text-[#A5AFBD] font-mono font-normal">94 MB</span>
               </a>
 
-              <p className="text-[11px] text-[#86868B] text-center">
+              <p className="text-[11px] text-[#778292] text-center">
                 Sideloadable onto any modern Android smartphone or tablet.
               </p>
             </div>
@@ -237,16 +250,16 @@ export default function DownloadPage() {
 
       {/* 3. INTERACTIVE LIVE HARDWARE TEST (WEB SERIAL API) */}
       <section className="page-container mb-24 max-w-4xl mx-auto">
-        <div className="rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] p-8 sm:p-10 space-y-6">
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 sm:p-10 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E8F0FE] text-[#1A73E8] text-[10px] font-mono font-semibold uppercase">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D83A50]/15 text-[#D83A50] text-[10px] font-mono font-semibold uppercase">
                 <Sparkles size={11} /> Browser Hardware Bridge
               </div>
-              <h3 className="text-xl sm:text-2xl font-display font-bold text-[#1D1D1F]">
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-[#F5F6F8]">
                 Test your Nexus Ring online right now.
               </h3>
-              <p className="text-xs sm:text-sm text-[#6E6E73]">
+              <p className="text-xs sm:text-sm text-[#A5AFBD]">
                 Plug your ring into any USB port and test live totem rotation in Google Chrome or Microsoft Edge.
               </p>
             </div>
@@ -256,8 +269,8 @@ export default function DownloadPage() {
               disabled={connecting || serialConnected}
               className={`px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shrink-0 ${
                 serialConnected
-                  ? "bg-[#34A853]/15 text-[#34A853] border border-[#34A853]/30"
-                  : "bg-[#1D1D1F] hover:bg-black text-white shadow-sm"
+                  ? "bg-[#35C98A]/15 text-[#35C98A] border border-[#35C98A]/30"
+                  : "bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] shadow-sm"
               }`}
             >
               {connecting ? (
@@ -280,8 +293,8 @@ export default function DownloadPage() {
           </div>
 
           {serialError && (
-            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
-              <AlertCircle size={15} className="shrink-0" />
+            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-200 text-xs flex items-center gap-2">
+              <AlertCircle size={15} className="shrink-0 text-red-400" />
               <span>{serialError}</span>
             </div>
           )}
@@ -289,10 +302,10 @@ export default function DownloadPage() {
           {/* Live Slot Status Display */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
             {[
-              { id: "DEEPWORK", name: "Deep Work", color: "#EA4335", bg: "bg-red-500/10", border: "border-red-500/30", text: "text-red-700" },
-              { id: "MEETING", name: "Meeting", color: "#1A73E8", bg: "bg-blue-500/10", border: "border-blue-500/30", text: "text-blue-700" },
-              { id: "BREAK", name: "Break", color: "#FBBC04", bg: "bg-amber-500/10", border: "border-amber-500/30", text: "text-amber-700" },
-              { id: "CREATIVE", name: "Creative", color: "#9334E8", bg: "bg-purple-500/10", border: "border-purple-500/30", text: "text-purple-700" },
+              { id: "DEEPWORK", name: "Deep Work", color: "#D83A50", bg: "bg-red-500/15", border: "border-red-500/40", text: "text-red-400" },
+              { id: "MEETING", name: "Meeting", color: "#3B82F6", bg: "bg-blue-500/15", border: "border-blue-500/40", text: "text-blue-400" },
+              { id: "BREAK", name: "Break", color: "#F0B35A", bg: "bg-amber-500/15", border: "border-amber-500/40", text: "text-amber-400" },
+              { id: "CREATIVE", name: "Creative", color: "#A855F7", bg: "bg-purple-500/15", border: "border-purple-500/40", text: "text-purple-400" },
             ].map((slot) => {
               const isActive = activeSlot === slot.id;
               return (
@@ -300,17 +313,17 @@ export default function DownloadPage() {
                   key={slot.id}
                   className={`p-3.5 rounded-2xl border text-center transition-all ${
                     isActive
-                      ? `${slot.bg} ${slot.border} ring-2 ring-offset-1`
-                      : "bg-[#FFFFFF] border-[#E5E5E7] opacity-60"
+                      ? `${slot.bg} ${slot.border} ring-2 ring-[#D83A50] ring-offset-1 ring-offset-[#080A0E]`
+                      : "bg-[#1B222D] border-[#303A48] opacity-70"
                   }`}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#86868B] mb-1">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#778292] mb-1">
                     Slot {slot.id === "DEEPWORK" ? "01" : slot.id === "MEETING" ? "02" : slot.id === "BREAK" ? "03" : "04"}
                   </div>
-                  <div className="text-xs font-bold text-[#1D1D1F]">
+                  <div className="text-xs font-bold text-[#F5F6F8]">
                     {slot.name}
                   </div>
-                  <div className="text-[10px] font-mono mt-1 text-[#86868B]">
+                  <div className="text-[10px] font-mono mt-1 text-[#A5AFBD]">
                     {isActive ? "● DOCKED & ACTIVE" : "Idle"}
                   </div>
                 </div>
@@ -318,7 +331,7 @@ export default function DownloadPage() {
             })}
           </div>
 
-          <p className="text-[11px] text-[#86868B] leading-relaxed">
+          <p className="text-[11px] text-[#778292] leading-relaxed">
             * Uses the standard Web Serial protocol over 115200 baud. The browser directly communicates with the ring hardware without any third-party plugins.
           </p>
         </div>
@@ -328,38 +341,38 @@ export default function DownloadPage() {
       <section className="page-container mb-24 max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <span className="eyebrow block mb-2">Getting Started</span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#1D1D1F]">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#F5F6F8]">
             3-Minute Hardware Setup.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="p-6 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-3">
-            <div className="w-8 h-8 rounded-full bg-[#1D1D1F] text-white font-mono text-xs font-bold flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-3">
+            <div className="w-8 h-8 rounded-full bg-[#1B222D] border border-[#303A48] text-[#D83A50] font-mono text-xs font-bold flex items-center justify-center">
               1
             </div>
-            <h4 className="font-bold text-sm text-[#1D1D1F]">Plug in via USB</h4>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">
+            <h4 className="font-bold text-sm text-[#F5F6F8]">Plug in via USB</h4>
+            <p className="text-xs text-[#A5AFBD] leading-relaxed">
               Connect your Nexus Ring to your computer using the included USB-C cable. Windows loads the standard built-in CDC driver instantly.
             </p>
           </div>
 
-          <div className="p-6 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-3">
-            <div className="w-8 h-8 rounded-full bg-[#1D1D1F] text-white font-mono text-xs font-bold flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-3">
+            <div className="w-8 h-8 rounded-full bg-[#1B222D] border border-[#303A48] text-[#D83A50] font-mono text-xs font-bold flex items-center justify-center">
               2
             </div>
-            <h4 className="font-bold text-sm text-[#1D1D1F]">Run the Setup</h4>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">
-              Launch <code className="font-mono text-black font-semibold">Nexus-Ring-Setup-x64.exe</code>. The daemon installs quietly and auto-locks onto the serial port in under a second.
+            <h4 className="font-bold text-sm text-[#F5F6F8]">Run the Setup</h4>
+            <p className="text-xs text-[#A5AFBD] leading-relaxed">
+              Launch <code className="font-mono text-[#F5F6F8] bg-[#1B222D] px-1 py-0.5 rounded border border-[#303A48]">Nexus-Ring-Setup-x64.exe</code>. The daemon installs quietly and auto-locks onto the serial port in under a second.
             </p>
           </div>
 
-          <div className="p-6 rounded-3xl bg-[#F8F9FA] border border-[#E5E5E7] space-y-3">
-            <div className="w-8 h-8 rounded-full bg-[#1D1D1F] text-white font-mono text-xs font-bold flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-[#11151C] border border-[#303A48] space-y-3">
+            <div className="w-8 h-8 rounded-full bg-[#1B222D] border border-[#303A48] text-[#D83A50] font-mono text-xs font-bold flex items-center justify-center">
               3
             </div>
-            <h4 className="font-bold text-sm text-[#1D1D1F]">Dock & Focus</h4>
-            <p className="text-xs text-[#6E6E73] leading-relaxed">
+            <h4 className="font-bold text-sm text-[#F5F6F8]">Dock & Focus</h4>
+            <p className="text-xs text-[#A5AFBD] leading-relaxed">
               Rotate your metallic totem into the Deep Work slot. The app initiates your workspace layout and seals away digital distractions.
             </p>
           </div>
@@ -368,25 +381,25 @@ export default function DownloadPage() {
 
       {/* 5. SPECIFICATIONS & SECURITY */}
       <section className="page-container max-w-4xl mx-auto">
-        <div className="rounded-3xl border border-[#E5E5E7] p-8 space-y-4">
-          <h4 className="text-sm font-bold uppercase tracking-wider text-[#1D1D1F]">
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-4">
+          <h4 className="text-sm font-bold uppercase tracking-wider text-[#F5F6F8] font-mono">
             Technical Specifications & Integrity
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#6E6E73]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#A5AFBD]">
             <div className="space-y-1">
-              <strong className="text-[#1D1D1F] block">Memory & Footprint:</strong>
+              <strong className="text-[#F5F6F8] block">Memory & Footprint:</strong>
               <span>Lightweight Rust Core running with under 45 MB of RAM and negligible CPU impact.</span>
             </div>
             <div className="space-y-1">
-              <strong className="text-[#1D1D1F] block">Data Privacy:</strong>
+              <strong className="text-[#F5F6F8] block">Data Privacy:</strong>
               <span>No telemetry, no tracking pixels, and no cloud synchronization of your keystrokes or open apps.</span>
             </div>
             <div className="space-y-1">
-              <strong className="text-[#1D1D1F] block">Credential Protection:</strong>
+              <strong className="text-[#F5F6F8] block">Credential Protection:</strong>
               <span>API keys (Gemini / OpenAI) are encrypted locally using Windows Credential Manager and SQLite keychain.</span>
             </div>
             <div className="space-y-1">
-              <strong className="text-[#1D1D1F] block">Hardware Connection:</strong>
+              <strong className="text-[#F5F6F8] block">Hardware Connection:</strong>
               <span>Standard USB-CDC Serial at 115200 baud, 8-N-1. Driverless plug-and-play across Windows 10/11.</span>
             </div>
           </div>

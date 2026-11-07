@@ -55,8 +55,8 @@ function Model({ scrollProgress, explodeFactor, disableExplode, scale = 1, selec
     const parts: { [key: string]: { mesh: THREE.Mesh; origPos: THREE.Vector3 } } = {};
 
     const highlightMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color("#C93E50"),
-      emissive: new THREE.Color("#C93E50"),
+      color: new THREE.Color("#D83A50"),
+      emissive: new THREE.Color("#D83A50"),
       emissiveIntensity: 1.2,
       roughness: 0.25,
       metalness: 0.5,
@@ -212,10 +212,10 @@ export default function ExplodedRingCanvas({
     <div className="w-full h-full bg-transparent relative pointer-events-auto">
       {/* Interactive HUD Controls Overlay */}
       {!disableExplode && (
-        <div className="absolute bottom-6 right-6 z-[120] flex flex-col sm:flex-row items-center gap-3 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-md border border-[#E5E5E7] p-3 rounded-2xl shadow-xl">
+        <div className="absolute bottom-6 right-6 z-[120] flex flex-col sm:flex-row items-center gap-3 pointer-events-auto bg-[#080A0E]/90 backdrop-blur-md border border-[#303A48] p-3 rounded-2xl shadow-xl">
           {/* Explode Amount Slider */}
-          <div className="flex items-center gap-2 font-mono text-xs text-[#6E6E73] px-2">
-            <Layers size={14} className="text-[#C93E50]" />
+          <div className="flex items-center gap-2 font-mono text-xs text-[#A5AFBD] px-2">
+            <Layers size={14} className="text-[#D83A50]" />
             <span className="text-[11px] font-medium tracking-wide">DISASSEMBLY:</span>
             <input
               type="range"
@@ -224,22 +224,22 @@ export default function ExplodedRingCanvas({
               step="0.01"
               value={explodeFactor}
               onChange={(e) => setExplodeFactor(parseFloat(e.target.value))}
-              className="w-24 sm:w-28 accent-[#C93E50] cursor-pointer"
+              className="w-24 sm:w-28 accent-[#D83A50] cursor-pointer"
             />
-            <span className="text-[#C93E50] font-bold w-10 text-right">
+            <span className="text-[#D83A50] font-bold w-10 text-right">
               {Math.round(explodeFactor * 100)}%
             </span>
           </div>
 
           {/* Preset Buttons */}
-          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#E5E5E7] pt-2 sm:pt-0 sm:pl-3 font-mono text-[10px]">
+          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#303A48] pt-2 sm:pt-0 sm:pl-3 font-mono text-[10px]">
             <button
               type="button"
               onClick={() => setExplodeFactor(0)}
               className={`px-2.5 py-1 rounded-lg border transition-all cursor-pointer font-medium ${
                 explodeFactor === 0
-                  ? "border-[#C93E50] bg-[#FDF2F4] text-[#C93E50]"
-                  : "border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#EAEAEA]"
+                  ? "border-[#D83A50] bg-[#D83A50]/20 text-[#D83A50]"
+                  : "border-[#303A48] bg-[#11151C] text-[#A5AFBD] hover:text-[#F5F6F8] hover:bg-[#1B222D]"
               }`}
             >
               ASSEMBLED
@@ -249,8 +249,8 @@ export default function ExplodedRingCanvas({
               onClick={() => setExplodeFactor(0.85)}
               className={`px-2.5 py-1 rounded-lg border transition-all cursor-pointer font-medium ${
                 explodeFactor === 0.85
-                  ? "border-[#C93E50] bg-[#FDF2F4] text-[#C93E50]"
-                  : "border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#EAEAEA]"
+                  ? "border-[#D83A50] bg-[#D83A50]/20 text-[#D83A50]"
+                  : "border-[#303A48] bg-[#11151C] text-[#A5AFBD] hover:text-[#F5F6F8] hover:bg-[#1B222D]"
               }`}
             >
               EXPLODED
@@ -258,11 +258,11 @@ export default function ExplodedRingCanvas({
           </div>
 
           {/* Zoom Buttons */}
-          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#E5E5E7] pt-2 sm:pt-0 sm:pl-3 font-mono text-xs">
+          <div className="flex items-center gap-1.5 border-t sm:border-t-0 sm:border-l border-[#303A48] pt-2 sm:pt-0 sm:pl-3 font-mono text-xs">
             <button
               type="button"
               onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-              className="w-7 h-7 rounded-lg bg-[#F5F5F7] hover:bg-[#1D1D1F] hover:text-white border border-[#E5E5E7] text-[#1D1D1F] flex items-center justify-center transition-all cursor-pointer font-bold"
+              className="w-7 h-7 rounded-lg bg-[#11151C] hover:bg-[#1B222D] hover:text-white border border-[#303A48] text-[#A5AFBD] flex items-center justify-center transition-all cursor-pointer font-bold"
               title="Zoom Out (-)"
             >
               -
@@ -270,7 +270,7 @@ export default function ExplodedRingCanvas({
             <button
               type="button"
               onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-              className="w-7 h-7 rounded-lg bg-[#F5F5F7] hover:bg-[#1D1D1F] hover:text-white border border-[#E5E5E7] text-[#1D1D1F] flex items-center justify-center transition-all cursor-pointer font-bold"
+              className="w-7 h-7 rounded-lg bg-[#11151C] hover:bg-[#1B222D] hover:text-white border border-[#303A48] text-[#A5AFBD] flex items-center justify-center transition-all cursor-pointer font-bold"
               title="Zoom In (+)"
             >
               +
@@ -281,11 +281,11 @@ export default function ExplodedRingCanvas({
 
       {/* Simplified Zoom for Homepage */}
       {disableExplode && (
-        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-[#FFFFFF]/90 backdrop-blur-md border border-[#E5E5E7] p-2 rounded-2xl shadow-xl font-mono text-xs">
+        <div className="absolute bottom-6 right-6 z-[120] flex items-center gap-2 pointer-events-auto bg-[#080A0E]/90 backdrop-blur-md border border-[#303A48] p-2 rounded-2xl shadow-xl font-mono text-xs">
           <button
             type="button"
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-            className="w-7 h-7 rounded-lg bg-[#F5F5F7] hover:bg-[#1D1D1F] hover:text-white border border-[#E5E5E7] text-[#1D1D1F] flex items-center justify-center transition-all cursor-pointer font-bold"
+            className="w-7 h-7 rounded-lg bg-[#11151C] hover:bg-[#1B222D] hover:text-white border border-[#303A48] text-[#A5AFBD] flex items-center justify-center transition-all cursor-pointer font-bold"
             title="Zoom Out (-)"
           >
             -
@@ -293,7 +293,7 @@ export default function ExplodedRingCanvas({
           <button
             type="button"
             onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-            className="w-7 h-7 rounded-lg bg-[#F5F5F7] hover:bg-[#1D1D1F] hover:text-white border border-[#E5E5E7] text-[#1D1D1F] flex items-center justify-center transition-all cursor-pointer font-bold"
+            className="w-7 h-7 rounded-lg bg-[#11151C] hover:bg-[#1B222D] hover:text-white border border-[#303A48] text-[#A5AFBD] flex items-center justify-center transition-all cursor-pointer font-bold"
             title="Zoom In (+)"
           >
             +

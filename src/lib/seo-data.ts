@@ -79,7 +79,7 @@ export function getStructuredData() {
     name: SITE_CONFIG.legalName,
     alternateName: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    logo: `${SITE_CONFIG.url}/icon.svg`,
+    logo: `${SITE_CONFIG.url}/branding/nexus-logo-horizontal.png`,
     description: SITE_CONFIG.description,
     founder: {
       "@type": "Person",

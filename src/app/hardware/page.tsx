@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
@@ -86,51 +87,58 @@ export default function HardwarePage() {
   const selectedComp = HARDWARE_COMPONENTS.find((c) => c.id === selectedCompId) || HARDWARE_COMPONENTS[0];
 
   return (
-    <main className="min-h-screen bg-[#FFFFFF] text-[#1D1D1F] font-sans pt-28 pb-32 overflow-x-hidden selection:bg-[#C93E50]/15 selection:text-[#1D1D1F]">
+    <main className="min-h-screen bg-[#080A0E] text-[#F5F6F8] font-sans pt-32 pb-32 overflow-x-hidden selection:bg-[#D83A50]/20 selection:text-white">
+      <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:24px_24px]" />
+
       {/* ════════════════ SECTION 1: HERO ════════════════ */}
-      <section className="relative page-container mb-20 text-center">
-        <div className="max-w-4xl mx-auto space-y-5 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#6E6E73] text-[11px] font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C93E50]" />
-            Hardware Engineering &amp; Architecture
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-20 text-center">
+        <div className="max-w-3xl mx-auto space-y-6 relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#A5AFBD] text-[11px] font-mono tracking-widest uppercase">
+            <Image
+              src="/branding/nexus-emblem.svg"
+              alt="Nexus Ring Emblem"
+              width={14}
+              height={14}
+              className="w-3.5 h-3.5 object-contain"
+            />
+            <span>Hardware Engineering &amp; Architecture</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold tracking-tight text-[#1D1D1F]">
-            Thoughtfully engineered.
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-[#F5F6F8] uppercase">
+            ENGINEERED FOR INTENTION.
           </h1>
-          <p className="text-[#6E6E73] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            An exploration of the physical architecture behind Nexus Ring — from precision Hall sensors to a weighted magnetic totem.
+          <p className="text-[#A5AFBD] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+            An exploration of the physical architecture behind Nexus Ring.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a
               href="#exploded-view"
-              className="px-7 py-3 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full bg-[#D83A50] text-[#F5F6F8] font-semibold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(216,58,80,0.25)] flex items-center gap-2"
             >
-              <span>Explore Exploded View</span>
-              <ChevronRight size={14} />
+              Explore Exploded View <ChevronRight size={15} />
             </a>
             <Link
               href="/software"
-              className="px-7 py-3 rounded-full border border-[#E5E5E7] bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-all text-sm font-medium flex items-center gap-2"
+              className="px-8 py-3.5 rounded-full border border-[#303A48] bg-[#11151C] text-[#F5F6F8] hover:border-[#A5AFBD] transition-all font-mono text-sm flex items-center gap-2"
             >
-              <span>See Companion Software</span>
+              See Companion Software
             </Link>
           </div>
         </div>
       </section>
 
       {/* ════════════════ SECTION 2: HOW THE HARDWARE WORKS ════════════════ */}
-      <section className="relative page-container mb-32">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="eyebrow block">Functional Pipeline</span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white">
             From movement to mode.
           </h2>
-          <p className="text-base text-[#6E6E73] font-light">
+          <p className="text-sm md:text-base text-[#A5AFBD] font-light">
             How a physical movement translates through magnetic sensing and firmware into desktop workspace automation.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 relative">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
           {[
             {
               step: "01",
@@ -154,32 +162,32 @@ export default function HardwarePage() {
               step: "04",
               title: "Event Transmission",
               desc: "The controller sends a lightweight structured mode event to the host over USB serial connection.",
-              badge: "Comms",
+              badge: "Hardware Comms",
             },
             {
               step: "05",
               title: "Companion Execution",
               desc: "Nexus Companion receives the event and applies the user's configured workspace automations.",
-              badge: "Software",
+              badge: "Software Layer",
             },
           ].map((item, i) => (
             <div
               key={item.step}
-              className="relative z-10 p-6 md:p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-xs flex flex-col justify-between"
+              className="relative z-10 p-6 rounded-2xl border border-[#303A48] bg-[#11151C] flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="w-8 h-8 rounded-full bg-[#F5F5F7] border border-[#E5E5E7] flex items-center justify-center text-[#1D1D1F] font-mono text-xs font-bold">
+                  <span className="w-8 h-8 rounded-full bg-[#080A0E] border border-[#D83A50] flex items-center justify-center text-[#D83A50] font-mono text-xs font-bold">
                     {item.step}
                   </span>
-                  <span className="text-[10px] font-mono text-[#6E6E73] uppercase px-2.5 py-0.5 rounded-full bg-[#F5F5F7] border border-[#E5E5E7]">
+                  <span className="text-[9px] font-mono text-[#A5AFBD] uppercase px-2 py-0.5 rounded bg-[#1B222D] border border-[#303A48]">
                     {item.badge}
                   </span>
                 </div>
-                <h4 className="text-[#1D1D1F] font-bold text-sm mb-2">{item.title}</h4>
-                <p className="text-xs text-[#6E6E73] font-light leading-relaxed">{item.desc}</p>
+                <h4 className="text-white font-bold text-sm mb-2">{item.title}</h4>
+                <p className="text-xs text-[#A5AFBD] font-light leading-relaxed">{item.desc}</p>
               </div>
-              <div className="mt-6 pt-3 border-t border-[#E5E5E7] text-[10px] font-mono text-[#86868B]">
+              <div className="mt-4 pt-3 border-t border-[#303A48] text-[10px] font-mono text-[#A5AFBD]">
                 {i < 3 ? "Prototype Verified" : "Integration in Progress"}
               </div>
             </div>
@@ -187,21 +195,21 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 3: INTERACTIVE EXPLODED VIEW (SHOWCASE CONTAINER 1600PX) ════════════════ */}
-      <section id="exploded-view" className="relative showcase-container mb-32">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+      {/* ════════════════ SECTION 3: INTERACTIVE EXPLODED VIEW ════════════════ */}
+      <section id="exploded-view" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-32">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
           <span className="eyebrow block">Interactive CAD Disassembly</span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white">
             Exploded Engineering View.
           </h2>
-          <p className="text-base text-[#6E6E73] font-light">
+          <p className="text-sm md:text-base text-[#A5AFBD] font-light">
             Examine the physical stacking order of the actual CAD model. Select a component below to inspect its purpose and confirmed engineering details.
           </p>
         </div>
 
-        {/* 3D Canvas Box Expanded to Full Showcase Width & 680px Height */}
-        <div className="h-[560px] sm:h-[640px] lg:h-[720px] rounded-3xl border border-[#E5E5E7] bg-[#F8F9FA] relative overflow-hidden shadow-sm mb-8">
-          <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#6E6E73] tracking-widest uppercase bg-[#FFFFFF]/90 px-3.5 py-1.5 rounded-full border border-[#E5E5E7] backdrop-blur-md shadow-xs">
+        {/* 3D Canvas Box */}
+        <div className="h-[520px] sm:h-[600px] rounded-3xl border border-[#303A48] bg-[#11151C] relative overflow-hidden shadow-2xl mb-8">
+          <div className="absolute top-6 left-6 z-20 text-[10px] font-mono text-[#A5AFBD] tracking-widest uppercase bg-[#080A0E]/80 px-3 py-1.5 rounded-full border border-[#303A48] backdrop-blur-md">
             Interactive CAD Stacking · Select Component Below
           </div>
           <ExplodedRingCanvas
@@ -222,55 +230,55 @@ export default function HardwarePage() {
                 onClick={() => setSelectedCompId(comp.id)}
                 className={`p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer ${
                   isSelected
-                    ? "border-[#1D1D1F] bg-[#FFFFFF] shadow-sm ring-1 ring-[#1D1D1F]"
-                    : "border-[#E5E5E7] bg-[#F5F5F7] hover:bg-[#FFFFFF]"
+                    ? "border-[#D83A50] bg-[#1B222D] shadow-[0_0_15px_rgba(255,64,90,0.2)]"
+                    : "border-[#303A48] bg-[#11151C] hover:border-[#A5AFBD]/40"
                 }`}
               >
-                <span className="text-[9px] font-mono text-[#C93E50] block uppercase font-semibold">Layer {comp.layer}</span>
-                <p className="text-xs font-bold text-[#1D1D1F] truncate mt-0.5">{comp.name}</p>
+                <span className="text-[9px] font-mono text-[#D83A50] block uppercase">Layer {comp.layer}</span>
+                <p className="text-xs font-bold text-white truncate mt-0.5">{comp.name}</p>
               </button>
             );
           })}
         </div>
 
         {/* Active Component Specification Panel */}
-        <div className="p-6 md:p-8 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-sm">
+        <div className="p-6 md:p-8 rounded-3xl border border-[#303A48] bg-[#1B222D] shadow-xl">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
             <div className="md:col-span-4 space-y-2">
-              <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest px-2.5 py-0.5 rounded-full border border-[#C93E50]/20 bg-[#FDF2F4] font-semibold">
+              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest px-2 py-0.5 rounded border border-[#D83A50]/30 bg-[#D83A50]/10">
                 Layer {selectedComp.layer} Detail
               </span>
-              <h3 className="text-2xl font-display font-bold text-[#1D1D1F]">{selectedComp.name}</h3>
-              <p className="text-xs font-mono text-[#6E6E73]">
-                Status: <span className="text-[#1D1D1F] font-semibold">{selectedComp.status}</span>
+              <h3 className="text-2xl font-display font-bold text-white">{selectedComp.name}</h3>
+              <p className="text-xs font-mono text-[#A5AFBD]">
+                Status: <span className="text-white font-semibold">{selectedComp.status}</span>
               </p>
             </div>
             <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div className="p-4 rounded-xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-1">
-                <span className="text-[10px] font-mono text-[#6E6E73] uppercase tracking-widest block font-medium">Engineering Purpose</span>
-                <p className="text-[#1D1D1F] leading-relaxed">{selectedComp.purpose}</p>
+              <div className="p-4 rounded-xl border border-[#303A48] bg-[#080A0E] space-y-1">
+                <span className="text-[10px] font-mono text-[#A5AFBD] uppercase tracking-widest block">Engineering Purpose</span>
+                <p className="text-[#F5F6F8] leading-relaxed">{selectedComp.purpose}</p>
               </div>
-              <div className="p-4 rounded-xl border border-[#E5E5E7] bg-[#F8F9FA] space-y-1">
-                <span className="text-[10px] font-mono text-[#6E6E73] uppercase tracking-widest block font-medium">Role in Assembly</span>
-                <p className="text-[#1D1D1F] leading-relaxed">{selectedComp.role}</p>
+              <div className="p-4 rounded-xl border border-[#303A48] bg-[#080A0E] space-y-1">
+                <span className="text-[10px] font-mono text-[#A5AFBD] uppercase tracking-widest block">Role in Assembly</span>
+                <p className="text-[#F5F6F8] leading-relaxed">{selectedComp.role}</p>
               </div>
-              <div className="p-4 rounded-xl border border-[#E5E5E7] bg-[#F8F9FA] sm:col-span-2 space-y-1">
-                <span className="text-[10px] font-mono text-[#6E6E73] uppercase tracking-widest block font-medium">Confirmed Technical Details</span>
-                <p className="text-[#1D1D1F] leading-relaxed font-mono text-[11px]">{selectedComp.details}</p>
+              <div className="p-4 rounded-xl border border-[#303A48] bg-[#080A0E] sm:col-span-2 space-y-1">
+                <span className="text-[10px] font-mono text-[#A5AFBD] uppercase tracking-widest block">Confirmed Technical Details</span>
+                <p className="text-[#F5F6F8] leading-relaxed font-mono text-[11px]">{selectedComp.details}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ════════════════ SECTION 4: DETAILED ARCHITECTURE SCHEMATICS (PAGE CONTAINER 1440PX) ════════════════ */}
-      <section className="relative page-container mb-32 space-y-24">
-        <div className="text-center max-w-3xl mx-auto space-y-3">
+      {/* ════════════════ SECTION 4: DETAILED ARCHITECTURE SCHEMATICS ════════════════ */}
+      <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-32 space-y-24">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="eyebrow block">Subsystem Breakdown</span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white">
             Engineering Behind Nexus Ring.
           </h2>
-          <p className="text-base text-[#6E6E73] font-light">
+          <p className="text-sm md:text-base text-[#A5AFBD] font-light">
             Verified hardware layers and architecture schematics based on genuine prototype CAD models and firmware code.
           </p>
         </div>
@@ -278,60 +286,60 @@ export default function HardwarePage() {
         {/* Layer 01: Enclosure */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest border border-[#C93E50]/20 bg-[#FDF2F4] px-3 py-1 rounded-full font-semibold">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-2.5 py-1 rounded-full">
               Layer 01 · Structural Base
             </span>
-            <h3 className="text-3xl font-display font-bold text-[#1D1D1F] mt-4 mb-3">The Physical Base</h3>
-            <p className="text-[#6E6E73] text-sm leading-relaxed mb-4 font-light">
+            <h3 className="text-3xl font-display font-bold text-white mt-4 mb-3">The Physical Base</h3>
+            <p className="text-[#A5AFBD] text-sm leading-relaxed mb-4">
               The Nexus chassis integrates the internal electronics, four radial totem docking positions, magnetic sensing zones, and ambient optical diffuser into a single cohesive desk object.
             </p>
-            <p className="text-xs text-[#86868B] italic mb-6">
+            <p className="text-xs text-[#A5AFBD] italic mb-6">
               Prototype enclosures are being fabricated for FDM additive manufacturing using carbon-fiber reinforced filaments (PLA-CF / PETG) for dimensional stability and matte surface texture.
             </p>
-            <div className="p-4 border border-[#E5E5E7] bg-[#F8F9FA] rounded-2xl space-y-2">
-              <h4 className="text-[#1D1D1F] font-bold text-xs flex items-center gap-2">
-                <Box size={16} className="text-[#C93E50]" />
+            <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-2xl space-y-2">
+              <h4 className="text-white font-bold text-xs flex items-center gap-2">
+                <Box size={16} className="text-[#D83A50]" />
                 Designed for maker reproducibility
               </h4>
-              <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+              <p className="text-xs text-[#A5AFBD] leading-relaxed">
                 The enclosure was engineered from inception so the custom electronics fit into a printable chassis without requiring multi-thousand dollar injection-molding tooling for initial validation.
               </p>
             </div>
           </div>
 
           {/* Schematic SVG 1: Enclosure Cross Section */}
-          <div className="aspect-square bg-[#F8F9FA] border border-[#E5E5E7] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-sm">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#6E6E73]">
+          <div className="aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A5AFBD]">
               <span>SCHEMATIC 01 // CHASSIS STACK</span>
-              <span className="text-[#C93E50] font-semibold">DWG-ENC-01</span>
+              <span className="text-[#D83A50]">DWG-ENC-01</span>
             </div>
             <div className="my-auto flex items-center justify-center">
-              <svg viewBox="0 0 320 200" className="w-full max-w-[280px] stroke-[#86868B] fill-none" strokeWidth="1.5">
+              <svg viewBox="0 0 320 200" className="w-full max-w-[280px] stroke-[#A5AFBD] fill-none" strokeWidth="1.5">
                 {/* Upper Housing Lid */}
-                <rect x="40" y="30" width="240" height="35" rx="6" className="stroke-[#C93E50]" strokeDasharray="3 3" />
-                <text x="160" y="52" fill="#C93E50" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle">ANODIZED UPPER LID (FDM / ALLOY)</text>
+                <rect x="40" y="30" width="240" height="35" rx="6" className="stroke-[#D83A50]" strokeDasharray="3 3" />
+                <text x="160" y="52" fill="#D83A50" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle">ANODIZED UPPER LID (FDM / ALLOY)</text>
                 
                 {/* Totem Receptacle Well */}
-                <rect x="110" y="20" width="100" height="45" rx="4" className="stroke-[#1D1D1F]" strokeWidth="2" />
-                <text x="160" y="32" fill="#1D1D1F" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">TOTEM SEAT WELL</text>
+                <rect x="110" y="20" width="100" height="45" rx="4" className="stroke-white" strokeWidth="2" />
+                <text x="160" y="32" fill="#FFFFFF" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">TOTEM SEAT WELL</text>
                 
                 {/* Middle Optical Diffuser */}
-                <rect x="50" y="75" width="220" height="20" rx="3" className="stroke-[#34A853]" />
-                <text x="160" y="89" fill="#34A853" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">360° OPTICAL LIGHT GUIDE</text>
+                <rect x="50" y="75" width="220" height="20" rx="3" className="stroke-[#35C98A]" />
+                <text x="160" y="89" fill="#35C98A" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">360° OPTICAL LIGHT GUIDE</text>
                 
                 {/* PCB & Electronics Chamber */}
-                <rect x="50" y="105" width="220" height="40" rx="4" className="stroke-[#1D1D1F]" />
-                <circle cx="90" cy="125" r="8" className="stroke-[#C93E50]" />
-                <circle cx="230" cy="125" r="8" className="stroke-[#C93E50]" />
-                <rect x="130" y="115" width="60" height="20" rx="2" className="stroke-[#FBBC04]" />
-                <text x="160" y="129" fill="#FBBC04" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">ESP32-C3 PCB</text>
+                <rect x="50" y="105" width="220" height="40" rx="4" className="stroke-white" />
+                <circle cx="90" cy="125" r="8" className="stroke-[#D83A50]" />
+                <circle cx="230" cy="125" r="8" className="stroke-[#D83A50]" />
+                <rect x="130" y="115" width="60" height="20" rx="2" className="stroke-[#F0B35A]" />
+                <text x="160" y="129" fill="#F0B35A" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">ESP32-C3 PCB</text>
                 
                 {/* Base Deck */}
-                <rect x="30" y="155" width="260" height="25" rx="4" className="stroke-[#86868B]" />
-                <text x="160" y="171" fill="#6E6E73" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">WEIGHTED BASE PLATE + RUBBER PAD</text>
+                <rect x="30" y="155" width="260" height="25" rx="4" className="stroke-[#A5AFBD]" />
+                <text x="160" y="171" fill="#A5AFBD" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">WEIGHTED BASE PLATE + RUBBER PAD</text>
               </svg>
             </div>
-            <div className="text-[10px] font-mono text-[#86868B] border-t border-[#E5E5E7] pt-2 flex justify-between">
+            <div className="text-[10px] font-mono text-[#A5AFBD] border-t border-[#303A48] pt-2 flex justify-between">
               <span>DUAL-SHELL ASSEMBLY</span>
               <span>PLA-CF / BILLET 6061</span>
             </div>
@@ -341,52 +349,52 @@ export default function HardwarePage() {
         {/* Layer 02: Magnetic Totem */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="md:order-2">
-            <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest border border-[#C93E50]/20 bg-[#FDF2F4] px-3 py-1 rounded-full font-semibold">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-2.5 py-1 rounded-full">
               Layer 02 · Interactive Totem
             </span>
-            <h3 className="text-3xl font-display font-bold text-[#1D1D1F] mt-4 mb-3">The Magnetic Totem</h3>
-            <p className="text-[#6E6E73] text-sm leading-relaxed mb-4 font-light">
+            <h3 className="text-3xl font-display font-bold text-white mt-4 mb-3">The Magnetic Totem</h3>
+            <p className="text-[#A5AFBD] text-sm leading-relaxed mb-4">
               The totem is the primary tactile contact point. Moving it represents a deliberate cognitive commitment. Its weight, material texture, and magnetic resistance are engineered to feel substantial rather than accidental.
             </p>
-            <p className="text-xs text-[#86868B] italic mb-6">
+            <p className="text-xs text-[#A5AFBD] italic mb-6">
               Current prototype direction pairs an anodized aluminum upper totem with an embedded neodymium permanent magnet core and non-scratch contact face.
             </p>
-            <div className="p-4 border border-[#E5E5E7] bg-[#F8F9FA] rounded-2xl space-y-1">
-              <span className="text-xs font-bold text-[#1D1D1F] block">Deliberate Physical Action</span>
-              <p className="text-xs text-[#6E6E73] font-light">
+            <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-2xl space-y-1">
+              <span className="text-xs font-bold text-white block">Deliberate Physical Action</span>
+              <p className="text-xs text-[#A5AFBD]">
                 Unlike digital switches that can be closed in a split second of impulsivity, moving a physical totem requires deliberate focus.
               </p>
             </div>
           </div>
 
           {/* Schematic SVG 2: Totem Core Schematic */}
-          <div className="md:order-1 aspect-square bg-[#F8F9FA] border border-[#E5E5E7] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-sm">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#6E6E73]">
+          <div className="md:order-1 aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A5AFBD]">
               <span>SCHEMATIC 02 // TOTEM FLUX CORE</span>
-              <span className="text-[#C93E50] font-semibold">DWG-TOT-02</span>
+              <span className="text-[#D83A50]">DWG-TOT-02</span>
             </div>
             <div className="my-auto flex items-center justify-center">
-              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#86868B] fill-none" strokeWidth="1.5">
+              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#A5AFBD] fill-none" strokeWidth="1.5">
                 {/* Outer Totem Shell */}
-                <path d="M 60 190 L 75 50 Q 120 40 165 50 L 180 190 Z" className="stroke-[#1D1D1F]" strokeWidth="2" />
+                <path d="M 60 190 L 75 50 Q 120 40 165 50 L 180 190 Z" className="stroke-white" strokeWidth="2" />
                 {/* Chamfer Top Grip */}
-                <line x1="75" y1="50" x2="165" y2="50" className="stroke-[#C93E50]" strokeWidth="2" />
-                <text x="120" y="32" fill="#C93E50" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">TACTILE INDEX NOTCH</text>
+                <line x1="75" y1="50" x2="165" y2="50" className="stroke-[#D83A50]" strokeWidth="2" />
+                <text x="120" y="32" fill="#D83A50" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">TACTILE INDEX NOTCH</text>
                 
                 {/* Internal Weight / Core Cavity */}
-                <rect x="85" y="80" width="70" height="90" rx="4" className="stroke-[#E5E5E7]" fill="#FFFFFF" />
+                <rect x="85" y="80" width="70" height="90" rx="4" className="stroke-[#303A48]" fill="#080A0E" />
                 
                 {/* Neodymium Magnet */}
-                <rect x="95" y="130" width="50" height="35" rx="2" className="stroke-[#C93E50]" fill="#FDF2F4" />
-                <text x="120" y="148" fill="#1D1D1F" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">N-POLE</text>
-                <text x="120" y="160" fill="#6E6E73" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">NdFeB MAGNET</text>
+                <rect x="95" y="130" width="50" height="35" rx="2" className="stroke-[#D83A50]" fill="#D83A5020" />
+                <text x="120" y="148" fill="#FFFFFF" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">N-POLE</text>
+                <text x="120" y="160" fill="#A5AFBD" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">NdFeB MAGNET</text>
                 
                 {/* Magnetic Flux Lines */}
-                <path d="M 95 165 Q 60 210 120 220 Q 180 210 145 165" className="stroke-[#C93E50]" strokeDasharray="3 3" />
-                <text x="120" y="235" fill="#C93E50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">DOWNWARD FLUX VECTOR</text>
+                <path d="M 95 165 Q 60 210 120 220 Q 180 210 145 165" className="stroke-[#D83A50]" strokeDasharray="3 3" />
+                <text x="120" y="235" fill="#D83A50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">DOWNWARD FLUX VECTOR</text>
               </svg>
             </div>
-            <div className="text-[10px] font-mono text-[#86868B] border-t border-[#E5E5E7] pt-2 flex justify-between">
+            <div className="text-[10px] font-mono text-[#A5AFBD] border-t border-[#303A48] pt-2 flex justify-between">
               <span>WEIGHT: ~85g PROTOTYPE</span>
               <span>GRADE: N52 TARGET</span>
             </div>
@@ -396,63 +404,63 @@ export default function HardwarePage() {
         {/* Layer 03: Hall Sensors */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest border border-[#C93E50]/20 bg-[#FDF2F4] px-3 py-1 rounded-full font-semibold">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-2.5 py-1 rounded-full">
               Layer 03 · Contactless Sensing
             </span>
-            <h3 className="text-3xl font-display font-bold text-[#1D1D1F] mt-4 mb-3">Hall-Effect Quadrant Array</h3>
-            <p className="text-[#6E6E73] text-sm leading-relaxed mb-4 font-light">
+            <h3 className="text-3xl font-display font-bold text-white mt-4 mb-3">Hall-Effect Quadrant Array</h3>
+            <p className="text-[#A5AFBD] text-sm leading-relaxed mb-4">
               Nexus Ring replaces mechanical click switches with magnetic Hall-effect sensors positioned under each mode quadrant. When the magnetic totem enters a slot, the magnetic flux shifts the sensor output voltage.
             </p>
-            <p className="text-xs text-[#86868B] italic mb-6">
+            <p className="text-xs text-[#A5AFBD] italic mb-6">
               Eliminates moving electrical contacts, dust vulnerability, and switch wear over thousands of daily focus cycles.
             </p>
-            <div className="p-4 border border-[#E5E5E7] bg-[#F8F9FA] rounded-2xl text-xs space-y-1">
-              <span className="text-[#1D1D1F] font-bold block">Digital Interrupt State Machine</span>
-              <p className="text-[#6E6E73] font-light">
+            <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-2xl text-xs space-y-1">
+              <span className="text-white font-bold block">Digital Interrupt State Machine</span>
+              <p className="text-[#A5AFBD]">
                 Sensors are sampled via hardware debounced interrupts to guarantee rapid mode transitions without false firing.
               </p>
             </div>
           </div>
 
           {/* Schematic SVG 3: Hall Sensor Array Top View */}
-          <div className="aspect-square bg-[#F8F9FA] border border-[#E5E5E7] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-sm">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#6E6E73]">
+          <div className="aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A5AFBD]">
               <span>SCHEMATIC 03 // SENSOR QUADRANT</span>
-              <span className="text-[#C93E50] font-semibold">DWG-HAL-03</span>
+              <span className="text-[#D83A50]">DWG-HAL-03</span>
             </div>
             <div className="my-auto flex items-center justify-center">
-              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#86868B] fill-none" strokeWidth="1.5">
+              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#A5AFBD] fill-none" strokeWidth="1.5">
                 {/* Radial Quadrant Ring */}
-                <circle cx="120" cy="120" r="90" className="stroke-[#E5E5E7]" />
-                <circle cx="120" cy="120" r="50" className="stroke-[#E5E5E7]" />
-                <line x1="120" y1="20" x2="120" y2="220" className="stroke-[#E5E5E7]" strokeDasharray="3 3" />
-                <line x1="20" y1="120" x2="220" y2="120" className="stroke-[#E5E5E7]" strokeDasharray="3 3" />
+                <circle cx="120" cy="120" r="90" className="stroke-[#303A48]" />
+                <circle cx="120" cy="120" r="50" className="stroke-[#303A48]" />
+                <line x1="120" y1="20" x2="120" y2="220" className="stroke-[#303A48]" strokeDasharray="3 3" />
+                <line x1="20" y1="120" x2="220" y2="120" className="stroke-[#303A48]" strokeDasharray="3 3" />
 
                 {/* Slot 01: Deep Work (Top) */}
-                <rect x="108" y="40" width="24" height="18" rx="2" className="stroke-[#C93E50]" fill="#FDF2F4" />
-                <text x="120" y="52" fill="#C93E50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H1</text>
-                <text x="120" y="30" fill="#1D1D1F" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">01 DEEP WORK</text>
+                <rect x="108" y="40" width="24" height="18" rx="2" className="stroke-[#D83A50]" fill="#D83A5020" />
+                <text x="120" y="52" fill="#D83A50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H1</text>
+                <text x="120" y="30" fill="#FFFFFF" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">01 DEEP WORK</text>
 
                 {/* Slot 02: Creative (Right) */}
-                <rect x="178" y="111" width="18" height="24" rx="2" className="stroke-[#1D1D1F]" fill="#F5F5F7" />
-                <text x="187" y="126" fill="#1D1D1F" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H2</text>
-                <text x="187" y="148" fill="#6E6E73" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">02 CREATIVE</text>
+                <rect x="178" y="111" width="18" height="24" rx="2" className="stroke-white" fill="#FFFFFF20" />
+                <text x="187" y="126" fill="#FFFFFF" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H2</text>
+                <text x="187" y="148" fill="#A5AFBD" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">02 CREATIVE</text>
 
                 {/* Slot 03: Meeting (Bottom) */}
-                <rect x="108" y="180" width="24" height="18" rx="2" className="stroke-[#34A853]" fill="#E6F4EA" />
-                <text x="120" y="192" fill="#34A853" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H3</text>
-                <text x="120" y="212" fill="#34A853" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">03 MEETING</text>
+                <rect x="108" y="180" width="24" height="18" rx="2" className="stroke-[#35C98A]" fill="#35C98A20" />
+                <text x="120" y="192" fill="#35C98A" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H3</text>
+                <text x="120" y="212" fill="#35C98A" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">03 MEETING</text>
 
                 {/* Slot 04: Break (Left) */}
-                <rect x="42" y="111" width="18" height="24" rx="2" className="stroke-[#FBBC04]" fill="#FEF7E0" />
-                <text x="51" y="126" fill="#FBBC04" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H4</text>
-                <text x="51" y="148" fill="#FBBC04" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">04 BREAK</text>
+                <rect x="42" y="111" width="18" height="24" rx="2" className="stroke-[#F0B35A]" fill="#F0B35A20" />
+                <text x="51" y="126" fill="#F0B35A" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">H4</text>
+                <text x="51" y="148" fill="#F0B35A" stroke="none" fontSize="9" fontFamily="monospace" textAnchor="middle">04 BREAK</text>
 
-                <circle cx="120" cy="120" r="16" className="stroke-[#C93E50]" strokeDasharray="2 2" />
-                <text x="120" y="123" fill="#86868B" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">CORE</text>
+                <circle cx="120" cy="120" r="16" className="stroke-[#D83A50]" strokeDasharray="2 2" />
+                <text x="120" y="123" fill="#A5AFBD" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">CORE</text>
               </svg>
             </div>
-            <div className="text-[10px] font-mono text-[#86868B] border-t border-[#E5E5E7] pt-2 flex justify-between">
+            <div className="text-[10px] font-mono text-[#A5AFBD] border-t border-[#303A48] pt-2 flex justify-between">
               <span>QUADRATURE SENSING</span>
               <span>4X HALL IC CHANNELS</span>
             </div>
@@ -462,60 +470,60 @@ export default function HardwarePage() {
         {/* Layer 04: Microcontroller / Custom PCB */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="md:order-2">
-            <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest border border-[#C93E50]/20 bg-[#FDF2F4] px-3 py-1 rounded-full font-semibold">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-2.5 py-1 rounded-full">
               Layer 04 · Onboard Controller
             </span>
-            <h3 className="text-3xl font-display font-bold text-[#1D1D1F] mt-4 mb-3">ESP32-C3 RISC-V Architecture</h3>
-            <p className="text-[#6E6E73] text-sm leading-relaxed mb-4 font-light">
+            <h3 className="text-3xl font-display font-bold text-white mt-4 mb-3">ESP32-C3 RISC-V Architecture</h3>
+            <p className="text-[#A5AFBD] text-sm leading-relaxed mb-4">
               The microcontroller reads magnetic sensor inputs, maintains the device state machine, generates glanceable ambient lighting, and transmits mode transitions directly to the local companion software.
             </p>
-            <p className="text-xs text-[#86868B] italic mb-6">
+            <p className="text-xs text-[#A5AFBD] italic mb-6">
               Custom PCB routing is in active development to consolidate wiring, integrate ESD protection, and streamline assembly into the printable base.
             </p>
-            <div className="p-4 border border-[#E5E5E7] bg-[#F8F9FA] rounded-2xl text-xs space-y-1">
-              <span className="text-[#1D1D1F] font-bold flex items-center gap-2">
-                <Cpu size={14} className="text-[#C93E50]" /> Local State Management
+            <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-2xl text-xs space-y-1">
+              <span className="text-white font-bold flex items-center gap-2">
+                <Cpu size={14} className="text-[#D83A50]" /> Local State Management
               </span>
-              <p className="text-[#6E6E73] font-light">
+              <p className="text-[#A5AFBD]">
                 Runs dedicated firmware written in C++/ESP-IDF with deterministic hardware interrupts and local USB serial transmission.
               </p>
             </div>
           </div>
 
           {/* Schematic SVG 4: ESP32-C3 PCB Layout */}
-          <div className="md:order-1 aspect-square bg-[#F8F9FA] border border-[#E5E5E7] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-sm">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#6E6E73]">
+          <div className="md:order-1 aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A5AFBD]">
               <span>SCHEMATIC 04 // PCB TOPOLOGY</span>
-              <span className="text-[#C93E50] font-semibold">DWG-PCB-04</span>
+              <span className="text-[#D83A50]">DWG-PCB-04</span>
             </div>
             <div className="my-auto flex items-center justify-center">
-              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#86868B] fill-none" strokeWidth="1.5">
+              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#A5AFBD] fill-none" strokeWidth="1.5">
                 {/* PCB Outline */}
-                <rect x="25" y="25" width="190" height="190" rx="14" className="stroke-[#1D1D1F]" fill="#FFFFFF" />
+                <rect x="25" y="25" width="190" height="190" rx="14" className="stroke-white" fill="#0d1b14" />
                 
                 {/* Mounting Holes */}
-                <circle cx="45" cy="45" r="5" className="stroke-[#86868B]" fill="#F5F5F7" />
-                <circle cx="195" cy="45" r="5" className="stroke-[#86868B]" fill="#F5F5F7" />
-                <circle cx="45" cy="195" r="5" className="stroke-[#86868B]" fill="#F5F5F7" />
-                <circle cx="195" cy="195" r="5" className="stroke-[#86868B]" fill="#F5F5F7" />
+                <circle cx="45" cy="45" r="5" className="stroke-[#A5AFBD]" fill="#080A0E" />
+                <circle cx="195" cy="45" r="5" className="stroke-[#A5AFBD]" fill="#080A0E" />
+                <circle cx="45" cy="195" r="5" className="stroke-[#A5AFBD]" fill="#080A0E" />
+                <circle cx="195" cy="195" r="5" className="stroke-[#A5AFBD]" fill="#080A0E" />
 
                 {/* ESP32-C3 SoC Module */}
-                <rect x="75" y="70" width="90" height="90" rx="4" className="stroke-[#C93E50]" fill="#FDF2F4" strokeWidth="2" />
-                <text x="120" y="105" fill="#1D1D1F" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">ESP32-C3</text>
-                <text x="120" y="120" fill="#6E6E73" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">32-bit RISC-V</text>
-                <text x="120" y="132" fill="#C93E50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">160MHz CORE</text>
+                <rect x="75" y="70" width="90" height="90" rx="4" className="stroke-[#D83A50]" fill="#080A0E" strokeWidth="2" />
+                <text x="120" y="105" fill="#FFFFFF" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">ESP32-C3</text>
+                <text x="120" y="120" fill="#A5AFBD" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">32-bit RISC-V</text>
+                <text x="120" y="132" fill="#D83A50" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">160MHz CORE</text>
 
                 {/* USB-C Receptacle */}
-                <rect x="95" y="195" width="50" height="20" rx="3" className="stroke-[#1D1D1F]" fill="#F5F5F7" />
-                <text x="120" y="208" fill="#1D1D1F" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">USB-C</text>
+                <rect x="95" y="195" width="50" height="20" rx="3" className="stroke-white" fill="#1B222D" />
+                <text x="120" y="208" fill="#FFFFFF" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">USB-C</text>
 
                 {/* Traces */}
-                <path d="M 120 70 L 120 40" className="stroke-[#34A853]" strokeDasharray="2 2" />
-                <path d="M 75 115 L 45 115" className="stroke-[#34A853]" strokeDasharray="2 2" />
-                <path d="M 165 115 L 195 115" className="stroke-[#34A853]" strokeDasharray="2 2" />
+                <path d="M 120 70 L 120 40" className="stroke-[#35C98A]" strokeDasharray="2 2" />
+                <path d="M 75 115 L 45 115" className="stroke-[#35C98A]" strokeDasharray="2 2" />
+                <path d="M 165 115 L 195 115" className="stroke-[#35C98A]" strokeDasharray="2 2" />
               </svg>
             </div>
-            <div className="text-[10px] font-mono text-[#86868B] border-t border-[#E5E5E7] pt-2 flex justify-between">
+            <div className="text-[10px] font-mono text-[#A5AFBD] border-t border-[#303A48] pt-2 flex justify-between">
               <span>PCB: 2-LAYER CUSTOM</span>
               <span>ESP32-C3 RISC-V ARCH</span>
             </div>
@@ -525,45 +533,45 @@ export default function HardwarePage() {
         {/* Layer 05: Ambient LED Ring */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-[10px] font-mono text-[#C93E50] uppercase tracking-widest border border-[#C93E50]/20 bg-[#FDF2F4] px-3 py-1 rounded-full font-semibold">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-2.5 py-1 rounded-full">
               Layer 05 · Optical Feedback
             </span>
-            <h3 className="text-3xl font-display font-bold text-[#1D1D1F] mt-4 mb-3">Ambient Optical Diffuser</h3>
-            <p className="text-[#6E6E73] text-sm leading-relaxed mb-4 font-light">
+            <h3 className="text-3xl font-display font-bold text-white mt-4 mb-3">Ambient Optical Diffuser</h3>
+            <p className="text-[#A5AFBD] text-sm leading-relaxed mb-4">
               Nexus Ring intentionally avoids a screen. Adding another tiny display demanding eye contact defeats the purpose of calm computing. State is communicated through an internal 360° light ring and frosted optical diffuser.
             </p>
-            <ul className="space-y-2 text-xs text-[#6E6E73] font-mono mb-6">
+            <ul className="space-y-2 text-xs text-[#A5AFBD] font-mono mb-6">
               <li className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#C93E50]" />
-                <strong className="text-[#1D1D1F]">Deep Work:</strong> Steady focused crimson glow
+                <span className="w-2 h-2 rounded-full bg-[#D83A50]" />
+                <strong className="text-white">Deep Work:</strong> Steady focused crimson glow
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1D1D1F]" />
-                <strong className="text-[#1D1D1F]">Creative:</strong> Soft breathing studio light
+                <span className="w-2 h-2 rounded-full bg-white" />
+                <strong className="text-white">Creative:</strong> Soft breathing studio light
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#34A853]" />
-                <strong className="text-[#1D1D1F]">Meeting:</strong> Steady calm emerald light
+                <span className="w-2 h-2 rounded-full bg-[#35C98A]" />
+                <strong className="text-white">Meeting:</strong> Steady calm emerald light
               </li>
               <li className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FBBC04]" />
-                <strong className="text-[#1D1D1F]">Break:</strong> Warm low-intensity amber glow
+                <span className="w-2 h-2 rounded-full bg-[#F0B35A]" />
+                <strong className="text-white">Break:</strong> Warm low-intensity amber glow
               </li>
             </ul>
           </div>
 
           {/* Schematic SVG 5: Diffuser Optical Path */}
-          <div className="aspect-square bg-[#F8F9FA] border border-[#E5E5E7] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-sm">
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#6E6E73]">
+          <div className="aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A5AFBD]">
               <span>SCHEMATIC 05 // OPTICAL DIFFUSION</span>
-              <span className="text-[#C93E50] font-semibold">DWG-OPT-05</span>
+              <span className="text-[#D83A50]">DWG-OPT-05</span>
             </div>
             <div className="my-auto flex items-center justify-center">
-              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#86868B] fill-none" strokeWidth="1.5">
+              <svg viewBox="0 0 240 240" className="w-full max-w-[240px] stroke-[#A5AFBD] fill-none" strokeWidth="1.5">
                 {/* 360 Ring */}
-                <circle cx="120" cy="120" r="95" className="stroke-[#E5E5E7]" />
-                <circle cx="120" cy="120" r="80" className="stroke-[#C93E50]" strokeWidth="3" opacity="0.8" />
-                <circle cx="120" cy="120" r="65" className="stroke-[#E5E5E7]" />
+                <circle cx="120" cy="120" r="95" className="stroke-[#303A48]" />
+                <circle cx="120" cy="120" r="80" className="stroke-[#D83A50]" strokeWidth="3" opacity="0.8" />
+                <circle cx="120" cy="120" r="65" className="stroke-[#303A48]" />
 
                 {/* LED Nodes */}
                 {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => {
@@ -571,17 +579,17 @@ export default function HardwarePage() {
                   const x = Number((120 + 80 * Math.cos(rad)).toFixed(2));
                   const y = Number((120 + 80 * Math.sin(rad)).toFixed(2));
                   return (
-                    <circle key={deg} cx={x} cy={y} r="3" fill="#C93E50" stroke="none" />
+                    <circle key={deg} cx={x} cy={y} r="3" fill="#D83A50" stroke="none" />
                   );
                 })}
 
                 {/* Diffused Light Rays */}
-                <circle cx="120" cy="120" r="105" className="stroke-[#C93E50]" strokeDasharray="3 4" opacity="0.4" />
-                <text x="120" y="115" fill="#1D1D1F" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">360° DIFFUSER</text>
-                <text x="120" y="130" fill="#6E6E73" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">RADIAL HALO EFFECT</text>
+                <circle cx="120" cy="120" r="105" className="stroke-[#D83A50]" strokeDasharray="3 4" opacity="0.4" />
+                <text x="120" y="115" fill="#FFFFFF" stroke="none" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">360° DIFFUSER</text>
+                <text x="120" y="130" fill="#A5AFBD" stroke="none" fontSize="8" fontFamily="monospace" textAnchor="middle">RADIAL HALO EFFECT</text>
               </svg>
             </div>
-            <div className="text-[10px] font-mono text-[#86868B] border-t border-[#E5E5E7] pt-2 flex justify-between">
+            <div className="text-[10px] font-mono text-[#A5AFBD] border-t border-[#303A48] pt-2 flex justify-between">
               <span>DIFFUSER: FROSTED OPTIC</span>
               <span>WS2812 COMPATIBLE</span>
             </div>
@@ -590,18 +598,18 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 5: HARDWARE SPECIFICATION TABLE ════════════════ */}
-      <section className="relative page-container mb-32">
+      <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-32">
         <div className="text-center mb-10 space-y-2">
           <span className="eyebrow block">Technical Data</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-[#1D1D1F]">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
             Hardware Specifications.
           </h2>
-          <p className="text-sm text-[#6E6E73] font-light max-w-2xl mx-auto">
+          <p className="text-xs text-[#A5AFBD]">
             Confirmed prototype parameters and planned manufacturing targets. Unconfirmed specifications are marked truthfully.
           </p>
         </div>
 
-        <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] overflow-hidden shadow-sm max-w-5xl mx-auto">
+        <div className="rounded-2xl border border-[#303A48] bg-[#11151C] overflow-hidden">
           {[
             { label: "Controller Architecture", value: "ESP32-C3 RISC-V SoC (32-bit, 160MHz)", status: "Validated in Prototype" },
             { label: "Position Detection Method", value: "4x Contactless Hall-effect magnetic sensors", status: "Functional Testing" },
@@ -616,15 +624,15 @@ export default function HardwarePage() {
           ].map((row, idx) => (
             <div
               key={row.label}
-              className={`p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E5E5E7] ${
-                idx % 2 === 0 ? "bg-[#FFFFFF]" : "bg-[#F8F9FA]"
+              className={`p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#303A48] ${
+                idx % 2 === 0 ? "bg-[#11151C]" : "bg-[#1B222D]"
               }`}
             >
               <div>
-                <span className="text-sm font-bold text-[#1D1D1F] block">{row.label}</span>
-                <span className="text-xs font-mono text-[#6E6E73]">{row.value}</span>
+                <span className="text-xs font-bold text-white block">{row.label}</span>
+                <span className="text-xs font-mono text-[#A5AFBD]">{row.value}</span>
               </div>
-              <span className="text-[10px] font-mono text-[#1D1D1F] font-semibold px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E5E5E7] shrink-0 self-start sm:self-auto shadow-xs">
+              <span className="text-[10px] font-mono text-[#D83A50] px-2.5 py-1 rounded bg-[#080A0E] border border-[#303A48] shrink-0 self-start sm:self-auto">
                 {row.status}
               </span>
             </div>
@@ -633,11 +641,11 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 6: DEVELOPMENT STATUS ════════════════ */}
-      <section className="relative editorial-container mb-32">
-        <h2 className="text-3xl font-display font-bold text-[#1D1D1F] mb-8 text-center">
+      <section className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-32">
+        <h2 className="text-3xl font-display font-bold text-white mb-8 text-center">
           What is real today.
         </h2>
-        <div className="space-y-2.5 font-mono text-xs">
+        <div className="space-y-2 font-mono text-xs">
           {[
             { f: "Product concept & 4-mode layout", s: "VALIDATED" },
             { f: "Industrial CAD modeling (GLB/STEP)", s: "VALIDATED" },
@@ -650,17 +658,17 @@ export default function HardwarePage() {
             { f: "Production tooling & CNC fixtures", s: "PLANNED" },
             { f: "Mass manufacturing & assembly", s: "PLANNED" },
           ].map((row) => (
-            <div key={row.f} className="flex justify-between items-center p-4 border border-[#E5E5E7] bg-[#FFFFFF] rounded-2xl shadow-xs">
-              <span className="text-[#1D1D1F] font-sans font-medium">{row.f}</span>
+            <div key={row.f} className="flex justify-between items-center p-3.5 border-b border-[#303A48] bg-[#11151C] rounded-lg">
+              <span className="text-[#F5F6F8]">{row.f}</span>
               <span
-                className={`px-3 py-1 rounded-full text-[10px] font-bold ${
+                className={`px-2.5 py-0.5 rounded text-[10px] font-bold ${
                   row.s === "VALIDATED"
-                    ? "bg-[#34A853]/10 text-[#34A853] border border-[#34A853]/20"
+                    ? "bg-[#35C98A]/20 text-[#35C98A]"
                     : row.s === "PROTOTYPE" || row.s === "TESTING"
-                    ? "bg-[#FBBC04]/10 text-[#B06000] border border-[#FBBC04]/20"
+                    ? "bg-[#F0B35A]/20 text-[#F0B35A]"
                     : row.s === "IN DEVELOPMENT"
-                    ? "bg-[#C93E50]/10 text-[#C93E50] border border-[#C93E50]/20"
-                    : "bg-[#F5F5F7] text-[#86868B] border border-[#E5E5E7]"
+                    ? "bg-[#D83A50]/20 text-[#D83A50]"
+                    : "bg-[#303A48] text-[#A5AFBD]"
                 }`}
               >
                 {row.s}
@@ -671,34 +679,34 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 7: MAKER ECOSYSTEM ════════════════ */}
-      <section className="relative page-container mb-32">
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 md:p-10 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-xs">
+          <div className="p-8 border border-[#303A48] bg-[#11151C] rounded-3xl space-y-4">
             <span className="eyebrow block mb-1">Maker Philosophy</span>
-            <h3 className="text-2xl font-bold text-[#1D1D1F]">Open to inspect, build, and modify.</h3>
-            <p className="text-sm text-[#6E6E73] leading-relaxed font-light">
+            <h3 className="text-2xl font-bold text-white">Open to inspect, build, and modify.</h3>
+            <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">
               Nexus Ring began on 3D printers and breadboards. We want the hardware to be understandable rather than a black-box sealed gadget.
             </p>
-            <p className="text-xs text-[#6E6E73] leading-relaxed font-light">
+            <p className="text-xs text-[#A5AFBD] leading-relaxed">
               We plan to release digital CAD files, assembly guides, and bill of materials so 3D printing enthusiasts and DIY builders can construct their own chassis.
             </p>
           </div>
 
-          <div className="p-8 md:p-10 border border-[#E5E5E7] bg-[#FFFFFF] rounded-3xl space-y-4 shadow-xs">
+          <div className="p-8 border border-[#303A48] bg-[#11151C] rounded-3xl space-y-4">
             <span className="eyebrow block mb-1">Planned Editions</span>
-            <h3 className="text-2xl font-bold text-[#1D1D1F]">Three planned ways to get it.</h3>
+            <h3 className="text-2xl font-bold text-white">Three planned ways to get it.</h3>
             <div className="space-y-3 text-xs">
-              <div className="p-3.5 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <strong className="text-[#1D1D1F] block text-sm font-semibold">Maker Edition:</strong>
-                <span className="text-[#6E6E73] font-light">Digital 3D CAD files (STEP/STL), BOM, and build guide for 3D printer owners.</span>
+              <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
+                <strong className="text-white block">Maker Edition:</strong>
+                <span className="text-[#A5AFBD]">Digital 3D CAD files (STEP/STL), BOM, and build guide for 3D printer owners.</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <strong className="text-[#1D1D1F] block text-sm font-semibold">Hacker Hardware Kit:</strong>
-                <span className="text-[#6E6E73] font-light">Official custom PCB, ESP32-C3 module, sensors, magnets, and LEDs. You print the body.</span>
+              <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
+                <strong className="text-white block">Hacker Hardware Kit:</strong>
+                <span className="text-[#A5AFBD]">Official custom PCB, ESP32-C3 module, sensors, magnets, and LEDs. You print the body.</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <strong className="text-[#1D1D1F] block text-sm font-semibold">Pro Desk Set:</strong>
-                <span className="text-[#6E6E73] font-light">Fully assembled, tested hardware controller with weighted totem and USB-C cable.</span>
+              <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
+                <strong className="text-white block">Pro Desk Set:</strong>
+                <span className="text-[#A5AFBD]">Fully assembled, tested hardware controller with weighted totem and USB-C cable.</span>
               </div>
             </div>
           </div>
@@ -706,25 +714,34 @@ export default function HardwarePage() {
       </section>
 
       {/* ════════════════ SECTION 8: BOTTOM CTA ════════════════ */}
-      <section className="relative page-container text-center bg-[#F5F5F7] border border-[#E5E5E7] p-12 md:p-20 rounded-3xl shadow-xs">
-        <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F] mb-4 tracking-tight">
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 text-center bg-[#11151C] border border-[#303A48] p-12 md:p-20 rounded-3xl">
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/branding/nexus-logo-vertical.png"
+            alt="Nexus Ring Vertical Mark"
+            width={64}
+            height={56}
+            className="h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+          />
+        </div>
+        <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-4 uppercase tracking-tight">
           Hardware detects the state.<br />
-          <span className="text-[#6E6E73]">Software makes it useful.</span>
+          <span className="text-[#A5AFBD]">Software makes it useful.</span>
         </h2>
-        <p className="text-[#6E6E73] text-base md:text-lg mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+        <p className="text-[#A5AFBD] text-base md:text-lg mb-8 max-w-2xl mx-auto font-light leading-relaxed">
           See how Nexus Companion connects each physical mode to your applications, website filters, notifications, and desktop workflows.
         </p>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/software"
-            className="px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.35)]"
           >
             Explore Companion Software
           </Link>
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-8 py-3.5 rounded-full border border-[#E5E5E7] bg-[#FFFFFF] text-[#1D1D1F] hover:bg-[#EAEAEA] transition-all text-sm font-medium cursor-pointer"
+            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm cursor-pointer"
           >
             Join Early Access
           </button>

@@ -48,74 +48,74 @@ export const SCREENSHOTS_DATA: ScreenshotItem[] = [
     ],
   },
   {
-    id: "focus-modes",
-    title: "Focus Modes Configurator",
-    badge: "Profile Engine",
-    category: "Customization",
-    src: "/screenshots/05_focus_modes.png",
-    icon: Sliders,
-    description:
-      "Granular configuration suite for all four physical modes (Deep Work, Creative, Meeting, Break). Customize which apps launch, which website lists are silenced, and the specific lighting profile for each mode.",
-    keyFeatures: [
-      "Per-mode application launch rules and shell automation scripts",
-      "Customizable session timers with ultradian cycle pacing",
-      "Glanceable LED light ring color and breathing pattern controls",
-    ],
-  },
-  {
     id: "nexus-flow",
-    title: "Nexus Flow Workspace",
-    badge: "Automation Pipeline",
-    category: "Task Flow",
+    title: "Nexus Flow Mission Matrix",
+    badge: "Intelligent Scheduler",
+    category: "Automation Pipeline",
     src: "/screenshots/04_nexus_flow.png",
     icon: Layers,
     description:
-      "Connects physical totem positions with actionable task stacks. Organize your daily priorities so entering a work mode launches the exact document, terminal branch, or board you need without friction.",
+      "Visual orchestration canvas mapping every physical totem orientation to a deterministic workspace environment. Define exact apps, terminal scripts, browser tabs, and Spotify focus playlists per quadrant.",
     keyFeatures: [
-      "Seamless branch and workspace context switching",
-      "Micro-task stacking to eliminate morning startup latency",
-      "Context-dependent notes and scratchpad integration",
+      "Quadrant-specific app and shell script trigger sequencing",
+      "Zero-latency profile switching executed locally via Rust core",
+      "Automatic multi-monitor window placement and workspace tiling",
+    ],
+  },
+  {
+    id: "focus-modes",
+    title: "Quadrant Mode Configurator",
+    badge: "Hardware Binding",
+    category: "Profile Manager",
+    src: "/screenshots/05_focus_modes.png",
+    icon: Sliders,
+    description:
+      "Deep customization of the 4 hardware totem modes: Deep Work, Sync & Standup, Active Recovery, and Strategic Planning. Customize LED ring color hexes, haptic pulse signatures, and timer durations.",
+    keyFeatures: [
+      "Hardware RGB pulse pattern & intensity calibration",
+      "Custom audio chime synthesizer for session boundaries",
+      "Profile import/export with standard JSON schemas",
     ],
   },
   {
     id: "nexus-shield",
-    title: "Nexus Shield Blocker",
-    badge: "Local-First DNS",
-    category: "Distraction Shield",
+    title: "Sentinel Host Firewall",
+    badge: "Distraction Shield",
+    category: "Security & Guardrails",
     src: "/screenshots/06_nexus_shield.png",
     icon: ShieldCheck,
     description:
-      "Host-level domain filter that redirects addictive algorithmic feeds (social media, video loops, sensational news) to 127.0.0.1 directly on your operating system without routing traffic through third-party servers.",
+      "Host-level process interception and domain blocking. When you rotate into Deep Work, social feeds, algorithmic video sites, and notification popups are physically cut off at the loopback driver level.",
     keyFeatures: [
-      "Zero cloud snooping: DNS/hosts-level suppression executes locally",
-      "One-click preconfigured blocking lists for modern feed traps",
-      "Strict physical override: requires totem relocation to disable",
+      "Zero-overhead kernel loopback redirection (No heavy browser extensions)",
+      "Emergency pass-through override with a deliberate 14-second physical hold",
+      "Configurable whitelist for documentation, GitHub, and production logs",
     ],
   },
   {
     id: "daily-debrief",
-    title: "Daily Debrief & Stamina Analytics",
-    badge: "Private Metrics",
-    category: "Cognitive Insights",
+    title: "Executive Analytics & Debrief",
+    badge: "Telemetry Matrix",
+    category: "Performance Review",
     src: "/screenshots/09_daily_debrief.png",
     icon: BarChart3,
     description:
-      "Review your daily focus blocks, ultradian cycles, recovery intervals, and session consistency. All data remains stored exclusively on your local machine in an open SQLite format.",
+      "Daily biometric and behavioral debrief summarizing actual uninterrupted focus blocks versus planned sessions. Compares your velocity across days and highlights distraction leak patterns.",
     keyFeatures: [
-      "Ultradian session rhythm tracking (60–90m optimal cycles)",
-      "Break adherence monitoring to prevent burnout and eye fatigue",
-      "100% offline, private database with no cloud analytics sync",
+      "Accurate ratio of planned vs actual deep work execution",
+      "Physical totem dock history timeline with millisecond precision",
+      "Encrypted local SQLite storage with zero external tracking pixels",
     ],
   },
   {
-    id: "ai-settings",
-    title: "Local AI & System Integration",
-    badge: "Private Intelligence",
-    category: "Settings & AI",
+    id: "settings-ai",
+    title: "AI Co-Pilot & Local Models",
+    badge: "Intelligence Engine",
+    category: "Local LLM Hub",
     src: "/screenshots/07_settings_ai_models.png",
     icon: Cpu,
     description:
-      "Connect local LLM backends (Ollama, LM Studio) or custom API endpoints to summarize focus blocks, draft git commit messages, or generate debrief logs without sharing proprietary project code.",
+      "Configure your AI focus partner. Connect official Google Gemini 1.5 Pro / Flash APIs, OpenAI keys, or run entirely offline with local Ollama Llama 3 / DeepSeek instances.",
     keyFeatures: [
       "Native local model inference support for offline developer privacy",
       "OTA firmware manager for the ESP32-C3 hardware dock",
@@ -196,13 +196,13 @@ export default function SoftwareScreenshotsGallery({
               key={item.id}
               type="button"
               onClick={() => setActiveIdx(idx)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all whitespace-nowrap flex items-center gap-2 cursor-pointer border shrink-0 ${
+              className={`px-4 py-2 rounded-full text-xs font-mono tracking-wide transition-all whitespace-nowrap flex items-center gap-2 cursor-pointer border shrink-0 ${
                 isActive
-                  ? "bg-[#1D1D1F] text-white border-[#1D1D1F] shadow-sm"
-                  : "bg-[#F5F5F7] text-[#6E6E73] border-[#E5E5E7] hover:text-[#1D1D1F] hover:bg-[#EAEAEA]"
+                  ? "bg-[#D83A50] text-[#F5F6F8] border-[#D83A50] shadow-[0_0_15px_rgba(216,58,80,0.35)]"
+                  : "bg-[#11151C] text-[#A5AFBD] border-[#303A48] hover:text-[#F5F6F8] hover:bg-[#1B222D]"
               }`}
             >
-              <Icon size={14} className={isActive ? "text-[#C93E50]" : "text-[#6E6E73]"} />
+              <Icon size={14} className={isActive ? "text-[#F5F6F8]" : "text-[#778292]"} />
               <span>{item.title}</span>
             </button>
           );
@@ -210,32 +210,32 @@ export default function SoftwareScreenshotsGallery({
       </div>
 
       {/* ── Desktop Window Frame Showcase ── */}
-      <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+      <div className="rounded-3xl border border-[#303A48] bg-[#11151C] shadow-[0_12px_50px_rgba(0,0,0,0.6)] overflow-hidden">
         {/* Window Chrome Titlebar */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#E5E5E7] bg-[#F8F9FA]">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#303A48] bg-[#080A0E]">
           {/* Traffic Light Dots */}
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/40" />
-            <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/40" />
-            <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/40" />
-            <span className="ml-3 font-mono text-[11px] text-[#6E6E73] hidden sm:inline">
+            <span className="w-3 h-3 rounded-full bg-[#D83A50] border border-[#EB5268]/40" />
+            <span className="w-3 h-3 rounded-full bg-[#F0B35A] border border-[#F0B35A]/40" />
+            <span className="w-3 h-3 rounded-full bg-[#35C98A] border border-[#35C98A]/40" />
+            <span className="ml-3 font-mono text-[11px] text-[#778292] hidden sm:inline">
               Nexus Companion v0.4.2 — {activeItem.title}
             </span>
           </div>
 
           {/* Right Status Badge & Fullscreen Trigger */}
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#34A853]/10 text-[#34A853] text-[10px] font-mono font-semibold border border-[#34A853]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#34A853] animate-pulse" />
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#35C98A]/10 text-[#35C98A] text-[10px] font-mono font-semibold border border-[#35C98A]/25">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A] animate-pulse" />
               LOCAL ENGINE ACTIVE
             </span>
             <button
               type="button"
               onClick={() => setLightboxOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#E5E5E7] bg-[#FFFFFF] hover:bg-[#F5F5F7] text-[#1D1D1F] text-xs font-medium transition-colors cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg border border-[#303A48] bg-[#1B222D] hover:bg-[#303A48] text-[#F5F6F8] text-xs font-mono transition-colors cursor-pointer"
               title="View in full resolution (4K)"
             >
-              <Maximize2 size={13} className="text-[#6E6E73]" />
+              <Maximize2 size={13} className="text-[#A5AFBD]" />
               <span className="hidden sm:inline">Expand 4K</span>
             </button>
           </div>
@@ -244,7 +244,7 @@ export default function SoftwareScreenshotsGallery({
         {/* Screenshot Viewport Container */}
         <div
           onClick={() => setLightboxOpen(true)}
-          className="relative aspect-[16/9] w-full bg-[#0E1015] cursor-pointer group overflow-hidden"
+          className="relative aspect-[16/9] w-full bg-[#080A0E] cursor-pointer group overflow-hidden"
         >
           <Image
             src={activeItem.src}
@@ -256,46 +256,46 @@ export default function SoftwareScreenshotsGallery({
           />
 
           {/* Hover Overlay Hint */}
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span className="px-4 py-2 rounded-full bg-[#1D1D1F]/90 text-white font-medium text-xs backdrop-blur-md flex items-center gap-2 shadow-lg">
-              <Maximize2 size={14} />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span className="px-4 py-2 rounded-full bg-[#11151C]/90 text-white font-medium text-xs backdrop-blur-md flex items-center gap-2 shadow-lg border border-[#303A48]">
+              <Maximize2 size={14} className="text-[#D83A50]" />
               <span>Click to view full 4K resolution</span>
             </span>
           </div>
 
           {/* Bottom Floating Mode Badge */}
           <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
-            <span className="px-3 py-1 rounded-full bg-[#1D1D1F]/80 backdrop-blur-md border border-white/10 text-white text-[11px] font-mono tracking-wider uppercase">
+            <span className="px-3 py-1 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[#F5F6F8] text-[11px] font-mono tracking-wider uppercase">
               {activeItem.category} · {activeItem.badge}
             </span>
           </div>
         </div>
 
         {/* ── Feature Description & Key Takeaways Panel ── */}
-        <div className="p-6 sm:p-8 bg-[#FFFFFF] border-t border-[#E5E5E7] grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div className="p-6 sm:p-8 bg-[#11151C] border-t border-[#303A48] grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-6 space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full border border-[#C93E50]/20 bg-[#FDF2F4] text-[#C93E50] text-[10px] font-mono uppercase tracking-wider font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full border border-[#D83A50]/30 bg-[#D83A50]/10 text-[#D83A50] text-[10px] font-mono uppercase tracking-wider font-semibold">
               {activeItem.badge}
             </div>
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-[#1D1D1F]">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-[#F5F6F8]">
               {activeItem.title}
             </h3>
-            <p className="text-sm text-[#6E6E73] font-light leading-relaxed">
+            <p className="text-sm text-[#A5AFBD] font-light leading-relaxed">
               {activeItem.description}
             </p>
           </div>
 
           <div className="lg:col-span-6 space-y-2.5">
-            <span className="text-[11px] font-mono text-[#86868B] uppercase tracking-wider font-semibold block">
+            <span className="text-[11px] font-mono text-[#778292] uppercase tracking-wider font-semibold block">
               Key Capabilities
             </span>
             <div className="space-y-2">
               {activeItem.keyFeatures.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 p-3 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7] text-xs text-[#1D1D1F]"
+                  className="flex items-center gap-3 p-3 rounded-2xl bg-[#080A0E] border border-[#303A48] text-xs text-[#F5F6F8]"
                 >
-                  <CheckCircle2 size={16} className="text-[#34A853] shrink-0" />
+                  <CheckCircle2 size={16} className="text-[#35C98A] shrink-0" />
                   <span>{feat}</span>
                 </div>
               ))}
@@ -307,7 +307,7 @@ export default function SoftwareScreenshotsGallery({
       {/* ── Thumbnail Strip Selector ── */}
       {showAllThumbnails && (
         <div className="space-y-3">
-          <div className="flex items-center justify-between text-xs text-[#6E6E73]">
+          <div className="flex items-center justify-between text-xs text-[#A5AFBD]">
             <span className="font-mono uppercase tracking-wider text-[11px] font-semibold">
               All 8 Software Interfaces ({activeIdx + 1} of {SCREENSHOTS_DATA.length})
             </span>
@@ -317,7 +317,7 @@ export default function SoftwareScreenshotsGallery({
                 onClick={() =>
                   setActiveIdx((prev) => (prev - 1 + SCREENSHOTS_DATA.length) % SCREENSHOTS_DATA.length)
                 }
-                className="p-1.5 rounded-lg border border-[#E5E5E7] bg-[#FFFFFF] hover:bg-[#F5F5F7] text-[#1D1D1F] transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg border border-[#303A48] bg-[#11151C] hover:bg-[#1B222D] text-[#F5F6F8] transition-colors cursor-pointer"
                 aria-label="Previous screenshot"
               >
                 <ChevronLeft size={16} />
@@ -325,7 +325,7 @@ export default function SoftwareScreenshotsGallery({
               <button
                 type="button"
                 onClick={() => setActiveIdx((prev) => (prev + 1) % SCREENSHOTS_DATA.length)}
-                className="p-1.5 rounded-lg border border-[#E5E5E7] bg-[#FFFFFF] hover:bg-[#F5F5F7] text-[#1D1D1F] transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg border border-[#303A48] bg-[#11151C] hover:bg-[#1B222D] text-[#F5F6F8] transition-colors cursor-pointer"
                 aria-label="Next screenshot"
               >
                 <ChevronRight size={16} />
@@ -343,8 +343,8 @@ export default function SoftwareScreenshotsGallery({
                   onClick={() => setActiveIdx(idx)}
                   className={`relative aspect-[16/10] rounded-xl overflow-hidden border-2 transition-all cursor-pointer group text-left ${
                     isSelected
-                      ? "border-[#C93E50] shadow-md scale-[1.02]"
-                      : "border-[#E5E5E7] opacity-70 hover:opacity-100 hover:border-[#1D1D1F]/40"
+                      ? "border-[#D83A50] shadow-[0_0_12px_rgba(216,58,80,0.4)] scale-[1.02]"
+                      : "border-[#303A48] opacity-70 hover:opacity-100 hover:border-[#A5AFBD]"
                   }`}
                 >
                   <Image
@@ -354,8 +354,8 @@ export default function SoftwareScreenshotsGallery({
                     sizes="180px"
                     className="object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
-                    <span className="text-[10px] text-white font-medium line-clamp-1">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-2">
+                    <span className="text-[10px] text-[#F5F6F8] font-mono line-clamp-1">
                       {item.title}
                     </span>
                   </div>
@@ -373,11 +373,11 @@ export default function SoftwareScreenshotsGallery({
             {/* Lightbox Header Bar */}
             <div className="flex items-center justify-between text-white z-20 pb-4">
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#C93E50]" />
-                <span className="text-sm font-semibold tracking-tight">
+                <span className="w-2 h-2 rounded-full bg-[#D83A50]" />
+                <span className="text-sm font-semibold tracking-tight font-display">
                   {activeItem.title}
                 </span>
-                <span className="text-xs font-mono text-[#86868B] hidden sm:inline">
+                <span className="text-xs font-mono text-[#778292] hidden sm:inline">
                   — 4K Native Resolution ({activeIdx + 1} / {SCREENSHOTS_DATA.length})
                 </span>
               </div>
@@ -388,7 +388,7 @@ export default function SoftwareScreenshotsGallery({
                   onClick={() =>
                     setActiveIdx((prev) => (prev - 1 + SCREENSHOTS_DATA.length) % SCREENSHOTS_DATA.length)
                   }
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-full bg-[#11151C] hover:bg-[#1B222D] border border-[#303A48] text-white transition-colors cursor-pointer"
                   title="Previous image (Left Arrow)"
                 >
                   <ChevronLeft size={18} />
@@ -396,7 +396,7 @@ export default function SoftwareScreenshotsGallery({
                 <button
                   type="button"
                   onClick={() => setActiveIdx((prev) => (prev + 1) % SCREENSHOTS_DATA.length)}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-full bg-[#11151C] hover:bg-[#1B222D] border border-[#303A48] text-white transition-colors cursor-pointer"
                   title="Next image (Right Arrow)"
                 >
                   <ChevronRight size={18} />
@@ -404,7 +404,7 @@ export default function SoftwareScreenshotsGallery({
                 <button
                   type="button"
                   onClick={() => setLightboxOpen(false)}
-                  className="p-2 rounded-full bg-white/10 hover:bg-[#C93E50] text-white transition-colors cursor-pointer ml-2"
+                  className="p-2 rounded-full bg-[#11151C] hover:bg-[#D83A50] border border-[#303A48] text-white transition-colors cursor-pointer ml-2"
                   title="Close lightbox (Escape)"
                 >
                   <X size={18} />
@@ -418,7 +418,7 @@ export default function SoftwareScreenshotsGallery({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="relative flex-1 w-full max-h-[82vh] my-auto flex items-center justify-center overflow-hidden rounded-2xl border border-white/10"
+              className="relative flex-1 w-full max-h-[82vh] my-auto flex items-center justify-center overflow-hidden rounded-2xl border border-[#303A48]"
             >
               <Image
                 src={activeItem.src}
@@ -431,10 +431,10 @@ export default function SoftwareScreenshotsGallery({
             </motion.div>
 
             {/* Lightbox Footer Caption */}
-            <div className="pt-4 text-center text-xs text-[#86868B] font-mono z-20 flex items-center justify-between">
+            <div className="pt-4 text-center text-xs text-[#778292] font-mono z-20 flex items-center justify-between">
               <span>{activeItem.badge} · {activeItem.category}</span>
               <span className="hidden sm:inline">Press Esc to exit · Arrow keys to navigate</span>
-              <span className="text-white/80">{activeItem.title}</span>
+              <span className="text-[#F5F6F8]">{activeItem.title}</span>
             </div>
           </div>
         )}
