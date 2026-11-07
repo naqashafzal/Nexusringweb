@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import SoftwareScreenshotsGallery from "@/components/SoftwareScreenshotsGallery";
 
 export default function SoftwarePage() {
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -26,10 +27,10 @@ export default function SoftwarePage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <a
-              href="#mode-profiles"
+              href="#interface-tour"
               className="px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white font-medium text-sm hover:bg-[#000000] transition-all shadow-sm flex items-center gap-2"
             >
-              <span>Explore Mode Profiles</span>
+              <span>Explore Desktop Interface</span>
               <ChevronRight size={14} />
             </a>
             <Link
@@ -42,59 +43,19 @@ export default function SoftwarePage() {
         </motion.div>
       </section>
 
-      {/* 2. HERO UI MOCKUP (EXPANDED TO FULL PAGE CONTAINER 1440PX) */}
-      <section className="relative page-container mb-28">
-        <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] p-6 sm:p-8 lg:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col lg:flex-row gap-8 lg:gap-12">
-          {/* Left Column: Detected Hardware State */}
-          <div className="w-full lg:w-4/12 border-b lg:border-b-0 lg:border-r border-[#E5E5E7] pb-6 lg:pb-0 lg:pr-8 flex flex-col gap-3">
-            <span className="text-[11px] font-mono text-[#6E6E73] uppercase tracking-wider mb-2 font-semibold">
-              Detected Hardware State
-            </span>
-            <div className="text-left p-4 rounded-2xl bg-[#FDF2F4] border border-[#C93E50]/30 text-[#C93E50] font-bold text-sm flex items-center justify-between shadow-xs">
-              <span className="tracking-wide">DEEP WORK</span>
-              <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#C93E50] text-white">ACTIVE</span>
-            </div>
-            <div className="text-left p-4 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] text-[#6E6E73] text-sm font-medium hover:bg-[#FFFFFF] transition-colors">
-              CREATIVE
-            </div>
-            <div className="text-left p-4 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] text-[#6E6E73] text-sm font-medium hover:bg-[#FFFFFF] transition-colors">
-              MEETING
-            </div>
-            <div className="text-left p-4 rounded-2xl border border-[#E5E5E7] bg-[#F8F9FA] text-[#6E6E73] text-sm font-medium hover:bg-[#FFFFFF] transition-colors">
-              BREAK
-            </div>
-          </div>
-
-          {/* Right Column: Active Profile Rules & Real-time Logs */}
-          <div className="w-full lg:w-8/12 space-y-5">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono text-[#6E6E73] uppercase tracking-wider font-semibold">
-                Active Profile Rules (Deep Work)
-              </span>
-              <span className="text-[11px] font-mono text-[#34A853] bg-[#34A853]/10 px-3 py-1 rounded-full border border-[#34A853]/20 font-semibold">
-                Local Execution
-              </span>
-            </div>
-            <div className="space-y-3 text-xs sm:text-sm text-[#1D1D1F]">
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <CheckCircle2 size={18} className="text-[#34A853] shrink-0" />
-                <span className="font-medium">Launch primary workspace: VS Code &amp; Warp Terminal</span>
-              </div>
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <CheckCircle2 size={18} className="text-[#34A853] shrink-0" />
-                <span className="font-medium">Silence notifications (OS Do Not Disturb Profile)</span>
-              </div>
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <CheckCircle2 size={18} className="text-[#34A853] shrink-0" />
-                <span className="font-medium">Apply selective domain filters to local browsers (x.com, youtube.com blocked)</span>
-              </div>
-              <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-[#F8F9FA] border border-[#E5E5E7]">
-                <CheckCircle2 size={18} className="text-[#34A853] shrink-0" />
-                <span className="font-medium">Initiate 90-minute focus session timer with glanceable status ring sync</span>
-              </div>
-            </div>
-          </div>
+      {/* 2. INTERACTIVE SOFTWARE TOUR & HIGH-RESOLUTION SCREENSHOTS */}
+      <section id="interface-tour" className="relative page-container mb-28">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <span className="eyebrow block">Desktop Interface</span>
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-[#1D1D1F]">
+            Designed for calm control.
+          </h2>
+          <p className="text-[#6E6E73] text-base sm:text-lg font-light leading-relaxed">
+            Explore the real desktop interface of Nexus Companion. Every screen is engineered to get out of your way and automate deep work without persistent visual clutter.
+          </p>
         </div>
+
+        <SoftwareScreenshotsGallery />
       </section>
 
       {/* 3. ARCHITECTURE PIPELINE (PAGE CONTAINER 1440PX) */}

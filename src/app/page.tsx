@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -409,7 +410,7 @@ export default function Home() {
       {/* ════════════════ SECTION E: LOCAL-FIRST SOFTWARE & PHILOSOPHY (PAGE CONTAINER 1440PX) ════════════════ */}
       <section className="relative z-20 bg-[#F5F5F7] py-24 md:py-32">
         <div className="page-container grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <Reveal className="lg:col-span-6 space-y-6">
+          <Reveal className="lg:col-span-5 space-y-6">
             <span className="eyebrow block">Software &amp; Architecture</span>
             <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight text-[#1D1D1F] leading-tight">
               Hardware and software,<br />working together.
@@ -431,36 +432,93 @@ export default function Home() {
                 </span>
               </div>
             </div>
+            <div className="pt-2">
+              <Link
+                href="/software"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-medium text-sm bg-[#1D1D1F] text-white hover:bg-[#000000] transition-colors shadow-sm"
+              >
+                <span>Tour All 8 Companion Screens</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
           </Reveal>
 
-          <Reveal delay={0.2} className="lg:col-span-6 space-y-4">
-            <Link
-              href="/hardware"
-              className="flex items-center justify-between gap-6 p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-150"
-            >
-              <div>
-                <span className="eyebrow block mb-1">Hardware Engineering</span>
-                <span className="text-lg font-bold text-[#1D1D1F]">Physical Dock Architecture</span>
-                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light leading-relaxed">
-                  Examine the controller, Hall-effect sensors, magnetic totem, and printable chassis.
-                </span>
-              </div>
-              <ChevronRight className="shrink-0 text-[#C93E50]" />
-            </Link>
-
+          <Reveal delay={0.2} className="lg:col-span-7 space-y-6">
+            {/* Desktop Window Frame Preview */}
             <Link
               href="/software"
-              className="flex items-center justify-between gap-6 p-7 rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-150"
+              className="block rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden group hover:border-[#1D1D1F]/30 hover:shadow-[0_16px_50px_rgba(0,0,0,0.1)] transition-all duration-300"
             >
-              <div>
-                <span className="eyebrow block mb-1">Software Companion</span>
-                <span className="text-lg font-bold text-[#1D1D1F]">Nexus Companion Profiles</span>
-                <span className="block text-xs text-[#6E6E73] mt-1.5 font-light leading-relaxed">
-                  Discover how physical mode triggers connect to local operating system automations.
+              {/* Window Chrome Titlebar */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[#E5E5E7] bg-[#F8F9FA]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  <span className="ml-2 font-mono text-[11px] text-[#6E6E73]">
+                    Nexus Companion — Deep Work Dashboard
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#34A853]/10 text-[#34A853] border border-[#34A853]/20">
+                  4K PREVIEW
                 </span>
               </div>
-              <ChevronRight className="shrink-0 text-[#C93E50]" />
+
+              {/* Screenshot Image Container */}
+              <div className="relative aspect-[16/9] w-full bg-[#0E1015] overflow-hidden">
+                <Image
+                  src="/screenshots/02_dashboard_deepwork.png"
+                  alt="Nexus Companion Deep Work Dashboard Screenshot"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 750px"
+                  className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                  <span className="text-white text-xs font-medium flex items-center gap-2">
+                    <span>Click to explore full desktop tour</span>
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+              </div>
+
+              {/* Caption */}
+              <div className="px-5 py-3.5 bg-[#FFFFFF] border-t border-[#E5E5E7] flex items-center justify-between text-xs text-[#6E6E73]">
+                <span className="font-mono text-[11px]">Active Session Countdown &amp; Workspace Orchestration</span>
+                <span className="text-[#C93E50] font-medium group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+                  <span>Explore Software</span>
+                  <ChevronRight size={14} />
+                </span>
+              </div>
             </Link>
+
+            {/* Quick Links Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                href="/hardware"
+                className="flex items-center justify-between gap-4 p-5 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-xs transition-all"
+              >
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#C93E50] block font-semibold">
+                    Hardware Dock
+                  </span>
+                  <span className="text-sm font-bold text-[#1D1D1F]">Physical Architecture</span>
+                </div>
+                <ChevronRight size={16} className="shrink-0 text-[#6E6E73]" />
+              </Link>
+
+              <Link
+                href="/software"
+                className="flex items-center justify-between gap-4 p-5 rounded-2xl border border-[#E5E5E7] bg-[#FFFFFF] hover:border-[#1D1D1F] hover:shadow-xs transition-all"
+              >
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#34A853] block font-semibold">
+                    Local Daemon
+                  </span>
+                  <span className="text-sm font-bold text-[#1D1D1F]">Mode Profiles &amp; Rules</span>
+                </div>
+                <ChevronRight size={16} className="shrink-0 text-[#6E6E73]" />
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

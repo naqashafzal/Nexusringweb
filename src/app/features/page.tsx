@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -225,6 +226,133 @@ export default function FeaturesPage() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+      </section>
+
+      {/* 2.5 REAL SOFTWARE INTERFACES */}
+      <section className="relative page-container mb-28">
+        <div className="text-center mb-12 space-y-3">
+          <span className="eyebrow block">Software Interface Preview</span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-[#1D1D1F]">
+            The screen behind the physical dock.
+          </h2>
+          <p className="text-[#6E6E73] text-base sm:text-lg font-light max-w-2xl mx-auto">
+            High-resolution native desktop interfaces coordinating mode transitions, app execution, and distraction suppression.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Card 1: Focus Modes Configurator */}
+          <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-between">
+            <div>
+              {/* Window Header */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[#E5E5E7] bg-[#F8F9FA]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  <span className="ml-2 font-mono text-[11px] text-[#6E6E73]">
+                    Focus Modes &amp; Profile Setup
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-[#C93E50] font-semibold bg-[#FDF2F4] px-2 py-0.5 rounded-full border border-[#C93E50]/20">
+                  SLOT ASSIGNMENT
+                </span>
+              </div>
+
+              {/* Image */}
+              <div className="relative aspect-[16/9] w-full bg-[#0E1015]">
+                <Image
+                  src="/screenshots/05_focus_modes.png"
+                  alt="Nexus Companion Focus Modes Configuration Screenshot"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 680px"
+                  className="object-cover object-top"
+                />
+              </div>
+
+              <div className="p-6 sm:p-7 space-y-2">
+                <h4 className="text-xl font-display font-bold text-[#1D1D1F]">
+                  Granular Mode Customization
+                </h4>
+                <p className="text-xs sm:text-sm text-[#6E6E73] font-light leading-relaxed">
+                  Configure custom applications, terminal scripts, and website suppression for Deep Work, Creative, Meeting, and Break.
+                </p>
+              </div>
+            </div>
+
+            <div className="px-6 py-4 border-t border-[#E5E5E7] bg-[#F8F9FA] flex items-center justify-between">
+              <span className="text-xs font-mono text-[#6E6E73]">Ultradian Cycle Pacing</span>
+              <Link
+                href="/software#interface-tour"
+                className="text-xs font-medium text-[#C93E50] hover:underline flex items-center gap-1"
+              >
+                <span>View Full Screen</span>
+                <ChevronRight size={13} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 2: Nexus Shield */}
+          <div className="rounded-3xl border border-[#E5E5E7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-between">
+            <div>
+              {/* Window Header */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-[#E5E5E7] bg-[#F8F9FA]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  <span className="ml-2 font-mono text-[11px] text-[#6E6E73]">
+                    Nexus Shield — Local Host Blocker
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-[#34A853] font-semibold bg-[#34A853]/10 px-2 py-0.5 rounded-full border border-[#34A853]/20">
+                  ZERO CLOUD LEAKS
+                </span>
+              </div>
+
+              {/* Image */}
+              <div className="relative aspect-[16/9] w-full bg-[#0E1015]">
+                <Image
+                  src="/screenshots/06_nexus_shield.png"
+                  alt="Nexus Shield Website Suppression Screenshot"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 680px"
+                  className="object-cover object-top"
+                />
+              </div>
+
+              <div className="p-6 sm:p-7 space-y-2">
+                <h4 className="text-xl font-display font-bold text-[#1D1D1F]">
+                  Local Distraction Suppression
+                </h4>
+                <p className="text-xs sm:text-sm text-[#6E6E73] font-light leading-relaxed">
+                  Suppress algorithmic social loops, endless video feeds, and notifications locally without sending your private browsing history to external servers.
+                </p>
+              </div>
+            </div>
+
+            <div className="px-6 py-4 border-t border-[#E5E5E7] bg-[#F8F9FA] flex items-center justify-between">
+              <span className="text-xs font-mono text-[#6E6E73]">Host-Level Enforcement</span>
+              <Link
+                href="/software#interface-tour"
+                className="text-xs font-medium text-[#C93E50] hover:underline flex items-center gap-1"
+              >
+                <span>View Full Screen</span>
+                <ChevronRight size={13} />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            href="/software#interface-tour"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-medium text-sm bg-[#1D1D1F] text-white hover:bg-[#000000] transition-colors shadow-sm"
+          >
+            <span>Explore All 8 Desktop Interfaces</span>
+            <ChevronRight size={15} />
+          </Link>
         </div>
       </section>
 
