@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronRight, CheckCircle2, Download } from "lucide-react";
+import { ChevronRight, CheckCircle2 } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import SoftwareScreenshotsGallery from "@/components/SoftwareScreenshotsGallery";
 
@@ -40,15 +40,16 @@ export default function SoftwarePage() {
               href="/download"
               className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2"
             >
-              <Download size={16} />
-              <span>Download Core Daemon</span>
+              <span>Explore Companion Preview</span>
+              <ChevronRight size={16} />
             </Link>
-            <a
-              href="#mode-profiles"
-              className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] transition-all font-mono text-sm flex items-center gap-2"
+            <button
+              type="button"
+              onClick={() => setShowComingSoon(true)}
+              className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] transition-all font-mono text-sm flex items-center gap-2 cursor-pointer"
             >
-              Explore Profiles <ChevronRight size={16} />
-            </a>
+              Join Early Access
+            </button>
           </div>
         </motion.div>
       </section>
@@ -272,20 +273,20 @@ export default function SoftwarePage() {
           Sign up to follow companion software milestones, test daemon releases, and help shape supported profile integrations.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/download"
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
-          >
-            <Download size={16} />
-            <span>Download Companion v0.1.0</span>
-          </Link>
           <button
             type="button"
             onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#1B222D] text-[#F5F6F8] hover:border-[#D83A50] transition-colors font-mono text-sm cursor-pointer"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
           >
-            Join Early Access
+            <span>Join Companion Early Access</span>
+            <ChevronRight size={16} />
           </button>
+          <Link
+            href="/download"
+            className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#1B222D] text-[#F5F6F8] hover:border-[#D83A50] transition-colors font-mono text-sm flex items-center gap-2"
+          >
+            <span>Live Tester &amp; Preview</span>
+          </Link>
         </div>
       </section>
 

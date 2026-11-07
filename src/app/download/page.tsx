@@ -2,16 +2,22 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
-  Download,
   Smartphone,
   CheckCircle2,
   Zap,
   RefreshCw,
   Sparkles,
-  AlertCircle
+  AlertCircle,
+  Bell,
+  Lock
 } from "lucide-react";
+
+const ComingSoonModal = dynamic(() => import("@/components/ComingSoonModal"), {
+  ssr: false,
+});
 
 interface SerialPort {
   open: (options: { baudRate: number }) => Promise<void>;
@@ -20,11 +26,20 @@ interface SerialPort {
 }
 
 export default function DownloadPage() {
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTier, setSelectedTier] = useState<string>("Windows Desktop Companion");
+
   // Web Serial Live Hardware Test State
   const [serialConnected, setSerialConnected] = useState(false);
   const [activeSlot, setActiveSlot] = useState<string>("UNDOCKED");
   const [connecting, setConnecting] = useState(false);
   const [serialError, setSerialError] = useState<string | null>(null);
+
+  const handleRequestAccess = (tier: string) => {
+    setSelectedTier(tier);
+    setModalOpen(true);
+  };
 
   const connectWebSerial = async () => {
     if (typeof window === "undefined") return;
@@ -95,7 +110,7 @@ export default function DownloadPage() {
               height={14}
               className="w-3.5 h-3.5 object-contain"
             />
-            <span>Official Release • v0.1.0 Stable</span>
+            <span>Private Developer Preview • Build in Progress</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-display font-bold tracking-tight text-[#F5F6F8]">
@@ -103,15 +118,15 @@ export default function DownloadPage() {
           </h1>
 
           <p className="text-[#A5AFBD] text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
-            Physical totem focus meets zero-latency desktop automation. Download the local engine for Windows or the Android companion app.
+            Physical totem focus meets zero-latency desktop automation. Companion daemon builds are in active development. Register below for priority early access and notification when downloads go live.
           </p>
         </motion.div>
       </section>
 
-      {/* 2. PRIMARY DOWNLOAD CARDS */}
+      {/* 2. PRIMARY ACCESS REGISTRATION CARDS */}
       <section className="page-container mb-20 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Windows Setup Installer (Featured) */}
+          {/* Windows Setup Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -120,7 +135,7 @@ export default function DownloadPage() {
           >
             <div className="absolute top-5 right-5">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D83A50] text-[#F5F6F8] text-[10px] font-mono font-medium uppercase tracking-wider">
-                Recommended
+                Priority Waitlist
               </span>
             </div>
 
@@ -140,7 +155,7 @@ export default function DownloadPage() {
                   Nexus Core Engine for Windows
                 </h3>
                 <p className="text-xs text-[#778292] font-mono mt-1">
-                  Windows 10 / 11 (64-bit) • Build 0.1.0
+                  Windows 10 / 11 (64-bit) • Closed Beta Stage
                 </p>
               </div>
 
@@ -159,36 +174,36 @@ export default function DownloadPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 size={14} className="text-[#35C98A] shrink-0" />
-                  <span>Built-in Google Gemini Free-Tier & Local Ollama engines</span>
+                  <span>Built-in Google Gemini Free-Tier &amp; Local Ollama engines</span>
                 </li>
               </ul>
             </div>
 
             <div className="pt-8 space-y-3">
-              <a
-                href="/downloads/Nexus-Ring-Setup-x64.exe"
-                download="Nexus-Ring-Setup-x64.exe"
-                className="w-full py-3.5 px-6 rounded-2xl bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all shadow-md group-hover:shadow-[0_0_20px_rgba(216,58,80,0.35)] active:scale-[0.99]"
+              <button
+                type="button"
+                onClick={() => handleRequestAccess("Windows Desktop Companion (x64)")}
+                className="w-full py-3.5 px-6 rounded-2xl bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all shadow-md group-hover:shadow-[0_0_20px_rgba(216,58,80,0.35)] active:scale-[0.99] cursor-pointer"
               >
-                <Download size={16} />
-                <span>Download Windows Installer (.exe)</span>
-                <span className="text-xs text-white/70 font-mono font-normal">5.4 MB</span>
-              </a>
+                <Bell size={16} />
+                <span>Join Windows Beta Waitlist</span>
+                <span className="text-xs text-white/70 font-mono font-normal">Coming Soon</span>
+              </button>
 
               <div className="flex items-center justify-between text-[11px] text-[#778292] px-1">
                 <span>Portable standalone build:</span>
-                <a
-                  href="/downloads/Nexus-Ring-x64.exe"
-                  download="Nexus-Ring-x64.exe"
-                  className="text-[#F5F6F8] hover:text-[#D83A50] hover:underline font-medium font-mono"
+                <button
+                  type="button"
+                  onClick={() => handleRequestAccess("Windows Portable Edition")}
+                  className="text-[#F5F6F8] hover:text-[#D83A50] hover:underline font-medium font-mono cursor-pointer"
                 >
-                  Nexus-Ring-x64.exe (19 MB)
-                </a>
+                  Request Portable Build →
+                </button>
               </div>
             </div>
           </motion.div>
 
-          {/* Android Companion APK */}
+          {/* Android Companion Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -205,7 +220,7 @@ export default function DownloadPage() {
                   Android Mobile Companion
                 </h3>
                 <p className="text-xs text-[#778292] font-mono mt-1">
-                  Android 10+ • Release Build
+                  Android 10+ • Prototype Stage
                 </p>
               </div>
 
@@ -230,18 +245,19 @@ export default function DownloadPage() {
             </div>
 
             <div className="pt-8 space-y-3">
-              <a
-                href="/downloads/nexus-ring-release.apk"
-                download="nexus-ring-release.apk"
-                className="w-full py-3.5 px-6 rounded-2xl border border-[#303A48] bg-[#1B222D] hover:bg-[#303A48] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all active:scale-[0.99]"
+              <button
+                type="button"
+                onClick={() => handleRequestAccess("Android Mobile Companion")}
+                className="w-full py-3.5 px-6 rounded-2xl border border-[#303A48] bg-[#1B222D] hover:bg-[#303A48] text-[#F5F6F8] font-medium text-sm flex items-center justify-center gap-2.5 transition-all active:scale-[0.99] cursor-pointer"
               >
-                <Download size={16} />
-                <span>Download Android Package (.apk)</span>
-                <span className="text-xs text-[#A5AFBD] font-mono font-normal">94 MB</span>
-              </a>
+                <Bell size={16} className="text-[#35C98A]" />
+                <span>Join Android Beta Waitlist</span>
+                <span className="text-xs text-[#A5AFBD] font-mono font-normal">Coming Soon</span>
+              </button>
 
-              <p className="text-[11px] text-[#778292] text-center">
-                Sideloadable onto any modern Android smartphone or tablet.
+              <p className="text-[11px] text-[#778292] text-center flex items-center justify-center gap-1.5">
+                <Lock size={12} />
+                <span>Direct download links will be delivered to early access testers.</span>
               </p>
             </div>
           </motion.div>
@@ -260,7 +276,7 @@ export default function DownloadPage() {
                 Test your Nexus Ring online right now.
               </h3>
               <p className="text-xs sm:text-sm text-[#A5AFBD]">
-                Plug your ring into any USB port and test live totem rotation in Google Chrome or Microsoft Edge.
+                Plug your ring prototype into any USB port and test live totem rotation in Google Chrome or Microsoft Edge.
               </p>
             </div>
 
@@ -361,9 +377,9 @@ export default function DownloadPage() {
             <div className="w-8 h-8 rounded-full bg-[#1B222D] border border-[#303A48] text-[#D83A50] font-mono text-xs font-bold flex items-center justify-center">
               2
             </div>
-            <h4 className="font-bold text-sm text-[#F5F6F8]">Run the Setup</h4>
+            <h4 className="font-bold text-sm text-[#F5F6F8]">Install Companion</h4>
             <p className="text-xs text-[#A5AFBD] leading-relaxed">
-              Launch <code className="font-mono text-[#F5F6F8] bg-[#1B222D] px-1 py-0.5 rounded border border-[#303A48]">Nexus-Ring-Setup-x64.exe</code>. The daemon installs quietly and auto-locks onto the serial port in under a second.
+              Run the Nexus Ring Companion installer once your private beta link is received. The daemon auto-locks onto the serial port in under a second.
             </p>
           </div>
 
@@ -371,7 +387,7 @@ export default function DownloadPage() {
             <div className="w-8 h-8 rounded-full bg-[#1B222D] border border-[#303A48] text-[#D83A50] font-mono text-xs font-bold flex items-center justify-center">
               3
             </div>
-            <h4 className="font-bold text-sm text-[#F5F6F8]">Dock & Focus</h4>
+            <h4 className="font-bold text-sm text-[#F5F6F8]">Dock &amp; Focus</h4>
             <p className="text-xs text-[#A5AFBD] leading-relaxed">
               Rotate your metallic totem into the Deep Work slot. The app initiates your workspace layout and seals away digital distractions.
             </p>
@@ -383,11 +399,11 @@ export default function DownloadPage() {
       <section className="page-container max-w-4xl mx-auto">
         <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-4">
           <h4 className="text-sm font-bold uppercase tracking-wider text-[#F5F6F8] font-mono">
-            Technical Specifications & Integrity
+            Technical Specifications &amp; Integrity
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#A5AFBD]">
             <div className="space-y-1">
-              <strong className="text-[#F5F6F8] block">Memory & Footprint:</strong>
+              <strong className="text-[#F5F6F8] block">Memory &amp; Footprint:</strong>
               <span>Lightweight Rust Core running with under 45 MB of RAM and negligible CPU impact.</span>
             </div>
             <div className="space-y-1">
@@ -405,6 +421,14 @@ export default function DownloadPage() {
           </div>
         </div>
       </section>
+
+      {modalOpen && (
+        <ComingSoonModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          tierName={selectedTier}
+        />
+      )}
     </main>
   );
 }

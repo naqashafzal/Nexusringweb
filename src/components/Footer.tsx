@@ -35,7 +35,7 @@ export default function Footer() {
           <Link href="/#modes" className="text-xs hover:text-[#F5F6F8] transition-colors">Four Operating Modes</Link>
           <Link href="/hardware" className="text-xs hover:text-[#F5F6F8] transition-colors">Hardware Architecture</Link>
           <Link href="/software" className="text-xs hover:text-[#F5F6F8] transition-colors">Companion Software</Link>
-          <Link href="/download" className="text-xs text-[#D83A50] font-semibold hover:text-[#EB5268] transition-colors">Download Apps</Link>
+          <Link href="/download" className="text-xs text-[#D83A50] font-semibold hover:text-[#EB5268] transition-colors">Software Beta</Link>
           <Link href="/preorder" className="text-xs hover:text-[#F5F6F8] transition-colors">Early Access Registration</Link>
         </div>
 
