@@ -13,6 +13,7 @@ const links = [
   { href: "/#modes", label: "Product" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
+  { href: "/download", label: "Download" },
   { href: "/digital-distraction", label: "Our Mission" },
   { href: "/journal", label: "Journal" },
 ];

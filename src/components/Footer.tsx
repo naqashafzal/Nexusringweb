@@ -27,6 +27,7 @@ export default function Footer() {
         {/* Product Column */}
         <div className="flex flex-col gap-2.5">
           <h4 className="text-[#1D1D1F] font-semibold text-xs tracking-tight mb-1">Product</h4>
+          <Link href="/download" className="text-xs hover:text-[#1D1D1F] transition-colors font-medium text-[#1D1D1F]">Download Apps</Link>
           <Link href="/#how-it-works" className="text-xs hover:text-[#1D1D1F] transition-colors">How It Works</Link>
           <Link href="/#modes" className="text-xs hover:text-[#1D1D1F] transition-colors">Four Operating Modes</Link>
           <Link href="/hardware" className="text-xs hover:text-[#1D1D1F] transition-colors">Hardware Architecture</Link>
