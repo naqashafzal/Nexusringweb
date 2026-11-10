@@ -306,18 +306,18 @@ export default function HardwarePage() {
               </p>
             </div>
 
-            {/* Real Prototype Desk Photo Highlight */}
-            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
-              <div className="relative aspect-[16/10] w-full">
+            {/* Real Prototype Desk Photo Highlight (100% Uncropped 4032x2268) */}
+            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E] p-2">
+              <div className="relative w-full rounded-xl overflow-hidden bg-black">
                 <Image
                   src="/images/prototype-desk-angle-lit.jpg"
                   alt="Real Nexus Ring physical prototype on desk"
-                  width={800}
-                  height={500}
-                  className="w-full h-full object-cover"
+                  width={4032}
+                  height={2268}
+                  className="w-full h-auto block"
                 />
               </div>
-              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+              <div className="p-3 mt-1 bg-[#11151C] rounded-lg border border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
                 <span>BENCH PROTOTYPE REV 03</span>
                 <span className="text-[#D83A50]">REAL HARDWARE ON DESK</span>
               </div>
@@ -506,18 +506,18 @@ export default function HardwarePage() {
               </p>
             </div>
 
-            {/* Custom Silicon Architecture Visual */}
-            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
-              <div className="relative aspect-[16/10] w-full">
+            {/* Custom Silicon Architecture Visual (100% Uncropped 1200x896) */}
+            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E] p-2">
+              <div className="relative w-full rounded-xl overflow-hidden bg-black">
                 <Image
                   src="/images/hardware-custom-silicon.jpg"
                   alt="Bespoke Architecture - Custom silicon engineered purely for human peace"
-                  width={800}
-                  height={500}
-                  className="w-full h-full object-cover"
+                  width={1200}
+                  height={896}
+                  className="w-full h-auto block"
                 />
               </div>
-              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+              <div className="p-3 mt-1 bg-[#11151C] rounded-lg border border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
                 <span>BESPOKE ARCHITECTURE</span>
                 <span className="text-[#35C98A]">RISC-V SILICON LOGIC</span>
               </div>
@@ -593,18 +593,18 @@ export default function HardwarePage() {
               </li>
             </ul>
 
-            {/* Macro Diffuser Photo from Real Prototype */}
-            <div className="rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
-              <div className="relative aspect-[16/10] w-full">
+            {/* Macro Diffuser Photo from Real Prototype (100% Uncropped 4032x2268) */}
+            <div className="rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E] p-2">
+              <div className="relative w-full rounded-xl overflow-hidden bg-black">
                 <Image
                   src="/images/prototype-glow-deep-mode-macro.jpg"
                   alt="Nexus Ring prototype red LED macro diffuse glow"
-                  width={800}
-                  height={500}
-                  className="w-full h-full object-cover"
+                  width={4032}
+                  height={2268}
+                  className="w-full h-auto block"
                 />
               </div>
-              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+              <div className="p-3 mt-1 bg-[#11151C] rounded-lg border border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
                 <span>LAB TEST: DEEP WORK GLOW</span>
                 <span className="text-[#D83A50]">360° CONTINUOUS PERIPHERAL HALO</span>
               </div>
@@ -763,18 +763,18 @@ export default function HardwarePage() {
           </div>
         </div>
 
-        {/* Product Showcase Poster */}
-        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
-          <div className="relative aspect-[16/9] w-full">
+        {/* Product Showcase Poster (100% Uncropped 1200x896) */}
+        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl">
+          <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
               src="/images/product-showcase-poster.jpg"
               alt="Nexus Ring - Made to Take Your Mind Back"
-              width={1600}
-              height={900}
-              className="w-full h-full object-cover"
+              width={1200}
+              height={896}
+              className="w-full h-auto block rounded-xl"
             />
           </div>
-          <div className="p-5 bg-[#080A0E] border-t border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
+          <div className="p-4 mt-2 bg-[#080A0E] rounded-xl border border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
             <span className="text-white font-bold">NEXUS RING ARCHITECTURE</span>
             <span className="text-[#D83A50]">PHYSICAL ANCHOR · SILENT ORBIT · TACTILE AUTHORITY</span>
           </div>

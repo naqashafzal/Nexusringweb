@@ -56,13 +56,13 @@ export default function CampaignPage() {
 
       {/* 2. DEMO & STORY */}
       <section id="demo" className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
-        <div className="aspect-video bg-[#11151C] border border-[#303A48] rounded-3xl overflow-hidden shadow-2xl mb-16 relative group">
+        <div className="max-w-[540px] mx-auto aspect-square bg-[#11151C] border border-[#303A48] rounded-3xl overflow-hidden shadow-2xl mb-16 relative group p-2 flex items-center justify-center">
           <Image
             src="/images/nexus-totem-ignites-hub.gif"
             alt="Nexus Ring Prototype Totem Docking & Ignition Demonstration"
-            width={1280}
-            height={720}
-            className="w-full h-full object-cover"
+            width={358}
+            height={358}
+            className="w-full h-full object-contain rounded-2xl"
             unoptimized
           />
           <div className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[10px] font-mono text-[#F5F6F8] uppercase tracking-wider flex items-center gap-2">
@@ -104,17 +104,17 @@ export default function CampaignPage() {
       {/* 2.5 ENGINEERING & CAD PROTOTYPING SHOWCASE */}
       <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-6 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
-            <div className="relative aspect-[4/3] w-full">
+          <div className="lg:col-span-6 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 shadow-2xl">
+            <div className="relative aspect-[3/4] max-w-[420px] mx-auto rounded-2xl overflow-hidden bg-[#080A0E] border border-[#303A48]/50 flex items-center justify-center">
               <Image
                 src="/images/designer-creating-hardware.jpg"
                 alt="Graphic designer & CAD engineer modeling Nexus Ring hardware"
-                width={1000}
-                height={750}
-                className="w-full h-full object-cover"
+                width={896}
+                height={1200}
+                className="w-full h-full object-contain rounded-xl"
               />
             </div>
-            <div className="p-4 bg-[#080A0E] border-t border-[#303A48] flex justify-between text-[11px] font-mono text-[#A5AFBD]">
+            <div className="p-3 mt-2 bg-[#080A0E] rounded-xl border border-[#303A48] flex justify-between text-[11px] font-mono text-[#A5AFBD]">
               <span>INDUSTRIAL DESIGN &amp; CAD</span>
               <span className="text-[#D83A50]">SURFACE MODELING &amp; TOLERANCING</span>
             </div>

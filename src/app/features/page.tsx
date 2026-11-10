@@ -278,22 +278,22 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* 3.5 TACTILE ENFORCEMENT & SHIELD ARCHITECTURE */}
+      {/* 3.5 TACTILE ENFORCEMENT & SHIELD ARCHITECTURE (100% Uncropped Displays) */}
       <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
           {/* Card 1: Unhackable Shield */}
-          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden flex flex-col justify-between shadow-2xl">
-            <div className="relative aspect-[16/10] w-full bg-[#080A0E]">
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden flex flex-col justify-between shadow-2xl">
+            <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
               <Image
                 src="/images/product-card-unhackable-shield.jpg"
                 alt="Nexus Ring Unhackable Shield - Physical friction that stops impulsive relapse"
-                width={800}
-                height={500}
-                className="w-full h-full object-cover"
+                width={1200}
+                height={896}
+                className="w-full h-auto block rounded-xl"
               />
             </div>
-            <div className="p-6 bg-[#11151C] border-t border-[#303A48] space-y-2">
-              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">
+            <div className="p-4 sm:p-6 bg-[#11151C] mt-2 space-y-2">
+              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block font-bold">
                 Friction Enforcement
               </span>
               <h3 className="text-xl font-display font-bold text-white">Unhackable Shield</h3>
@@ -304,18 +304,18 @@ export default function FeaturesPage() {
           </div>
 
           {/* Card 2: Mindful Rescue */}
-          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden flex flex-col justify-between shadow-2xl">
-            <div className="relative aspect-[16/10] w-full bg-[#080A0E]">
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden flex flex-col justify-between shadow-2xl">
+            <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
               <Image
                 src="/images/product-card-mindful-rescue.jpg"
                 alt="Nexus Ring Mindful Rescue - Gently pulls you back from lost doomscroll hours"
-                width={800}
-                height={500}
-                className="w-full h-full object-cover"
+                width={1200}
+                height={896}
+                className="w-full h-auto block rounded-xl"
               />
             </div>
-            <div className="p-6 bg-[#11151C] border-t border-[#303A48] space-y-2">
-              <span className="text-[10px] font-mono text-[#35C98A] uppercase tracking-widest block">
+            <div className="p-4 sm:p-6 bg-[#11151C] mt-2 space-y-2">
+              <span className="text-[10px] font-mono text-[#35C98A] uppercase tracking-widest block font-bold">
                 Cognitive Recovery
               </span>
               <h3 className="text-xl font-display font-bold text-white">Mindful Rescue</h3>
@@ -326,18 +326,18 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* Full-width Product Showcase Poster */}
-        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
-          <div className="relative aspect-[16/9] w-full">
+        {/* Full-width Product Showcase Poster (100% Uncropped 1200x896) */}
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl">
+          <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
               src="/images/product-showcase-poster.jpg"
               alt="Nexus Ring - Made to Take Your Mind Back"
-              width={1600}
-              height={900}
-              className="w-full h-full object-cover"
+              width={1200}
+              height={896}
+              className="w-full h-auto block rounded-xl"
             />
           </div>
-          <div className="p-5 bg-[#080A0E] border-t border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
+          <div className="p-4 mt-2 bg-[#080A0E] rounded-xl border border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
             <span className="text-white font-bold">MADE TO TAKE YOUR MIND BACK</span>
             <span className="text-[#D83A50]">TACTILE AUTHORITY · BESPOKE ARCHITECTURE · FOUR STATES OF MIND</span>
           </div>

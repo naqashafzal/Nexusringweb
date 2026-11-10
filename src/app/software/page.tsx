@@ -200,19 +200,19 @@ export default function SoftwarePage() {
           </div>
         </div>
 
-        {/* Physical Friction Sentinel Card */}
-        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 items-center">
-          <div className="md:col-span-7 relative aspect-[16/10] w-full bg-[#080A0E]">
+        {/* Physical Friction Sentinel Card (100% Uncropped 1200x896) */}
+        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 items-center gap-6">
+          <div className="md:col-span-7 relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
               src="/images/product-card-unhackable-shield.jpg"
               alt="Nexus Ring Unhackable Shield - Physical friction that stops impulsive relapse"
-              width={1000}
-              height={625}
-              className="w-full h-full object-cover"
+              width={1200}
+              height={896}
+              className="w-full h-auto block rounded-xl"
             />
           </div>
-          <div className="md:col-span-5 p-8 space-y-4">
-            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-3 py-1 rounded-full inline-block">
+          <div className="md:col-span-5 p-4 sm:p-6 space-y-4">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-3 py-1 rounded-full inline-block font-bold">
               Physical Sentinel
             </span>
             <h3 className="text-2xl font-display font-bold text-white">The Unhackable Shield</h3>

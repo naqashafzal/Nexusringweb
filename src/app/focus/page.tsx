@@ -177,15 +177,15 @@ export default function FocusHubPage() {
             ))}
           </div>
 
-          {/* Mindful Rescue Visual Card */}
+          {/* Mindful Rescue Visual Card (100% Uncropped Display) */}
           <div className="pt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#080A0E] border border-[#303A48] rounded-3xl p-6 sm:p-8">
-            <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-[#303A48] relative aspect-[16/10]">
+            <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-[#303A48] relative bg-black p-1">
               <Image
                 src="/images/product-card-mindful-rescue.jpg"
                 alt="Nexus Ring Mindful Rescue - Gently pulls you back from lost doomscroll hours"
                 width={1200}
-                height={750}
-                className="w-full h-full object-cover"
+                height={896}
+                className="w-full h-auto block rounded-xl"
               />
             </div>
             <div className="lg:col-span-5 space-y-4">
