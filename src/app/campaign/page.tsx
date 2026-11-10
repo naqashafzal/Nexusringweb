@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronRight, PlayCircle } from "lucide-react";
+import { ChevronRight, Wrench } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
 
 export default function CampaignPage() {
@@ -55,12 +56,21 @@ export default function CampaignPage() {
 
       {/* 2. DEMO & STORY */}
       <section id="demo" className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
-        <div className="aspect-video bg-[#11151C] border border-[#303A48] rounded-3xl flex flex-col items-center justify-center shadow-2xl mb-16 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10" />
-          <PlayCircle size={60} className="text-white/80 z-20 group-hover:scale-105 transition-transform" />
-          <p className="mt-4 font-mono text-xs text-[#A5AFBD] z-20">Prototype interaction &amp; mode switching demo</p>
-          <div className="absolute bottom-4 left-6 z-20 text-[10px] font-mono text-[#A5AFBD] uppercase">
-            Functional Prototype Demonstration
+        <div className="aspect-video bg-[#11151C] border border-[#303A48] rounded-3xl overflow-hidden shadow-2xl mb-16 relative group">
+          <Image
+            src="/images/nexus-totem-ignites-hub.gif"
+            alt="Nexus Ring Prototype Totem Docking & Ignition Demonstration"
+            width={1280}
+            height={720}
+            className="w-full h-full object-cover"
+            unoptimized
+          />
+          <div className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[10px] font-mono text-[#F5F6F8] uppercase tracking-wider flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A] animate-pulse" />
+            <span>Interactive Totem Ignition Sequence</span>
+          </div>
+          <div className="absolute bottom-4 left-6 z-20 text-[10px] font-mono text-[#A5AFBD] uppercase bg-[#080A0E]/80 px-3 py-1 rounded-full border border-[#303A48]">
+            Functional Lab Prototype Benchmark
           </div>
         </div>
 
@@ -87,6 +97,50 @@ export default function CampaignPage() {
             <span className="text-[#35C98A]">4. NEXUS COMPANION AUTOMATION</span>
             <span className="text-[#A5AFBD]">↓</span>
             <span className="text-white font-bold">5. WORKSPACE ADAPTS LOCALLY</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 2.5 ENGINEERING & CAD PROTOTYPING SHOWCASE */}
+      <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-6 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/3] w-full">
+              <Image
+                src="/images/designer-creating-hardware.jpg"
+                alt="Graphic designer & CAD engineer modeling Nexus Ring hardware"
+                width={1000}
+                height={750}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 bg-[#080A0E] border-t border-[#303A48] flex justify-between text-[11px] font-mono text-[#A5AFBD]">
+              <span>INDUSTRIAL DESIGN &amp; CAD</span>
+              <span className="text-[#D83A50]">SURFACE MODELING &amp; TOLERANCING</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#303A48] bg-[#11151C] text-[11px] font-mono text-[#35C98A] uppercase">
+              <Wrench size={13} />
+              <span>Design Iteration 04</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
+              Engineered with industrial precision.
+            </h3>
+            <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">
+              Every curve, chamfer, and internal component pocket is designed with parametric CAD tools to ensure exact alignment between the Neodymium core, Hall-effect ICs, and 360° light ring.
+            </p>
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="p-3.5 rounded-xl border border-[#303A48] bg-[#11151C]">
+                <span className="text-[10px] font-mono text-[#D83A50] block uppercase">Tolerancing</span>
+                <span className="text-xs font-bold text-white">±0.15mm Detent Fit</span>
+              </div>
+              <div className="p-3.5 rounded-xl border border-[#303A48] bg-[#11151C]">
+                <span className="text-[10px] font-mono text-[#35C98A] block uppercase">Chassis Infill</span>
+                <span className="text-xs font-bold text-white">Carbon Matrix FDM</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

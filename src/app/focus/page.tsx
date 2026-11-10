@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
@@ -174,6 +175,33 @@ export default function FocusHubPage() {
                 <p className="text-xs text-[#A5AFBD] leading-relaxed">{pillar.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Mindful Rescue Visual Card */}
+          <div className="pt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#080A0E] border border-[#303A48] rounded-3xl p-6 sm:p-8">
+            <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-[#303A48] relative aspect-[16/10]">
+              <Image
+                src="/images/product-card-mindful-rescue.jpg"
+                alt="Nexus Ring Mindful Rescue - Gently pulls you back from lost doomscroll hours"
+                width={1200}
+                height={750}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-[10px] font-mono text-[#35C98A] uppercase tracking-widest px-3 py-1 rounded-full border border-[#35C98A]/30 bg-[#35C98A]/10 inline-block">
+                Environmental Rescue Protocol
+              </span>
+              <h3 className="text-2xl font-display font-bold text-white">
+                Mindful Rescue via Tactile Feedback
+              </h3>
+              <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">
+                When attention fractures into passive feeds, soft ambient illumination and physical totem resistance gently redirect your gaze back toward what matters.
+              </p>
+              <div className="pt-2">
+                <span className="text-xs font-mono text-[#778292]">GENTLE COGNITIVE RESET · ZERO INVASIVE POPUPS</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

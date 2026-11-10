@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -273,6 +274,72 @@ export default function FeaturesPage() {
             <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
               Future webhook integration for smart desk lighting, Home Assistant routines, and external hardware status indicators.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 TACTILE ENFORCEMENT & SHIELD ARCHITECTURE */}
+      <section className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-12">
+          {/* Card 1: Unhackable Shield */}
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden flex flex-col justify-between shadow-2xl">
+            <div className="relative aspect-[16/10] w-full bg-[#080A0E]">
+              <Image
+                src="/images/product-card-unhackable-shield.jpg"
+                alt="Nexus Ring Unhackable Shield - Physical friction that stops impulsive relapse"
+                width={800}
+                height={500}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-6 bg-[#11151C] border-t border-[#303A48] space-y-2">
+              <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest block">
+                Friction Enforcement
+              </span>
+              <h3 className="text-xl font-display font-bold text-white">Unhackable Shield</h3>
+              <p className="text-xs text-[#A5AFBD] leading-relaxed">
+                Software rules alone can be bypassed with a hotkey. Nexus requires a physical reach across your desk to displace the weighted totem, intercepting impulse loops.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2: Mindful Rescue */}
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden flex flex-col justify-between shadow-2xl">
+            <div className="relative aspect-[16/10] w-full bg-[#080A0E]">
+              <Image
+                src="/images/product-card-mindful-rescue.jpg"
+                alt="Nexus Ring Mindful Rescue - Gently pulls you back from lost doomscroll hours"
+                width={800}
+                height={500}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-6 bg-[#11151C] border-t border-[#303A48] space-y-2">
+              <span className="text-[10px] font-mono text-[#35C98A] uppercase tracking-widest block">
+                Cognitive Recovery
+              </span>
+              <h3 className="text-xl font-display font-bold text-white">Mindful Rescue</h3>
+              <p className="text-xs text-[#A5AFBD] leading-relaxed">
+                Glanceable ambient glow gives you calm spatial awareness of your current work state without requiring another demanding screen notification.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Full-width Product Showcase Poster */}
+        <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src="/images/product-showcase-poster.jpg"
+              alt="Nexus Ring - Made to Take Your Mind Back"
+              width={1600}
+              height={900}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="p-5 bg-[#080A0E] border-t border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
+            <span className="text-white font-bold">MADE TO TAKE YOUR MIND BACK</span>
+            <span className="text-[#D83A50]">TACTILE AUTHORITY · BESPOKE ARCHITECTURE · FOUR STATES OF MIND</span>
           </div>
         </div>
       </section>

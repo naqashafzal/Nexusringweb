@@ -4,12 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
   ChevronRight,
-  Rotate3D,
   ChevronDown,
   ArrowRight,
   Cpu,
@@ -18,20 +16,9 @@ import {
   Compass,
   HardDrive,
   CloudOff,
+  Camera,
+  Sparkles,
 } from "lucide-react";
-
-const ExplodedRingCanvas = dynamic(
-  () => import("@/components/ExplodedRingCanvas"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-full flex flex-col items-center justify-center font-mono text-xs text-[#A5AFBD] gap-3">
-        <div className="w-6 h-6 border-2 border-[#D83A50] border-t-transparent rounded-full animate-spin" />
-        <span className="tracking-widest uppercase text-[10px]">Loading 3D Hardware Model...</span>
-      </div>
-    ),
-  }
-);
 
 function Reveal({
   children,
@@ -144,24 +131,26 @@ export default function Home() {
           </p>
         </div>
 
-        {/* ── CENTER: Dramatic 3D Centerpiece Stage ── */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto h-[480px] sm:h-[540px] lg:h-[600px] my-10 rounded-3xl border border-[#303A48] bg-[#11151C]/60 backdrop-blur-md shadow-2xl overflow-hidden">
+        {/* ── CENTER: Official Hardware Hero Centerpiece ── */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto my-10 rounded-3xl border border-[#303A48] bg-[#11151C]/80 backdrop-blur-md shadow-[0_25px_70px_rgba(0,0,0,0.85)] overflow-hidden group">
           {/* Floating Telemetry Callout Left */}
-          <div className="hidden lg:flex flex-col gap-1 absolute left-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E]/85 backdrop-blur-md shadow-2xl max-w-[220px] text-left pointer-events-none">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-[#D83A50] font-semibold">
+          <div className="hidden lg:flex flex-col gap-1 absolute left-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48]/80 bg-[#080A0E]/90 backdrop-blur-md shadow-2xl max-w-[230px] text-left pointer-events-none">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-[#D83A50] font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D83A50] animate-pulse" />
               01 // SENSING
             </span>
             <span className="text-xs font-display font-bold text-[#F5F6F8]">
-              Hall-Effect Array
+              Contactless Hall-Effect
             </span>
             <p className="text-[11px] text-[#A5AFBD] font-light leading-snug">
-              Contactless magnetic quadrant detection without mechanical fatigue.
+              Instant quadrant detection with frictionless magnetic detents.
             </p>
           </div>
 
           {/* Floating Telemetry Callout Right */}
-          <div className="hidden lg:flex flex-col gap-1 absolute right-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48] bg-[#080A0E]/85 backdrop-blur-md shadow-2xl max-w-[220px] text-left pointer-events-none">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-[#35C98A] font-semibold">
+          <div className="hidden lg:flex flex-col gap-1 absolute right-6 top-8 z-30 p-4 rounded-2xl border border-[#303A48]/80 bg-[#080A0E]/90 backdrop-blur-md shadow-2xl max-w-[230px] text-left pointer-events-none">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-[#35C98A] font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A]" />
               02 // LOCAL ENGINE
             </span>
             <span className="text-xs font-display font-bold text-[#F5F6F8]">
@@ -172,20 +161,32 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Interaction Hint Badge */}
+          {/* Interaction Status Pill */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full border border-[#303A48] bg-[#080A0E]/90 backdrop-blur-md text-xs font-mono text-[#A5AFBD] flex items-center gap-2 pointer-events-none shadow-xl">
-            <Rotate3D size={14} className="text-[#D83A50] animate-spin" style={{ animationDuration: "12s" }} />
-            <span>Interactive 3D Controller · Drag to Rotate</span>
+            <Sparkles size={13} className="text-[#D83A50]" />
+            <span className="tracking-wide">PHYSICAL INTENT CONTROLLER · HERO EDITION</span>
           </div>
 
-          {/* 3D Canvas Stage */}
-          <div className="w-full h-full">
-            <ExplodedRingCanvas disableExplode={true} centerPosition={true} />
+          {/* Hero Image Showcase */}
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden bg-[#080A0E]">
+            <Image
+              src="/images/hero-nexus-ring-intent-control.jpg"
+              alt="Nexus Ring Intent Control - Physical Mode Controller with Magnetic Totem"
+              width={1920}
+              height={1080}
+              priority
+              quality={95}
+              className="w-full h-full object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 ease-out"
+            />
+            {/* Top and Bottom gradient vignettes for seamless blending */}
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#080A0E]/70 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080A0E]/90 via-[#080A0E]/30 to-transparent pointer-events-none" />
           </div>
 
-          {/* Bottom Engineering Tag */}
-          <div className="absolute bottom-4 left-6 z-20 text-[10px] font-mono text-[#778292] uppercase tracking-widest pointer-events-none">
-            CAD REV 2.4 · DUAL-SHELL ANODIZED PROTOTYPE
+          {/* Bottom Engineering Tag Strip */}
+          <div className="absolute bottom-4 left-6 right-6 z-20 flex items-center justify-between text-[10px] font-mono text-[#778292] uppercase tracking-widest pointer-events-none">
+            <span>HARDWARE BUILD · FLUTED MAGNETIC TOTEM DOCK</span>
+            <span className="hidden sm:inline text-[#D83A50]">STATUS: LAB PROTOTYPE VALIDATED</span>
           </div>
         </div>
 
@@ -285,50 +286,254 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+
+          {/* Visual Interaction Demonstrations */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <Reveal className="p-6 rounded-3xl border border-[#303A48] bg-[#1B222D]/80 backdrop-blur-sm space-y-4">
+              <div className="flex items-center justify-between text-xs font-mono text-[#A5AFBD]">
+                <span className="text-[#D83A50] font-bold uppercase tracking-wider">SEQUENCE 01</span>
+                <span>TOTEM DOCKING &amp; IGNITION</span>
+              </div>
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#303A48] bg-[#080A0E]">
+                <Image
+                  src="/images/nexus-totem-ignites-hub.gif"
+                  alt="Nexus Totem Ignites Hub Animation"
+                  width={640}
+                  height={360}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <p className="text-xs text-[#A5AFBD] leading-relaxed">
+                Placing the fluted magnetic totem closes the magnetic flux loop across internal Hall sensors, triggering immediate glanceable LED ring ignition.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.15} className="p-6 rounded-3xl border border-[#303A48] bg-[#1B222D]/80 backdrop-blur-sm space-y-4">
+              <div className="flex items-center justify-between text-xs font-mono text-[#A5AFBD]">
+                <span className="text-[#35C98A] font-bold uppercase tracking-wider">SEQUENCE 02</span>
+                <span>QUADRANT MODE TRANSITIONS</span>
+              </div>
+              <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#303A48] bg-[#080A0E]">
+                <Image
+                  src="/images/nexus-mode-transition-montage.gif"
+                  alt="Nexus Mode Transition Montage Animation"
+                  width={640}
+                  height={360}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <p className="text-xs text-[#A5AFBD] leading-relaxed">
+                Shifting between Deep Work, Creative, Meeting, and Rest reconfigures your desktop profile locally in under 12 milliseconds without opening software.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* ════════════════ BRAND MANIFESTO ════════════════ */}
-      <section className="relative z-20 bg-[#080A0E] py-24 border-b border-[#303A48]">
-        <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center space-y-6">
-          <Reveal>
+      <section className="relative z-20 bg-[#080A0E] py-28 border-b border-[#303A48]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <Reveal className="lg:col-span-6 space-y-6 text-left">
             <span className="eyebrow block">Brand Manifesto</span>
-            <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-[#F5F6F8] uppercase mb-6">
+            <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-[#F5F6F8] uppercase leading-[1.05]">
               The World is Fighting for Your Attention.
             </h2>
-            <div className="space-y-4 text-[#A5AFBD] text-base sm:text-lg leading-relaxed text-left max-w-2xl mx-auto">
-              <p className="border-b border-[#303A48] pb-3">Every notification wants a response.</p>
-              <p className="border-b border-[#303A48] pb-3">Every feed wants another scroll.</p>
-              <p className="border-b border-[#303A48] pb-3">Every advertisement wants another moment.</p>
-              <p className="border-b border-[#303A48] pb-3">Every recommendation system wants to predict what will keep you engaged.</p>
-              <p className="text-[#F5F6F8] font-medium pt-2">But your goals need that attention too.</p>
-              <p>Your ambitions need time. Your creativity needs space. Your most meaningful work requires intention.</p>
-              <p className="text-[#F5F6F8] bg-[#11151C] p-4 rounded-2xl border border-[#303A48]">
-                We believe technology should support human purpose, not constantly compete against it. We believe discipline becomes easier to practice when our environments support our decisions. We believe distraction should be a choice, not the default.
-              </p>
-              <div className="pt-2 text-[#F5F6F8] space-y-1">
-                <p className="font-semibold text-lg">That is why we are building Nexus Ring.</p>
-                <p className="text-sm text-[#A5AFBD] font-light">A physical interface designed to transform a deliberate decision into a change in your digital workspace.</p>
-              </div>
-            </div>
-            <div className="pt-6">
-              <p className="text-xs font-mono tracking-widest text-[#778292] uppercase">
-                YOUR ATTENTION. YOUR TIME. YOUR DECISION.
-              </p>
-              <p className="text-xl font-display font-bold text-[#F5F6F8] pt-1">
-                NEXUS RING — FORCE YOUR FOCUS. ENGINEER SUCCESS.
+            <div className="space-y-3 text-[#A5AFBD] text-base leading-relaxed">
+              <p className="border-b border-[#303A48]/80 pb-2.5">Every notification wants an immediate response.</p>
+              <p className="border-b border-[#303A48]/80 pb-2.5">Every feed wants another infinite scroll.</p>
+              <p className="border-b border-[#303A48]/80 pb-2.5">Every recommendation algorithm wants to capture your cognitive capacity.</p>
+              <p className="text-[#F5F6F8] font-medium pt-1">Your ambitions and life work deserve that attention.</p>
+              <p className="text-sm bg-[#11151C] p-4 rounded-2xl border border-[#303A48] text-[#F5F6F8]">
+                We believe technology should support human purpose, not compete against it. We believe discipline becomes easier when our physical environment reinforces our decisions.
               </p>
             </div>
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-2">
+              <p className="text-xs font-mono tracking-widest text-[#D83A50] uppercase font-bold">
+                FORCE YOUR FOCUS · ENGINEER SUCCESS
+              </p>
+            </div>
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href="/digital-distraction"
                 className="px-6 py-3 rounded-full text-xs font-mono text-[#D83A50] border border-[#D83A50]/40 hover:bg-[#D83A50]/10 transition-colors flex items-center gap-2"
               >
-                <span>Read Why Digital Distraction Competes for Your Time</span>
+                <span>Read: Fighting Trillion-Dollar Algorithms</span>
                 <ArrowRight size={14} />
               </Link>
             </div>
           </Reveal>
+
+          <Reveal delay={0.2} className="lg:col-span-6">
+            <div className="relative rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl group">
+              <div className="relative aspect-[4/5] sm:aspect-[1/1] w-full bg-[#080A0E]">
+                <Image
+                  src="/images/infographic-trillion-dollar-algorithm.jpg"
+                  alt="You Can't Fight a Trillion-Dollar Algorithm With Willpower - Nexus Ring Infographic"
+                  width={1200}
+                  height={1200}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-4 bg-[#11151C] border-t border-[#303A48] flex items-center justify-between text-[11px] font-mono text-[#A5AFBD]">
+                <span className="text-[#D83A50] font-bold">COGNITIVE ARCHITECTURE</span>
+                <span>PHYSICAL RESISTANCE VS WILLPOWER</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════ DEDICATED WORKING PROTOTYPE GALLERY ════════════════ */}
+      <section className="relative z-20 bg-[#11151C] py-28 border-b border-[#303A48]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <Reveal className="max-w-3xl mb-16 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D83A50]/40 bg-[#D83A50]/10 text-[#D83A50] text-[11px] font-mono uppercase tracking-widest">
+              <Camera size={13} />
+              <span>LAB BENCH PHOTOGRAPHS · REAL PHYSICAL HARDWARE</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-display font-black tracking-tight text-[#F5F6F8]">
+              Not vaporware. Real hardware in testing.
+            </h2>
+            <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed">
+              We build, test, and iterate on genuine 3D-printed chassis, custom Hall-effect magnetic sensor boards, and embedded ESP32 firmware right on our desk.
+            </p>
+          </Reveal>
+
+          {/* Prototype Photo Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+            {/* Primary Hero Prototype Image */}
+            <Reveal className="md:col-span-7 flex flex-col">
+              <div className="h-full rounded-3xl border border-[#303A48] bg-[#080A0E] overflow-hidden shadow-2xl relative group flex flex-col justify-between">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
+                  <Image
+                    src="/images/prototype-desk-angle-lit.jpg"
+                    alt="Nexus Ring Physical Prototype illuminated on desk with USB-C connection"
+                    width={1600}
+                    height={1200}
+                    quality={90}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[10px] font-mono text-[#F5F6F8] uppercase tracking-wider">
+                    Desk Benchmark 03 · Active Illuminated Mode
+                  </div>
+                </div>
+                <div className="p-6 bg-[#1B222D]/90 border-t border-[#303A48] space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#D83A50] font-bold">PROTOTYPE BENCH TEST</span>
+                    <span className="text-[#778292]">ESP32-C3 + WS2812 GLOW RING</span>
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-white">
+                    Working Desk Integration &amp; Quadrant Detents
+                  </h3>
+                  <p className="text-xs text-[#A5AFBD] leading-relaxed">
+                    Actual photograph of the Rev 3 3D-printed black chassis connected over USB-C. The weighted cylindrical totem is seated into the active mode slot, triggering the peripheral red LED state confirmation.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Secondary Prototype Detail Photos */}
+            <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6">
+              <Reveal delay={0.1}>
+                <div className="rounded-3xl border border-[#303A48] bg-[#080A0E] overflow-hidden shadow-xl relative group">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                    <Image
+                      src="/images/prototype-top-down-lit.jpg"
+                      alt="Nexus Ring top-down view showing illuminated LED ring and radial mode cups"
+                      width={1000}
+                      height={625}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[9px] font-mono text-[#F5F6F8] uppercase tracking-wider">
+                      Radial 4-Mode Detents
+                    </div>
+                  </div>
+                  <div className="p-4 bg-[#1B222D]/90 border-t border-[#303A48]">
+                    <h4 className="text-sm font-bold text-white">Top-Down Detent Geometry</h4>
+                    <p className="text-[11px] text-[#A5AFBD] mt-1 leading-snug">
+                      Four radial stations with embedded Hall sensors read quadrant switches without physical button failure.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <div className="rounded-3xl border border-[#303A48] bg-[#080A0E] overflow-hidden shadow-xl relative group">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                    <Image
+                      src="/images/prototype-glow-deep-mode.jpg"
+                      alt="Nexus Ring prototype red LED ambient glow in low light"
+                      width={1000}
+                      height={625}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-[#080A0E]/85 backdrop-blur-md border border-[#303A48] text-[9px] font-mono text-[#F5F6F8] uppercase tracking-wider">
+                      Ambient Optical Diffuser
+                    </div>
+                  </div>
+                  <div className="p-4 bg-[#1B222D]/90 border-t border-[#303A48]">
+                    <h4 className="text-sm font-bold text-white">Glanceable Peripheral Glow</h4>
+                    <p className="text-[11px] text-[#A5AFBD] mt-1 leading-snug">
+                      Engineered for low-light desk ergonomics to keep you aware of current mode without adding screen fatigue.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* Prototype Macro Details Strip */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <Reveal delay={0.25} className="p-5 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-3">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-[#303A48]">
+                <Image
+                  src="/images/prototype-top-down-dock.jpg"
+                  alt="Nexus Ring chassis unlit top down view"
+                  width={600}
+                  height={338}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h5 className="text-xs font-mono font-bold text-white">3D-Printed Carbon Matrix</h5>
+                <p className="text-[11px] text-[#A5AFBD] mt-1">High-infill FDM enclosure providing desk heft and anti-slip stability.</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3} className="p-5 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-3">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-[#303A48]">
+                <Image
+                  src="/images/prototype-unlit-totem-docked.jpg"
+                  alt="Nexus Ring totem docked in unlit chassis"
+                  width={600}
+                  height={338}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h5 className="text-xs font-mono font-bold text-white">Totem Docking Detents</h5>
+                <p className="text-[11px] text-[#A5AFBD] mt-1">Satisfying magnetic snap when docking the totem into target modes.</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.35} className="p-5 rounded-2xl border border-[#303A48] bg-[#080A0E] space-y-3">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-[#303A48]">
+                <Image
+                  src="/images/prototype-glow-deep-mode-macro.jpg"
+                  alt="Nexus Ring macro close up of glowing red LED ring"
+                  width={600}
+                  height={338}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <h5 className="text-xs font-mono font-bold text-white">Macro Diffuser Ring</h5>
+                <p className="text-[11px] text-[#A5AFBD] mt-1">Light guide chamber dispersing discrete LED points into a continuous halo.</p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -437,6 +642,23 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.2} className="space-y-4">
+            <div className="rounded-2xl border border-[#303A48] bg-[#11151C] overflow-hidden p-4 space-y-3">
+              <div className="flex items-center justify-between text-[11px] font-mono text-[#A5AFBD]">
+                <span className="text-[#35C98A] font-bold">DESK AUTOMATION FLOW</span>
+                <span>PHYSICAL-TO-DIGITAL BRIDGE</span>
+              </div>
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#303A48] bg-[#080A0E]">
+                <Image
+                  src="/images/nexus-flow-desk-transformation.gif"
+                  alt="Nexus Flow Desk Transformation Animation"
+                  width={600}
+                  height={375}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+            </div>
+
             <Link
               href="/hardware"
               className="flex items-center justify-between gap-6 p-6 rounded-2xl border border-[#303A48] bg-[#11151C] hover:border-[#D83A50] hover:bg-[#1B222D] transition-all duration-150"

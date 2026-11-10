@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import {
@@ -152,6 +153,25 @@ export default function DigitalDistractionPage() {
             <p className="text-lg font-display font-bold text-white pt-1">
               NEXUS RING — FORCE YOUR FOCUS. ENGINEER SUCCESS.
             </p>
+          </div>
+
+          {/* Infographic Visual Card */}
+          <div className="pt-10 max-w-2xl mx-auto">
+            <div className="rounded-3xl border border-[#303A48] bg-[#080A0E] overflow-hidden shadow-2xl">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/images/infographic-trillion-dollar-algorithm.jpg"
+                  alt="You Can't Fight a Trillion-Dollar Algorithm With Willpower - Nexus Ring Infographic"
+                  width={1200}
+                  height={900}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 bg-[#11151C] border-t border-[#303A48] flex items-center justify-between text-xs font-mono text-[#A5AFBD]">
+                <span className="text-[#D83A50] font-bold">PHYSICAL ANCHOR ARCHITECTURE</span>
+                <span>8X COGNITIVE DENSITY RATIO</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

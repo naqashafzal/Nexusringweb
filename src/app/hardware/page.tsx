@@ -305,6 +305,23 @@ export default function HardwarePage() {
                 The enclosure was engineered from inception so the custom electronics fit into a printable chassis without requiring multi-thousand dollar injection-molding tooling for initial validation.
               </p>
             </div>
+
+            {/* Real Prototype Desk Photo Highlight */}
+            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src="/images/prototype-desk-angle-lit.jpg"
+                  alt="Real Nexus Ring physical prototype on desk"
+                  width={800}
+                  height={500}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+                <span>BENCH PROTOTYPE REV 03</span>
+                <span className="text-[#D83A50]">REAL HARDWARE ON DESK</span>
+              </div>
+            </div>
           </div>
 
           {/* Schematic SVG 1: Enclosure Cross Section */}
@@ -488,6 +505,23 @@ export default function HardwarePage() {
                 Runs dedicated firmware written in C++/ESP-IDF with deterministic hardware interrupts and local USB serial transmission.
               </p>
             </div>
+
+            {/* Custom Silicon Architecture Visual */}
+            <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src="/images/hardware-custom-silicon.jpg"
+                  alt="Bespoke Architecture - Custom silicon engineered purely for human peace"
+                  width={800}
+                  height={500}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+                <span>BESPOKE ARCHITECTURE</span>
+                <span className="text-[#35C98A]">RISC-V SILICON LOGIC</span>
+              </div>
+            </div>
           </div>
 
           {/* Schematic SVG 4: ESP32-C3 PCB Layout */}
@@ -558,6 +592,23 @@ export default function HardwarePage() {
                 <strong className="text-white">Break:</strong> Warm low-intensity amber glow
               </li>
             </ul>
+
+            {/* Macro Diffuser Photo from Real Prototype */}
+            <div className="rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E]">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src="/images/prototype-glow-deep-mode-macro.jpg"
+                  alt="Nexus Ring prototype red LED macro diffuse glow"
+                  width={800}
+                  height={500}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-3 bg-[#11151C] border-t border-[#303A48] flex justify-between text-[10px] font-mono text-[#A5AFBD]">
+                <span>LAB TEST: DEEP WORK GLOW</span>
+                <span className="text-[#D83A50]">360° CONTINUOUS PERIPHERAL HALO</span>
+              </div>
+            </div>
           </div>
 
           {/* Schematic SVG 5: Diffuser Optical Path */}
@@ -709,6 +760,23 @@ export default function HardwarePage() {
                 <span className="text-[#A5AFBD]">Fully assembled, tested hardware controller with weighted totem and USB-C cable.</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Product Showcase Poster */}
+        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl">
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src="/images/product-showcase-poster.jpg"
+              alt="Nexus Ring - Made to Take Your Mind Back"
+              width={1600}
+              height={900}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="p-5 bg-[#080A0E] border-t border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
+            <span className="text-white font-bold">NEXUS RING ARCHITECTURE</span>
+            <span className="text-[#D83A50]">PHYSICAL ANCHOR · SILENT ORBIT · TACTILE AUTHORITY</span>
           </div>
         </div>
       </section>

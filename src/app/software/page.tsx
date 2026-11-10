@@ -199,6 +199,31 @@ export default function SoftwarePage() {
             </p>
           </div>
         </div>
+
+        {/* Physical Friction Sentinel Card */}
+        <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 items-center">
+          <div className="md:col-span-7 relative aspect-[16/10] w-full bg-[#080A0E]">
+            <Image
+              src="/images/product-card-unhackable-shield.jpg"
+              alt="Nexus Ring Unhackable Shield - Physical friction that stops impulsive relapse"
+              width={1000}
+              height={625}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="md:col-span-5 p-8 space-y-4">
+            <span className="text-[10px] font-mono text-[#D83A50] uppercase tracking-widest border border-[#D83A50]/30 bg-[#D83A50]/10 px-3 py-1 rounded-full inline-block">
+              Physical Sentinel
+            </span>
+            <h3 className="text-2xl font-display font-bold text-white">The Unhackable Shield</h3>
+            <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">
+              Digital blockers are defeated in 3 keystrokes. Nexus forces physical friction: you must physically reach out, pick up the magnetic totem, and dock it into a new state. That brief tactile effort is enough to break impulsive relapse habits.
+            </p>
+            <div className="text-xs font-mono text-[#778292] pt-2">
+              ZERO BYPASS EXTENSIONS · LOCAL SYSTEM-LEVEL ENFORCEMENT
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 6. OS SUPPORT TABLE */}
