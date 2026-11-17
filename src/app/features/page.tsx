@@ -14,7 +14,9 @@ import {
   Smartphone,
   Home as HomeIcon,
   Info,
+  ArrowUpRight,
 } from "lucide-react";
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 const ExplodedRingCanvas = dynamic(() => import("@/components/ExplodedRingCanvas"), {
   ssr: false,
@@ -245,34 +247,34 @@ export default function FeaturesPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
             <Monitor className="text-[#D83A50] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Desktop (Core)</h4>
-            <span className="text-[10px] font-mono bg-[#D83A50]/10 text-[#D83A50] px-2 py-0.5 rounded border border-[#D83A50]/30 inline-block">
-              Primary Platform
+            <h4 className="text-lg font-bold text-white">Desktop (Windows, macOS &amp; Linux)</h4>
+            <span className="text-[10px] font-mono bg-[#35C98A]/10 text-[#35C98A] px-2 py-0.5 rounded border border-[#35C98A]/30 inline-block">
+              Lifetime Core Included
             </span>
             <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
-              Windows, macOS, and Linux support. Manages local apps, website filters, notifications, timers, and shell scripts.
+              Desktop workspace automation, app launch and restrictions, website/domain blocking, Nexus Flow sprints, and focus audio across Windows, macOS, and Linux.
             </p>
           </div>
 
           <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
-            <Smartphone className="text-[#A5AFBD] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Mobile Companion</h4>
-            <span className="text-[10px] font-mono bg-[#1B222D] text-[#A5AFBD] px-2 py-0.5 rounded border border-[#303A48] inline-block">
-              Planned
+            <Smartphone className="text-[#35C98A] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-white">Mobile Companion (Android &amp; iOS)</h4>
+            <span className="text-[10px] font-mono bg-[#35C98A]/10 text-[#35C98A] px-2 py-0.5 rounded border border-[#35C98A]/30 inline-block">
+              Local Pairing Included
             </span>
             <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
-              Potential state sync for mobile Focus modes and notification rules via supported iOS/Android system APIs.
+              Local desktop pairing, mode synchronization, an approved-app launcher, and permission-based distraction shielding and Do Not Disturb across Android and iOS.
             </p>
           </div>
 
           <div className="p-8 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-2">
-            <HomeIcon className="text-[#A5AFBD] mb-3" size={28} />
-            <h4 className="text-lg font-bold text-white">Workspace IoT</h4>
-            <span className="text-[10px] font-mono bg-[#1B222D] text-[#A5AFBD] px-2 py-0.5 rounded border border-[#303A48] inline-block">
-              Planned
+            <HomeIcon className="text-[#38BDF8] mb-3" size={28} />
+            <h4 className="text-lg font-bold text-white">Browser &amp; Tool Connections</h4>
+            <span className="text-[10px] font-mono bg-[#38BDF8]/10 text-[#38BDF8] px-2 py-0.5 rounded border border-[#38BDF8]/30 inline-block">
+              Optional Integrations
             </span>
             <p className="text-xs text-[#A5AFBD] leading-relaxed pt-2">
-              Future webhook integration for smart desk lighting, Home Assistant routines, and external hardware status indicators.
+              Intent Gateway extension for YouTube, Reddit &amp; X feed filtering, plus optional connections to Google Calendar, Zoom, Notion, GitHub, Linear, Obsidian, Slack, Spotify, and Home Assistant.
             </p>
           </div>
         </div>
@@ -326,14 +328,14 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* Full-width Product Showcase Poster (100% Uncropped 1200x896) */}
+        {/* Full-width Product Showcase Poster (Typo-free version) */}
         <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl">
-          <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
+          <div className="relative w-full max-w-3xl mx-auto rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
-              src="/images/product-showcase-poster.jpg"
+              src="/images/designer-creating-hardware.jpg"
               alt="Nexus Ring - Made to Take Your Mind Back"
-              width={1200}
-              height={896}
+              width={896}
+              height={1200}
               className="w-full h-auto block rounded-xl"
             />
           </div>
@@ -350,22 +352,24 @@ export default function FeaturesPage() {
           Your attention deserves an off-switch.
         </h2>
         <p className="text-[#A5AFBD] text-sm md:text-base mb-8 max-w-xl mx-auto font-light leading-relaxed">
-          Deep work shouldn&apos;t begin with fighting distractions. A break shouldn&apos;t be interrupted by work notifications. Nexus Ring turns those boundaries into something physical.
+          Deep work shouldn&apos;t begin with fighting distractions. A break shouldn&apos;t be interrupted by work notifications. Back Nexus Ring on Kickstarter starting at $39 (Digital Maker Kit) or $89 (Early Bird).
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer"
+          <a
+            href={KICKSTARTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] inline-flex items-center gap-2"
           >
-            Join the Waitlist
-          </button>
+            <span>Back on Kickstarter</span>
+            <ArrowUpRight size={16} />
+          </a>
           <Link
-            href="/hardware"
+            href="/campaign#tiers"
             className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
           >
-            Explore Hardware Details
+            See All Reward Tiers
           </Link>
         </div>
       </section>

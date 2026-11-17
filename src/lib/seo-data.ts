@@ -5,19 +5,20 @@
  */
 
 import { JournalArticle } from "./journal-data";
+import { KICKSTARTER_FAQS, KICKSTARTER_TIERS, KICKSTARTER_URL } from "./kickstarter-data";
 
 export const SITE_CONFIG = {
   name: "Nexus Ring",
   legalName: "Nexus Ring",
   url: "https://www.nexusring.tech",
-  tagline: "FORCE YOUR FOCUS. ENGINEER SUCCESS.",
-  mission: "Take back control of your attention.",
+  tagline: "NEXUS RING: PHYSICAL SWITCH FOR YOU.",
+  mission: "Stop giving your best hours away.",
   supportingStatement:
-    "Your time is valuable. Your attention is limited. In a digital world competing to capture both, Nexus Ring is being built to help you choose what matters and protect the environment you need to pursue it.",
+    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.",
   canonicalProductDefinition:
-    "Nexus Ring is a physical workspace controller in development that uses a magnetic totem and position sensing to select focus-related modes. Its planned companion software connects those choices with supported desktop automations, helping users create more intentional working environments.",
+    "Nexus Ring is a USB-C desk dock and magnetic totem that switches your PC (Windows, macOS, or Linux) and paired phone (Android or iOS) into the workspace you configure across Deep Work, Creative, Meeting, and Break modes—with lifetime core apps and zero mandatory subscription.",
   description:
-    "Meet Nexus Ring, a physical workspace controller in development. Designed to help you reduce digital distractions, choose your work mode with a magnetic totem, and reclaim your attention through local-first automation.",
+    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. Built and tested physical focus switch launching on Kickstarter ($39–$199), no subscription.",
   keywords: [
     // Core Brand & Product Identity
     "Nexus Ring",
@@ -229,9 +230,10 @@ export const SITE_CONFIG = {
     "offline productivity controller",
   ],
   founder: {
-    name: "Naqash Afzal",
+    name: "Naqash Afzal Zakria",
     jobTitle: "Founder & Hardware Architect",
     sameAs: [
+      KICKSTARTER_URL,
       "https://github.com/naqashafzal",
       "https://g.dev/naqashafzal",
       "https://makerworld.com/en/@naqash",
@@ -296,121 +298,40 @@ export function getStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_CONFIG.url}/#product`,
-    name: "Nexus Ring — Physical Workspace Controller",
-    image: [`${SITE_CONFIG.url}/opengraph-image`],
+    name: "Nexus Ring: Physical Switch for You",
+    image: [
+      `${SITE_CONFIG.url}/images/kickstarter/ks-hero-poster.png`,
+      `${SITE_CONFIG.url}/images/kickstarter/ks-desk-prototype-hero.jpg`,
+    ],
     description: SITE_CONFIG.canonicalProductDefinition,
     brand: {
       "@type": "Brand",
       name: "Nexus Ring",
     },
     category: "Electronics > Hardware > Productivity Tools",
-    material: "Dual-Shell Modular Prototype Chassis (PLA-CF / PETG), Neodymium Totem, ESP32-C3 Controller Architecture",
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Nexus Ring Early Access Waitlist",
-        availability: "https://schema.org/PreOrder",
-        price: "0.00",
-        priceCurrency: "USD",
-        url: `${SITE_CONFIG.url}/preorder`,
-        description: "Early access waitlist registration. Prototype updates and launch announcements with no payment required.",
-      },
-    ],
+    material: "Metal-body desk enclosure (Day Silver / Night Obsidian Black), Magnetic Totem, Wired USB-C",
+    offers: KICKSTARTER_TIERS.map((tier) => ({
+      "@type": "Offer",
+      name: tier.name,
+      availability: "https://schema.org/PreOrder",
+      price: tier.priceNumber.toFixed(2),
+      priceCurrency: "USD",
+      url: KICKSTARTER_URL,
+      description: tier.description,
+    })),
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "What is Nexus Ring?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: SITE_CONFIG.canonicalProductDefinition,
-        },
+    mainEntity: KICKSTARTER_FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
       },
-      {
-        "@type": "Question",
-        name: "Is Nexus Ring a wearable smart ring?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Nexus Ring is a stationary, desk-based physical interface. It sits on your workspace alongside your keyboard and mouse. It does not track biometric pulses or require wrist wear.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does the magnetic totem communicate with software?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "When the weighted magnetic totem is moved into a quadrant slot, internal digital Hall-effect sensors detect the magnetic flux density. The ESP32-C3 microcontroller interprets the position and transmits standard USB HID event packets to the local Nexus Companion software running on your computer.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What are the four operating modes?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The four primary operating modes are Deep Work (distraction-free concentration with notification muting and domain filtering), Creative (divergent ideation and creative tool launching), Meeting (conferencing setups and audio status checks), and Break (deliberate boundary between work and cognitive recovery).",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does Nexus Ring require an internet connection or cloud account?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. Nexus Ring operates on a strict local-first philosophy. Core mode switching, application orchestration, notification muting, and local filtering are performed on-device without cloud telemetry, mandatory remote accounts, or background data collection.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is Nexus Ring available to purchase today?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Nexus Ring is currently under active prototype development. Interested users, developers, and makers can join the free, non-binding waitlist to receive authentic engineering milestones and early crowdfunding launch notice.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does Nexus Ring function as a physical distraction killer?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Nexus Ring acts as a physical distraction killer by introducing real tactile friction against digital impulses. Unlike browser extensions or app blockers that can be bypassed in two clicks, leaving a focus session requires physically reaching across your desk and displacing the weighted magnetic totem, intercepting unconscious doomscrolling loops.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does physical friction build work discipline without depending on willpower?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Cognitive science and behavioral habit research (such as James Clear's Atomic Habits and Wendy Wood's context studies) show willpower is easily depleted. Nexus Ring uses environmental architecture: by assigning stable sensory inputs (a weighted totem, magnetic detent snap, and 360-degree ambient light) to distinct work states, your brain transitions into discipline automatically without struggling against temptation.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can Nexus Ring provide focus assistance for people with ADHD or executive dysfunction?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Many neurodivergent individuals and knowledge workers with ADHD experience severe startup friction (task initiation inertia) and context-switching fatigue. The physical sensation of docking the totem provides an immediate tactile cue that signals the start of a deep work sprint, while the peripheral diffuse light provides calm status awareness without another demanding digital display.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How does Nexus Ring automate daily tasks and workspace setup?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "When you dock the totem into Deep Work, Creative, Meeting, or Break modes, the local companion daemon triggers custom OS workflows: launching your configured IDE or Figma, muting Slack or email notification banners, applying selective website filters, and starting focus timers—all in under 12 milliseconds without opening configuration menus.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Why choose a physical desk controller instead of subscription software like Opal, Freedom, or Cold Turkey?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Software-only blockers live inside the exact screen where distraction occurs and charge ongoing monthly fees. Nexus Ring is a one-time-purchase desk object that operates completely offline, enforces boundaries at the hardware level, and requires zero cloud accounts or recurring subscription fees.",
-        },
-      },
-    ],
+    })),
   };
 
   return [websiteSchema, organizationSchema, productSchema, faqSchema];

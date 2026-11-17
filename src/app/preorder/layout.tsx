@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Early Access Registration",
+  title: "Choose Your Nexus Ring Tier — Kickstarter Rewards",
   description:
-    "Register interest for Nexus Ring early access. Follow prototype milestones and receive early backer notification with no payment required.",
+    "Explore Nexus Ring Kickstarter rewards ($39 Digital Maker Kit, $89 Early Bird, $109 Kickstarter Special, $199 Day & Night Duo Pack). Choose Day (Silver) or Night (Obsidian Black) finish.",
   keywords: [
-    "Nexus Ring Early Access",
-    "Physical Workspace Controller",
+    "Nexus Ring Kickstarter",
+    "Nexus Ring Preorder",
+    "Day Silver Nexus Ring",
+    "Night Obsidian Black Nexus Ring",
+    "Digital Maker Kit",
     "Focus Hardware",
-    "Waitlist Registration",
-    "Prototype Updates",
   ],
   alternates: {
     canonical: "/preorder",
   },
   openGraph: {
-    title: "Early Access Registration | Nexus Ring",
+    title: "Choose Your Nexus Ring Tier — Kickstarter Rewards",
     description:
-      "Register interest for Nexus Ring early access. Follow prototype milestones and receive early backer notification with no payment required.",
+      "Explore Nexus Ring Kickstarter rewards ($39 Maker Kit, $89 Early Bird, $109 Kickstarter Special, $199 Duo Pack) with lifetime core desktop & mobile apps.",
     url: "https://www.nexusring.tech/preorder",
   },
 };

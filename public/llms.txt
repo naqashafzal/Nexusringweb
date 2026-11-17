@@ -1,25 +1,26 @@
-# Nexus Ring — Physical Workspace Controller
+# Nexus Ring: Physical Switch for You
 
-> Nexus Ring is a desk-based physical interface designed to connect deliberate physical actions with digital workspace automation. Move the magnetic totem to select a mode and let Nexus Companion prepare your environment for the work ahead.
+> Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.
 
-## Primary Brand Message
-- **Tagline:** FORCE YOUR FOCUS. ENGINEER SUCCESS.
-- **Supporting Headline:** One physical move. Your workspace follows.
-- **Philosophy:** Physical Intent Computing. Calm technology that bridges the gap between intention and action without demanding another screen.
-
-## Status Labels
-- **VALIDATED:** Demonstrated and verified in current prototype.
-- **PROTOTYPE:** Functional hardware/chassis test unit.
-- **IN DEVELOPMENT:** Actively being engineered.
-- **PLANNED:** On the production roadmap.
+## Primary Campaign Message
+- **Title:** Nexus Ring: Physical Switch for You
+- **Headline:** Stop giving your best hours away.
+- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/1134359888?ref=9p7zyz&token=d99c42f6
+- **Philosophy:** Physical Intent Computing — turning the decision to focus into a repeatable physical action across desktop and mobile without mandatory subscriptions.
 
 ## Quick Facts
-- **Product Type:** Desk-based physical interface & companion software controller
-- **Target Pricing:** Provisional targets — $15 (Maker Edition), $49 (Hacker Edition), $129 (Pro Desk Set). Final pricing to be announced at campaign launch.
-- **Availability:** Early Access Waitlist Active. No payment required today.
-- **Hardware Architecture (IN DEVELOPMENT):** Dual-shell 3D chassis, 4-quadrant Hall-effect magnetic sensor array, ESP32-C3 RISC-V controller, 360° diffuse ambient LED system, weighted magnetic totem, USB Type-C interface.
-- **Software Architecture (IN DEVELOPMENT):** Local Nexus Companion daemon for Windows, macOS, and Linux. Local-first execution for website filtering, application orchestration, notification muting, and focus timers.
-- **Founder:** Naqash Afzal
+- **Product Type:** USB-C metal-body desk dock, magnetic totem, desktop & mobile companion apps, and browser Intent Gateway extension (not a wearable ring)
+- **Kickstarter Reward Tiers (Est. Delivery July 2027):**
+  - **$39 — Nexus: Digital Maker Kit:** 3D-printable STL/STEP files, BOM, embedded firmware & flashing guide, assembly guide, and lifetime core desktop & mobile apps (digital only)
+  - **$89 — Early Bird: Nexus & App (First 50 Backers):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
+  - **$109 — Nexus + Apps (Featured · First 200 Backers):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
+  - **$199 — Nexus Ring Duo Pack — Day & Night Edition (50 Backers):** 2× complete assembled Nexus Ring units (both Day Silver and Night Obsidian Black), 2× magnetic totems, 2× USB-C cables, and lifetime core desktop & mobile apps
+- **Funding Goal & Duration:** US$ 10,000 · 48 days · Worldwide shipping for assembled tiers (collected separately via post-campaign pledge manager)
+- **Hardware Status:** Built and tested; launching first production run on Kickstarter. Wired USB-C metal-body enclosure eliminates internal lithium-ion battery degradation.
+- **Supported Platforms:** Windows, macOS, Linux (Desktop), Android & iOS (Mobile Companion via local pairing), and Chromium desktop browsers (Intent Gateway extension for YouTube, Reddit, and X feed filtering).
+- **Subscription & AI:** Zero mandatory Nexus subscription for core apps. Core tasks, notes, focus audio, and session records stay local. Optional AI supports Gemini, OpenAI, or a compatible local model endpoint.
+- **Creator:** Naqash Afzal Zakria (Lahore, Pakistan)
+  - Kickstarter: https://www.kickstarter.com/projects/naqash/1134359888?ref=9p7zyz&token=d99c42f6
   - GitHub: https://github.com/naqashafzal
   - MakerWorld: https://makerworld.com/en/@naqash
   - LinkedIn: https://www.linkedin.com/in/naqashafzal/

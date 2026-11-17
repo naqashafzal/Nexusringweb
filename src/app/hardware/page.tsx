@@ -9,8 +9,10 @@ import {
   RefreshCw,
   Box,
   Cpu,
+  ArrowUpRight,
 } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 const ExplodedRingCanvas = dynamic(() => import("@/components/ExplodedRingCanvas"), {
   ssr: false,
@@ -700,26 +702,21 @@ export default function HardwarePage() {
           {[
             { f: "Product concept & 4-mode layout", s: "VALIDATED" },
             { f: "Industrial CAD modeling (GLB/STEP)", s: "VALIDATED" },
-            { f: "3D-printed chassis test units", s: "PROTOTYPE" },
-            { f: "Magnetic totem tactile positioning", s: "PROTOTYPE" },
-            { f: "Hall sensor quadrant detection", s: "TESTING" },
-            { f: "ESP32-C3 firmware state machine", s: "IN DEVELOPMENT" },
-            { f: "Custom PCB layout & integration", s: "IN DEVELOPMENT" },
-            { f: "Nexus Companion desktop daemon", s: "IN DEVELOPMENT" },
-            { f: "Production tooling & CNC fixtures", s: "PLANNED" },
-            { f: "Mass manufacturing & assembly", s: "PLANNED" },
+            { f: "Working physical desk dock & magnetic totem", s: "BUILT & TESTED" },
+            { f: "Hall sensor quadrant detection & LED ring", s: "BUILT & TESTED" },
+            { f: "Embedded firmware state machine", s: "BUILT & TESTED" },
+            { f: "Desktop (Windows, macOS, Linux) & Mobile (Android, iOS) apps", s: "BUILT & TESTED" },
+            { f: "Browser Intent Gateway extension (YouTube, Reddit, X)", s: "BUILT & TESTED" },
+            { f: "First production run (component sourcing & metal enclosure)", s: "KICKSTARTER" },
+            { f: "Assembly, unit checks, packaging & worldwide delivery (Jul 2027)", s: "KICKSTARTER" },
           ].map((row) => (
-            <div key={row.f} className="flex justify-between items-center p-3.5 border-b border-[#303A48] bg-[#11151C] rounded-lg">
+            <div key={row.f} className="flex justify-between items-center p-3.5 border-b border-[#303A48] bg-[#11151C] rounded-lg gap-3">
               <span className="text-[#F5F6F8]">{row.f}</span>
               <span
-                className={`px-2.5 py-0.5 rounded text-[10px] font-bold ${
-                  row.s === "VALIDATED"
+                className={`px-2.5 py-0.5 rounded text-[10px] font-bold shrink-0 ${
+                  row.s === "VALIDATED" || row.s === "BUILT & TESTED"
                     ? "bg-[#35C98A]/20 text-[#35C98A]"
-                    : row.s === "PROTOTYPE" || row.s === "TESTING"
-                    ? "bg-[#F0B35A]/20 text-[#F0B35A]"
-                    : row.s === "IN DEVELOPMENT"
-                    ? "bg-[#D83A50]/20 text-[#D83A50]"
-                    : "bg-[#303A48] text-[#A5AFBD]"
+                    : "bg-[#D83A50]/20 text-[#D83A50]"
                 }`}
               >
                 {row.s}
@@ -729,54 +726,58 @@ export default function HardwarePage() {
         </div>
       </section>
 
-      {/* ════════════════ SECTION 7: MAKER ECOSYSTEM ════════════════ */}
+      {/* ════════════════ SECTION 7: MAKER & KICKSTARTER REWARDS ════════════════ */}
       <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 border border-[#303A48] bg-[#11151C] rounded-3xl space-y-4">
-            <span className="eyebrow block mb-1">Maker Philosophy</span>
-            <h3 className="text-2xl font-bold text-white">Open to inspect, build, and modify.</h3>
+            <span className="eyebrow block mb-1">Maker &amp; Longevity Philosophy</span>
+            <h3 className="text-2xl font-bold text-white">Built to last. Open for makers.</h3>
             <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">
-              Nexus Ring began on 3D printers and breadboards. We want the hardware to be understandable rather than a black-box sealed gadget.
+              Nexus Ring is built around a durable metal-body desk enclosure and magnetic physical switching with a wired USB-C connection—eliminating internal lithium-ion batteries that degrade over time.
             </p>
             <p className="text-xs text-[#A5AFBD] leading-relaxed">
-              We plan to release digital CAD files, assembly guides, and bill of materials so 3D printing enthusiasts and DIY builders can construct their own chassis.
+              Prefer to build your own? Our <strong className="text-white">$39 Digital Maker Kit</strong> includes 3D-printable STL/STEP enclosure files, full BOM, wiring and assembly guides, embedded firmware, and lifetime core desktop &amp; mobile app access.
             </p>
           </div>
 
           <div className="p-8 border border-[#303A48] bg-[#11151C] rounded-3xl space-y-4">
-            <span className="eyebrow block mb-1">Planned Editions</span>
-            <h3 className="text-2xl font-bold text-white">Three planned ways to get it.</h3>
-            <div className="space-y-3 text-xs">
+            <span className="eyebrow block mb-1">Official Kickstarter Rewards</span>
+            <h3 className="text-2xl font-bold text-white">Four ways to back Nexus Ring.</h3>
+            <div className="space-y-2.5 text-xs">
               <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
-                <strong className="text-white block">Maker Edition:</strong>
-                <span className="text-[#A5AFBD]">Digital 3D CAD files (STEP/STL), BOM, and build guide for 3D printer owners.</span>
+                <strong className="text-white block">$39 · Digital Maker Kit:</strong>
+                <span className="text-[#A5AFBD]">STL/STEP print files, BOM, firmware, assembly guide &amp; lifetime core apps (digital only).</span>
               </div>
               <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
-                <strong className="text-white block">Hacker Hardware Kit:</strong>
-                <span className="text-[#A5AFBD]">Official custom PCB, ESP32-C3 module, sensors, magnets, and LEDs. You print the body.</span>
+                <strong className="text-white block">$89 · Early Bird (First 50 Backers):</strong>
+                <span className="text-[#A5AFBD]">Assembled metal-body Nexus Ring (Day Silver or Night Black), totem, USB-C cable &amp; lifetime core apps.</span>
+              </div>
+              <div className="p-3 rounded-xl bg-[#080A0E] border border-[#D83A50]/40">
+                <strong className="text-white block">$109 · Kickstarter Special (200 Backers · Featured):</strong>
+                <span className="text-[#A5AFBD]">Assembled metal-body Nexus Ring (Day Silver or Night Black), totem, USB-C cable &amp; lifetime core apps.</span>
               </div>
               <div className="p-3 rounded-xl bg-[#080A0E] border border-[#303A48]">
-                <strong className="text-white block">Pro Desk Set:</strong>
-                <span className="text-[#A5AFBD]">Fully assembled, tested hardware controller with weighted totem and USB-C cable.</span>
+                <strong className="text-white block">$199 · Duo Pack — Day &amp; Night Edition (50 Backers):</strong>
+                <span className="text-[#A5AFBD]">2× assembled Nexus Ring units (both Silver &amp; Obsidian Black), 2× totems, 2× USB-C cables &amp; lifetime core apps.</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Product Showcase Poster (100% Uncropped 1200x896) */}
+        {/* Real Desk Prototype Showcase */}
         <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl">
           <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
-              src="/images/product-showcase-poster.jpg"
-              alt="Nexus Ring - Made to Take Your Mind Back"
-              width={1200}
-              height={896}
+              src="/images/kickstarter/ks-desk-prototype-hero.jpg"
+              alt="Real Nexus Ring hardware prototype on a working desk"
+              width={680}
+              height={383}
               className="w-full h-auto block rounded-xl"
             />
           </div>
           <div className="p-4 mt-2 bg-[#080A0E] rounded-xl border border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
-            <span className="text-white font-bold">NEXUS RING ARCHITECTURE</span>
-            <span className="text-[#D83A50]">PHYSICAL ANCHOR · SILENT ORBIT · TACTILE AUTHORITY</span>
+            <span className="text-white font-bold">REAL WORKING PROTOTYPE ON DESK</span>
+            <span className="text-[#35C98A]">BUILT &amp; TESTED · EST. DELIVERY JUL 2027</span>
           </div>
         </div>
       </section>
@@ -797,22 +798,24 @@ export default function HardwarePage() {
           <span className="text-[#A5AFBD]">Software makes it useful.</span>
         </h2>
         <p className="text-[#A5AFBD] text-base md:text-lg mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-          See how Nexus Companion connects each physical mode to your applications, website filters, notifications, and desktop workflows.
+          Back Nexus Ring on Kickstarter or explore how the companion apps connect each physical mode across Windows, macOS, Linux, Android, and iOS.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href={KICKSTARTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.35)] inline-flex items-center gap-2"
+          >
+            <span>Back on Kickstarter</span>
+            <ArrowUpRight size={16} />
+          </a>
           <Link
             href="/software"
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_20px_rgba(255,64,90,0.35)]"
+            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
           >
             Explore Companion Software
           </Link>
-          <button
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm cursor-pointer"
-          >
-            Join Early Access
-          </button>
         </div>
       </section>
 

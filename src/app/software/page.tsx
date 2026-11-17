@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronRight, CheckCircle2 } from "lucide-react";
+import { ChevronRight, CheckCircle2, ArrowUpRight } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
 import SoftwareScreenshotsGallery from "@/components/SoftwareScreenshotsGallery";
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 export default function SoftwarePage() {
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -227,53 +228,78 @@ export default function SoftwarePage() {
       </section>
 
       {/* 6. OS SUPPORT TABLE */}
-      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28">
-        <div className="text-center mb-12">
-          <span className="eyebrow block">Compatibility</span>
+      <section className="relative max-w-[1000px] mx-auto px-6 md:px-12 mb-28 space-y-8">
+        <div className="text-center mb-8">
+          <span className="eyebrow block">Compatibility at a Glance</span>
           <h2 className="text-3xl font-display font-bold text-white">
-            Operating System Support
+            Desktop, Mobile &amp; Browser Support
           </h2>
+          <p className="text-xs text-[#A5AFBD] mt-2">
+            Every Kickstarter reward includes lifetime core access to desktop (Windows, macOS, Linux) and mobile (Android, iOS) companion apps with zero mandatory subscription.
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3">
+            <Image
+              src="/images/kickstarter/ks-unified-ecosystem.jpg"
+              alt="Unified desk ecosystem connecting desktop PC and mobile companion"
+              width={680}
+              height={383}
+              className="w-full h-auto block rounded-2xl"
+            />
+          </div>
+          <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-3">
+            <Image
+              src="/images/kickstarter/ks-local-control.jpg"
+              alt="100% Local Privacy — Zero Subscriptions Ever"
+              width={680}
+              height={383}
+              className="w-full h-auto block rounded-2xl"
+            />
+          </div>
+        </div>
+
         <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-x-auto shadow-2xl">
           <table className="w-full text-left text-xs font-mono">
             <thead>
               <tr className="border-b border-[#303A48] text-[#778292]">
                 <th className="p-4">CAPABILITY</th>
-                <th className="p-4">WINDOWS 10/11</th>
-                <th className="p-4">MACOS (VENTURA+)</th>
-                <th className="p-4">LINUX (UBUNTU/FEDORA)</th>
+                <th className="p-4">WINDOWS / MACOS / LINUX</th>
+                <th className="p-4">ANDROID &amp; IOS</th>
+                <th className="p-4">BROWSER EXTENSION</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#303A48] text-[#A5AFBD]">
               <tr>
-                <td className="p-4 text-white font-bold">Hardware USB Detection</td>
-                <td className="p-4 text-[#35C98A]">Supported</td>
-                <td className="p-4 text-[#35C98A]">Supported</td>
-                <td className="p-4 text-[#35C98A]">Supported</td>
+                <td className="p-4 text-white font-bold">Mode Sync &amp; Local Control</td>
+                <td className="p-4 text-[#35C98A]">USB-C Direct Dock</td>
+                <td className="p-4 text-[#35C98A]">Local Network Pairing</td>
+                <td className="p-4 text-[#35C98A]">Intent Gateway Sync</td>
               </tr>
               <tr>
-                <td className="p-4 text-white font-bold">App Launch / Close</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">In Development</td>
+                <td className="p-4 text-white font-bold">App &amp; Workspace Rules</td>
+                <td className="p-4 text-[#35C98A]">Launch / Close / Keep</td>
+                <td className="p-4 text-[#35C98A]">Approved-App Launcher</td>
+                <td className="p-4">Domain &amp; Feed Rules</td>
               </tr>
               <tr>
-                <td className="p-4 text-white font-bold">Website Filter Rules</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">In Development</td>
+                <td className="p-4 text-white font-bold">Distraction Shielding</td>
+                <td className="p-4 text-[#35C98A]">Soft / Strict / Lockdown</td>
+                <td className="p-4 text-[#35C98A]">Focus Shield &amp; DND</td>
+                <td className="p-4 text-[#35C98A]">YouTube / Reddit / X</td>
               </tr>
               <tr>
-                <td className="p-4 text-white font-bold">Do Not Disturb Sync</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">In Development</td>
-                <td className="p-4">Planned</td>
+                <td className="p-4 text-white font-bold">Nexus Flow &amp; Audio</td>
+                <td className="p-4 text-[#35C98A]">Sprints, Notes &amp; Soundscapes</td>
+                <td className="p-4">Session Sync</td>
+                <td className="p-4">Intent Checks</td>
               </tr>
               <tr>
-                <td className="p-4 text-white font-bold">Custom Shell Scripts</td>
-                <td className="p-4">PowerShell</td>
-                <td className="p-4">Zsh / Bash</td>
-                <td className="p-4">Bash / Python</td>
+                <td className="p-4 text-white font-bold">Pricing &amp; Privacy</td>
+                <td className="p-4 text-[#35C98A]">100% Local · No Subscription</td>
+                <td className="p-4 text-[#35C98A]">Included Lifetime Core</td>
+                <td className="p-4 text-[#35C98A]">Chromium Desktop</td>
               </tr>
             </tbody>
           </table>
@@ -292,25 +318,26 @@ export default function SoftwarePage() {
           />
         </div>
         <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-          Test early builds of Nexus Companion.
+          Lifetime core apps included with every Kickstarter tier.
         </h2>
         <p className="text-sm md:text-base text-[#A5AFBD] mb-8 max-w-xl mx-auto font-light leading-relaxed">
-          Sign up to follow companion software milestones, test daemon releases, and help shape supported profile integrations.
+          No mandatory Nexus subscription. Optional AI works with Gemini, OpenAI, or your own compatible local model endpoint.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2 cursor-pointer"
+          <a
+            href={KICKSTARTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center gap-2"
           >
-            <span>Join Companion Early Access</span>
-            <ChevronRight size={16} />
-          </button>
+            <span>Back on Kickstarter</span>
+            <ArrowUpRight size={16} />
+          </a>
           <Link
             href="/download"
             className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#1B222D] text-[#F5F6F8] hover:border-[#D83A50] transition-colors font-mono text-sm flex items-center gap-2"
           >
-            <span>Live Tester &amp; Preview</span>
+            <span>Download &amp; Preview</span>
           </Link>
         </div>
       </section>

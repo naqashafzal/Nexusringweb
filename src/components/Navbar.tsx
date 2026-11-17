@@ -4,14 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ArrowUpRight, Download } from "lucide-react";
-import dynamic from "next/dynamic";
-
-const ComingSoonModal = dynamic(() => import("@/components/ComingSoonModal"), {
-  ssr: false,
-});
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 const links = [
   { href: "/#modes", label: "Product" },
+  { href: "/campaign", label: "Kickstarter" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
   { href: "/download", label: "Download" },
@@ -21,11 +18,9 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [waitlist, setWaitlist] = useState(false);
 
   return (
-    <>
-      <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#303A48] bg-[#080A0E]/85 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#303A48] bg-[#080A0E]/85 backdrop-blur-xl">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-6">
           <Link
             href="/"
@@ -66,16 +61,16 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => {
-                setWaitlist(true);
-                setOpen(false);
-              }}
+            <a
+              href={KICKSTARTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
               className="rounded-full bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-150 cursor-pointer flex items-center gap-1.5 shadow-[0_0_20px_rgba(216,58,80,0.25)]"
             >
-              <span>Join Early Access</span>
+              <span>Back on Kickstarter</span>
               <ArrowUpRight size={14} className="hidden sm:inline" />
-            </button>
+            </a>
 
             <button
               className="md:hidden text-[#F5F6F8] p-2 rounded-lg hover:bg-[#11151C] transition-colors border border-[#303A48]"
@@ -109,10 +104,5 @@ export default function Navbar() {
           </nav>
         )}
       </header>
-
-      {waitlist && (
-        <ComingSoonModal isOpen={waitlist} onClose={() => setWaitlist(false)} />
-      )}
-    </>
   );
 }

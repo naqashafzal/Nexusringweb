@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Development & Campaign Roadmap",
+  title: "Kickstarter Campaign — Nexus Ring: Physical Switch for You",
   description:
-    "Follow the open development trail of Nexus Ring. Transparent production roadmap, maker CAD files, and planned crowdfunding tiers.",
+    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription. Back Nexus Ring on Kickstarter ($39–$199).",
   keywords: [
-    "Nexus Ring Development",
-    "Crowdfunding Roadmap",
-    "Maker Hardware",
+    "Nexus Ring Kickstarter",
+    "Physical Switch for You",
+    "Nexus Ring Rewards",
+    "Digital Maker Kit",
     "Physical Intent Computing",
     "Workspace Automation",
   ],
@@ -15,9 +16,9 @@ export const metadata: Metadata = {
     canonical: "/campaign",
   },
   openGraph: {
-    title: "Development & Campaign Roadmap | Nexus Ring",
+    title: "Kickstarter Campaign — Nexus Ring: Physical Switch for You",
     description:
-      "Follow the open development trail of Nexus Ring. Transparent production roadmap, maker CAD files, and planned crowdfunding tiers.",
+      "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.",
     url: "https://www.nexusring.tech/campaign",
   },
 };

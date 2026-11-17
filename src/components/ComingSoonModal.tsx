@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, ArrowRight, Bell, ShieldCheck, AlertCircle } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Bell, ShieldCheck, AlertCircle, ExternalLink } from "lucide-react";
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 interface ComingSoonModalProps {
   isOpen: boolean;
@@ -156,12 +157,22 @@ export default function ComingSoonModal({
 
                 <div className="space-y-2">
                   <h3 id="waitlist-title" className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#F5F6F8] uppercase">
-                    BE THERE WHEN INTENTION BECOMES HARDWARE.
+                    NEXUS RING: PHYSICAL SWITCH FOR YOU.
                   </h3>
                   <p className="text-[#A5AFBD] text-xs sm:text-sm font-light leading-relaxed">
-                    Nexus Ring is in active prototype development. Join early access for engineering milestones, CAD releases, and crowdfunding launch alerts. No payment required.
+                    Nexus Ring is built and tested, launching our first production run on Kickstarter ($39 Maker Kit · $89 Early Bird · $109 Kickstarter Special · $199 Duo Pack). Back the project directly or subscribe for production updates.
                   </p>
                 </div>
+
+                <a
+                  href={KICKSTARTER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 px-5 rounded-full bg-[#35C98A] hover:bg-[#2eb87d] text-[#080A0E] font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(53,201,138,0.25)]"
+                >
+                  <span>View Kickstarter Campaign</span>
+                  <ExternalLink size={14} />
+                </a>
 
                 {tierName && (
                   <div className="px-4 py-2.5 rounded-xl border border-[#303A48] bg-[#080A0E] text-xs font-mono text-[#A5AFBD] flex items-center justify-between">

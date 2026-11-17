@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ArrowUpRight } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 export default function AboutPage() {
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -131,26 +132,26 @@ export default function AboutPage() {
 
       {/* 5. ROADMAP */}
       <section className="relative max-w-[900px] mx-auto px-6 md:px-12 mb-28 text-center">
-        <span className="eyebrow block">Evolution</span>
+        <span className="eyebrow block">First Production Run</span>
         <h2 className="text-3xl font-display font-bold text-white mb-8">
-          One physical interface for digital state.
+          Built, tested, and ready for your desk.
         </h2>
         <div className="flex flex-col gap-3 max-w-xl mx-auto text-left text-xs font-mono">
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Current Focus</span>
-            <span className="text-[#A5AFBD]">Desktop hardware prototype &amp; Hall sensor testing.</span>
+          <div className="p-4 border border-[#35C98A]/30 bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
+            <span className="font-bold text-[#35C98A]">Completed</span>
+            <span className="text-[#A5AFBD]">Hardware prototype, firmware, desktop &amp; mobile companion apps built &amp; tested.</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Next Stage</span>
-            <span className="text-[#A5AFBD]">Desktop companion daemon + configurable profiles.</span>
+          <div className="p-4 border border-[#D83A50]/40 bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
+            <span className="font-bold text-[#D83A50]">Kickstarter</span>
+            <span className="text-[#A5AFBD]">First production run ($39 Maker Kit · $89 Early Bird · $109 Special · $199 Duo).</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Maker Release</span>
-            <span className="text-[#A5AFBD]">Open CAD files, BOM, and assembly guides for makers.</span>
+          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
+            <span className="font-bold text-white">Manufacturing</span>
+            <span className="text-[#A5AFBD]">Component sourcing, metal-body enclosure manufacturing, assembly &amp; unit checks.</span>
           </div>
-          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between">
-            <span className="font-bold text-white">Production</span>
-            <span className="text-[#A5AFBD]">Tooling, pilot manufacturing, and backer fulfillment.</span>
+          <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
+            <span className="font-bold text-white">Jul 2027</span>
+            <span className="text-[#A5AFBD]">Estimated worldwide hardware fulfillment &amp; digital Maker Kit delivery.</span>
           </div>
         </div>
       </section>
@@ -158,8 +159,8 @@ export default function AboutPage() {
       {/* 6. FOUNDER SECTION */}
       <section id="founder" className="relative max-w-[800px] mx-auto px-6 md:px-12 mb-28">
         <div className="p-8 md:p-12 border border-[#303A48] bg-[#11151C] rounded-3xl">
-          <span className="eyebrow block">The Creator</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-1">Naqash Afzal</h2>
+          <span className="eyebrow block">The Creator · Lahore, Pakistan</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-1">Naqash Afzal Zakria</h2>
           <p className="text-[#D83A50] font-mono text-xs tracking-widest uppercase mb-6">
             Founder &amp; Hardware Architect
           </p>
@@ -168,10 +169,18 @@ export default function AboutPage() {
               Naqash recognized that software alone cannot solve screen-induced distraction when the solution lives in the same chaotic window.
             </p>
             <p>
-              By combining industrial design, 3D additive fabrication, microcontroller firmware, and native desktop automation, he created Nexus Ring as a tangible bridge between human intention and digital workspaces.
+              By combining industrial design, metal-body enclosure engineering, embedded firmware, and native desktop (Windows, macOS, Linux) and mobile (Android, iOS) automation, he created Nexus Ring as a physical switch between human intention and digital workspaces.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 font-mono text-xs">
+            <a
+              href={KICKSTARTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 border border-[#35C98A]/40 bg-[#35C98A]/10 rounded-lg hover:bg-[#35C98A]/20 text-[#35C98A] font-bold transition-colors"
+            >
+              Kickstarter Campaign
+            </a>
             <a
               href="https://github.com/naqashafzal"
               target="_blank"
@@ -203,24 +212,26 @@ export default function AboutPage() {
       {/* 7. CTA */}
       <section className="relative max-w-[900px] mx-auto px-6 md:px-12 text-center bg-[#11151C] border border-[#303A48] p-12 md:p-20 rounded-3xl">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-          Follow the journey from prototype to production.
+          Bring Nexus Ring to your desk.
         </h2>
         <p className="text-sm md:text-base text-[#A5AFBD] mb-8 max-w-xl mx-auto font-light leading-relaxed">
-          Join our waitlist for genuine engineering updates, 3D printing files, and notification when early access batches open.
+          Back our first production run on Kickstarter starting at $39 (Digital Maker Kit), $89 (Early Bird), $109 (Kickstarter Special), or $199 (Day &amp; Night Duo Pack).
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => setShowComingSoon(true)}
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] cursor-pointer"
+          <a
+            href={KICKSTARTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] inline-flex items-center gap-2"
           >
-            Join the Waitlist
-          </button>
+            <span>Back on Kickstarter</span>
+            <ArrowUpRight size={16} />
+          </a>
           <Link
-            href="/hardware"
+            href="/campaign"
             className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
           >
-            Explore the Hardware
+            View Campaign Story
           </Link>
         </div>
       </section>
