@@ -1,5 +1,5 @@
 export const KICKSTARTER_URL =
-  "https://www.kickstarter.com/projects/naqash/1134359888?ref=9p7zyz&token=d99c42f6";
+  "https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you";
 
 export const KICKSTARTER_CAMPAIGN = {
   title: "Nexus Ring: Physical Switch for You",

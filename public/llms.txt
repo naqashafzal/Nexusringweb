@@ -5,7 +5,7 @@
 ## Primary Campaign Message
 - **Title:** Nexus Ring: Physical Switch for You
 - **Headline:** Stop giving your best hours away.
-- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/1134359888?ref=9p7zyz&token=d99c42f6
+- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you
 - **Philosophy:** Physical Intent Computing — turning the decision to focus into a repeatable physical action across desktop and mobile without mandatory subscriptions.
 
 ## Quick Facts
@@ -20,7 +20,7 @@
 - **Supported Platforms:** Windows, macOS, Linux (Desktop), Android & iOS (Mobile Companion via local pairing), and Chromium desktop browsers (Intent Gateway extension for YouTube, Reddit, and X feed filtering).
 - **Subscription & AI:** Zero mandatory Nexus subscription for core apps. Core tasks, notes, focus audio, and session records stay local. Optional AI supports Gemini, OpenAI, or a compatible local model endpoint.
 - **Creator:** Naqash Afzal Zakria (Lahore, Pakistan)
-  - Kickstarter: https://www.kickstarter.com/projects/naqash/1134359888?ref=9p7zyz&token=d99c42f6
+  - Kickstarter: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you
   - GitHub: https://github.com/naqashafzal
   - MakerWorld: https://makerworld.com/en/@naqash
   - LinkedIn: https://www.linkedin.com/in/naqashafzal/
