@@ -1,9 +1,17 @@
 import type { Metadata, Viewport } from "next";
+import { Audiowide } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SITE_CONFIG, getStructuredData } from "@/lib/seo-data";
 import "./globals.css";
+
+const audiowide = Audiowide({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-audiowide",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -68,7 +76,7 @@ export default function RootLayout({
       lang="en"
       data-theme="night"
       suppressHydrationWarning
-      className="font-inter font-space-grotesk h-full antialiased"
+      className={`${audiowide.variable} h-full antialiased`}
     >
       <head>
         <script

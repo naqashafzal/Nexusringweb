@@ -13,12 +13,15 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="/branding/nexus-logo-horizontal.png"
-              alt="Nexus Ring Logo"
-              width={160}
-              height={33}
-              className="h-7 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity"
+              src="/branding/nexus-emblem.svg"
+              alt="Nexus Ring Emblem"
+              width={26}
+              height={26}
+              className="w-6 h-6 object-contain group-hover:scale-105 transition-transform"
             />
+            <span className="font-display font-bold tracking-wider text-base text-[#F5F6F8]">
+              NEXUS RING
+            </span>
           </Link>
           <p className="text-xs font-mono font-bold text-[#F5F6F8] tracking-wider">
             THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS
