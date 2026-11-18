@@ -75,6 +75,9 @@ export default function Footer() {
           <Link href="/campaign#tiers" className="text-xs hover:text-[#F5F6F8] transition-colors">
             Rewards ($39 – $199)
           </Link>
+          <Link href="/press" className="text-xs hover:text-[#F5F6F8] transition-colors">
+            Press Kit &amp; Media Assets
+          </Link>
           <Link href="/research" className="text-xs hover:text-[#F5F6F8] transition-colors">
             Design Research
           </Link>

@@ -51,9 +51,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/campaign`,
-      lastModified: "2026-10-31",
+      lastModified: "2026-11-18",
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/press`,
+      lastModified: "2026-11-18",
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/preorder`,
