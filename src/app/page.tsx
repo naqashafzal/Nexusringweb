@@ -134,8 +134,8 @@ export default function Home() {
 
           <div className="relative w-full overflow-hidden rounded-2xl bg-[#080A0E] border border-[#303A48]/60">
             <Image
-              src={KICKSTARTER_CAMPAIGN.heroPoster}
-              alt="Nexus Ring — A Physical Command Center for Digital Discipline"
+              src="/images/kickstarter/ks-less-scroll-more-life.jpg"
+              alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
               width={1024}
               height={576}
               priority
@@ -428,19 +428,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ WORKING PROTOTYPE GALLERY ════════════════ */}
+      {/* ════════════════ DAY & NIGHT + LIVE APP SHOWCASE ════════════════ */}
       <section className="relative z-20 bg-[#080A0E] py-28 border-b border-[#303A48]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="max-w-3xl mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#35C98A]/10 text-[#35C98A] text-[11px] font-mono uppercase tracking-widest">
               <Camera size={13} />
-              <span>REAL PROTOTYPE FOOTAGE &amp; BENCH PHOTOS</span>
+              <span>DAY SILVER &amp; NIGHT OBSIDIAN BLACK · LIVE SOFTWARE</span>
             </div>
             <h2 className="text-4xl sm:text-5xl font-display font-black tracking-tight text-[#F5F6F8]">
-              Built and tested. Launching our first production run.
+              Less Scroll. More Life.
             </h2>
             <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed">
-              See actual working prototype photos and live app screen recordings from our desk. The Kickstarter production run covers component sourcing, metal-body enclosure manufacturing, assembly, unit checks, packaging, and delivery.
+              Built and tested — launching our first metal-body production run on Kickstarter. Choose Day (Silver), Night (Obsidian Black), or both in the Duo Pack.
             </p>
           </Reveal>
 
@@ -449,23 +449,23 @@ export default function Home() {
               <div className="h-full rounded-3xl border border-[#303A48] bg-[#11151C] overflow-hidden shadow-2xl relative group flex flex-col justify-between p-3 sm:p-4">
                 <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
                   <Image
-                    src="/images/kickstarter/ks-desk-prototype-hero.jpg"
-                    alt="Nexus Ring hardware prototype on a working desk"
-                    width={680}
-                    height={383}
+                    src="/images/kickstarter/ks-hero-poster.png"
+                    alt="Nexus Ring — A Physical Command Center for Digital Discipline"
+                    width={1024}
+                    height={576}
                     className="w-full h-auto block rounded-xl group-hover:scale-[1.01] transition-transform duration-700"
                   />
                 </div>
                 <div className="p-4 sm:p-5 bg-[#080A0E] rounded-2xl border border-[#303A48] mt-3 space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#35C98A] font-bold">● REAL HARDWARE PROTOTYPE</span>
-                    <span className="text-[#778292]">USB-C · MAGNETIC TOTEM</span>
+                    <span className="text-[#35C98A] font-bold">● METAL-BODY USB-C DOCK</span>
+                    <span className="text-[#778292]">ZERO BATTERY DEGRADATION</span>
                   </div>
                   <h3 className="text-lg font-display font-bold text-white">
-                    Working Desk Prototype &amp; Illuminated Mode Ring
+                    A Physical Command Center for Digital Discipline
                   </h3>
                   <p className="text-xs text-[#A5AFBD] leading-relaxed">
-                    Actual working prototype connected over USB-C with the magnetic totem docked into Deep Mode, synchronizing workspace rules across desktop and paired mobile devices.
+                    Wired USB-C desk dock with weighted magnetic totem and 360° ambient LED ring, synchronizing workspace rules across desktop and paired mobile devices.
                   </p>
                 </div>
               </div>
@@ -473,25 +473,6 @@ export default function Home() {
 
             <div className="md:col-span-5 grid grid-cols-1 gap-6">
               <Reveal delay={0.1}>
-                <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-4 shadow-xl space-y-3">
-                  <div className="rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
-                    <Image
-                      src="/images/kickstarter/ks-live-closeup-sync.gif"
-                      alt="Real Prototype — close-up docking sync across your desk devices"
-                      width={680}
-                      height={383}
-                      unoptimized
-                      className="w-full h-auto block"
-                    />
-                  </div>
-                  <h4 className="text-sm font-bold text-white">Close-Up Docking Sync</h4>
-                  <p className="text-[11px] text-[#A5AFBD] leading-snug">
-                    Real prototype footage showing immediate mode recognition across connected desk devices.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2}>
                 <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-4 shadow-xl space-y-3">
                   <div className="rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
                     <Image
@@ -509,64 +490,25 @@ export default function Home() {
                   </p>
                 </div>
               </Reveal>
+
+              <Reveal delay={0.2}>
+                <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-4 shadow-xl space-y-3">
+                  <div className="rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
+                    <Image
+                      src="/images/hardware-custom-silicon.jpg"
+                      alt="Custom hardware architecture engineered for tactile, low-latency desktop focus control"
+                      width={1200}
+                      height={896}
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <h4 className="text-sm font-bold text-white">Custom Hardware Architecture</h4>
+                  <p className="text-[11px] text-[#A5AFBD] leading-snug">
+                    Contactless magnetic sensing in a durable metal-body USB-C enclosure.
+                  </p>
+                </div>
+              </Reveal>
             </div>
-          </div>
-
-          {/* Bench Photo Strip */}
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <Reveal delay={0.2} className="p-4 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-3">
-              <div className="relative w-full rounded-xl overflow-hidden border border-[#303A48] bg-black">
-                <Image
-                  src="/images/prototype-desk-angle-lit.jpg"
-                  alt="Working 3D-printed Nexus Ring hardware prototype in Deep Mode"
-                  width={4032}
-                  height={2268}
-                  className="w-full h-auto block"
-                />
-              </div>
-              <div>
-                <h5 className="text-xs font-mono font-bold text-white">3D-Printed Bench Prototype</h5>
-                <p className="text-[11px] text-[#A5AFBD] mt-1">
-                  Magnetic totem docked in Deep Mode with active peripheral LED confirmation.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.25} className="p-4 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-3">
-              <div className="relative w-full rounded-xl overflow-hidden border border-[#303A48] bg-black">
-                <Image
-                  src="/images/prototype-glow-deep-mode.jpg"
-                  alt="Top-down prototype view showing four mode wells and lit status ring"
-                  width={4032}
-                  height={2268}
-                  className="w-full h-auto block"
-                />
-              </div>
-              <div>
-                <h5 className="text-xs font-mono font-bold text-white">Four Physical Mode Wells</h5>
-                <p className="text-[11px] text-[#A5AFBD] mt-1">
-                  Top-down prototype view showing all four wells and contactless magnetic sensing.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.3} className="p-4 rounded-2xl border border-[#303A48] bg-[#11151C] space-y-3">
-              <div className="relative w-full rounded-xl overflow-hidden border border-[#303A48] bg-black">
-                <Image
-                  src="/images/hardware-custom-silicon.jpg"
-                  alt="Custom hardware architecture engineered for tactile, low-latency desktop focus control"
-                  width={1200}
-                  height={896}
-                  className="w-full h-auto block"
-                />
-              </div>
-              <div>
-                <h5 className="text-xs font-mono font-bold text-white">Custom Hardware Architecture</h5>
-                <p className="text-[11px] text-[#A5AFBD] mt-1">
-                  Durable metal-body USB-C production design with no lithium-ion battery to degrade.
-                </p>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>

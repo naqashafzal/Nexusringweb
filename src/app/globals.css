@@ -256,6 +256,86 @@ html {
   margin-bottom: 12px;
 }
 
+/* ════════════════ DAY (SILVER) / NIGHT (OBSIDIAN) THEME TOGGLE ════════════════ */
+html[data-theme="day"] {
+  color-scheme: light;
+  --background: #F2F4F7;
+  --foreground: #0F141C;
+}
+
+html[data-theme="day"] body,
+html[data-theme="day"] main {
+  background-color: #F2F4F7 !important;
+  color: #0F141C !important;
+}
+
+html[data-theme="day"] .bg-\[\#080A0E\] {
+  background-color: #F2F4F7 !important;
+}
+
+html[data-theme="day"] .bg-\[\#080A0E\]\/85 {
+  background-color: rgba(242, 244, 247, 0.90) !important;
+}
+
+html[data-theme="day"] .bg-\[\#11151C\],
+html[data-theme="day"] .bg-\[\#11151C\]\/90,
+html[data-theme="day"] .bg-\[\#11151C\]\/80,
+html[data-theme="day"] .surface-card,
+html[data-theme="day"] .surface-subtle,
+html[data-theme="day"] .surface-secondary {
+  background-color: #FFFFFF !important;
+}
+
+html[data-theme="day"] .bg-\[\#1B222D\],
+html[data-theme="day"] .bg-\[\#1B222D\]\/80,
+html[data-theme="day"] .surface-elevated {
+  background-color: #E7EBF2 !important;
+}
+
+html[data-theme="day"] .border-\[\#303A48\],
+html[data-theme="day"] .border-\[\#303A48\]\/80,
+html[data-theme="day"] .border-\[\#303A48\]\/70,
+html[data-theme="day"] .border-\[\#303A48\]\/60,
+html[data-theme="day"] .border-\[\#303A48\]\/50,
+html[data-theme="day"] .divide-\[\#303A48\] > :not(:last-child) {
+  border-color: #CFD6E2 !important;
+}
+
+html[data-theme="day"] .text-white,
+html[data-theme="day"] .text-\[\#F5F6F8\] {
+  color: #0F141C !important;
+}
+
+/* Keep white text inside crimson primary CTA buttons & dark media badges */
+html[data-theme="day"] .bg-\[\#D83A50\],
+html[data-theme="day"] .bg-\[\#D83A50\] *,
+html[data-theme="day"] .bg-black,
+html[data-theme="day"] .bg-black * {
+  color: #FFFFFF !important;
+}
+
+html[data-theme="day"] .text-\[\#A5AFBD\] {
+  color: #475569 !important;
+}
+
+html[data-theme="day"] .text-\[\#778292\] {
+  color: #64748B !important;
+}
+
+html[data-theme="day"] .text-\[\#35C98A\] {
+  color: #0F9D68 !important;
+}
+
+html[data-theme="day"] header {
+  background-color: rgba(242, 244, 247, 0.92) !important;
+  border-color: #CFD6E2 !important;
+}
+
+html[data-theme="day"] footer {
+  background-color: #E8ECF2 !important;
+  border-color: #CFD6E2 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

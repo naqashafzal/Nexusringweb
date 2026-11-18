@@ -103,8 +103,8 @@ export default function CampaignPage() {
         <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 shadow-2xl">
           <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/60">
             <Image
-              src={KICKSTARTER_CAMPAIGN.heroPoster}
-              alt="Nexus Ring — A Physical Command Center for Digital Discipline"
+              src="/images/kickstarter/ks-less-scroll-more-life.jpg"
+              alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
               width={1024}
               height={576}
               priority
@@ -112,7 +112,7 @@ export default function CampaignPage() {
             />
           </div>
           <div className="px-3 pt-3 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[#A5AFBD]">
-            <span className="text-white font-bold">NEXUS RING · FIRST PRODUCTION RUN</span>
+            <span className="text-white font-bold">NEXUS RING · DAY (SILVER) &amp; NIGHT (OBSIDIAN BLACK)</span>
             <span>WINDOWS · MACOS · LINUX · ANDROID · IOS · ZERO MANDATORY SUBSCRIPTION</span>
           </div>
         </div>

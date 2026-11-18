@@ -66,9 +66,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="night"
+      suppressHydrationWarning
       className="font-inter font-space-grotesk h-full antialiased"
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('nexus-theme');if(t==='day'||t==='night'){document.documentElement.dataset.theme=t;}}catch(e){}})();`,
+          }}
+        />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Nexus Ring RSS Feed" />
         <script

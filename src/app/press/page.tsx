@@ -89,6 +89,13 @@ const LIVE_DEMO_GIFS = [
 
 const DESIGN_AND_TIER_BANNERS = [
   {
+    title: "Hero — Less Scroll. More Life. (Day & Night)",
+    file: "/images/kickstarter/ks-less-scroll-more-life.jpg",
+    filename: "nexus-ring-less-scroll-more-life.jpg",
+    width: 1024,
+    height: 576,
+  },
+  {
     title: "Hero Banner — Physical Command Center",
     file: "/images/kickstarter/ks-hero-poster.png",
     filename: "nexus-ring-hero-command-center.png",
