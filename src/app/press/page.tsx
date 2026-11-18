@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import {
   ArrowUpRight,
-  Camera,
   Check,
   Copy,
   Download,
@@ -23,40 +22,9 @@ const PRESS_KICKSTARTER_URL =
 
 const PRESS_PITCH = `Software website blockers and focus apps live inside the exact screen causing distraction—and can be disabled in two clicks while charging $40–$100/year in recurring subscriptions. Nexus Ring moves the decision to focus into the physical world: a wired USB-C metal-body desk dock with four recessed mode wells (Deep Work, Creative, Meeting, Break) and a weighted magnetic totem detected via contactless Hall-effect sensors. Dropping the totem launches your work tools, filters YouTube Shorts/recommendations and Reddit/X feeds (while keeping direct tutorials and search accessible), and syncs permission-based focus shielding and Do Not Disturb to your paired Android or iOS phone over your local network—100% locally with zero mandatory subscriptions.`;
 
-const REAL_PROTOTYPE_PHOTOS = [
-  {
-    title: "Working Desk Prototype (Hero)",
-    file: "/images/kickstarter/ks-desk-prototype-hero.jpg",
-    filename: "nexus-ring-real-prototype-desk-hero.jpg",
-    width: 680,
-    height: 383,
-  },
-  {
-    title: "3/4 Angle — Deep Mode Illuminated",
-    file: "/images/prototype-desk-angle-lit.jpg",
-    filename: "nexus-ring-real-prototype-angled-deep-mode.jpg",
-    width: 4032,
-    height: 2268,
-  },
-  {
-    title: "Top-Down — 4 Mode Wells Lit",
-    file: "/images/prototype-glow-deep-mode.jpg",
-    filename: "nexus-ring-real-prototype-topdown-lit.jpg",
-    width: 4032,
-    height: 2268,
-  },
-  {
-    title: "Unlit Chassis — Magnetic Totem Seated",
-    file: "/images/prototype-unlit-totem-docked.jpg",
-    filename: "nexus-ring-real-prototype-unlit-docked.jpg",
-    width: 4032,
-    height: 2268,
-  },
-];
-
 const LIVE_DEMO_GIFS = [
   {
-    title: "Real Prototype + Windows App: 4 Modes Live",
+    title: "Windows App + Hardware: 4 Modes Live",
     file: "/images/kickstarter/ks-live-modes-demo.gif",
     filename: "nexus-ring-live-modes-demo.gif",
   },
@@ -66,12 +34,12 @@ const LIVE_DEMO_GIFS = [
     filename: "nexus-ring-live-deep-work-app.gif",
   },
   {
-    title: "Real Prototype: Dock Totem to Clear Noise",
+    title: "Dock Totem to Clear Digital Noise",
     file: "/images/kickstarter/ks-dock-totem-clear-noise.gif",
     filename: "nexus-ring-dock-totem-clear-noise.gif",
   },
   {
-    title: "Real Prototype: Phone & Desk Focus Sync",
+    title: "Phone & Desk Focus Sync",
     file: "/images/kickstarter/ks-live-phone-sync.gif",
     filename: "nexus-ring-live-phone-sync.gif",
   },
@@ -79,11 +47,6 @@ const LIVE_DEMO_GIFS = [
     title: "Real App: 3D CAD + Nexus Shield & Flow",
     file: "/images/kickstarter/ks-live-cad-workflow.gif",
     filename: "nexus-ring-live-cad-workflow.gif",
-  },
-  {
-    title: "Real Prototype: Close-Up Docking Sync",
-    file: "/images/kickstarter/ks-live-closeup-sync.gif",
-    filename: "nexus-ring-live-closeup-sync.gif",
   },
 ];
 
@@ -329,48 +292,11 @@ export default function PressPage() {
         </div>
       </section>
 
-      {/* 4. REAL PROTOTYPE PHOTOS */}
-      <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-20 space-y-6">
-        <div className="flex items-center gap-2 text-[#35C98A] text-xs font-mono uppercase font-bold">
-          <Camera size={15} />
-          <span>01 · Real Working Prototype Photographs (High-Res)</span>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {REAL_PROTOTYPE_PHOTOS.map((img) => (
-            <div
-              key={img.file}
-              className="rounded-2xl border border-[#303A48] bg-[#11151C] p-4 space-y-3"
-            >
-              <div className="rounded-xl overflow-hidden bg-black border border-[#303A48]/60">
-                <Image
-                  src={img.file}
-                  alt={img.title}
-                  width={img.width}
-                  height={img.height}
-                  className="w-full h-auto block"
-                />
-              </div>
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-xs font-mono text-white font-semibold">{img.title}</span>
-                <a
-                  href={img.file}
-                  download={img.filename}
-                  className="px-3 py-1.5 rounded-lg border border-[#303A48] bg-[#080A0E] hover:border-[#D83A50] text-[11px] font-mono text-white inline-flex items-center gap-1.5 shrink-0 transition-colors"
-                >
-                  <Download size={12} />
-                  <span>Download</span>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. LIVE PROTOTYPE & APP RECORDING GIFS */}
+      {/* 4. LIVE APP RECORDING & DEMO GIFS */}
       <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-20 space-y-6">
         <div className="flex items-center gap-2 text-[#35C98A] text-xs font-mono uppercase font-bold">
           <Film size={15} />
-          <span>02 · Real Prototype &amp; Live App Recordings (Animated GIFs)</span>
+          <span>01 · Live App Recordings &amp; Demo GIFs</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {LIVE_DEMO_GIFS.map((gif) => (

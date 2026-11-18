@@ -300,8 +300,8 @@ export function getStructuredData() {
     "@id": `${SITE_CONFIG.url}/#product`,
     name: "Nexus Ring: The Physical Off-Switch for Distractions",
     image: [
+      `${SITE_CONFIG.url}/images/kickstarter/ks-less-scroll-more-life.jpg`,
       `${SITE_CONFIG.url}/images/kickstarter/ks-hero-poster.png`,
-      `${SITE_CONFIG.url}/images/kickstarter/ks-desk-prototype-hero.jpg`,
     ],
     description: SITE_CONFIG.canonicalProductDefinition,
     brand: {

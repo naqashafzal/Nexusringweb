@@ -11,8 +11,8 @@ export const KICKSTARTER_CAMPAIGN = {
   fundingGoal: "US$ 10,000",
   durationDays: 48,
   estimatedDelivery: "July 2027",
-  heroPoster: "/images/kickstarter/ks-hero-poster.png",
-  deskPrototypeHero: "/images/kickstarter/ks-desk-prototype-hero.jpg",
+  heroPoster: "/images/kickstarter/ks-less-scroll-more-life.jpg",
+  deskPrototypeHero: "/images/kickstarter/ks-hero-poster.png",
 } as const;
 
 export interface KickstarterTier {

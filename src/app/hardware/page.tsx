@@ -312,7 +312,7 @@ export default function HardwarePage() {
             <div className="mt-6 rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E] p-2">
               <div className="relative w-full rounded-xl overflow-hidden bg-black">
                 <Image
-                  src="/images/prototype-desk-angle-lit.jpg"
+                  src="/images/hero-nexus-ring-intent-control.jpg"
                   alt="Real Nexus Ring physical prototype on desk"
                   width={4032}
                   height={2268}
@@ -599,7 +599,7 @@ export default function HardwarePage() {
             <div className="rounded-2xl border border-[#303A48] overflow-hidden bg-[#080A0E] p-2">
               <div className="relative w-full rounded-xl overflow-hidden bg-black">
                 <Image
-                  src="/images/prototype-glow-deep-mode-macro.jpg"
+                  src="/images/kickstarter/ks-four-modes-rules.png"
                   alt="Nexus Ring prototype red LED macro diffuse glow"
                   width={4032}
                   height={2268}
@@ -764,19 +764,19 @@ export default function HardwarePage() {
           </div>
         </div>
 
-        {/* Real Desk Prototype Showcase */}
+        {/* Day & Night Showcase */}
         <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 overflow-hidden shadow-2xl">
           <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/50">
             <Image
-              src="/images/kickstarter/ks-desk-prototype-hero.jpg"
-              alt="Real Nexus Ring hardware prototype on a working desk"
-              width={680}
-              height={383}
+              src="/images/kickstarter/ks-less-scroll-more-life.jpg"
+              alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
+              width={1024}
+              height={576}
               className="w-full h-auto block rounded-xl"
             />
           </div>
           <div className="p-4 mt-2 bg-[#080A0E] rounded-xl border border-[#303A48] flex flex-wrap items-center justify-between text-xs font-mono text-[#A5AFBD] gap-3">
-            <span className="text-white font-bold">REAL WORKING PROTOTYPE ON DESK</span>
+            <span className="text-white font-bold">DAY (SILVER) &amp; NIGHT (OBSIDIAN BLACK)</span>
             <span className="text-[#35C98A]">BUILT &amp; TESTED · EST. DELIVERY JUL 2027</span>
           </div>
         </div>

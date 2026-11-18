@@ -142,15 +142,15 @@ export default function CampaignPage() {
           <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-4 space-y-3">
             <div className="rounded-2xl overflow-hidden border border-[#303A48]/60 bg-black">
               <Image
-                src="/images/kickstarter/ks-desk-prototype-hero.jpg"
-                alt="Nexus Ring hardware prototype on a working desk"
-                width={680}
-                height={383}
+                src="/images/kickstarter/ks-hero-poster.png"
+                alt="Nexus Ring — A Physical Command Center for Digital Discipline"
+                width={1024}
+                height={576}
                 className="w-full h-auto block"
               />
             </div>
             <p className="text-xs text-[#A5AFBD] font-mono">
-              Real Prototype — Nexus Ring hardware prototype on a working desk. Dock the magnetic totem to activate your configured focus workspace.
+              A Physical Command Center for Digital Discipline — dock the magnetic totem to activate your configured focus workspace.
             </p>
           </div>
 
@@ -520,8 +520,8 @@ export default function CampaignPage() {
           <div className="rounded-2xl border border-[#303A48] bg-[#11151C] p-4 space-y-3">
             <div className="rounded-xl overflow-hidden border border-[#303A48]/60 bg-black">
               <Image
-                src="/images/kickstarter/ks-live-closeup-sync.gif"
-                alt="Real Prototype — close-up docking sync across your desk devices"
+                src="/images/kickstarter/ks-dock-totem-clear-noise.gif"
+                alt="Dock the magnetic totem to clear digital noise"
                 width={680}
                 height={383}
                 unoptimized
@@ -529,22 +529,22 @@ export default function CampaignPage() {
               />
             </div>
             <p className="text-xs text-[#A5AFBD]">
-              Real Prototype — close-up docking sync across your desk devices.
+              Dock the magnetic totem to clear digital noise and start your configured focus session.
             </p>
           </div>
 
           <div className="rounded-2xl border border-[#303A48] bg-[#11151C] p-4 space-y-3">
             <div className="rounded-xl overflow-hidden border border-[#303A48]/60 bg-black">
               <Image
-                src="/images/prototype-desk-angle-lit.jpg"
-                alt="Working 3D-printed Nexus Ring hardware prototype with magnetic totem docked in Deep Mode"
-                width={4032}
-                height={2268}
+                src="/images/hero-nexus-ring-intent-control.jpg"
+                alt="Nexus Ring Intent Control — physical mode controller with magnetic totem"
+                width={1200}
+                height={896}
                 className="w-full h-auto block"
               />
             </div>
             <p className="text-xs text-[#A5AFBD]">
-              Working 3D-printed Nexus Ring hardware prototype with the magnetic totem docked in Deep Mode.
+              Intent Control — one physical motion anchors your intention before screens can hijack your attention.
             </p>
           </div>
 
