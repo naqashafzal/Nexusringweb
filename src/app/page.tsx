@@ -82,7 +82,7 @@ export default function Home() {
               STOP GIVING YOUR BEST HOURS AWAY.
             </h1>
             <p className="text-lg sm:text-2xl font-display font-bold text-[#D83A50] tracking-wider uppercase">
-              NEXUS RING: PHYSICAL SWITCH FOR YOU.
+              NEXUS RING: THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#D83A50] animate-pulse" />
               <span className="text-[#F5F6F8] font-bold tracking-wider uppercase text-[11px] sm:text-xs">
-                NEXUS RING // PHYSICAL SWITCH FOR YOU
+                NEXUS RING // THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS
               </span>
             </div>
             <div className="flex items-center gap-3 text-[10px] sm:text-[11px] text-[#778292]">

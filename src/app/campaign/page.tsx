@@ -53,7 +53,7 @@ export default function CampaignPage() {
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white uppercase">
             NEXUS RING:<br />
-            <span className="text-[#D83A50]">PHYSICAL SWITCH FOR YOU.</span>
+            <span className="text-[#D83A50]">THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.</span>
           </h1>
 
           <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">

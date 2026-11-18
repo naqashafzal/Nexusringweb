@@ -21,10 +21,10 @@ export default function Footer() {
             />
           </Link>
           <p className="text-xs font-mono font-bold text-[#F5F6F8] tracking-wider">
-            NEXUS RING: PHYSICAL SWITCH FOR YOU
+            THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS
           </p>
           <p className="text-[11px] font-light text-[#A5AFBD] leading-relaxed max-w-[260px]">
-            Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android &amp; iOS. No mandatory subscription.
+            Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android &amp; iOS. No subscription.
           </p>
         </div>
 

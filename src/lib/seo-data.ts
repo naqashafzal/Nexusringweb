@@ -11,10 +11,10 @@ export const SITE_CONFIG = {
   name: "Nexus Ring",
   legalName: "Nexus Ring",
   url: "https://www.nexusring.tech",
-  tagline: "NEXUS RING: PHYSICAL SWITCH FOR YOU.",
+  tagline: "NEXUS RING: THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.",
   mission: "Stop giving your best hours away.",
   supportingStatement:
-    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.",
+    "Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription.",
   canonicalProductDefinition:
     "Nexus Ring is a USB-C desk dock and magnetic totem that switches your PC (Windows, macOS, or Linux) and paired phone (Android or iOS) into the workspace you configure across Deep Work, Creative, Meeting, and Break modes—with lifetime core apps and zero mandatory subscription.",
   description:
@@ -298,7 +298,7 @@ export function getStructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_CONFIG.url}/#product`,
-    name: "Nexus Ring: Physical Switch for You",
+    name: "Nexus Ring: The Physical Off-Switch for Distractions",
     image: [
       `${SITE_CONFIG.url}/images/kickstarter/ks-hero-poster.png`,
       `${SITE_CONFIG.url}/images/kickstarter/ks-desk-prototype-hero.jpg`,

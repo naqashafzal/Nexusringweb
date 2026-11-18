@@ -157,7 +157,7 @@ export default function ComingSoonModal({
 
                 <div className="space-y-2">
                   <h3 id="waitlist-title" className="text-2xl sm:text-3xl font-display font-black tracking-tight text-[#F5F6F8] uppercase">
-                    NEXUS RING: PHYSICAL SWITCH FOR YOU.
+                    THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.
                   </h3>
                   <p className="text-[#A5AFBD] text-xs sm:text-sm font-light leading-relaxed">
                     Nexus Ring is built and tested, launching our first production run on Kickstarter ($39 Maker Kit · $89 Early Bird · $109 Kickstarter Special · $199 Duo Pack). Back the project directly or subscribe for production updates.

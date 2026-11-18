@@ -1,11 +1,11 @@
-# Nexus Ring: Physical Switch for You
+# Nexus Ring: The Physical Off-Switch for Distractions
 
-> Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.
+> Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription.
 
 ## Primary Campaign Message
-- **Title:** Nexus Ring: Physical Switch for You
+- **Title:** Nexus Ring: The Physical Off-Switch for Distractions
 - **Headline:** Stop giving your best hours away.
-- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you
+- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa
 - **Philosophy:** Physical Intent Computing — turning the decision to focus into a repeatable physical action across desktop and mobile without mandatory subscriptions.
 
 ## Quick Facts
@@ -20,7 +20,7 @@
 - **Supported Platforms:** Windows, macOS, Linux (Desktop), Android & iOS (Mobile Companion via local pairing), and Chromium desktop browsers (Intent Gateway extension for YouTube, Reddit, and X feed filtering).
 - **Subscription & AI:** Zero mandatory Nexus subscription for core apps. Core tasks, notes, focus audio, and session records stay local. Optional AI supports Gemini, OpenAI, or a compatible local model endpoint.
 - **Creator:** Naqash Afzal Zakria (Lahore, Pakistan)
-  - Kickstarter: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you
+  - Kickstarter: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa
   - GitHub: https://github.com/naqashafzal
   - MakerWorld: https://makerworld.com/en/@naqash
   - LinkedIn: https://www.linkedin.com/in/naqashafzal/

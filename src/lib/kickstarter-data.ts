@@ -1,10 +1,10 @@
 export const KICKSTARTER_URL =
-  "https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you";
+  "https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa";
 
 export const KICKSTARTER_CAMPAIGN = {
-  title: "Nexus Ring: Physical Switch for You",
+  title: "Nexus Ring: The Physical Off-Switch for Distractions",
   blurb:
-    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. No subscription.",
+    "Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription.",
   creator: "Naqash Afzal Zakria",
   category: "Gadgets",
   location: "Lahore, Pakistan",
