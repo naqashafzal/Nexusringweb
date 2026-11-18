@@ -57,9 +57,9 @@
   --color-muted: #A5AFBD;
 
   /* Typography */
-  --font-sans: var(--font-audiowide), 'Audiowide', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-audiowide), 'Audiowide', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-audiowide), 'Audiowide', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 :root {
@@ -244,6 +244,10 @@ html {
 :focus-visible {
   outline: 2px solid #D83A50;
   outline-offset: 4px;
+}
+
+.font-nexus-brand {
+  font-family: var(--font-audiowide), 'Audiowide', sans-serif;
 }
 
 .eyebrow {

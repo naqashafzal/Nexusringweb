@@ -55,7 +55,7 @@ export default function Navbar() {
               className="w-6 h-6 object-contain"
             />
           </div>
-          <span className="tracking-wider">NEXUS RING</span>
+          <span className="font-nexus-brand tracking-wider">NEXUS RING</span>
         </Link>
 
         <nav

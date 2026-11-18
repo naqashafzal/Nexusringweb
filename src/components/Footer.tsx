@@ -19,7 +19,7 @@ export default function Footer() {
               height={26}
               className="w-6 h-6 object-contain group-hover:scale-105 transition-transform"
             />
-            <span className="font-display font-bold tracking-wider text-base text-[#F5F6F8]">
+            <span className="font-nexus-brand font-bold tracking-wider text-base text-[#F5F6F8]">
               NEXUS RING
             </span>
           </Link>
