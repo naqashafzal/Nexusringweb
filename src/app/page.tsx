@@ -73,16 +73,16 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#11151C]/90 hover:border-[#35C98A] backdrop-blur-md text-[#35C98A] text-[11px] font-mono tracking-widest uppercase shadow-lg transition-colors"
           >
             <span className="w-2 h-2 rounded-full bg-[#35C98A] animate-pulse" />
-            <span>KICKSTARTER FIRST PRODUCTION RUN · STARTING AT $39</span>
+            <span>LIVE ON KICKSTARTER · BACK FROM $5 · EARLY BIRD $89</span>
             <ArrowUpRight size={13} />
           </a>
 
           <div className="space-y-3">
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tight leading-[0.92] text-[#F5F6F8] uppercase">
-              STOP GIVING YOUR BEST HOURS AWAY.
+              IT&apos;S NOT JUST A DEVICE.
             </h1>
             <p className="text-lg sm:text-2xl font-display font-bold text-[#D83A50] tracking-wider uppercase">
-              NEXUS RING: THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.
+              IT&apos;S A SYSTEM BUILT TO FIGHT FOR YOUR FREEDOM.
             </p>
           </div>
 
@@ -104,13 +104,13 @@ export default function Home() {
               href="#rewards"
               className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C]/80 hover:border-[#A5AFBD] transition-all duration-150 cursor-pointer flex items-center gap-2 backdrop-blur-sm"
             >
-              <span>Explore Reward Tiers ($39–$199)</span>
+              <span>Explore Reward Tiers ($5–$199)</span>
               <ChevronDown size={14} />
             </Link>
           </div>
 
           <p className="text-[11px] font-mono text-[#778292] tracking-wider">
-            Built &amp; tested hardware · Windows, macOS, Linux, Android &amp; iOS · Lifetime core apps · No mandatory subscription
+            Less Scroll. More Life. · Works on PC, Mac, Linux, Android &amp; iOS · Zero Subscriptions. Ever.
           </p>
         </div>
 
@@ -120,12 +120,12 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#D83A50] animate-pulse" />
               <span className="text-[#F5F6F8] font-bold tracking-wider uppercase text-[11px] sm:text-xs">
-                NEXUS RING // THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS
+                LESS SCROLL. MORE LIFE.
               </span>
             </div>
             <div className="flex items-center gap-3 text-[10px] sm:text-[11px] text-[#778292]">
               <span className="hidden md:inline">DAY (SILVER) &amp; NIGHT (OBSIDIAN BLACK)</span>
-              <span className="text-[#35C98A] font-semibold">● BUILT &amp; TESTED</span>
+              <span className="text-[#35C98A] font-semibold">● LIVE NOW</span>
               <span className="px-2 py-0.5 rounded bg-[#080A0E] border border-[#303A48] text-[#D83A50] font-bold">
                 KICKSTARTER
               </span>
@@ -134,8 +134,8 @@ export default function Home() {
 
           <div className="relative w-full overflow-hidden rounded-2xl bg-[#080A0E] border border-[#303A48]/60">
             <Image
-              src="/images/kickstarter/ks-less-scroll-more-life.jpg"
-              alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
+              src="/images/kickstarter/ks-fight-for-freedom.jpg"
+              alt="It's not just a device. It's a system built to fight for your freedom — Nexus Ring"
               width={1024}
               height={576}
               priority
@@ -146,54 +146,54 @@ export default function Home() {
 
           <div className="flex flex-wrap items-center justify-between px-3 sm:px-4 py-3 mt-3 border-t border-[#303A48]/80 text-[10px] sm:text-[11px] font-mono text-[#A5AFBD] gap-2">
             <div className="flex items-center gap-2">
-              <span className="text-[#D83A50] font-bold uppercase">FOUR MODES:</span>
+              <span className="text-[#D83A50] font-bold uppercase">FOUR INTENTIONS:</span>
               <span className="text-[#F5F6F8]">DEEP WORK · CREATIVE · MEETING · BREAK</span>
             </div>
             <div className="text-[#778292] uppercase tracking-wider">
-              WINDOWS · MACOS · LINUX · ANDROID · IOS · NO SUBSCRIPTION
+              DESKTOP + PHONE MOVE TOGETHER · ZERO SUBSCRIPTIONS
             </div>
           </div>
         </div>
 
-        {/* Bottom Spec Strip */}
+        {/* Bottom Value Strip */}
         <div className="relative z-20 w-full grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-[#303A48]/80 max-w-5xl mx-auto">
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Four Physical Modes</p>
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Choose. Dock. Begin.</p>
             <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
-              Deep Work · Creative · Meeting · Break
+              One physical move breaks the scroll loop
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Every Major Platform</p>
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Keep Tutorials. Kill Traps.</p>
             <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
-              Windows, macOS, Linux, Android &amp; iOS
+              Strips Shorts &amp; feeds, keeps search working
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#F5F6F8] font-bold">100% Local &amp; Owned</p>
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Zero Subscriptions. Ever.</p>
             <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
-              Zero Mandatory Subscriptions Ever
+              No $60/year apps holding focus hostage
             </p>
           </div>
           <div className="space-y-1 text-left">
-            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Metal-Body USB-C</p>
+            <p className="text-xs font-mono text-[#F5F6F8] font-bold">Rest Without Guilt</p>
             <p className="text-[11px] font-mono text-[#778292] uppercase tracking-wider">
-              No Internal Battery to Degrade
+              Lift the totem when you&apos;re truly done
             </p>
           </div>
         </div>
       </section>
 
-      {/* ════════════════ SECTION B: CHOOSE. DOCK. WORK. + LIVE DEMOS ════════════════ */}
+      {/* ════════════════ SECTION B: CHOOSE. DOCK. BEGIN. ════════════════ */}
       <section id="how-it-works" className="relative z-20 bg-[#11151C] py-28 border-y border-[#303A48]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="max-w-2xl mb-16">
-            <span className="eyebrow block">How It Works</span>
+            <span className="eyebrow block">Time to Break Out of the Distraction Matrix</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-[#F5F6F8] mb-4">
-              Choose. Dock. Work.
+              You&apos;re not lazy. The system is built to trap you.
             </h2>
             <p className="text-[#A5AFBD] text-lg leading-relaxed font-light">
-              The totem stays in view while you work. Repeating the same small movement gives each session a familiar beginning—and makes changing your intention a <strong className="text-white">deliberate action</strong>.
+              Every focus app lives inside the exact screen pulling your attention away — two tired clicks turn it off. <strong className="text-white">Nexus Ring</strong> puts a physical off-switch on your desk that <strong className="text-white">fights for your focus when your willpower is tired.</strong>
             </p>
           </Reveal>
 
@@ -201,21 +201,21 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Choose your workspace.",
-                desc: "Set the apps, websites, and notification settings for each mode across Windows, macOS, Linux, Android, and iOS.",
-                tag: "Configure Rules",
+                title: "Choose your intention.",
+                desc: "Deep Work, Creative, Meeting, or Break — pick what actually matters right now instead of letting notifications decide your day.",
+                tag: "Your Rules",
               },
               {
                 step: "02",
-                title: "Place the totem.",
-                desc: "Nexus opens your selected tools and applies your focus rules. The illuminated ring shows your active mode at a glance.",
-                tag: "Physical Trigger",
+                title: "Dock the magnetic totem.",
+                desc: "One physical move opens your work tools and silences Shorts, social feeds, and phone noise — while keeping tutorials and search working.",
+                tag: "Instant Shift",
               },
               {
                 step: "03",
-                title: "Lift it when you finish.",
-                desc: "Undocked mode ends the focus configuration cleanly—returning full control with zero friction.",
-                tag: "Deliberate Boundary",
+                title: "Lift off when you're done.",
+                desc: "When the work is over, lift the totem off. Clear boundaries so your rest actually feels like real rest.",
+                tag: "True Freedom",
               },
             ].map((s, idx) => (
               <Reveal key={s.step} delay={idx * 0.1}>
@@ -235,27 +235,27 @@ export default function Home() {
                     <p className="text-sm text-[#A5AFBD] leading-relaxed font-light">{s.desc}</p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-[#303A48] text-[11px] font-mono text-[#35C98A]">
-                    Built &amp; tested on real hardware
+                    Less scroll. More life.
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          {/* Real Kickstarter Prototype & Live Windows App GIF Recordings */}
+          {/* Day & Night Showcase + Live Switching */}
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             <Reveal className="p-5 rounded-3xl border border-[#303A48] bg-[#1B222D]/80 backdrop-blur-sm space-y-4 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between text-xs font-mono text-[#A5AFBD] mb-3">
                   <span className="text-[#35C98A] font-bold uppercase tracking-wider">
-                    ● REAL PROTOTYPE + APP RECORDING
+                    ● CHOOSE. DOCK. BEGIN.
                   </span>
-                  <span>LIVE MODE SWITCHING</span>
+                  <span>INSTANT MODE SWITCHING</span>
                 </div>
                 <div className="relative w-full rounded-2xl overflow-hidden border border-[#303A48] bg-black">
                   <Image
-                    src="/images/kickstarter/ks-live-modes-demo.gif"
-                    alt="Real Prototype + Real Windows App Recording switching live between Deep Work, Creative, Meeting, and Break modes"
+                    src="/images/kickstarter/ks-less-scroll-more-life.jpg"
+                    alt="Nexus Ring Day Silver and Night Obsidian Black — Less Scroll. More Life."
                     width={680}
                     height={383}
                     className="w-full h-auto block"

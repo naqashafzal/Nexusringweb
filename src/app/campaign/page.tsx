@@ -52,8 +52,8 @@ export default function CampaignPage() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white uppercase">
-            NEXUS RING:<br />
-            <span className="text-[#D83A50]">THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.</span>
+            IT&apos;S NOT JUST A DEVICE.<br />
+            <span className="text-[#D83A50]">IT&apos;S A SYSTEM BUILT TO FIGHT FOR YOUR FREEDOM.</span>
           </h1>
 
           <p className="text-[#A5AFBD] text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
@@ -66,16 +66,16 @@ export default function CampaignPage() {
               <span className="text-sm font-bold text-white">{KICKSTARTER_CAMPAIGN.fundingGoal}</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Campaign Window</span>
-              <span className="text-sm font-bold text-white">{KICKSTARTER_CAMPAIGN.durationDays} Days</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Early Bird</span>
+              <span className="text-sm font-bold text-[#35C98A]">$89 (49/50 Left)</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Est. Delivery</span>
-              <span className="text-sm font-bold text-[#35C98A]">{KICKSTARTER_CAMPAIGN.estimatedDelivery}</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Back From</span>
+              <span className="text-sm font-bold text-white">$5 Supporter · $39 Maker</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Creator</span>
-              <span className="text-xs font-bold text-white">{KICKSTARTER_CAMPAIGN.creator}</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Subscriptions</span>
+              <span className="text-sm font-bold text-[#D83A50]">$0 Forever</span>
             </div>
           </div>
 
@@ -93,7 +93,7 @@ export default function CampaignPage() {
               href="#tiers"
               className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] transition-all font-mono text-sm flex items-center gap-2"
             >
-              <span>See All 4 Reward Tiers</span>
+              <span>See All 5 Reward Tiers</span>
               <ChevronRight size={15} />
             </a>
           </div>
@@ -103,8 +103,8 @@ export default function CampaignPage() {
         <div className="mt-12 rounded-3xl border border-[#303A48] bg-[#11151C] p-3 sm:p-4 shadow-2xl">
           <div className="relative w-full rounded-2xl overflow-hidden bg-black border border-[#303A48]/60">
             <Image
-              src="/images/kickstarter/ks-less-scroll-more-life.jpg"
-              alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
+              src="/images/kickstarter/ks-fight-for-freedom.jpg"
+              alt="It's not just a device. It's a system built to fight for your freedom — Nexus Ring"
               width={1024}
               height={576}
               priority
@@ -112,29 +112,26 @@ export default function CampaignPage() {
             />
           </div>
           <div className="px-3 pt-3 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-[#A5AFBD]">
-            <span className="text-white font-bold">NEXUS RING · DAY (SILVER) &amp; NIGHT (OBSIDIAN BLACK)</span>
-            <span>WINDOWS · MACOS · LINUX · ANDROID · IOS · ZERO MANDATORY SUBSCRIPTION</span>
+            <span className="text-white font-bold">LESS SCROLL. MORE LIFE. · DAY (SILVER) &amp; NIGHT (OBSIDIAN BLACK)</span>
+            <span>PC · MAC · LINUX · ANDROID · IOS · ZERO SUBSCRIPTIONS</span>
           </div>
         </div>
       </section>
 
-      {/* 2. STOP GIVING YOUR BEST HOURS AWAY */}
+      {/* 2. YOU'RE NOT LAZY — BREAK OUT OF THE DISTRACTION MATRIX */}
       <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-24 space-y-10">
         <div className="max-w-3xl space-y-4">
-          <span className="eyebrow block">The Story</span>
+          <span className="eyebrow block">Time to Break Out of the Distraction Matrix</span>
           <h2 className="text-3xl sm:text-5xl font-display font-black text-white">
-            Stop giving your best hours away.
+            You&apos;re not lazy. The system is designed to steal your focus.
           </h2>
           <p className="text-base text-[#A5AFBD] leading-relaxed">
-            Your most important work deserves more than the gaps between notifications.{" "}
-            <strong className="text-white">Nexus Ring</strong> combines a{" "}
-            <strong className="text-white">tactile desk control</strong> with configurable software, giving each session a clear start and a workspace shaped around the task.
+            How many times have you sat down to work, study, or build something that actually matters — and five minutes later, one notification or one YouTube Short stole two hours of your life? You&apos;re trying to fight trillion-dollar algorithms using focus apps that live{" "}
+            <strong className="text-white">inside the exact screen trapping you</strong>.
           </p>
           <p className="text-base text-[#A5AFBD] leading-relaxed">
-            Dock the totem. Open your work tools. Restrict selected distractions across your PC (
-            <strong className="text-white">Windows, macOS, and Linux</strong>) and your paired phone (
-            <strong className="text-white">Android and iOS</strong>). Nexus Ring turns the decision to focus into a{" "}
-            <strong className="text-white">physical action</strong> you can repeat, see, and follow through on.
+            <strong className="text-white">Nexus Ring</strong> moves that decision off your screen onto your desk. One physical move opens your work tools, strips away Shorts and endless scroll traps (while keeping direct tutorials and search working), and syncs focus across your computer and phone —{" "}
+            <strong className="text-white">with zero monthly subscriptions, ever.</strong>
           </p>
         </div>
 
@@ -142,15 +139,15 @@ export default function CampaignPage() {
           <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-4 space-y-3">
             <div className="rounded-2xl overflow-hidden border border-[#303A48]/60 bg-black">
               <Image
-                src="/images/kickstarter/ks-hero-poster.png"
-                alt="Nexus Ring — A Physical Command Center for Digital Discipline"
+                src="/images/kickstarter/ks-less-scroll-more-life.jpg"
+                alt="Nexus Ring — Less Scroll. More Life. Day Silver and Night Obsidian Black"
                 width={1024}
                 height={576}
                 className="w-full h-auto block"
               />
             </div>
             <p className="text-xs text-[#A5AFBD] font-mono">
-              A Physical Command Center for Digital Discipline — dock the magnetic totem to activate your configured focus workspace.
+              Day (Silver) &amp; Night (Obsidian Black) — Less Scroll. More Life.
             </p>
           </div>
 
@@ -165,7 +162,7 @@ export default function CampaignPage() {
               />
             </div>
             <p className="text-xs text-[#A5AFBD] font-mono">
-              Design Concept — Turn 8 hours of screen fatigue into focused execution through physical discipline.
+              You can&apos;t fight trillion-dollar algorithms with willpower alone — give your focus a physical switch.
             </p>
           </div>
         </div>

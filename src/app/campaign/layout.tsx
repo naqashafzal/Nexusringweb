@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kickstarter Campaign — Nexus Ring: The Physical Off-Switch for Distractions",
+  title: "Kickstarter — Nexus Ring: Less Scroll. More Life.",
   description:
-    "Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription. Back Nexus Ring on Kickstarter ($39–$199).",
+    "You're not lazy — the system is designed to steal your focus. Nexus Ring is a physical off-switch on your desk that fights for your freedom across PC, Mac, Linux & phone. Zero subscriptions. Back from $5.",
   keywords: [
     "Nexus Ring Kickstarter",
-    "The Physical Off-Switch for Distractions",
-    "Nexus Ring Rewards",
+    "Less Scroll More Life",
+    "Physical Off-Switch for Distractions",
+    "ADHD Focus Tool",
     "Digital Maker Kit",
-    "Physical Intent Computing",
-    "Workspace Automation",
+    "Zero Subscription Focus Blocker",
   ],
   alternates: {
     canonical: "/campaign",
   },
   openGraph: {
-    title: "Kickstarter Campaign — Nexus Ring: The Physical Off-Switch for Distractions",
+    title: "Nexus Ring — It's a System Built to Fight for Your Freedom",
     description:
-      "Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription.",
+      "You're not lazy — the system is designed to steal your focus. Drop the magnetic totem on your desk to lock in deep work with zero subscriptions. Live on Kickstarter.",
     url: "https://www.nexusring.tech/campaign",
+    images: [{ url: "/images/kickstarter/ks-fight-for-freedom.jpg", width: 1024, height: 576, alt: "Nexus Ring — Fight for Your Freedom" }],
   },
 };
 

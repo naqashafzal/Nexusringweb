@@ -2,9 +2,9 @@ export const KICKSTARTER_URL =
   "https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa";
 
 export const KICKSTARTER_CAMPAIGN = {
-  title: "Nexus Ring: The Physical Off-Switch for Distractions",
+  title: "Nexus Ring: Less Scroll. More Life.",
   blurb:
-    "Drop the magnetic totem to launch your work apps and silence distractions across PC, Mac, Linux, Android & iOS. No subscription.",
+    "You're not lazy — the system is designed to steal your focus. Drop the magnetic totem on your desk to lock in deep work, silence Shorts and feeds across PC, Mac, Linux & phone, and take your time back. Zero subscriptions.",
   creator: "Naqash Afzal Zakria",
   category: "Gadgets",
   location: "Lahore, Pakistan",
@@ -12,6 +12,7 @@ export const KICKSTARTER_CAMPAIGN = {
   durationDays: 48,
   estimatedDelivery: "July 2027",
   heroPoster: "/images/kickstarter/ks-less-scroll-more-life.jpg",
+  freedomHero: "/images/kickstarter/ks-fight-for-freedom.jpg",
   deskPrototypeHero: "/images/kickstarter/ks-hero-poster.png",
 } as const;
 
@@ -33,6 +34,23 @@ export interface KickstarterTier {
 }
 
 export const KICKSTARTER_TIERS: KickstarterTier[] = [
+  {
+    id: "supporter",
+    name: "Supporter — Break the Scroll",
+    shortName: "Supporter",
+    price: "$5",
+    priceNumber: 5,
+    badge: "Back the Mission",
+    limit: "Unlimited",
+    delivery: "Jan 2027",
+    shipping: "Digital (no shipping)",
+    image: "/images/kickstarter/ks-fight-for-freedom.jpg",
+    description:
+      "Support the Nexus Ring mission and help bring a subscription-free physical off-switch for distractions to life. Includes all behind-the-scenes updates and full access to the Kickstarter community.",
+    items: [
+      { label: "All backer updates & community access", qty: 1 },
+    ],
+  },
   {
     id: "maker-kit",
     name: "Nexus: Digital Maker Kit",
@@ -146,24 +164,24 @@ export const KICKSTARTER_MODES = [
     name: "Deep Work",
     color: "#D83A50",
     summary:
-      "Writing, coding, and demanding tasks, with selected distractions out of the way.",
+      "Lock in for writing, studying, coding, or building — while Shorts, feeds, and noise disappear.",
   },
   {
     name: "Creative",
     color: "#A855F7",
     summary:
-      "Your design, editing, music, or 3D tools ready together.",
+      "Design, edit, write, or make music in flow with your creative tools ready the moment you dock.",
   },
   {
     name: "Meeting",
     color: "#38BDF8",
     summary:
-      "Your call tools available and supported notification interruptions reduced.",
+      "Show up present on every call — your call tools open and distracting notifications go quiet.",
   },
   {
     name: "Break",
     color: "#F0B35A",
-    summary: "A clear change of pace between work sessions.",
+    summary: "Step away with zero guilt. Rest that actually feels like rest.",
   },
 ] as const;
 

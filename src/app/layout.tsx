@@ -16,10 +16,11 @@ const audiowide = Audiowide({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "Nexus Ring | Physical Focus & Productivity Controller",
+    default: "Nexus Ring — Less Scroll. More Life.",
     template: "%s | Nexus Ring",
   },
-  description: SITE_CONFIG.description,
+  description:
+    "You're not lazy — the system is designed to steal your focus. Nexus Ring is the physical off-switch on your desk that fights for your freedom across PC, Mac, Linux & phone. Zero subscriptions.",
   keywords: SITE_CONFIG.keywords,
   authors: [{ name: SITE_CONFIG.founder.name }, { name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.founder.name,
@@ -27,19 +28,23 @@ export const metadata: Metadata = {
   applicationName: "Nexus Ring",
   category: "technology",
   openGraph: {
-    title: "Nexus Ring | Physical Focus & Productivity Controller",
-    description: SITE_CONFIG.description,
+    title: "Nexus Ring — Less Scroll. More Life.",
+    description:
+      "It's not just a device. It's a system built to fight for your freedom. Drop the magnetic totem to silence Shorts & feeds across PC, Mac, Linux & phone. Zero subscriptions.",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: "en_US",
     type: "website",
+    images: [{ url: "/images/kickstarter/ks-fight-for-freedom.jpg", width: 1024, height: 576, alt: "Nexus Ring — Fight for Your Freedom" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nexus Ring | Physical Focus & Productivity Controller",
-    description: SITE_CONFIG.description,
-    creator: "@nexusring",
-    site: "@nexusring",
+    title: "Nexus Ring — Less Scroll. More Life.",
+    description:
+      "It's not just a device. It's a system built to fight for your freedom. Zero subscriptions. Live on Kickstarter.",
+    creator: "@Nexusringtech",
+    site: "@Nexusringtech",
+    images: ["/images/kickstarter/ks-fight-for-freedom.jpg"],
   },
   robots: {
     index: true,
