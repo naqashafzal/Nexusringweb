@@ -5,22 +5,21 @@
 ## Primary Campaign Message
 - **Title:** Nexus Ring: The Physical Off-Switch for Distractions
 - **Headline:** Stop giving your best hours away.
-- **Kickstarter Campaign:** https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa
+- **Early Access Waitlist:** https://www.nexusring.tech/preorder
 - **Philosophy:** Physical Intent Computing — turning the decision to focus into a repeatable physical action across desktop and mobile without mandatory subscriptions.
 
 ## Quick Facts
 - **Product Type:** USB-C metal-body desk dock, magnetic totem, desktop & mobile companion apps, and browser Intent Gateway extension (not a wearable ring)
-- **Kickstarter Reward Tiers (Est. Delivery July 2027):**
+- **Planned Production Editions & Kits (Est. Delivery July 2027):**
   - **$39 — Nexus: Digital Maker Kit:** 3D-printable STL/STEP files, BOM, embedded firmware & flashing guide, assembly guide, and lifetime core desktop & mobile apps (digital only)
-  - **$89 — Early Bird: Nexus & App (First 50 Backers):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
-  - **$109 — Nexus + Apps (Featured · First 200 Backers):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
-  - **$199 — Nexus Ring Duo Pack — Day & Night Edition (50 Backers):** 2× complete assembled Nexus Ring units (both Day Silver and Night Obsidian Black), 2× magnetic totems, 2× USB-C cables, and lifetime core desktop & mobile apps
-- **Funding Goal & Duration:** US$ 10,000 · 48 days · Worldwide shipping for assembled tiers (collected separately via post-campaign pledge manager)
-- **Hardware Status:** Built and tested; launching first production run on Kickstarter. Wired USB-C metal-body enclosure eliminates internal lithium-ion battery degradation.
+  - **$89 — Early Bird: Nexus & App (First 50):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
+  - **$109 — Nexus + Apps (Featured · First 200):** Complete assembled metal-body Nexus Ring (Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps
+  - **$199 — Nexus Ring Duo Pack — Day & Night Edition (50 Units):** 2× complete assembled Nexus Ring units (both Day Silver and Night Obsidian Black), 2× magnetic totems, 2× USB-C cables, and lifetime core desktop & mobile apps
+- **Release Status:** Early access waitlist open. Worldwide shipping for assembled editions.
+- **Hardware Status:** Built and tested; launching first production run. Wired USB-C metal-body enclosure eliminates internal lithium-ion battery degradation.
 - **Supported Platforms:** Windows, macOS, Linux (Desktop), Android & iOS (Mobile Companion via local pairing), and Chromium desktop browsers (Intent Gateway extension for YouTube, Reddit, and X feed filtering).
 - **Subscription & AI:** Zero mandatory Nexus subscription for core apps. Core tasks, notes, focus audio, and session records stay local. Optional AI supports Gemini, OpenAI, or a compatible local model endpoint.
 - **Creator:** Naqash Afzal Zakria (Lahore, Pakistan)
-  - Kickstarter: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa
   - GitHub: https://github.com/naqashafzal
   - MakerWorld: https://makerworld.com/en/@naqash
   - LinkedIn: https://www.linkedin.com/in/naqashafzal/

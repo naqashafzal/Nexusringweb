@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowUpRight,
   Check,
@@ -16,9 +17,6 @@ import {
   KICKSTARTER_ENVIRONMENTAL,
   KICKSTARTER_TIERS,
 } from "@/lib/kickstarter-data";
-
-const PRESS_KICKSTARTER_URL =
-  "https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=akkdoq";
 
 const PRESS_PITCH = `Software website blockers and focus apps live inside the exact screen causing distraction—and can be disabled in two clicks while charging $40–$100/year in recurring subscriptions. Nexus Ring moves the decision to focus into the physical world: a wired USB-C metal-body desk dock with four recessed mode wells (Deep Work, Creative, Meeting, Break) and a weighted magnetic totem detected via contactless Hall-effect sensors. Dropping the totem launches your work tools, filters YouTube Shorts/recommendations and Reddit/X feeds (while keeping direct tutorials and search accessible), and syncs permission-based focus shielding and Do Not Disturb to your paired Android or iOS phone over your local network—100% locally with zero mandatory subscriptions.`;
 
@@ -173,15 +171,13 @@ export default function PressPage() {
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            <a
-              href={PRESS_KICKSTARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/preorder"
               className="px-6 py-3 rounded-xl bg-[#D83A50] hover:bg-[#EB5268] text-white font-bold text-xs font-mono tracking-wide inline-flex items-center gap-2 transition-colors"
             >
-              <span>View Kickstarter Campaign</span>
+              <span>Join Early Access Waitlist</span>
               <ArrowUpRight size={14} />
-            </a>
+            </Link>
             <button
               type="button"
               onClick={handleCopyPitch}
@@ -215,9 +211,9 @@ export default function PressPage() {
                 <dd className="text-white text-right">{KICKSTARTER_CAMPAIGN.category}</dd>
               </div>
               <div className="flex justify-between gap-4 border-b border-[#303A48]/70 pb-2">
-                <dt className="text-[#778292]">FUNDING GOAL</dt>
-                <dd className="text-white text-right">
-                  {KICKSTARTER_CAMPAIGN.fundingGoal} ({KICKSTARTER_CAMPAIGN.durationDays} days)
+                <dt className="text-[#778292]">STATUS</dt>
+                <dd className="text-[#35C98A] text-right font-bold">
+                  Early Access Waitlist Open
                 </dd>
               </div>
               <div className="flex justify-between gap-4 border-b border-[#303A48]/70 pb-2">
@@ -261,7 +257,7 @@ export default function PressPage() {
       {/* 3. REWARD TIERS TABLE */}
       <section className="relative max-w-[1100px] mx-auto px-6 md:px-12 mb-20">
         <h2 className="text-2xl font-display font-bold text-white mb-5">
-          Official Kickstarter Reward Tiers
+          Planned Production Editions &amp; Kits
         </h2>
         <div className="rounded-3xl border border-[#303A48] bg-[#11151C] overflow-x-auto">
           <table className="w-full text-left text-xs font-mono">

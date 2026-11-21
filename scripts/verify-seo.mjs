@@ -57,8 +57,8 @@ console.log("\n3. Auditing Structured Data & Brand Definitions (src/lib/seo-data
 const seoDataPath = path.join(rootDir, "src/lib/seo-data.ts");
 const seoDataContent = fs.readFileSync(seoDataPath, "utf-8");
 
-assert(seoDataContent.includes("FORCE YOUR FOCUS. ENGINEER SUCCESS."), "Canonical tagline matches 'FORCE YOUR FOCUS. ENGINEER SUCCESS.'");
-assert(seoDataContent.includes("Take back control of your attention."), "Canonical mission matches 'Take back control of your attention.'");
+assert(seoDataContent.includes("NEXUS RING: THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS."), "Canonical tagline matches 'NEXUS RING: THE PHYSICAL OFF-SWITCH FOR DISTRACTIONS.'");
+assert(seoDataContent.includes("Stop giving your best hours away."), "Canonical mission matches 'Stop giving your best hours away.'");
 assert(seoDataContent.includes("canonicalProductDefinition"), "Canonical single-sentence product definition is declared");
 assert(seoDataContent.includes("@type\": \"Organization"), "Organization schema is defined");
 assert(seoDataContent.includes("@type\": \"WebSite"), "WebSite schema is defined");

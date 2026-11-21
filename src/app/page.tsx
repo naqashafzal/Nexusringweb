@@ -6,11 +6,11 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import HardwareModesShowcase from "@/components/HardwareModesShowcase";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import WaitlistForm from "@/components/WaitlistForm";
 import {
   ChevronRight,
   ChevronDown,
   ArrowRight,
-  ArrowUpRight,
   Cpu,
   Layers,
   ShieldCheck,
@@ -28,7 +28,6 @@ import {
   KICKSTARTER_COMPATIBILITY,
   KICKSTARTER_FAQS,
   KICKSTARTER_TIERS,
-  KICKSTARTER_URL,
 } from "@/lib/kickstarter-data";
 
 function Reveal({
@@ -57,6 +56,7 @@ function Reveal({
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [selectedTier, setSelectedTier] = useState<string>("Early Access");
 
   return (
     <main className="bg-[#080A0E] text-[#F5F6F8] font-sans overflow-x-hidden selection:bg-[#D83A50]/20 selection:text-white">
@@ -66,16 +66,10 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#303A48_1px,transparent_1px)] [background-size:32px_32px]" />
 
         <div className="relative z-20 text-center max-w-4xl mx-auto space-y-5">
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#11151C]/90 hover:border-[#35C98A] backdrop-blur-md text-[#35C98A] text-[11px] font-mono tracking-widest uppercase shadow-lg transition-colors"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#11151C]/90 backdrop-blur-md text-[#35C98A] text-[11px] font-mono tracking-widest uppercase shadow-lg">
             <span className="w-2 h-2 rounded-full bg-[#35C98A] animate-pulse" />
-            <span>LIVE ON KICKSTARTER · BACK FROM $5 · EARLY BIRD $89</span>
-            <ArrowUpRight size={13} />
-          </a>
+            <span>EARLY ACCESS WAITLIST ACTIVE · JOIN THE DISCORD COMMUNITY</span>
+          </div>
 
           <div className="space-y-3">
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black tracking-tight leading-[0.92] text-[#F5F6F8] uppercase">
@@ -90,22 +84,30 @@ export default function Home() {
             {KICKSTARTER_CAMPAIGN.blurb}
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
-              href={KICKSTARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide text-[#F5F6F8] bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_25px_rgba(216,58,80,0.35)] cursor-pointer flex items-center gap-2"
-            >
-              <span>Back on Kickstarter</span>
-              <ArrowUpRight size={15} />
-            </a>
+          {/* Live Waitlist Email Capture */}
+          <div className="pt-2 max-w-xl mx-auto w-full">
+            <WaitlistForm
+              tierName="Hero Early Access"
+              source="/"
+              buttonText="Join Waitlist"
+              placeholder="Enter your email for early access..."
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <Link
               href="#rewards"
-              className="px-8 py-3.5 rounded-full font-medium text-sm text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C]/80 hover:border-[#A5AFBD] transition-all duration-150 cursor-pointer flex items-center gap-2 backdrop-blur-sm"
+              className="px-6 py-3 rounded-full font-medium text-xs text-[#F5F6F8] hover:text-white border border-[#303A48] bg-[#11151C]/80 hover:border-[#A5AFBD] transition-all flex items-center gap-2"
             >
-              <span>Explore Reward Tiers ($5–$199)</span>
+              <span>Explore Hardware Editions</span>
               <ChevronDown size={14} />
+            </Link>
+            <Link
+              href="/hardware"
+              className="px-6 py-3 rounded-full font-medium text-xs text-[#A5AFBD] hover:text-white border border-[#303A48] bg-[#080A0E] hover:border-[#A5AFBD] transition-all flex items-center gap-2"
+            >
+              <span>Hardware Specs</span>
+              <ChevronRight size={14} />
             </Link>
           </div>
 
@@ -369,7 +371,7 @@ export default function Home() {
                 href="/campaign"
                 className="px-6 py-3 rounded-full text-xs font-mono text-[#D83A50] border border-[#D83A50]/40 hover:bg-[#D83A50]/10 transition-colors flex items-center gap-2"
               >
-                <span>Read the Full Kickstarter Story</span>
+                <span>Read the Full Development Story</span>
                 <ArrowRight size={14} />
               </Link>
               <Link
@@ -517,12 +519,12 @@ export default function Home() {
       <section id="rewards" className="relative z-20 bg-[#11151C] py-28 border-b border-[#303A48]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-            <span className="eyebrow block">Kickstarter Exclusive Rewards</span>
+            <span className="eyebrow block">Planned Hardware Editions &amp; Kits</span>
             <h2 className="text-4xl md:text-5xl font-display font-black tracking-tight text-[#F5F6F8]">
               Choose your Nexus Ring.
             </h2>
             <p className="text-[#A5AFBD] text-base font-light">
-              Every tier includes lifetime core access to the desktop (Windows, macOS, Linux) and mobile (Android, iOS) apps with zero mandatory subscription. Estimated delivery: <strong className="text-white">July 2027</strong>.
+              Every tier includes lifetime core access to the desktop (Windows, macOS, Linux) and mobile (Android, iOS) apps with zero mandatory subscription. Join the waitlist to receive priority access when batches open.
             </p>
           </Reveal>
 
@@ -590,19 +592,21 @@ export default function Home() {
                     <div className="text-[10px] font-mono text-[#778292]">
                       {tier.limit} · Est. {tier.delivery}
                     </div>
-                    <a
-                      href={KICKSTARTER_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full py-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-colors ${
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedTier(tier.name);
+                        setShowComingSoon(true);
+                      }}
+                      className={`w-full py-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                         tier.featured
-                          ? "bg-[#D83A50] text-white hover:bg-[#EB5268]"
+                          ? "bg-[#D83A50] text-white hover:bg-[#EB5268] shadow-[0_0_15px_rgba(216,58,80,0.3)]"
                           : "bg-[#1B222D] border border-[#303A48] text-white hover:border-[#D83A50]"
                       }`}
                     >
-                      <span>Back {tier.price}</span>
-                      <ArrowUpRight size={13} />
-                    </a>
+                      <span>Join Waitlist for {tier.shortName}</span>
+                      <ArrowRight size={13} />
+                    </button>
                   </div>
                 </div>
               </Reveal>
@@ -769,7 +773,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════════ FINAL KICKSTARTER CTA ════════════════ */}
+      {/* ════════════════ FINAL WAITLIST & DISCORD CTA ════════════════ */}
       <section className="relative z-10 bg-[#080A0E] py-32 text-center overflow-hidden border-t border-[#303A48]">
         <Reveal className="relative z-10 max-w-2xl mx-auto px-6 md:px-12 space-y-6">
           <div className="flex justify-center mb-2">
@@ -781,39 +785,30 @@ export default function Home() {
               className="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
             />
           </div>
-          <span className="eyebrow block">Kickstarter First Production Run</span>
+          <span className="eyebrow block">Early Access &amp; Community Waitlist</span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-display font-black tracking-tight text-[#F5F6F8] leading-tight">
             Next: your desk.
           </h2>
           <p className="text-[#A5AFBD] text-base md:text-lg font-light max-w-lg mx-auto leading-relaxed">
-            Back Nexus Ring on Kickstarter starting at $39 (Digital Maker Kit), $89 (Early Bird), $109 (Kickstarter Special), or $199 (Day &amp; Night Duo Pack).
+            Join the waitlist to receive genuine prototype milestones, firmware downloads, and early production notice.
           </p>
-          <div className="pt-2 flex flex-wrap justify-center gap-4">
-            <a
-              href={KICKSTARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-sm tracking-wide text-[#F5F6F8] bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-150 shadow-[0_0_20px_rgba(216,58,80,0.3)]"
-            >
-              <span>Back on Kickstarter</span>
-              <ArrowUpRight size={16} />
-            </a>
-            <button
-              type="button"
-              onClick={() => setShowComingSoon(true)}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-mono text-xs tracking-wide text-[#F5F6F8] border border-[#303A48] bg-[#11151C] hover:border-[#D83A50] transition-colors cursor-pointer"
-            >
-              <span>Get Production Updates</span>
-              <ChevronRight size={15} />
-            </button>
+
+          <div className="pt-2 w-full max-w-xl mx-auto">
+            <WaitlistForm
+              tierName="Footer Early Access"
+              source="/#waitlist-footer"
+              buttonText="Join Waitlist"
+              placeholder="Enter your email address..."
+            />
           </div>
+
           <p className="text-[#778292] text-xs font-mono tracking-widest pt-2">
-            US$ 10,000 Goal · 48 Days · Est. Delivery July 2027 · Zero Mandatory Subscription
+            Free Early Access Waitlist · Works on PC, Mac, Linux, Android &amp; iOS · Zero Mandatory Subscription
           </p>
         </Reveal>
       </section>
 
-      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} />
+      <ComingSoonModal isOpen={showComingSoon} onClose={() => setShowComingSoon(false)} tierName={selectedTier} />
     </main>
   );
 }

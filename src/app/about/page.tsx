@@ -4,9 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ChevronRight, ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
-import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 export default function AboutPage() {
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -142,8 +141,8 @@ export default function AboutPage() {
             <span className="text-[#A5AFBD]">Hardware prototype, firmware, desktop &amp; mobile companion apps built &amp; tested.</span>
           </div>
           <div className="p-4 border border-[#D83A50]/40 bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
-            <span className="font-bold text-[#D83A50]">Kickstarter</span>
-            <span className="text-[#A5AFBD]">First production run ($39 Maker Kit · $89 Early Bird · $109 Special · $199 Duo).</span>
+            <span className="font-bold text-[#D83A50]">Early Access</span>
+            <span className="text-[#A5AFBD]">Waitlist open for first production run ($39 Maker Kit · $89 Early Bird · $109 Special · $199 Duo).</span>
           </div>
           <div className="p-4 border border-[#303A48] bg-[#11151C] rounded-xl flex items-center justify-between gap-4">
             <span className="font-bold text-white">Manufacturing</span>
@@ -173,14 +172,6 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3 font-mono text-xs">
-            <a
-              href={KICKSTARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#35C98A]/40 bg-[#35C98A]/10 rounded-lg hover:bg-[#35C98A]/20 text-[#35C98A] font-bold transition-colors"
-            >
-              Kickstarter Campaign
-            </a>
             <a
               href="https://github.com/naqashafzal"
               target="_blank"
@@ -215,23 +206,22 @@ export default function AboutPage() {
           Bring Nexus Ring to your desk.
         </h2>
         <p className="text-sm md:text-base text-[#A5AFBD] mb-8 max-w-xl mx-auto font-light leading-relaxed">
-          Back our first production run on Kickstarter starting at $39 (Digital Maker Kit), $89 (Early Bird), $109 (Kickstarter Special), or $199 (Day &amp; Night Duo Pack).
+          Join the early access waitlist for our first production run starting at $39 (Digital Maker Kit), $89 (Early Bird), $109 (Special Edition), or $199 (Day &amp; Night Duo Pack).
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] inline-flex items-center gap-2"
+          <button
+            type="button"
+            onClick={() => setShowComingSoon(true)}
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(255,64,90,0.35)] inline-flex items-center gap-2 cursor-pointer"
           >
-            <span>Back on Kickstarter</span>
-            <ArrowUpRight size={16} />
-          </a>
+            <span>Join Early Access Waitlist</span>
+            <ChevronRight size={16} />
+          </button>
           <Link
-            href="/campaign"
-            className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm"
+            href="/hardware"
+            className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] transition-all font-mono text-sm inline-flex items-center gap-2"
           >
-            View Campaign Story
+            <span>Explore the Hardware</span>
           </Link>
         </div>
       </section>

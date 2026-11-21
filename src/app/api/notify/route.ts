@@ -78,15 +78,9 @@ export async function POST(request: Request) {
       });
     }
 
-    const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL?.trim();
-
-    // In production without webhook, return 503
-    if (!discordWebhookUrl && process.env.NODE_ENV === "production") {
-      return NextResponse.json(
-        { error: "Waitlist registration is temporarily unavailable. Please check back soon." },
-        { status: 503 }
-      );
-    }
+    const discordWebhookUrl =
+      process.env.DISCORD_WEBHOOK_URL?.trim() ||
+      "https://discord.com/api/webhooks/1551006628692754432/R0wztwn016LbDfsEyquTvHiezX1z7Sh-dS8gnTlZodIGRywl6q7-H5EOQGInChgcsFD8";
 
     // Prepare notification
     const nowIso = new Date().toISOString();
@@ -113,50 +107,28 @@ export async function POST(request: Request) {
             value: typeof message === "string" ? message.slice(0, 1000) : "No message",
             inline: false,
           },
-        ],
-        footer: { text: "Nexus Ring • Contact Engine" },
-        timestamp: nowIso,
-      };
-    } else if (type === "preorder_reservation" || type === "early_access") {
-      embed = {
-        title: "⚡ Early Access Interest Registered",
-        description: `A visitor expressed interest in the **${String(tier || "Early Access").slice(0, 50)}** tier.`,
-        color: 0x35c98a, // Success Green
-        fields: [
-          {
-            name: "📧 Email",
-            value: `\`${normalizedEmail}\``,
-            inline: true,
-          },
-          {
-            name: "🎯 Tier",
-            value: typeof tier === "string" ? tier.slice(0, 50) : "General Interest",
-            inline: true,
-          },
-          {
-            name: "🎨 Finish Direction",
-            value: typeof finish === "string" ? finish.slice(0, 50) : "Standard",
-            inline: true,
-          },
-          {
-            name: "💰 Reference Price",
-            value: typeof price === "string" ? price.slice(0, 20) : "TBD",
-            inline: true,
-          },
           {
             name: "🌐 Source",
             value: `\`${String(source).slice(0, 50)}\``,
             inline: false,
           },
         ],
-        footer: { text: "Nexus Ring • Early Access Queue" },
+        footer: { text: "Nexus Ring • Contact Engine" },
         timestamp: nowIso,
       };
     } else {
+      // Waitlist / Early Access / Preorder Reservation
+      const tierInterest =
+        finish && price
+          ? `${tier || "Hardware Edition"} (${finish}) · ${price}`
+          : finish
+          ? `${tier || "Hardware Edition"} (${finish})`
+          : tier || "Priority Waitlist";
+
       embed = {
         title: "✨ New Waitlist Signup",
-        description: `A visitor joined the development updates list.`,
-        color: 0xff405a, // Nexus Brand Accent
+        description: "A visitor joined the development updates list.",
+        color: 0xff405a, // Nexus Brand Accent (matches Discord screenshot)
         fields: [
           {
             name: "📧 Email",
@@ -165,7 +137,7 @@ export async function POST(request: Request) {
           },
           {
             name: "🏷️ Tier / Interest",
-            value: typeof tier === "string" ? tier.slice(0, 50) : "Launch Waitlist",
+            value: String(tierInterest).slice(0, 100),
             inline: true,
           },
           {
@@ -210,6 +182,26 @@ export async function POST(request: Request) {
       for (const [key, val] of emailSubmissions.entries()) {
         if (now - val > 300_000) emailSubmissions.delete(key);
       }
+    }
+
+    // Backup to local file if environment allows
+    try {
+      const fs = await import("fs/promises");
+      const path = await import("path");
+      const dataDir = path.join(process.cwd(), "data");
+      await fs.mkdir(dataDir, { recursive: true });
+      const record = JSON.stringify({
+        email: normalizedEmail,
+        type,
+        tier: tier || "Waitlist",
+        finish: finish || null,
+        price: price || null,
+        source: source || "/",
+        date: nowIso,
+      }) + "\n";
+      await fs.appendFile(path.join(dataDir, "waitlist_signups.jsonl"), record, "utf8");
+    } catch {
+      // Ignore filesystem errors in serverless/readonly environments
     }
 
     return NextResponse.json({

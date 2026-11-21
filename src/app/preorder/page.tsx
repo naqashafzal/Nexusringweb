@@ -11,12 +11,10 @@ import {
   Cpu,
   Layers,
   Info,
-  ArrowUpRight,
 } from "lucide-react";
 import {
   KICKSTARTER_FINISHES,
   KICKSTARTER_TIERS,
-  KICKSTARTER_URL,
 } from "@/lib/kickstarter-data";
 
 export default function PreorderPage() {
@@ -82,24 +80,24 @@ export default function PreorderPage() {
         <div className="max-w-3xl mx-auto space-y-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#35C98A]/10 text-[#35C98A] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A]" />
-            Kickstarter First Production Run · Est. Delivery Jul 2027
+            First Production Run · Early Access Waitlist Open
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-tighter leading-[1.0] text-white">
             CHOOSE YOUR<br />
-            <span className="text-[#D83A50]">NEXUS RING REWARD.</span>
+            <span className="text-[#D83A50]">NEXUS RING EDITION.</span>
           </h1>
 
           <p className="text-[#A5AFBD] text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            Compare all four official Kickstarter reward tiers and choose between{" "}
+            Compare all four planned hardware editions and kits. Choose between{" "}
             <strong className="text-white">Day (Silver)</strong> or{" "}
-            <strong className="text-white">Night (Obsidian Black)</strong> metal-body finishes. Every tier includes lifetime core desktop (Windows, macOS, Linux) and mobile (Android, iOS) apps with zero mandatory subscription.
+            <strong className="text-white">Night (Obsidian Black)</strong> metal-body finishes. Every edition includes lifetime core desktop (Windows, macOS, Linux) and mobile (Android, iOS) apps with zero mandatory subscription. Join the waitlist below to reserve your priority spot and receive production logs on Discord.
           </p>
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1B222D] border border-[#303A48] text-xs font-mono text-[#A5AFBD]">
             <Info size={14} className="text-[#D83A50]" />
             <span>
-              Finish is selected in the post-campaign survey. Worldwide shipping &amp; taxes are collected via the pledge manager.
+              Finish is confirmed prior to fulfillment. Estimated hardware delivery Jul 2027. Early access updates posted to Discord.
             </span>
           </div>
         </div>
@@ -132,11 +130,10 @@ export default function PreorderPage() {
                       key={f.id}
                       type="button"
                       onClick={() => setSelectedFinish(i)}
-                      className={`p-4 rounded-2xl border text-left transition-all duration-200 relative overflow-hidden cursor-pointer ${
-                        isActive
+                      className={`p-4 rounded-2xl border text-left transition-all duration-200 relative overflow-hidden cursor-pointer ${isActive
                           ? "border-[#D83A50] bg-[#1B222D] shadow-[0_0_20px_rgba(255,64,90,0.15)]"
                           : "border-[#303A48] bg-[#080A0E] hover:border-[#A5AFBD]/40"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-2 mb-3">
                         <div
@@ -161,7 +158,7 @@ export default function PreorderPage() {
               </p>
             </div>
 
-            {/* 2. Official Kickstarter Tier Selection */}
+            {/* 2. Official Edition & Tier Selection */}
             <div className="rounded-3xl border border-[#303A48] bg-[#11151C] p-8 space-y-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -169,10 +166,10 @@ export default function PreorderPage() {
                     Step 02
                   </span>
                   <h3 className="text-xl font-display font-bold text-white">
-                    Select Kickstarter Reward Tier
+                    Select Hardware Edition or Kit
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-[#35C98A]">Official Pricing</span>
+                <span className="text-xs font-mono text-[#35C98A]">Reserved Pricing</span>
               </div>
 
               <div className="space-y-3">
@@ -183,11 +180,10 @@ export default function PreorderPage() {
                       key={t.id}
                       type="button"
                       onClick={() => setSelectedTier(i)}
-                      className={`w-full p-5 rounded-2xl border text-left transition-all duration-200 flex items-center justify-between gap-4 cursor-pointer ${
-                        isActive
+                      className={`w-full p-5 rounded-2xl border text-left transition-all duration-200 flex items-center justify-between gap-4 cursor-pointer ${isActive
                           ? "border-[#D83A50] bg-[#1B222D] shadow-[0_0_20px_rgba(255,64,90,0.1)]"
                           : "border-[#303A48] bg-[#080A0E] hover:border-[#A5AFBD]/40"
-                      }`}
+                        }`}
                     >
                       <div className="space-y-1">
                         <div className="flex flex-wrap items-center gap-2">
@@ -195,11 +191,10 @@ export default function PreorderPage() {
                             {t.name}
                           </span>
                           <span
-                            className={`text-[9px] font-mono px-2 py-0.5 rounded border ${
-                              t.featured
+                            className={`text-[9px] font-mono px-2 py-0.5 rounded border ${t.featured
                                 ? "border-[#D83A50]/40 bg-[#D83A50]/15 text-[#D83A50]"
                                 : "border-[#303A48] bg-[#11151C] text-[#A5AFBD]"
-                            }`}
+                              }`}
                           >
                             {t.badge}
                           </span>
@@ -242,7 +237,7 @@ export default function PreorderPage() {
               <div className="flex items-center justify-between border-b border-[#303A48] pb-4">
                 <div>
                   <span className="text-[10px] font-mono text-[#A5AFBD] uppercase tracking-widest block">
-                    Selected Reward · {finish.name}
+                    Selected Edition · {finish.name}
                   </span>
                   <p className="font-display font-bold text-lg text-white">{tier.name}</p>
                 </div>
@@ -261,27 +256,17 @@ export default function PreorderPage() {
                 ))}
               </ul>
 
-              {/* Direct Kickstarter CTA */}
-              <a
-                href={KICKSTARTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-200 shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center justify-center gap-2"
-              >
-                <span>Back {tier.price} Tier on Kickstarter</span>
-                <ArrowUpRight size={16} />
-              </a>
-
+              {/* Waitlist Registration */}
               <div className="border-t border-[#303A48] pt-5">
                 {submitted ? (
                   <div className="space-y-4 p-5 rounded-2xl border border-[#35C98A]/30 bg-[#35C98A]/10 text-center">
                     <CheckCircle2 size={32} className="text-[#35C98A] mx-auto" />
                     <h4 className="text-lg font-display font-bold text-white">
-                      Campaign Alerts Activated!
+                      You&apos;re On The Waitlist!
                     </h4>
                     <p className="text-xs text-[#A5AFBD] font-light leading-relaxed">
-                      We added <span className="font-mono text-white font-semibold">{email}</span> for updates on{" "}
-                      <span className="text-white font-semibold">{tier.name}</span>.
+                      We added <span className="font-mono text-white font-semibold">{email}</span> for priority access on{" "}
+                      <span className="text-white font-semibold">{tier.name} ({finish.name})</span>. We will email you as soon as reservations open.
                     </p>
                     <button
                       type="button"
@@ -289,13 +274,13 @@ export default function PreorderPage() {
                         setSubmitted(false);
                         setEmail("");
                       }}
-                      className="mt-2 px-4 py-2 rounded-xl border border-[#303A48] bg-[#1B222D] text-xs font-mono text-white hover:border-[#A5AFBD] transition-colors cursor-pointer"
+                      className="mt-2 px-5 py-2.5 rounded-xl border border-[#303A48] bg-[#1B222D] text-xs font-mono text-white hover:border-[#A5AFBD] transition-colors cursor-pointer"
                     >
                       Register another email
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     {errorMessage && (
                       <div className="p-3 rounded-xl border border-red-500/40 bg-red-500/10 text-red-200 text-xs flex items-start gap-2">
                         <AlertCircle size={15} className="shrink-0 text-red-400 mt-0.5" />
@@ -303,34 +288,38 @@ export default function PreorderPage() {
                       </div>
                     )}
 
-                    <label
-                      htmlFor="preorder-email"
-                      className="text-[11px] font-mono text-[#A5AFBD] uppercase tracking-wider block"
-                    >
-                      Or get Kickstarter &amp; production updates by email
-                    </label>
-                    <input
-                      id="preorder-email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (errorMessage) setErrorMessage("");
-                      }}
-                      placeholder="you@domain.com"
-                      required
-                      className="w-full bg-[#080A0E] border border-[#303A48] rounded-xl px-4 py-3 text-white placeholder-[#475569] focus:outline-none focus:border-[#D83A50] text-sm font-mono transition-colors"
-                    />
+                    <div className="space-y-2">
+                      <label
+                        htmlFor="preorder-email"
+                        className="text-[11px] font-mono text-[#A5AFBD] uppercase tracking-wider block"
+                      >
+                        Enter your email for early access reservation
+                      </label>
+                      <input
+                        id="preorder-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (errorMessage) setErrorMessage("");
+                        }}
+                        placeholder="you@domain.com"
+                        required
+                        className="w-full bg-[#080A0E] border border-[#303A48] rounded-xl px-4 py-3 text-white placeholder-[#475569] focus:outline-none focus:border-[#D83A50] text-sm font-mono transition-colors"
+                      />
+                    </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3 rounded-xl font-mono font-bold text-xs tracking-wide text-white bg-[#1B222D] border border-[#303A48] hover:border-[#D83A50] disabled:opacity-60 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                      className="w-full py-4 rounded-xl font-bold text-sm tracking-wide text-white bg-[#D83A50] hover:bg-[#EB5268] transition-all duration-200 shadow-[0_0_25px_rgba(255,64,90,0.35)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Saving..." : (
+                      {isSubmitting ? (
+                        <span>Reserving Spot...</span>
+                      ) : (
                         <>
-                          <span>Notify Me of Production Milestones</span>
-                          <ChevronRight size={14} />
+                          <span>Join Waitlist for {tier.name} ({tier.price})</span>
+                          <ChevronRight size={16} />
                         </>
                       )}
                     </button>

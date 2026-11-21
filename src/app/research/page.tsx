@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { BrainCircuit, FileText } from "lucide-react";
 import ComingSoonModal from "@/components/ComingSoonModal";
@@ -142,14 +143,12 @@ export default function ResearchPage() {
           >
             Join Early Testing List
           </button>
-          <a
-            href="https://discord.gg/Q3tTGhH4k"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/hardware"
             className="px-8 py-4 rounded-xl border border-[#303A48] text-white hover:border-[#D83A50] transition-all font-mono text-sm flex items-center gap-2"
           >
-            Join Discord Community
-          </a>
+            Explore Hardware Specs
+          </Link>
         </div>
       </section>
 

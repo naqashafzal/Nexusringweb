@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Menu, X, ArrowUpRight, Download, Sun, Moon } from "lucide-react";
-import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
+
+const ComingSoonModal = dynamic(() => import("@/components/ComingSoonModal"), {
+  ssr: false,
+});
 
 const links = [
   { href: "/#modes", label: "Product" },
-  { href: "/campaign", label: "Kickstarter" },
+  { href: "/campaign", label: "Roadmap" },
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
   { href: "/download", label: "Download" },
@@ -19,11 +23,15 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<"day" | "night">("night");
+  const [waitlist, setWaitlist] = useState(false);
 
   useEffect(() => {
-    const saved =
-      document.documentElement.dataset.theme === "day" ? "day" : "night";
-    setTheme(saved);
+    const frame = requestAnimationFrame(() => {
+      const saved =
+        document.documentElement.dataset.theme === "day" ? "day" : "night";
+      setTheme(saved);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const toggleTheme = () => {
@@ -38,7 +46,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#303A48] bg-[#080A0E]/85 backdrop-blur-xl transition-colors">
+    <>
+      <header className="fixed inset-x-0 top-0 z-[100] border-b border-[#303A48] bg-[#080A0E]/85 backdrop-blur-xl transition-colors">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-4">
         <Link
           href="/"
@@ -66,11 +75,10 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`transition-colors py-1 ${
-                link.href === "/download"
+              className={`transition-colors py-1 ${link.href === "/download"
                   ? "text-[#F5F6F8] font-semibold hover:text-[#EB5268] flex items-center gap-1.5"
                   : "hover:text-[#F5F6F8]"
-              }`}
+                }`}
             >
               {link.href === "/download" && (
                 <Download size={13} className="text-[#D83A50]" />
@@ -102,16 +110,18 @@ export default function Navbar() {
             )}
           </button>
 
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
+          {/* Join Waitlist Modal Button */}
+          <button
+            type="button"
+            onClick={() => {
+              setWaitlist(true);
+              setOpen(false);
+            }}
             className="rounded-full bg-[#D83A50] hover:bg-[#EB5268] text-[#F5F6F8] px-4 sm:px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-150 cursor-pointer flex items-center gap-1.5 shadow-[0_0_20px_rgba(216,58,80,0.25)] shrink-0"
           >
-            <span>Back on Kickstarter</span>
+            <span>Join Waitlist</span>
             <ArrowUpRight size={14} className="hidden sm:inline" />
-          </a>
+          </button>
 
           <button
             className="lg:hidden text-[#F5F6F8] p-2 rounded-lg hover:bg-[#11151C] transition-colors border border-[#303A48]"
@@ -146,6 +156,12 @@ export default function Navbar() {
           ))}
         </nav>
       )}
-    </header>
+
+      </header>
+
+      {waitlist && (
+        <ComingSoonModal isOpen={waitlist} onClose={() => setWaitlist(false)} />
+      )}
+    </>
   );
 }

@@ -5,7 +5,7 @@
  */
 
 import { JournalArticle } from "./journal-data";
-import { KICKSTARTER_FAQS, KICKSTARTER_TIERS, KICKSTARTER_URL } from "./kickstarter-data";
+import { KICKSTARTER_FAQS, KICKSTARTER_TIERS } from "./kickstarter-data";
 
 export const SITE_CONFIG = {
   name: "Nexus Ring",
@@ -18,7 +18,7 @@ export const SITE_CONFIG = {
   canonicalProductDefinition:
     "Nexus Ring is a USB-C desk dock and magnetic totem that switches your PC (Windows, macOS, or Linux) and paired phone (Android or iOS) into the workspace you configure across Deep Work, Creative, Meeting, and Break modes—with lifetime core apps and zero mandatory subscription.",
   description:
-    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. Built and tested physical focus switch launching on Kickstarter ($39–$199), no subscription.",
+    "Dock the totem. Open your work tools. Restrict distractions across Windows, macOS, Linux, Android & iOS. Built and tested physical focus switch with early access waitlist ($39–$199), no subscription.",
   keywords: [
     // Core Brand & Product Identity
     "Nexus Ring",
@@ -233,7 +233,6 @@ export const SITE_CONFIG = {
     name: "Naqash Afzal Zakria",
     jobTitle: "Founder & Hardware Architect",
     sameAs: [
-      KICKSTARTER_URL,
       "https://github.com/naqashafzal",
       "https://g.dev/naqashafzal",
       "https://makerworld.com/en/@naqash",
@@ -247,7 +246,6 @@ export const SITE_CONFIG = {
     makerworld: "https://makerworld.com/en/@naqash",
     linkedin: "https://www.linkedin.com/in/naqashafzal/",
     freelancer: "https://www.freelancer.com/u/naqashafzal",
-    discord: "https://discord.gg/Q3tTGhH4k",
   },
 };
 
@@ -290,7 +288,6 @@ export function getStructuredData() {
       SITE_CONFIG.social.makerworld,
       SITE_CONFIG.social.linkedin,
       SITE_CONFIG.social.freelancer,
-      SITE_CONFIG.social.discord,
     ],
   };
 
@@ -316,7 +313,7 @@ export function getStructuredData() {
       availability: "https://schema.org/PreOrder",
       price: tier.priceNumber.toFixed(2),
       priceCurrency: "USD",
-      url: KICKSTARTER_URL,
+      url: `${SITE_CONFIG.url}/preorder`,
       description: tier.description,
     })),
   };

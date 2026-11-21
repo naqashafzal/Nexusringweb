@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { KICKSTARTER_URL } from "@/lib/kickstarter-data";
 
 export default function Footer() {
   return (
@@ -59,24 +58,19 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Kickstarter Column */}
+        {/* Early Access & Roadmap Column */}
         <div className="flex flex-col gap-3">
           <h4 className="text-[#F5F6F8] font-mono font-bold text-xs uppercase tracking-widest mb-2">
-            Kickstarter
+            Early Access &amp; Roadmap
           </h4>
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-[#35C98A] font-semibold hover:underline transition-colors"
-          >
-            View Kickstarter Campaign →
-          </a>
+          <Link href="/preorder" className="text-xs text-[#D83A50] hover:text-[#EB5268] font-semibold transition-colors">
+            Join Early Access Waitlist →
+          </Link>
           <Link href="/campaign" className="text-xs hover:text-[#F5F6F8] transition-colors">
-            Full Campaign Story
+            Development Roadmap
           </Link>
           <Link href="/campaign#tiers" className="text-xs hover:text-[#F5F6F8] transition-colors">
-            Rewards ($39 – $199)
+            Hardware &amp; Maker Kits
           </Link>
           <Link href="/press" className="text-xs hover:text-[#F5F6F8] transition-colors">
             Press Kit &amp; Media Assets
@@ -116,22 +110,20 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* Campaign Status Notice */}
+        {/* Production Status Notice */}
         <div className="flex flex-col gap-3">
           <h4 className="text-[#F5F6F8] font-mono font-bold text-xs uppercase tracking-widest mb-2">
             First Production Run
           </h4>
           <p className="text-xs leading-relaxed text-[#A5AFBD]">
-            Nexus Ring is built and tested, launching our first production run on Kickstarter (US$ 10,000 goal · Jul 2027 estimated delivery).
+            Hardware and companion apps are built and tested. Join the early access waitlist to receive production updates and priority reservation slots.
           </p>
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/preorder"
             className="text-xs text-[#D83A50] font-mono hover:underline"
           >
-            Back on Kickstarter →
-          </a>
+            Join Early Access Waitlist →
+          </Link>
         </div>
       </div>
 

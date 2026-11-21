@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -22,7 +23,6 @@ import {
   KICKSTARTER_RISKS,
   KICKSTARTER_TIERS,
   KICKSTARTER_TOOL_GROUPS,
-  KICKSTARTER_URL,
 } from "@/lib/kickstarter-data";
 
 export default function CampaignPage() {
@@ -48,7 +48,7 @@ export default function CampaignPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#35C98A]/40 bg-[#35C98A]/10 text-[#35C98A] text-[11px] font-mono tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#35C98A] animate-pulse" />
-            Official Kickstarter Campaign · {KICKSTARTER_CAMPAIGN.category} · {KICKSTARTER_CAMPAIGN.location}
+            Open Development &amp; Community Roadmap · Maker Community
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter leading-[0.95] text-white uppercase">
@@ -62,16 +62,16 @@ export default function CampaignPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-2 text-left font-mono">
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Funding Goal</span>
-              <span className="text-sm font-bold text-white">{KICKSTARTER_CAMPAIGN.fundingGoal}</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Hardware Status</span>
+              <span className="text-sm font-bold text-[#35C98A]">Tested Prototypes</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Early Bird</span>
-              <span className="text-sm font-bold text-[#35C98A]">$89 (49/50 Left)</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Community</span>
+              <span className="text-sm font-bold text-white">Discord Active</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
-              <span className="text-[10px] text-[#778292] uppercase block">Back From</span>
-              <span className="text-sm font-bold text-white">$5 Supporter · $39 Maker</span>
+              <span className="text-[10px] text-[#778292] uppercase block">Registration</span>
+              <span className="text-sm font-bold text-white">Free Waitlist</span>
             </div>
             <div className="p-3.5 rounded-2xl border border-[#303A48] bg-[#11151C]">
               <span className="text-[10px] text-[#778292] uppercase block">Subscriptions</span>
@@ -80,20 +80,19 @@ export default function CampaignPage() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <a
-              href={KICKSTARTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(216,58,80,0.35)] flex items-center gap-2"
+            <button
+              type="button"
+              onClick={() => handleNotifyTier("Campaign Early Access")}
+              className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold text-sm tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(216,58,80,0.35)] flex items-center gap-2 cursor-pointer"
             >
-              <span>Back on Kickstarter</span>
+              <span>Join Early Access Waitlist</span>
               <ArrowUpRight size={16} />
-            </a>
+            </button>
             <a
               href="#tiers"
               className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] text-white hover:border-[#D83A50] transition-all font-mono text-sm flex items-center gap-2"
             >
-              <span>See All 5 Reward Tiers</span>
+              <span>See Planned Editions</span>
               <ChevronRight size={15} />
             </a>
           </div>
@@ -376,7 +375,7 @@ export default function CampaignPage() {
       {/* 5. REWARD TIERS (EXACT 4 KICKSTARTER TIERS) */}
       <section id="tiers" className="relative max-w-[1200px] mx-auto px-6 md:px-12 mb-28">
         <div className="text-center mb-14 space-y-3">
-          <span className="eyebrow block">Kickstarter Rewards</span>
+          <span className="eyebrow block">Planned Hardware Editions</span>
           <h2 className="text-3xl md:text-5xl font-display font-black text-white">
             Choose your Nexus Ring.
           </h2>
@@ -466,26 +465,18 @@ export default function CampaignPage() {
                 </div>
               </div>
 
-              <div className="pt-6 flex flex-col sm:flex-row gap-3">
-                <a
-                  href={KICKSTARTER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`flex-1 py-3.5 px-5 rounded-xl text-xs font-mono font-bold text-center transition-colors flex items-center justify-center gap-2 ${
-                    tier.featured
-                      ? "bg-[#D83A50] text-white hover:bg-[#EB5268]"
-                      : "bg-[#1B222D] border border-[#303A48] text-white hover:border-[#D83A50]"
-                  }`}
-                >
-                  <span>Pledge {tier.price} on Kickstarter</span>
-                  <ArrowUpRight size={14} />
-                </a>
+              <div className="pt-6">
                 <button
                   type="button"
                   onClick={() => handleNotifyTier(`${tier.name} (${tier.price})`)}
-                  className="py-3.5 px-4 rounded-xl border border-[#303A48] bg-[#080A0E] text-[#A5AFBD] hover:text-white hover:border-[#A5AFBD] text-xs font-mono transition-colors cursor-pointer"
+                  className={`w-full py-3.5 px-5 rounded-xl text-xs font-mono font-bold text-center transition-colors flex items-center justify-center gap-2 cursor-pointer ${
+                    tier.featured
+                      ? "bg-[#D83A50] text-white hover:bg-[#EB5268] shadow-[0_0_15px_rgba(216,58,80,0.3)]"
+                      : "bg-[#1B222D] border border-[#303A48] text-white hover:border-[#D83A50]"
+                  }`}
                 >
-                  Get Updates
+                  <span>Join Waitlist for {tier.shortName}</span>
+                  <ArrowUpRight size={14} />
                 </button>
               </div>
             </div>
@@ -724,28 +715,27 @@ export default function CampaignPage() {
           <span>ZERO MANDATORY SUBSCRIPTION · LIFETIME CORE APPS INCLUDED</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-display font-bold text-white">
-          Bring Nexus Ring to your desk.
+          Join the Nexus Ring Waitlist.
         </h2>
         <p className="text-sm md:text-base text-[#A5AFBD] max-w-xl mx-auto font-light leading-relaxed">
-          Choose the $39 Digital Maker Kit, $89 Early Bird (50 backers), $109 Kickstarter Special (200 backers), or $199 Day &amp; Night Duo Pack directly on Kickstarter.
+          Be the first to get CAD models, firmware drops, and early production notice.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href={KICKSTARTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(216,58,80,0.35)] inline-flex items-center gap-2"
-          >
-            <span>Back on Kickstarter</span>
-            <ArrowUpRight size={16} />
-          </a>
           <button
             type="button"
-            onClick={() => handleNotifyTier("Kickstarter Campaign Updates")}
-            className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#080A0E] text-white hover:border-[#D83A50] font-mono text-sm transition-colors cursor-pointer"
+            onClick={() => handleNotifyTier("Campaign Final CTA")}
+            className="px-8 py-4 rounded-xl bg-[#D83A50] text-white font-bold tracking-wide hover:bg-[#EB5268] transition-all shadow-[0_0_25px_rgba(216,58,80,0.35)] inline-flex items-center gap-2 cursor-pointer"
           >
-            Subscribe to Updates
+            <span>Join Early Access Waitlist</span>
+            <ArrowUpRight size={16} />
           </button>
+          <Link
+            href="/preorder"
+            className="px-8 py-4 rounded-xl border border-[#303A48] bg-[#11151C] hover:border-[#D83A50] text-white font-mono text-sm transition-colors inline-flex items-center gap-2"
+          >
+            <span>Configure Editions &amp; Kits</span>
+            <ChevronRight size={16} />
+          </Link>
         </div>
       </section>
 

@@ -75,15 +75,15 @@ Engineered and developed by Nexus Ring (founded by Naqash Afzal), the system com
 
 ---
 
-## Official Kickstarter Rewards & Editions
-> Kickstarter Campaign: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa (US$ 10,000 goal · 48 days · Est. Delivery July 2027). Every reward tier includes lifetime core access to the desktop (Windows, macOS, Linux) and mobile (Android, iOS) companion apps with zero mandatory subscription fees.
+## Official Planned Editions & Kits
+> Early Access Waitlist: https://www.nexusring.tech/preorder (Est. Delivery July 2027). Every edition includes lifetime core access to the desktop (Windows, macOS, Linux) and mobile (Android, iOS) companion apps with zero mandatory subscription fees.
 
 - **Nexus: Digital Maker Kit ($39):** 3D-printable enclosure files (STL/STEP), bill of materials (BOM), embedded firmware & flashing guide, step-by-step assembly guide, and lifetime core desktop & mobile apps (digital fulfillment, no physical hardware).
-- **Early Bird: Nexus & App ($89 — First 50 Backers):** Complete assembled metal-body Nexus Ring desk dock (choose Day Silver or Night Obsidian Black in post-campaign survey), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps.
-- **Nexus + Apps ($109 — Featured · First 200 Backers):** Complete assembled metal-body Nexus Ring desk dock (choose Day Silver or Night Obsidian Black in post-campaign survey), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps.
-- **Nexus Ring Duo Pack — 2x Units ($199 — First 50 Backers):** Both Day (Silver) and Night (Obsidian Black) assembled metal-body Nexus Ring units, 2× magnetic totems, 2× USB-C cables, and lifetime core desktop & mobile apps for both setups.
+- **Early Bird: Nexus & App ($89 — First 50):** Complete assembled metal-body Nexus Ring desk dock (choose Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps.
+- **Nexus + Apps ($109 — Featured · First 200):** Complete assembled metal-body Nexus Ring desk dock (choose Day Silver or Night Obsidian Black), magnetic totem, USB-C cable, and lifetime core desktop & mobile apps.
+- **Nexus Ring Duo Pack — 2x Units ($199 — First 50):** Both Day (Silver) and Night (Obsidian Black) assembled metal-body Nexus Ring units, 2× magnetic totems, 2× USB-C cables, and lifetime core desktop & mobile apps for both setups.
 
-Worldwide shipping and applicable taxes for assembled hardware pledges ($89, $109, $199) are collected separately after the campaign through the pledge manager.
+Worldwide shipping and applicable taxes for assembled hardware ($89, $109, $199) are coordinated prior to fulfillment.
 
 ---
 
@@ -100,7 +100,6 @@ Yes. The companion software and USB HID interface operate entirely locally on yo
 
 ### Who created the Nexus Ring?
 Nexus Ring was created and founded by Naqash Afzal Zakria (Lahore, Pakistan).
-- Kickstarter: https://www.kickstarter.com/projects/naqash/nexus-ring-physical-switch-for-you?ref=5ricqa
 - GitHub: https://github.com/naqashafzal
 - MakerWorld: https://makerworld.com/en/@naqash
 - LinkedIn: https://www.linkedin.com/in/naqashafzal/
